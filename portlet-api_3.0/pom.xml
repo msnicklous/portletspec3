@@ -79,6 +79,14 @@
             </instructions>
           </configuration>
         </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-javadoc-plugin</artifactId>
+          <configuration>
+            <doctitle>JSR 362 Portlet Specification 3.0 Interface Working Document</doctitle>
+            <windowtitle>JSR 362 Portlet Specification 3.0 Interface Working Document</windowtitle>
+          </configuration>
+        </plugin>
       </plugins>
     </pluginManagement>
 
@@ -87,14 +95,6 @@
         <groupId>org.apache.felix</groupId>
         <artifactId>maven-bundle-plugin</artifactId>
       </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-javadoc-plugin</artifactId>
-        <configuration>
-          <doctitle>JSR 362 Portlet Specification 3.0 Interface Working Document</doctitle>
-          <windowtitle>JSR 362 Portlet Specification 3.0 Interface Working Document</windowtitle>
-        </configuration>
-      </plugin>      
     </plugins>
   </build>
 
@@ -107,6 +107,67 @@
             <!-- only include this in top level project poms -->
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-assembly-plugin</artifactId>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+    <!--
+      Profile for publishing Javadoc to GitHub Pages (https://help.github.com/categories/20/articles)
+
+      = Setup =
+
+      Add this profile to your .m2/settings.xml
+
+      <profile>
+        <id>github</id>
+        <properties>
+          <github.global.userName>your_github_username</github.global.userName>
+          <github.global.password>your_github_password</github.global.password>
+        </properties>
+      </profile>
+
+
+      = Usage =
+
+      To build and deploy Javadoc: mvn site -Pgithub
+      Javadocs are published to GitHub pages : your_github_username.github.io/portletspec3
+
+    -->
+    <profile>
+      <id>github</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-javadoc-plugin</artifactId>
+            <executions>
+              <execution>
+                <goals>
+                  <goal>javadoc</goal>
+                </goals>
+                <phase>generate-resources</phase>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>com.github.github</groupId>
+            <artifactId>site-maven-plugin</artifactId>
+            <version>0.8</version>
+            <configuration>
+              <message>Deploy javadoc for ${project.version}</message>
+              <repositoryOwner>vietj</repositoryOwner>
+              <repositoryName>portletspec3</repositoryName>
+              <outputDirectory>${project.build.directory}/site/apidocs/</outputDirectory>
+            </configuration>
+            <executions>
+              <execution>
+                <goals>
+                  <goal>site</goal>
+                </goals>
+                <phase>install</phase>
+              </execution>
+            </executions>
           </plugin>
         </plugins>
       </build>
