@@ -4,3 +4,13 @@
 *.jar
 *.war
 *.ear
+
+# OSX metadata file
+.DS_Store
+
+# Intellij project files
+*.iml
+.idea
+
+# Maven project.build.directory
+target
