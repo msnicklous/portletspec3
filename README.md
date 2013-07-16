@@ -7,6 +7,8 @@ see [the JSR 362 home page] (http://java.net/projects/portletspec3/pages/Home)
 and [the JSR 362 page at the JCP site] (http://www.jcp.org/en/jsr/detail?id=362)
 for more information.
 
+The generated API documentation can be found [here.] (http://msnicklous.github.io/portletspec3/)
+
 This information is a work in progress and is subject to change.
 
 ###License
