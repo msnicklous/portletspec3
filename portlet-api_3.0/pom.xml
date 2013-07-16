@@ -30,6 +30,17 @@
   </parent>
 -->
 
+  <properties>
+    <version.clean.plugin>2.5</version.clean.plugin>
+    <version.javadoc.plugin>2.9</version.javadoc.plugin>
+    <version.compiler.plugin>3.1</version.compiler.plugin>
+    <version.dependency.plugin>2.8</version.dependency.plugin>
+    <version.deploy.plugin>2.7</version.deploy.plugin>
+    <version.assembly.plugin>2.4</version.assembly.plugin>
+    <version.jar.plugin>2.4</version.jar.plugin>
+    <version.install.plugin>2.4</version.install.plugin>
+  </properties>
+
   <modelVersion>4.0.0</modelVersion>
   
   <groupId>org.apache.portals</groupId>
@@ -54,7 +65,33 @@
       <plugins>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-assembly-plugin</artifactId>
+          <version>${version.assembly.plugin}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-clean-plugin</artifactId>
+          <version>${version.clean.plugin}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-dependency-plugin</artifactId>
+          <version>${version.dependency.plugin}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-deploy-plugin</artifactId>
+          <version>${version.deploy.plugin}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>${version.jar.plugin}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
+          <version>${version.compiler.plugin}</version>
           <configuration>
             <source>1.5</source>
             <target>1.5</target>
@@ -82,6 +119,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-javadoc-plugin</artifactId>
+          <version>${version.javadoc.plugin}</version>
           <configuration>
             <doctitle>JSR 362 Portlet Specification 3.0 Interface Working Document</doctitle>
             <windowtitle>JSR 362 Portlet Specification 3.0 Interface Working Document</windowtitle>
