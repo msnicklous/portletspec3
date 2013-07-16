@@ -212,7 +212,7 @@
             <version>0.8</version>
             <configuration>
               <message>Deploy javadoc for ${project.version}</message>
-              <repositoryOwner>vietj</repositoryOwner>
+              <repositoryOwner>msnicklous</repositoryOwner>
               <repositoryName>portletspec3</repositoryName>
               <outputDirectory>${project.build.directory}/site/apidocs/</outputDirectory>
             </configuration>
