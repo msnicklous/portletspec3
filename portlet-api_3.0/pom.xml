@@ -39,6 +39,7 @@
     <version.assembly.plugin>2.4</version.assembly.plugin>
     <version.jar.plugin>2.4</version.jar.plugin>
     <version.install.plugin>2.4</version.install.plugin>
+    <version.source.plugin>2.2.1</version.source.plugin>
   </properties>
 
   <modelVersion>4.0.0</modelVersion>
@@ -90,6 +91,11 @@
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-source-plugin</artifactId>
+          <version>${version.source.plugin}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
           <version>${version.compiler.plugin}</version>
           <configuration>
@@ -129,6 +135,18 @@
     </pluginManagement>
 
     <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>attach-sources</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
       <plugin>
         <groupId>org.apache.felix</groupId>
         <artifactId>maven-bundle-plugin</artifactId>
