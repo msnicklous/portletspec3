@@ -347,7 +347,12 @@ public interface PortletRequest
    * creates one and returns the new session.
    *  <p>
    * Creating a new portlet session will result in creating
-   * a new <code>HttpSession</code> on which the portlet session is based on.
+   * a new <code>HttpSession</code> on which the portlet session is based.
+   * <p>
+   * To make sure the session is properly maintained, you must call this method before 
+   * the response is committed. If the container is using cookies to maintain session 
+   * integrity and is asked to create a new session when the response is committed, 
+   * an <code>IllegalStateException</code> is thrown.
    *
    * @return the portlet session
    */
@@ -364,7 +369,12 @@ public interface PortletRequest
    * portlet session, this method returns <CODE>null</CODE>.
    *  <p>
    * Creating a new portlet session will result in creating
-   * a new <code>HttpSession</code> on which the portlet session is based on.
+   * a new <code>HttpSession</code> on which the portlet session is based.
+   * <p>
+   * To make sure the session is properly maintained, you must call this method before 
+   * the response is committed. If the container is using cookies to maintain session 
+   * integrity and is asked to create a new session when the response is committed, 
+   * an <code>IllegalStateException</code> is thrown.
    * 
    * @param create
    *               <CODE>true</CODE> to create a new session, <BR>
@@ -668,7 +678,7 @@ public interface PortletRequest
 
 
   /** 
-   * Returns a <code>Map</code> of the parameters of this request.
+   * Returns a <code>Map</code> of all public and private parameters of this request.
    * Request parameters are extra information sent with the request.  
    * The returned parameters are "x-www-form-urlencoded" decoded.
    * <p>
@@ -903,7 +913,9 @@ public interface PortletRequest
   
   /**
    * Returns a <code>Map</code> of the private parameters of this request.
-   * Private parameters are not shared with other portlets or components.  
+   * Private parameters are all those not declared to be public parameters 
+   * in the portlet deployment descriptor. They are not shared with other 
+   * portlets or components.
    * The returned parameters are "x-www-form-urlencoded" decoded.
    * <p>
    * The values in the returned <code>Map</code> are from type
