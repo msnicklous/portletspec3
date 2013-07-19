@@ -24,6 +24,7 @@
 
 package javax.portlet.filter;
 
+import java.util.Enumeration;
 import java.util.Map;
 
 import javax.portlet.EventRequest;
@@ -180,5 +181,77 @@ public class EventResponseWrapper extends PortletResponseWrapper implements Even
 	public void removePublicRenderParameter(String name) {
 		response.removePublicRenderParameter(name);		
 	}
+
+   /**
+    *  The default behavior of this method is to call 
+    * <code>setParameter()</code> on the wrapped response object.
+    */
+   public void setParameter(String name, String value) {
+      response.setParameter(name, value);     
+   }
+
+   /**
+    *  The default behavior of this method is to call 
+    * <code>setParameter()</code> on the wrapped response object.
+    */
+   public void setParameter(String name, String[] values) {
+      response.setParameter(name, values);     
+   }
+
+   /**
+    *  The default behavior of this method is to call 
+    * <code>setParameters()</code> on the wrapped response object.
+    */
+   public void setParameters(Map<String, String[]> parameters) {
+      response.setParameters(parameters);     
+   }
+
+   /**
+    *  The default behavior of this method is to call 
+    * <code>getParameter()</code> on the wrapped response object.
+    */
+   public String getParameter(String name) {
+      return response.getParameter(name);     
+   }
+
+   /**
+    *  The default behavior of this method is to call 
+    * <code>getParameterNames()</code> on the wrapped response object.
+    */
+   public Enumeration<String> getParameterNames() {
+      return response.getParameterNames();     
+   }
+
+   /**
+    *  The default behavior of this method is to call 
+    * <code>getParameterValues()</code> on the wrapped response object.
+    */
+   public String[] getParameterValues(String name) {
+      return response.getParameterValues(name);     
+   }
+
+   /**
+    *  The default behavior of this method is to call 
+    * <code>getParameterMap()</code> on the wrapped response object.
+    */
+   public Map<String, String[]> getParameterMap() {
+      return response.getParameterMap();     
+   }
+
+   /**
+    *  The default behavior of this method is to call 
+    * <code>getPrivateParameterMap()</code> on the wrapped response object.
+    */
+   public Map<String, String[]> getPrivateParameterMap() {
+      return response.getPrivateParameterMap();     
+   }
+
+   /**
+    *  The default behavior of this method is to call 
+    * <code>getPublicParameterMap()</code> on the wrapped response object.
+    */
+   public Map<String, String[]> getPublicParameterMap() {
+      return response.getPublicParameterMap();     
+   }
 
 }

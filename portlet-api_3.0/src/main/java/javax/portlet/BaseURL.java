@@ -30,85 +30,7 @@ package javax.portlet;
  *
  * @since 2.0
  */
-public interface BaseURL {
-
-    /**
-     * Sets the given String parameter to this URL. 
-     * <p>
-     * This method replaces all parameters with the given key.
-     * <p>
-     * The <code>PortletURL</code> implementation 'x-www-form-urlencoded' encodes
-     * all  parameter names and values. Developers should not encode them.
-     * <p>
-     * A portlet container may prefix the attribute names internally 
-     * in order to preserve a unique namespace for the portlet.
-     * <p>
-     * A parameter value of <code>null</code> indicates that this
-     * parameter should be removed.
-     *
-     * @param   name
-     *          the parameter name
-     * @param   value
-     *          the parameter value
-     *
-     * @exception  java.lang.IllegalArgumentException 
-     *                            if name is <code>null</code>.
-     */
-
-    public void setParameter (String name, String value);
-
-
-    /**
-     * Sets the given String array parameter to this URL. 
-     * <p>
-     * This method replaces all parameters with the given key.
-     * <p>
-     * The <code>PortletURL</code> implementation 'x-www-form-urlencoded' encodes
-     * all  parameter names and values. Developers should not encode them.
-     * <p>
-     * A portlet container may prefix the attribute names internally 
-     * in order to preserve a unique namespace for the portlet.
-     *
-     * @param   name
-     *          the parameter name
-     * @param   values
-     *          the parameter values
-     *
-     * @exception  java.lang.IllegalArgumentException 
-     *                            if name is <code>null</code>.
-     */
-
-    public void setParameter (String name, String[] values);
-
-
-    /**
-     * Sets a parameter map for this URL.
-     * <p>
-     * All previously set parameters are cleared.
-     * <p>
-     * The <code>PortletURL</code> implementation 'x-www-form-urlencoded' encodes
-     * all  parameter names and values. Developers should not encode them.
-     * <p>
-     * A portlet container may prefix the attribute names internally, 
-     * in order to preserve a unique namespace for the portlet.
-     *
-     * @param  parameters   Map containing parameter names for 
-     *                      the render phase as 
-     *                      keys and parameter values as map 
-     *                      values. The keys in the parameter
-     *                      map must be of type String. The values 
-     *                      in the parameter map must be of type
-     *                      String array (<code>String[]</code>).
-     *
-     * @exception   java.lang.IllegalArgumentException 
-     *                      if parameters is <code>null</code>, if
-     *                      any of the keys in the Map are <code>null</code>, 
-     *                      if any of the keys is not a String, or if any of 
-     *                      the values is not a String array.
-     */
-
-    public void setParameters(java.util.Map<String, String[]> parameters);
-
+public interface BaseURL extends PortletFutureState {
 
     /**
      * Indicated the security setting for this URL. 
@@ -146,28 +68,6 @@ public interface BaseURL {
      */
 
     public String toString ();
-    
-    /** 
-     * Returns a <code>Map</code> of the parameters 
-     * currently set on this portlet URL via the 
-     * <code>setParameter</code> or <code>setParameters</code>
-     * methods.
-     * <p>
-     * The values in the returned <code>Map</code> are from type
-     * String array (<code>String[]</code>).
-     * <p>
-     * If no parameters exist this method returns an empty <code>Map</code>.
-     *             
-     * @return     <code>Map</code> containing parameter names as 
-     *             keys and parameter values as map values, or an empty <code>Map</code>
-     *             if no parameters exist. The keys in the parameter
-     *             map are of type String. The values in the parameter map are of type
-     *             String array (<code>String[]</code>).
-     *
-     * @since 2.0
-     */
-
-    public java.util.Map<String, String[]> getParameterMap();
 
     /**
      * Writes the portlet URL to the output stream using the provided writer.

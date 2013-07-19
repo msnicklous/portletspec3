@@ -32,7 +32,7 @@ package javax.portlet;
  * @since 2.0
  * @see PortletResponse
  */
-public interface StateAwareResponse extends PortletResponse {
+public interface StateAwareResponse extends PortletResponse, PortletFutureState, PortletSharedState {
 
 	/**
      * Sets the window state of a portlet to the given window state.
@@ -100,85 +100,27 @@ public interface StateAwareResponse extends PortletResponse {
 
 	/**
      * Sets a parameter map for the render request.
-     * <p>
-     * All previously set render parameters are cleared.
-     * <p>
-     * These parameters will be accessible in all sub-sequent render calls via
-     * the <code>PortletRequest.getParameter</code> call until a new request
-     * is targeted to the portlet.
-     * <p>
-     * The given parameters do not need to be encoded prior to calling this
-     * method.
-     * <p>
-     * The portlet should not modify the map any further after calling
-     * this method.
-     * 
-     * @param parameters
-     *            Map containing parameter names for the render phase as keys
-     *            and parameter values as map values. The keys in the parameter
-     *            map must be of type String. The values in the parameter map
-     *            must be of type String array (<code>String[]</code>).
-     * 
-     * @exception java.lang.IllegalArgumentException
-     *                if parameters is <code>null</code>, if any of the
-     *                keys in the Map are <code>null</code>, if any of
-     *                the keys is not a String, or if any of the values is not a
-     *                String array.
-     * @exception java.lang.IllegalStateException
-     *                if the method is invoked after <code>sendRedirect</code>
-     *                has been called.
+     * <p> 
+     * See description of {@link javax.portlet.PortletFutureState#setParameters(java.util.Map)}
+     * which provides the same function. 
      */
 
 	public void setRenderParameters(java.util.Map<String, String[]> parameters);
 
 	/**
      * Sets a String parameter for the render request.
-     * <p>
-     * These parameters will be accessible in all sub-sequent render calls via
-     * the <code>PortletRequest.getParameter</code> call until a request is
-     * targeted to the portlet.
-     * <p>
-     * This method replaces all parameters with the given key.
-     * <p>
-     * The given parameter do not need to be encoded prior to calling this
-     * method.
-     * 
-     * @param key
-     *            key of the render parameter
-     * @param value
-     *            value of the render parameter
-     * 
-     * @exception java.lang.IllegalArgumentException
-     *                if key is <code>null</code>.
-     * @exception java.lang.IllegalStateException
-     *                if the method is invoked after <code>sendRedirect</code>
-     *                has been called.
+      * <p> 
+     * See description of {@link javax.portlet.PortletFutureState#setParameter(String, String)}
+     * which provides the same function. 
      */
 
 	public void setRenderParameter(String key, String value);
 
 	/**
      * Sets a String array parameter for the render request.
-     * <p>
-     * These parameters will be accessible in all sub-sequent render calls via
-     * the <code>PortletRequest.getParameter</code> call until a request is
-     * targeted to the portlet.
-     * <p>
-     * This method replaces all parameters with the given key.
-     * <p>
-     * The given parameter do not need to be encoded prior to calling this
-     * method.
-     * 
-     * @param key
-     *            key of the render parameter
-     * @param values
-     *            values of the render parameter
-     * 
-     * @exception java.lang.IllegalArgumentException
-     *                if key or value are <code>null</code>.
-     * @exception java.lang.IllegalStateException
-     *                if the method is invoked after <code>sendRedirect</code>
-     *                has been called.
+     * <p> 
+     * See description of {@link javax.portlet.PortletFutureState#setParameter(String, String[])}
+     * which provides the same function. 
      */
 
 	public void setRenderParameter(String key, String[] values);
@@ -238,17 +180,9 @@ public interface StateAwareResponse extends PortletResponse {
 	/**
      * Returns a <code>Map</code> of the render parameters currently set on
      * this response.
-     * <p>
-     * The values in the returned <code>Map</code> are from type String array (<code>String[]</code>).
-     * <p>
-     * If no parameters exist this method returns an empty <code>Map</code>.
-     * 
-     * @since 2.0
-     * 
-     * @return <code>Map</code> containing render parameter names as keys and
-     *         parameter values as map values, or an empty <code>Map</code> if
-     *         no parameters exist. The keys in the parameter map are of type
-     *         String. The values in the parameter map are of type String array (<code>String[]</code>).
+     * <p> 
+     * See description of {@link javax.portlet.PortletCurrentState#getParameterMap()}
+     * which provides the same function. 
      */
 
 	public java.util.Map<String, String[]> getRenderParameterMap();
@@ -272,21 +206,4 @@ public interface StateAwareResponse extends PortletResponse {
      */
 
 	public WindowState getWindowState();
-
-
-	/**
-	 * Removes the specified public render parameter.
-	 * The name must reference a public render parameter defined
-	 * in the portlet deployment descriptor under the
-	 * <code>public-render-parameter</code> element with the
-	 * <code>identifier</code> mapping to the parameter name.
-	 * 
-	 * @param name			a <code>String</code> specifying 
-	 *					the name of the public render parameter to be removed
-	 *
-	 * @exception  java.lang.IllegalArgumentException 
-	 *                            if name is <code>null</code>.
-	 * @since 2.0
-	 */
-	public void removePublicRenderParameter(String name);
 }
