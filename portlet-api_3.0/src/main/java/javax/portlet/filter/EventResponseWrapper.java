@@ -240,18 +240,18 @@ public class EventResponseWrapper extends PortletResponseWrapper implements Even
 
    /**
     *  The default behavior of this method is to call 
-    * <code>getPrivateParameterMap()</code> on the wrapped response object.
+    * <code>removeParameter()</code> on the wrapped response object.
     */
-   public Map<String, String[]> getPrivateParameterMap() {
-      return response.getPrivateParameterMap();     
+   public void removeParameter(String name) {
+      response.removeParameter(name);     
    }
 
    /**
     *  The default behavior of this method is to call 
-    * <code>getPublicParameterMap()</code> on the wrapped response object.
+    * <code>isPublicRenderParameter()</code> on the wrapped response object.
     */
-   public Map<String, String[]> getPublicParameterMap() {
-      return response.getPublicParameterMap();     
+   public boolean isPublicRenderParameter(String name) {
+      return response.isPublicRenderParameter(name);     
    }
 
 }

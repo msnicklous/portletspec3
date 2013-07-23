@@ -32,7 +32,7 @@ package javax.portlet;
  * @since 2.0
  * @see PortletResponse
  */
-public interface StateAwareResponse extends PortletResponse, PortletFutureState, PortletSharedState {
+public interface StateAwareResponse extends PortletResponse, WritablePortletState {
 
 	/**
      * Sets the window state of a portlet to the given window state.
@@ -101,7 +101,7 @@ public interface StateAwareResponse extends PortletResponse, PortletFutureState,
 	/**
      * Sets a parameter map for the render request.
      * <p> 
-     * See description of {@link javax.portlet.PortletFutureState#setParameters(java.util.Map)}
+     * See description of {@link javax.portlet.WritablePortletState#setParameters(java.util.Map)}
      * which provides the same function. 
      */
 
@@ -110,7 +110,7 @@ public interface StateAwareResponse extends PortletResponse, PortletFutureState,
 	/**
      * Sets a String parameter for the render request.
       * <p> 
-     * See description of {@link javax.portlet.PortletFutureState#setParameter(String, String)}
+     * See description of {@link javax.portlet.WritablePortletState#setParameter(String, String)}
      * which provides the same function. 
      */
 
@@ -119,7 +119,7 @@ public interface StateAwareResponse extends PortletResponse, PortletFutureState,
 	/**
      * Sets a String array parameter for the render request.
      * <p> 
-     * See description of {@link javax.portlet.PortletFutureState#setParameter(String, String[])}
+     * See description of {@link javax.portlet.WritablePortletState#setParameter(String, String[])}
      * which provides the same function. 
      */
 
@@ -181,7 +181,7 @@ public interface StateAwareResponse extends PortletResponse, PortletFutureState,
      * Returns a <code>Map</code> of the render parameters currently set on
      * this response.
      * <p> 
-     * See description of {@link javax.portlet.PortletCurrentState#getParameterMap()}
+     * See description of {@link javax.portlet.PortletState#getParameterMap()}
      * which provides the same function. 
      */
 
@@ -206,4 +206,22 @@ public interface StateAwareResponse extends PortletResponse, PortletFutureState,
      */
 
 	public WindowState getWindowState();
+
+
+   /**
+    * Removes the specified public render parameter.
+    * The name must reference a public render parameter defined
+    * in the portlet deployment descriptor under the
+    * <code>public-render-parameter</code> element with the
+    * <code>identifier</code> mapping to the parameter name.
+    * 
+    * @param name       a <code>String</code> specifying 
+    *             the name of the public render parameter to be removed
+    *
+    * @exception  java.lang.IllegalArgumentException 
+    *                            if name is <code>null</code>.
+    * @since 2.0
+    */
+   public void removePublicRenderParameter(String name);
+	
 }

@@ -399,4 +399,13 @@ public class PortletRequestWrapper implements PortletRequest {
 	public Map<String, String[]> getPublicParameterMap() {
 		return request.getPublicParameterMap();
 	}
+
+   /**
+    *  The default behavior of this method is to call 
+    * <code>isPublicRenderParameter()</code> on the wrapped response object.
+    */
+   public boolean isPublicRenderParameter(String name) {
+      return request.isPublicRenderParameter(name);     
+   }
+	
 }

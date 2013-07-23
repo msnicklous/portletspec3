@@ -25,7 +25,7 @@
 package javax.portlet;
 
 /**
- * The <CODE>PortletFutureState</CODE> provides methods that allow  
+ * The <CODE>WritablePortletState</CODE> provides methods that allow  
  * setting parameters to record a potential future portlet state.
  * <p>
  * For example, these methods can be used to set parameters on 
@@ -35,7 +35,7 @@ package javax.portlet;
  *
  * @since 3.0
  */
-public interface PortletFutureState extends PortletCurrentState {
+public interface WritablePortletState extends PortletState {
 
     /**
      * Sets the given String parameter to this URL. 
@@ -150,4 +150,18 @@ public interface PortletFutureState extends PortletCurrentState {
      */
 
     public void setParameters(java.util.Map<String, String[]> parameters);
+
+    
+    /**
+     * Removes the given parameter. All values associated with the 
+     * name provided are removed.
+     *
+     * @param   name
+     *          the parameter name
+     *
+     * @exception  java.lang.IllegalArgumentException 
+     *                            if name is <code>null</code>.
+     */
+
+    public void removeParameter (String name);
 }

@@ -27,10 +27,10 @@ package javax.portlet;
 
 /**
  * The current state of the portlet is represented by the private and public 
- * parameters that are set for this request. The <CODE>PortletCurrentState</CODE> 
+ * parameters that are set for this request. The <CODE>PortletState</CODE> 
  * interface defines the API for accessing these parameters. 
  */
-public interface PortletCurrentState
+public interface PortletState
 {
 
   /**
@@ -137,45 +137,20 @@ public interface PortletCurrentState
 
   
   /**
-   * Returns a <code>Map</code> of the private parameters of this request.
-   * Private parameters are all those not declared to be public parameters 
-   * in the portlet deployment descriptor. They are not shared with other 
-   * portlets or components.
-   * The returned parameters are "x-www-form-urlencoded" decoded.
-   * <p>
-   * The values in the returned <code>Map</code> are from type
-   * String array (<code>String[]</code>).
-   * <p>
-   * If no private parameters exist this method returns an empty <code>Map</code>.
+   * Returns a boolean value indicating whether the given
+   * parameter is a public render parameter. 
    *
-   * @since 2.0
-   * @return     an immutable <code>Map</code> containing private parameter names as 
-   *             keys and private parameter values as map values, or an empty <code>Map</code>
-   *             if no private parameters exist. The keys in the parameter
-   *             map are of type String. The values in the parameter map are of type
-   *             String array (<code>String[]</code>).
-   */
-  public java.util.Map<String, String[]> getPrivateParameterMap();
-  
-  /**
-   * Returns a <code>Map</code> of the public parameters of this request.
-   * Public parameters may be shared with other portlets or components as
-   * defined in the portlet deployment descriptor with the 
-   * <code>supported-public-render-parameter</code> element.  
-   * The returned parameters are "x-www-form-urlencoded" decoded.
-   * <p>
-   * The values in the returned <code>Map</code> are from type
-   * String array (<code>String[]</code>).
-   * <p>
-   * If no public parameters exist this method returns an empty <code>Map</code>.
+   * @param   name
+   *          the parameter name
    *
-   * @since 2.0
-   * @return     an immutable <code>Map</code> containing public parameter names as 
-   *             keys and public parameter values as map values, or an empty <code>Map</code>
-   *             if no public parameters exist. The keys in the parameter
-   *             map are of type String. The values in the parameter map are of type
-   *             String array (<code>String[]</code>).
+   * @return  <code>true</code> if the given parameter
+   *           is a public render parameter.
+   *           <code>false</code> otherwise
+   *
+   * @exception  java.lang.IllegalArgumentException 
+   *                            if name is <code>null</code>.
    */
-  public java.util.Map<String, String[]> getPublicParameterMap();
+
+  public boolean isPublicRenderParameter (String name);
 
 }
