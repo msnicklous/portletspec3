@@ -145,4 +145,32 @@ public interface ResourceURL extends BaseURL {
      */
 	public void setCacheability(String cacheLevel);
 
+
+	  
+	  /**
+	   * Returns a read-only <code>PortletState</code> object representing the 
+	   * render state for the URL. It is automatically attached to the URL when it
+	   * is created and cannot be changed.
+	   * <p>
+	   * If no portlet state information is available, this method returns an empty 
+	   * <code>PortletState</code> object.
+	   *
+	   * @since 3.0
+	   * @return     A read-only <code>PortletState</code> object representing the 
+	   *             render state for the URL.
+	   */
+	  public PortletState getPortletState();
+
+	  
+	  /**
+	   * Returns an empty <code>PortletState</code> object representing the 
+	   * resource state for the URL. The portlet state object returned can be used 
+	   * to add additional resource state to the URL.
+	   * <p>
+	   *
+	   * @since 3.0
+	   * @return     A <code>PortletState</code> object representing the 
+	   *             resource state for the URL.
+	   */
+	  public PortletState getResourceState();
 }

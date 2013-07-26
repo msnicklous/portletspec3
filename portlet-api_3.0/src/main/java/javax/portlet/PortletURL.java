@@ -140,4 +140,18 @@ public interface PortletURL extends BaseURL
 	* @since 2.0
 	*/
   public void removePublicRenderParameter(String name); 
+
+  
+  /**
+   * Returns a <code>PortletState</code> object representing the 
+   * portlet state for the URL.
+   * <p>
+   * If no portlet state information is available, this method returns an empty 
+   * <code>PortletState</code> object.
+   *
+   * @since 3.0
+   * @return     A <code>PortletState</code> object representing the 
+   *             portlet state for the URL.
+   */
+  public PortletState getPortletState();
 }

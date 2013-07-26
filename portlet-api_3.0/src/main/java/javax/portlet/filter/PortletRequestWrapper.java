@@ -34,6 +34,7 @@ import javax.portlet.PortletMode;
 import javax.portlet.PortletPreferences;
 import javax.portlet.PortletRequest;
 import javax.portlet.PortletSession;
+import javax.portlet.PortletState;
 import javax.portlet.WindowState;
 import javax.servlet.http.Cookie;
 
@@ -399,4 +400,9 @@ public class PortletRequestWrapper implements PortletRequest {
 	public Map<String, String[]> getPublicParameterMap() {
 		return request.getPublicParameterMap();
 	}
+
+
+   public PortletState getPortletState() {
+      return request.getPortletState();
+   }
 }

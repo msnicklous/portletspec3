@@ -141,4 +141,57 @@ public interface ResourceRequest extends ClientDataRequest {
      */
 	public String getCacheability();
 
+      
+   /**
+    * Returns a read-only <code>PortletState</code> object representing the 
+    * portlet state that applies to the current request. 
+    * <p>
+    * The returned <code>PortletState</code> object contains the aggregated portlet state 
+    * consisting of the render state that governed the request during which the 
+    * <code>ResourceURL</code> leading to this resource request was created along 
+    * with and additional resource state that was added to the resource URL.
+    * <p>
+    * If no portlet state information is available, this method returns an empty 
+    * <code>PortletState</code> object.
+    *
+    * @since 3.0
+    * @return     A read-only <code>PortletState</code> object representing the 
+    *             portlet state that applies to the current request.
+    */
+   public PortletState getPortletState();
+
+   
+   /**
+    * Returns a read-only <code>PortletState</code> object representing the 
+    * portlet state that applies to the current request. The render state 
+    * is set during the processing of an event request or action request and
+    * cannot be changed.
+    * <p>
+    * If no portlet state information is available, this method returns an empty 
+    * <code>PortletState</code> object.
+    *
+    * @since 3.0
+    * @return     A read-only <code>PortletState</code> object representing the 
+    *             portlet state that applies to the current request.
+    */
+   public PortletState getRenderState();
+
+   
+   /**
+    * Returns a read-only <code>PortletState</code> object representing the 
+    * portlet state that applies to the current request. The resource state 
+    * is set when the <code>ResourceURL</code> is created and
+    * cannot be changed.
+    * <p>
+    * The returned <code>PortletState</code> object contains any additional
+    * resource state that was added to the ResourceURL.
+    * <p>
+    * If no portlet state information is available, this method returns an empty 
+    * <code>PortletState</code> object.
+    *
+    * @since 3.0
+    * @return     A read-only <code>PortletState</code> object representing the 
+    *             portlet state that applies to the current request.
+    */
+   public PortletState getResourceState();
 }

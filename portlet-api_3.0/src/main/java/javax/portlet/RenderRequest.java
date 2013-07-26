@@ -69,4 +69,20 @@ public interface RenderRequest extends PortletRequest
     
 
 
+    
+    /**
+     * Returns a read-only <code>PortletState</code> object representing the 
+     * portlet render state that applies to the current request. The render state 
+     * is set during the processing of an event request or action request and
+     * cannot be changed.
+     * <p>
+     * If no portlet state information is available, this method returns an empty 
+     * <code>PortletState</code> object.
+     *
+     * @since 3.0
+     * @return     A read-only <code>PortletState</code> object representing the 
+     *             portlet state that applies to the current request.
+     */
+    public PortletState getPortletState();
+
 }

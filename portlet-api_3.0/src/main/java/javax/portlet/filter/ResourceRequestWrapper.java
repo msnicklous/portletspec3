@@ -30,6 +30,7 @@ import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.Map;
 
+import javax.portlet.PortletState;
 import javax.portlet.ResourceRequest;
 
 /**
@@ -171,6 +172,14 @@ public class ResourceRequestWrapper extends PortletRequestWrapper implements Res
     public String getCacheability() {
         return request.getCacheability();
     }
+
+   public PortletState getRenderState() {
+      return request.getRenderState();
+   }
+
+   public PortletState getResourceState() {
+      return request.getResourceState();
+   }
     
 
 }

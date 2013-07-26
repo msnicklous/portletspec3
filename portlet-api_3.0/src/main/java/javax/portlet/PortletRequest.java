@@ -953,4 +953,17 @@ public interface PortletRequest
    */
   public java.util.Map<String, String[]> getPublicParameterMap();
 
+  
+  /**
+   * Returns a <code>PortletState</code> object representing the 
+   * portlet state that applies to the current request.
+   * <p>
+   * If no portlet state information is available, this method returns an empty 
+   * <code>PortletState</code> object.
+   *
+   * @since 3.0
+   * @return     A <code>PortletState</code> object representing the 
+   *             portlet state that applies to the current request.
+   */
+  public PortletState getPortletState();
 }
