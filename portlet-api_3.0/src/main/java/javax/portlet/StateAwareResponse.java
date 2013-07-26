@@ -99,49 +99,58 @@ public interface StateAwareResponse extends PortletResponse {
 			throws PortletModeException;
 
 	/**
-     * Sets a parameter map for the render request.
-     * <p>
-     * All previously set render parameters are cleared.
-     * <p>
-     * These parameters will be accessible in all sub-sequent render calls via
-     * the <code>PortletRequest.getParameter</code> call until a new request
-     * is targeted to the portlet.
-     * <p>
-     * The given parameters do not need to be encoded prior to calling this
-     * method.
-     * <p>
-     * The portlet should not modify the map any further after calling
-     * this method.
-     * 
-     * @param parameters
-     *            Map containing parameter names for the render phase as keys
-     *            and parameter values as map values. The keys in the parameter
-     *            map must be of type String. The values in the parameter map
-     *            must be of type String array (<code>String[]</code>).
-     * 
-     * @exception java.lang.IllegalArgumentException
-     *                if parameters is <code>null</code>, if any of the
-     *                keys in the Map are <code>null</code>, if any of
-     *                the keys is not a String, or if any of the values is not a
-     *                String array.
-     * @exception java.lang.IllegalStateException
-     *                if the method is invoked after <code>sendRedirect</code>
-     *                has been called.
-     */
+	 * Sets a parameter map for the render request.
+	 * <p>
+	 * This method can be used to set both public and private render parameters. 
+	 * <p>
+	 * These parameters will be accessible in all subsequent render calls via the
+	 * PortletRequest.getParameter call until a new request is targeted to the portlet.
+	 * <p>
+	 * Any previously set private render parameter that is not contained in the new map
+	 * is removed. However, public render parameters cannot be removed by excluding
+	 * them from the map. Public render parameters that are not included in the map
+	 * remain unchanged.
+	 * <p>
+	 * The given parameters do not need to be encoded prior to calling this method.
+	 * <p>
+	 * The portlet should not modify the map any further after calling this method.
+	 * 
+	 * @param parameters
+	 * Map containing parameter names for the render phase as keys and
+	 * parameter values as map values. The keys in the parameter map must be of type
+	 * String and may not be null or the null string (""). The values in the parameter
+	 * map must be of type String array (<code>String[]</code>). 
+	 * Neither the values array nor any of
+	 * its elements may be null; however, the null string ("") is allowed.
+	 * 
+	 * @exception java.lang.IllegalArgumentException
+	 *                if parameters is <code>null</code>, if any of the
+	 *                keys in the Map are <code>null</code>, if any of
+	 *                the keys is not a String, if any of the values is not a
+	 *                String array, or if any of the Sting array elements
+	 *                are null. 
+	 * @exception java.lang.IllegalStateException
+	 *                if the method is invoked after <code>sendRedirect</code>
+	 *                has been called.
+	 */
 
 	public void setRenderParameters(java.util.Map<String, String[]> parameters);
 
 	/**
      * Sets a String parameter for the render request.
      * <p>
-     * These parameters will be accessible in all sub-sequent render calls via
-     * the <code>PortletRequest.getParameter</code> call until a request is
+     * These parameters will be accessible in all subsequent render calls 
+     * until an action or render request is
      * targeted to the portlet.
      * <p>
      * This method replaces all parameters with the given key.
      * <p>
      * The given parameter do not need to be encoded prior to calling this
      * method.
+     * <p>
+     * A parameter value of <code>null</code> indicates that this
+     * parameter should be removed. 
+     * However, an empty string value ("") is allowed.
      * 
      * @param key
      *            key of the render parameter
@@ -149,7 +158,8 @@ public interface StateAwareResponse extends PortletResponse {
      *            value of the render parameter
      * 
      * @exception java.lang.IllegalArgumentException
-     *                if key is <code>null</code>.
+     *                if key is <code>null</code>;
+     *                if an attempt is made to set a public render parameter to <code>null</code>. 
      * @exception java.lang.IllegalStateException
      *                if the method is invoked after <code>sendRedirect</code>
      *                has been called.
@@ -160,14 +170,20 @@ public interface StateAwareResponse extends PortletResponse {
 	/**
      * Sets a String array parameter for the render request.
      * <p>
-     * These parameters will be accessible in all sub-sequent render calls via
-     * the <code>PortletRequest.getParameter</code> call until a request is
+     * These parameters will be accessible in all subsequent render calls 
+     * until an action or render request is
      * targeted to the portlet.
      * <p>
-     * This method replaces all parameters with the given key.
+     * This method replaces all parameter values with the given key.
      * <p>
      * The given parameter do not need to be encoded prior to calling this
      * method.
+     * <p>
+     * A values parameter of <code>null</code> indicates that this
+     * parameter should be removed. 
+     * <p>
+     * If the values parameter is not null, no element of the values array may be null. 
+     * However, an empty string value ("") is allowed.
      * 
      * @param key
      *            key of the render parameter
@@ -175,7 +191,8 @@ public interface StateAwareResponse extends PortletResponse {
      *            values of the render parameter
      * 
      * @exception java.lang.IllegalArgumentException
-     *                if key or value are <code>null</code>.
+     *                if name is <code>null</code>; if an element of the values array is <code>null</code>; 
+     *                if an attempt is made to set a public render parameter to <code>null</code>. 
      * @exception java.lang.IllegalStateException
      *                if the method is invoked after <code>sendRedirect</code>
      *                has been called.

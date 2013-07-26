@@ -35,7 +35,28 @@ public interface BaseURL {
     /**
      * Sets the given String parameter to this URL. 
      * <p>
-     * This method replaces all parameters with the given key.
+     * This method replaces all parameter values with the given key, as allowed 
+     * according to the rules for the URL. 
+     * <ul>
+     * <li>
+     * <code>RenderURL</code> - Both public and private parameters can be set. 
+     * </li>
+     * <li>
+     * <code>ActionURL</code> - Action parameters (pprivate parameters) are set as described. 
+     * Public render parameters 
+     * remain unchanged. If an action parameter has the same name as a public 
+     * render parameter, both the action parameter value and the public render parameter
+     * value will be available during processing of the action request.
+     * </li>
+     * <li>
+     * <code>ResourceURL</code> - Resource parameters are set. Public 
+     * and private render parameters that were attached to the URL when it was created 
+     * remain unchanged. 
+     * If a resource parameter has the same name as a public or private 
+     * render parameter, both the resource parameter value and the public or private 
+     * render parameter value will be available during processing of the resource request.
+     * </li>
+     * </ul>
      * <p>
      * The <code>PortletURL</code> implementation 'x-www-form-urlencoded' encodes
      * all  parameter names and values. Developers should not encode them.
@@ -44,7 +65,10 @@ public interface BaseURL {
      * in order to preserve a unique namespace for the portlet.
      * <p>
      * A parameter value of <code>null</code> indicates that this
-     * parameter should be removed.
+     * parameter should be removed. 
+     * However, an empty string value ("") is allowed.
+     * <p>
+     * A public render parameter cannot be removed by setting its value to <code>null</code>.
      *
      * @param   name
      *          the parameter name
@@ -52,7 +76,8 @@ public interface BaseURL {
      *          the parameter value
      *
      * @exception  java.lang.IllegalArgumentException 
-     *                            if name is <code>null</code>.
+     *                            if name is <code>null</code>;
+     *                            if an attempt is made to set a public render parameter to <code>null</code>. 
      */
 
     public void setParameter (String name, String value);
@@ -61,13 +86,40 @@ public interface BaseURL {
     /**
      * Sets the given String array parameter to this URL. 
      * <p>
-     * This method replaces all parameters with the given key.
+     * This method replaces all parameter values with the given key
+     * according to the rules for the URL. 
+     * <ul>
+     * <li>
+     * <code>RenderURL</code> - Both public and private parameters can be set. 
+     * </li>
+     * <li>
+     * <code>ActionURL</code> - Action parameters (private parameters) are set as described. 
+     * Public render parameters 
+     * remain unchanged. If an action parameter has the same name as a public 
+     * render parameter, both the action parameter value and the public render parameter
+     * value will be available during processing of the action request.
+     * </li>
+     * <li>
+     * <code>ResourceURL</code> - Resource parameters are set. Public 
+     * and private render parameters that were attached to the URL when it was created 
+     * remain unchanged. 
+     * If a resource parameter has the same name as a public or private 
+     * render parameter, both the resource parameter value and the public or private 
+     * render parameter value will be available during processing of the resource request.
+     * </li>
+     * </ul>
      * <p>
      * The <code>PortletURL</code> implementation 'x-www-form-urlencoded' encodes
      * all  parameter names and values. Developers should not encode them.
      * <p>
      * A portlet container may prefix the attribute names internally 
      * in order to preserve a unique namespace for the portlet.
+     * <p>
+     * A values parameter of <code>null</code> indicates that this
+     * parameter should be removed. 
+     * <p>
+     * If the values parameter is not null, no element of the values array may be null. 
+     * However, an empty string value ("") is allowed.
      *
      * @param   name
      *          the parameter name
@@ -75,7 +127,8 @@ public interface BaseURL {
      *          the parameter values
      *
      * @exception  java.lang.IllegalArgumentException 
-     *                            if name is <code>null</code>.
+     *                            if name is <code>null</code>; if an element of the values array is <code>null</code>; 
+     *                            if an attempt is made to set a public render parameter to <code>null</code>. 
      */
 
     public void setParameter (String name, String[] values);
@@ -84,7 +137,35 @@ public interface BaseURL {
     /**
      * Sets a parameter map for this URL.
      * <p>
-     * All previously set parameters are cleared.
+     * This method can be used to set both public and private render parameters 
+     * according to the rules for the URL. 
+     * <ul>
+     * <li>
+     * <code>RenderURL</code> - Both public and private parameters can be set. 
+     * </li>
+     * <li>
+     * <code>ActionURL</code> - Action parameters are set. Public render parameters 
+     * remain unchanged. If an action parameter has the same name as a public 
+     * render parameter, both the action parameter value and the public render parameter
+     * value will be available during processing of the action request.
+     * </li>
+     * <li>
+     * <code>ResourceURL</code> - Resource parameters are set. Public 
+     * and private render parameters that were attached to the URL when it was created 
+     * remain unchanged. 
+     * If a resource parameter has the same name as a public or private 
+     * render parameter, both the resource parameter value and the public or private 
+     * render parameter value will be available during processing of the resource request.
+     * </li>
+     * </ul>
+     * <p>
+     * These parameters will be accessible through the portlet request initiated through
+     * the URL.
+     * <p>
+     * Any previously set private render parameter that is not contained in the new map
+     * is removed. However, public render parameters cannot be removed by excluding
+     * them from the map. Public render parameters that are not included in the map
+     * remain unchanged.
      * <p>
      * The <code>PortletURL</code> implementation 'x-www-form-urlencoded' encodes
      * all  parameter names and values. Developers should not encode them.
@@ -92,19 +173,20 @@ public interface BaseURL {
      * A portlet container may prefix the attribute names internally, 
      * in order to preserve a unique namespace for the portlet.
      *
-     * @param  parameters   Map containing parameter names for 
-     *                      the render phase as 
-     *                      keys and parameter values as map 
-     *                      values. The keys in the parameter
-     *                      map must be of type String. The values 
-     *                      in the parameter map must be of type
-     *                      String array (<code>String[]</code>).
+     * @param parameters
+     * Map containing parameter names for the render phase as keys and
+     * parameter values as map values. The keys in the parameter map must be of type
+     * String and may not be null or the null string (""). The values in the parameter
+     * map must be of type String array (<code>String[]</code>). 
+     * Neither the values array nor any of
+     * its elements may be null; however, the null string ("") is allowed.
      *
      * @exception   java.lang.IllegalArgumentException 
-     *                      if parameters is <code>null</code>, if
-     *                      any of the keys in the Map are <code>null</code>, 
-     *                      if any of the keys is not a String, or if any of 
-     *                      the values is not a String array.
+     *                if parameters is <code>null</code>, if any of the
+     *                keys in the Map are <code>null</code>, if any of
+     *                the keys is not a String, if any of the values is not a
+     *                String array, or if any of the Sting array elements
+     *                are null. 
      */
 
     public void setParameters(java.util.Map<String, String[]> parameters);
