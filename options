@@ -1,0 +1,26 @@
+-classpath
+'C:/dev/JSR362/portletspec3/portlet-api_3.0/target/classes;C:/Users/IBM_ADMIN/.m2/repository/javax/servlet/servlet-api/2.4/servlet-api-2.4.jar'
+-encoding
+'Cp1252'
+-overview
+'C:/dev/JSR362/portletspec3/portlet-api_3.0/src/main/javadoc/overview.html'
+-protected
+-sourcepath
+'C:/dev/JSR362/portletspec3/portlet-api_3.0/src/main/java;C:/dev/JSR362/portletspec3/portlet-api_3.0/src/main/javadoc'
+-author
+-bottom
+'Copyright &#169; 2013. All Rights Reserved.'
+-charset
+'UTF-8'
+-d
+'C:/dev/JSR362/portletspec3/portlet-api_3.0/target/site/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'JSR 362 Portlet Specification 3.0 Interface Working Document'
+-linkoffline
+'http://docs.oracle.com/javase/1.5.0/docs/api' 'C:/dev/JSR362/portletspec3/portlet-api_3.0/target/javadoc-bundle-options'
+-use
+-version
+-windowtitle
+'JSR 362 Portlet Specification 3.0 Interface Working Document'
