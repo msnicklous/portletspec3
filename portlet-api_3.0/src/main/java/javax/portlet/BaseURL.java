@@ -176,10 +176,10 @@ public interface BaseURL {
      * @param parameters
      * Map containing parameter names for the render phase as keys and
      * parameter values as map values. The keys in the parameter map must be of type
-     * String and may not be null or the null string (""). The values in the parameter
+     * String and may not be null or the empty string (""). The values in the parameter
      * map must be of type String array (<code>String[]</code>). 
      * Neither the values array nor any of
-     * its elements may be null; however, the null string ("") is allowed.
+     * its elements may be null; however, the empty string ("") is allowed.
      *
      * @exception   java.lang.IllegalArgumentException 
      *                if parameters is <code>null</code>, if any of the
