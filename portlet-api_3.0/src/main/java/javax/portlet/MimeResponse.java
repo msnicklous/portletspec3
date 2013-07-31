@@ -358,11 +358,12 @@ public interface MimeResponse extends PortletResponse {
      * are preserved. If a request is triggered by the PortletURL, it results in
      * a render request.
      * <p>
-     * The returned URL can be further extended by adding portlet-specific
-     * parameters and portlet modes and window states.
-     * <p>
      * The new render URL will not contain any private render parameters from the
      * current request. 
+     * <p>
+     * The returned URL can be further extended by adding portlet-specific render
+     * parameters and portlet modes and window states.
+     * Any parameter added to the render URL is automatically a render parameter.
      * <p>
      * Public render parameters do not need to be explicitly added to the new 
      * render URL, unless the public render parameter value is to be changed. 

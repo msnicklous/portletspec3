@@ -127,7 +127,7 @@ public interface StateAwareResponse extends PortletResponse {
 	 *                if parameters is <code>null</code>, if any of the
 	 *                keys in the Map are <code>null</code>, if any of
 	 *                the keys is not a String, if any of the values is not a
-	 *                String array, or if any of the Sting array elements
+	 *                String array, or if any of the String array elements
 	 *                are null. 
 	 * @exception java.lang.IllegalStateException
 	 *                if the method is invoked after <code>sendRedirect</code>
