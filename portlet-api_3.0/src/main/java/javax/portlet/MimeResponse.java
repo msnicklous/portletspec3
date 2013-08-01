@@ -32,6 +32,27 @@ package javax.portlet;
  */
 public interface MimeResponse extends PortletResponse {
 
+   /**
+    * Specifies that no parameters are to be copied when a URL is created. 
+    * 
+    * @see #createActionURL(int)
+    * @see #createRenderURL(int)
+    * 
+    * @since 3.0
+    */
+   public static final int COPY_NO_PARAMETERS = 1;
+
+   /**
+    * Specifies that the render parameters set for the current request
+    * be copied to the URL when it is created. 
+    * 
+    * @see #createActionURL(int)
+    * @see #createRenderURL(int)
+    * 
+    * @since 3.0
+    */
+   public static final int COPY_RENDER_PARAMETERS = 2;
+
     /**
      * Property to set the expiration time in seconds for this response using
      * the <code>setProperty</code> method intended to be used in 
@@ -368,6 +389,40 @@ public interface MimeResponse extends PortletResponse {
      */
 	public PortletURL createRenderURL();
 
+   /**
+     * Creates a portlet URL targeting the portlet. If no portlet mode, window
+     * state or security modifier is set in the PortletURL the current values
+     * are preserved. If a request is triggered by the PortletURL, it results in
+     * a render request.
+     * <p>
+     * The new render URL will contain private render parameters from the
+     * current request as specified by the <code>copyFlag</code> parameter.
+     * <p>
+     * The returned URL can be further extended by adding portlet-specific render
+     * parameters and portlet modes and window states.
+     * Any parameter added to the render URL is automatically a render parameter.
+     * <p>
+     * Public render parameters do not need to be explicitly added to the new 
+     * render URL, unless the public render parameter value is to be changed. 
+     * Any public render parameters associated with 
+     * the portlet will automatically be available during render request processing resulting
+     * from activation of the URL.
+     * <p>
+     * If a public render parameter value is changed on a render URL, then the public 
+     * render parameter will be set to the new value when the URL is activated.
+     * 
+     * @param copyFlag
+     *            Specifies how current parameters are to be copied to the URL
+     *
+     * @see #COPY_NO_PARAMETERS
+     * @see #COPY_RENDER_PARAMETERS
+     * 
+     * @return a portlet render URL
+     *     
+     * @since 3.0
+     */
+   public PortletURL createRenderURL(int copyFlag);
+
 	/**
      * Creates a portlet URL targeting the portlet. If no portlet mode, window
      * state or security modifier is set in the PortletURL the current values
@@ -383,6 +438,42 @@ public interface MimeResponse extends PortletResponse {
      * @return a portlet action URL
      */
 	public PortletURL createActionURL();
+
+   /**
+     * Creates a portlet URL targeting the portlet. If no portlet mode, window
+     * state or security modifier is set in the PortletURL the current values
+     * are preserved. If a request is triggered by the PortletURL, it results in
+     * an action request.
+     * <p>
+     * The new action URL will contain private render parameters from the
+     * current request as specified by the <code>copyFlag</code> parameter.
+     * <p>
+     * The returned URL can be further extended by adding portlet-specific action
+     * parameters and portlet modes and window states.
+     * Any parameter added to the action URL is automatically an action parameter.
+     * <p>
+     * Public render parameters do not need to be explicitly added to the new 
+     * action URL. Any public render parameters associated with 
+     * the portlet will automatically be available during action request processing resulting
+     * from activation of the URL. 
+     * <p>
+     * If an action parameter has the same name as a public render parameter,
+     * then both the action parameter value(s) and the render parameter value(s) 
+     * will be available
+     * when the action request is triggered. The action parameter value(s) will appear 
+     * before the render parameter value(s) in the parameter values array. 
+     * 
+     * @param copyFlag
+     *            Specifies how current parameters are to be copied to the URL
+     *
+     * @see #COPY_NO_PARAMETERS
+     * @see #COPY_RENDER_PARAMETERS
+     * 
+     * @return a portlet action URL
+     *     
+     * @since 3.0
+     */
+   public PortletURL createActionURL(int copyFlag);
 
 	/**
      * Creates a portlet URL targeting the portlet. If no security modifier is

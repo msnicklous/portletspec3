@@ -221,6 +221,22 @@ public class RenderResponseWrapper extends PortletResponseWrapper implements Ren
 		return response.createRenderURL();
 	}
 
+	/**
+	 *  The default behavior of this method is to call 
+	 * <code>createRenderURL(int)</code> on the wrapped response object.
+	 */
+	public PortletURL createRenderURL(int flag) throws IllegalStateException {
+	   return response.createRenderURL(flag);
+	}
+
+   /**
+    *  The default behavior of this method is to call 
+    * <code>createActionURL(int)</code> on the wrapped response object.
+    */
+  public PortletURL createActionURL(int flag) throws IllegalStateException {
+     return response.createActionURL(flag);
+  }
+	
     /**
      *  The default behavior of this method is to call 
      * <code>createResourceURL()</code> on the wrapped response object.
