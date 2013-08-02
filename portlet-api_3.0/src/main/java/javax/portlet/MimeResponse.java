@@ -358,11 +358,21 @@ public interface MimeResponse extends PortletResponse {
      * are preserved. If a request is triggered by the PortletURL, it results in
      * a render request.
      * <p>
-     * The returned URL can be further extended by adding portlet-specific
-     * parameters and portlet modes and window states.
+     * The new render URL will not contain any private render parameters from the
+     * current request. 
      * <p>
-     * The created URL will per default not contain any parameters of the
-     * current render request.
+     * The returned URL can be further extended by adding portlet-specific render
+     * parameters and portlet modes and window states.
+     * Any parameter added to the render URL is automatically a render parameter.
+     * <p>
+     * Public render parameters do not need to be explicitly added to the new 
+     * render URL, unless the public render parameter value is to be changed. 
+     * Any public render parameters associated with 
+     * the portlet will automatically be available during render request processing resulting
+     * from activation of the URL.
+     * <p>
+     * If a public render parameter value is changed on a render URL, then the public 
+     * render parameter will be set to the new value when the URL is activated.
      * 
      * @return a portlet render URL
      */
@@ -374,29 +384,53 @@ public interface MimeResponse extends PortletResponse {
      * are preserved. If a request is triggered by the PortletURL, it results in
      * an action request.
      * <p>
-     * The returned URL can be further extended by adding portlet-specific
-     * parameters and portlet modes and window states.
+     * The new action URL will not contain any private render parameters from the
+     * current request. 
      * <p>
-     * The created URL will per default not contain any parameters of the
-     * current render request.
+     * The returned URL can be further extended by adding portlet-specific action
+     * parameters and portlet modes and window states.
+     * Any parameter added to the action URL is automatically an action parameter.
+     * <p>
+     * Public render parameters do not need to be explicitly added to the new 
+     * action URL. Any public render parameters associated with 
+     * the portlet will automatically be available during action request processing resulting
+     * from activation of the URL. 
+     * <p>
+     * If an action parameter has the same name as a public render parameter,
+     * then both the action parameter value(s) and the render parameter value(s) 
+     * will be available
+     * when the action request is triggered. The action parameter value(s) will appear 
+     * before the render parameter value(s) in the parameter values array. 
+     * 
      * 
      * @return a portlet action URL
      */
 	public PortletURL createActionURL();
 
 	/**
-     * Creates a portlet URL targeting the portlet. If no security modifier is
-     * set in the PortletURL the current values are preserved. The current
-     * render parameters, portlet mode and window state are preserved.
+     * Creates a resource URL targeting the portlet. If no security modifier is
+     * set in the <code>ResourceURL</code> the current values are preserved. The current
+     * render parameters, portlet mode and window state are preserved depending
+     * on the cacheability setting for the new resource URL.
      * <p>
-     * If a request is triggered by the PortletURL, it results in a serve
+     * If a request is triggered by the <code>ResourceURL</code>, it results in a serve
      * resource request of the <code>ResourceServingPortlet</code> interface.
      * <p>
-     * The returned URL can be further extended by adding portlet-specific
-     * parameters .
+     * If cacheability is set to <code>PORTLET</code> or <code>PAGE</code>, the values of the render
+     * parameters are preserved. Otherwise, the render parameters will not be preserved.
      * <p>
-     * The created URL will per default contain the current 
-     * cacheability setting of the parent resource. 
+     * The public and private render parameters are added to the URL with their current value.
+     * The render parameter values cannot be changed on the URL. 
+     * <p>
+     * The returned URL can be further extended by adding portlet-specific resource
+     * parameters. Any parameter added to the resource URL is automatically a resource parameter.
+     * If a resource parameter has the same name as a public or private render parameter,
+     * then both the resource parameter values and the render parameter values will be available
+     * when the resource request is triggered. The resource parameter value(s) will appear 
+     * before the render parameter value(s) in the parameter values array. 
+     * <p>
+     * The created URL will contain the current 
+     * cacheability setting of the parent resource by default. 
      * If no parent resource is available, <code>PAGE</code> is the default.
      * 
      * @since 2.0
