@@ -27,10 +27,10 @@ package javax.portlet;
 
 /**
  * The current state of the portlet is represented by the private and public 
- * parameters that are set for this request. The <CODE>PortletState</CODE> 
+ * parameters that are set for this request. The <CODE>PortletParameters</CODE> 
  * interface defines the API for accessing these parameters. 
  */
-public interface PortletState
+public interface PortletParameters
 {
 
   /**

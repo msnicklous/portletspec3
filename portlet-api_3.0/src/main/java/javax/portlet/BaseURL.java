@@ -30,7 +30,7 @@ package javax.portlet;
  *
  * @since 2.0
  */
-public interface BaseURL extends WritablePortletState {
+public interface BaseURL extends MutablePortletParameters {
 
     /**
      * Indicated the security setting for this URL. 

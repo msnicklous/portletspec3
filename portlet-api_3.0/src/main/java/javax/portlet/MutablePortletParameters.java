@@ -25,7 +25,7 @@
 package javax.portlet;
 
 /**
- * The <CODE>WritablePortletState</CODE> provides methods that allow  
+ * The <CODE>MutablePortletParameters</CODE> provides methods that allow  
  * setting parameters to record a potential future portlet state.
  * <p>
  * For example, these methods can be used to set parameters on 
@@ -35,7 +35,7 @@ package javax.portlet;
  *
  * @since 3.0
  */
-public interface WritablePortletState extends PortletState {
+public interface MutablePortletParameters extends PortletParameters {
 
     /**
      * Sets the given String parameter to this URL. 
