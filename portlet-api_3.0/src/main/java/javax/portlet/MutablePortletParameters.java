@@ -93,31 +93,6 @@ public interface MutablePortletParameters extends PortletParameters {
 
 
     /**
-     * Sets a parameter map for this URL.
-     * <p>
-     * All previously set parameters are cleared.
-     * <p>
-     * The <code>PortletURL</code> implementation 'x-www-form-urlencoded' encodes
-     * all  parameter names and values. Developers should not encode them.
-     * <p>
-     * A portlet container may prefix the attribute names internally, 
-     * in order to preserve a unique namespace for the portlet.
-     *
-     * @param  parameters   Map containing parameter names for 
-     *                      the render phase as 
-     *                      keys and parameter values as map 
-     *                      values. The keys in the parameter
-     *                      map must be of type String. The values 
-     *                      in the parameter map must be of type
-     *                      String array (<code>String[]</code>).
-     *
-     * @exception   java.lang.IllegalArgumentException 
-     *                      if parameters is <code>null</code>, if
-     *                      any of the keys in the Map are <code>null</code>, 
-     *                      if any of the keys is not a String, or if any of 
-     *                      the values is not a String array.
-     
-     
      * Sets a parameter map for the render request.
      * <p>
      * This method can be used to set both public and private render parameters. 
