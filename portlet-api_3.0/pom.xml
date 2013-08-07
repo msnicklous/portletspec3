@@ -129,6 +129,13 @@
           <configuration>
             <doctitle>JSR 362 Portlet Specification 3.0 Interface Working Document</doctitle>
             <windowtitle>JSR 362 Portlet Specification 3.0 Interface Working Document</windowtitle>
+            <bottom>
+            <![CDATA[Java Portlet Specification V3.0 Working Document.
+               See the <a href="doc-files/NOTICE">Copyright</a> and 
+               <a href="doc-files/LICENSE">License</a> provided with this distribution.
+               Use is subject to
+               <a href="http://www.apache.org/licenses/LICENSE-2.0">license terms</a>.]]>
+            </bottom>
           </configuration>
         </plugin>
       </plugins>
