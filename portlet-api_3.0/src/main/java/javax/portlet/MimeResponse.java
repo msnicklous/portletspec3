@@ -399,7 +399,7 @@ public interface MimeResponse extends PortletResponse {
      * a render request.
      * <p>
      * The new render URL will contain private render parameters from the
-     * current request as specified by the <code>copyFlag</code> parameter.
+     * current request as specified by the <code>flag</code> parameter.
      * <p>
      * The returned URL can be further extended by adding portlet-specific render
      * parameters and portlet modes and window states.
@@ -414,11 +414,10 @@ public interface MimeResponse extends PortletResponse {
      * If a public render parameter value is changed on a render URL, then the public 
      * render parameter will be set to the new value when the URL is activated.
      * 
-     * @param copyFlag
+     * @param flag
      *            Specifies how current parameters are to be copied to the URL
      *
-     * @see #COPY_NO_PARAMETERS
-     * @see #COPY_RENDER_PARAMETERS
+     * @see UrlFlag
      * 
      * @return a portlet render URL
      *     
@@ -449,7 +448,7 @@ public interface MimeResponse extends PortletResponse {
      * an action request.
      * <p>
      * The new action URL will contain private render parameters from the
-     * current request as specified by the <code>copyFlag</code> parameter.
+     * current request as specified by the <code>flag</code> parameter.
      * <p>
      * The returned URL can be further extended by adding portlet-specific action
      * parameters and portlet modes and window states.
@@ -466,11 +465,10 @@ public interface MimeResponse extends PortletResponse {
      * when the action request is triggered. The action parameter value(s) will appear 
      * before the render parameter value(s) in the parameter values array. 
      * 
-     * @param copyFlag
+     * @param flag
      *            Specifies how current parameters are to be copied to the URL
      *
-     * @see #COPY_NO_PARAMETERS
-     * @see #COPY_RENDER_PARAMETERS
+     * @see UrlFlag
      * 
      * @return a portlet action URL
      *     
