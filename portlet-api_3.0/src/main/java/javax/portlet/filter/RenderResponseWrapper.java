@@ -32,9 +32,11 @@ import java.util.Locale;
 
 import javax.portlet.CacheControl;
 import javax.portlet.PortletMode;
-import javax.portlet.PortletURL;
+import javax.portlet.ActionURL;
+import javax.portlet.RenderURL;
 import javax.portlet.RenderResponse;
 import javax.portlet.ResourceURL;
+import javax.portlet.MimeResponse;
 
 /**
  * The <code>RenderResponseWrapper</code> provides a convenient 
@@ -209,7 +211,7 @@ public class RenderResponseWrapper extends PortletResponseWrapper implements Ren
      *  The default behavior of this method is to call 
      * <code>createActionURL()</code> on the wrapped response object.
      */
-	public PortletURL createActionURL() throws IllegalStateException {
+	public ActionURL createActionURL() throws IllegalStateException {
 		return response.createActionURL();
 	}
 
@@ -217,7 +219,7 @@ public class RenderResponseWrapper extends PortletResponseWrapper implements Ren
      *  The default behavior of this method is to call 
      * <code>createRenderURL()</code> on the wrapped response object.
      */
-	public PortletURL createRenderURL() throws IllegalStateException {
+	public RenderURL createRenderURL() throws IllegalStateException {
 		return response.createRenderURL();
 	}
 
@@ -225,7 +227,7 @@ public class RenderResponseWrapper extends PortletResponseWrapper implements Ren
 	 *  The default behavior of this method is to call 
 	 * <code>createRenderURL(int)</code> on the wrapped response object.
 	 */
-	public PortletURL createRenderURL(int flag) throws IllegalStateException {
+	public RenderURL createRenderURL(MimeResponse.UrlFlag flag) throws IllegalStateException {
 	   return response.createRenderURL(flag);
 	}
 
@@ -233,7 +235,7 @@ public class RenderResponseWrapper extends PortletResponseWrapper implements Ren
     *  The default behavior of this method is to call 
     * <code>createActionURL(int)</code> on the wrapped response object.
     */
-  public PortletURL createActionURL(int flag) throws IllegalStateException {
+  public ActionURL createActionURL(MimeResponse.UrlFlag flag) throws IllegalStateException {
      return response.createActionURL(flag);
   }
 	

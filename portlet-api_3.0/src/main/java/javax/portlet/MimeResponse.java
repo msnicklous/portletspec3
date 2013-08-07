@@ -31,27 +31,30 @@ package javax.portlet;
  * @since 2.0
  */
 public interface MimeResponse extends PortletResponse {
-
+   
    /**
-    * Specifies that no parameters are to be copied when a URL is created. 
+    * Specifies processing when a URL is created.
     * 
-    * @see #createActionURL(int)
-    * @see #createRenderURL(int)
+    * @see #createActionURL(UrlFlag)
+    * @see #createRenderURL(UrlFlag)
     * 
     * @since 3.0
     */
-   public static final int COPY_NO_PARAMETERS = 1;
+   public enum UrlFlag {
 
-   /**
-    * Specifies that the render parameters set for the current request
-    * be copied to the URL when it is created. 
-    * 
-    * @see #createActionURL(int)
-    * @see #createRenderURL(int)
-    * 
-    * @since 3.0
-    */
-   public static final int COPY_RENDER_PARAMETERS = 2;
+      /**
+       * Specifies that no parameters are to be copied when a URL is created. 
+       * @since 3.0
+       */
+      COPY_NO_PARAMETERS,
+
+      /**
+       * Specifies that the render parameters set for the current request
+       * be copied to the URL when it is created. 
+       * @since 3.0
+       */
+      COPY_RENDER_PARAMETERS;
+   }
 
     /**
      * Property to set the expiration time in seconds for this response using
@@ -387,7 +390,7 @@ public interface MimeResponse extends PortletResponse {
      * 
      * @return a portlet render URL
      */
-	public PortletURL createRenderURL();
+	public RenderURL createRenderURL();
 
    /**
      * Creates a portlet URL targeting the portlet. If no portlet mode, window
@@ -421,7 +424,7 @@ public interface MimeResponse extends PortletResponse {
      *     
      * @since 3.0
      */
-   public PortletURL createRenderURL(int copyFlag);
+   public RenderURL createRenderURL(UrlFlag flag);
 
 	/**
      * Creates a portlet URL targeting the portlet. If no portlet mode, window
@@ -437,7 +440,7 @@ public interface MimeResponse extends PortletResponse {
      * 
      * @return a portlet action URL
      */
-	public PortletURL createActionURL();
+	public ActionURL createActionURL();
 
    /**
      * Creates a portlet URL targeting the portlet. If no portlet mode, window
@@ -473,7 +476,7 @@ public interface MimeResponse extends PortletResponse {
      *     
      * @since 3.0
      */
-   public PortletURL createActionURL(int copyFlag);
+   public ActionURL createActionURL(UrlFlag flag);
 
 	/**
      * Creates a portlet URL targeting the portlet. If no security modifier is

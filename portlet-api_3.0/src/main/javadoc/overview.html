@@ -8,10 +8,14 @@
     <P>The interfaces described here are not normative and are subject to change at any time.</P>
     <p>Change History:</p>
     <ul>
+    <li>20130807: Updated proposal for PORTLETSPEC3-30: Added interfaces
+    {@link javax.portlet.ActionURL} and {@link javax.portlet.RenderURL}.
+    Changed flag from int to enum in new methods.
+    </li>
     <li>20130801: Proposal for PORTLETSPEC3-30: Added new methods that allow URL creation while automatically adding 
     render parameters. See  
-    {@link javax.portlet.MimeResponse#createActionURL(int) createActionURL(int)} and
-    {@link javax.portlet.MimeResponse#createRenderURL(int) createRenderURL(int)}.
+    {@link javax.portlet.MimeResponse#createActionURL(MimeResponse.UrlFlag) createActionURL(MimeResponse.UrlFlag)} and
+    {@link javax.portlet.MimeResponse#createRenderURL(MimeResponse.UrlFlag) createRenderURL(MimeResponse.UrlFlag)}.
     </li>
     <li>20130726: Resolved PORTLETSPEC3-10 & PORTLETSPEC3-25: Reworked parameter setting methods in 
     {@link javax.portlet.StateAwareResponse} and
