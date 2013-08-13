@@ -23,7 +23,7 @@
  */
 
 /**
- * The javax.portlet package defines the API for Java Portlet Specification V2.0.
+ * <strong class="changed_modified_3_0">The</strong> javax.portlet package defines the API for Java Portlet Specification V2.0.
  * <p>
  * A portlet is a Java technology based web component, managed by a portlet container,
  * that processes requests and generates dynamic content. Portlets provide a presentation
