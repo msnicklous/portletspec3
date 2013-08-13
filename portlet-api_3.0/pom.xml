@@ -129,6 +129,8 @@
           <configuration>
             <doctitle>JSR 362 Portlet Specification 3.0 Interface Working Document</doctitle>
             <windowtitle>JSR 362 Portlet Specification 3.0 Interface Working Document</windowtitle>
+            <stylesheetfile>portlet-api.css</stylesheetfile>
+            <docfilessubdirs>true</docfilessubdirs>
             <bottom>
             <![CDATA[Java Portlet Specification V3.0 Working Document.
                See the <a href="doc-files/NOTICE.txt">Copyright</a> and 
