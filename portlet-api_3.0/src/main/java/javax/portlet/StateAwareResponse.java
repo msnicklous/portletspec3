@@ -256,7 +256,12 @@ public interface StateAwareResponse extends PortletResponse {
      * Returns a <code>Map</code> of the render parameters currently set on
      * this response.
      * <p>
-     * The values in the returned <code>Map</code> are from type String array (<code>String[]</code>).
+     * The values in the returned <code>Map</code> are of type String array (<code>String[]</code>).
+     * <p class="changed_added_3_0">
+     * The contents of the returned map are immutable in the sense that modifying the map does not directly 
+     * affect the render parameters. In order to set the parameters using the modified map, 
+     * the {@link StateAwareResponse#setRenderParameters(Map)} method must be used.
+     * </p>
      * <p>
      * If no parameters exist this method returns an empty <code>Map</code>.
      * 

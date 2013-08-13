@@ -42,7 +42,7 @@ public interface BaseURL {
      * <code>RenderURL</code> - Both public and private parameters can be set. 
      * </li>
      * <li>
-     * <code>ActionURL</code> - Action parameters (pprivate parameters) are set as described. 
+     * <code>ActionURL</code> - Action parameters (private parameters) are set as described. 
      * Public render parameters 
      * remain unchanged. If an action parameter has the same name as a public 
      * render parameter, both the action parameter value and the public render parameter
@@ -179,7 +179,7 @@ public interface BaseURL {
      * String and may not be null or the empty string (""). The values in the parameter
      * map must be of type String array (<code>String[]</code>). 
      * Neither the values array nor any of
-     * its elements may be null; however, the empty string ("") is allowed.
+     * its elements may be null; however, the empty string ("") is allowed as an array element.
      *
      * @exception   java.lang.IllegalArgumentException 
      *                if parameters is <code>null</code>, if any of the
@@ -231,12 +231,16 @@ public interface BaseURL {
     
     /** 
      * Returns a <code>Map</code> of the parameters 
-     * currently set on this portlet URL via the 
-     * <code>setParameter</code> or <code>setParameters</code>
-     * methods.
+     * currently set on this portlet URL.
      * <p>
      * The values in the returned <code>Map</code> are from type
      * String array (<code>String[]</code>).
+     * <p class="changed_added_3_0">
+     * The contents of the returned map are immutable in the sense that modifying the map 
+     * does not directly affect the render parameters. In order to set the 
+     * parameters using the modified map, 
+     * the {@link BaseUrl#setParameters(Map)} method must be used.
+     * </p>
      * <p>
      * If no parameters exist this method returns an empty <code>Map</code>.
      *             
