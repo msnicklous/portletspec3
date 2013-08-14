@@ -566,3 +566,11 @@ a[href="javax/portlet/BaseURL.html"] { cursor: url(resources/changed_modified_3_
                  border-left-width:thin; border-right:none;
                  border-top:none; border-bottom:none; border-color:green 
 }
+
+
+a[href="javax/portlet/StateAwareResponse.html"] { cursor: url(resources/changed_modified_3_0_cursor.cur), auto;
+                 background: url(resources/changed_modified_3_0.png); 
+                 padding-left:0.2em; border-left:solid;
+                 border-left-width:thin; border-right:none;
+                 border-top:none; border-bottom:none; border-color:green 
+}

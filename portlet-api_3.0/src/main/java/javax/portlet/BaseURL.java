@@ -242,7 +242,7 @@ public interface BaseURL {
      * The contents of the returned map are immutable in the sense that modifying the map 
      * does not directly affect the render parameters. In order to set the 
      * parameters using the modified map, 
-     * the {@link BaseUrl#setParameters(Map)} method must be used.
+     * the {@link BaseURL#setParameters(Map)} method must be used.
      * </p>
      * <p>
      * If no parameters exist this method returns an empty <code>Map</code>.

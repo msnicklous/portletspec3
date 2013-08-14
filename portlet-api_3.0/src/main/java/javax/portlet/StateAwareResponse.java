@@ -25,7 +25,7 @@
 package javax.portlet;
 
 /**
- * The <CODE>StateAwareResponse</CODE> represents a response that can modify
+ * <strong class="changed_modified_3_0">The</strong> <CODE>StateAwareResponse</CODE> represents a response that can modify
  * state information or send events.<BR>
  * It extends the PortletResponse interface.
  * 
@@ -253,7 +253,7 @@ public interface StateAwareResponse extends PortletResponse {
 
 
 	/**
-     * Returns a <code>Map</code> of the render parameters currently set on
+     * <strong class="changed_modified_3_0">Returns</strong> a <code>Map</code> of the render parameters currently set on
      * this response.
      * <p>
      * The values in the returned <code>Map</code> are of type String array (<code>String[]</code>).
