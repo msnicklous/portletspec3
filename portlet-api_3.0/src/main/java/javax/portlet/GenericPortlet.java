@@ -30,6 +30,7 @@ import java.lang.reflect.Method;
 import java.util.Collection;
 import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Map;
 
@@ -743,8 +744,10 @@ public abstract class GenericPortlet implements Portlet, PortletConfig, EventPor
 					Class<? extends Annotation> annotationType = annotation.annotationType();
 					if (ProcessAction.class.equals(annotationType)) {
 						String name = ((ProcessAction) annotation).name();
-						if (name != null && name.length() > 0)
-							processActionHandlingMethodsMap.put(name, method);
+						if (name != null && name.length() > 0) {
+						   // PORTLETSPEC3-15
+							addToMap(processActionHandlingMethodsMap, name, method);
+						}
 					} else if (ProcessEvent.class.equals(annotationType)) {
 						String qname = ((ProcessEvent) annotation).qname();
 						if (qname == null || qname.length() <= 0) {
@@ -755,17 +758,46 @@ public abstract class GenericPortlet implements Portlet, PortletConfig, EventPor
 							String name = ((ProcessEvent) annotation).name();
 							if (name != null && name.length() > 0) {
 								qname = new QName(config.getDefaultNamespace(), name).toString();
-								processEventHandlingMethodsMap.put(qname, method);
+								// PORTLETSPEC3-15
+								addToMap(processEventHandlingMethodsMap, qname, method);
 							}
-						} else
-							processEventHandlingMethodsMap.put(qname, method);
+						} else {
+						   // PORTLETSPEC3-15
+							addToMap(processEventHandlingMethodsMap, qname, method);
+						}
 					} else if (RenderMode.class.equals(annotationType)) {
 						String name = ((RenderMode) annotation).name();
-						if (name != null && name.length() > 0)
-							renderModeHandlingMethodsMap.put(name.toLowerCase(), method);
+						if (name != null && name.length() > 0) {
+						   // PORTLETSPEC3-15
+							addToMap(renderModeHandlingMethodsMap, name.toLowerCase(), method);
+						}
 					}
 				}
 			}
 		}
+	}
+	
+   // PORTLETSPEC3-15: An annotation in a subclass should override the same 
+   // annotation in a superclass, however, getMethods() returns the methods in no order.
+	private void addToMap(Map<String, Method> map, String name, Method newMethod) {
+      Method mapMethod = map.get(name);
+
+      // Adds new method to map if method does not exist in map
+      // or if class of new method is subclass of class of method in map.
+	   if ((mapMethod != null) && (newMethod != null)) {
+	      
+	      // get the class hierarchy. 
+	      ArrayList<Class<?>> classHierarchy = new ArrayList<Class<?>>();
+	      for (Class<?> cls=this.getClass(); cls != null; cls=cls.getSuperclass()) {
+	         classHierarchy.add(cls);
+	      }
+	      
+	      int classLevelMap = classHierarchy.indexOf(mapMethod.getDeclaringClass());
+	      int classLevelNew = classHierarchy.indexOf(newMethod.getDeclaringClass());
+	      if (classLevelMap <= classLevelNew) {
+	         return;
+	      }
+	   }
+	   map.put(name, newMethod);
 	}
 }
