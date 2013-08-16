@@ -25,8 +25,9 @@
 package javax.portlet;
 
 /**
- * The <CODE>MimeResponse</CODE> defines the base interface to assist a
- * portlet in returning MIME content. 
+ * <span class="changed_modified_3_0">The</span>
+ * <CODE>MimeResponse</CODE> defines the base interface to assist a
+ * portlet in returning MIME content.
  *
  * @since 2.0
  */
