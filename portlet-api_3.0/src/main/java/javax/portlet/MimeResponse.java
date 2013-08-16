@@ -353,42 +353,60 @@ public interface MimeResponse extends PortletResponse {
             throws java.io.IOException;
 
 	/**
-     * Creates a portlet URL targeting the portlet. If no portlet mode, window
+     * <span class="changed_modified_3_0">Creates</span> a portlet URL targeting the portlet. 
+     * If no portlet mode, window
      * state or security modifier is set in the PortletURL the current values
      * are preserved. If a request is triggered by the PortletURL, it results in
      * a render request.
+     * <div class="changed_added_3_0">
      * <p>
      * The returned render URL will not contain any private render parameters from the
      * current request. 
+     * </div>
+     * <div class="changed_deleted_3_0">
+     * <p>
+     * The created URL will per default not contain any parameters of the
+     * current render request.
+     * </div>
      * <p>
      * The returned URL can be further extended by adding portlet-specific render
      * parameters and portlet modes and window states.
+     * <span class="changed_added_3_0">
      * Any parameter added to the render URL is automatically a render parameter.
+     * </span>
      * <p>
+     * <span class="changed_added_3_0">
      * Public render parameters do not need to be explicitly added to the returned 
      * render URL, unless the public render parameter value is to be changed. 
      * Any public render parameters associated with 
      * the portlet will automatically be available during render request processing resulting
      * from activation of the URL.
+     * </span>
      * <p>
+     * <span class="changed_added_3_0">
      * If a public render parameter value is changed on a render URL, then the public 
      * render parameter will be set to the new value when the URL is activated.
-     * 
+     * </span>
+     *
      * @return a portlet render URL
      */
 	public PortletURL createRenderURL();
 
 	/**
-     * Creates a portlet URL targeting the portlet. If no portlet mode, window
+     * <span class="changed_modified_3_0">Creates</span> a portlet URL targeting the 
+     * portlet. If no portlet mode, window
      * state or security modifier is set in the PortletURL the current values
      * are preserved. If a request is triggered by the PortletURL, it results in
      * an action request.
      * <p>
-     * The returned action URL will not contain any private render parameters from the
-     * current request. 
+     * The returned action URL will 
+     * <span class="changed_added_3_0">not contain any private render parameters</span>
+     * <span class="changed_deleted_3_0">per default not contain any parameters</span> 
+     * from the current request. 
      * <p>
      * The returned URL can be further extended by adding portlet-specific action
      * parameters and portlet modes and window states.
+     * <div class="changed_added_3_0">
      * Any parameter added to the action URL is automatically an action parameter.
      * <p>
      * Public render parameters do not need to be explicitly added to the returned 
@@ -401,17 +419,20 @@ public interface MimeResponse extends PortletResponse {
      * will be available
      * when the action request is triggered. The action parameter value(s) will appear 
      * before the render parameter value(s) in the parameter values array. 
-     * 
+     * </div>
      * 
      * @return a portlet action URL
      */
 	public PortletURL createActionURL();
 
 	/**
-     * Creates a resource URL targeting the portlet. If no security modifier is
-     * set in the <code>ResourceURL</code> the current values are preserved. The current
-     * render parameters, portlet mode and window state are preserved depending
-     * on the cacheability setting for the returned resource URL.
+     * <span class="changed_modified_3_0">Creates</span> a resource URL targeting the 
+     * portlet. If no security modifier is
+     * set in the <code>ResourceURL</code> the current value is preserved. The current
+     * render parameters, portlet mode and window state are preserved 
+     * <span class="changed_modified_3_0">depending
+     * on the cacheability setting for the returned resource URL</span>.
+     * <div class="changed_added_3_0">
      * <p>
      * If a request is triggered by the <code>ResourceURL</code>, it results in a serve
      * resource request of the <code>ResourceServingPortlet</code> interface.
@@ -432,6 +453,18 @@ public interface MimeResponse extends PortletResponse {
      * The created URL will contain the current 
      * cacheability setting of the parent resource by default. 
      * If no parent resource is available, <code>PAGE</code> is the default.
+     * </div>
+     * <div class="changed_deleted_3_0">
+     * If a request is triggered by the PortletURL, it results in a serve
+     * resource request of the <code>ResourceServingPortlet</code> interface.
+     * <p>
+     * The returned URL can be further extended by adding portlet-specific
+     * parameters .
+     * <p>
+     * The created URL will per default contain the current 
+     * cacheability setting of the parent resource. 
+     * If no parent resource is available, <code>PAGE</code> is the default.
+     * </div>
      * 
      * @since 2.0
      * @return a portlet resource URL

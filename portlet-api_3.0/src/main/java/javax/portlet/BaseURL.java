@@ -25,7 +25,7 @@
 package javax.portlet;
 
 /**
- * <strong class="changed_modified_3_0">The</strong>
+ * <span class="changed_modified_3_0">The</span>
  * <CODE>BaseURL</CODE> defines the basic capabilities of a portlet URL
  * pointing back to the portlet.
  *
@@ -231,7 +231,7 @@ public interface BaseURL {
     public String toString ();
     
     /** 
-     * <strong class="changed_modified_3_0">Returns</strong> a
+     * <span class="changed_modified_3_0">Returns</span> a
      * <code>Map</code> of the parameters currently set on this portlet
      * URL.
 
