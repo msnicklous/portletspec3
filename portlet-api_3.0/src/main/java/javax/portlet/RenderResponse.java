@@ -25,11 +25,13 @@
 package javax.portlet;
 
 /**
- * The <CODE>RenderResponse</CODE> defines an object to assist a portlet in
- * sending a response to the portal. It extends the <CODE>MimeResponse</CODE>
- * interface to provide specific render response functionality to portlets.<br>
- * The portlet container creates a <CODE>RenderResponse</CODE> object and
- * passes it as argument to the portlet's <CODE>render</CODE> method.
+ * <span class="changed_modified_3_0">The</span>
+ * <CODE>RenderResponse</CODE> defines an object to assist a portlet in
+ * sending a response to the portal. It extends the
+ * <CODE>MimeResponse</CODE> interface to provide specific render
+ * response functionality to portlets.<br> The portlet container creates
+ * a <CODE>RenderResponse</CODE> object and passes it as argument to the
+ * portlet's <CODE>render</CODE> method.
  * 
  * @see RenderRequest
  * @see PortletResponse
