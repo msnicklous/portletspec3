@@ -8,6 +8,9 @@
     <P>The interfaces described here are not normative and are subject to change at any time.</P>
     <p>Change History:</p>
     <ul>
+    <li>20130815: Resolved PORTLETSPEC3-17: Changed method signature to allow subtypes of PortletMode in 
+    {@link javax.portlet.RenderResponse#setNextPossiblePortletModes RenderResponse.setNextPossiblePortletModes}. 
+    </li>
     <li>20130815: Resolved PORTLETSPEC3-15: Fixed issue involving annotations in GenericPortlet.java (code fix only - no javadoc changes)  
     <li>20130813: Resolved PORTLETSPEC3-8: Clarifications about behavior of the parameter map in 
     {@link javax.portlet.StateAwareResponse#getRenderParameterMap() StateAwareResponse.getRenderParameterMap()}, 
@@ -18,7 +21,7 @@
     {@link javax.portlet.MimeResponse#createActionURL() createActionURL()}, and 
     {@link javax.portlet.MimeResponse#createResourceURL() createResourceURL()}
     </li>
-    <li>20130726: Resolved PORTLETSPEC3-10 & PORTLETSPEC3-25: Reworked parameter setting methods in 
+    <li>20130726: Resolved PORTLETSPEC3-10 and PORTLETSPEC3-25: Reworked parameter setting methods in 
     {@link javax.portlet.StateAwareResponse} and
     {@link javax.portlet.BaseURL} to improve clarity.
     </li>

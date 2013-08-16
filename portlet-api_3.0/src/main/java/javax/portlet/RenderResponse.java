@@ -49,7 +49,7 @@ public interface RenderResponse extends MimeResponse {
    
     
 	/**
-     * This method allows the portlet to tell the portal the next possible
+     * <span class="changed_modified_3_0">This</span> method allows the portlet to tell the portal the next possible
      * portlet modes that the make sense from the portlet point of view.
      * <p>
      * If set, the portal should honor these enumeration of portlet modes and
@@ -61,13 +61,15 @@ public interface RenderResponse extends MimeResponse {
      * portlet deployment descriptor are meaningful new portlet modes.
      * 
      * @param portletModes
-     *            <code>Enumeration</code> of <code>PortletMode</code> objects with the
+     *            <code>Enumeration</code> of <span class="changed_modified_3_0">objects 
+     *            of type <code>PortletMode</code> 
+     *            or any subtype of <code>PortletMode</code></span> with the
      *            next possible portlet modes that the make sense from the
      *            portlet point of view, must not be <code>null</code> or an
      *            empty enumeration.
      * @since 2.0
      */
-	public void setNextPossiblePortletModes(java.util.Collection<PortletMode> portletModes);
+	public void setNextPossiblePortletModes(java.util.Collection<? extends PortletMode> portletModes);
 
     /**
      * Sets the MIME type for the render response. The portlet should set the

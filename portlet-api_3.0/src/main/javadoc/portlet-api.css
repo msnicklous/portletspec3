@@ -560,15 +560,11 @@ h1.hidden {
                  border-top:none; border-bottom:none; border-color:red;
                  text-decoration: line-through; }
 
-a[href="javax/portlet/BaseURL.html"] { cursor: url(resources/changed_modified_3_0_cursor.cur), auto;
-                 background: url(resources/changed_modified_3_0.png); 
-                 padding-left:0.2em; border-left:solid;
-                 border-left-width:thin; border-right:none;
-                 border-top:none; border-bottom:none; border-color:green 
-}
-
-
-a[href="javax/portlet/StateAwareResponse.html"] { cursor: url(resources/changed_modified_3_0_cursor.cur), auto;
+a[href^="javax/portlet/BaseURL.html"],
+a[href^="javax/portlet/StateAwareResponse.html"],
+a[href^="javax/portlet/RenderResponse.html"],
+a[href^="javax/portlet/filter/RenderResponseWrapper.html"]
+{ cursor: url(resources/changed_modified_3_0_cursor.cur), auto;
                  background: url(resources/changed_modified_3_0.png); 
                  padding-left:0.2em; border-left:solid;
                  border-left-width:thin; border-right:none;
