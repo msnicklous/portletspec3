@@ -505,11 +505,11 @@ h1.hidden {
    text-decoration: line-through; 
 }
 
-a[href^="javax/portlet/BaseURL.html"],
-a[href^="javax/portlet/StateAwareResponse.html"],
-a[href^="javax/portlet/RenderResponse.html"],
-a[href^="javax/portlet/MimeResponse.html"],
-a[href^="javax/portlet/filter/RenderResponseWrapper.html"]
+a[href*="BaseURL.html"],
+a[href*="StateAwareResponse.html"],
+a[href*="RenderResponse.html"],
+a[href*="MimeResponse.html"],
+a[href*="RenderResponseWrapper.html"]
 { 
    cursor: url(resources/changed_modified_3_0_cursor.cur), auto;
    background: url(resources/changed_modified_3_0.png); 
