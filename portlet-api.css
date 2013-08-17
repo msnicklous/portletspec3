@@ -508,6 +508,8 @@ h1.hidden {
 /* the href with the caret makes the links in the overview document work. */
 /* the href with exact file specifier makes the links in the package lists work. */
 
+a[href^="javax/portlet/PortletSession.html"],
+a[href="PortletSession.html"],
 a[href^="javax/portlet/BaseURL.html"],
 a[href="BaseURL.html"],
 a[href^="javax/portlet/StateAwareResponse.html"],
