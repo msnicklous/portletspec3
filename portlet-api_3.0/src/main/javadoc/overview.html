@@ -8,6 +8,13 @@
     <P>The interfaces described here are not normative and are subject to change at any time.</P>
     <p>Change History:</p>
     <ul>
+    <li>20130817: Resolved PORTLETSPEC3-20: Clarified behavior when scope is unknown in several  
+    {@link javax.portlet.PortletSession} methods: 
+    {@link javax.portlet.PortletSession#getAttribute(String, int) getAttribute}, 
+    {@link javax.portlet.PortletSession#getAttributeNames(int) getAttributeNames}, 
+    {@link javax.portlet.PortletSession#removeAttribute(String, int) removeAttribute}, and 
+    {@link javax.portlet.PortletSession#getAttributeMap(int) getAttributeMap}. 
+    </li>
     <li>20130816: Resolved PORTLETSPEC3-17: Changed method signature to allow subtypes of PortletMode in 
     {@link javax.portlet.RenderResponse#setNextPossiblePortletModes RenderResponse.setNextPossiblePortletModes}. 
     </li>
