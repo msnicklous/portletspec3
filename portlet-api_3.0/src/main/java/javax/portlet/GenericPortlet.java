@@ -27,6 +27,7 @@ package javax.portlet;
 import java.io.IOException;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 import java.util.Enumeration;
 import java.util.HashMap;
@@ -191,6 +192,15 @@ public abstract class GenericPortlet implements Portlet, PortletConfig, EventPor
 				return;
 			}
 		} catch (Exception e) {
+         // PORTLETSPEC3-23 : Allow annotated methods to throw PortletException and IOException
+         if (e instanceof InvocationTargetException) {
+            Throwable th = e.getCause();
+            if (th != null) {
+               if (th instanceof IOException) throw (IOException)th;
+               if (th instanceof PortletException) throw (PortletException)th;
+               if (th instanceof RuntimeException) throw (RuntimeException)th;
+            }
+         }
 			throw new PortletException(e);
 		}
 
@@ -341,6 +351,15 @@ public abstract class GenericPortlet implements Portlet, PortletConfig, EventPor
 					return;
 				}
 			} catch (Exception e) {
+			   // PORTLETSPEC3-23 : Allow annotated methods to throw PortletException and IOException
+			   if (e instanceof InvocationTargetException) {
+			      Throwable th = e.getCause();
+			      if (th != null) {
+			         if (th instanceof IOException) throw (IOException)th;
+			         if (th instanceof PortletException) throw (PortletException)th;
+			         if (th instanceof RuntimeException) throw (RuntimeException)th;
+			      }
+			   }
 				throw new PortletException(e);
 			}
 
@@ -652,6 +671,15 @@ public abstract class GenericPortlet implements Portlet, PortletConfig, EventPor
 				}
 			}
 		} catch (Exception e) {
+         // PORTLETSPEC3-23 : Allow annotated methods to throw PortletException and IOException
+         if (e instanceof InvocationTargetException) {
+            Throwable th = e.getCause();
+            if (th != null) {
+               if (th instanceof IOException) throw (IOException)th;
+               if (th instanceof PortletException) throw (PortletException)th;
+               if (th instanceof RuntimeException) throw (RuntimeException)th;
+            }
+         }
 			throw new PortletException(e);
 		}
 
