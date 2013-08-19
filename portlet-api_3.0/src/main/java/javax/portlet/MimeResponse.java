@@ -42,7 +42,7 @@ public interface MimeResponse extends PortletResponse {
      * portlet; if the value is set to <code>-1</code>, the cache does not expire.
      * <p>
      * A default can be defined in the portlet deployment descriptor
-     * with the <code>expiration-cache<code> tag, otherwise it is <code>0</code>.
+     * with the <code>expiration-cache</code> tag, otherwise it is <code>0</code>.
      * <p>
      * Non-integer values are treated as <code>0</code>.
      * <p>
@@ -60,7 +60,7 @@ public interface MimeResponse extends PortletResponse {
      * Predefined cache scopes are: <code>PUBLIC_SCOPE</code> and <code>PRIVATE_SCOPE</code>.
      * <p>
      * A default can be defined in the portlet deployment descriptor
-     * with the <code>cache-scope<code> tag, otherwise it is <code>PRIVATE_SCOPE</code>.
+     * with the <code>cache-scope</code> tag, otherwise it is <code>PRIVATE_SCOPE</code>.
      * <p>
      * Values that are not either <code>PUBLIC_SCOPE</code> or <code>PRIVATE_SCOPE</code>
      * are treated as <code>PRIVATE_SCOPE</code>.
