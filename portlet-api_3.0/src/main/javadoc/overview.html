@@ -7,7 +7,13 @@
     This document provides the interface descriptions for the JSR 362 Portlet Specification 3.0 Working Document.
     <P>The interfaces described here are not normative and are subject to change at any time.</P>
     <p>Change History:</p>
+    <div class="indexContainer">
     <ul>
+    <li>20130820: Resolved PORTLETSPEC3-26: Clarifications about when header information can be set in the following methods:
+    {@link javax.portlet.ResourceResponse#HTTP_STATUS_CODE HTTP_STATUS_CODE}, 
+    {@link javax.portlet.ResourceResponse#setLocale setLocale}, and 
+    {@link javax.portlet.ResourceResponse#setContentLength setContentLength}.
+    </li>
     <li>20130818: Resolved PORTLETSPEC3-23: Fixed issue involving exceptions in annotated methods in GenericPortlet.java (code fix only - no javadoc changes)  
     <li>20130817: Resolved PORTLETSPEC3-20: Clarified behavior when scope is unknown in several  
     {@link javax.portlet.PortletSession} methods: 
@@ -42,5 +48,6 @@
     <li>20130717: Resolved PORTLETSPEC3-5: Clarification in PortletRequest about private render parameters   </li>
     <li>20130715: Initial version</li>
     </ul>
+    </div>
   </BODY>
 </HTML>
