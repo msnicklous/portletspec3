@@ -28,7 +28,8 @@ import java.util.Locale;
 
 
 /**
- * The <CODE>PortletRequest</CODE> defines the base interface to provide client
+ * <span class="changed_modified_3_0">The</span> 
+ * <CODE>PortletRequest</CODE> defines the base interface to provide client
  * request information to a portlet. The portlet container uses two specialized
  * versions of this interface when invoking a portlet, <CODE>ActionRequest</CODE>
  * and <CODE>RenderRequest</CODE>. The portlet container creates these objects and 
@@ -343,16 +344,19 @@ public interface PortletRequest
 
 
   /**
-   * Returns the current portlet session or, if there is no current session,
+   * <span class="changed_modified_3_0">Returns</span> 
+   * the current portlet session or, if there is no current session,
    * creates one and returns the new session.
    *  <p>
    * Creating a new portlet session will result in creating
    * a new <code>HttpSession</code> on which the portlet session is based.
    * <p>
+   * <span class="changed_added_3_0"> 
    * To make sure the session is properly maintained, you must call this method before 
    * the response is committed. If the container is using cookies to maintain session 
    * integrity and is asked to create a new session when the response is committed, 
    * an <code>IllegalStateException</code> is thrown.
+   * </span>
    *
    * @return the portlet session
    */
@@ -361,7 +365,8 @@ public interface PortletRequest
 
 
   /**
-   * Returns the current portlet session or, if there is no current session
+   * <span class="changed_modified_3_0">Returns</span> 
+   * the current portlet session or, if there is no current session
    * and the given flag is <CODE>true</CODE>, creates one and returns
    * the new session.
    * <P>
@@ -371,10 +376,12 @@ public interface PortletRequest
    * Creating a new portlet session will result in creating
    * a new <code>HttpSession</code> on which the portlet session is based.
    * <p>
+   * <span class="changed_added_3_0"> 
    * To make sure the session is properly maintained, you must call this method before 
    * the response is committed. If the container is using cookies to maintain session 
    * integrity and is asked to create a new session when the response is committed, 
    * an <code>IllegalStateException</code> is thrown.
+   * </span>
    * 
    * @param create
    *               <CODE>true</CODE> to create a new session, <BR>
@@ -678,7 +685,10 @@ public interface PortletRequest
 
 
   /** 
-   * Returns a <code>Map</code> of all public and private parameters of this request.
+   * <span class="changed_modified_3_0">Returns</span> 
+   * a <code>Map</code> of 
+   * <span class="changed_modified_3_0">all public and private parameters</span> 
+   * of this request.
    * Request parameters are extra information sent with the request.  
    * The returned parameters are "x-www-form-urlencoded" decoded.
    * <p>
@@ -912,10 +922,12 @@ public interface PortletRequest
   public javax.servlet.http.Cookie[] getCookies();
   
   /**
+   * <span class="changed_modified_3_0"> 
    * Returns a <code>Map</code> of the private parameters of this request.
    * Private parameters are all those not declared to be public parameters 
    * in the portlet deployment descriptor. They are not shared with other 
    * portlets or components.
+   * </span>
    * The returned parameters are "x-www-form-urlencoded" decoded.
    * <p>
    * The values in the returned <code>Map</code> are from type

@@ -6,9 +6,19 @@
   <BODY>
     This document provides the interface descriptions for the JSR 362 Portlet Specification 3.0 Working Document.
     <P>The interfaces described here are not normative and are subject to change at any time.</P>
+    <p>Color coding for description changes in Version 3.0:
+    <span class="changed_modified_3_0">Changed text</span> ::  
+    <span class="changed_added_3_0">Added text</span> :: 
+    <span class="changed_deleted_3_0">Deleted text</span> 
+    as compared to Version 2.0.
+    </p>
     <p>Change History:</p>
-    <div class="indexContainer">
+    <!-- change class below to "indexContainer" to activate color changebars in the change history -->
+    <div class="indexContainer-not">
     <ul>
+    <li>20130821: Colorized older changes. All changes are now colorized and linked from the change history. 
+    Uncolorized the change history.
+    </li>
     <li>20130820: Resolved PORTLETSPEC3-26: Clarifications about when header information can be set in the following methods:
     {@link javax.portlet.ResourceResponse#HTTP_STATUS_CODE HTTP_STATUS_CODE}, 
     {@link javax.portlet.ResourceResponse#setLocale setLocale}, and 
@@ -43,9 +53,16 @@
     {@link javax.portlet.StateAwareResponse#setRenderParameters(Map)} and
     {@link javax.portlet.BaseURL#setParameters(Map)}.
     </li>
-    <li>20130717: Resolved PORTLETSPEC3-3: Clarification in CacheControl about getExpirationTime()           </li>
-    <li>20130717: Resolved PORTLETSPEC3-4: Clarification in PortletRequest about getPortletSession()         </li>
-    <li>20130717: Resolved PORTLETSPEC3-5: Clarification in PortletRequest about private render parameters   </li>
+    <li>20130717: Resolved PORTLETSPEC3-3: Clarification in CacheControl about           
+    {@link javax.portlet.CacheControl#getExpirationTime getExpirationTime()}.
+    </li>
+    <li>20130717: Resolved PORTLETSPEC3-4: Clarification in PortletRequest about          
+    {@link javax.portlet.PortletRequest#getPortletSession() getPortletSession()}
+    </li>
+    <li>20130717: Resolved PORTLETSPEC3-5: Clarification in
+    {@link javax.portlet.PortletRequest#getPrivateParameterMap getPrivateParametermap()}
+    about private render parameters   
+    </li>
     <li>20130715: Initial version</li>
     </ul>
     </div>

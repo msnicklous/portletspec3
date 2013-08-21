@@ -34,10 +34,13 @@ package javax.portlet;
 public interface BaseURL {
 
     /**
-     * Sets the given String parameter to this URL. 
+     * <span class="changed_modified_3_0">Sets</span> 
+     * the given String parameter to this URL. 
      * <p>
-     * This method replaces all parameter values with the given key, as allowed 
-     * according to the rules for the URL. 
+     * This method replaces all parameter values with the given key, 
+     * <span class="changed_added_3_0">as allowed 
+     * according to the rules for the URL.</span>
+     * <div class="changed_added_3_0"> 
      * <ul>
      * <li>
      * <code>RenderURL</code> - Both public and private parameters can be set. 
@@ -58,6 +61,7 @@ public interface BaseURL {
      * render parameter value will be available during processing of the resource request.
      * </li>
      * </ul>
+     * </div>
      * <p>
      * The <code>PortletURL</code> implementation 'x-www-form-urlencoded' encodes
      * all  parameter names and values. Developers should not encode them.
@@ -67,9 +71,10 @@ public interface BaseURL {
      * <p>
      * A parameter value of <code>null</code> indicates that this
      * parameter should be removed. 
-     * However, an empty string value ("") is allowed.
+     * <span class="changed_added_3_0">However, an empty string value ("") is allowed.</span>
      * <p>
-     * A public render parameter cannot be removed by setting its value to <code>null</code>.
+     * <span class="changed_added_3_0">A public render parameter cannot be removed by 
+     * setting its value to <code>null</code>.</span>
      *
      * @param   name
      *          the parameter name
@@ -78,14 +83,17 @@ public interface BaseURL {
      *
      * @exception  java.lang.IllegalArgumentException 
      *                            if name is <code>null</code>;
-     *                            if an attempt is made to set a public render parameter to <code>null</code>. 
+     *                            <span class="changed_added_3_0">if an attempt is made to set a public 
+     *                            render parameter to <code>null</code>.</span> 
      */
 
     public void setParameter (String name, String value);
 
 
     /**
-     * Sets the given String array parameter to this URL. 
+     * <span class="changed_modified_3_0">Sets</span> 
+     * the given String array parameter to this URL. 
+     * <div class="changed_added_3_0"> 
      * <p>
      * This method replaces all parameter values with the given key
      * according to the rules for the URL. 
@@ -109,18 +117,21 @@ public interface BaseURL {
      * render parameter value will be available during processing of the resource request.
      * </li>
      * </ul>
+     * </div>
      * <p>
      * The <code>PortletURL</code> implementation 'x-www-form-urlencoded' encodes
      * all  parameter names and values. Developers should not encode them.
      * <p>
      * A portlet container may prefix the attribute names internally 
      * in order to preserve a unique namespace for the portlet.
+     * <div class="changed_added_3_0"> 
      * <p>
      * A values parameter of <code>null</code> indicates that this
      * parameter should be removed. 
      * <p>
      * If the values parameter is not null, no element of the values array may be null. 
      * However, an empty string value ("") is allowed.
+     * </div>
      *
      * @param   name
      *          the parameter name
@@ -128,16 +139,21 @@ public interface BaseURL {
      *          the parameter values
      *
      * @exception  java.lang.IllegalArgumentException 
-     *                            if name is <code>null</code>; if an element of the values array is <code>null</code>; 
-     *                            if an attempt is made to set a public render parameter to <code>null</code>. 
+     *                            if name is <code>null</code>; 
+     *      <span class="changed_added_3_0">if an element of the values array is <code>null</code>; 
+     *      if an attempt is made to set a public render parameter to <code>null</code>.</span> 
      */
 
     public void setParameter (String name, String[] values);
 
 
     /**
-     * Sets a parameter map for this URL.
+     * <span class="changed_modified_3_0">Sets</span> 
+     * a parameter map for this URL.
      * <p>
+     * <span class="changed_deleted_3_0">All previously set parameters are cleared.</span>
+     * <div class="changed_added_3_0"> 
+     * <p> 
      * This method can be used to set both public and private render parameters 
      * according to the rules for the URL. 
      * <ul>
@@ -167,6 +183,7 @@ public interface BaseURL {
      * is removed. However, public render parameters cannot be removed by excluding
      * them from the map. Public render parameters that are not included in the map
      * remain unchanged.
+     * </div>
      * <p>
      * The <code>PortletURL</code> implementation 'x-www-form-urlencoded' encodes
      * all  parameter names and values. Developers should not encode them.
@@ -175,19 +192,23 @@ public interface BaseURL {
      * in order to preserve a unique namespace for the portlet.
      *
      * @param parameters
+     * <span class="changed_modified_3_0">
      * Map containing parameter names for the render phase as keys and
      * parameter values as map values. The keys in the parameter map must be of type
      * String and may not be null or the empty string (""). The values in the parameter
      * map must be of type String array (<code>String[]</code>). 
      * Neither the values array nor any of
      * its elements may be null; however, the empty string ("") is allowed as an array element.
+     * </span>
      *
      * @exception   java.lang.IllegalArgumentException 
+     *                <span class="changed_modified_3_0">
      *                if parameters is <code>null</code>, if any of the
      *                keys in the Map are <code>null</code>, if any of
      *                the keys is not a String, if any of the values is not a
      *                String array, or if any of the String array elements
      *                are null. 
+     *                </span>
      */
 
     public void setParameters(java.util.Map<String, String[]> parameters);
