@@ -173,11 +173,14 @@ public interface MimeResponse extends PortletResponse {
     public String getContentType();
 
     /**
-     * Sets the MIME type for the response. The portlet should set the
+     * <span class="changed_modified_3_0">Sets</span> 
+     * the MIME type for the response. The portlet should set the
      * content type before calling {@link #getWriter} or
-     * {@link #getPortletOutputStream}. If the content type is not 
-     * the {@link PortletRequest#getResponseContentType} value is
-     * set as response content type by the portlet container.
+     * {@link #getPortletOutputStream}. 
+     * <span class="changed_modified_3_0"> 
+     * If the content type is not set using this method, the preferred 
+     * content type as returned by {@link PortletRequest#getResponseContentType} is used.
+     * </span> 
      * <p>
      * Calling <code>setContentType</code> after <code>getWriter</code> or
      * <code>getOutputStream</code> does not change the content type.
@@ -185,6 +188,11 @@ public interface MimeResponse extends PortletResponse {
      * 
      * @param type
      *            the content MIME type
+     *            
+     * @exception java.lang.IllegalArgumentException 
+     * <span class="changed_added_3_0"> 
+     *             if the content type is invalid.
+     * </span>
      * 
      * @see PortletRequest#getResponseContentTypes
      * @see #getContentType
