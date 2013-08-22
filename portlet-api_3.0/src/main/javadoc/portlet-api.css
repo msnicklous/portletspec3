@@ -509,7 +509,10 @@ h1.hidden {
 /* the href with exact file specifier makes the links in the package lists work. */
 
 .indexContainer a[href*="PortletRequest.html"],
+.indexContainer a[href*="PortletMode.html"],
+.indexContainer a[href*="WindowState.html"],
 .indexContainer a[href*="CacheControl.html"],
+.indexContainer a[href*="ResourceRequest.html"],
 .indexContainer a[href*="ResourceResponse.html"],
 .indexContainer a[href*="PortletSession.html"],
 .indexContainer a[href*="BaseURL.html"],

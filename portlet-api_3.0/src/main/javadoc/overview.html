@@ -16,6 +16,13 @@
     <!-- change class below to "indexContainer" to activate color changebars in the change history -->
     <div class="indexContainer-not">
     <ul>
+    <li>20130822: Resolved PORTLETSPEC3-27: Clarified 
+    {@link javax.portlet.ResourceRequest#getPortletMode ResourceRequest.getPortletMode}
+    and 
+    {@link javax.portlet.ResourceRequest#getWindowState ResourceRequest.getWindowState} 
+    behavior when the cache level is set to FULL by returning
+    {@link javax.portlet.PortletMode#UNDEFINED} and {@link javax.portlet.WindowState#UNDEFINED}, respectively.
+    </li>
     <li>20130822: Resolved PORTLETSPEC3-35: Added exception and clarified description in method 
     {@link javax.portlet.MimeResponse#setContentType MimeResponse.setContentType}. 
     </li>

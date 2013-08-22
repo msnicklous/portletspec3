@@ -25,7 +25,8 @@
 package javax.portlet;
 
 /**
- * The <code>ResourceRequest</code> interface represents the request
+ * <span class="changed_modified_3_0">The</span>
+ * <code>ResourceRequest</code> interface represents the request
  * send to the portlet for rendering resources.
  * 
  * It extends the ClientDataRequest interface and provides resource request
@@ -140,5 +141,45 @@ public interface ResourceRequest extends ClientDataRequest {
      * @return  the cache level of this resource request.
      */
 	public String getCacheability();
+
+
+	/**
+    * <span class="changed_modified_3_0">Returns</span> 
+	 * the current portlet mode of the portlet.
+    * <div class="changed_added_3_0">
+    * <p>
+    * If called during a request where the cache level is set to 
+    * <code>ResourceURL.FULL</code>, the portlet mode will not
+    * be available. 
+    * </div>
+	 *
+	 * @return   the portlet mode.
+    * <span class="changed_added_3_0">
+    *           The portlet mode UNDEFINED will be returned if the cache level is
+    *           set to <code>ResourceURL.FULL</code>.  
+    * </span>
+	 */
+
+	public PortletMode getPortletMode ();
+
+
+   /**
+    * <span class="changed_modified_3_0">Returns</span> 
+    * the current window state of the portlet.
+    * <div class="changed_added_3_0">
+    * <p>
+    * If called during a request where the cache level is set to 
+    * <code>ResourceURL.FULL</code>, the window state will not
+    * be available. 
+    * </div>
+    *
+    * @return   the window state.
+    * <span class="changed_added_3_0">
+    *           The window state UNDEFINED will be returned if the cache level is
+    *           set to <code>ResourceURL.FULL</code>.  
+    * </span>
+    */
+
+	public WindowState getWindowState ();
 
 }
