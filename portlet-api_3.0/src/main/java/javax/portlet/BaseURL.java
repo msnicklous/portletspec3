@@ -328,7 +328,7 @@ public interface BaseURL {
       * The appended URL is always XML escaped. For appending
       * non-escaped URLs use {@link #write(java.lang.Appendable, boolean)}.
       *  
-      * @param out  the writer to write the portlet URL to
+      * @param out  the object to receive the URL
       * @throws java.io.IOException  if an I/O error occurred while writing the URL
       *
       * @since 3.0
@@ -353,7 +353,7 @@ public interface BaseURL {
       * The appended URL is always XML escaped. For appending
       * non-escaped URLs use {@link #write(java.lang.Appendable, boolean)}.
       *  
-      * @param out  the writer to write the portlet URL to
+      * @param out  the object to receive the URL
       * @throws java.io.IOException  if an I/O error occurred while writing the URL
       *
       * @since 3.0
