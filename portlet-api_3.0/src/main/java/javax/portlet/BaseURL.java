@@ -317,6 +317,50 @@ public interface BaseURL {
      */
      public void write(java.io.Writer out, boolean escapeXML) throws java.io.IOException;
 
+     /**
+      * <div class="changed_added_3_0">
+      * Appends the portlet URL to the appendable object.
+      * <p>
+      * Note that the appended URL may not be a valid URL, as it may
+      * be rewritten by the portal/portlet-container before returning the 
+      * markup to the client.
+      * <p>
+      * The appended URL is always XML escaped. For appending
+      * non-escaped URLs use {@link #write(java.lang.Appendable, boolean)}.
+      *  
+      * @param out  the writer to write the portlet URL to
+      * @throws java.io.IOException  if an I/O error occured while writing the URL
+      *
+      * @since 3.0
+      * </div>
+      */
+     public void write(java.lang.Appendable out) throws java.io.IOException;
+
+     /**
+      * <div class="changed_added_3_0">
+      * Appends the portlet URL to the appendable object.
+      * <p>
+      * If the parameter escapeXML is set to true the URL will be escaped to be
+      * valid XML characters, i.e. &lt, &gt, &amp, &#039, &#034 will get converted
+      * into their corresponding character entity codes (&lt to &&lt, &gt to &&gt, 
+      * &amp to &&amp, &#039 to &&#039, &#034 to &&#034).
+      * If escapeXML is set to false no escaping will be done.
+      * <p>
+      * Note that the appended URL may not be a valid URL, as it may
+      * be rewritten by the portal/portlet-container before returning the 
+      * markup to the client.
+      * <p>
+      * The appended URL is always XML escaped. For appending
+      * non-escaped URLs use {@link #write(java.lang.Appendable, boolean)}.
+      *  
+      * @param out  the writer to write the portlet URL to
+      * @throws java.io.IOException  if an I/O error occured while writing the URL
+      *
+      * @since 3.0
+      * </div>
+      */
+     public void write(java.lang.Appendable out, boolean escapeXML) throws java.io.IOException;
+
     
     /**
      * Adds a String property to an existing key on the URL.
