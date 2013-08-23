@@ -210,12 +210,11 @@ public interface BaseURL {
      *                are null. 
      *                </span>
      */
-
     public void setParameters(java.util.Map<String, String[]> parameters);
 
 
     /**
-     * Indicated the security setting for this URL. 
+     * Indicates the security setting for this URL. 
      * <p>
      * Secure set to <code>true</code> indicates that the portlet requests
      * a secure connection between the client and the portlet window for
@@ -230,9 +229,47 @@ public interface BaseURL {
      * @throws PortletSecurityException  if the run-time environment does
      *                                   not support the indicated setting
      */
-
     public void setSecure (boolean secure) throws PortletSecurityException;
 
+
+    /**
+     * <div class="changed_added_3_0">
+     * Indicates whether authentication is required for this URL. 
+     * <p>
+     * When the parameter is set to <code>true</code>, user authentication will be 
+     * required when accessing the URL. A setting of <code>false</code> indicates that 
+     * authentication will not be required.
+     * <p>
+     * If authentication is not explicitly set on the URL through this method, the 
+     * default will be <code>true</code> if {@link PortletRequest#getAuthType} 
+     * indicates that the current request is authenticated and <code>false</code>
+     * if the current request is not authenticated.
+     * </div>
+     *
+     * @param  authenticated  true, if the URL requires authentication.
+     *                        false, if the URL does not require authentication.
+     *
+     * @since 3.0
+     * @see #getAuthenticated()
+     * @see PortletRequest#getAuthType()
+     */
+    public void setAuthenticated (boolean authenticated);
+
+
+    /**
+     * <div class="changed_added_3_0">
+     * Returns the authentication setting for the URL.
+     * <p>
+     * </div>
+     * 
+     * @return     <code>true</code> if the URL requires authentication
+     *
+     * @since 3.0
+     * @see #setAuthenticated(boolean)
+     */
+    public boolean getAuthenticated ();
+
+    
     /**
      * Returns the portlet URL string representation to be embedded in the
      * markup.<br>
@@ -248,14 +285,13 @@ public interface BaseURL {
      * 
      * @return   the encoded URL as a string
      */
-
     public String toString ();
+    
     
     /** 
      * <span class="changed_modified_3_0">Returns</span> a
      * <code>Map</code> of the parameters currently set on this portlet
      * URL.
-
      * <p>
      * The values in the returned <code>Map</code> are from type
      * String array (<code>String[]</code>).
@@ -276,9 +312,9 @@ public interface BaseURL {
      *
      * @since 2.0
      */
-
     public java.util.Map<String, String[]> getParameterMap();
 
+    
     /**
      * Writes the portlet URL to the output stream using the provided writer.
      * <p>
@@ -295,6 +331,7 @@ public interface BaseURL {
      * @since 2.0
      */
     public void write(java.io.Writer out) throws java.io.IOException;
+    
     
     /**
      * Writes the portlet URL to the output stream using the provided writer.
@@ -317,6 +354,7 @@ public interface BaseURL {
      */
      public void write(java.io.Writer out, boolean escapeXML) throws java.io.IOException;
 
+     
      /**
       * <div class="changed_added_3_0">
       * Appends the portlet URL to the appendable object.
@@ -336,6 +374,7 @@ public interface BaseURL {
       */
      public void write(java.lang.Appendable out) throws java.io.IOException;
 
+     
      /**
       * <div class="changed_added_3_0">
       * Appends the portlet URL to the appendable object.
@@ -402,4 +441,49 @@ public interface BaseURL {
      * @since 2.0
      */
     public void setProperty(String key, String value);
+
+
+    /**
+     * <div class="changed_added_3_0">
+     * Sets a fragment identifier on the URL.
+     * <p>
+     * The fragment identifier consists of additional information appended
+     * to the URL after a '#' character. A URL can have only a single fragment
+     * identifier. The fragment identifier may not contain the '#' character.
+     * <p>
+     * The fragment identifier is often used to address a named anchor such as 
+     * <code>&lt;a name="#fragmentIdentifier"&gt;</code>, but it can also be 
+     * used for other purposes such as to provide additional information for resource serving.
+     * <p>
+     * The fragment identifier will not be namespaced. The portlet is responsible for 
+     * performing any required namespacing.
+     * <p>
+     * Any previously set fragment identifier will be replaced.
+     * </div>
+     *
+     * @param fragment
+     *            The fragment identifier to be added to the URL
+     *
+     * @exception java.lang.IllegalArgumentException
+     *                if the fragment identifier is null, the empty string (""), or contains
+     *                the '#' character.
+     * @since 3.0
+     * @see #getFragmentIdentifier()
+     */
+    public void setFragmentIdentifier(String fragment);
+
+
+    /**
+     * <div class="changed_added_3_0">
+     * Gets the fragment identifier set on the URL.
+     * </div>
+     *
+     * @return 
+     *         The fragment identifier set on the URL, or 
+     *         <code>null</code> if no fragment identifier has been set.
+     *
+     * @since 3.0
+     * @see #setFragmentIdentifier(String)
+     */
+    public String getFragmentIdentifier();
 }
