@@ -290,7 +290,7 @@ public interface BaseURL {
      * non-escaped URLs use {@link #write(java.io.Writer, boolean)}.
      *  
      * @param out  the writer to write the portlet URL to
-     * @throws java.io.IOException  if an I/O error occured while writing the URL
+     * @throws java.io.IOException  if an I/O error occurred while writing the URL
      *
      * @since 2.0
      */
@@ -329,7 +329,7 @@ public interface BaseURL {
       * non-escaped URLs use {@link #write(java.lang.Appendable, boolean)}.
       *  
       * @param out  the writer to write the portlet URL to
-      * @throws java.io.IOException  if an I/O error occured while writing the URL
+      * @throws java.io.IOException  if an I/O error occurred while writing the URL
       *
       * @since 3.0
       * </div>
@@ -354,7 +354,7 @@ public interface BaseURL {
       * non-escaped URLs use {@link #write(java.lang.Appendable, boolean)}.
       *  
       * @param out  the writer to write the portlet URL to
-      * @throws java.io.IOException  if an I/O error occured while writing the URL
+      * @throws java.io.IOException  if an I/O error occurred while writing the URL
       *
       * @since 3.0
       * </div>
