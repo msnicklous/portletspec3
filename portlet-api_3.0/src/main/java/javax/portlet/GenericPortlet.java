@@ -38,7 +38,8 @@ import java.util.Map;
 import javax.xml.namespace.QName;
 
 /**
- * The <CODE>GenericPortlet</CODE> class provides a default implementation for
+ * <span class="changed_modified_3_0">The</span>
+ * <CODE>GenericPortlet</CODE> class provides a default implementation for
  * the <CODE>Portlet</CODE> interface.
  * <p>
  * It provides an abstract class to be subclassed to create portlets. A subclass
@@ -158,7 +159,7 @@ public abstract class GenericPortlet implements Portlet, PortletConfig, EventPor
 	 * <code>RenderResponse.createActionURL()</code> method.
 	 * <p>
 	 * The default implementation tries to dispatch to a method
-	 * annotated with <code>@ProcessAction</name> that matches the action parameter 
+	 * annotated with <code>@ProcessAction</code> that matches the action parameter 
 	 * value <code>ActionRequest.ACTION_NAME</code> or, if no
 	 * such method is found throws a <code>PortletException</code>.<br>
  	 * Note that the annotated methods needs to be public in order
@@ -170,12 +171,12 @@ public abstract class GenericPortlet implements Portlet, PortletConfig, EventPor
 	 * @param response
 	 *            the action response
 	 * @exception PortletException
-	 *                if the portlet cannot fulfilling the request
+	 *                if the portlet cannot fulfill the request
 	 * @exception UnavailableException
 	 *                if the portlet is unavailable to process the action at
 	 *                this time
 	 * @exception PortletSecurityException
-	 *                if the portlet cannot fullfill this request because of
+	 *                if the portlet cannot fulfill this request due to
 	 *                security reasons
 	 * @exception java.io.IOException
 	 *                if the streaming causes an I/O problem
@@ -228,12 +229,12 @@ public abstract class GenericPortlet implements Portlet, PortletConfig, EventPor
 	 *            the render response
 	 * 
 	 * @exception PortletException
-	 *                if the portlet cannot fulfilling the request
+	 *                if the portlet cannot fulfill the request
 	 * @exception UnavailableException
 	 *                if the portlet is unavailable to perform render at this
 	 *                time
 	 * @exception PortletSecurityException
-	 *                if the portlet cannot fullfill this request because of
+	 *                if the portlet cannot fulfill this request due to
 	 *                security reasons
 	 * @exception java.io.IOException
 	 *                if the streaming causes an I/O problem
@@ -295,18 +296,20 @@ public abstract class GenericPortlet implements Portlet, PortletConfig, EventPor
 	/**
 	 * The default implementation of this method routes the render request to:
 	 * <ol>
-	 * <li>method annotated with <code>@RenderMode</name> and the name of the
-	 *       portlet mode</li>
-	 *   <li>a set of helper methods depending on the current portlet mode the portlet
-	 * 		 is currently in. These methods are:
-	 * 		<ul>
-	 * 			<li><code>doView</code> for handling <code>view</code> requests</li>
-	 * 			<li><code>doEdit</code> for handling <code>edit</code> requests</li>
-	 * 			<li><code>doHelp</code> for handling <code>help</code> requests</li>
-	 * 		</ul>
+	 * <li>
+	 * method annotated with <code>@RenderMode</code> and the name of the portlet mode
+	 * </li>
+	 * <li>
+	 * a set of helper methods depending on the current portlet mode the portlet
+	 * is currently in. These methods are:
+	 *   <ul>
+	 *   	 <li><code>doView</code> for handling <code>view</code> requests</li>
+	 *   	 <li><code>doEdit</code> for handling <code>edit</code> requests</li>
+	 *   	 <li><code>doHelp</code> for handling <code>help</code> requests</li>
+	 *   </ul>
 	 *	</li>
-	 * </ul> 
-	 * <P>
+	 * </ol>
+	 * <p>
 	 * If the window state of this portlet is <code>minimized</code>, this
 	 * method does not invoke any of the portlet mode rendering methods.
 	 * <p>
@@ -321,12 +324,12 @@ public abstract class GenericPortlet implements Portlet, PortletConfig, EventPor
 	 *            the render response
 	 * 
 	 * @exception PortletException
-	 *                if the portlet cannot fulfilling the request
+	 *                if the portlet cannot fulfill the request
 	 * @exception UnavailableException
 	 *                if the portlet is unavailable to perform render at this
 	 *                time
 	 * @exception PortletSecurityException
-	 *                if the portlet cannot fullfill this request because of
+	 *                if the portlet cannot fulfill this request due to
 	 *                security reasons
 	 * @exception java.io.IOException
 	 *                if the streaming causes an I/O problem
@@ -387,12 +390,12 @@ public abstract class GenericPortlet implements Portlet, PortletConfig, EventPor
 	 *            the render response
 	 * 
 	 * @exception PortletException
-	 *                if the portlet cannot fulfilling the request
+	 *                if the portlet cannot fulfill the request
 	 * @exception UnavailableException
 	 *                if the portlet is unavailable to perform render at this
 	 *                time
 	 * @exception PortletSecurityException
-	 *                if the portlet cannot fullfill this request because of
+	 *                if the portlet cannot fulfill this request due to
 	 *                security reasons
 	 * @exception java.io.IOException
 	 *                if the streaming causes an I/O problem
@@ -413,12 +416,12 @@ public abstract class GenericPortlet implements Portlet, PortletConfig, EventPor
 	 *            the render response
 	 * 
 	 * @exception PortletException
-	 *                if the portlet cannot fulfilling the request
+	 *                if the portlet cannot fulfill the request
 	 * @exception UnavailableException
 	 *                if the portlet is unavailable to perform render at this
 	 *                time
 	 * @exception PortletSecurityException
-	 *                if the portlet cannot fullfill this request because of
+	 *                if the portlet cannot fulfill this request due to
 	 *                security reasons
 	 * @exception java.io.IOException
 	 *                if the streaming causes an I/O problem
@@ -439,12 +442,12 @@ public abstract class GenericPortlet implements Portlet, PortletConfig, EventPor
 	 *            the render response
 	 * 
 	 * @exception PortletException
-	 *                if the portlet cannot fulfilling the request
+	 *                if the portlet cannot fulfill the request
 	 * @exception UnavailableException
 	 *                if the portlet is unavailable to perform render at this
 	 *                time
 	 * @exception PortletSecurityException
-	 *                if the portlet cannot fullfill this request because of
+	 *                if the portlet cannot fulfill this request due to
 	 *                security reasons
 	 * @exception java.io.IOException
 	 *                if the streaming causes an I/O problem
@@ -633,7 +636,7 @@ public abstract class GenericPortlet implements Portlet, PortletConfig, EventPor
 
 	/**
 	 * The default implementation tries to dispatch to a method
-	 * annotated with <code>@ProcessEvent</name> that matches the 
+	 * annotated with <code>@ProcessEvent</code> that matches the 
 	 * event name or, if no
 	 * such method is found just sets the current render parameters on
 	 * the response.<br>
@@ -688,7 +691,8 @@ public abstract class GenericPortlet implements Portlet, PortletConfig, EventPor
 	}
 
 	/**
-	 * Used by the render method to set the response properties and headers.
+    * <span class="changed_modified_3_0">Used</span>
+	 * by the render method to set the response properties and headers.
 	 * <p>
 	 * The portlet should override this method and set its response header using
 	 * this method in order to ensure that they are set before anything is
@@ -698,9 +702,21 @@ public abstract class GenericPortlet implements Portlet, PortletConfig, EventPor
 	 * 
 	 * @param request  the render request
 	 * @param response the render response
+    * 
+    * @exception PortletException
+    *                <span class="changed_added_3_0">if the portlet cannot fulfill the request</span>
+    * @exception UnavailableException
+    *                <span class="changed_added_3_0">if the portlet is unavailable to perform render at this
+    *                time</span>
+    * @exception PortletSecurityException
+    *                <span class="changed_added_3_0">if the portlet cannot fulfill this request due to
+    *                security reasons</span>
+    * @exception java.io.IOException
+    *                <span class="changed_added_3_0">if the streaming causes an I/O problem</span>
 	 * @since 2.0
 	 */
-	protected void doHeaders(RenderRequest request, RenderResponse response) {
+	protected void doHeaders(RenderRequest request, RenderResponse response) 
+	      throws PortletException, java.io.IOException {
 		return;
 	}
 
