@@ -195,8 +195,8 @@ public interface StateAwareResponse extends PortletResponse {
 	public void setRenderParameter(String key, String value);
 
 	/**
-     * <span class="changed_modified_3_0">Sets</span> 
-     * a String array parameter for the render request.
+     * <span class="changed_modified_3_0">Sets
+     * a multi-valued String</span> parameter for the render request.
      * <p>
      * <span class="changed_added_3_0"> 
      * These parameters will be accessible in all subsequent render calls 
@@ -235,7 +235,7 @@ public interface StateAwareResponse extends PortletResponse {
      *                has been called.
      */
 
-	public void setRenderParameter(String key, String[] values);
+	public void setRenderParameter(String key, String... values);
 
 	/**
      * Publishes an Event with the given payload.

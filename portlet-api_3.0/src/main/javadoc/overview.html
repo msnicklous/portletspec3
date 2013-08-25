@@ -16,6 +16,11 @@
     <!-- change class below to "indexContainer" to activate color changebars in the change history -->
     <div class="indexContainer-not">
     <ul>
+    <li>20130825: Resolved PORTLETSPEC3-22: Changed String array parameter to vararg parameter on 
+    {@link javax.portlet.BaseURL#setParameter(String, String...) BaseURL.setParameter},
+    {@link javax.portlet.StateAwareResponse#setParameter(String, String...) StateAwareResponse.setParameter}, and
+    {@link javax.portlet.PortletPreferences#setValues(String, String...) PortletPreferences.setValues}.
+    </li>
     <li>20130824: Resolved PORTLETSPEC3-24: Allow 
     {@link javax.portlet.GenericPortlet#doHeaders(RenderRequest, RenderResponse) GenericPortlet.doHeaders}
     to throw a PortletException or IOException. 

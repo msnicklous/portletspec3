@@ -35,7 +35,7 @@ public interface BaseURL {
 
     /**
      * <span class="changed_modified_3_0">Sets</span> 
-     * the given String parameter to this URL. 
+     * the given String parameter on this URL. 
      * <p>
      * This method replaces all parameter values with the given key, 
      * <span class="changed_added_3_0">as allowed 
@@ -91,8 +91,8 @@ public interface BaseURL {
 
 
     /**
-     * <span class="changed_modified_3_0">Sets</span> 
-     * the given String array parameter to this URL. 
+     * <span class="changed_modified_3_0">Sets
+     * a multi-valued String parameter on</span> this URL. 
      * <div class="changed_added_3_0"> 
      * <p>
      * This method replaces all parameter values with the given key
@@ -144,7 +144,7 @@ public interface BaseURL {
      *      if an attempt is made to set a public render parameter to <code>null</code>.</span> 
      */
 
-    public void setParameter (String name, String[] values);
+    public void setParameter (String name, String... values);
 
 
     /**

@@ -508,6 +508,7 @@ h1.hidden {
 /* the href with the caret makes the links in the overview document work. */
 /* the href with exact file specifier makes the links in the package lists work. */
 
+.indexContainer a[href*="PortletPreferences.html"],
 .indexContainer a[href*="GenericPortlet.html"],
 .indexContainer a[href*="PortletRequest.html"],
 .indexContainer a[href*="PortletMode.html"],
