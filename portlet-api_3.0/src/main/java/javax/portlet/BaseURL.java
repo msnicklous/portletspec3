@@ -449,7 +449,8 @@ public interface BaseURL {
      * <p>
      * The fragment identifier consists of additional information appended
      * to the URL after a '#' character. A URL can have only a single fragment
-     * identifier. The fragment identifier may not contain the '#' character.
+     * identifier. The fragment identifier must be formed according to 
+     * <a href="http://tools.ietf.org/html/rfc3986">rfc3986</a>.
      * <p>
      * The fragment identifier is often used to address a named anchor such as 
      * <code>&lt;a name="#fragmentIdentifier"&gt;</code>, but it can also be 
@@ -465,8 +466,8 @@ public interface BaseURL {
      *            The fragment identifier to be added to the URL
      *
      * @exception java.lang.IllegalArgumentException
-     *                if the fragment identifier is null, the empty string (""), or contains
-     *                the '#' character.
+     *                if the fragment identifier is null, the empty string (""), 
+     *                or contains invalid characters.
      * @since 3.0
      * @see #getFragmentIdentifier()
      */
