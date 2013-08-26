@@ -508,6 +508,7 @@ h1.hidden {
 /* the href with the caret makes the links in the overview document work. */
 /* the href with exact file specifier makes the links in the package lists work. */
 
+.indexContainer a[href*="PortletConfig.html"],
 .indexContainer a[href*="PortletPreferences.html"],
 .indexContainer a[href*="GenericPortlet.html"],
 .indexContainer a[href*="PortletRequest.html"],
@@ -521,6 +522,7 @@ h1.hidden {
 .indexContainer a[href*="StateAwareResponse.html"],
 .indexContainer a[href*="RenderResponse.html"],
 .indexContainer a[href*="MimeResponse.html"],
+.indexContainer a[href*="ResourceResponseWrapper.html"],
 .indexContainer a[href*="RenderResponseWrapper.html"]
 { 
    cursor: url(resources/changed_modified_3_0_cursor.cur), auto;
