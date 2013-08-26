@@ -131,6 +131,8 @@ public interface ResourceResponse extends MimeResponse {
      * @see javax.servlet.http.HttpServletResponse
      * @see javax.servlet.http.HttpServletResponse#setStatus
      * 
+     * @since 3.0
+     * 
      * @param sc an integer specifying the status code for this request
      */
     public void setStatus(int sc);
