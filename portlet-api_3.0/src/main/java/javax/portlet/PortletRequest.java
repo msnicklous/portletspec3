@@ -917,7 +917,7 @@ public interface PortletRequest
    * @since 2.0
    * @return  array of cookie properties, or 
    *          <code>null</code> if no cookies exist.
-   * @see MimeResponse#addProperty(Cookie) 
+   * @see PortletResponse#addProperty(Cookie) 
    */
   public javax.servlet.http.Cookie[] getCookies();
   

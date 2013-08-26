@@ -35,7 +35,8 @@ import javax.portlet.ResourceResponse;
 import javax.portlet.ResourceURL;
 
 /**
- * The <code>ResourceResponseWrapper</code> provides a convenient 
+ * <span class="changed_modified_3_0">The</span>  
+ * <code>ResourceResponseWrapper</code> provides a convenient 
  * implementation of the <code>ResourceResponse</code> interface 
  * that can be subclassed by developers wishing to adapt the response.
  * This class implements the Wrapper or Decorator pattern. 
@@ -190,6 +191,16 @@ public class ResourceResponseWrapper extends PortletResponseWrapper implements R
      */
     public void setContentLength(int len) {
         response.setContentLength(len);
+    }
+
+    /**
+     * <div class="changed_added_3_0">
+     *  The default behavior of this method is to call 
+     * <code>setStatus()</code> on the wrapped response object.
+     * </div>
+     */
+    public void setStatus(int sc) {
+        response.setStatus(sc);
     }
 
     /**

@@ -521,6 +521,7 @@ h1.hidden {
 .indexContainer a[href*="StateAwareResponse.html"],
 .indexContainer a[href*="RenderResponse.html"],
 .indexContainer a[href*="MimeResponse.html"],
+.indexContainer a[href*="ResourceResponseWrapper.html"],
 .indexContainer a[href*="RenderResponseWrapper.html"]
 { 
    cursor: url(resources/changed_modified_3_0_cursor.cur), auto;

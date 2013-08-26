@@ -135,6 +135,10 @@
             <doctitle>JSR 362 Portlet Specification 3.0 Interface Working Document</doctitle>
             <windowtitle>JSR 362 Portlet Specification 3.0 Interface Working Document</windowtitle>
             <stylesheetfile>${javadoc.css.file}</stylesheetfile>
+            <!-- link to Java EE APIs for cross-references -->
+            <links>
+              <link>http://docs.oracle.com/javaee/7/api/</link>
+            </links>
             <docfilessubdirs>true</docfilessubdirs>
             <bottom>
             <![CDATA[Java Portlet Specification V3.0 Working Document.
