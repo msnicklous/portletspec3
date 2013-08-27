@@ -454,19 +454,16 @@ public interface BaseURL {
      * <p>
      * The fragment identifier is often used to address a named anchor such as 
      * <code>&lt;a name="#fragmentIdentifier"&gt;</code>, but it can also be 
-     * used for other purposes such as to provide additional information for 
-     * resource serving.
+     * used for other purposes such as to pass information to a JavaScript routine.
      * <p>
-     * The fragment identifier will not be namespaced or escaped. The portlet is responsible for 
-     * performing any required namespacing or character escaping.
+     * The fragment identifier will not be namespaced. The portlet is responsible for 
+     * performing any required namespacing. However, the fragment identifier string 
+     * will be escaped as required.
      * <p>
      * Setting the fragment identifier to <code>null</code> will have the same 
      * effect as not 
      * using this method at all; the portal will be free, but not required, to 
      * add a default fragment identifier.
-     * <p>
-     * Setting the fragment identifier to the empty string will suppress any 
-     * fragment identifier whatsoever. 
      * <p>
      * Any previously set fragment identifier will be replaced.
      * </div>
@@ -490,11 +487,26 @@ public interface BaseURL {
      * </div>
      *
      * @return 
-     *         The fragment identifier set on the URL, or 
+     *         The fragment identifier explicitly set on the URL using the 
+     *         {@link #setFragmentIdentifier()} method, or 
      *         <code>null</code> if no fragment identifier has been set.
      *
      * @since 3.0
      * @see #setFragmentIdentifier(String)
      */
     public String getFragmentIdentifier();
+
+
+    /**
+     * <div class="changed_added_3_0">
+     * Removes the fragment identifier from the URL.
+     * <p>
+     * The default portal behavior will be restored. The portal will be free, 
+     * but not required, to add a default fragment identifier.
+     * </div>
+     *
+     * @since 3.0
+     * @see #setFragmentIdentifier(String)
+     */
+    public void suppressFragmentIdentifier();
 }
