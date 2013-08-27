@@ -454,10 +454,19 @@ public interface BaseURL {
      * <p>
      * The fragment identifier is often used to address a named anchor such as 
      * <code>&lt;a name="#fragmentIdentifier"&gt;</code>, but it can also be 
-     * used for other purposes such as to provide additional information for resource serving.
+     * used for other purposes such as to provide additional information for 
+     * resource serving.
      * <p>
-     * The fragment identifier will not be namespaced. The portlet is responsible for 
-     * performing any required namespacing.
+     * The fragment identifier will not be namespaced or escaped. The portlet is responsible for 
+     * performing any required namespacing or character escaping.
+     * <p>
+     * Setting the fragment identifier to <code>null</code> will have the same 
+     * effect as not 
+     * using this method at all; the portal will be free, but not required, to 
+     * add a default fragment identifier.
+     * <p>
+     * Setting the fragment identifier to the empty string will suppress any 
+     * fragment identifier whatsoever. 
      * <p>
      * Any previously set fragment identifier will be replaced.
      * </div>
@@ -466,9 +475,10 @@ public interface BaseURL {
      *            The fragment identifier to be added to the URL
      *
      * @exception java.lang.IllegalArgumentException
-     *                if the fragment identifier is null, the empty string (""), 
-     *                or contains invalid characters.
+     *                if the fragment identifier is invalid.
+     *                
      * @since 3.0
+     * 
      * @see #getFragmentIdentifier()
      */
     public void setFragmentIdentifier(String fragment);
