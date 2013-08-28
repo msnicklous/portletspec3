@@ -16,12 +16,17 @@
     <!-- change class below to "indexContainer" to activate color changebars in the change history -->
     <div class="indexContainer-not">
     <ul>
-    <li>20130827: Resolved PORTLETSPEC3-13: Added
-    {@link javax.portlet.BaseURL#setAuthenticated BaseURL.setAuthenticated},
-    {@link javax.portlet.BaseURL#getAuthenticated BaseURL.getAuthenticated},
-    {@link javax.portlet.BaseURL#setFragmentIdentifier BaseURL.setFragmentIdentifier}, and
-    {@link javax.portlet.BaseURL#getFragmentIdentifier BaseURL.getFragmentIdentifier}
-    methods.
+    <li>20130828: PORTLETSPEC3-13: Added serveral methods to BaseURL:
+    {@link javax.portlet.BaseURL#setAuthenticated setAuthenticated},
+    {@link javax.portlet.BaseURL#getAuthenticated getAuthenticated},
+    {@link javax.portlet.BaseURL#setFragmentIdentifier setFragmentIdentifier}, 
+    {@link javax.portlet.BaseURL#getFragmentIdentifier getFragmentIdentifier},
+    {@link javax.portlet.BaseURL#permitFragmentIdentifier permitFragmentIdentifier}, and
+    {@link javax.portlet.BaseURL#fragmentIdentifierPermitted fragmentIdentifierPermitted}
+    methods. See 
+    <a href="https://java.net/projects/portletspec3/pages/PortletURLs#PORTLETSPEC3-13"> 
+    portlet URLs
+    </a>.
     </li>
     <li>
     20130827: Added link to wiki article to resolution of PORTLETSPEC3-18.
@@ -29,7 +34,8 @@
     <li>20130826: Resolved PORTLETSPEC3-18: Added methods
     {@link javax.portlet.PortletConfig#getPortletModes PortletConfig.getPortletModes()} and
     {@link javax.portlet.PortletConfig#getWindowStates PortletConfig.getWindowStates()}.
-    See <a href="http://java.net/projects/portletspec3/pages/PortletConfiguration"> 
+    See 
+    <a href="http://java.net/projects/portletspec3/pages/PortletConfiguration"> 
     portlet configuration description.
     </a>
     </li>
@@ -50,11 +56,10 @@
     {@link javax.portlet.BaseURL#write(Appendable) BaseURL.write(Appendable)}
     and 
     {@link javax.portlet.BaseURL#write(Appendable, boolean) BaseURL.write(Appendable, boolean)}
-    to BaseURL. See latest 
-    <a href="https://java.net/projects/portletspec3/downloads/directory/WorkingDocs/Specification%20Working%20Documents"> 
-    specification working document
-    </a>
-     section "BaseURL Interface" for corresponding update. 
+    to BaseURL. See
+    <a href="https://java.net/projects/portletspec3/pages/PortletURLs#PORTLETSPEC3-21"> 
+    Portlet URLs
+    </a>.
     </li>
     <li>20130822: Resolved PORTLETSPEC3-27: Clarified 
     {@link javax.portlet.ResourceRequest#getPortletMode ResourceRequest.getPortletMode}

@@ -237,13 +237,11 @@ public interface BaseURL {
      * Indicates whether authentication is required for this URL. 
      * <p>
      * When the parameter is set to <code>true</code>, user authentication will be 
-     * required when accessing the URL. A setting of <code>false</code> indicates that 
-     * authentication will not be required.
+     * required when accessing the URL. 
      * <p>
-     * If authentication is not explicitly set on the URL through this method, the 
-     * default will be <code>true</code> if {@link PortletRequest#getAuthType} 
-     * indicates that the current request is authenticated and <code>false</code>
-     * if the current request is not authenticated.
+     * If authentication is not set or if it is 
+     * set to false using this method, authentication will be allowed, but not
+     * required.
      * </div>
      *
      * @param  authenticated  true, if the URL requires authentication.
@@ -262,7 +260,8 @@ public interface BaseURL {
      * <p>
      * </div>
      * 
-     * @return     <code>true</code> if the URL requires authentication
+     * @return     <code>true</code> if the URL requires authentication;
+     *             <code>false</code> if authentication is allowed but not required.
      *
      * @since 3.0
      * @see #setAuthenticated(boolean)
@@ -447,6 +446,8 @@ public interface BaseURL {
      * <div class="changed_added_3_0">
      * Sets a fragment identifier on the URL.
      * <p>
+     * Any previously set fragment identifier will be replaced.
+     * <p>
      * The fragment identifier consists of additional information appended
      * to the URL after a '#' character. A URL can have only a single fragment
      * identifier. The fragment identifier must be formed according to 
@@ -460,53 +461,76 @@ public interface BaseURL {
      * performing any required namespacing. However, the fragment identifier string 
      * will be escaped as required.
      * <p>
-     * Setting the fragment identifier to <code>null</code> will have the same 
-     * effect as not 
-     * using this method at all; the portal will be free, but not required, to 
-     * add a default fragment identifier.
-     * <p>
-     * Any previously set fragment identifier will be replaced.
+     * Setting the fragment identifier to <code>null</code> will remove a 
+     * fragment identifier previously set through this method. Setting the 
+     * empty string as the fragment identifier will create an empty fragment 
+     * identifier. 
      * </div>
      *
      * @param fragment
      *            The fragment identifier to be added to the URL
-     *
-     * @exception java.lang.IllegalArgumentException
-     *                if the fragment identifier is invalid.
      *                
      * @since 3.0
      * 
-     * @see #getFragmentIdentifier()
+     * @see #getFragmentIdentifier
+     * @see #permitFragmentIdentifier
      */
     public void setFragmentIdentifier(String fragment);
 
 
     /**
      * <div class="changed_added_3_0">
-     * Gets the fragment identifier set on the URL.
+     * Gets the fragment identifier previously set on the URL using the 
+     * {@link #setFragmentIdentifier} method.
      * </div>
      *
      * @return 
-     *         The fragment identifier explicitly set on the URL using the 
-     *         {@link #setFragmentIdentifier()} method, or 
+     *         The fragment identifier set on the URL, or 
      *         <code>null</code> if no fragment identifier has been set.
      *
      * @since 3.0
-     * @see #setFragmentIdentifier(String)
+     * @see #setFragmentIdentifier
      */
     public String getFragmentIdentifier();
 
 
     /**
      * <div class="changed_added_3_0">
-     * Removes the fragment identifier from the URL.
+     * Indicates whether a fragment identifier is permitted on the URL. 
      * <p>
-     * The default portal behavior will be restored. The portal will be free, 
-     * but not required, to add a default fragment identifier.
+     * If the fragment identifier is permitted,
+     * a fragment identifier set by the portlet will be appended to the URL. 
+     * If the portlet does not set a fragment identifier, the portal 
+     * implementation may append a fragment identifier to the URL.
+     * <p>
+     * If the fragment identifier is not permitted, no fragment identifier will 
+     * be appended to the URL.
+     * <p>
+     * By default, the fragment identifier is permitted. 
      * </div>
      *
+     * @param permit 
+     *            <code>true</code> if the fragment parameter is permitted, or
+     *            <code>false</code> if it is not.
+     *
      * @since 3.0
+     * 
      * @see #setFragmentIdentifier(String)
+     * @see #fragmentIdentifierPermitted()
      */
-    public void suppressFragmentIdentifier();
+    public void permitFragmentIdentifier(boolean permit);
+
+
+    /**
+     * <div class="changed_added_3_0">
+     * Indicates whether the fragment identifier on the URL is permitted.
+     * </div>
+     *
+     * @return    <code>true</code> if the fragment parameter is permitted, or
+     *            <code>false</code> if it is not.
+     * 
+     * @since 3.0
+     * @see #permitFragmentIdentifier
+     */
+    public boolean fragmentIdentifierPermitted();
 }
