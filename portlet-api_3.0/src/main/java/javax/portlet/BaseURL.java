@@ -473,7 +473,7 @@ public interface BaseURL {
      * @since 3.0
      * 
      * @see #getFragmentIdentifier
-     * @see #permitFragmentIdentifier
+     * @see #setFragmentIdentifierPermitted
      */
     public void setFragmentIdentifier(String fragment);
 
@@ -516,9 +516,9 @@ public interface BaseURL {
      * @since 3.0
      * 
      * @see #setFragmentIdentifier(String)
-     * @see #fragmentIdentifierPermitted()
+     * @see #isFragmentIdentifierPermitted()
      */
-    public void permitFragmentIdentifier(boolean permit);
+    public void setFragmentIdentifierPermitted(boolean permit);
 
 
     /**
@@ -530,7 +530,7 @@ public interface BaseURL {
      *            <code>false</code> if it is not.
      * 
      * @since 3.0
-     * @see #permitFragmentIdentifier
+     * @see #setFragmentIdentifierPermitted
      */
-    public boolean fragmentIdentifierPermitted();
+    public boolean isFragmentIdentifierPermitted();
 }
