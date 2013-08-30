@@ -778,6 +778,208 @@ public abstract class GenericPortlet implements Portlet, PortletConfig, EventPor
 
 		return config.getDefaultNamespace();
 	}
+	
+	// -------------------------------------------------------------------------
+   // V 3.0 additions
+   // -------------------------------------------------------------------------
+
+	
+	/**
+	 * <div class="changed_added_3_0">
+	 * Dispatches an action request to an annotated action method.
+	 * <p>
+	 * Retrieves an action method annotated with the provided name and
+	 * invokes it. Returns <code>true</code> if the method could be 
+	 * successfully located and invoked, and <code>false</code> if no
+	 * annotated action method by that name could be found.
+	 * <p>
+	 * This method allows a portlet to extend annotation processing 
+	 * for the action method. 
+	 * </div>
+	 * 
+	 * @param name      Annotation name
+	 * @param request   Action request
+	 * @param response  Action response
+    * 
+    * @return 
+    *    <code>true</code>, if the request was dispatched,
+    *    <code>false</code>, if no annotated method matching the specified action 
+    *                        method name could be found.
+    *
+    * @exception PortletException
+    *                if the portlet cannot fulfill the request
+    * @exception UnavailableException
+    *                if the portlet is unavailable to process the action at
+    *                this time
+    * @exception PortletSecurityException
+    *                if the portlet cannot fulfill this request due to
+    *                security reasons
+    * @exception java.io.IOException
+    *                if the streaming causes an I/O problem
+    * 
+    * @see #processAction(ActionRequest, ActionResponse)
+    */
+	protected boolean dispatchAnnotatedActionMethod(String name, ActionRequest request, 
+	      ActionResponse response) throws PortletException, java.io.IOException {
+	   
+	   boolean methodInvoked = false;
+	   
+      try {
+         // check if action is cached
+         Method actionMethod = processActionHandlingMethodsMap.get(name);
+         if (actionMethod != null) {
+            actionMethod.invoke(this, request, response);
+            methodInvoked = true;
+         }
+      } catch (Exception e) {
+         // PORTLETSPEC3-23 : Allow annotated methods to throw PortletException and IOException
+         if (e instanceof InvocationTargetException) {
+            Throwable th = e.getCause();
+            if (th != null) {
+               if (th instanceof IOException) throw (IOException)th;
+               if (th instanceof PortletException) throw (PortletException)th;
+               if (th instanceof RuntimeException) throw (RuntimeException)th;
+            }
+         }
+         throw new PortletException(e);
+      }
+      return methodInvoked;
+	}
+
+   
+   /**
+    * <div class="changed_added_3_0">
+    * Dispatches an event request to an annotated event method.
+    * <p>
+    * Retrieves an action method annotated with the provided name and
+    * invokes it. Returns <code>true</code> if the method could be 
+    * successfully located and invoked, and <code>false</code> if no
+    * annotated event method by that name could be found.
+    * <p>
+    * This method allows a portlet to extend annotation processing 
+    * for portlet events.
+    * </div>
+    * 
+    * @param name      Annotation name
+    * @param request   Event request
+    * @param response  Event response
+    * 
+    * @return 
+    *    <code>true</code>, if the request was dispatched,
+    *    <code>false</code>, if no annotated method matching the specified event 
+    *                        method name could be found.
+    *
+    * @exception PortletException
+    *                if the portlet cannot fulfill the request
+    * @exception UnavailableException
+    *                if the portlet is unavailable to process the action at
+    *                this time
+    * @exception PortletSecurityException
+    *                if the portlet cannot fulfill this request due to
+    *                security reasons
+    * @exception java.io.IOException
+    *                if the streaming causes an I/O problem
+    * 
+    * @see #processEvent(EventRequest, EventResponse)
+    */
+   protected boolean dispatchAnnotatedEventMethod(String name, EventRequest request, 
+         EventResponse response) throws PortletException, java.io.IOException {
+      
+      boolean methodInvoked = false;
+      
+      String eventName = request.getEvent().getQName().toString();
+
+      try {
+         // check for exact match
+         Method eventMethod = processEventHandlingMethodsMap.get(eventName);
+         if (eventMethod != null) {
+            eventMethod.invoke(this, request, response);
+            methodInvoked = true;
+         }
+      } catch (Exception e) {
+         // PORTLETSPEC3-23 : Allow annotated methods to throw PortletException and IOException
+         if (e instanceof InvocationTargetException) {
+            Throwable th = e.getCause();
+            if (th != null) {
+               if (th instanceof IOException) throw (IOException)th;
+               if (th instanceof PortletException) throw (PortletException)th;
+               if (th instanceof RuntimeException) throw (RuntimeException)th;
+            }
+         }
+         throw new PortletException(e);
+      }
+
+      return methodInvoked;
+   }
+
+   
+   /**
+    * <div class="changed_added_3_0">
+    * Dispatches an render request to an annotated render method.
+    * <p>
+    * Retrieves an render method annotated with the provided name and
+    * invokes it. Returns <code>true</code> if the method could be 
+    * successfully located and invoked, and <code>false</code> if no
+    * annotated render method by that name could be found.
+    * <p>
+    * This method allows a portlet to extend annotation processing 
+    * for the render methods. 
+    * </div>
+    * 
+    * @param name      Annotation name
+    * @param request   Render request
+    * @param response  Render response
+    * 
+    * @return 
+    *    <code>true</code>, if the request was dispatched,
+    *    <code>false</code>, if no annotated method matching the specified render 
+    *                        method name could be found.
+    *
+    * @exception PortletException
+    *                if the portlet cannot fulfill the request
+    * @exception UnavailableException
+    *                if the portlet is unavailable to process the render at
+    *                this time
+    * @exception PortletSecurityException
+    *                if the portlet cannot fulfill this request due to
+    *                security reasons
+    * @exception java.io.IOException
+    *                if the streaming causes an I/O problem
+    * 
+    * @see #doDispatch(RenderRequest, RenderResponse)
+    */
+   protected boolean dispatchAnnotatedRenderMethod(String name, RenderRequest request, 
+         RenderResponse response) throws PortletException, java.io.IOException {
+      
+      boolean methodInvoked = false;
+      
+      try {
+         // check if action is cached
+         Method renderMethod = renderModeHandlingMethodsMap.get(name);
+         if (renderMethod != null) {
+            renderMethod.invoke(this, request, response);
+            methodInvoked = true;
+         }
+      } catch (Exception e) {
+         // PORTLETSPEC3-23 : Allow annotated methods to throw PortletException and IOException
+         if (e instanceof InvocationTargetException) {
+            Throwable th = e.getCause();
+            if (th != null) {
+               if (th instanceof IOException) throw (IOException)th;
+               if (th instanceof PortletException) throw (PortletException)th;
+               if (th instanceof RuntimeException) throw (RuntimeException)th;
+            }
+         }
+         throw new PortletException(e);
+      }
+      
+      return methodInvoked;
+   }
+
+   
+   // -------------------------------------------------------------------------
+   // Private Methods
+   // -------------------------------------------------------------------------
 
 	private void cacheAnnotatedMethods() {
 		// cache all annotated and visible public methods
