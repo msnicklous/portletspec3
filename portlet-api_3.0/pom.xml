@@ -40,6 +40,11 @@
     <version.jar.plugin>2.4</version.jar.plugin>
     <version.install.plugin>2.4</version.install.plugin>
     <version.source.plugin>2.2.1</version.source.plugin>
+    
+    <!-- The javadoc.css.file property defines the css file to be used for the HTML javadoc output files. -->
+    <!-- portlet-api.css            - provides colored change bars and displays deleted text              -->
+    <!-- portlet-api-production.css - provides no change bars and supresses deleted text                  -->
+    <javadoc.css.file>portlet-api.css</javadoc.css.file>
   </properties>
 
   <modelVersion>4.0.0</modelVersion>
@@ -129,10 +134,16 @@
           <configuration>
             <doctitle>JSR 362 Portlet Specification 3.0 Interface Working Document</doctitle>
             <windowtitle>JSR 362 Portlet Specification 3.0 Interface Working Document</windowtitle>
+            <stylesheetfile>${javadoc.css.file}</stylesheetfile>
+            <!-- link to Java EE APIs for cross-references -->
+            <links>
+              <link>http://docs.oracle.com/javaee/7/api/</link>
+            </links>
+            <docfilessubdirs>true</docfilessubdirs>
             <bottom>
             <![CDATA[Java Portlet Specification V3.0 Working Document.
-               See the <a href="doc-files/NOTICE">Copyright</a> and 
-               <a href="doc-files/LICENSE">License</a> provided with this distribution.
+               See the <a href="doc-files/NOTICE.txt">Copyright</a> and 
+               <a href="doc-files/LICENSE.txt">License</a> provided with this distribution.
                Use is subject to
                <a href="http://www.apache.org/licenses/LICENSE-2.0">license terms</a>.]]>
             </bottom>

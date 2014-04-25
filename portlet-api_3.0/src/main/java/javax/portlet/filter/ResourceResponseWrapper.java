@@ -35,7 +35,8 @@ import javax.portlet.ResourceResponse;
 import javax.portlet.ResourceURL;
 
 /**
- * The <code>ResourceResponseWrapper</code> provides a convenient 
+ * <span class="changed_modified_3_0">The</span>  
+ * <code>ResourceResponseWrapper</code> provides a convenient 
  * implementation of the <code>ResourceResponse</code> interface 
  * that can be subclassed by developers wishing to adapt the response.
  * This class implements the Wrapper or Decorator pattern. 
@@ -193,6 +194,16 @@ public class ResourceResponseWrapper extends PortletResponseWrapper implements R
     }
 
     /**
+     * <div class="changed_added_3_0">
+     *  The default behavior of this method is to call 
+     * <code>setStatus()</code> on the wrapped response object.
+     * </div>
+     */
+    public void setStatus(int sc) {
+        response.setStatus(sc);
+    }
+
+    /**
      * Return the wrapped response object.
      * 
      * @return the wrapped response
@@ -218,17 +229,33 @@ public class ResourceResponseWrapper extends PortletResponseWrapper implements R
      *  The default behavior of this method is to call 
      * <code>createActionURL()</code> on the wrapped response object.
      */
-	public PortletURL createActionURL() throws IllegalStateException {
-		return response.createActionURL();
-	}
+    public PortletURL createActionURL() throws IllegalStateException {
+       return response.createActionURL();
+    }
+
+    /**
+     *  <span class="changed_added_3_0">The default behavior of this method is to call 
+     * <code>createActionURL(UrlFlag)</code> on the wrapped response object.</span>
+     */
+    public PortletURL createActionURL(UrlFlag flag) throws IllegalStateException {
+       return response.createActionURL(flag);
+    }
 
     /**
      *  The default behavior of this method is to call 
      * <code>createRenderURL()</code> on the wrapped response object.
      */
-	public PortletURL createRenderURL() throws IllegalStateException {
-		return response.createRenderURL();
-	}
+    public PortletURL createRenderURL() throws IllegalStateException {
+       return response.createRenderURL();
+    }
+
+    /**
+     *  <span class="changed_added_3_0">The default behavior of this method is to call 
+     * <code>createRenderURL(UrlFlag)</code> on the wrapped response object.</span>
+     */
+    public PortletURL createRenderURL(UrlFlag flag) throws IllegalStateException {
+       return response.createRenderURL(flag);
+    }
 
     /**
      *  The default behavior of this method is to call 

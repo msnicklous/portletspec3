@@ -25,7 +25,8 @@
 package javax.portlet;
 
 /**
- * The <CODE>StateAwareResponse</CODE> represents a response that can modify
+ * <span class="changed_modified_3_0">The</span> 
+ * <CODE>StateAwareResponse</CODE> represents a response that can modify
  * state information or send events.<BR>
  * It extends the PortletResponse interface.
  * 
@@ -35,31 +36,142 @@ package javax.portlet;
 public interface StateAwareResponse extends PortletResponse, MutablePortletParameters, MutableViewState {
 
 	/**
-     * Sets a parameter map for the render request.
-     * <p> 
-     * See description of {@link javax.portlet.MutablePortletParameters#setParameters(java.util.Map)}
-     * which provides the same function. 
-     */
+    * <span class="changed_modified_3_0">Sets</span> 
+	 * a parameter map for the render request.
+	 * <div class="changed_deleted_3_0">
+    * <p>
+    * These parameters will be accessible in all sub-sequent render calls via
+    * the <code>PortletRequest.getParameter</code> call until a new request
+    * is targeted to the portlet.
+    * <p>
+    * The given parameters do not need to be encoded prior to calling this
+    * method.
+    * <p>
+    * The portlet should not modify the map any further after calling
+    * this method.
+    * </div> 
+    * <div class="changed_added_3_0"> 
+	 * <p>
+	 * This method can be used to set both public and private render parameters. 
+	 * <p>
+	 * These parameters will be accessible in all subsequent render calls via the
+	 * PortletRequest.getParameter call until a new request is targeted to the portlet.
+	 * <p>
+	 * Any previously set private render parameter that is not contained in the new map
+	 * is removed. However, public render parameters cannot be removed by excluding
+	 * them from the map. Public render parameters that are not included in the map
+	 * remain unchanged.
+	 * <p>
+	 * The given parameters do not need to be encoded prior to calling this method.
+	 * <p>
+	 * The portlet should not modify the map any further after calling this method.
+	 * </div>
+	 * 
+	 * @param parameters
+    * <span class="changed_modified_3_0">
+	 * Map containing parameter names for the render phase as keys and
+	 * parameter values as map values. The keys in the parameter map must be of type
+	 * String and may not be null or the empty string (""). The values in the parameter
+	 * map must be of type String array (<code>String[]</code>). 
+	 * Neither the values array nor any of
+	 * its elements may be null; however, the empty string ("") is allowed.
+	 * </span>
+	 * 
+	 * @exception java.lang.IllegalArgumentException
+    * <span class="changed_modified_3_0">
+	 *                if parameters is <code>null</code>, if any of the
+	 *                keys in the Map are <code>null</code>, if any of
+	 *                the keys is not a String, if any of the values is not a
+	 *                String array, or if any of the String array elements
+	 *                are null. 
+    * </span>
+	 * @exception java.lang.IllegalStateException
+	 *                if the method is invoked after <code>sendRedirect</code>
+	 *                has been called.
+	 */
 
 	public void setRenderParameters(java.util.Map<String, String[]> parameters);
 
 	/**
-     * Sets a String parameter for the render request.
-      * <p> 
-     * See description of {@link javax.portlet.MutablePortletParameters#setParameter(String, String)}
-     * which provides the same function. 
+     * <span class="changed_modified_3_0">Sets</span> 
+     * a String parameter for the render request.
+     * <p>
+     * <span class="changed_modified_3_0"> 
+     * These parameters will be accessible in all subsequent render calls 
+     * until an action or render request is
+     * targeted to the portlet.
+     * </span>
+     * <p>
+     * This method replaces all parameters with the given key.
+     * <p>
+     * The given parameter do not need to be encoded prior to calling this
+     * method.
+     * <p>
+     * <span class="changed_added_3_0"> 
+     * A parameter value of <code>null</code> indicates that this
+     * parameter should be removed. 
+     * However, an empty string value ("") is allowed.
+     * </span>
+     * 
+     * @param key
+     *            key of the render parameter
+     * @param value
+     *            value of the render parameter
+     * 
+     * @exception java.lang.IllegalArgumentException
+     *                if key is <code>null</code>;
+     * <span class="changed_added_3_0"> 
+     *                if an attempt is made to set a public render parameter to <code>null</code>.
+     * </span>                 
+     * @exception java.lang.IllegalStateException
+     *                if the method is invoked after <code>sendRedirect</code>
+     *                has been called.
      */
 
 	public void setRenderParameter(String key, String value);
 
 	/**
-     * Sets a String array parameter for the render request.
-     * <p> 
-     * See description of {@link javax.portlet.MutablePortletParameters#setParameter(String, String[])}
-     * which provides the same function. 
+     * <span class="changed_modified_3_0">Sets
+     * a multi-valued String</span> parameter for the render request.
+     * <p>
+     * <span class="changed_added_3_0"> 
+     * These parameters will be accessible in all subsequent render calls 
+     * until an action or render request is
+     * targeted to the portlet.
+     * </span>
+     * <p>
+     * This method replaces all parameter values with the given key.
+     * <p>
+     * The given parameter do not need to be encoded prior to calling this
+     * method.
+     * <p>
+     * <span class="changed_added_3_0"> 
+     * A values parameter of <code>null</code> indicates that this
+     * parameter should be removed. 
+     * </span>
+     * <p>
+     * <span class="changed_added_3_0"> 
+     * If the values parameter is not null, no element of the values array may be null. 
+     * However, an empty string value ("") is allowed.
+     * </span>
+     * 
+     * @param key
+     *            key of the render parameter
+     * @param values
+     *            values of the render parameter
+     * 
+     * @exception java.lang.IllegalArgumentException
+     *                if name is <code>null</code>; 
+     * <span class="changed_added_3_0"> 
+     *                if an element of the values array is <code>null</code>; 
+     *                if an attempt is made to set a public render parameter to <code>null</code>. 
+     * </span>
+     * @exception java.lang.IllegalStateException
+     *                if the method is invoked after <code>sendRedirect</code>
+     *                has been called.
      */
 
-	public void setRenderParameter(String key, String[] values);
+	public void setRenderParameter(String key, String... values);
 
 	/**
      * Publishes an Event with the given payload.
@@ -114,11 +226,24 @@ public interface StateAwareResponse extends PortletResponse, MutablePortletParam
 
 
 	/**
-     * Returns a <code>Map</code> of the render parameters currently set on
+     * <span class="changed_modified_3_0">Returns</span> a <code>Map</code> of the render parameters currently set on
      * this response.
-     * <p> 
-     * See description of {@link javax.portlet.PortletParameters#getParameterMap()}
-     * which provides the same function. 
+     * <p>
+     * The values in the returned <code>Map</code> are of type String array (<code>String[]</code>).
+     * <p class="changed_added_3_0">
+     * The contents of the returned map are immutable in the sense that modifying the map does not directly 
+     * affect the render parameters. In order to set the parameters using the modified map, 
+     * the {@link StateAwareResponse#setRenderParameters(Map)} method must be used.
+     * </p>
+     * <p>
+     * If no parameters exist this method returns an empty <code>Map</code>.
+     * 
+     * @since 2.0
+     * 
+     * @return <code>Map</code> containing render parameter names as keys and
+     *         parameter values as map values, or an empty <code>Map</code> if
+     *         no parameters exist. The keys in the parameter map are of type
+     *         String. The values in the parameter map are of type String array (<code>String[]</code>).
      */
 
 	public java.util.Map<String, String[]> getRenderParameterMap();

@@ -25,7 +25,8 @@
 package javax.portlet;
 
 /**
- * The <CODE>ResourceResponse</CODE> defines an object to assist a portlet 
+ * <span class="changed_modified_3_0">The</span>  
+ * <CODE>ResourceResponse</CODE> defines an object to assist a portlet 
  * for rendering a resource.
  * <p>
  * The difference between the <CODE>RenderResponse</CODE> is that for the 
@@ -50,17 +51,28 @@ package javax.portlet;
 public interface ResourceResponse extends MimeResponse {
     
 	/**
-	 * Constant for setting the HTTP status code via the 
+	 * <span class="changed_modified_3_0">Constant</span> 
+	 * for setting the HTTP status code via the 
 	 * <code>setProperty</code> method.
+	 * <span class="changed_added_3_0">
+	 * Changing the HTTP status code after 
+    * after the response has been committed has no effect.
+    * </span>
 	 */
 	public static final String HTTP_STATUS_CODE = "portlet.http-status-code";
 
     /**
-     * Sets the locale of the response, setting the headers 
+     * <span class="changed_modified_3_0">Sets</span> 
+     * the locale of the response, setting the headers 
      * (including the Content-Type's charset) as appropriate. 
-     * This method should be called before a call to getWriter(). 
+     * <span class="changed_deleted_3_0">This method should be called before a call to getWriter().</span> 
      * By default, the response locale is the default locale provided
      * by the portlet container.
+     * <p>
+     * <span class="changed_added_3_0">
+     * This method has no effect if it is called after 
+     * after the response has been committed.
+     * </span>
      * 
      * @param loc  the new locale of the response
      */
@@ -89,11 +101,41 @@ public interface ResourceResponse extends MimeResponse {
     
     
     /**
-     * Sets the length of the content body in the response.
+     * <span class="changed_modified_3_0">Sets</span> 
+     * the length of the content body in the response.
+     * <p>
+     * <span class="changed_added_3_0">
+     * This method has no effect if it is called after 
+     * after the response has been committed.
+     * </span>
      * 
      * @param len an integer specifying the length of the content being returned
      */
     public void setContentLength(int len);
+    
+    
+    /**
+     * <div class="changed_added_3_0">
+     * Sets the HTTP status code for this request.
+     * <p>
+     * The status code should be a valid value as defined in 
+     * IETF <a href="http://tools.ietf.org/html/rfc2616">
+     * rfc2616 "Hypertext Transfer Protocol -- HTTP/1.1"
+     * </a>. The status code constants "SC_*" defined in 
+     * {@link javax.servlet.http.HttpServletResponse} may be used.
+     * <p>
+     * This method has no effect if it is called after 
+     * after the response has been committed.
+     * </div>
+     * 
+     * @see javax.servlet.http.HttpServletResponse
+     * @see javax.servlet.http.HttpServletResponse#setStatus
+     * 
+     * @since 3.0
+     * 
+     * @param sc an integer specifying the status code for this request
+     */
+    public void setStatus(int sc);
     
     
 	/**

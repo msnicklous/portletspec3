@@ -28,7 +28,8 @@ import java.util.Locale;
 
 
 /**
- * The <CODE>PortletRequest</CODE> defines the base interface to provide client
+ * <span class="changed_modified_3_0">The</span> 
+ * <CODE>PortletRequest</CODE> defines the base interface to provide client
  * request information to a portlet. The portlet container uses two specialized
  * versions of this interface when invoking a portlet, <CODE>ActionRequest</CODE>
  * and <CODE>RenderRequest</CODE>. The portlet container creates these objects and 
@@ -327,16 +328,19 @@ public interface PortletRequest extends PortletParameters, ViewState
 
 
   /**
-   * Returns the current portlet session or, if there is no current session,
+   * <span class="changed_modified_3_0">Returns</span> 
+   * the current portlet session or, if there is no current session,
    * creates one and returns the new session.
    *  <p>
    * Creating a new portlet session will result in creating
    * a new <code>HttpSession</code> on which the portlet session is based.
    * <p>
+   * <span class="changed_added_3_0"> 
    * To make sure the session is properly maintained, you must call this method before 
    * the response is committed. If the container is using cookies to maintain session 
    * integrity and is asked to create a new session when the response is committed, 
    * an <code>IllegalStateException</code> is thrown.
+   * </span>
    *
    * @return the portlet session
    */
@@ -345,7 +349,8 @@ public interface PortletRequest extends PortletParameters, ViewState
 
 
   /**
-   * Returns the current portlet session or, if there is no current session
+   * <span class="changed_modified_3_0">Returns</span> 
+   * the current portlet session or, if there is no current session
    * and the given flag is <CODE>true</CODE>, creates one and returns
    * the new session.
    * <P>
@@ -355,10 +360,12 @@ public interface PortletRequest extends PortletParameters, ViewState
    * Creating a new portlet session will result in creating
    * a new <code>HttpSession</code> on which the portlet session is based.
    * <p>
+   * <span class="changed_added_3_0"> 
    * To make sure the session is properly maintained, you must call this method before 
    * the response is committed. If the container is using cookies to maintain session 
    * integrity and is asked to create a new session when the response is committed, 
    * an <code>IllegalStateException</code> is thrown.
+   * </span>
    * 
    * @param create
    *               <CODE>true</CODE> to create a new session, <BR>
@@ -580,6 +587,109 @@ public interface PortletRequest extends PortletParameters, ViewState
   public java.util.Enumeration<String> getAttributeNames();
 
 
+  /**
+   * Returns the value of a request parameter as a <code>String</code>,
+   * or <code>null</code> if the parameter does not exist. Request parameters
+   * are extra information sent with the request. The returned parameter 
+   * are "x-www-form-urlencoded" decoded.
+   * <p>
+   * Only parameters targeted to the current portlet are accessible.
+   * <p>
+   * This method should only be used if the 
+   * parameter has only one value. If the parameter might have
+   * more than one value, use {@link #getParameterValues}.
+   * <p>
+   * If this method is used with a multivalued
+   * parameter, the value returned is equal to the first value
+   * in the array returned by <code>getParameterValues</code>.
+   *
+   *
+   *
+   * @param name 	a <code>String</code> specifying the 
+   *			name of the parameter
+   *
+   * @return		a <code>String</code> representing the 
+   *			single value of the parameter
+   *
+   * @see 		#getParameterValues
+   *
+   * @exception  java.lang.IllegalArgumentException 
+   *                            if name is <code>null</code>.
+   *
+   */
+  
+  public String getParameter(String name);
+
+
+  /**
+   *
+   * Returns an <code>Enumeration</code> of <code>String</code>
+   * objects containing the names of the parameters contained
+   * in this request. If the request has 
+   * no parameters, the method returns an 
+   * empty <code>Enumeration</code>. 
+   * <p>
+   * Only parameters targeted to the current portlet are returned.
+   *
+   *
+   * @return		an <code>Enumeration</code> of <code>String</code>
+   *			objects, each <code>String</code> containing
+   * 			the name of a request parameter; or an 
+   *			empty <code>Enumeration</code> if the
+   *			request has no parameters.
+   */
+
+  public java.util.Enumeration<String> getParameterNames();
+
+
+  /**
+   * Returns an array of <code>String</code> objects containing 
+   * all of the values the given request parameter has, or 
+   * <code>null</code> if the parameter does not exist.
+   * The returned parameters are "x-www-form-urlencoded" decoded.
+   * <p>
+   * If the parameter has a single value, the array has a length
+   * of 1.
+   *
+   *
+   * @param name	a <code>String</code> containing the name of 
+   *			the parameter the value of which is requested
+   *
+   * @return		an array of <code>String</code> objects 
+   *			containing the parameter values.
+   *
+   * @see		#getParameter
+   *
+   * @exception  java.lang.IllegalArgumentException 
+   *                            if name is <code>null</code>.
+   *
+   */
+
+  public String[] getParameterValues(String name);
+
+
+  /** 
+   * <span class="changed_modified_3_0">Returns</span> 
+   * a <code>Map</code> of 
+   * <span class="changed_modified_3_0">all public and private parameters</span> 
+   * of this request.
+   * Request parameters are extra information sent with the request.  
+   * The returned parameters are "x-www-form-urlencoded" decoded.
+   * <p>
+   * The values in the returned <code>Map</code> are from type
+   * String array (<code>String[]</code>).
+   * <p>
+   * If no parameters exist this method returns an empty <code>Map</code>.
+   *
+   * @return     an immutable <code>Map</code> containing parameter names as 
+   *             keys and parameter values as map values, or an empty <code>Map</code>
+   *             if no parameters exist. The keys in the parameter
+   *             map are of type String. The values in the parameter map are of type
+   *             String array (<code>String[]</code>).
+   */
+
+  public java.util.Map<String, String[]> getParameterMap();
+
 
   /**
    * Returns a boolean indicating whether this request was made 
@@ -791,16 +901,18 @@ public interface PortletRequest extends PortletParameters, ViewState
    * @since 2.0
    * @return  array of cookie properties, or 
    *          <code>null</code> if no cookies exist.
-   * @see MimeResponse#addProperty(Cookie) 
+   * @see PortletResponse#addProperty(Cookie) 
    */
   public javax.servlet.http.Cookie[] getCookies();
 
   
   /**
+   * <span class="changed_modified_3_0"> 
    * Returns a <code>Map</code> of the private parameters of this request.
    * Private parameters are all those not declared to be public parameters 
    * in the portlet deployment descriptor. They are not shared with other 
    * portlets or components.
+   * </span>
    * The returned parameters are "x-www-form-urlencoded" decoded.
    * <p>
    * The values in the returned <code>Map</code> are from type
