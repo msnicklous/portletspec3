@@ -39,7 +39,7 @@ import java.util.Locale;
  * @see ActionRequest
  * @see RenderRequest
  */
-public interface PortletRequest extends PortletParameters, ViewState
+public interface PortletRequest extends ViewState
 {
 
    
@@ -585,6 +585,21 @@ public interface PortletRequest extends PortletParameters, ViewState
    */
   
   public java.util.Enumeration<String> getAttributeNames();
+  
+  
+  /**
+   * <div class="changed_added_3_0">
+   * Gets a PortletParameters object encapsulating 
+   * the render parameters set for this request.
+   * </div>
+   * 
+   * @return   an immutable <code>PortletParameters</code> object representing
+   *           the private and public render parameters
+   * @since    3.0
+   * @see      PortletParameters 
+   */
+  
+  public PortletParameters getRenderParameters();
 
 
   /**
@@ -616,8 +631,10 @@ public interface PortletRequest extends PortletParameters, ViewState
    * @exception  java.lang.IllegalArgumentException 
    *                            if name is <code>null</code>.
    *
+   * @deprecated use {@link #getRenderParameters()} instead.
    */
   
+  @Deprecated
   public String getParameter(String name);
 
 
@@ -637,8 +654,10 @@ public interface PortletRequest extends PortletParameters, ViewState
    * 			the name of a request parameter; or an 
    *			empty <code>Enumeration</code> if the
    *			request has no parameters.
+   * @deprecated use {@link #getRenderParameters()} instead.
    */
 
+  @Deprecated
   public java.util.Enumeration<String> getParameterNames();
 
 
@@ -663,8 +682,10 @@ public interface PortletRequest extends PortletParameters, ViewState
    * @exception  java.lang.IllegalArgumentException 
    *                            if name is <code>null</code>.
    *
+   * @deprecated use {@link #getRenderParameters()} instead.
    */
 
+  @Deprecated
   public String[] getParameterValues(String name);
 
 
@@ -686,8 +707,11 @@ public interface PortletRequest extends PortletParameters, ViewState
    *             if no parameters exist. The keys in the parameter
    *             map are of type String. The values in the parameter map are of type
    *             String array (<code>String[]</code>).
+   *             
+   * @deprecated use {@link #getRenderParameters()} instead.
    */
 
+  @Deprecated
   public java.util.Map<String, String[]> getParameterMap();
 
 
@@ -926,7 +950,11 @@ public interface PortletRequest extends PortletParameters, ViewState
    *             if no private parameters exist. The keys in the parameter
    *             map are of type String. The values in the parameter map are of type
    *             String array (<code>String[]</code>).
+   *             
+   * @deprecated use {@link #getRenderParameters()} instead.
    */
+
+  @Deprecated
   public java.util.Map<String, String[]> getPrivateParameterMap();
   
   /**
@@ -947,7 +975,11 @@ public interface PortletRequest extends PortletParameters, ViewState
    *             if no public parameters exist. The keys in the parameter
    *             map are of type String. The values in the parameter map are of type
    *             String array (<code>String[]</code>).
+   *             
+   * @deprecated use {@link #getRenderParameters()} instead.
    */
+
+  @Deprecated
   public java.util.Map<String, String[]> getPublicParameterMap();
 
 }

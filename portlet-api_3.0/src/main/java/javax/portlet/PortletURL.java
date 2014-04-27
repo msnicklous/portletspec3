@@ -27,7 +27,8 @@ package javax.portlet;
 
 
 /**
- * The <CODE>PortletURL</CODE> interface represents a URL
+ * <span class="changed_modified_3_0">The</span> 
+ * <CODE>PortletURL</CODE> interface represents a URL
  * that reference the portlet itself.
  * <p>
  * A PortletURL is created through the <CODE>RenderResponse</CODE>
@@ -52,19 +53,46 @@ public interface PortletURL extends BaseURL, MutableViewState
 {
 
 
-  /**
-   * Removes the specified public render parameter.
-   * The name must reference a public render parameter defined
-   * in the portlet deployment descriptor under the
-   * <code>public-render-parameter</code> element with the
-   * <code>identifier</code> mapping to the parameter name.
-   * 
-   * @param name       a <code>String</code> specifying 
-   *             the name of the public render parameter to be removed
-   *
-   * @exception  java.lang.IllegalArgumentException 
-   *                            if name is <code>null</code>.
-   * @since 2.0
-   */
-  public void removePublicRenderParameter(String name);
+   /**
+    * <div class="changed_added_3_0">
+    * Gets a MutablePortletParameters object encapsulating 
+    * the render parameter values set for this URL.
+    * <p>
+    * Initially these are the same as the render parameter values set on the
+    * portlet request during which the URL is created.  
+    * <p>
+    * Modifying the parameter values encapsulated by the returned object directly
+    * modifies the render parameters applied to the URL.
+    * </div>
+    * 
+    * @return   a mutable <code>PortletParameters</code> object representing
+    *           the private and public render parameters
+    * @since    3.0
+    * @see      PortletParameters 
+    * @see      MutablePortletParameters 
+    */
+
+   @Override
+   public MutablePortletParameters getRenderParameters();
+
+
+   /**
+    * Removes the specified public render parameter.
+    * The name must reference a public render parameter defined
+    * in the portlet deployment descriptor under the
+    * <code>public-render-parameter</code> element with the
+    * <code>identifier</code> mapping to the parameter name.
+    * 
+    * @param name       a <code>String</code> specifying 
+    *             the name of the public render parameter to be removed
+    *
+    * @exception  java.lang.IllegalArgumentException 
+    *                            if name is <code>null</code>.
+    * @since 2.0
+    * 
+    * @deprecated use {@link BaseURL#getRenderParameters()} instead.
+    */
+   
+   @Deprecated
+   public void removePublicRenderParameter(String name);
 }

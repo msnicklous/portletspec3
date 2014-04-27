@@ -505,12 +505,14 @@ h1.hidden {
    text-decoration: line-through; 
 }
 
+/* List of modified files for the index */
 /* the href with the caret makes the links in the overview document work. */
 /* the href with exact file specifier makes the links in the package lists work. */
 
 .indexContainer a[href*="PortletConfig.html"],
 .indexContainer a[href*="PortletPreferences.html"],
 .indexContainer a[href*="GenericPortlet.html"],
+.indexContainer a[href*="ActionRequest.html"],
 .indexContainer a[href*="PortletRequest.html"],
 .indexContainer a[href*="PortletMode.html"],
 .indexContainer a[href*="WindowState.html"],
@@ -527,6 +529,24 @@ h1.hidden {
 { 
    cursor: url(resources/changed_modified_3_0_cursor.cur), auto;
    background: url(resources/changed_modified_3_0.png); 
+   padding-left:0.2em; border-left:solid;
+   border-left-width:thin; border-right:none;
+   border-top:none; border-bottom:none; border-color:green 
+}
+
+/* List of added files */
+
+.indexContainer a[href*="ActionURL.html"],
+.indexContainer a[href*="RenderURL.html"],
+.indexContainer a[href*="MimeResponse.UrlFlag.html"],
+.indexContainer a[href*="MutablePortletParameters.html"],
+.indexContainer a[href*="MutablePortletParameters.ClearBehavior.html"],
+.indexContainer a[href*="PortletParameters.html"],
+.indexContainer a[href*="MutableViewState.html"],
+.indexContainer a[href*="ViewState.html"]
+{ 
+   cursor: url(resources/changed_added_3_0_cursor.cur), auto;
+   background: url(resources/changed_added_3_0.png); 
    padding-left:0.2em; border-left:solid;
    border-left-width:thin; border-right:none;
    border-top:none; border-bottom:none; border-color:green 

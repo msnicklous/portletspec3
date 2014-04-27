@@ -26,14 +26,28 @@ package javax.portlet;
 
 
 /**
- * The current state of the portlet is represented by the private and public 
- * parameters that are set for this request. The <CODE>PortletParameters</CODE> 
- * interface defines the API for accessing these parameters. 
+ * <div class="changed_added_3_0">
+ * The <CODE>PortletParameters</CODE> interface defines the API 
+ * for accessing the parameters that are set for the portlet or on a portlet URL.
+ * <p>
+ * Portlet parameters store state information that the portlet needs to render itself,
+ * generate content by serving resources, or make decisions when executing portlet
+ * actions. Conceptually the portlet parameters correspond to query string parameters
+ * that are stored in the URL, although they are not required to actually be present 
+ * as visible URL parameters.
+ * <p>
+ * There are two types of portlet parameters: private parameters and public parameters.
+ * Private parameters parameters can only be read and set by a single portlet. Public
+ * parameters are shared between portlets.
+ * </div>
+ * @see     MutablePortletParameters
+ * @since   3.0 
  */
-public interface PortletParameters
+public interface PortletParameters extends Cloneable
 {
 
   /**
+   * <div class="changed_added_3_0">
    * Returns the value of a request parameter as a <code>String</code>,
    * or <code>null</code> if the parameter does not exist. Request parameters
    * are extra information sent with the request. The returned parameter 
@@ -48,6 +62,7 @@ public interface PortletParameters
    * If this method is used with a multivalued
    * parameter, the value returned is equal to the first value
    * in the array returned by <code>getParameterValues</code>.
+   * </div>
    *
    * @param name 	a <code>String</code> specifying the 
    *			name of the parameter
@@ -57,6 +72,7 @@ public interface PortletParameters
    *        the parameter does not exist.
    *
    * @see 		#getParameterValues
+   * @since    3.0
    *
    * @exception  java.lang.IllegalArgumentException 
    *                            if name is <code>null</code>.
@@ -67,7 +83,7 @@ public interface PortletParameters
 
 
   /**
-   *
+   * <div class="changed_added_3_0">
    * Returns an <code>Enumeration</code> of <code>String</code>
    * objects containing the names of the parameters contained
    * in this request. If the request has 
@@ -75,6 +91,7 @@ public interface PortletParameters
    * empty <code>Enumeration</code>. 
    * <p>
    * Only parameters targeted to the current portlet are returned.
+   * </div>
    *
    *
    * @return		an <code>Enumeration</code> of <code>String</code>
@@ -82,12 +99,15 @@ public interface PortletParameters
    * 			the name of a request parameter; or an 
    *			empty <code>Enumeration</code> if the
    *			request has no parameters.
+   *
+   * @since 3.0
    */
 
   public java.util.Enumeration<String> getParameterNames();
 
 
   /**
+   * <div class="changed_added_3_0">
    * Returns an array of <code>String</code> objects containing 
    * all of the values the given request parameter has, or 
    * <code>null</code> if the parameter does not exist.
@@ -95,7 +115,7 @@ public interface PortletParameters
    * <p>
    * If the parameter has a single value, the array has a length
    * of 1.
-   *
+   * </div>
    *
    * @param name	a <code>String</code> containing the name of 
    *			the parameter the value of which is requested
@@ -105,6 +125,7 @@ public interface PortletParameters
    *        if the parameter does not exist.
    *
    * @see		#getParameter
+   * @since    3.0
    *
    * @exception  java.lang.IllegalArgumentException 
    *                            if name is <code>null</code>.
@@ -115,7 +136,9 @@ public interface PortletParameters
 
   
   /** 
-   * Returns a <code>Map</code> of all public and private parameters currently 
+   * <div class="changed_added_3_0">
+   * Returns an immutable <code>Map</code> of all public and private parameters 
+   * currently 
    * set for this portlet. Request parameters represent the current portlet state.
    * The returned parameters are "x-www-form-urlencoded" decoded.
    * <p>
@@ -123,6 +146,7 @@ public interface PortletParameters
    * <p>
    * The map may be modified, but modifications do not take effect until the 
    * <code>setParameters()</code> method is called with the modified map as a parameter.
+   * </div>
    *             
    * @return     <code>Map</code> containing parameter names as 
    *             keys and parameter values as map values, or an empty <code>Map</code>
@@ -130,15 +154,17 @@ public interface PortletParameters
    *             map are of type String. The values in the parameter map are of type
    *             String array (<code>String[]</code>).
    *
-   * @since 2.0
+   * @since 3.0
    */
 
   public java.util.Map<String, String[]> getParameterMap();
 
   
   /**
+   * <div class="changed_added_3_0">
    * Returns a boolean value indicating whether the given
-   * parameter is a public render parameter. 
+   * parameter is a public render parameter.
+   * </div> 
    *
    * @param   name
    *          the parameter name
@@ -149,8 +175,25 @@ public interface PortletParameters
    *
    * @exception  java.lang.IllegalArgumentException 
    *                            if name is <code>null</code>.
+   * 
+   * @since    3.0
    */
 
   public boolean isPublicRenderParameter (String name);
+
+  /**
+   * <div class="changed_added_3_0">
+   * Returns a MutablePortletParameters object containing the same
+   * parameters as the original object.
+   * </div>
+   * 
+   * @return Mutable clone of PortletParameters object
+   * 
+   * @throws CloneNotSupportedException
+   * 
+   * @since  3.0
+   */
+  
+  public MutablePortletParameters clone() throws CloneNotSupportedException;
 
 }

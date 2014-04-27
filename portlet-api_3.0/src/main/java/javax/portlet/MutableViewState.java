@@ -3,6 +3,7 @@ package javax.portlet;
 
 
 /**
+ * <div class="changed_added_3_0">
  * The <CODE>MutableViewState</CODE> provides methods that allow  
  * setting view state and portlet mode to record a potential 
  * future portlet view state.
@@ -10,12 +11,14 @@ package javax.portlet;
  * For example, these methods can be used to set the view state on 
  * a <code>PortletURL</code> object. The view state is applied when 
  * the portlet URL containing this view state is activated.
+ * </div>
  *
  * @since 3.0
  */
 public interface MutableViewState extends ViewState {
 
    /**
+    * <div class="changed_added_3_0">
     * Sets the window state of a portlet to the given window state.
     * <p>
     * Possible values are the standard window states and any custom window
@@ -30,6 +33,7 @@ public interface MutableViewState extends ViewState {
     * Not more than one window state can be set.
     * If more than one window state is set, only the last one set
     * is valid.
+    * </div>
     * 
     * @param windowState
     *            the new portlet window state
@@ -45,13 +49,15 @@ public interface MutableViewState extends ViewState {
     *                if the method is invoked after <code>sendRedirect</code>
     *                has been called.
     * 
-    * @see WindowState
+    * @since 3.0
+    * 
     */
 
    public void setWindowState(WindowState windowState)
          throws WindowStateException;
 
    /**
+    * <div class="changed_added_3_0">
     * Sets the portlet mode of a portlet to the given portlet mode.
     * <p>
     * Possible values are the standard portlet modes and any custom portlet
@@ -70,6 +76,7 @@ public interface MutableViewState extends ViewState {
     * <p>
     * Note: The portlet may still be called in a different portlet mode in the
     * next render call, depending on the portlet container / portal.
+    * </div>
     * 
     * @param portletMode
     *            the new portlet mode
@@ -84,6 +91,8 @@ public interface MutableViewState extends ViewState {
     * @exception java.lang.IllegalStateException
     *                if the method is invoked after <code>sendRedirect</code>
     *                has been called.
+    *                
+    * @since 3.0
     */
 
    public void setPortletMode(PortletMode portletMode)

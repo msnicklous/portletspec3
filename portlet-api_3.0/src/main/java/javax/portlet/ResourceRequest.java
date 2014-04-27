@@ -104,8 +104,31 @@ public interface ResourceRequest extends ClientDataRequest {
      *             if no private parameters exist. The keys in the parameter
      *             map are of type String. The values in the parameter map are of type
      *             String array (<code>String[]</code>).
+     *             
+     * @deprecated use {@link PortletRequest#getRenderParameters()} instead.
      */
+  
+    @Deprecated
     public java.util.Map<String, String[]> getPrivateRenderParameterMap();
+    
+    
+    /**
+     * <div class="changed_added_3_0">
+     * Gets the resource parameters set for this request.
+     * <p>
+     * Resource parameters are additional portlet parameters added to the 
+     * URL triggering the request that extend the state information provided by 
+     * the render parameters.
+     * </div>
+     * 
+     * @return   an immutable <code>PortletParameters</code> object representing
+     *           the resource parameters
+     * @since    3.0
+     * @see      PortletParameters 
+     */
+    
+    public PortletParameters getResourceParameters();
+
     
     /**
      * Returns the portal preferred content type for the response.
