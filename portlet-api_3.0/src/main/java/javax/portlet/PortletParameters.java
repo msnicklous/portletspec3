@@ -237,17 +237,16 @@ public interface PortletParameters extends Cloneable
 
   /**
    * <div class="changed_added_3_0">
-   * Returns a MutablePortletParameters object containing the same
-   * parameters as the original object.
+   * Returns a MutablePortletParameters object encapsulating the same
+   * parameters as the original object. The parameters are copied so
+   * that there is no linkage to the original object.
    * </div>
    * 
    * @return Mutable clone of PortletParameters object
    * 
-   * @throws CloneNotSupportedException
-   * 
    * @since  3.0
    */
   
-  public MutablePortletParameters clone() throws CloneNotSupportedException;
+  public MutablePortletParameters clone();
 
 }

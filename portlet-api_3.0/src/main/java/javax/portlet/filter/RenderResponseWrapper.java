@@ -215,10 +215,10 @@ public class RenderResponseWrapper extends PortletResponseWrapper implements Ren
 
     /**
      *  <span class="changed_added_3_0">The default behavior of this method is to call 
-     * <code>createActionURL(UrlFlag)</code> on the wrapped response object.</span>
+     * <code>createActionURL(ParameterCopyOption)</code> on the wrapped response object.</span>
      */
-    public PortletURL createActionURL(UrlFlag flag) throws IllegalStateException {
-       return response.createActionURL(flag);
+    public PortletURL createActionURL(ParameterCopyOption option) throws IllegalStateException {
+       return response.createActionURL(option);
     }
 
     /**
@@ -231,10 +231,10 @@ public class RenderResponseWrapper extends PortletResponseWrapper implements Ren
 
     /**
      *  <span class="changed_added_3_0">The default behavior of this method is to call 
-     * <code>createRenderURL(UrlFlag)</code> on the wrapped response object.</span>
+     * <code>createRenderURL(ParameterCopyOption)</code> on the wrapped response object.</span>
      */
-    public PortletURL createRenderURL(UrlFlag flag) throws IllegalStateException {
-       return response.createRenderURL(flag);
+    public PortletURL createRenderURL(ParameterCopyOption option) throws IllegalStateException {
+       return response.createRenderURL(option);
     }
 
     /**

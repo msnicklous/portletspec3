@@ -39,12 +39,12 @@ public interface MimeResponse extends PortletResponse {
     * Specifies processing when a URL is created.
     * </div>
     * 
-    * @see #createActionURL(UrlFlag)
-    * @see #createRenderURL(UrlFlag)
+    * @see #createActionURL(ParameterCopyOption)
+    * @see #createRenderURL(ParameterCopyOption)
     * 
     * @since 3.0
     */
-   public enum UrlFlag {
+   public enum ParameterCopyOption {
 
       /**
        * <div class="changed_added_3_0">
@@ -456,9 +456,9 @@ public interface MimeResponse extends PortletResponse {
      * a render request.
      * <p>
      * The new render URL will contain render parameters from the
-     * current request as specified by the <code>flag</code> parameter.
+     * current request as specified by the <code>option</code> parameter.
      * <p> 
-     * If the flag value COPY_NO_PARAMETERS is used, it has the effect of
+     * If the parameter value COPY_NO_PARAMETERS is used, it has the effect of
      * removing all private and public parameters from the URL. 
      * <p>
      * The returned URL can be further extended by adding portlet-specific render
@@ -469,16 +469,16 @@ public interface MimeResponse extends PortletResponse {
      * render parameter will be set to the new value or removed when the URL is activated.
      * </div>
      * 
-     * @param flag
+     * @param option
      *            Specifies how current parameters are to be copied to the URL
      *
-     * @see UrlFlag
+     * @see ParameterCopyOption
      * 
      * @return a portlet render URL
      *     
      * @since 3.0
      */
-    public PortletURL createRenderURL(UrlFlag flag);
+    public PortletURL createRenderURL(ParameterCopyOption option);
 
 
     /**
@@ -523,9 +523,9 @@ public interface MimeResponse extends PortletResponse {
      * an action request.
      * <p>
      * The new action URL will contain render parameters from the
-     * current request as specified by the <code>flag</code> parameter.
+     * current request as specified by the <code>option</code> parameter.
      * <p> 
-     * If the flag value COPY_NO_PARAMETERS is used, it has the effect of
+     * If the parameter value COPY_NO_PARAMETERS is used, it has the effect of
      * removing all private and public parameters from the URL. 
      * <p>
      * The returned URL can be further extended by adding portlet-specific action
@@ -538,16 +538,16 @@ public interface MimeResponse extends PortletResponse {
      * removed when the URL is activated.
      * </div>
      * 
-     * @param flag
+     * @param option
      *            Specifies how current parameters are to be copied to the URL
      *
-     * @see UrlFlag
+     * @see ParameterCopyOption
      * 
      * @return a portlet action URL
      *     
      * @since 3.0
      */
-    public PortletURL createActionURL(UrlFlag flag);
+    public PortletURL createActionURL(ParameterCopyOption option);
 
 	
 	/**

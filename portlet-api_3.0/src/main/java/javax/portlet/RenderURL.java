@@ -27,7 +27,7 @@ package javax.portlet;
 
 /**
  * <div class="changed_added_3_0">
- * This is a tag interface marking a render URL.
+ * This is a marker interface for a render URL.
  * <p>
  * A render URL is created with {@link MimeResponse#createRenderURL()}. 
  * </div>

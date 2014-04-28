@@ -481,7 +481,7 @@ h1.hidden {
 /* stylesheets for colored change bars */
 
 .changed_added_3_0 { 
-   cursor: url(resources/changed_added_3_0_cursor.cur), auto;
+   cursor: url(resources/changed_added_3_0_cursor.png), auto;
    background: url(resources/changed_added_3_0.png); 
    padding-left:0.2em; border-left:solid;
    border-left-width:thin; border-right:none;
@@ -489,7 +489,7 @@ h1.hidden {
 }
 
 .changed_modified_3_0 { 
-   cursor: url(resources/changed_modified_3_0_cursor.cur), auto;
+   cursor: url(resources/changed_modified_3_0_cursor.png), auto;
    background: url(resources/changed_modified_3_0.png); 
    padding-left:0.2em; border-left:solid;
    border-left-width:thin; border-right:none;
@@ -497,7 +497,7 @@ h1.hidden {
 }
 
 .changed_deleted_3_0 { 
-   cursor: url(resources/changed_deleted_3_0_cursor.cur), auto;
+   cursor: url(resources/changed_deleted_3_0_cursor.png), auto;
    background: url(resources/changed_deleted_3_0.png); 
    padding-left:0.2em; border-left:solid;
    border-left-width:thin; border-right:none;
@@ -527,7 +527,7 @@ h1.hidden {
 .indexContainer a[href*="ResourceResponseWrapper.html"],
 .indexContainer a[href*="RenderResponseWrapper.html"]
 { 
-   cursor: url(resources/changed_modified_3_0_cursor.cur), auto;
+   cursor: url(resources/changed_modified_3_0_cursor.png), auto;
    background: url(resources/changed_modified_3_0.png); 
    padding-left:0.2em; border-left:solid;
    border-left-width:thin; border-right:none;
@@ -538,14 +538,14 @@ h1.hidden {
 
 .indexContainer a[href*="ActionURL.html"],
 .indexContainer a[href*="RenderURL.html"],
-.indexContainer a[href*="MimeResponse.UrlFlag.html"],
+.indexContainer a[href*="MimeResponse.ParameterCopyOption.html"],
 .indexContainer a[href*="MutablePortletParameters.html"],
-.indexContainer a[href*="MutablePortletParameters.ClearBehavior.html"],
+.indexContainer a[href*="MutablePortletParameters.ClearOption.html"],
 .indexContainer a[href*="PortletParameters.html"],
 .indexContainer a[href*="MutableViewState.html"],
 .indexContainer a[href*="ViewState.html"]
 { 
-   cursor: url(resources/changed_added_3_0_cursor.cur), auto;
+   cursor: url(resources/changed_added_3_0_cursor.png), auto;
    background: url(resources/changed_added_3_0.png); 
    padding-left:0.2em; border-left:solid;
    border-left-width:thin; border-right:none;

@@ -46,11 +46,11 @@ public interface MutablePortletParameters extends PortletParameters {
     * Specifies which parameters are to be cleared
     * </div>
     * 
-    * @see #clear(ClearBehavior)
+    * @see #clear(ClearOption)
     * 
     * @since 3.0
     */
-   public enum ClearBehavior {
+   public enum ClearOption {
 
       /**
        * <div class="changed_added_3_0">
@@ -232,8 +232,8 @@ public interface MutablePortletParameters extends PortletParameters {
      * not contained in the input object will be cleared, and any new parameters
      * will be set.
      * <p>
-     * After the operation completes, there will be no linkage between the input
-     * PortletParameters object and the target object.
+     * The parameters are copied so that after the operation completes, there 
+     * is no linkage to the input PortletParameters object.
      * </div>
      *   
      * @param params - input portlet parameters
@@ -246,7 +246,7 @@ public interface MutablePortletParameters extends PortletParameters {
     /**
      * <div class="changed_added_3_0">
      * Clears all currently set private parameters.
-     * Same as calling {@link #clear(ClearBehavior)} with the parameter set to
+     * Same as calling {@link #clear(ClearOption)} with the parameter set to
      * CLEAR_PRIVATE_PARAMETERS.
      * </div> 
      * @since 3.0
@@ -264,9 +264,9 @@ public interface MutablePortletParameters extends PortletParameters {
      * <li>CLEAR_ALL_PARAMETERS - clears all private and public parameters.</li>
      * </ul>
      * </div> 
-     * @param clearBehavior Specfies which parameters are to be cleared.
+     * @param clearOption Specfies which parameters are to be cleared.
      * @since 3.0
      */
     
-    public void clear(ClearBehavior clearBehavior);
+    public void clear(ClearOption clearOption);
 }
