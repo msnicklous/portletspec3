@@ -24,6 +24,8 @@
 
 package javax.portlet;
 
+import java.util.Set;
+
 
 /**
  * <div class="changed_added_3_0">
@@ -157,7 +159,7 @@ public interface PortletParameters extends Cloneable
    * @since 3.0
    */
 
-  public java.util.Enumeration<String> getParameterNames();
+  public Set<String> getParameterNames();
 
 
   /**
@@ -189,31 +191,6 @@ public interface PortletParameters extends Cloneable
   public String[] getParameterValues(String name);
 
   
-  /** 
-   * <div class="changed_added_3_0">
-   * Returns an immutable <code>Map</code> of all public and private parameters 
-   * currently 
-   * set for this portlet. Request parameters represent the current portlet state.
-   * The returned parameters are "x-www-form-urlencoded" decoded.
-   * <p>
-   * If no parameters exist, this method returns an empty <code>Map</code>.
-   * <p>
-   * The map may be modified, but modifications do not take effect until the 
-   * <code>setParameters()</code> method is called with the modified map as a parameter.
-   * </div>
-   *             
-   * @return     <code>Map</code> containing parameter names as 
-   *             keys and parameter values as map values, or an empty <code>Map</code>
-   *             if no parameters exist. The keys in the parameter
-   *             map are of type String. The values in the parameter map are of type
-   *             String array (<code>String[]</code>).
-   *
-   * @since 3.0
-   */
-
-  public java.util.Map<String, String[]> getParameterMap();
-
-  
   /**
    * <div class="changed_added_3_0">
    * Returns a boolean value indicating whether the given
@@ -235,6 +212,24 @@ public interface PortletParameters extends Cloneable
 
   public boolean isPublicRenderParameter (String name);
 
+  
+  /**
+   * <div class="changed_added_3_0">
+   * Returns a <code>true</code> if no parameters have been set.
+   * </div> 
+   *
+   * @param   name
+   *          the parameter name
+   *
+   * @return  <code>true</code> if the object contains no parameters.
+   *          <code>false</code> otherwise
+   * 
+   * @since    3.0
+   */
+
+  public boolean isEmpty ();
+
+  
   /**
    * <div class="changed_added_3_0">
    * Returns a MutablePortletParameters object encapsulating the same

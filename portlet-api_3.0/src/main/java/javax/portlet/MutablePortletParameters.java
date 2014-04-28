@@ -81,30 +81,6 @@ public interface MutablePortletParameters extends PortletParameters {
    }
 
    
-   /** 
-    * <div class="changed_added_3_0">
-    * Returns a mutable <code>Map</code> of all public and private parameters currently 
-    * set for this portlet. Request parameters represent the current portlet state.
-    * The returned parameters are "x-www-form-urlencoded" decoded.
-    * <p>
-    * If no parameters exist, this method returns an empty <code>Map</code>.
-    * <p>
-    * The map may be modified, but modifications do not take effect until the 
-    * <code>setParameters()</code> method is called with the modified map as a parameter.
-    * </div>
-    *             
-    * @return     <code>Map</code> containing parameter names as 
-    *             keys and parameter values as map values, or an empty <code>Map</code>
-    *             if no parameters exist. The keys in the parameter
-    *             map are of type String. The values in the parameter map are of type
-    *             String array (<code>String[]</code>).
-    *
-    * @since 3.0
-    */
-
-   public java.util.Map<String, String[]> getParameterMap();
-
-   
     /**
      * <div class="changed_added_3_0">
      * Sets the given String parameter to this URL. 
@@ -116,7 +92,7 @@ public interface MutablePortletParameters extends PortletParameters {
      * <p>
      * A parameter value of <code>null</code> indicates that this
      * parameter should be removed. 
-     * However, an empty string value ("") is a valid value.
+     * However, an empty string value ("") is valid.
      * </div>
      *
      * @param   name
@@ -162,45 +138,6 @@ public interface MutablePortletParameters extends PortletParameters {
      */
 
     public void setParameter (String name, String... values);
-
-
-    /**
-     * <div class="changed_added_3_0">
-     * Sets a parameter map for the render request.
-     * <p>
-     * This method can be used to set both public and private render parameters. 
-     * <p>
-     * These parameters will be accessible in all subsequent render calls via the
-     * PortletRequest.getParameter call until a new request is targeted to the portlet.
-     * <p>
-     * Any previously set private render parameter that is not contained in the new map
-     * is removed. However, public render parameters cannot be removed by excluding
-     * them from the map. Public render parameters that are not included in the map
-     * remain unchanged.
-     * <p>
-     * The given parameters do not need to be encoded prior to calling this method.
-     * <p>
-     * The portlet should not modify the map any further after calling this method.
-     * </div>
-     * 
-     * @param parameters - Map containing parameter names for the render phase as keys and parameter values
-     *                     as map values. The keys in the parameter map must be of type String and may not
-     *                     be <code>null</code> or the null string (""). The values in the parameter map must be of type
-     *                     String array (<code>String[]</code>). Neither the values array nor any of its elements may be
-     *                     <code>null</code>; however, the null string ("") is allowed.
-     *                     Map containing parameter names for the render phase as keys and parameter values
-     * 
-     * @exception java.lang.IllegalArgumentException - if parameters is <code>null</code>, if 
-     *                     any of the keys in the Map are <code>null</code> or the null string, if any of the keys is
-     *                     not a <code>String</code>, if any of the values is not a String array, or if any of the String
-     *                     array elements are null. 
-     *            java.lang.IllegalStateException - if the method is
-     *                    invoked after sendRedirect has been called.
-     * 
-     * @since  3.0
-     */
-
-    public void setParameters(java.util.Map<String, String[]> parameters);
 
     
     /**
