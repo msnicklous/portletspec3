@@ -586,7 +586,7 @@ public interface MimeResponse extends PortletResponse {
      * The returned URL can be further extended by adding portlet-specific
      * parameters .
      * <p>
-     * The created URL will per default contain the current 
+     * The created URL will by default contain the current 
      * cacheability setting of the parent resource. 
      * If no parent resource is available, <code>PAGE</code> is the default.
      * </div>

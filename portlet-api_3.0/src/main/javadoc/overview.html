@@ -16,10 +16,17 @@
     <!-- change class below to "indexContainer" to activate color changebars in the change history -->
     <div class="indexContainer-not">
     <ul>
-    <li>20140425: Resolved PORTLETSPEC3-11: Added interfaces {@link javax.portlet.PortletParameters}, 
-    {@link javax.portlet.MutablePortletParameters},
-    {@link javax.portlet.ViewState},
-    and {@link javax.portlet.MutableViewState}. See <a href="doc-files/PortletState.pdf">Diagram</a>.           
+    <li>20140425: Resolved PORTLETSPEC3-11: Integrated new parameter handling concept. Deprecated JSR 286 parameter handling methods.
+    <br>
+    Added: {@link javax.portlet.PortletParameters}, {@link javax.portlet.MutablePortletParameters},
+    {@link javax.portlet.ViewState}, {@link javax.portlet.MutableViewState},  
+    {@link javax.portlet.ActionURL}, {@link javax.portlet.RenderURL}.
+    <br>  
+    Updated: {@link javax.portlet.BaseURL}, {@link javax.portlet.PortletURL},
+    {@link javax.portlet.ResourceURL}, {@link javax.portlet.ActionURL},
+    {@link javax.portlet.PortletRequest}, {@link javax.portlet.ResourceRequest},  {@link javax.portlet.ActionRequest},
+    {@link javax.portlet.PortletResponse}, {@link javax.portlet.ResourceResponse},  {@link javax.portlet.MimeResponse}.
+    <br>See <a href="doc-files/PortletState.pdf">Diagram</a>.           
     </li>
     <li>20130829: PORTLETSPEC3-16: Added methods to GenericPortlet to allow annotation handling to be extended: 
     {@link javax.portlet.GenericPortlet#dispatchAnnotatedActionMethod dispatchAnnotatedActionMethod},

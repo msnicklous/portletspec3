@@ -146,6 +146,16 @@ public interface ResourceResponse extends MimeResponse {
      *             for creating render URLs.
      */
 	public PortletURL createRenderURL();
+   
+   
+  /**
+    * @throws java.lang.IllegalStateException
+    *             if the cacheability level of the resource URL
+    *             triggering this <code>serveResource</code> call
+    *             is not <code>PAGE</code> and thus does not allow
+    *             for creating render URLs.
+    */
+  public PortletURL createRenderURL(ParameterCopyOption option);
 
 	/**
      * @throws java.lang.IllegalStateException
@@ -155,6 +165,15 @@ public interface ResourceResponse extends MimeResponse {
      *             for creating action URLs.
      */
 	public PortletURL createActionURL();
+
+   /**
+     * @throws java.lang.IllegalStateException
+     *             if the cacheability level of the resource URL
+     *             triggering this <code>serveResource</code> call
+     *             is not <code>PAGE</code> and thus does not allow
+     *             for creating action URLs.
+     */
+   public PortletURL createActionURL(ParameterCopyOption option);
 
 	/**
      * @throws java.lang.IllegalStateException

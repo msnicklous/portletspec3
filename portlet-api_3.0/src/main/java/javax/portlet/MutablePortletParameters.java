@@ -114,11 +114,9 @@ public interface MutablePortletParameters extends PortletParameters {
      * The parameters do not need to be encoded prior to calling this
      * method.
      * <p>
-     * A portlet container may prefix the attribute names internally 
-     * in order to preserve a unique namespace for the portlet.
-     * <p>
      * A parameter value of <code>null</code> indicates that this
      * parameter should be removed. 
+     * However, an empty string value ("") is a valid value.
      * </div>
      *
      * @param   name
@@ -144,12 +142,10 @@ public interface MutablePortletParameters extends PortletParameters {
      * The parameters do not need to be encoded prior to calling this
      * method.
      * <p>
-     * A portlet container may prefix the attribute names internally 
-     * in order to preserve a unique namespace for the portlet.
-     * <p>
      * A parameter value of <code>null</code> indicates that this
      * parameter should be removed. If the values String array is not null,
      * no individual element of the array may be null.
+     * However, an empty string value ("") is allowed.
      * </div>
      *
      * @param   name
@@ -165,7 +161,7 @@ public interface MutablePortletParameters extends PortletParameters {
      *                            <code>null</code>.
      */
 
-    public void setParameter (String name, String[] values);
+    public void setParameter (String name, String... values);
 
 
     /**
@@ -209,7 +205,7 @@ public interface MutablePortletParameters extends PortletParameters {
     
     /**
      * <div class="changed_added_3_0">
-     * Removes the given parameter. All values associated with the 
+     * Removes the given public or private parameter. All values associated with the 
      * name provided are removed.
      * </div>
      *
