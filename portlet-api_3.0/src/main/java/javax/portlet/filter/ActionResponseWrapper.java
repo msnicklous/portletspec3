@@ -25,10 +25,10 @@
 package javax.portlet.filter;
 
 import java.io.IOException;
-import java.util.Enumeration;
 import java.util.Map;
 
 import javax.portlet.ActionResponse;
+import javax.portlet.MutablePortletParameters;
 import javax.portlet.PortletMode;
 import javax.portlet.PortletModeException;
 import javax.portlet.WindowState;
@@ -98,6 +98,7 @@ public class ActionResponseWrapper extends PortletResponseWrapper implements Act
      * The default behavior of this method is to call 
      * <code>setRenderParameter(key, value)</code> on the wrapped response object.
      */
+    @Deprecated
     public void setRenderParameter(String key, String value) {
         response.setRenderParameter(key, value);
     }
@@ -106,7 +107,8 @@ public class ActionResponseWrapper extends PortletResponseWrapper implements Act
      * The default behavior of this method is to call 
      * <code>setRenderParameter(key, value)</code> on the wrapped response object.
      */
-    public void setRenderParameter(String key, String[] values) {
+    @Deprecated
+    public void setRenderParameter(String key, String... values) {
         response.setRenderParameter(key, values);
     }
 
@@ -114,6 +116,7 @@ public class ActionResponseWrapper extends PortletResponseWrapper implements Act
      * The default behavior of this method is to call 
      * <code>setRenderParameters(parameters)</code> on the wrapped response object.
      */
+    @Deprecated
     public void setRenderParameters(Map<String, String[]> parameters) {
         response.setRenderParameters(parameters);
     }
@@ -161,6 +164,7 @@ public class ActionResponseWrapper extends PortletResponseWrapper implements Act
      * The default behavior of this method is to call 
      * <code>getRenderParameterMap()</code> on the wrapped response object.
      */
+    @Deprecated
     public Map<String, String[]> getRenderParameterMap() {
         return response.getRenderParameterMap();
     }
@@ -185,80 +189,17 @@ public class ActionResponseWrapper extends PortletResponseWrapper implements Act
      *  The default behavior of this method is to call 
      * <code>removePublicRenderParameter()</code> on the wrapped response object.
      */
+	@Deprecated
 	public void removePublicRenderParameter(String name) {
 		response.removePublicRenderParameter(name);		
 	}
 
    /**
     *  The default behavior of this method is to call 
-    * <code>setParameter()</code> on the wrapped response object.
+    * <code>getRenderParameter()</code> on the wrapped response object.
     */
-   public void setParameter(String name, String value) {
-      response.setParameter(name, value);     
-   }
-
-   /**
-    *  The default behavior of this method is to call 
-    * <code>setParameter()</code> on the wrapped response object.
-    */
-   public void setParameter(String name, String[] values) {
-      response.setParameter(name, values);     
-   }
-
-   /**
-    *  The default behavior of this method is to call 
-    * <code>setParameters()</code> on the wrapped response object.
-    */
-   public void setParameters(Map<String, String[]> parameters) {
-      response.setParameters(parameters);     
-   }
-
-   /**
-    *  The default behavior of this method is to call 
-    * <code>getParameter()</code> on the wrapped response object.
-    */
-   public String getParameter(String name) {
-      return response.getParameter(name);     
-   }
-
-   /**
-    *  The default behavior of this method is to call 
-    * <code>getParameterNames()</code> on the wrapped response object.
-    */
-   public Enumeration<String> getParameterNames() {
-      return response.getParameterNames();     
-   }
-
-   /**
-    *  The default behavior of this method is to call 
-    * <code>getParameterValues()</code> on the wrapped response object.
-    */
-   public String[] getParameterValues(String name) {
-      return response.getParameterValues(name);     
-   }
-
-   /**
-    *  The default behavior of this method is to call 
-    * <code>getParameterMap()</code> on the wrapped response object.
-    */
-   public Map<String, String[]> getParameterMap() {
-      return response.getParameterMap();     
-   }
-
-   /**
-    *  The default behavior of this method is to call 
-    * <code>removeParameter()</code> on the wrapped response object.
-    */
-   public void removeParameter(String name) {
-      response.removeParameter(name);     
-   }
-
-   /**
-    *  The default behavior of this method is to call 
-    * <code>isPublicRenderParameter()</code> on the wrapped response object.
-    */
-   public boolean isPublicRenderParameter(String name) {
-      return response.isPublicRenderParameter(name);     
+   public MutablePortletParameters getRenderParameters() {
+      return response.getRenderParameters();
    }
 
 }

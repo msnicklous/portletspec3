@@ -54,9 +54,10 @@ public class PortletRequestWrapper implements PortletRequest {
 
    /** 
     * Require having a request for constructing
-    * the wrapper.
-    *
+    * the wrapper
     */
+   
+   @SuppressWarnings("unused")
    private PortletRequestWrapper() {
    }
 
@@ -413,15 +414,6 @@ public class PortletRequestWrapper implements PortletRequest {
    @Deprecated
    public Map<String, String[]> getPublicParameterMap() {
       return request.getPublicParameterMap();
-   }
-
-   /**
-    *  The default behavior of this method is to call 
-    * <code>isPublicRenderParameter()</code> on the wrapped response object.
-    */
-   @Deprecated
-   public boolean isPublicRenderParameter(String name) {
-      return request.isPublicRenderParameter(name);     
    }
 
 }

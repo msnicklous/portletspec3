@@ -24,14 +24,12 @@
 
 package javax.portlet;
 
-import javax.portlet.MimeResponse.UrlFlag;
-
 /**
  * <div class="changed_added_3_0">
  * The <CODE>MutablePortletParameters</CODE> provides methods that allow  
  * setting parameters to record a potential future portlet state.
  * <p>
- * For example, these methods can be used to set parameters on 
+ * For example, these methods can be used to set render parameters on 
  * a <code>PortletURL</code> object. When the portlet URL containing
  * these parameters is activated, the state represented by the parameters
  * becomes the new current state.

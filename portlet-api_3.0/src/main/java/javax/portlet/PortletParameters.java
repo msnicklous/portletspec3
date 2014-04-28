@@ -33,12 +33,66 @@ package javax.portlet;
  * Portlet parameters store state information that the portlet needs to render itself,
  * generate content by serving resources, or make decisions when executing portlet
  * actions. Conceptually the portlet parameters correspond to query string parameters
- * that are stored in the URL, although they are not required to actually be present 
- * as visible URL parameters.
+ * that are stored in the URL used to access the portlet, although they are not
+ * required to actually be present on the URL as visible parameters.
  * <p>
- * There are two types of portlet parameters: private parameters and public parameters.
- * Private parameters parameters can only be read and set by a single portlet. Public
- * parameters are shared between portlets.
+ * Private parameters parameters are available exclusively to a single portlet. 
+ * Public parameters can be shared between portlets.
+ * <p>
+ * The portlet parameters governing the request can be read during all portlet
+ * execution phases through the {@link PortletParameters} object available 
+ * from the portlet request object. Portlet parameters
+ * can be set for subsequent or future portlet execution phases through
+ * the {@link MutablePortletParameters} object available from the
+ * portlet response object or from the portlet URL.
+ * <p>
+ * Different types of portlet parameters are distinguished 
+ * according to their use. 
+ * <dl>
+ * <dt>Render Parameters</dt>
+ * <dd>
+ * Set on the response during the Action and Event phases to govern content
+ * generation during the Render and Resource phases. Also set on render URLs
+ * to move the portlet to a new render state when the URL is triggered.
+ * <p>
+ * Refer to {@link PortletRequest#getRenderParameters()},
+ * {@link StateAwareResponse#getRenderParameters()}, and
+ * {@link PortletURL#getRenderParameters()}.
+ * <p>
+ * Example: Render URLs with differing render parameters can be used to
+ * implement tabbed navigation within a portlet.
+ * </dd> 
+ * <dt>Resource Parameters</dt>
+ * <dd>
+ * Provide additional information about the content to be generated when
+ * serving a resource for the governing render state.
+ * Set on resource URLs and made available to the portlet through the
+ * resource request when the URL is triggered.
+ * <p>
+ * Refer to {@link ResourceRequest#getResourceParameters()} and
+ * {@link ResourceURL#getResourceParameters()}.
+ * <p>
+ * Example: Portlets may require several different pieces of content 
+ * to be served for the governing render state.
+ * Resource URLs with differing resource parameters can be used to
+ * determine which content is to be served for a specific request.
+ * </dd> 
+ * <dt>Action Parameters</dt>
+ * <dd>
+ * Provide additional information about the action to be executed
+ * for the governing render state.
+ * Set on action URLs and made available to the portlet through the
+ * action request when the URL is triggered.
+ * <p>
+ * Refer to {@link ActionRequest#getActionParameters()} and
+ * {@link ActionURL#getActionParameters()}.
+ * <p>
+ * Example: Portlets may render a number of buttons or links
+ * for the governing render state.
+ * Action URLs with differing action parameters can be used to
+ * determine which action is to be executed for a specific request.
+ * </dd> 
+ * </dl>
  * </div>
  * @see     MutablePortletParameters
  * @since   3.0 
