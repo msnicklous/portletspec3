@@ -181,6 +181,11 @@ public interface MutablePortletParameters extends PortletParameters {
      * Clears all currently set private parameters.
      * Same as calling {@link #clear(ClearOption)} with the parameter set to
      * CLEAR_PRIVATE_PARAMETERS.
+     * <p>
+     * If the target MutablePortletParameters object was retrieved from 
+     * a response or a URL, changes will be immediately active. 
+     * The new state will be available during subsequent requests as defined 
+     * by the response or URL object. 
      * </div> 
      * @since 3.0
      */
@@ -196,6 +201,11 @@ public interface MutablePortletParameters extends PortletParameters {
      * <li>CLEAR_PUBLIC_PARAMETERS - clears all public parameters.</li>
      * <li>CLEAR_ALL_PARAMETERS - clears all private and public parameters.</li>
      * </ul>
+     * <p>
+     * If the target MutablePortletParameters object was retrieved from 
+     * a response or a URL, changes will be immediately active. 
+     * The new state will be available during subsequent requests as defined 
+     * by the response or URL object. 
      * </div> 
      * @param clearOption Specfies which parameters are to be cleared.
      * @since 3.0

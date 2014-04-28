@@ -218,9 +218,6 @@ public interface PortletParameters extends Cloneable
    * Returns a <code>true</code> if no parameters have been set.
    * </div> 
    *
-   * @param   name
-   *          the parameter name
-   *
    * @return  <code>true</code> if the object contains no parameters.
    *          <code>false</code> otherwise
    * 

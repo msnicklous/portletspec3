@@ -29,8 +29,10 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.Locale;
 
+import javax.portlet.ActionURL;
 import javax.portlet.CacheControl;
 import javax.portlet.PortletURL;
+import javax.portlet.RenderURL;
 import javax.portlet.ResourceResponse;
 import javax.portlet.ResourceURL;
 
@@ -229,7 +231,7 @@ public class ResourceResponseWrapper extends PortletResponseWrapper implements R
      *  The default behavior of this method is to call 
      * <code>createActionURL()</code> on the wrapped response object.
      */
-    public PortletURL createActionURL() throws IllegalStateException {
+    public ActionURL createActionURL() throws IllegalStateException {
        return response.createActionURL();
     }
 
@@ -237,7 +239,7 @@ public class ResourceResponseWrapper extends PortletResponseWrapper implements R
      *  <span class="changed_added_3_0">The default behavior of this method is to call 
      * <code>createActionURL(ParameterCopyOption)</code> on the wrapped response object.</span>
      */
-    public PortletURL createActionURL(ParameterCopyOption option) throws IllegalStateException {
+    public ActionURL createActionURL(ParameterCopyOption option) throws IllegalStateException {
        return response.createActionURL(option);
     }
 
@@ -245,7 +247,7 @@ public class ResourceResponseWrapper extends PortletResponseWrapper implements R
      *  The default behavior of this method is to call 
      * <code>createRenderURL()</code> on the wrapped response object.
      */
-    public PortletURL createRenderURL() throws IllegalStateException {
+    public RenderURL createRenderURL() throws IllegalStateException {
        return response.createRenderURL();
     }
 
@@ -253,7 +255,7 @@ public class ResourceResponseWrapper extends PortletResponseWrapper implements R
      *  <span class="changed_added_3_0">The default behavior of this method is to call 
      * <code>createRenderURL(ParameterCopyOption)</code> on the wrapped response object.</span>
      */
-    public PortletURL createRenderURL(ParameterCopyOption option) throws IllegalStateException {
+    public RenderURL createRenderURL(ParameterCopyOption option) throws IllegalStateException {
        return response.createRenderURL(option);
     }
 
