@@ -140,20 +140,20 @@ public interface PortletParameters extends Cloneable
 
   /**
    * <div class="changed_added_3_0">
-   * Returns an <code>Enumeration</code> of <code>String</code>
+   * Returns a <code>Set</code> of <code>String</code>
    * objects containing the names of the parameters contained
-   * in this request. If the request has 
-   * no parameters, the method returns an 
-   * empty <code>Enumeration</code>. 
+   * in this request. 
+   * Changing the <code>Set</code> has no effect on the originating 
+   * PortletParameters object. 
    * <p>
-   * Only parameters targeted to the current portlet are returned.
+   * Only parameter names targeted to the current portlet are returned.
    * </div>
    *
    *
-   * @return		an <code>Enumeration</code> of <code>String</code>
+   * @return		a <code>Set</code> of <code>String</code>
    *			objects, each <code>String</code> containing
    * 			the name of a request parameter; or an 
-   *			empty <code>Enumeration</code> if the
+   *			empty <code>Set</code> if the
    *			request has no parameters.
    *
    * @since 3.0

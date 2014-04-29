@@ -33,6 +33,11 @@ package javax.portlet;
  * a <code>PortletURL</code> object. When the portlet URL containing
  * these parameters is activated, the state represented by the parameters
  * becomes the new current state.
+ * <p>
+ * If the target MutablePortletParameters object was retrieved from 
+ * a response or a URL, changes made will be immediately active. 
+ * The new state will be available during subsequent requests as defined 
+ * by the response or URL object. 
  * </div>
  *
  * @see   PortletParameters
@@ -83,16 +88,17 @@ public interface MutablePortletParameters extends PortletParameters {
    
     /**
      * <div class="changed_added_3_0">
-     * Sets the given String parameter to this URL. 
+     * Sets a String parameter. 
+     * If the parameter already exists, this method replaces 
+     * all existing values with the new value.
      * <p>
-     * This method replaces all parameters with the given key.
-     * <p>
-     * The parameters do not need to be encoded prior to calling this
+     * The parameters should not be encoded prior to calling this
      * method.
      * <p>
-     * A parameter value of <code>null</code> indicates that this
-     * parameter should be removed. 
-     * However, an empty string value ("") is valid.
+     * A parameter value of <code>null</code> or the empty string ("")
+     * creates a parameter with a value of the empty string ("").
+     * <p>
+     * To remove a parameter, use {@link #removeParameter(String)}.
      * </div>
      *
      * @param   name
@@ -111,17 +117,17 @@ public interface MutablePortletParameters extends PortletParameters {
 
     /**
      * <div class="changed_added_3_0">
-     * Sets the given String array parameter to this URL. 
+     * Sets a String array parameter. 
+     * If the parameter already exists, this method replaces 
+     * all existing values with the new value array.
      * <p>
-     * This method replaces all parameters with the given key.
-     * <p>
-     * The parameters do not need to be encoded prior to calling this
+     * The parameters should not be encoded prior to calling this
      * method.
      * <p>
-     * A parameter value of <code>null</code> indicates that this
-     * parameter should be removed. If the values String array is not null,
-     * no individual element of the array may be null.
-     * However, an empty string value ("") is allowed.
+     * A parameter value of <code>null</code> or the empty string ("")
+     * creates a parameter with a value of the empty string ("").
+     * <p>
+     * To remove a parameter, use {@link #removeParameter(String)}.
      * </div>
      *
      * @param   name
@@ -142,8 +148,8 @@ public interface MutablePortletParameters extends PortletParameters {
     
     /**
      * <div class="changed_added_3_0">
-     * Removes the given public or private parameter. All values associated with the 
-     * name provided are removed.
+     * Removes the given public or private parameter. 
+     * All values associated with the name are removed.
      * </div>
      *
      * @param   name
@@ -161,12 +167,10 @@ public interface MutablePortletParameters extends PortletParameters {
     /**
      * <div class="changed_added_3_0">
      * Makes the public and private parameters identical to 
-     * those of the input PortletParameters object. Any public or private parameters
-     * not contained in the input object will be cleared, and any new parameters
-     * will be set.
+     * those of the input PortletParameters object.
      * <p>
      * The parameters are copied so that after the operation completes, there 
-     * is no linkage to the input PortletParameters object.
+     * is no linkage to the input object.
      * </div>
      *   
      * @param params - input portlet parameters
@@ -181,11 +185,6 @@ public interface MutablePortletParameters extends PortletParameters {
      * Clears all currently set private parameters.
      * Same as calling {@link #clear(ClearOption)} with the parameter set to
      * CLEAR_PRIVATE_PARAMETERS.
-     * <p>
-     * If the target MutablePortletParameters object was retrieved from 
-     * a response or a URL, changes will be immediately active. 
-     * The new state will be available during subsequent requests as defined 
-     * by the response or URL object. 
      * </div> 
      * @since 3.0
      */
@@ -196,16 +195,12 @@ public interface MutablePortletParameters extends PortletParameters {
     /**
      * <div class="changed_added_3_0">
      * Clears all currently set parameters according to the specified clear behavior.
+     * <p>
      * <ul>
      * <li>CLEAR_PRIVATE_PARAMETERS - clears all private parameters.</li>
      * <li>CLEAR_PUBLIC_PARAMETERS - clears all public parameters.</li>
      * <li>CLEAR_ALL_PARAMETERS - clears all private and public parameters.</li>
      * </ul>
-     * <p>
-     * If the target MutablePortletParameters object was retrieved from 
-     * a response or a URL, changes will be immediately active. 
-     * The new state will be available during subsequent requests as defined 
-     * by the response or URL object. 
      * </div> 
      * @param clearOption Specfies which parameters are to be cleared.
      * @since 3.0
