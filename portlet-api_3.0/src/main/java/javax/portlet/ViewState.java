@@ -15,7 +15,8 @@ public interface ViewState {
     * Returns the current portlet mode of the portlet.
     * </div>
     *
-    * @return     the portlet mode
+    * @return     the portlet mode. If the portlet mode is not available, 
+    *             {@link PortletMode#UNDEFINED} is returned.
     * @see        PortletMode
     * @since      3.0
     */
@@ -27,7 +28,8 @@ public interface ViewState {
     * Returns the current window state of the portlet.
     * </div>
     *
-    * @return     the window state
+    * @return     the window state. If the window state is not available, 
+    *             {@link WindowState#UNDEFINED} is returned.
     * @see        WindowState
     * @since      3.0
     */

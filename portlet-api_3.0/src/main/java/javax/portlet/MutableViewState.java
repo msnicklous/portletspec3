@@ -15,7 +15,7 @@ package javax.portlet;
  *
  * @since 3.0
  */
-public interface MutableViewState extends ViewState {
+public interface MutableViewState extends ViewState, Mutable {
 
    /**
     * <div class="changed_added_3_0">
@@ -48,6 +48,8 @@ public interface MutableViewState extends ViewState {
     * @exception java.lang.IllegalStateException
     *                if the method is invoked after <code>sendRedirect</code>
     *                has been called.
+    * @exception java.lang.IllegalArgumentException
+    *                if the input parameter is <code>null</code>.
     * 
     * @since 3.0
     * 
@@ -91,6 +93,8 @@ public interface MutableViewState extends ViewState {
     * @exception java.lang.IllegalStateException
     *                if the method is invoked after <code>sendRedirect</code>
     *                has been called.
+    * @exception java.lang.IllegalArgumentException
+    *                if the input parameter is <code>null</code>.
     *                
     * @since 3.0
     */

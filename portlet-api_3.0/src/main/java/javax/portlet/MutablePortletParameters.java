@@ -43,7 +43,7 @@ package javax.portlet;
  * @see   PortletParameters
  * @since 3.0
  */
-public interface MutablePortletParameters extends PortletParameters {
+public interface MutablePortletParameters extends PortletParameters, Mutable {
 
    
    /**
