@@ -38,8 +38,7 @@ public interface ActionURL extends PortletURL
 
    /**
     * <div class="changed_added_3_0">
-    * Gets a MutablePortletParameters object encapsulating 
-    * the action parameter values set for this URL.
+    * Gets the action parameter values set for this URL.
     * <p>
     * Action parameters are additional portlet parameters added to the 
     * URL that extend the state information provided by 
@@ -49,14 +48,16 @@ public interface ActionURL extends PortletURL
     * <p>
     * Modifying the parameter values encapsulated by the returned object directly
     * modifies the action parameters applied to the URL.
+    * <p>
+    * {@link PortletParameters} provides a description of the parameter concept.
     * </div>
     * 
-    * @return   a mutable <code>PortletParameters</code> object representing
-    *           the private and public render parameters
+    * @return   a <code>MutableActionParameters</code> object representing
+    *           the action parameters.
     * @since    3.0
-    * @see      PortletParameters 
-    * @see      MutablePortletParameters 
+    * @see      ActionParameters 
+    * @see      MutableActionParameters 
     */
 
-   public MutablePortletParameters getActionParameters();
+   public MutableActionParameters getActionParameters();
 }

@@ -29,6 +29,7 @@ import java.util.Map;
 import javax.portlet.EventRequest;
 import javax.portlet.EventResponse;
 import javax.portlet.MutablePortletParameters;
+import javax.portlet.MutableRenderParameters;
 import javax.portlet.PortletMode;
 import javax.portlet.PortletModeException;
 import javax.portlet.WindowState;
@@ -167,6 +168,7 @@ public class EventResponseWrapper extends PortletResponseWrapper implements Even
       *  The default behavior of this method is to call 
       * <code>setRenderParameters()</code> on the wrapped response object.
       */
+     @Deprecated
      public void setRenderParameters(EventRequest request) {
          response.setRenderParameters(request);         
      }
@@ -192,7 +194,7 @@ public class EventResponseWrapper extends PortletResponseWrapper implements Even
     *  The default behavior of this method is to call 
     * <code>getRenderParameter()</code> on the wrapped response object.
     */
-   public MutablePortletParameters getRenderParameters() {
+   public MutableRenderParameters getRenderParameters() {
       return response.getRenderParameters();
    }
 

@@ -33,12 +33,11 @@ package javax.portlet;
  * @since 2.0
  * @see PortletResponse
  */
-public interface StateAwareResponse extends PortletResponse, MutableViewState {
+public interface StateAwareResponse extends PortletResponse, MutablePortletState {
 
    /**
     * <div class="changed_added_3_0">
-    * Gets a MutablePortletParameters object encapsulating 
-    * the render parameter values set for this response.
+    * Gets the render parameter values set for this response.
     * <p>
     * Initially these are the same as the render parameter values set on the
     * corresponding portlet request.  
@@ -47,14 +46,16 @@ public interface StateAwareResponse extends PortletResponse, MutableViewState {
     * modifies the render parameters applied to the response.
     * </div>
     * 
-    * @return   a mutable <code>PortletParameters</code> object representing
+    * @return   a <code>MutableRenderParameters</code> object representing
     *           the private and public render parameters
     * @since    3.0
     * @see      PortletParameters 
+    * @see      RenderParameters 
     * @see      MutablePortletParameters 
+    * @see      MutableRenderParameters 
     */
 
-   public MutablePortletParameters getRenderParameters();
+   public MutableRenderParameters getRenderParameters();
 
    /**
     * <span class="changed_modified_3_0">Sets</span> 

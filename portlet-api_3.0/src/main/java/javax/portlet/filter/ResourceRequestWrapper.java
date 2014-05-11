@@ -31,6 +31,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.Map;
 
 import javax.portlet.PortletParameters;
+import javax.portlet.ResourceParameters;
 import javax.portlet.ResourceRequest;
 
 /**
@@ -178,8 +179,8 @@ public class ResourceRequestWrapper extends PortletRequestWrapper implements Res
     *  The default behavior of this method is to call 
     * <code>getResourceParameters()</code> on the wrapped response object.
     */
-   public PortletParameters getResourceParameters() {
-      return request.getRenderParameters();
+   public ResourceParameters getResourceParameters() {
+      return request.getResourceParameters();
    }
 
 

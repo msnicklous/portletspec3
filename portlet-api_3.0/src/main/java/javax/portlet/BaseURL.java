@@ -31,26 +31,25 @@ package javax.portlet;
  *
  * @since 2.0
  */
-public interface BaseURL {
-
-
+public interface BaseURL extends PortletState {
+   
+   
    /**
     * <div class="changed_added_3_0">
-    * Gets an immutable PortletParameters object encapsulating 
-    * the render parameter values set for this URL.
+    * Gets the render parameter values set for this URL.
     * <p>
     * These are the same as the render parameter values set on the
     * portlet request during which the URL is created.  
     * </div>
     * 
-    * @return   an immutable <code>PortletParameters</code> object representing
+    * @return   an immutable <code>RenderParameters</code> object representing
     *           the private and public render parameters
     * @since    3.0
     * @see      PortletParameters 
-    * @see      MutablePortletParameters 
+    * @see      RenderParameters 
     */
-
-   public PortletParameters getRenderParameters();
+   
+   public RenderParameters getRenderParameters();
 
    /**
     * <span class="changed_modified_3_0">Sets</span> 
@@ -480,97 +479,4 @@ public interface BaseURL {
     * @since 2.0
     */
    public void setProperty(String key, String value);
-
-
-   /**
-    * <div class="changed_added_3_0">
-    * Sets a fragment identifier on the URL.
-    * <p>
-    * Any previously set fragment identifier will be replaced.
-    * <p>
-    * The fragment identifier consists of additional information appended
-    * to the URL after a '#' character. A URL can have only a single fragment
-    * identifier. The fragment identifier must be formed according to 
-    * <a href="http://tools.ietf.org/html/rfc3986">rfc3986</a>.
-    * <p>
-    * The fragment identifier is often used to address a named anchor such as 
-    * <code>&lt;a name="#fragmentIdentifier"&gt;</code>, but it can also be 
-    * used for other purposes such as to pass information to a JavaScript routine.
-    * <p>
-    * The fragment identifier will not be namespaced. The portlet is responsible for 
-    * performing any required namespacing. However, the fragment identifier string 
-    * will be escaped as required.
-    * <p>
-    * Setting the fragment identifier to <code>null</code> will remove a 
-    * fragment identifier previously set through this method. Setting the 
-    * empty string as the fragment identifier will create an empty fragment 
-    * identifier. 
-    * </div>
-    *
-    * @param fragment
-    *            The fragment identifier to be added to the URL
-    *                
-    * @since 3.0
-    * 
-    * @see #getFragmentIdentifier
-    * @see #setFragmentIdentifierPermitted
-    */
-   public void setFragmentIdentifier(String fragment);
-
-
-   /**
-    * <div class="changed_added_3_0">
-    * Gets the fragment identifier previously set on the URL using the 
-    * {@link #setFragmentIdentifier} method.
-    * </div>
-    *
-    * @return 
-    *         The fragment identifier set on the URL, or 
-    *         <code>null</code> if no fragment identifier has been set.
-    *
-    * @since 3.0
-    * @see #setFragmentIdentifier
-    */
-   public String getFragmentIdentifier();
-
-
-   /**
-    * <div class="changed_added_3_0">
-    * Indicates whether a fragment identifier is permitted on the URL. 
-    * <p>
-    * If the fragment identifier is permitted,
-    * a fragment identifier set by the portlet will be appended to the URL. 
-    * If the portlet does not set a fragment identifier, the portal 
-    * implementation may append a fragment identifier to the URL.
-    * <p>
-    * If the fragment identifier is not permitted, no fragment identifier will 
-    * be appended to the URL.
-    * <p>
-    * By default, the fragment identifier is permitted. 
-    * </div>
-    *
-    * @param permit 
-    *            <code>true</code> if the fragment parameter is permitted, or
-    *            <code>false</code> if it is not.
-    *
-    * @since 3.0
-    * 
-    * @see #setFragmentIdentifier(String)
-    * @see #isFragmentIdentifierPermitted()
-    */
-   public void setFragmentIdentifierPermitted(boolean permit);
-
-
-   /**
-    * <div class="changed_added_3_0">
-    * Indicates whether the fragment identifier on the URL is permitted.
-    * </div>
-    *
-    * @return    <code>true</code> if the fragment parameter is permitted, or
-    *            <code>false</code> if it is not.
-    * 
-    * @since 3.0
-    * @see #setFragmentIdentifierPermitted
-    */
-   public boolean isFragmentIdentifierPermitted();
 }

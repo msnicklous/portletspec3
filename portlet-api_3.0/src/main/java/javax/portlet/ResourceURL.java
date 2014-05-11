@@ -104,8 +104,7 @@ public interface ResourceURL extends BaseURL {
 
    /**
     * <div class="changed_added_3_0">
-    * Gets a MutablePortletParameters object encapsulating 
-    * the resource parameter values set for this URL.
+    * Gets the resource parameter values set for this URL.
     * <p>
     * Resource parameters are additional portlet parameters added to the 
     * URL that extend the state information provided by 
@@ -115,16 +114,19 @@ public interface ResourceURL extends BaseURL {
     * <p>
     * Modifying the parameter values encapsulated by the returned object directly
     * modifies the resource parameters applied to the URL.
+    * <p>
+    * {@link PortletParameters} provides a description of the parameter concept.
     * </div>
     * 
     * @return   a mutable <code>PortletParameters</code> object representing
     *           the private and public render parameters
     * @since    3.0
     * @see      PortletParameters 
-    * @see      MutablePortletParameters 
+    * @see      MutableResourceParameters 
+    * @see      ResourceRequest
     */
 
-   public MutablePortletParameters getResourceParameters();
+   public MutableResourceParameters getResourceParameters();
 
 
    /**
@@ -135,6 +137,15 @@ public interface ResourceURL extends BaseURL {
     *            ID for this resource URL
     */
    public void setResourceID(String resourceID);
+
+   /**
+    * Returns the resource ID set on the ResourceURL or <code>null</code>
+    * if no resource ID was set on the URL.
+    * 
+    * @return  the resource ID set on the ResourceURL,or <code>null</code>
+    *          if no resource ID was set on the URL. 
+    */
+   public String getResourceID();
 
    /**
     * Returns the cache level of this resource URL.

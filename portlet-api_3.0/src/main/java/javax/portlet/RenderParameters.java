@@ -27,14 +27,35 @@ package javax.portlet;
 
 /**
  * <div class="changed_added_3_0">
- * This is a marker interface indicating that the implementing object contains
- * methods for updating portelt state information.
+ * Provides access to render parameters, which make up part of the portlet state.
  * </div>
- * @see     MutablePortletState
- * @see     MutablePortletParameters
+ * @see     PortletParameters
+ * @see     MutableRenderParameters
  * @since   3.0
  */
-public interface Mutable
+public interface RenderParameters extends PortletParameters
 {
+
+   
+   /**
+    * <div class="changed_added_3_0">
+    * Returns a boolean value indicating whether the given
+    * parameter is a public render parameter.
+    * </div> 
+    *
+    * @param   name
+    *          the parameter name
+    *
+    * @return  <code>true</code> if the given parameter
+    *           is a public render parameter.
+    *           <code>false</code> otherwise
+    *
+    * @exception  java.lang.IllegalArgumentException 
+    *                            if name is <code>null</code>.
+    * 
+    * @since    3.0
+    */
+
+   public boolean isPublicRenderParameter (String name);
 
 }

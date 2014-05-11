@@ -29,6 +29,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 
+import javax.portlet.ActionParameters;
 import javax.portlet.ActionRequest;
 import javax.portlet.PortletParameters;
 
@@ -144,7 +145,7 @@ public class ActionRequestWrapper extends PortletRequestWrapper implements Actio
      *  The default behavior of this method is to call 
      * <code>getActionParameters()</code> on the wrapped request object.
      */
-   public PortletParameters getActionParameters() {
+   public ActionParameters getActionParameters() {
       return request.getActionParameters();
    }
 

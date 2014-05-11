@@ -35,6 +35,7 @@ import javax.portlet.PortletParameters;
 import javax.portlet.PortletPreferences;
 import javax.portlet.PortletRequest;
 import javax.portlet.PortletSession;
+import javax.portlet.RenderParameters;
 import javax.portlet.WindowState;
 import javax.servlet.http.Cookie;
 
@@ -128,7 +129,7 @@ public class PortletRequestWrapper implements PortletRequest {
     * The default behavior of this method is to call 
     * <code>getRenderParameters()</code> on the wrapped request object.
     */
-   public PortletParameters getRenderParameters() {
+   public RenderParameters getRenderParameters() {
       return request.getRenderParameters();
    }
 

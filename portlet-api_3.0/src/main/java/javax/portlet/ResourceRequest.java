@@ -53,137 +53,141 @@ package javax.portlet;
  */
 public interface ResourceRequest extends ClientDataRequest {
 
-    /**
-     * This property is set by the container if the container
-     * has a cached response for the given validation tag. The property can be
-     * retrieved using the <code>getProperty</code> method. 
-     * <P>
-     * The value is <code>"portlet.ETag "</code>.
-     */
-    public static final String ETAG = "portlet.ETag";
+   /**
+    * This property is set by the container if the container
+    * has a cached response for the given validation tag. The property can be
+    * retrieved using the <code>getProperty</code> method. 
+    * <P>
+    * The value is <code>"portlet.ETag "</code>.
+    */
+   public static final String ETAG = "portlet.ETag";
 
-    /**
-     * Returns the validation tag if the portlet container
-     * has a cached response for this validation tag, or
-     * <code>null</code> if no cached response exists.
-     * <p>
-     * This call returns the same value as 
-     * <code>ResourceRequest.getProperty(ResourceRequest.ETAG)</code>.
-     * 
-     * @return  the validation tag if the portlet container
-     *          has a cached response for this validation tag, or
-     *          <code>null</code> if no cached response exists.
-     */
-    public String getETag();
-    
-    /**
-     * Returns the resource ID set on the ResourceURL or <code>null</code>
-     * if no resource ID was set on the URL.
-     * 
-     * @return  the resource ID set on the ResourceURL,or <code>null</code>
-     *          if no resource ID was set on the URL. 
-     */
-    public String getResourceID();
- 
-    /**
-     * Returns a <code>Map</code> of the private render parameters of this request.
-     * Private parameters are not shared with other portlets or components.  
-     * The returned parameters are "x-www-form-urlencoded" decoded.
-     * <p>
-     * The parameters returned do not include the resource parameters that
-     * the portlet may have set on the resource URL triggering this
-     * <code>serveResource</code> call.
-     * <p>
-     * The values in the returned <code>Map</code> are from type
-     * String array (<code>String[]</code>).
-     * <p>
-     * If no private parameters exist this method returns an empty <code>Map</code>.
-     *
-     * @return     an immutable <code>Map</code> containing private parameter names as 
-     *             keys and private parameter values as map values, or an empty <code>Map</code>
-     *             if no private parameters exist. The keys in the parameter
-     *             map are of type String. The values in the parameter map are of type
-     *             String array (<code>String[]</code>).
-     *             
-     * @deprecated use {@link PortletRequest#getRenderParameters()} instead.
-     */
-  
-    @Deprecated
-    public java.util.Map<String, String[]> getPrivateRenderParameterMap();
-    
-    
-    /**
-     * <div class="changed_added_3_0">
-     * Gets the resource parameters set for this request.
-     * <p>
-     * Resource parameters are additional portlet parameters added to the 
-     * URL triggering the request that extend the state information provided by 
-     * the render parameters.
-     * </div>
-     * 
-     * @return   an immutable <code>PortletParameters</code> object representing
-     *           the resource parameters
-     * @since    3.0
-     * @see      PortletParameters 
-     */
-    
-    public PortletParameters getResourceParameters();
+   /**
+    * Returns the validation tag if the portlet container
+    * has a cached response for this validation tag, or
+    * <code>null</code> if no cached response exists.
+    * <p>
+    * This call returns the same value as 
+    * <code>ResourceRequest.getProperty(ResourceRequest.ETAG)</code>.
+    * 
+    * @return  the validation tag if the portlet container
+    *          has a cached response for this validation tag, or
+    *          <code>null</code> if no cached response exists.
+    */
+   public String getETag();
 
-    
-    /**
-     * Returns the portal preferred content type for the response.
-     * <p>
-     * The returned content type should be based on the HTTP Accept header 
-     * provided by the client.
-     * 
-     * @return preferred content type of the response
-     */
+   /**
+    * Returns the resource ID set on the ResourceURL or <code>null</code>
+    * if no resource ID was set on the URL.
+    * 
+    * @return  the resource ID set on the ResourceURL,or <code>null</code>
+    *          if no resource ID was set on the URL. 
+    */
+   public String getResourceID();
 
-    public String getResponseContentType();
+   /**
+    * Returns a <code>Map</code> of the private render parameters of this request.
+    * Private parameters are not shared with other portlets or components.  
+    * The returned parameters are "x-www-form-urlencoded" decoded.
+    * <p>
+    * The parameters returned do not include the resource parameters that
+    * the portlet may have set on the resource URL triggering this
+    * <code>serveResource</code> call.
+    * <p>
+    * The values in the returned <code>Map</code> are from type
+    * String array (<code>String[]</code>).
+    * <p>
+    * If no private parameters exist this method returns an empty <code>Map</code>.
+    *
+    * @return     an immutable <code>Map</code> containing private parameter names as 
+    *             keys and private parameter values as map values, or an empty <code>Map</code>
+    *             if no private parameters exist. The keys in the parameter
+    *             map are of type String. The values in the parameter map are of type
+    *             String array (<code>String[]</code>).
+    *             
+    * @deprecated use {@link PortletRequest#getRenderParameters()} instead.
+    */
+
+   @Deprecated
+   public java.util.Map<String, String[]> getPrivateRenderParameterMap();
 
 
-    /**
-     * Gets a list of content types which the portal accepts for the response.
-     * This list is ordered with the most preferable types listed first.
-     * <p>
-     * The returned content types should be based on the HTTP Accept header 
-     * provided by the client.
-     *
-     * @return ordered list of content types for the response
-     */
+   /**
+    * <div class="changed_added_3_0">
+    * Gets the resource parameters set for this request.
+    * <p>
+    * Resource parameters are additional portlet parameters added to the 
+    * URL triggering the request that extend the state information provided by 
+    * the render parameters.
+    * <p>
+    * {@link PortletParameters} provides a description of the parameter concept.
+    * </div>
+    * 
+    * @return   an immutable <code>ResourceParameters</code> object representing
+    *           the resource parameters
+    * @since    3.0
+    * @see      PortletParameters 
+    * @see      MutableResourceParameters 
+    * @see      ResourceURL 
+    */
 
-    public java.util.Enumeration<String> getResponseContentTypes();
-
-	/**
-	 * Returns the cache level of this resource request.
-	 * <p>
-	 * Possible return values are: 
-	 * <code>ResourceURL.FULL, ResourceURL.PORTLET</code> 
-	 * or <code>ResourceURL.PAGE</code>.
-	 * 
-     * @return  the cache level of this resource request.
-     */
-	public String getCacheability();
+   public ResourceParameters getResourceParameters();
 
 
-	/**
+   /**
+    * Returns the portal preferred content type for the response.
+    * <p>
+    * The returned content type should be based on the HTTP Accept header 
+    * provided by the client.
+    * 
+    * @return preferred content type of the response
+    */
+
+   public String getResponseContentType();
+
+
+   /**
+    * Gets a list of content types which the portal accepts for the response.
+    * This list is ordered with the most preferable types listed first.
+    * <p>
+    * The returned content types should be based on the HTTP Accept header 
+    * provided by the client.
+    *
+    * @return ordered list of content types for the response
+    */
+
+   public java.util.Enumeration<String> getResponseContentTypes();
+
+   /**
+    * Returns the cache level of this resource request.
+    * <p>
+    * Possible return values are: 
+    * <code>ResourceURL.FULL, ResourceURL.PORTLET</code> 
+    * or <code>ResourceURL.PAGE</code>.
+    * 
+    * @return  the cache level of this resource request.
+    */
+   public String getCacheability();
+
+
+   /**
     * <span class="changed_modified_3_0">Returns</span> 
-	 * the current portlet mode of the portlet.
+    * the current portlet mode of the portlet.
     * <div class="changed_added_3_0">
     * <p>
     * If called during a request where the cache level is set to 
     * <code>ResourceURL.FULL</code>, the portlet mode will not
     * be available. 
     * </div>
-	 *
-	 * @return   the portlet mode.
+    *
+    * @return   the portlet mode.
     * <span class="changed_added_3_0">
     *           The portlet mode UNDEFINED will be returned if the cache level is
     *           set to <code>ResourceURL.FULL</code>.  
     * </span>
-	 */
+    */
 
-	public PortletMode getPortletMode ();
+   public PortletMode getPortletMode ();
 
 
    /**
@@ -203,6 +207,6 @@ public interface ResourceRequest extends ClientDataRequest {
     * </span>
     */
 
-	public WindowState getWindowState ();
+   public WindowState getWindowState ();
 
 }

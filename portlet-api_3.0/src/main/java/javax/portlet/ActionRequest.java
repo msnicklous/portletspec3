@@ -39,15 +39,15 @@ package javax.portlet;
  */
 public interface ActionRequest extends ClientDataRequest
 {
-	/**
-	 * Predefined action name for usage with the
-	 * <code>@ProcessAction</code> annotation.
-	 * 
-	 * @since 2.0
-	 */
-	public static final String ACTION_NAME = "javax.portlet.action";
+   /**
+    * Predefined action name for usage with the
+    * <code>@ProcessAction</code> annotation.
+    * 
+    * @since 2.0
+    */
+   public static final String ACTION_NAME = "javax.portlet.action";
 
-	
+
    /**
     * <div class="changed_added_3_0">
     * Gets the action parameters set for this request.
@@ -55,14 +55,21 @@ public interface ActionRequest extends ClientDataRequest
     * Action parameters are additional portlet parameters added to the 
     * URL triggering the request that extend the state information provided by 
     * the render parameters.
+    * <p>
+    * Action parameters can also contain information provided by the client,
+    * for example, form parameters provided when a form is submitted. 
+    * <p>
+    * {@link PortletParameters} provides a description of the parameter concept.
     * </div>
     * 
-    * @return   an immutable <code>PortletParameters</code> object representing
+    * @return   an immutable object representing
     *           the action parameters
     * @since    3.0
-    * @see      PortletParameters 
+    * @see      ActionParameters 
+    * @see      MutableActionParameters 
+    * @see      ActionURL 
     */
-   
-   public PortletParameters getActionParameters();
+
+   public ActionParameters getActionParameters();
 
 }

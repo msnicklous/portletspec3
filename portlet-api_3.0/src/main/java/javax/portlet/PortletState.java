@@ -2,14 +2,31 @@ package javax.portlet;
 
 /**
  * <div class="changed_added_3_0">
- * The current view state of the portlet is represented portlet mode and  
- * window state that are set for this request. The <CODE>ViewState</CODE> 
- * interface defines the API for accessing these settings.
+ * Provides read-only access to the portlet state.
+ * <p>
+ * The current state of the portlet is represented by the render parameters,
+ * portlet mode and window state.  
  * </div> 
  * @since      3.0
  */
-public interface ViewState {
+public interface PortletState {
+   
+   
+   /**
+    * <div class="changed_added_3_0">
+    * Gets the render parameters.
+    * </div>
+    * 
+    * @return   an immutable <code>RenderParameters</code> object representing
+    *           the private and public render parameters
+    * @since    3.0
+    * @see      PortletParameters 
+    * @see      RenderParameters 
+    */
+   
+   public RenderParameters getRenderParameters();
 
+   
    /**
     * <div class="changed_added_3_0">
     * Returns the current portlet mode of the portlet.
@@ -23,6 +40,7 @@ public interface ViewState {
 
    public PortletMode getPortletMode();
 
+   
    /**
     * <div class="changed_added_3_0">
     * Returns the current window state of the portlet.

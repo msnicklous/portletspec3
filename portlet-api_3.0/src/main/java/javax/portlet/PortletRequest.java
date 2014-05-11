@@ -39,7 +39,7 @@ import java.util.Locale;
  * @see ActionRequest
  * @see RenderRequest
  */
-public interface PortletRequest extends ViewState
+public interface PortletRequest extends PortletState
 {
 
    
@@ -589,17 +589,17 @@ public interface PortletRequest extends ViewState
   
   /**
    * <div class="changed_added_3_0">
-   * Gets a PortletParameters object encapsulating 
-   * the render parameters set for this request.
+   * Gets the render parameters set for this request.
    * </div>
    * 
-   * @return   an immutable <code>PortletParameters</code> object representing
+   * @return   an immutable <code>RenderParameters</code> object representing
    *           the private and public render parameters
    * @since    3.0
    * @see      PortletParameters 
+   * @see      RenderParameters 
    */
   
-  public PortletParameters getRenderParameters();
+  public RenderParameters getRenderParameters();
 
 
   /**

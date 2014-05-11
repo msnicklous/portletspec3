@@ -29,6 +29,7 @@ import java.util.Map;
 
 import javax.portlet.ActionResponse;
 import javax.portlet.MutablePortletParameters;
+import javax.portlet.MutableRenderParameters;
 import javax.portlet.PortletMode;
 import javax.portlet.PortletModeException;
 import javax.portlet.WindowState;
@@ -198,7 +199,7 @@ public class ActionResponseWrapper extends PortletResponseWrapper implements Act
     *  The default behavior of this method is to call 
     * <code>getRenderParameter()</code> on the wrapped response object.
     */
-   public MutablePortletParameters getRenderParameters() {
+   public MutableRenderParameters getRenderParameters() {
       return response.getRenderParameters();
    }
 

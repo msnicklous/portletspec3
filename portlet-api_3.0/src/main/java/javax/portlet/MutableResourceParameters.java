@@ -27,14 +27,19 @@ package javax.portlet;
 
 /**
  * <div class="changed_added_3_0">
- * This is a marker interface indicating that the implementing object contains
- * methods for updating portelt state information.
+ * Resource parameters are additional portlet parameters added to the 
+ * URL that extend the state information provided by 
+ * the render parameters.
+ * <p>
+ * {@link PortletParameters} provides a description of the parameter concept.
  * </div>
- * @see     MutablePortletState
- * @see     MutablePortletParameters
+ * @see     PortletParameters
+ * @see     ResourceParameters
+ * @see     ResourceRequest
+ * @see     ResourceURL
  * @since   3.0
  */
-public interface Mutable
+public interface MutableResourceParameters extends MutablePortletParameters
 {
 
 }

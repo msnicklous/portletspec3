@@ -38,25 +38,28 @@ package javax.portlet;
  */
 public interface EventResponse extends StateAwareResponse {
 
-    /**
-     * Maintain the current render parameters of the request for
-     * the response.
-     * <p>
-     * All previously set render parameters are cleared.
-     * <p>
-     * These parameters will be accessible in all
-     * subsequent render calls via the
-     * <code>PortletRequest.getParameter</code> call until
-     * a new request is targeted to the portlet.
-     * <p>
-     * The given parameters do not need to be encoded
-     * prior to calling this method.
-     *
-     * @param  request   The request the portlet has been provided
-     *                   with by the portlet container for the current
-     *                   <code>processEvent</code> call, must not be 
-     *                   <code>null</code>.
-     */
-    public void setRenderParameters(EventRequest request);
+   /**
+    * Maintain the current render parameters of the request for
+    * the response.
+    * <p>
+    * All previously set render parameters are cleared.
+    * <p>
+    * These parameters will be accessible in all
+    * subsequent render calls via the
+    * <code>PortletRequest.getParameter</code> call until
+    * a new request is targeted to the portlet.
+    * <p>
+    * The given parameters do not need to be encoded
+    * prior to calling this method.
+    *
+    * @param  request   The request the portlet has been provided
+    *                   with by the portlet container for the current
+    *                   <code>processEvent</code> call, must not be 
+    *                   <code>null</code>.
+    * @deprecated use {@link StateAwareResponse#getRenderParameters()} instead.
+    */
+
+   @Deprecated
+   public void setRenderParameters(EventRequest request);
 
 }

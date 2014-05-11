@@ -46,57 +46,14 @@ package javax.portlet;
 public interface MutablePortletParameters extends PortletParameters, Mutable {
 
    
-   /**
-    * <div class="changed_added_3_0">
-    * Specifies which parameters are to be cleared
-    * </div>
-    * 
-    * @see #clear(ClearOption)
-    * 
-    * @since 3.0
-    */
-   public enum ClearOption {
-
-      /**
-       * <div class="changed_added_3_0">
-       * Specifies that all private parameters are to be cleared.
-       * </div>
-       *  
-       * @since 3.0
-       */
-      CLEAR_PRIVATE_PARAMETERS,
-
-      /**
-       * <div class="changed_added_3_0">
-       * Specifies that all public parameters are to be cleared.
-       * </div>
-       *  
-       * @since 3.0
-       */
-      CLEAR_PUBLIC_PARAMETERS,
-
-      /**
-       * <div class="changed_added_3_0">
-       * Specifies that all parameters, both public and private, are to be cleared.
-       * </div>
-       *  
-       * @since 3.0
-       */
-      CLEAR_ALL_PARAMETERS,
-   }
-
-   
     /**
      * <div class="changed_added_3_0">
-     * Sets a String parameter. 
+     * Sets a String parameter.
+     * <p> 
      * If the parameter already exists, this method replaces 
      * all existing values with the new value.
      * <p>
-     * The parameters should not be encoded prior to calling this
-     * method.
-     * <p>
-     * A parameter value of <code>null</code> or the empty string ("")
-     * creates a parameter with a value of the empty string ("").
+     * A parameter value of <code>null</code> is valid.
      * <p>
      * To remove a parameter, use {@link #removeParameter(String)}.
      * </div>
@@ -106,26 +63,27 @@ public interface MutablePortletParameters extends PortletParameters, Mutable {
      * @param   value
      *          the parameter value
      *
+     * @return  The previous parameter value
+     *
      * @since  3.0
      *
      * @exception  java.lang.IllegalArgumentException 
      *                            if name is <code>null</code>.
      */
 
-    public void setParameter (String name, String value);
+    public String setParameter (String name, String value);
 
 
     /**
      * <div class="changed_added_3_0">
-     * Sets a String array parameter. 
+     * Sets a multivalued String parameter.
+     * <p> 
      * If the parameter already exists, this method replaces 
      * all existing values with the new value array.
      * <p>
-     * The parameters should not be encoded prior to calling this
-     * method.
-     * <p>
-     * A parameter value of <code>null</code> or the empty string ("")
-     * creates a parameter with a value of the empty string ("").
+     * The input values array may not be null and must contain
+     * at least one value.
+     * A parameter value of <code>null</code> is valid.
      * <p>
      * To remove a parameter, use {@link #removeParameter(String)}.
      * </div>
@@ -133,17 +91,20 @@ public interface MutablePortletParameters extends PortletParameters, Mutable {
      * @param   name
      *          the parameter name
      * @param   values
-     *          the parameter values
+     *          An array of parameter values
+     *
+     * @return  The previous parameter value array, or
+     *          <code>null</code> if there was no previous value.
      *
      * @since  3.0
      *
      * @exception  java.lang.IllegalArgumentException 
-     *                            if name is <code>null</code> or one of the 
-     *                            elements  of the values String array is 
-     *                            <code>null</code>.
+     *                            if name is <code>null</code>, the values 
+     *                            array is <code>null</code>,  
+     *                            or the values array contains no values.
      */
 
-    public void setParameter (String name, String... values);
+    public String[] setParameter (String name, String... values);
 
     
     /**
@@ -152,16 +113,18 @@ public interface MutablePortletParameters extends PortletParameters, Mutable {
      * All values associated with the name are removed.
      * </div>
      *
-     * @param   name
-     *          the parameter name
+     * @param        name
+     *               the parameter name
      *
-     * @exception  java.lang.IllegalArgumentException 
+     * @exception    java.lang.IllegalArgumentException 
      *                            if name is <code>null</code>.
+     * 
+     * @return       <code>true</code> if the parameter name was present.
      * 
      * @since  3.0
      */
 
-    public void removeParameter (String name);
+    public boolean removeParameter (String name);
     
     
     /**
@@ -174,37 +137,21 @@ public interface MutablePortletParameters extends PortletParameters, Mutable {
      * </div>
      *   
      * @param params - input portlet parameters
+     *
+     * @return  The previous parameter value array
+     * 
      * @since  3.0
      */
     
-    public void set(PortletParameters params);
+    public PortletParameters set(PortletParameters params);
     
     
     /**
      * <div class="changed_added_3_0">
-     * Clears all currently set private parameters.
-     * Same as calling {@link #clear(ClearOption)} with the parameter set to
-     * CLEAR_PRIVATE_PARAMETERS.
+     * Clears all parameters.
      * </div> 
      * @since 3.0
      */
     
     public void clear();
-    
-    
-    /**
-     * <div class="changed_added_3_0">
-     * Clears all currently set parameters according to the specified clear behavior.
-     * <p>
-     * <ul>
-     * <li>CLEAR_PRIVATE_PARAMETERS - clears all private parameters.</li>
-     * <li>CLEAR_PUBLIC_PARAMETERS - clears all public parameters.</li>
-     * <li>CLEAR_ALL_PARAMETERS - clears all private and public parameters.</li>
-     * </ul>
-     * </div> 
-     * @param clearOption Specfies which parameters are to be cleared.
-     * @since 3.0
-     */
-    
-    public void clear(ClearOption clearOption);
 }

@@ -49,14 +49,12 @@ package javax.portlet;
  * special tokens that will be converted to a valid URL, by the portal, 
  * before the content is returned to the client.
  */
-public interface PortletURL extends BaseURL, MutableViewState
+public interface PortletURL extends BaseURL, MutablePortletState
 {
-
 
    /**
     * <div class="changed_added_3_0">
-    * Gets a MutablePortletParameters object encapsulating 
-    * the render parameter values set for this URL.
+    * Gets the render parameter values set for this response.
     * <p>
     * Initially these are the same as the render parameter values set on the
     * portlet request during which the URL is created.  
@@ -65,15 +63,17 @@ public interface PortletURL extends BaseURL, MutableViewState
     * modifies the render parameters applied to the URL.
     * </div>
     * 
-    * @return   a mutable <code>PortletParameters</code> object representing
+    * @return   a <code>MutableRenderParameters</code> object representing
     *           the private and public render parameters
     * @since    3.0
     * @see      PortletParameters 
+    * @see      RenderParameters 
     * @see      MutablePortletParameters 
+    * @see      MutableRenderParameters 
     */
 
    @Override
-   public MutablePortletParameters getRenderParameters();
+   public MutableRenderParameters getRenderParameters();
 
 
    /**

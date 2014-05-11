@@ -43,7 +43,7 @@ import java.util.Set;
  * <p>
  * The portlet parameters governing the request can be read during all portlet
  * execution phases through the {@link PortletParameters} object available 
- * from the portlet request object. Portlet parameters
+ * from the portlet request. Portlet parameters
  * can be set for subsequent or future portlet execution phases through
  * the {@link MutablePortletParameters} object available from the
  * portlet response object or from the portlet URL.
@@ -84,7 +84,8 @@ import java.util.Set;
  * Provide additional information about the action to be executed
  * for the governing render state.
  * Set on action URLs and made available to the portlet through the
- * action request when the URL is triggered.
+ * action request when the URL is triggered, or provided to the 
+ * portlet by the client (form parameters).
  * <p>
  * Refer to {@link ActionRequest#getActionParameters()} and
  * {@link ActionURL#getActionParameters()}.
@@ -104,10 +105,12 @@ public interface PortletParameters extends Cloneable
 
   /**
    * <div class="changed_added_3_0">
-   * Returns the value of a request parameter as a <code>String</code>,
-   * or <code>null</code> if the parameter does not exist. Request parameters
-   * are extra information sent with the request. The returned parameter 
-   * is "x-www-form-urlencoded" decoded.
+   * Returns the value of a parameter as a <code>String</code>.
+   * <p>
+   * Note that <code>null</code> is a valid parameter value. 
+   * To determine whether a
+   * parameter is present, use the {@link java.util.Set#contains(Object)}
+   * method on the set returned by {@link #getParameterNames()}. 
    * <p>
    * Only parameters targeted to the current portlet are accessible.
    * <p>
@@ -124,10 +127,10 @@ public interface PortletParameters extends Cloneable
    *			name of the parameter
    *
    * @return		a <code>String</code> representing the 
-   *			single value of the parameter, or <code>null</code> if 
-   *        the parameter does not exist.
+   *			single value of the parameter, or <code>null</code>. 
    *
    * @see 		#getParameterValues
+   * @see      #getParameterNames
    * @since    3.0
    *
    * @exception  java.lang.IllegalArgumentException 
@@ -159,18 +162,20 @@ public interface PortletParameters extends Cloneable
    * @since 3.0
    */
 
-  public Set<String> getParameterNames();
+  public Set<? extends String> getParameterNames();
 
 
   /**
    * <div class="changed_added_3_0">
    * Returns an array of <code>String</code> objects containing 
-   * all of the values the given request parameter has, or 
+   * all of the values the given request parameter, or 
    * <code>null</code> if the parameter does not exist.
-   * The returned parameters are "x-www-form-urlencoded" decoded.
    * <p>
    * If the parameter has a single value, the array has a length
    * of 1.
+   * <p>
+   * Note that individual parameter values in the returned array 
+   * may be <code>null</code>.
    * </div>
    *
    * @param name	a <code>String</code> containing the name of 
@@ -193,28 +198,6 @@ public interface PortletParameters extends Cloneable
   
   /**
    * <div class="changed_added_3_0">
-   * Returns a boolean value indicating whether the given
-   * parameter is a public render parameter.
-   * </div> 
-   *
-   * @param   name
-   *          the parameter name
-   *
-   * @return  <code>true</code> if the given parameter
-   *           is a public render parameter.
-   *           <code>false</code> otherwise
-   *
-   * @exception  java.lang.IllegalArgumentException 
-   *                            if name is <code>null</code>.
-   * 
-   * @since    3.0
-   */
-
-  public boolean isPublicRenderParameter (String name);
-
-  
-  /**
-   * <div class="changed_added_3_0">
    * Returns a <code>true</code> if no parameters have been set.
    * </div> 
    *
@@ -229,9 +212,9 @@ public interface PortletParameters extends Cloneable
   
   /**
    * <div class="changed_added_3_0">
-   * Returns a MutablePortletParameters object encapsulating the same
-   * parameters as the original object. The parameters are copied so
-   * that there is no linkage to the original object.
+   * Returns a MutablePortletParameters object encapsulating a copy of the same
+   * parameters as the original object.
+   * Changing a mutable copy will not influence the source object. 
    * </div>
    * 
    * @return Mutable clone of PortletParameters object

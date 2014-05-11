@@ -539,11 +539,18 @@ h1.hidden {
 .indexContainer a[href*="ActionURL.html"],
 .indexContainer a[href*="RenderURL.html"],
 .indexContainer a[href*="MimeResponse.ParameterCopyOption.html"],
-.indexContainer a[href*="MutablePortletParameters.html"],
+.indexContainer a[href*="Mutable.html"],
 .indexContainer a[href*="MutablePortletParameters.ClearOption.html"],
+.indexContainer a[href*="MutablePortletParameters.html"],
 .indexContainer a[href*="PortletParameters.html"],
-.indexContainer a[href*="MutableViewState.html"],
-.indexContainer a[href*="ViewState.html"]
+.indexContainer a[href*="MutableRenderParameters.html"],
+.indexContainer a[href*="RenderParameters.html"],
+.indexContainer a[href*="MutableResourceParameters.html"],
+.indexContainer a[href*="ResourceParameters.html"],
+.indexContainer a[href*="MutableActionParameters.html"],
+.indexContainer a[href*="ActionParameters.html"],
+.indexContainer a[href*="MutablePortletState.html"],
+.indexContainer a[href*="PortletState.html"]
 { 
    cursor: url(resources/changed_added_3_0_cursor.png), auto;
    background: url(resources/changed_added_3_0.png); 

@@ -4,18 +4,42 @@ package javax.portlet;
 
 /**
  * <div class="changed_added_3_0">
- * The <CODE>MutableViewState</CODE> provides methods that allow  
- * setting view state and portlet mode to record a potential 
+ * Provides read/write access to the portlet state to record a potential 
  * future portlet view state.
  * <p>
- * For example, these methods can be used to set the view state on 
- * a <code>PortletURL</code> object. The view state is applied when 
- * the portlet URL containing this view state is activated.
+ * The current state of the portlet is represented by the render parameters,
+ * portlet mode and window state.  
+ * <p>
+ * For example, the methods defined here can be used to set the portlet state on 
+ * a {@link PortletURL} object. The portlet state is applied when 
+ * the portlet URL containing this portlet state is activated.
  * </div>
  *
  * @since 3.0
+ * @see      PortletParameters 
+ * @see      RenderParameters 
+ * @see      MutablePortletParameters 
+ * @see      MutableRenderParameters 
  */
-public interface MutableViewState extends ViewState, Mutable {
+public interface MutablePortletState extends PortletState, Mutable {
+
+
+   /**
+    * <div class="changed_added_3_0">
+    * Gets the mutable render parameters.
+    * </div>
+    * 
+    * @return   a <code>MutableRenderParameters</code> object representing
+    *           the private and public render parameters
+    * @since    3.0
+    * @see      PortletParameters 
+    * @see      RenderParameters 
+    * @see      MutablePortletParameters 
+    * @see      MutableRenderParameters 
+    */
+
+   public MutableRenderParameters getRenderParameters();
+
 
    /**
     * <div class="changed_added_3_0">
