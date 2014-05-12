@@ -39,15 +39,30 @@ public interface RenderParameters extends PortletParameters
    
    /**
     * <div class="changed_added_3_0">
+    * Returns a <code>MutableRenderParameters</code> object encapsulating a copy of the same
+    * parameters as the original object.
+    * Changing a mutable copy will not influence the source object. 
+    * </div>
+    * 
+    * @return Mutable clone of RenderParameters object
+    * 
+    * @since  3.0
+    */
+   
+   public MutableRenderParameters clone();
+
+   
+   /**
+    * <div class="changed_added_3_0">
     * Returns a boolean value indicating whether the given
-    * parameter is a public render parameter.
+    * parameter name represents a public render parameter.
     * </div> 
     *
     * @param   name
     *          the parameter name
     *
     * @return  <code>true</code> if the given parameter
-    *           is a public render parameter.
+    *           name represents a public render parameter.
     *           <code>false</code> otherwise
     *
     * @exception  java.lang.IllegalArgumentException 
@@ -56,6 +71,6 @@ public interface RenderParameters extends PortletParameters
     * @since    3.0
     */
 
-   public boolean isPublicRenderParameter (String name);
+   public boolean isPublic (String name);
 
 }

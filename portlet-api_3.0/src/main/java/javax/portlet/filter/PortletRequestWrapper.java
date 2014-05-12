@@ -40,7 +40,8 @@ import javax.portlet.WindowState;
 import javax.servlet.http.Cookie;
 
 /**
- * The <code>PortletRequestWrapper</code> provides a convenient 
+ * <span class="changed_modified_3_0">The</span> 
+ * <code>PortletRequestWrapper</code> provides a convenient 
  * implementation of the <code>PortletRequest</code> interface 
  * and is extended by other request wrappers.
  * This class implements the Wrapper or Decorator pattern. 
@@ -126,8 +127,10 @@ public class PortletRequestWrapper implements PortletRequest {
    }
 
    /**
+    * <div class="changed_modified_3_0"> 
     * The default behavior of this method is to call 
     * <code>getRenderParameters()</code> on the wrapped request object.
+    * </div>
     */
    public RenderParameters getRenderParameters() {
       return request.getRenderParameters();

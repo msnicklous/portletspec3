@@ -94,6 +94,11 @@ import java.util.Set;
  * for the governing render state.
  * Action URLs with differing action parameters can be used to
  * determine which action is to be executed for a specific request.
+ * <br>
+ * Example: Portlets may render forms that, when submitted, may cause
+ * parameters to be added to the portlet action request. 
+ * During action request processing, these form parameters will be available as 
+ * action parameters.
  * </dd> 
  * </dl>
  * </div>
@@ -212,7 +217,7 @@ public interface PortletParameters extends Cloneable
   
   /**
    * <div class="changed_added_3_0">
-   * Returns a MutablePortletParameters object encapsulating a copy of the same
+   * Returns a <code>MutablePortletParameters</code> object encapsulating a copy of the same
    * parameters as the original object.
    * Changing a mutable copy will not influence the source object. 
    * </div>

@@ -28,16 +28,21 @@ import java.util.Locale;
 
 
 /**
- * <span class="changed_modified_3_0">The</span> 
+ * <div class="changed_modified_3_0">The
  * <CODE>PortletRequest</CODE> defines the base interface to provide client
- * request information to a portlet. The portlet container uses two specialized
- * versions of this interface when invoking a portlet, <CODE>ActionRequest</CODE>
- * and <CODE>RenderRequest</CODE>. The portlet container creates these objects and 
- * passes them as  arguments to the portlet's <CODE>processAction</CODE> and
- * <CODE>render</CODE> methods.
+ * request information to a portlet. The portlet container uses specialized
+ * versions of this interface when invoking a portlet. 
+ * The portlet container creates these objects and 
+ * passes them as arguments to the corresponding request processing methods.
+ * <p>
+ * The <code>PortletRequest</code> also provides access to the portlet state.
+ * </div>
  * 
+ * @see PortletState
  * @see ActionRequest
+ * @see EventRequest
  * @see RenderRequest
+ * @see ResourceRequest
  */
 public interface PortletRequest extends PortletState
 {
@@ -585,21 +590,6 @@ public interface PortletRequest extends PortletState
    */
   
   public java.util.Enumeration<String> getAttributeNames();
-  
-  
-  /**
-   * <div class="changed_added_3_0">
-   * Gets the render parameters set for this request.
-   * </div>
-   * 
-   * @return   an immutable <code>RenderParameters</code> object representing
-   *           the private and public render parameters
-   * @since    3.0
-   * @see      PortletParameters 
-   * @see      RenderParameters 
-   */
-  
-  public RenderParameters getRenderParameters();
 
 
   /**

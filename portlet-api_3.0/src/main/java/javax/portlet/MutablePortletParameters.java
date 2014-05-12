@@ -27,20 +27,14 @@ package javax.portlet;
 /**
  * <div class="changed_added_3_0">
  * The <CODE>MutablePortletParameters</CODE> provides methods that allow  
- * setting parameters to record a potential future portlet state.
+ * setting parameters to define a potential future portlet state.
  * <p>
- * For example, these methods can be used to set render parameters on 
- * a <code>PortletURL</code> object. When the portlet URL containing
- * these parameters is activated, the state represented by the parameters
- * becomes the new current state.
- * <p>
- * If the target MutablePortletParameters object was retrieved from 
- * a response or a URL, changes made will be immediately active. 
- * The new state will be available during subsequent requests as defined 
- * by the response or URL object. 
+ * {@link PortletState} provides a description of the portlet state.
+ * {@link PortletParameters} provides a description of the parameter concept.
  * </div>
- *
+ * @see   PortletState
  * @see   PortletParameters
+ * @see   MutablePortletState
  * @since 3.0
  */
 public interface MutablePortletParameters extends PortletParameters, Mutable {

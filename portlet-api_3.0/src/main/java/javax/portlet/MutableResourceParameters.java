@@ -31,15 +31,25 @@ package javax.portlet;
  * URL that extend the state information provided by 
  * the render parameters.
  * <p>
+ * The <code>MutableResourceParameters</code> interface provides methods for modifying
+ * the resource parameters attached to a portlet resource URL. 
+ * <p>
+ * If the <code>MutableResourceParameters</code> object was retrieved from 
+ * a URL, changes made will be applied to the URL. 
+ * The modified parameters will be available during requests
+ * triggered by the URL.
+ * <p>
+ * {@link PortletState} provides a description of the portlet state.
  * {@link PortletParameters} provides a description of the parameter concept.
  * </div>
+ * @see     PortletState
  * @see     PortletParameters
  * @see     ResourceParameters
  * @see     ResourceRequest
  * @see     ResourceURL
  * @since   3.0
  */
-public interface MutableResourceParameters extends MutablePortletParameters
+public interface MutableResourceParameters extends MutablePortletParameters, ResourceParameters
 {
 
 }

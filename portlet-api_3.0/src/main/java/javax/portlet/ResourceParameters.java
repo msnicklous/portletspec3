@@ -42,4 +42,19 @@ package javax.portlet;
 public interface ResourceParameters extends PortletParameters
 {
 
+   
+   /**
+    * <div class="changed_added_3_0">
+    * Returns a <code>MutableResourceParameters</code> object encapsulating a copy of the same
+    * parameters as the original object.
+    * Changing a mutable copy will not influence the source object. 
+    * </div>
+    * 
+    * @return Mutable clone of ResourceParameters object
+    * 
+    * @since  3.0
+    */
+   
+   public MutableResourceParameters clone();
+
 }

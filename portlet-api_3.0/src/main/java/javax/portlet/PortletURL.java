@@ -52,30 +52,7 @@ package javax.portlet;
 public interface PortletURL extends BaseURL, MutablePortletState
 {
 
-   /**
-    * <div class="changed_added_3_0">
-    * Gets the render parameter values set for this response.
-    * <p>
-    * Initially these are the same as the render parameter values set on the
-    * portlet request during which the URL is created.  
-    * <p>
-    * Modifying the parameter values encapsulated by the returned object directly
-    * modifies the render parameters applied to the URL.
-    * </div>
-    * 
-    * @return   a <code>MutableRenderParameters</code> object representing
-    *           the private and public render parameters
-    * @since    3.0
-    * @see      PortletParameters 
-    * @see      RenderParameters 
-    * @see      MutablePortletParameters 
-    * @see      MutableRenderParameters 
-    */
-
-   @Override
-   public MutableRenderParameters getRenderParameters();
-
-
+   
    /**
     * Removes the specified public render parameter.
     * The name must reference a public render parameter defined

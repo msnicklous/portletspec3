@@ -25,37 +25,19 @@
 package javax.portlet;
 
 /**
- * <span class="changed_modified_3_0">The</span> 
+ * <div class="changed_modified_3_0">The
  * <CODE>StateAwareResponse</CODE> represents a response that can modify
- * state information or send events.<BR>
- * It extends the PortletResponse interface.
+ * portlet state information or send events.
+ * <p>
+ * If the portlet state is modified through this interface, the changes take
+ * effect for subsequent portlet render phase processing. 
+ * </div>
  * 
  * @since 2.0
+ * @see PortletState
  * @see PortletResponse
  */
 public interface StateAwareResponse extends PortletResponse, MutablePortletState {
-
-   /**
-    * <div class="changed_added_3_0">
-    * Gets the render parameter values set for this response.
-    * <p>
-    * Initially these are the same as the render parameter values set on the
-    * corresponding portlet request.  
-    * <p>
-    * Modifying the parameter values encapsulated by the returned object directly
-    * modifies the render parameters applied to the response.
-    * </div>
-    * 
-    * @return   a <code>MutableRenderParameters</code> object representing
-    *           the private and public render parameters
-    * @since    3.0
-    * @see      PortletParameters 
-    * @see      RenderParameters 
-    * @see      MutablePortletParameters 
-    * @see      MutableRenderParameters 
-    */
-
-   public MutableRenderParameters getRenderParameters();
 
    /**
     * <span class="changed_modified_3_0">Sets</span> 

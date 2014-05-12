@@ -35,7 +35,8 @@ import javax.portlet.ResourceParameters;
 import javax.portlet.ResourceRequest;
 
 /**
- * The <code>ResourceRequestWrapper</code> provides a convenient 
+ * <span class="changed_modified_3_0">The</span>  
+ * <code>ResourceRequestWrapper</code> provides a convenient 
  * implementation of the <code>ResourceRequest</code> interface 
  * that can be subclassed by developers wishing to adapt the request.
  * This class implements the Wrapper or Decorator pattern. 
@@ -176,8 +177,10 @@ public class ResourceRequestWrapper extends PortletRequestWrapper implements Res
    }
 
    /**
+    * <div class="changed_modified_3_0">  
     *  The default behavior of this method is to call 
     * <code>getResourceParameters()</code> on the wrapped response object.
+    * </div>
     */
    public ResourceParameters getResourceParameters() {
       return request.getResourceParameters();

@@ -4,22 +4,30 @@ package javax.portlet;
 
 /**
  * <div class="changed_added_3_0">
- * Provides read/write access to the portlet state to record a potential 
- * future portlet view state.
+ * Provides read-only access to the portlet state.
+ * The portlet state is represented by the render parameters,
+ * portlet mode and window state.
  * <p>
- * The current state of the portlet is represented by the render parameters,
- * portlet mode and window state.  
+ * The mutable portlet state is available through certain portlet response and 
+ * portlet URL interfaces.
  * <p>
- * For example, the methods defined here can be used to set the portlet state on 
- * a {@link PortletURL} object. The portlet state is applied when 
- * the portlet URL containing this portlet state is activated.
+ * When changed on one of these interfaces, the modified portlet state becomes
+ * active according to the rules of the corresponding object.
+ * If the portlet state is modified on a response, it becomes active for
+ * subsequent portlet render phases.
+ * If the portlet state is modified on a URL, it becomes active when the URL
+ * containing the modified state is activated.
+ * <p>
+ * For example, the methods defined here can be used to set a new portlet mode and 
+ * render parameters on a {@link PortletURL} object. 
+ * When the portlet URL containing this modified portlet state is activated,
+ * the portlet will have the portlet mode and render parameter values set as they
+ * were applied to the portlet URL.
  * </div>
  *
  * @since 3.0
- * @see      PortletParameters 
- * @see      RenderParameters 
+ * @see      PortletState 
  * @see      MutablePortletParameters 
- * @see      MutableRenderParameters 
  */
 public interface MutablePortletState extends PortletState, Mutable {
 

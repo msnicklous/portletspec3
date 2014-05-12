@@ -26,7 +26,8 @@ package javax.portlet;
 
 
 /**
- * The <CODE>EventResponse</CODE> interface represents the portlet
+ * <span class="changed_modified_3_0">The</span> 
+ * <CODE>EventResponse</CODE> interface represents the portlet
  * response to an event request.
  * It extends the <CODE>StateAwareResponse</CODE> interface.<br>
  * The portlet container creates an <CODE>EventResponse</CODE> object and 

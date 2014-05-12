@@ -25,31 +25,17 @@
 package javax.portlet;
 
 /**
- * <span class="changed_modified_3_0">The</span>
+ * <div class="changed_modified_3_0">The
  * <CODE>BaseURL</CODE> defines the basic capabilities of a portlet URL
  * pointing back to the portlet.
- *
+ * <p>
+ * If the portlet state is modified through this interface, the changes take
+ * effect when the URL containing the modifications is triggered.
+ * </div>
+ * @see   MutablePortletState
  * @since 2.0
  */
 public interface BaseURL extends PortletState {
-   
-   
-   /**
-    * <div class="changed_added_3_0">
-    * Gets the render parameter values set for this URL.
-    * <p>
-    * These are the same as the render parameter values set on the
-    * portlet request during which the URL is created.  
-    * </div>
-    * 
-    * @return   an immutable <code>RenderParameters</code> object representing
-    *           the private and public render parameters
-    * @since    3.0
-    * @see      PortletParameters 
-    * @see      RenderParameters 
-    */
-   
-   public RenderParameters getRenderParameters();
 
    /**
     * <span class="changed_modified_3_0">Sets</span> 
@@ -426,9 +412,6 @@ public interface BaseURL extends PortletState {
     * Note that the appended URL may not be a valid URL, as it may
     * be rewritten by the portal/portlet-container before returning the 
     * markup to the client.
-    * <p>
-    * The appended URL is always XML escaped. For appending
-    * non-escaped URLs use {@link #write(java.lang.Appendable, boolean)}.
     *  
     * @param out  the object to receive the URL
     * @throws java.io.IOException  if an I/O error occurred while writing the URL

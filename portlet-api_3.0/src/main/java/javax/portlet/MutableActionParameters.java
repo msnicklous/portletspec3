@@ -27,19 +27,30 @@ package javax.portlet;
 
 /**
  * <div class="changed_added_3_0">
- * Action parameters are additional portlet parameters added to the 
- * URL that extend the state information provided by 
+ * Action parameters are additional portlet parameters added to the portlet
+ * URL or provided by the client that extend the state information provided by 
  * the render parameters.
+ * The client can supply additional action parameters when a form is submitted, for example.
  * <p>
+ * The <code>MutableActionParameters</code> interface provides methods for modifying
+ * the action parameters attached to a portlet action URL. 
+ * <p>
+ * If the <code>MutableActionParameters</code> object was retrieved from 
+ * a URL, changes made will be applied to the URL. 
+ * The modified parameters will be available during requests
+ * triggered by the URL.
+ * <p>
+ * {@link PortletState} provides a description of the portlet state.
  * {@link PortletParameters} provides a description of the parameter concept.
  * </div>
+ * @see     PortletState
  * @see     PortletParameters
  * @see     ActionParameters
  * @see     ActionRequest
  * @see     ActionURL
  * @since   3.0
  */
-public interface MutableActionParameters extends MutablePortletParameters
+public interface MutableActionParameters extends MutablePortletParameters, ActionParameters
 {
 
 }

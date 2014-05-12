@@ -37,7 +37,8 @@ import javax.portlet.WindowStateException;
 import javax.xml.namespace.QName;
 
 /**
- * The <code>EventResponseWrapper</code> provides a convenient 
+ * <span class="changed_modified_3_0">The</span> 
+ * <code>EventResponseWrapper</code> provides a convenient 
  * implementation of the <code>EventResponse</code> interface 
  * that can be subclassed by developers wishing to adapt the response.
  * This class implements the Wrapper or Decorator pattern. 
@@ -191,8 +192,10 @@ public class EventResponseWrapper extends PortletResponseWrapper implements Even
 	}
 
    /**
+    * <div class="changed_added_3_0">
     *  The default behavior of this method is to call 
     * <code>getRenderParameter()</code> on the wrapped response object.
+    * </div>
     */
    public MutableRenderParameters getRenderParameters() {
       return response.getRenderParameters();

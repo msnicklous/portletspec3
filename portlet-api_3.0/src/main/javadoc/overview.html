@@ -16,9 +16,9 @@
     <!-- change class below to "indexContainer" to activate color changebars in the change history -->
     <div class="indexContainer-not">
     <ul>
-    <li>20140425: Resolved PORTLETSPEC3-11: Integrated new parameter handling concept. Deprecated JSR 286 parameter handling methods.
+    <li>20140512: Resolved PORTLETSPEC3-11: Integrated new parameter handling concept. Deprecated JSR 286 parameter handling methods.
     <br>
-    Added: {@link javax.portlet.Mutable} 
+    <span style="font-weight:bold;">Added:</span> {@link javax.portlet.Mutable}, 
     {@link javax.portlet.PortletParameters}, {@link javax.portlet.MutablePortletParameters},
     {@link javax.portlet.RenderParameters}, {@link javax.portlet.MutableRenderParameters},
     {@link javax.portlet.ResourceParameters}, {@link javax.portlet.MutableResourceParameters},
@@ -26,12 +26,15 @@
     {@link javax.portlet.PortletState}, {@link javax.portlet.MutablePortletState},  
     {@link javax.portlet.ActionURL}, {@link javax.portlet.RenderURL}.
     <br>  
-    Updated: {@link javax.portlet.BaseURL}, {@link javax.portlet.PortletURL},
+    <span style="font-weight:bold;">Updated:</span> {@link javax.portlet.BaseURL}, {@link javax.portlet.PortletURL},
     {@link javax.portlet.ResourceURL}, {@link javax.portlet.ActionURL},
     {@link javax.portlet.PortletRequest}, {@link javax.portlet.ResourceRequest},  {@link javax.portlet.ActionRequest},
-    {@link javax.portlet.PortletResponse}, {@link javax.portlet.ResourceResponse},  {@link javax.portlet.MimeResponse}.
-    <p>
-    Moved the following methods to {@link javax.portlet.RenderURL}, as they are not useful on other types of URL:
+    {@link javax.portlet.PortletResponse}, {@link javax.portlet.ResourceResponse},  {@link javax.portlet.MimeResponse},
+    {@link javax.portlet.filter.ActionRequestWrapper}, {@link javax.portlet.filter.ActionResponseWrapper}, {@link javax.portlet.filter.EventResponseWrapper},
+    {@link javax.portlet.filter.PortletRequestWrapper}, {@link javax.portlet.filter.RenderResponseWrapper}, {@link javax.portlet.filter.ResourceRequestWrapper},
+    {@link javax.portlet.filter.ResourceResponseWrapper}
+    <br>
+    <span style="font-weight:bold;">Moved</span> the following methods to {@link javax.portlet.RenderURL}, as they are not useful on other types of URL:
     {@link javax.portlet.RenderURL#setFragmentIdentifier setFragmentIdentifier}, 
     {@link javax.portlet.RenderURL#getFragmentIdentifier getFragmentIdentifier},
     {@link javax.portlet.RenderURL#setFragmentIdentifierPermitted setFragmentIdentifierPermitted}, and

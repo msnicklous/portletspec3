@@ -27,19 +27,23 @@ package javax.portlet;
 /**
  * <div class="changed_added_3_0">
  * Provides methods that allow  
- * setting parameters to record a potential future portlet state.
+ * setting parameters to define a potential future portlet state.
  * <p>
  * For example, these methods can be used to set render parameters on 
- * a <code>PortletURL</code> object. When the portlet URL containing
- * these parameters is activated, the state represented by the parameters
- * becomes the new current state.
+ * a <code>PortletURL</code> object. 
+ * The modified parameters will be available during requests
+ * triggered by the URL.
  * <p>
- * If the target object was retrieved from 
- * a response or a URL, changes made will be immediately active. 
- * The new state will be available during subsequent requests as defined 
+ * If the <code>MutableRenderParameters</code> object was retrieved from 
+ * a response or a URL, changes made will be applied to that response or URL. 
+ * The modified parameters will be available during subsequent requests as defined 
  * by the response or URL object. 
+ * <p>
+ * {@link PortletState} provides a description of the portlet state.
+ * {@link PortletParameters} provides a description of the parameter concept.
  * </div>
  *
+ * @see   PortletState
  * @see   MutablePortletParameters
  * @see   RenderParameters
  * @since 3.0
@@ -50,20 +54,22 @@ public interface MutableRenderParameters extends
    
    /**
     * <div class="changed_added_3_0">
-    * Clears all private parameters that are present in the RenderParameters object.
+    * Clears all private parameters that are present in the 
+    * <code>MutableRenderParameters</code> object.
     * </div> 
     * @since 3.0
     */
    
-   public void clearPrivateRenderParameters();
+   public void clearPrivate();
    
    
    /**
     * <div class="changed_added_3_0">
-    * Clears all public parameters that are present in the RenderParameters object.
+    * Clears all public parameters that are present in the 
+    * <code>MutableRenderParameters</code> object.
     * </div> 
     * @since 3.0
     */
    
-   public void clearPublicRenderParameters();
+   public void clearPublic();
 }
