@@ -57,7 +57,7 @@ public interface EventResponse extends StateAwareResponse {
     *                   with by the portlet container for the current
     *                   <code>processEvent</code> call, must not be 
     *                   <code>null</code>.
-    * @deprecated use {@link StateAwareResponse#getRenderParameters()} instead.
+    * @deprecated As of version 3.0. Use {@link StateAwareResponse#getRenderParameters()} instead.
     */
 
    @Deprecated

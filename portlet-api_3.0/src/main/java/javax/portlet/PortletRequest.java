@@ -621,7 +621,7 @@ public interface PortletRequest extends PortletState
    * @exception  java.lang.IllegalArgumentException 
    *                            if name is <code>null</code>.
    *
-   * @deprecated use {@link #getRenderParameters()} instead.
+   * @deprecated As of version 3.0. Use {@link #getRenderParameters()} instead.
    */
   
   @Deprecated
@@ -644,7 +644,7 @@ public interface PortletRequest extends PortletState
    * 			the name of a request parameter; or an 
    *			empty <code>Enumeration</code> if the
    *			request has no parameters.
-   * @deprecated use {@link #getRenderParameters()} instead.
+   * @deprecated As of version 3.0. Use {@link #getRenderParameters()} instead.
    */
 
   @Deprecated
@@ -672,7 +672,7 @@ public interface PortletRequest extends PortletState
    * @exception  java.lang.IllegalArgumentException 
    *                            if name is <code>null</code>.
    *
-   * @deprecated use {@link #getRenderParameters()} instead.
+   * @deprecated As of version 3.0. Use {@link #getRenderParameters()} instead.
    */
 
   @Deprecated
@@ -698,7 +698,7 @@ public interface PortletRequest extends PortletState
    *             map are of type String. The values in the parameter map are of type
    *             String array (<code>String[]</code>).
    *             
-   * @deprecated use {@link #getRenderParameters()} instead.
+   * @deprecated As of version 3.0. Use {@link #getRenderParameters()} instead.
    */
 
   @Deprecated
@@ -941,7 +941,7 @@ public interface PortletRequest extends PortletState
    *             map are of type String. The values in the parameter map are of type
    *             String array (<code>String[]</code>).
    *             
-   * @deprecated use {@link #getRenderParameters()} instead.
+   * @deprecated As of version 3.0. Use {@link #getRenderParameters()} instead.
    */
 
   @Deprecated
@@ -966,7 +966,7 @@ public interface PortletRequest extends PortletState
    *             map are of type String. The values in the parameter map are of type
    *             String array (<code>String[]</code>).
    *             
-   * @deprecated use {@link #getRenderParameters()} instead.
+   * @deprecated As of version 3.0. Use {@link #getRenderParameters()} instead.
    */
 
   @Deprecated

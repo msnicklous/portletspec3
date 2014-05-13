@@ -93,7 +93,7 @@ public interface StateAwareResponse extends PortletResponse, MutablePortletState
     *                if the method is invoked after <code>sendRedirect</code>
     *                has been called.
     *                
-    * @deprecated use {@link #getRenderParameters()} instead.
+    * @deprecated As of version 3.0. Use {@link #getRenderParameters()} instead.
     */
 
    @Deprecated
@@ -134,7 +134,7 @@ public interface StateAwareResponse extends PortletResponse, MutablePortletState
     *                if the method is invoked after <code>sendRedirect</code>
     *                has been called.
     *                
-    * @deprecated use {@link #getRenderParameters()} instead.
+    * @deprecated As of version 3.0. Use {@link #getRenderParameters()} instead.
     */
 
    @Deprecated
@@ -180,7 +180,7 @@ public interface StateAwareResponse extends PortletResponse, MutablePortletState
     *                if the method is invoked after <code>sendRedirect</code>
     *                has been called.
     *                
-    * @deprecated use {@link #getRenderParameters()} instead.
+    * @deprecated As of version 3.0. Use {@link #getRenderParameters()} instead.
     */
 
    @Deprecated
@@ -258,7 +258,7 @@ public interface StateAwareResponse extends PortletResponse, MutablePortletState
     *         no parameters exist. The keys in the parameter map are of type
     *         String. The values in the parameter map are of type String array (<code>String[]</code>).
     *         
-    * @deprecated use {@link #getRenderParameters()} instead.
+    * @deprecated As of version 3.0. Use {@link #getRenderParameters()} instead.
     */
 
    @Deprecated
@@ -279,7 +279,7 @@ public interface StateAwareResponse extends PortletResponse, MutablePortletState
     *                            if name is <code>null</code>.
     * @since 2.0
     * 
-    * @deprecated use {@link #getRenderParameters()} instead.
+    * @deprecated As of version 3.0. Use {@link #getRenderParameters()} instead.
     */
    
    @Deprecated

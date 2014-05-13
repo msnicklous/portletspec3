@@ -105,7 +105,7 @@ public interface ResourceRequest extends ClientDataRequest {
     *             map are of type String. The values in the parameter map are of type
     *             String array (<code>String[]</code>).
     *             
-    * @deprecated use {@link PortletRequest#getRenderParameters()} instead.
+    * @deprecated As of version 3.0. Use {@link PortletRequest#getRenderParameters()} instead.
     */
 
    @Deprecated

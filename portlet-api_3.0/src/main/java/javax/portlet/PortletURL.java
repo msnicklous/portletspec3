@@ -67,7 +67,7 @@ public interface PortletURL extends BaseURL, MutablePortletState
     *                            if name is <code>null</code>.
     * @since 2.0
     * 
-    * @deprecated use {@link BaseURL#getRenderParameters()} instead.
+    * @deprecated As of version 3.0. Use {@link #getRenderParameters()} instead.
     */
    
    @Deprecated

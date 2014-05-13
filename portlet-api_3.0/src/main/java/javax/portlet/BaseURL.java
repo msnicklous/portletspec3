@@ -89,7 +89,7 @@ public interface BaseURL extends PortletState {
     *                            if name is <code>null</code>;
     *                            <span class="changed_added_3_0">if an attempt is made to set a public 
     *                            render parameter to <code>null</code>.</span> 
-    * @deprecated use {@link PortletURL#getRenderParameters()},
+    * @deprecated As of version 3.0. Use {@link PortletURL#getRenderParameters()},
     * {@link ResourceURL#getResourceParameters()},
     * or {@link ActionURL#getActionParameters()} as required.
     */
@@ -151,7 +151,7 @@ public interface BaseURL extends PortletState {
     *      <span class="changed_added_3_0">if an element of the values array is <code>null</code>; 
     *      if an attempt is made to set a public render parameter to <code>null</code>.</span>
     *       
-    * @deprecated use {@link PortletURL#getRenderParameters()},
+    * @deprecated As of version 3.0. Use {@link PortletURL#getRenderParameters()},
     * {@link ResourceURL#getResourceParameters()},
     * or {@link ActionURL#getActionParameters()} as required.
     */
@@ -223,7 +223,7 @@ public interface BaseURL extends PortletState {
     *                are null. 
     *                </span>
     *                
-    * @deprecated use {@link PortletURL#getRenderParameters()},
+    * @deprecated As of version 3.0. Use {@link PortletURL#getRenderParameters()},
     * {@link ResourceURL#getResourceParameters()},
     * or {@link ActionURL#getActionParameters()} as required.
     */
@@ -330,7 +330,7 @@ public interface BaseURL extends PortletState {
     *
     * @since 2.0
     * 
-    * @deprecated use {@link PortletURL#getRenderParameters()},
+    * @deprecated As of version 3.0. Use {@link PortletURL#getRenderParameters()},
     * {@link ResourceURL#getResourceParameters()},
     * or {@link ActionURL#getActionParameters()} as required.
     */
