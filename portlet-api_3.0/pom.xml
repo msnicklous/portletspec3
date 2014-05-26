@@ -420,13 +420,14 @@
 						<message>Deploy javadoc for ${project.version}</message>
 						<repositoryOwner>msnicklous</repositoryOwner>
 						<repositoryName>portletspec3</repositoryName>
-						<outputDirectory>${project.build.directory}/site/apidocs/</outputDirectory>
+						<outputDirectory>${project.build.directory}/site/</outputDirectory>
 						<includes>
-						   <include>../surefire-report.html</include>
-						   <include>../css</include>
-						   <include>../images</include>
-						   <include>../javascript</include>
-						   <include>../jsdoc</include>
+						   <include>surefire-report.html</include>
+						   <include>apidocs/**/*</include>
+						   <include>css/**/*</include>
+						   <include>images/**/*</include>
+						   <include>javascript/**/*</include>
+						   <include>jsdoc/**/*</include>
 						</includes>
 					</configuration>
 					<executions>
