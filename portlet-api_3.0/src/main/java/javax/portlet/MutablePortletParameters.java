@@ -163,7 +163,7 @@ public interface MutablePortletParameters extends PortletParameters, Mutable {
      *   
      * @param params - input portlet parameters
      *
-     * @return  The previous parameter value array
+     * @return  PortletParameters object containing the previous values
      * 
      * @since  3.0
      */
@@ -184,7 +184,7 @@ public interface MutablePortletParameters extends PortletParameters, Mutable {
      *   
      * @param params - input portlet parameters
      *
-     * @return  The previous parameter value array
+     * @return  PortletParameters object containing the previous values
      * 
      * @since  3.0
      */
