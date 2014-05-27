@@ -76,8 +76,12 @@ public interface RenderURL extends PortletURL
 
    /**
     * <div class="changed_added_3_0">
-    * Gets the fragment identifier previously set on the URL using the 
-    * {@link #setFragmentIdentifier} method.
+    * Gets the fragment identifier previously set on the URL.
+    * <p>
+    * A fragment identifier may have been set by the portlet 
+    * using the {@link #setFragmentIdentifier} method, or it may
+    * be a value set by the portal if the portlet had not previously set a
+    * fragment identifier.
     * </div>
     *
     * @return 
@@ -88,45 +92,4 @@ public interface RenderURL extends PortletURL
     * @see #setFragmentIdentifier
     */
    public String getFragmentIdentifier();
-
-
-   /**
-    * <div class="changed_added_3_0">
-    * Indicates whether a fragment identifier is permitted on the URL. 
-    * <p>
-    * If the fragment identifier is permitted,
-    * a fragment identifier set by the portlet will be appended to the URL. 
-    * If the portlet does not set a fragment identifier, the portal 
-    * implementation may append a fragment identifier to the URL.
-    * <p>
-    * If the fragment identifier is not permitted, no fragment identifier will 
-    * be appended to the URL.
-    * <p>
-    * By default, the fragment identifier is permitted. 
-    * </div>
-    *
-    * @param permit 
-    *            <code>true</code> if the fragment parameter is permitted, or
-    *            <code>false</code> if it is not.
-    *
-    * @since 3.0
-    * 
-    * @see #setFragmentIdentifier(String)
-    * @see #isFragmentIdentifierPermitted()
-    */
-   public void setFragmentIdentifierPermitted(boolean permit);
-
-
-   /**
-    * <div class="changed_added_3_0">
-    * Indicates whether the fragment identifier on the URL is permitted.
-    * </div>
-    *
-    * @return    <code>true</code> if the fragment parameter is permitted, or
-    *            <code>false</code> if it is not.
-    * 
-    * @since 3.0
-    * @see #setFragmentIdentifierPermitted
-    */
-   public boolean isFragmentIdentifierPermitted();
 }

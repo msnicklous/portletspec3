@@ -16,6 +16,13 @@
     <!-- change class below to "indexContainer" to activate color changebars in the change history -->
     <div class="indexContainer-not">
     <ul>
+    <li>20140527: Resolved PORTLETSPEC3-41: Some updates to the parameter handling proposal. See:
+    {@link javax.portlet.RenderURL#setFragmentIdentifier setFragmentIdentifier}, 
+    {@link javax.portlet.RenderURL#getFragmentIdentifier getFragmentIdentifier},
+    {@link javax.portlet.BaseURL#append(Appendable) append(Appendable)},
+    {@link javax.portlet.BaseURL#append(Appendable, boolean) append(Appendable, boolean)}
+    {@link javax.portlet.MutablePortletParameters#getParameterNames getParameterNames()}, and
+    {@link javax.portlet.MutablePortletParameters#setParameter(String, String...) setParameter(String, String...)}.
     <li>20140512: Resolved PORTLETSPEC3-11: Integrated new parameter handling concept. Deprecated JSR 286 parameter handling methods.
     <br>
     <span style="font-weight:bold;">Added:</span> {@link javax.portlet.Mutable}, 

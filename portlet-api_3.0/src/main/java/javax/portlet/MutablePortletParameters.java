@@ -24,6 +24,8 @@
 
 package javax.portlet;
 
+import java.util.Set;
+
 /**
  * <div class="changed_added_3_0">
  * The <CODE>MutablePortletParameters</CODE> provides methods that allow  
@@ -38,6 +40,32 @@ package javax.portlet;
  * @since 3.0
  */
 public interface MutablePortletParameters extends PortletParameters, Mutable {
+
+
+   /**
+    * <div class="changed_added_3_0">
+    * Returns a <code>Set</code> of <code>String</code>
+    * objects containing the names of the parameters contained
+    * in this request. 
+    * <p>
+    * A parameter cannot be added through use of the set.
+    * However, removing a parameter from the set will remove the 
+    * underlying parameter. 
+    * <p>
+    * Only parameter names targeted to the current portlet are returned.
+    * </div>
+    *
+    *
+    * @return      a <code>Set</code> of <code>String</code>
+    *        objects, each <code>String</code> containing
+    *        the name of a request parameter; or an 
+    *        empty <code>Set</code> if the
+    *        request has no parameters.
+    *
+    * @since 3.0
+    */
+
+   public Set<? extends String> getParameterNames();
 
    
     /**
@@ -57,7 +85,8 @@ public interface MutablePortletParameters extends PortletParameters, Mutable {
      * @param   value
      *          the parameter value
      *
-     * @return  The previous parameter value
+     * @return  The previous parameter value, or 
+     *          <code>null</code> if there was no previous value.
      *
      * @since  3.0
      *
@@ -75,9 +104,13 @@ public interface MutablePortletParameters extends PortletParameters, Mutable {
      * If the parameter already exists, this method replaces 
      * all existing values with the new value array.
      * <p>
-     * The input values array may not be null and must contain
-     * at least one value.
-     * A parameter value of <code>null</code> is valid.
+     * An input value of null or an empty array is valid.
+     * These values will be preserved when reading the parameter through 
+     * {@link PortletParameters#getParameterValues(String)}, but will be 
+     * mapped to the value <code>null</code> when the parameter is read
+     * through {@link PortletParameters#getParameter(String)}.
+     * <p> 
+     * A parameter value of <code>null</code> within the array is valid.
      * <p>
      * To remove a parameter, use {@link #removeParameter(String)}.
      * </div>
@@ -93,9 +126,7 @@ public interface MutablePortletParameters extends PortletParameters, Mutable {
      * @since  3.0
      *
      * @exception  java.lang.IllegalArgumentException 
-     *                            if name is <code>null</code>, the values 
-     *                            array is <code>null</code>,  
-     *                            or the values array contains no values.
+     *                            if name is <code>null</code>
      */
 
     public String[] setParameter (String name, String... values);
@@ -138,6 +169,27 @@ public interface MutablePortletParameters extends PortletParameters, Mutable {
      */
     
     public PortletParameters set(PortletParameters params);
+    
+    
+    /**
+     * <div class="changed_added_3_0">
+     * Adds the parameters from the input <code>PortletParameters</code> object 
+     * if they are not already present. 
+     * If a parameter from the input object is already present, its value 
+     * will be updated with the input value.
+     * <p>
+     * The parameters are copied so that after the operation completes, there 
+     * is no linkage to the input object.
+     * </div>
+     *   
+     * @param params - input portlet parameters
+     *
+     * @return  The previous parameter value array
+     * 
+     * @since  3.0
+     */
+    
+    public PortletParameters add(PortletParameters params);
     
     
     /**

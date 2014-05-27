@@ -388,15 +388,18 @@ public interface BaseURL extends PortletState {
     * markup to the client.
     * <p>
     * The appended URL is always XML escaped. For appending
-    * non-escaped URLs use {@link #write(java.lang.Appendable, boolean)}.
+    * non-escaped URLs use {@link #append(java.lang.Appendable, boolean)}.
     *  
-    * @param out  the object to receive the URL
+    * @param   out                 the object to receive the URL
+    * 
+    * @return  Appendable          the Appendable object containing the URL
+    * 
     * @throws java.io.IOException  if an I/O error occurred while writing the URL
     *
     * @since 3.0
     * </div>
     */
-   public void write(java.lang.Appendable out) throws java.io.IOException;
+   public Appendable append(java.lang.Appendable out) throws java.io.IOException;
 
 
    /**
@@ -413,13 +416,16 @@ public interface BaseURL extends PortletState {
     * be rewritten by the portal/portlet-container before returning the 
     * markup to the client.
     *  
-    * @param out  the object to receive the URL
+    * @param   out                  the object to receive the URL
+    * 
+    * @return  Appendable          the Appendable object containing the URL
+    * 
     * @throws java.io.IOException  if an I/O error occurred while writing the URL
     *
     * @since 3.0
     * </div>
     */
-   public void write(java.lang.Appendable out, boolean escapeXML) throws java.io.IOException;
+   public Appendable append(java.lang.Appendable out, boolean escapeXML) throws java.io.IOException;
 
 
    /**
