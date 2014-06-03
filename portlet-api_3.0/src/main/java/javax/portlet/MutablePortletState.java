@@ -4,7 +4,7 @@ package javax.portlet;
 
 /**
  * <div class="changed_added_3_0">
- * Provides read-only access to the portlet state.
+ * Provides read-write access to the portlet state.
  * The portlet state is represented by the render parameters,
  * portlet mode and window state.
  * <p>
@@ -12,7 +12,7 @@ package javax.portlet;
  * portlet URL interfaces.
  * <p>
  * When changed on one of these interfaces, the modified portlet state becomes
- * active according to the rules of the corresponding object.
+ * active according to the rules of the originating object.
  * If the portlet state is modified on a response, it becomes active for
  * subsequent portlet render phases.
  * If the portlet state is modified on a URL, it becomes active when the URL

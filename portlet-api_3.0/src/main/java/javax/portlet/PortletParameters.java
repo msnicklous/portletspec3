@@ -115,13 +115,13 @@ public interface PortletParameters extends Cloneable
    * Note that <code>null</code> is a valid parameter value. 
    * To determine whether a
    * parameter is present, use the {@link java.util.Set#contains(Object)}
-   * method on the set returned by {@link #getParameterNames()}. 
+   * method on the set returned by {@link #getNames()}. 
    * <p>
    * Only parameters targeted to the current portlet are accessible.
    * <p>
    * This method should only be used if the 
    * parameter has only one value. If the parameter might have
-   * more than one value, use {@link #getParameterValues}.
+   * more than one value, use {@link #getValues}.
    * <p>
    * If this method is used with a multivalued
    * parameter, the value returned is equal to the first value
@@ -134,8 +134,8 @@ public interface PortletParameters extends Cloneable
    * @return		a <code>String</code> representing the 
    *			single value of the parameter, or <code>null</code>. 
    *
-   * @see 		#getParameterValues
-   * @see      #getParameterNames
+   * @see 		#getValues
+   * @see      #getNames
    * @since    3.0
    *
    * @exception  java.lang.IllegalArgumentException 
@@ -143,14 +143,14 @@ public interface PortletParameters extends Cloneable
    *
    */
   
-  public String getParameter(String name);
+  public String getValue(String name);
 
 
   /**
    * <div class="changed_added_3_0">
    * Returns a <code>Set</code> of <code>String</code>
    * objects containing the names of the parameters contained
-   * in this request. 
+   * in this object. 
    * Changing the <code>Set</code> has no effect on the originating 
    * PortletParameters object. 
    * <p>
@@ -160,20 +160,20 @@ public interface PortletParameters extends Cloneable
    *
    * @return		a <code>Set</code> of <code>String</code>
    *			objects, each <code>String</code> containing
-   * 			the name of a request parameter; or an 
+   * 			the name of a parameter; or an 
    *			empty <code>Set</code> if the
-   *			request has no parameters.
+   *			PortletParameters object has no parameters.
    *
    * @since 3.0
    */
 
-  public Set<? extends String> getParameterNames();
+  public Set<? extends String> getNames();
 
 
   /**
    * <div class="changed_added_3_0">
    * Returns an array of <code>String</code> objects containing 
-   * all of the values the given request parameter, or 
+   * all of the values the given parameter, or 
    * <code>null</code> if the parameter does not exist.
    * <p>
    * If the parameter has a single value, the array has a length
@@ -190,7 +190,7 @@ public interface PortletParameters extends Cloneable
    *			containing the parameter values, or <code>null</code> 
    *        if the parameter does not exist.
    *
-   * @see		#getParameter
+   * @see		#getValue
    * @since    3.0
    *
    * @exception  java.lang.IllegalArgumentException 
@@ -198,7 +198,7 @@ public interface PortletParameters extends Cloneable
    *
    */
 
-  public String[] getParameterValues(String name);
+  public String[] getValues(String name);
 
   
   /**

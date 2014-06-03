@@ -16,14 +16,23 @@
     <!-- change class below to "indexContainer" to activate color changebars in the change history -->
     <div class="indexContainer-not">
     <ul>
+    <li>20140603: Resolved PORTLETSPEC3-43: Renamed some methods to reduce redundancy. See:
+    {@link javax.portlet.PortletParameters#getNames getNames()},
+    {@link javax.portlet.PortletParameters#getValue getValue},
+    {@link javax.portlet.PortletParameters#getValues getValues},
+    {@link javax.portlet.MutablePortletParameters#setValue(String, String) setValue(String, String)},
+    {@link javax.portlet.MutablePortletParameters#getNames getNames()}, and
+    {@link javax.portlet.MutablePortletParameters#setValues(String, String...) setValues(String, String...)}.
+    </li>
     <li>20140527: Resolved PORTLETSPEC3-41: Some updates to the parameter handling proposal. See:
     {@link javax.portlet.RenderURL#setFragmentIdentifier setFragmentIdentifier}, 
     {@link javax.portlet.RenderURL#getFragmentIdentifier getFragmentIdentifier},
     {@link javax.portlet.BaseURL#append(Appendable) append(Appendable)},
     {@link javax.portlet.BaseURL#append(Appendable, boolean) append(Appendable, boolean)}
     {@link javax.portlet.MutablePortletParameters#add add(PortletParameters)},
-    {@link javax.portlet.MutablePortletParameters#getParameterNames getParameterNames()}, and
-    {@link javax.portlet.MutablePortletParameters#setParameter(String, String...) setParameter(String, String...)}.
+    {@link javax.portlet.MutablePortletParameters#getNames getNames()}, and
+    {@link javax.portlet.MutablePortletParameters#setValues(String, String...) setValues(String, String...)}.
+    </li>
     <li>20140512: Resolved PORTLETSPEC3-11: Integrated new parameter handling concept. Deprecated JSR 286 parameter handling methods.
     <br>
     <span style="font-weight:bold;">Added:</span> {@link javax.portlet.Mutable}, 
@@ -43,10 +52,8 @@
     {@link javax.portlet.filter.ResourceResponseWrapper}
     <br>
     <span style="font-weight:bold;">Moved</span> the following methods to {@link javax.portlet.RenderURL}, as they are not useful on other types of URL:
-    {@link javax.portlet.RenderURL#setFragmentIdentifier setFragmentIdentifier}, 
-    {@link javax.portlet.RenderURL#getFragmentIdentifier getFragmentIdentifier},
-    {@link javax.portlet.RenderURL#setFragmentIdentifierPermitted setFragmentIdentifierPermitted}, and
-    {@link javax.portlet.RenderURL#isFragmentIdentifierPermitted isFragmentIdentifierPermitted}.
+    {@link javax.portlet.RenderURL#setFragmentIdentifier setFragmentIdentifier} and 
+    {@link javax.portlet.RenderURL#getFragmentIdentifier getFragmentIdentifier}
     <p>
     See <a href="doc-files/PortletState.pdf" target="_blank">Diagram</a>.           
     </li>
@@ -75,10 +82,8 @@
     <li>20130828: PORTLETSPEC3-13: Added several methods to BaseURL:
     {@link javax.portlet.BaseURL#setAuthenticated setAuthenticated},
     {@link javax.portlet.BaseURL#getAuthenticated getAuthenticated},
-    {@link javax.portlet.RenderURL#setFragmentIdentifier setFragmentIdentifier}, 
-    {@link javax.portlet.RenderURL#getFragmentIdentifier getFragmentIdentifier},
-    {@link javax.portlet.RenderURL#setFragmentIdentifierPermitted setFragmentIdentifierPermitted}, and
-    {@link javax.portlet.RenderURL#isFragmentIdentifierPermitted isFragmentIdentifierPermitted}.
+    {@link javax.portlet.RenderURL#setFragmentIdentifier setFragmentIdentifier} and 
+    {@link javax.portlet.RenderURL#getFragmentIdentifier getFragmentIdentifier}.
     See 
     <a href="https://java.net/projects/portletspec3/pages/PortletURLs#PORTLETSPEC3-13"> 
     portlet URLs
@@ -109,9 +114,9 @@
     to throw a PortletException or IOException. 
     </li>
     <li>20130823: Resolved PORTLETSPEC3-21: Added methods 
-    {@link javax.portlet.BaseURL#write(Appendable) BaseURL.write(Appendable)}
+    {@link javax.portlet.BaseURL#append(Appendable) BaseURL.write(Appendable)}
     and 
-    {@link javax.portlet.BaseURL#write(Appendable, boolean) BaseURL.write(Appendable, boolean)}
+    {@link javax.portlet.BaseURL#append(Appendable, boolean) BaseURL.write(Appendable, boolean)}
     to BaseURL. See
     <a href="https://java.net/projects/portletspec3/pages/PortletURLs#PORTLETSPEC3-21"> 
     Portlet URLs

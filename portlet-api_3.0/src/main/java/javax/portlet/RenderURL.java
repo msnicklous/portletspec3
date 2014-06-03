@@ -69,7 +69,6 @@ public interface RenderURL extends PortletURL
     * @since 3.0
     * 
     * @see #getFragmentIdentifier
-    * @see #setFragmentIdentifierPermitted
     */
    public void setFragmentIdentifier(String fragment);
 
