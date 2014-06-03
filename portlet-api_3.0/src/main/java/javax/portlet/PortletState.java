@@ -6,11 +6,11 @@ package javax.portlet;
  * The portlet state is represented by the render parameters,
  * portlet mode and window state.
  * <p>
- * During request processing, the portlet state is constant and can be accessed through  
- * methods provided by this interface.
+ * During render or resource request processing, the portlet state is constant and 
+ * can be accessed through methods provided by this interface.
  * <p>
- * During the portlet action or event phases, the portlet state can be modified for subsequent 
- * render phase processing.
+ * During portlet action or event request ptocessing, the portlet state can be modified for 
+ * subsequent render phase processing.
  * During the portlet render or resource phases, URLs containing modified portlet state 
  * can be created.
  * When a portlet URL containing modified portlet state is triggered, the corresponding portlet

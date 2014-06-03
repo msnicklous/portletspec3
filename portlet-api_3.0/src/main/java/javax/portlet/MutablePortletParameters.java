@@ -46,7 +46,7 @@ public interface MutablePortletParameters extends PortletParameters, Mutable {
     * <div class="changed_added_3_0">
     * Returns a <code>Set</code> of <code>String</code>
     * objects containing the names of the parameters contained
-    * in this request. 
+    * in this object. 
     * <p>
     * A parameter cannot be added through use of the set.
     * However, removing a parameter from the set will remove the 
@@ -58,14 +58,14 @@ public interface MutablePortletParameters extends PortletParameters, Mutable {
     *
     * @return      a <code>Set</code> of <code>String</code>
     *        objects, each <code>String</code> containing
-    *        the name of a request parameter; or an 
+    *        the name of a parameter; or an 
     *        empty <code>Set</code> if the
-    *        request has no parameters.
+    *        MutablePortletParameters object has no parameters.
     *
     * @since 3.0
     */
 
-   public Set<? extends String> getParameterNames();
+   public Set<? extends String> getNames();
 
    
     /**
@@ -94,7 +94,7 @@ public interface MutablePortletParameters extends PortletParameters, Mutable {
      *                            if name is <code>null</code>.
      */
 
-    public String setParameter (String name, String value);
+    public String setValue (String name, String value);
 
 
     /**
@@ -106,9 +106,9 @@ public interface MutablePortletParameters extends PortletParameters, Mutable {
      * <p>
      * An input value of null or an empty array is valid.
      * These values will be preserved when reading the parameter through 
-     * {@link PortletParameters#getParameterValues(String)}, but will be 
+     * {@link PortletParameters#getValues(String)}, but will be 
      * mapped to the value <code>null</code> when the parameter is read
-     * through {@link PortletParameters#getParameter(String)}.
+     * through {@link PortletParameters#getValue(String)}.
      * <p> 
      * A parameter value of <code>null</code> within the array is valid.
      * <p>
@@ -129,7 +129,7 @@ public interface MutablePortletParameters extends PortletParameters, Mutable {
      *                            if name is <code>null</code>
      */
 
-    public String[] setParameter (String name, String... values);
+    public String[] setValues (String name, String... values);
 
     
     /**
