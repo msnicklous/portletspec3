@@ -125,7 +125,7 @@ public interface PortletParameters extends Cloneable
    * <p>
    * If this method is used with a multivalued
    * parameter, the value returned is equal to the first value
-   * in the array returned by <code>getParameterValues</code>.
+   * in the array returned by <code>getValues</code>.
    * </div>
    *
    * @param name 	a <code>String</code> specifying the 
