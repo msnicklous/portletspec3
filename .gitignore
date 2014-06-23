@@ -14,3 +14,9 @@
 
 # Maven project.build.directory
 target
+
+# Eclipse project files
+/target
+/.settings
+.classpath
+
