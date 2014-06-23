@@ -16,7 +16,8 @@
 target
 
 # Eclipse project files
-/target
-/.settings
+target
+.settings
 .classpath
+.project
 
