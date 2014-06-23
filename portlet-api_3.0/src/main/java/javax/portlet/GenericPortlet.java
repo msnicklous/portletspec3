@@ -183,7 +183,8 @@ public abstract class GenericPortlet implements Portlet, PortletConfig, EventPor
 	 */
 	public void processAction(ActionRequest request, ActionResponse response) throws PortletException,
 			java.io.IOException {
-		String action = request.getParameter(ActionRequest.ACTION_NAME);
+		@SuppressWarnings("deprecation")
+      String action = request.getParameter(ActionRequest.ACTION_NAME);
 
 		try {
 			// check if action is cached
@@ -647,7 +648,8 @@ public abstract class GenericPortlet implements Portlet, PortletConfig, EventPor
 	 *      javax.portlet.EventResponse)
 	 * @since 2.0
 	 */
-	public void processEvent(EventRequest request, EventResponse response) throws PortletException, IOException {
+	@SuppressWarnings("deprecation")
+   public void processEvent(EventRequest request, EventResponse response) throws PortletException, IOException {
 		String eventName = request.getEvent().getQName().toString();
 
 		try {

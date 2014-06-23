@@ -31,6 +31,10 @@
 -->
 
   <properties>
+    <!-- basic project settings -->
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    
+    <!-- Plugin versions -->
     <version.clean.plugin>2.5</version.clean.plugin>
     <version.javadoc.plugin>2.9</version.javadoc.plugin>
     <version.compiler.plugin>3.1</version.compiler.plugin>
@@ -146,45 +150,229 @@
                <a href="doc-files/LICENSE.txt">License</a> provided with this distribution.
                Use is subject to
                <a href="http://www.apache.org/licenses/LICENSE-2.0">license terms</a>.]]>
-            </bottom>
-          </configuration>
-        </plugin>
-      </plugins>
-    </pluginManagement>
+						</bottom>
+					</configuration>
+					<executions>
+						<execution>
+							<goals>
+								<goal>javadoc</goal>
+							</goals>
+							<phase>package</phase>
+						</execution>
+					</executions>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-source-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>attach-sources</id>
-            <goals>
-              <goal>jar</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.felix</groupId>
-        <artifactId>maven-bundle-plugin</artifactId>
-      </plugin>
-    </plugins>
-  </build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+			</plugin>
 
-  <profiles>
-    <profile>
-      <id>apache-release</id>
-      <build>
-        <plugins>
-          <plugin>
-            <!-- only include this in top level project poms -->
+
+			<!-- Run the junit tests -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.17</version>
+				<configuration>
+					<testFailureIgnore>true</testFailureIgnore>
+				</configuration>
+			</plugin>
+
+			<!-- prereq to allow Jasmine to execute with PhantomJS -->
+			<plugin>
+				<groupId>com.github.klieber</groupId>
+				<artifactId>phantomjs-maven-plugin</artifactId>
+				<version>0.3</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>install</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<version>1.9.7</version>
+				</configuration>
+			</plugin>
+
+			<!-- Javasript unit tests through Jasmine -->
+			<plugin>
+				<groupId>com.github.searls</groupId>
+				<artifactId>jasmine-maven-plugin</artifactId>
+				<version>1.3.1.4</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>test</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<haltOnFailure>false</haltOnFailure>
+					<jsSrcDir>src/main/javascript</jsSrcDir>
+					<jsTestSrcDir>src/test/javascript</jsTestSrcDir>
+					<webDriverClassName>org.openqa.selenium.phantomjs.PhantomJSDriver</webDriverClassName>
+					<webDriverCapabilities>
+						<capability>
+							<name>phantomjs.binary.path</name>
+							<value>${phantomjs.binary}</value>
+						</capability>
+					</webDriverCapabilities>
+					<!-- preload some utilities for working with portlets -->
+					<preloadSources>
+						<include>JasminePortletUtils.js</include>
+					</preloadSources>
+					<sourceIncludes>
+						<include>**/MockData.js</include>
+						<include>**/portlet.js</include>
+					</sourceIncludes>
+					<specIncludes>
+						<include>**/CustomMatchers.js</include>
+						<include>**/SetUpAndRegisterTest.js</include>
+						<include>**/AddEventListenerTest.js</include>
+						<include>**/SetPortletStateTest.js</include>
+						<include>**/CreateResourceUrlTest.js</include>
+						<include>**/ActionTest.js</include>
+						<include>**/PartialActionTest.js</include>
+						<include>**/IsInProgressTest.js</include>
+						<include>**/DispatchClientEventTest.js</include>
+					</specIncludes>
+				</configuration>
+			</plugin>
+
+			<!-- Javascript compressor plugin -->
+			<plugin>
+				<groupId>net.alchim31.maven</groupId>
+				<artifactId>yuicompressor-maven-plugin</artifactId>
+				<version>1.1</version>
+				<executions>
+					<execution>
+						<id>compress-js</id>
+						<goals>
+							<goal>compress</goal>
+						</goals>
+						<configuration>
+							<jswarn>false</jswarn>
+							<sourceDirectory>src/main/javascript</sourceDirectory>
+							<outputDirectory>${project.build.directory}/${project.build.finalName}/javascript</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- copy the original uncompressed javascript files as web resources, 
+				just to have them too. -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<webResources>
+						<resource>
+							<directory>src/main/javascript</directory>
+							<targetPath>/javascript</targetPath>
+						</resource>
+					</webResources>
+				</configuration>
+			</plugin>
+
+			<!-- Generate jsdocs during package execution. Bind execution to maven 
+				package phase. -->
+			<plugin>
+				<groupId>com.github.phasebash</groupId>
+				<artifactId>jsdoc3-maven-plugin</artifactId>
+				<version>1.0.7</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>jsdoc3</goal>
+						</goals>
+						<phase>package</phase>
+					</execution>
+				</executions>
+				<configuration>
+					<recursive>true</recursive>
+					<directoryRoots>
+						<directoryRoot>${basedir}/src/main/javascript</directoryRoot>
+					</directoryRoots>
+				</configuration>
+			</plugin>
+
+			<!-- want the javascript files in the site directory, too. Bind execution 
+				to maven package phase. -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.7</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<tasks>
+								<copy todir="target/site/javascript">
+									<fileset dir="src/main/javascript" />
+								</copy>
+							</tasks>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+
+   <reporting>
+      <plugins>
+         <plugin>
             <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-assembly-plugin</artifactId>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
+            <artifactId>maven-surefire-report-plugin</artifactId>
+            <version>2.17</version>
+            <configuration>
+               <aggregate>true</aggregate>
+               <reportsDirectories>
+                  <reportsDirectory>${project.build.directory}/surefire-reports</reportsDirectory>
+                  <reportsDirectory>${project.build.directory}/jasmine</reportsDirectory>
+               </reportsDirectories>
+            </configuration>
+         </plugin>
+      </plugins>
+   </reporting>
+
+	<profiles>
+		<profile>
+			<id>apache-release</id>
+			<build>
+				<plugins>
+					<plugin>
+						<!-- only include this in top level project poms -->
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-assembly-plugin</artifactId>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
 
     <!--
       Profile for publishing Javadoc to GitHub Pages (https://help.github.com/categories/20/articles)
@@ -208,44 +396,52 @@
       Javadocs are published to GitHub pages : your_github_username.github.io/portletspec3
 
     -->
-    <profile>
-      <id>github</id>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-javadoc-plugin</artifactId>
-            <executions>
-              <execution>
-                <goals>
-                  <goal>javadoc</goal>
-                </goals>
-                <phase>generate-resources</phase>
-              </execution>
-            </executions>
-          </plugin>
-          <plugin>
-            <groupId>com.github.github</groupId>
-            <artifactId>site-maven-plugin</artifactId>
-            <version>0.8</version>
-            <configuration>
-              <message>Deploy javadoc for ${project.version}</message>
-              <repositoryOwner>msnicklous</repositoryOwner>
-              <repositoryName>portletspec3</repositoryName>
-              <outputDirectory>${project.build.directory}/site/apidocs/</outputDirectory>
-            </configuration>
-            <executions>
-              <execution>
-                <goals>
-                  <goal>site</goal>
-                </goals>
-                <phase>install</phase>
-              </execution>
-            </executions>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
+	<profile>
+		<id>github</id>
+		<build>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<executions>
+						<execution>
+							<goals>
+								<goal>javadoc</goal>
+							</goals>
+							<phase>generate-resources</phase>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>com.github.github</groupId>
+					<artifactId>site-maven-plugin</artifactId>
+					<version>0.8</version>
+					<configuration>
+						<message>Deploy javadoc for ${project.version}</message>
+						<repositoryOwner>msnicklous</repositoryOwner>
+						<repositoryName>portletspec3</repositoryName>
+						<outputDirectory>${project.build.directory}/site/</outputDirectory>
+						<includes>
+						   <include>surefire-report.html</include>
+						   <include>apidocs/**/*</include>
+						   <include>css/**/*</include>
+						   <include>images/**/*</include>
+						   <include>javascript/**/*</include>
+						   <include>jsdoc/**/*</include>
+						</includes>
+					</configuration>
+					<executions>
+						<execution>
+							<goals>
+								<goal>site</goal>
+							</goals>
+							<phase>install</phase>
+						</execution>
+					</executions>
+				</plugin>
+			</plugins>
+		</build>
+	</profile>
   </profiles>
   
 </project>

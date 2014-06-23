@@ -39,12 +39,12 @@ public interface MimeResponse extends PortletResponse {
     * Specifies processing when a URL is created.
     * </div>
     * 
-    * @see #createActionURL(UrlFlag)
-    * @see #createRenderURL(UrlFlag)
+    * @see #createActionURL(ParameterCopyOption)
+    * @see #createRenderURL(ParameterCopyOption)
     * 
     * @since 3.0
     */
-   public enum UrlFlag {
+   public enum ParameterCopyOption {
 
       /**
        * <div class="changed_added_3_0">
@@ -408,15 +408,18 @@ public interface MimeResponse extends PortletResponse {
             throws java.io.IOException;
 
     /**
-     * <span class="changed_modified_3_0">Creates</span> a portlet URL targeting the portlet. 
-     * If no portlet mode, window
-     * state or security modifier is set in the PortletURL the current values
-     * are preserved. If a request is triggered by the PortletURL, it results in
+     * <div class="changed_modified_3_0">
+     * Creates a render URL targeting the portlet. 
+     * Render URLs cause idempotent requests that move the portlet to a 
+     * new view state, for example, to view a different page of data. 
+     * <p> 
+     * If a request is triggered by the URL, it results in
      * a render request.
+     * </div>
      * <div class="changed_added_3_0">
      * <p>
      * The returned render URL will not contain any private render parameters from the
-     * current request. 
+     * current request.  
      * </div>
      * <div class="changed_deleted_3_0">
      * <p>
@@ -425,68 +428,82 @@ public interface MimeResponse extends PortletResponse {
      * </div>
      * <p>
      * The returned URL can be further extended by adding portlet-specific render
-     * parameters and portlet modes and window states.
-     * <span class="changed_added_3_0">
-     * Any parameter added to the render URL is a render parameter.
-     * </span>
+     * parameters, portlet mode, and window state.
+     * If no portlet mode, window
+     * state or security modifier is set on the URL, the values from the
+     * current render or resource request are preserved.
      * <p>
-     * <span class="changed_added_3_0">
+     * <div class="changed_added_3_0">
      * Public render parameters do not need to be explicitly added to the returned 
      * render URL, unless the public render parameter value is to be changed. 
      * Any public render parameters associated with 
      * the portlet will automatically be available during render request processing resulting
      * from activation of the URL.
-     * </span>
      * <p>
-     * <span class="changed_added_3_0">
      * If a public render parameter value is set or removed on a render URL, then the public 
      * render parameter will be set to the new value or removed when the URL is activated.
-     * </span>
+     * <p>
+     * The effect of this method is the same as calling {@link #createRenderURL(ParameterCopyOption)}
+     * with the parameter set to COPY_PUBLIC_RENDER_PARAMETERS.
+     * </div>
      *
      * @return a portlet render URL
      */
-    public PortletURL createRenderURL();
+    public RenderURL createRenderURL();
 	
 
     /**
      * <div class="changed_added_3_0">
-     * Creates a portlet URL targeting the portlet. If no portlet mode, window
-     * state or security modifier is set in the PortletURL the current values
-     * are preserved. If a request is triggered by the PortletURL, it results in
+     * Creates a render URL targeting the portlet. 
+     * Render URLs cause idempotent requests that move the portlet to a 
+     * new view state, for example, to view a different page of data. 
+     * <p> 
+     * If a request is triggered by the URL, it results in
      * a render request.
      * <p>
      * The new render URL will contain render parameters from the
-     * current request as specified by the <code>flag</code> parameter.
-     * <p> 
-     * If the flag value COPY_NO_PARAMETERS is used, it has the effect of
-     * removing all private and public parameters from the URL. 
-     * <p>
-     * The returned URL can be further extended by adding portlet-specific render
-     * parameters and portlet modes and window states.
-     * Any parameter added to the render URL is a render parameter.
+     * current request as specified by the <code>option</code> parameter.
+     * <dl>
+     * <dt>COPY_NO_PARAMETERS</dt>
+     * <dd>All public and private parameters are removed from the URL.</dd>
+     * <dt>COPY_RENDER_PARAMETERS</dt>
+     * <dd>The public and private parameters governing the current 
+     * request are added to the URL.</dd>
+     * <dt>COPY_PUBLIC_PARAMETERS</dt>
+     * <dd>Only public parameters governing the current
+     * request are added to the URL.</dd>
+     * </dl>
+     * The URL can be further extended by adding render
+     * parameters, portlet mode, and window state.
+     * If no additional portlet mode, window
+     * state or security modifier is set on the URL, the values from the
+     * current render or resource request are preserved.
      * <p>
      * If a public render parameter value is set or removed on a render URL, then the public 
      * render parameter will be set to the new value or removed when the URL is activated.
      * </div>
      * 
-     * @param flag
+     * @param option
      *            Specifies how current parameters are to be copied to the URL
      *
-     * @see UrlFlag
+     * @see ParameterCopyOption
      * 
      * @return a portlet render URL
      *     
      * @since 3.0
      */
-    public PortletURL createRenderURL(UrlFlag flag);
+    public RenderURL createRenderURL(ParameterCopyOption option);
 
 
     /**
-     * <span class="changed_modified_3_0">Creates</span> a portlet URL targeting the 
-     * portlet. If no portlet mode, window
-     * state or security modifier is set in the PortletURL the current values
-     * are preserved. If a request is triggered by the PortletURL, it results in
+     * <div class="changed_modified_3_0">
+     * Creates an action URL targeting the portlet.
+     * Action URLs are used to create forms or links that, when triggered,
+     * update the portlet state in a non-idempotent manner.
+     * <p> 
+     * If a request is triggered by the URL, it results in
      * an action request.
+     * </div>
      * <p>
      * The returned action URL will 
      * <span class="changed_added_3_0">not contain any private render parameters</span>
@@ -494,88 +511,106 @@ public interface MimeResponse extends PortletResponse {
      * from the current request. 
      * <p>
      * The returned URL can be further extended by adding portlet-specific action
-     * parameters and portlet modes and window states.
+     * parameters, portlet mode, and window state.
+     * If no additional portlet mode, window
+     * state or security modifier is set on the URL, the values from the
+     * current render or resource request are preserved.
      * <div class="changed_added_3_0">
-     * Any parameter added to the action URL that is not a public render parameter
-     * is an action parameter.
-     * <p>
-     * If a public render parameter value is set or removed on an action URL, 
-     * then the public render parameter will be set to the new value or 
-     * removed when the URL is activated.
      * <p>
      * Public render parameters do not need to be explicitly added to the returned 
      * render URL, unless the public render parameter value is to be changed. 
      * Any public render parameters associated with 
      * the portlet will automatically be available during action request 
      * processing resulting from activation of the URL. 
+     * <p>
+     * If a public render parameter value is set or removed on an action URL, 
+     * then the public render parameter will be set to the new value or 
+     * removed when the URL is activated.
+     * <p>
+     * The effect of this method is the same as calling {@link #createRenderURL(ParameterCopyOption)}
+     * with the parameter set to COPY_PUBLIC_RENDER_PARAMETERS.
      * </div>
      * 
      * @return a portlet action URL
      */
-    public PortletURL createActionURL();
+    public ActionURL createActionURL();
 
 
     /**
      * <div class="changed_added_3_0">
-     * Creates a portlet URL targeting the portlet. If no portlet mode, window
-     * state or security modifier is set in the PortletURL the current values
-     * are preserved. If a request is triggered by the PortletURL, it results in
+     * Creates an action URL targeting the portlet. 
+     * Action URLs are used to create forms or links that, when triggered,
+     * update the portlet state in a non-idempotent manner.
+     * <p> 
+     * If a request is triggered by the URL, it results in
      * an action request.
      * <p>
      * The new action URL will contain render parameters from the
-     * current request as specified by the <code>flag</code> parameter.
-     * <p> 
-     * If the flag value COPY_NO_PARAMETERS is used, it has the effect of
-     * removing all private and public parameters from the URL. 
+     * current request as specified by the <code>option</code> parameter.
+     * <dl>
+     * <dt>COPY_NO_PARAMETERS</dt>
+     * <dd>All public and private parameters are removed from the URL.</dd>
+     * <dt>COPY_RENDER_PARAMETERS</dt>
+     * <dd>The public and private parameters governing the current 
+     * request are added to the URL.</dd>
+     * <dt>COPY_PUBLIC_PARAMETERS</dt>
+     * <dd>Only public parameters governing the current
+     * request are added to the URL.</dd>
+     * </dl>
      * <p>
-     * The returned URL can be further extended by adding portlet-specific action
-     * parameters and portlet modes and window states.
-     * Any parameter added to the action URL that is not a public render parameter
-     * is an action parameter.
+     * The returned URL can be further extended by adding action
+     * parameters, portlet mode, and window state.
+     * If no additional portlet mode, window
+     * state or security modifier is set on the URL, the values from the
+     * current render or resource request are preserved.
      * <p>
      * If a public render parameter value is set or removed on an action URL, 
      * then the public render parameter will be set to the new value or 
      * removed when the URL is activated.
      * </div>
      * 
-     * @param flag
+     * @param option
      *            Specifies how current parameters are to be copied to the URL
      *
-     * @see UrlFlag
+     * @see ParameterCopyOption
      * 
      * @return a portlet action URL
      *     
      * @since 3.0
      */
-    public PortletURL createActionURL(UrlFlag flag);
+    public ActionURL createActionURL(ParameterCopyOption option);
 
 	
 	/**
-     * <span class="changed_modified_3_0">Creates</span> a resource URL targeting the 
-     * portlet. If no security modifier is
-     * set in the <code>ResourceURL</code> the current value is preserved. The current
-     * render parameters, portlet mode and window state are preserved 
-     * <span class="changed_modified_3_0">depending
-     * on the cacheability setting for the returned resource URL</span>.
-     * <div class="changed_added_3_0">
+     * <div class="changed_modified_3_0">
+     * Creates a resource URL targeting the portlet. 
+     * Resource URLs are used to trigger requests for content that applies
+     * to the current portlet view state.
      * <p>
      * If a request is triggered by the <code>ResourceURL</code>, it results in a serve
      * resource request of the <code>ResourceServingPortlet</code> interface.
      * <p>
-     * If cacheability is set to <code>PORTLET</code> or <code>PAGE</code>, the values of the render
-     * parameters are preserved. Otherwise, the render parameters will not be preserved.
+     * The security settings can be changed for the URL. If the security settings are
+     * not explicitly set, the values governing the current request 
+     * are preserved. 
+     * The current
+     * render parameters, portlet mode, and window state are preserved 
+     * depending on the cacheability setting for the returned resource URL.
+     * </div>
+     * <div class="changed_added_3_0">
      * <p>
-     * The public and private render parameters are added to the URL with their current value.
+     * If cacheability is set to <code>PORTLET</code> or <code>PAGE</code>, the values of the render
+     * parameters, portlet mode, and window state are preserved. 
+     * Otherwise, they will not be preserved.
+     * <p>
+     * If allowed by the cacheability setting, public and private render 
+     * parameters are added to the URL with their current values.
      * The render parameter values cannot be changed on the URL. 
      * <p>
-     * The returned URL can be further extended by adding portlet-specific resource
-     * parameters. Any parameter added to the resource URL is automatically a resource parameter.
-     * If a resource parameter has the same name as a public or private render parameter,
-     * then both the resource parameter values and the render parameter values will be available
-     * when the resource request is triggered. The resource parameter value(s) will appear 
-     * before the render parameter value(s) in the parameter values array. 
+     * The URL can be further extended by adding portlet-specific resource
+     * parameters. 
      * <p>
-     * The created URL will contain the current 
+     * The URL will contain the current 
      * cacheability setting of the parent resource by default. 
      * If no parent resource is available, <code>PAGE</code> is the default.
      * </div>
@@ -586,7 +621,7 @@ public interface MimeResponse extends PortletResponse {
      * The returned URL can be further extended by adding portlet-specific
      * parameters .
      * <p>
-     * The created URL will per default contain the current 
+     * The created URL will by default contain the current 
      * cacheability setting of the parent resource. 
      * If no parent resource is available, <code>PAGE</code> is the default.
      * </div>

@@ -26,7 +26,8 @@ package javax.portlet;
 
 
 /**
- * The <CODE>EventResponse</CODE> interface represents the portlet
+ * <span class="changed_modified_3_0">The</span> 
+ * <CODE>EventResponse</CODE> interface represents the portlet
  * response to an event request.
  * It extends the <CODE>StateAwareResponse</CODE> interface.<br>
  * The portlet container creates an <CODE>EventResponse</CODE> object and 
@@ -38,25 +39,28 @@ package javax.portlet;
  */
 public interface EventResponse extends StateAwareResponse {
 
-    /**
-     * Maintain the current render parameters of the request for
-     * the response.
-     * <p>
-     * All previously set render parameters are cleared.
-     * <p>
-     * These parameters will be accessible in all
-     * subsequent render calls via the
-     * <code>PortletRequest.getParameter</code> call until
-     * a new request is targeted to the portlet.
-     * <p>
-     * The given parameters do not need to be encoded
-     * prior to calling this method.
-     *
-     * @param  request   The request the portlet has been provided
-     *                   with by the portlet container for the current
-     *                   <code>processEvent</code> call, must not be 
-     *                   <code>null</code>.
-     */
-    public void setRenderParameters(EventRequest request);
+   /**
+    * Maintain the current render parameters of the request for
+    * the response.
+    * <p>
+    * All previously set render parameters are cleared.
+    * <p>
+    * These parameters will be accessible in all
+    * subsequent render calls via the
+    * <code>PortletRequest.getParameter</code> call until
+    * a new request is targeted to the portlet.
+    * <p>
+    * The given parameters do not need to be encoded
+    * prior to calling this method.
+    *
+    * @param  request   The request the portlet has been provided
+    *                   with by the portlet container for the current
+    *                   <code>processEvent</code> call, must not be 
+    *                   <code>null</code>.
+    * @deprecated As of version 3.0. Use {@link StateAwareResponse#getRenderParameters()} instead.
+    */
+
+   @Deprecated
+   public void setRenderParameters(EventRequest request);
 
 }

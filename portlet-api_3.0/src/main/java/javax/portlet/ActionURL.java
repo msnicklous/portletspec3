@@ -26,50 +26,38 @@ package javax.portlet;
 
 
 /**
- * <span class="changed_modified_3_0">The</span> 
- * <CODE>ActionRequest</CODE> represents the request sent to the portlet
- * to handle an action.<br>
- * It extends the ClientDataRequest interface and provides action request
- * information to portlets.
- * <p>
- * The portlet container creates an <CODE>ActionRequest</CODE> object and
- * passes it as argument to the portlet's <CODE>processAction</CODE> method.
- * 
- * @see ClientDataRequest
+ * <div class="changed_added_3_0">
+ * An action URL is created with {@link MimeResponse#createActionURL()}. 
+ * An action URL is used to trigger an action request.
+ * </div>
+ * @since   3.0
  */
-public interface ActionRequest extends ClientDataRequest
+public interface ActionURL extends PortletURL
 {
-   /**
-    * Predefined action name for usage with the
-    * <code>@ProcessAction</code> annotation.
-    * 
-    * @since 2.0
-    */
-   public static final String ACTION_NAME = "javax.portlet.action";
 
 
    /**
     * <div class="changed_added_3_0">
-    * Gets the action parameters set for this request.
+    * Gets the action parameter values set for this URL.
     * <p>
     * Action parameters are additional portlet parameters added to the 
-    * URL triggering the request that extend the state information provided by 
+    * URL that extend the state information provided by 
     * the render parameters.
     * <p>
-    * Action parameters can also contain information provided by the client,
-    * for example, form parameters provided when a form is submitted. 
+    * Initially the returned object is empty. 
+    * <p>
+    * Modifying the parameter values encapsulated by the returned object directly
+    * modifies the action parameters applied to the URL.
     * <p>
     * {@link PortletParameters} provides a description of the parameter concept.
     * </div>
     * 
-    * @return   an immutable object representing
-    *           the action parameters
+    * @return   a <code>MutableActionParameters</code> object representing
+    *           the action parameters.
     * @since    3.0
     * @see      ActionParameters 
     * @see      MutableActionParameters 
-    * @see      ActionURL 
     */
 
-   public ActionParameters getActionParameters();
-
+   public MutableActionParameters getActionParameters();
 }

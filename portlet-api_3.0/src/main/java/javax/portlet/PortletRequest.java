@@ -28,21 +28,27 @@ import java.util.Locale;
 
 
 /**
- * <span class="changed_modified_3_0">The</span> 
+ * <div class="changed_modified_3_0">The
  * <CODE>PortletRequest</CODE> defines the base interface to provide client
- * request information to a portlet. The portlet container uses two specialized
- * versions of this interface when invoking a portlet, <CODE>ActionRequest</CODE>
- * and <CODE>RenderRequest</CODE>. The portlet container creates these objects and 
- * passes them as  arguments to the portlet's <CODE>processAction</CODE> and
- * <CODE>render</CODE> methods.
+ * request information to a portlet. The portlet container uses specialized
+ * versions of this interface when invoking a portlet. 
+ * The portlet container creates these objects and 
+ * passes them as arguments to the corresponding request processing methods.
+ * <p>
+ * The <code>PortletRequest</code> also provides access to the portlet state.
+ * </div>
  * 
+ * @see PortletState
  * @see ActionRequest
+ * @see EventRequest
  * @see RenderRequest
+ * @see ResourceRequest
  */
-public interface PortletRequest
+public interface PortletRequest extends PortletState
 {
-    
-  /** Used to retrieve user information attributes with the 
+
+   
+   /** Used to retrieve user information attributes with the 
    * <code>getAttribute</code> call. The user information is returned 
    * as a <code>Map</code> object. The portlet must define the 
    * user information attribute it is interested in inside the 
@@ -286,53 +292,36 @@ public interface PortletRequest
   public static final String ACTION_SCOPE_ID = "javax.portlet.as";
   
   
-  /**
-   * Returns true, if the given window state is valid
-   * to be set for this portlet in the context
-   * of the current request.
-   *
-   * @param  state    window state to checked
-   *
-   * @return    true, if it is valid for this portlet
-   *             in this request to change to the
-   *            given window state
-   *
-   */
-  public boolean isWindowStateAllowed(WindowState state);
+  
+ /**
+  * Returns true, if the given window state is valid
+  * to be set for this portlet in the context
+  * of the current request.
+  *
+  * @param  state    window state to checked
+  *
+  * @return    true, if it is valid for this portlet
+  *             in this request to change to the
+  *            given window state
+  *
+  */
+ public boolean isWindowStateAllowed(WindowState state);
 
 
-/**
-   * Returns true, if the given portlet mode is a valid
-   * one to set for this portlet  in the context
-   * of the current request.
-   *
-   * @param  mode    portlet mode to check
-   *
-   * @return    true, if it is valid for this portlet
-   *             in this request to change to the
-   *            given portlet mode
-   *
-   */
+ /**
+  * Returns true, if the given portlet mode is a valid
+  * one to set for this portlet  in the context
+  * of the current request.
+  *
+  * @param  mode    portlet mode to check
+  *
+  * @return    true, if it is valid for this portlet
+  *             in this request to change to the
+  *            given portlet mode
+  *
+  */
 
-  public boolean isPortletModeAllowed(PortletMode mode);
-
-
-  /**
-   * Returns the current portlet mode of the portlet.
-   *
-   * @return   the portlet mode
-   */
-
-  public PortletMode getPortletMode ();
-
-
-  /**
-   * Returns the current window state of the portlet.
-   *
-   * @return   the window state
-   */
-
-  public WindowState getWindowState ();
+ public boolean isPortletModeAllowed(PortletMode mode);
 
 
   /**
@@ -632,8 +621,10 @@ public interface PortletRequest
    * @exception  java.lang.IllegalArgumentException 
    *                            if name is <code>null</code>.
    *
+   * @deprecated As of version 3.0. Use {@link #getRenderParameters()} instead.
    */
   
+  @Deprecated
   public String getParameter(String name);
 
 
@@ -653,8 +644,10 @@ public interface PortletRequest
    * 			the name of a request parameter; or an 
    *			empty <code>Enumeration</code> if the
    *			request has no parameters.
+   * @deprecated As of version 3.0. Use {@link #getRenderParameters()} instead.
    */
 
+  @Deprecated
   public java.util.Enumeration<String> getParameterNames();
 
 
@@ -679,8 +672,10 @@ public interface PortletRequest
    * @exception  java.lang.IllegalArgumentException 
    *                            if name is <code>null</code>.
    *
+   * @deprecated As of version 3.0. Use {@link #getRenderParameters()} instead.
    */
 
+  @Deprecated
   public String[] getParameterValues(String name);
 
 
@@ -702,8 +697,11 @@ public interface PortletRequest
    *             if no parameters exist. The keys in the parameter
    *             map are of type String. The values in the parameter map are of type
    *             String array (<code>String[]</code>).
+   *             
+   * @deprecated As of version 3.0. Use {@link #getRenderParameters()} instead.
    */
 
+  @Deprecated
   public java.util.Map<String, String[]> getParameterMap();
 
 
@@ -920,6 +918,7 @@ public interface PortletRequest
    * @see PortletResponse#addProperty(Cookie) 
    */
   public javax.servlet.http.Cookie[] getCookies();
+
   
   /**
    * <span class="changed_modified_3_0"> 
@@ -941,12 +940,16 @@ public interface PortletRequest
    *             if no private parameters exist. The keys in the parameter
    *             map are of type String. The values in the parameter map are of type
    *             String array (<code>String[]</code>).
+   *             
+   * @deprecated As of version 3.0. Use {@link #getRenderParameters()} instead.
    */
+
+  @Deprecated
   public java.util.Map<String, String[]> getPrivateParameterMap();
   
   /**
    * Returns a <code>Map</code> of the public parameters of this request.
-   * Public parameters may be shared with other portlets or components and
+   * Public parameters may be shared with other portlets or components as
    * defined in the portlet deployment descriptor with the 
    * <code>supported-public-render-parameter</code> element.  
    * The returned parameters are "x-www-form-urlencoded" decoded.
@@ -962,7 +965,11 @@ public interface PortletRequest
    *             if no public parameters exist. The keys in the parameter
    *             map are of type String. The values in the parameter map are of type
    *             String array (<code>String[]</code>).
+   *             
+   * @deprecated As of version 3.0. Use {@link #getRenderParameters()} instead.
    */
+
+  @Deprecated
   public java.util.Map<String, String[]> getPublicParameterMap();
 
 }
