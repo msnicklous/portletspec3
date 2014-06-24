@@ -79,7 +79,7 @@
           </xsl:element>
   </xsl:template>
   
-  <!-- ignore public render parameters element -->
-  <xsl:template match="pa:portlet-app/pa:public-render-parameter"/>
+  <!-- ignore all other children of pa:portlet-app -->
+  <xsl:template match="pa:portlet-app/*[not(pa:portlet-name)]"/>
 
 </xsl:stylesheet>
