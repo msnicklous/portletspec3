@@ -70,7 +70,10 @@ public class TestLink {
    }
 
    /**
-    * Generates HTML markup representing the test link.
+    * Generates HTML markup representing the test link. 
+    * 
+    * Note that the div element containing the item that is to be acted upon
+    * by the client must have an id equal to the test case name.
     * 
     * @return  HTML markup representing the test link
     */
@@ -79,7 +82,9 @@ public class TestLink {
       final String actId = tcName + Constants.CLICK_ID;
       
       StringBuilder sb = new StringBuilder();
-      sb.append("<div class='portletTCKTestcase'>");
+      sb.append("<div class='portletTCKTestcase' id='");
+      sb.append(tcName);
+      sb.append("'>");
       sb.append("<h4>");
       sb.append(tcName);
       sb.append(" link:");

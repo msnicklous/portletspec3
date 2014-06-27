@@ -37,7 +37,6 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:pa="http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd">
   <xsl:output method="xml" indent="yes" doctype-system="http://java.sun.com/dtd/properties.dtd"/> 
   <xsl:strip-space elements="pa:portlet-app"/>
-  <xsl:param name="testContextBase"/>
   <xsl:param name="additionalTCs"/>
   <xsl:param name="copyOnly"/>
   <xsl:template match="/">
@@ -50,7 +49,7 @@
          <xsl:for-each select="$addi//entry">
             <xsl:element name="entry">
                <xsl:attribute name="key"><xsl:value-of select="@key"/></xsl:attribute>
-               <xsl:value-of select='$testContextBase'/><xsl:value-of select="."/>
+               <xsl:value-of select="."/>
             </xsl:element>
          </xsl:for-each>
       </xsl:if>
@@ -61,15 +60,15 @@
        key attribute    = test case name                                
        value            = page to be addressed to execute the TC
        
-       The test driver will use the name / value pairs to construct URLs of the
-       following form for test case execution:
+       The test driver will use the name / value pairs along with the context
+       base to construct URLs of the following form for test case execution:
        
-       http://<test.server.host>:<test.server.port>/<value>
+       http://<test.server.host>:<test.server.port>/<test.context.base><value>
   -->
   <xsl:template match="pa:portlet-app/pa:portlet">
     <xsl:element name="entry">
       <xsl:attribute name="key"><xsl:value-of select="pa:portlet-name"/></xsl:attribute>
-      <xsl:value-of select='$testContextBase'/><xsl:value-of select="pa:portlet-name"/>
+      <xsl:value-of select="pa:portlet-name"/>
     </xsl:element>
   </xsl:template>
   
