@@ -21,14 +21,9 @@
    <modelVersion>4.0.0</modelVersion>
    <groupId>javax.portlet</groupId>
    <artifactId>tck</artifactId>
-   <name>Portlet API Technology Compliance Kit</name>
+   <name>Portlet API Technology Compatibility Kit</name>
    <version>3.0-SNAPSHOT</version>
    <packaging>pom</packaging>
-
-   <organization>
-      <name>IBM Corporation</name>
-      <url>http://www.ibm.com</url>
-   </organization>
 
    <licenses>
       <license>
@@ -36,21 +31,6 @@
          <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
       </license>
    </licenses>
-
-   <developers>
-      <developer>
-         <name>Scott Nicklous</name>
-         <id>msnicklous</id>
-         <email>msnicklous#a@T#apache.d0t.org</email>
-         <timezone>+1</timezone>
-         <organization>IBM Corporation</organization>
-         <organizationUrl>http://www.ibm.com</organizationUrl>
-         <roles>
-            <role>Specification Lead, JSR 362 Portlet Specification 3.0</role>
-            <role>Java Developer</role>
-         </roles>
-      </developer>
-   </developers>
 
    <scm>
       <connection>scm:git:https://github.com/msnicklous/portletspec3</connection>
@@ -336,6 +316,44 @@
             </plugin>
          </plugins>
       </pluginManagement>
+
+      <plugins>
+         <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-javadoc-plugin</artifactId>
+            <version>2.9.1</version>
+            <configuration>
+               <doctitle>
+                  JSR 362 Portlet Specification 3.0 TCK Working Document
+               </doctitle>
+               <windowtitle>
+                  JSR 362 Portlet Specification 3.0 TCK Working Document
+               </windowtitle>
+               <stylesheetfile>${javadoc.css.file}</stylesheetfile>
+               <!-- link to Java EE APIs for cross-references -->
+               <links>
+                  <link>http://docs.oracle.com/javaee/7/api/</link>
+               </links>
+               <docfilessubdirs>true</docfilessubdirs>
+               <bottom>
+               <![CDATA[Java Portlet Specification V3.0 Working Document.
+                  See the <a href="doc-files/NOTICE.txt">Copyright</a> and 
+                  <a href="doc-files/LICENSE.txt">License</a> provided with this distribution.
+                  Use is subject to
+                  <a href="http://www.apache.org/licenses/LICENSE-2.0">license terms</a>.]]>
+               </bottom>
+            </configuration>
+            <executions>
+               <execution>
+                  <id>aggregate</id>
+                  <goals>
+                    <goal>aggregate</goal>
+                  </goals>
+                  <phase>site</phase>
+               </execution>
+            </executions>
+         </plugin>
+      </plugins>
    </build>
 
    <reporting>
