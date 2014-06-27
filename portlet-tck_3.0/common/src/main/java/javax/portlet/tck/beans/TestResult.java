@@ -110,6 +110,9 @@ public class TestResult {
    /**
     * Generates HTML markup representing the test result.
     * 
+    * Note that the div element containing the item that is to be acted upon
+    * by the client must have an id equal to the test case name.
+    * 
     * @return  HTML markup representing the test result
     */
    @Override
@@ -119,7 +122,9 @@ public class TestResult {
       final String resStr = tcSuccess?Constants.SUCCESS:Constants.FAILURE;
       
       StringBuilder sb = new StringBuilder();
-      sb.append("<div class='portletTCKTestcase'>");
+      sb.append("<div class='portletTCKTestcase' id='");
+      sb.append(tcName);
+      sb.append("'>");
       sb.append("<h4>");
       sb.append(tcName);
       sb.append(" results:");
