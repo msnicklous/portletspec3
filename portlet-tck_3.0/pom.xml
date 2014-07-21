@@ -119,6 +119,7 @@
       <module>TestModule3</module>
       <module>TestModule3-portlet1</module>
       <module>TestModule3-portlet2</module>
+      <module>AnnotationTests</module>
       <module>deploy</module>
       <module>driver</module>
    </modules>

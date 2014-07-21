@@ -35,6 +35,7 @@ import javax.portlet.RenderRequest;
 import javax.portlet.RenderResponse;
 import javax.portlet.tck.beans.TestCaseDetails;
 import javax.portlet.tck.beans.JSR286ApiTestCaseDetails;
+import static javax.portlet.tck.beans.JSR286ApiTestCaseDetails.*;
 import javax.portlet.tck.beans.TestResult;
 
 /**
@@ -73,6 +74,7 @@ public class V2CompatApiAnnotationTests1 implements Portlet {
       }
 
       PrintWriter writer = response.getWriter();
+      TestCaseDetails tcd = new JSR286ApiTestCaseDetails();
 
       // Create result objects for the tests
 
