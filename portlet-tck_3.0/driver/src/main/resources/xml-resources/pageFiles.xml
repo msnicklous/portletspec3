@@ -25,4 +25,13 @@
    <fl:file>tck-TestModule1-pages.xml</fl:file>
    <fl:file>tck-TestModule2-pages.xml</fl:file>
    <fl:file>tck-TestModule3-pages.xml</fl:file>
+   <fl:file>tck-V2AnnotationTests-pages.xml</fl:file>
+   <fl:file>tck-V2EnvironmentTests-pages.xml</fl:file>
+   <fl:file>tck-V2ExceptionTests-pages.xml</fl:file>
+   <fl:file>tck-V2FilterTests-pages.xml</fl:file>
+   <fl:file>tck-V2PortletTests-pages.xml</fl:file>
+   <fl:file>tck-V2RequestTests-pages.xml</fl:file>
+   <fl:file>tck-V2ResponseTests-pages.xml</fl:file>
+   <fl:file>tck-V2URLTests-pages.xml</fl:file>
+   <fl:file>tck-V2WrapperTests-pages.xml</fl:file>
 </fl:filelist>
