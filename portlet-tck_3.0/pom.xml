@@ -119,7 +119,15 @@
       <module>TestModule3</module>
       <module>TestModule3-portlet1</module>
       <module>TestModule3-portlet2</module>
-      <module>AnnotationTests</module>
+      <module>V2AnnotationTests</module>
+      <module>V2EnvironmentTests</module>
+      <module>V2ExceptionTests</module>
+      <module>V2FilterTests</module>
+      <module>V2PortletTests</module>
+      <module>V2RequestTests</module>
+      <module>V2ResponseTests</module>
+      <module>V2URLTests</module>
+      <module>V2WrapperTests</module>
       <module>deploy</module>
       <module>driver</module>
    </modules>

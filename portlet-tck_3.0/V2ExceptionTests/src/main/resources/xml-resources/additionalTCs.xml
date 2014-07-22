@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.     
+-->
+<!--
+   Defines the test cases for this module.
+   For this module, the test case names are not automatically generated from.
+   the deployment descriptor, so edit this file to add new test cases.
+   This allows a portlet to define multiple test cases.
+-->
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<!-- JSR 286 API ExceptionTests test case names and page mappings -->
+<entry key="PortletException_extendsException">V2ExceptionTests_PortletException</entry>
+<entry key="PortletException_constructor1">V2ExceptionTests_PortletException</entry>
+<entry key="PortletException_constructor2">V2ExceptionTests_PortletException</entry>
+<entry key="PortletException_constructor3">V2ExceptionTests_PortletException</entry>
+<entry key="PortletException_constructor4">V2ExceptionTests_PortletException</entry>
+<entry key="PortletModeException_extendsPortletException">V2ExceptionTests_PortletModeException</entry>
+<entry key="PortletModeException_constructor1">V2ExceptionTests_PortletModeException</entry>
+<entry key="PortletModeException_constructor2">V2ExceptionTests_PortletModeException</entry>
+<entry key="PortletModeException_constructor3">V2ExceptionTests_PortletModeException</entry>
+<entry key="PortletModeException_hasGetMode1">V2ExceptionTests_PortletModeException</entry>
+<entry key="PortletModeException_hasGetMode2">V2ExceptionTests_PortletModeException</entry>
+<entry key="PortletSecurityException_extendsPortletException">V2ExceptionTests_PortletSecurityException</entry>
+<entry key="PortletSecurityException_constructor1">V2ExceptionTests_PortletSecurityException</entry>
+<entry key="PortletSecurityException_constructor2">V2ExceptionTests_PortletSecurityException</entry>
+<entry key="PortletSecurityException_constructor3">V2ExceptionTests_PortletSecurityException</entry>
+<entry key="ReadOnlyException_extendsPortletException">V2ExceptionTests_ReadOnlyException</entry>
+<entry key="ReadOnlyException_constructor1">V2ExceptionTests_ReadOnlyException</entry>
+<entry key="ReadOnlyException_constructor2">V2ExceptionTests_ReadOnlyException</entry>
+<entry key="ReadOnlyException_constructor3">V2ExceptionTests_ReadOnlyException</entry>
+<entry key="UnavailableException_extendsPortletException">V2ExceptionTests_UnavailableException</entry>
+<entry key="UnavailableException_constructor1">V2ExceptionTests_UnavailableException</entry>
+<entry key="UnavailableException_constructor2">V2ExceptionTests_UnavailableException</entry>
+<entry key="UnavailableException_hasIsPermanent">V2ExceptionTests_UnavailableException</entry>
+<entry key="UnavailableException_isPermanent1">V2ExceptionTests_UnavailableException</entry>
+<entry key="UnavailableException_isPermanent2">V2ExceptionTests_UnavailableException</entry>
+<entry key="UnavailableException_isPermanent3">V2ExceptionTests_UnavailableException</entry>
+<entry key="UnavailableException_hasGetUnavailableSeconds">V2ExceptionTests_UnavailableException</entry>
+<entry key="UnavailableException_getUnavailableSeconds1">V2ExceptionTests_UnavailableException</entry>
+<entry key="UnavailableException_getUnavailableSeconds2">V2ExceptionTests_UnavailableException</entry>
+<entry key="ValidatorException_extendsPortletException">V2ExceptionTests_ValidatorException</entry>
+<entry key="ValidatorException_constructor1">V2ExceptionTests_ValidatorException</entry>
+<entry key="ValidatorException_constructor2">V2ExceptionTests_ValidatorException</entry>
+<entry key="ValidatorException_constructor3">V2ExceptionTests_ValidatorException</entry>
+<entry key="ValidatorException_constructor4">V2ExceptionTests_ValidatorException</entry>
+<entry key="ValidatorException_constructor5">V2ExceptionTests_ValidatorException</entry>
+<entry key="ValidatorException_constructor6">V2ExceptionTests_ValidatorException</entry>
+<entry key="ValidatorException_hasGetFailedKeys">V2ExceptionTests_ValidatorException</entry>
+<entry key="ValidatorException_getFailedKeys1">V2ExceptionTests_ValidatorException</entry>
+<entry key="ValidatorException_getFailedKeys2">V2ExceptionTests_ValidatorException</entry>
+<entry key="WindowStateException_extendsPortletException">V2ExceptionTests_WindowStateException</entry>
+<entry key="WindowStateException_constructor1">V2ExceptionTests_WindowStateException</entry>
+<entry key="WindowStateException_constructor2">V2ExceptionTests_WindowStateException</entry>
+<entry key="WindowStateException_constructor3">V2ExceptionTests_WindowStateException</entry>
+<entry key="WindowStateException_hasGetState">V2ExceptionTests_WindowStateException</entry>
+<entry key="WindowStateException_getState">V2ExceptionTests_WindowStateException</entry>
+
+</properties>

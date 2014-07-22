@@ -574,7 +574,7 @@ public class JSR286ApiTestCaseDetails extends TestCaseDetails {
    public final static String PORTLETREQUEST_GETPUBLICPARAMETERMAP1 = "PortletRequest_getPublicParameterMap1";
    public final static String PORTLETREQUEST_GETPUBLICPARAMETERMAP2 = "PortletRequest_getPublicParameterMap2";
    public final static String PORTLETREQUEST_GETPUBLICPARAMETERMAP3 = "PortletRequest_getPublicParameterMap3";
-   public final static String PORTLETREQUEST$P3PUSERINFOS_EXISTS = "PortletRequest$P3PUserInfos_exists";
+   public final static String PORTLETREQUEST_P3PUSERINFOS_EXISTS = "PortletRequest_P3PUserInfos_exists";
    public final static String CLIENTDATAREQUEST_EXTENDSPORTLETREQUEST1 = "ClientDataRequest_extendsPortletRequest1";
    public final static String CLIENTDATAREQUEST_EXTENDSPORTLETREQUEST2 = "ClientDataRequest_extendsPortletRequest2";
    public final static String CLIENTDATAREQUEST_HASGETPORTLETINPUTSTREAM = "ClientDataRequest_hasGetPortletInputStream";
@@ -2015,7 +2015,7 @@ public class JSR286ApiTestCaseDetails extends TestCaseDetails {
       t.put(PORTLETREQUEST_GETPUBLICPARAMETERMAP1, "Returns an java.util.Map<java.lang.String,java.lang.String[]> object for the public parameter names and values if available");
       t.put(PORTLETREQUEST_GETPUBLICPARAMETERMAP2, "The returned map is immutable");
       t.put(PORTLETREQUEST_GETPUBLICPARAMETERMAP3, "Returns an empty map if no public parameters exist");
-      t.put(PORTLETREQUEST$P3PUSERINFOS_EXISTS, "The P3PUserInfos exist as a public static enum");
+      t.put(PORTLETREQUEST_P3PUSERINFOS_EXISTS, "The P3PUserInfos exist as a public static enum");
       t.put(CLIENTDATAREQUEST_EXTENDSPORTLETREQUEST1, "ClientDataRequest extendsPortletRequest");
       t.put(CLIENTDATAREQUEST_EXTENDSPORTLETREQUEST2, "All tests described for the PortletRequest execute correctly with the ClientDataRequest");
       t.put(CLIENTDATAREQUEST_HASGETPORTLETINPUTSTREAM, "Has a getPortletInputStream() method");
