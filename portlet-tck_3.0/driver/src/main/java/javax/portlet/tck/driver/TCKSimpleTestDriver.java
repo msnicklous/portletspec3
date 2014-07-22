@@ -26,6 +26,8 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Properties;
 import java.util.Set;
+import java.util.TreeMap;
+import java.util.TreeSet;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -58,7 +60,10 @@ import javax.portlet.tck.constants.Constants;
 public class TCKSimpleTestDriver {
 
    private static String loginUrl, host, port, testFile, browser, 
-   username, usernameId, password, passwordId, testContextBase;
+   username, usernameId, password, passwordId, testContextBase, module;
+   
+   // used to optimize access for tests on the same page
+   private static String lastPage = "";
 
    private static boolean useGeneratedUrl = true;
 
@@ -75,6 +80,8 @@ public class TCKSimpleTestDriver {
       System.out.println("getTestList");
       testFile = System.getProperty("test.list.file");
       System.out.println("   TestFile=" + testFile);
+      module = System.getProperty("test.module");
+      System.out.println("   Module       =" + module);
 
       Properties tprops = new Properties();
       try {
@@ -85,15 +92,37 @@ public class TCKSimpleTestDriver {
          e.printStackTrace();
          return null;
       }
-
-      List<String[]> tests = new ArrayList<String[]>();
+      
+      // See if performance can be improved by sorting the test cases by
+      // the page to be accessed. The map uses the page as key and has a 
+      // set of test cases for that page as value.
+      
+      TreeMap<String, Set<String>> pages = new TreeMap<String, Set<String>>();
       Set<Object> tcs = tprops.keySet();
       for (Object o : tcs) {
          String tcase = (String) o ;
-         String tpage = tprops.getProperty(tcase);
-         String[] parms = {tpage, tcase};
-         tests.add(parms);
+         if (module == null || module.length() <= 0 || tcase.contains(module)) {
+            String tpage = tprops.getProperty(tcase);
+            if (!pages.containsKey(tpage)) {
+               pages.put(tpage, new TreeSet<String>());
+            }
+            pages.get(tpage).add(tcase);
+         }
       }
+
+      // now pass TCs, sorted by page, to the driver
+      
+      List<String[]> tests = new ArrayList<String[]>();
+      for (String tpage : pages.keySet()) {
+         for (String  tcase: pages.get(tpage)) {
+            String[] parms = {tpage, tcase};
+            tests.add(parms);
+         }
+      }
+      
+      int numP = pages.size();
+      int numTC = tests.size();
+      System.out.println("Executing " + numTC + " tests on " + numP + "pages.");
 
       return tests;
    }
@@ -163,6 +192,7 @@ public class TCKSimpleTestDriver {
          throw new Exception("Unsupported browser: " + browser);
       }
       
+      lastPage = "";
       login();
 
    }
@@ -198,21 +228,26 @@ public class TCKSimpleTestDriver {
    public void test() {
       System.out.println("execute test.");
       
-      // depending on configuration, either follow links on the portal page
-      // or access the test page using the generated URL
-      if (useGeneratedUrl) {
-         driver.get(testUrl);
-      } else {
-         try {
-            WebElement wel = driver.findElement(By.ByLinkText.linkText(page));
-            System.out.println("Found link: " + wel.getText());
-            wel.click();
-            WebDriverWait wdw = new WebDriverWait(driver, 3);
-            wdw.until(ExpectedConditions.visibilityOfElementLocated(By.ById.id(tcName)));
-         } catch (Exception e) {
-            assertTrue("Test case " + tcName + " failed. Page " + page 
-                  + " could not be accessed.", false);
+      if (!lastPage.equals(page)) { 
+         lastPage = page;
+
+         // depending on configuration, either follow links on the portal page
+         // or access the test page using the generated URL
+         if (useGeneratedUrl) {
+            driver.get(testUrl);
+         } else {
+            try {
+               WebElement wel = driver.findElement(By.ByLinkText.linkText(page));
+               System.out.println("Found link: " + wel.getText());
+               wel.click();
+               WebDriverWait wdw = new WebDriverWait(driver, 3);
+               wdw.until(ExpectedConditions.visibilityOfElementLocated(By.ById.id(tcName)));
+            } catch (Exception e) {
+               assertTrue("Test case " + tcName + " failed. Page " + page 
+                     + " could not be accessed.", false);
+            }
          }
+         
       }
       
       processClickable();
@@ -277,6 +312,9 @@ public class TCKSimpleTestDriver {
       String actionId = tcName + Constants.CLICK_ID;
       String resultId = tcName + Constants.RESULT_ID;
       String detailId = tcName + Constants.DETAIL_ID;
+      
+      // after test case click, need to access page again
+      lastPage = "";    
 
       try {
 

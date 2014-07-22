@@ -101,7 +101,7 @@
       <!-- Can be used with firefox or HTMLUnit without setting the test.browser.webDriver property. -->
       <!-- Use of Chrome or IE requires the webDriver to be downloaded ad available. Set the -->
       <!-- test.browser.webDriver property to point to the appropriate WebDriver server. -->
-      <test.browser>firefox</test.browser>
+      <test.browser>HTMLUnit</test.browser>
       <!-- commented outline below shows configuration for the Internet Explorer  driver -->
       <!-- test.browser.webDriver>C:\ntutil\IEDriverServer_x64_2.42.0\IEDriverServer.exe</test.browser.webDriver -->
 
