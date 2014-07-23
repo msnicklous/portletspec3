@@ -78,130 +78,135 @@ public class V2ResponseTests_ActionResponse implements Portlet {
 
       // Create result objects for the tests
 
-      /* TestCase: ActionResponse_extendsStateAwareResponse1 */
-      /* Details: "ActionResponse extends StateAwareResponse" */
+      /* TestCase: ActionResponse_implementsStateAwareResponse1 */
+      /* Details: "Implements StateAwareResponse" */
       /* TODO: implement test */
-      TestResult tr0 = tcd.getTestResultFailed(ACTIONRESPONSE_EXTENDSSTATEAWARERESPONSE1);
+      TestResult tr0 = tcd.getTestResultFailed(ACTIONRESPONSE_IMPLEMENTSSTATEAWARERESPONSE1);
       
-      /* TestCase: ActionResponse_extendsStateAwareResponse2 */
+      /* TestCase: ActionResponse_implementsStateAwareResponse2 */
+      /* Details: "Implements PortletResponse" */
+      /* TODO: implement test */
+      TestResult tr1 = tcd.getTestResultFailed(ACTIONRESPONSE_IMPLEMENTSSTATEAWARERESPONSE2);
+      
+      /* TestCase: ActionResponse_implementsStateAwareResponse3 */
       /* Details: "All tests described for the PortletResponse execute correctly with the ActionResponse" */
       /* TODO: implement test */
-      TestResult tr1 = tcd.getTestResultFailed(ACTIONRESPONSE_EXTENDSSTATEAWARERESPONSE2);
+      TestResult tr2 = tcd.getTestResultFailed(ACTIONRESPONSE_IMPLEMENTSSTATEAWARERESPONSE3);
       
-      /* TestCase: ActionResponse_extendsStateAwareResponse3 */
+      /* TestCase: ActionResponse_implementsStateAwareResponse4 */
       /* Details: "All tests described for the StateAwareResponse execute correctly with the ActionResponse" */
       /* TODO: implement test */
-      TestResult tr2 = tcd.getTestResultFailed(ACTIONRESPONSE_EXTENDSSTATEAWARERESPONSE3);
+      TestResult tr3 = tcd.getTestResultFailed(ACTIONRESPONSE_IMPLEMENTSSTATEAWARERESPONSE4);
       
       /* TestCase: ActionResponse_hasSendRedirectA */
-      /* Details: "Has a sendRedirect(java.lang.String) method" */
+      /* Details: "Has a sendRedirect(java.lang.String) throws java.io.IOException method" */
       /* TODO: implement test */
-      TestResult tr3 = tcd.getTestResultFailed(ACTIONRESPONSE_HASSENDREDIRECTA);
+      TestResult tr4 = tcd.getTestResultFailed(ACTIONRESPONSE_HASSENDREDIRECTA);
       
       /* TestCase: ActionResponse_sendRedirectA1 */
       /* Details: "Allows a redirect response to be sent to the client" */
       /* TODO: implement test */
-      TestResult tr4 = tcd.getTestResultFailed(ACTIONRESPONSE_SENDREDIRECTA1);
+      TestResult tr5 = tcd.getTestResultFailed(ACTIONRESPONSE_SENDREDIRECTA1);
       
       /* TestCase: ActionResponse_sendRedirectA2 */
       /* Details: "Throws IllegalArgumentException if a relative path URL is specified" */
       /* TODO: implement test */
-      TestResult tr5 = tcd.getTestResultFailed(ACTIONRESPONSE_SENDREDIRECTA2);
+      TestResult tr6 = tcd.getTestResultFailed(ACTIONRESPONSE_SENDREDIRECTA2);
       
       /* TestCase: ActionResponse_sendRedirectA3 */
       /* Details: "Throws IllegalStateException if setPortletMode has been called before this method " */
       /* TODO: implement test */
-      TestResult tr6 = tcd.getTestResultFailed(ACTIONRESPONSE_SENDREDIRECTA3);
+      TestResult tr7 = tcd.getTestResultFailed(ACTIONRESPONSE_SENDREDIRECTA3);
       
       /* TestCase: ActionResponse_sendRedirectA4 */
       /* Details: "Throws IllegalStateException if setWindowState has been called before this method " */
       /* TODO: implement test */
-      TestResult tr7 = tcd.getTestResultFailed(ACTIONRESPONSE_SENDREDIRECTA4);
+      TestResult tr8 = tcd.getTestResultFailed(ACTIONRESPONSE_SENDREDIRECTA4);
       
       /* TestCase: ActionResponse_sendRedirectA5 */
       /* Details: "Throws IllegalStateException if setRenderParameter has been called before this method " */
       /* TODO: implement test */
-      TestResult tr8 = tcd.getTestResultFailed(ACTIONRESPONSE_SENDREDIRECTA5);
+      TestResult tr9 = tcd.getTestResultFailed(ACTIONRESPONSE_SENDREDIRECTA5);
       
       /* TestCase: ActionResponse_sendRedirectA6 */
       /* Details: "Throws IllegalStateException if setRenderParameters has been called before this method " */
       /* TODO: implement test */
-      TestResult tr9 = tcd.getTestResultFailed(ACTIONRESPONSE_SENDREDIRECTA6);
+      TestResult tr10 = tcd.getTestResultFailed(ACTIONRESPONSE_SENDREDIRECTA6);
       
       /* TestCase: ActionResponse_sendRedirectA7 */
       /* Details: "Throws IllegalStateException if removePublicRenderParameter has been called before this method" */
       /* TODO: implement test */
-      TestResult tr10 = tcd.getTestResultFailed(ACTIONRESPONSE_SENDREDIRECTA7);
+      TestResult tr11 = tcd.getTestResultFailed(ACTIONRESPONSE_SENDREDIRECTA7);
       
       /* TestCase: ActionResponse_sendRedirectA8 */
       /* Details: "Throws IOException if an IO problem occurs " */
       /* TODO: implement test */
-      TestResult tr11 = tcd.getTestResultFailed(ACTIONRESPONSE_SENDREDIRECTA8);
+      TestResult tr12 = tcd.getTestResultFailed(ACTIONRESPONSE_SENDREDIRECTA8);
       
       /* TestCase: ActionResponse_hasSendRedirectB */
-      /* Details: "Has a sendRedirect(java.lang.String, java.lang.String) method" */
+      /* Details: "Has a sendRedirect(java.lang.String, java.lang.String) throws java.io.IOException method" */
       /* TODO: implement test */
-      TestResult tr12 = tcd.getTestResultFailed(ACTIONRESPONSE_HASSENDREDIRECTB);
+      TestResult tr13 = tcd.getTestResultFailed(ACTIONRESPONSE_HASSENDREDIRECTB);
       
       /* TestCase: ActionResponse_sendRedirectB1 */
       /* Details: "Allows a redirect response to be sent to the client" */
       /* TODO: implement test */
-      TestResult tr13 = tcd.getTestResultFailed(ACTIONRESPONSE_SENDREDIRECTB1);
+      TestResult tr14 = tcd.getTestResultFailed(ACTIONRESPONSE_SENDREDIRECTB1);
       
       /* TestCase: ActionResponse_sendRedirectB2 */
       /* Details: "Encodes a render URL as a parameter under the specified name on the redirect URL" */
       /* TODO: implement test */
-      TestResult tr14 = tcd.getTestResultFailed(ACTIONRESPONSE_SENDREDIRECTB2);
+      TestResult tr15 = tcd.getTestResultFailed(ACTIONRESPONSE_SENDREDIRECTB2);
       
       /* TestCase: ActionResponse_sendRedirectB3 */
       /* Details: "The encoded render URL contains the currently set PortletMode" */
       /* TODO: implement test */
-      TestResult tr15 = tcd.getTestResultFailed(ACTIONRESPONSE_SENDREDIRECTB3);
+      TestResult tr16 = tcd.getTestResultFailed(ACTIONRESPONSE_SENDREDIRECTB3);
       
       /* TestCase: ActionResponse_sendRedirectB4 */
       /* Details: "The encoded render URL contains the currently set WindowState" */
       /* TODO: implement test */
-      TestResult tr16 = tcd.getTestResultFailed(ACTIONRESPONSE_SENDREDIRECTB4);
+      TestResult tr17 = tcd.getTestResultFailed(ACTIONRESPONSE_SENDREDIRECTB4);
       
       /* TestCase: ActionResponse_sendRedirectB5 */
       /* Details: "The encoded render URL contains the currently set render parameters" */
       /* TODO: implement test */
-      TestResult tr17 = tcd.getTestResultFailed(ACTIONRESPONSE_SENDREDIRECTB5);
+      TestResult tr18 = tcd.getTestResultFailed(ACTIONRESPONSE_SENDREDIRECTB5);
       
       /* TestCase: ActionResponse_sendRedirectB6 */
       /* Details: "Throws IllegalArgumentException if a relative path URL is specified" */
       /* TODO: implement test */
-      TestResult tr18 = tcd.getTestResultFailed(ACTIONRESPONSE_SENDREDIRECTB6);
+      TestResult tr19 = tcd.getTestResultFailed(ACTIONRESPONSE_SENDREDIRECTB6);
       
       /* TestCase: ActionResponse_sendRedirectB7 */
       /* Details: "Throws IllegalStateException if setPortletMode has been called before this method " */
       /* TODO: implement test */
-      TestResult tr19 = tcd.getTestResultFailed(ACTIONRESPONSE_SENDREDIRECTB7);
+      TestResult tr20 = tcd.getTestResultFailed(ACTIONRESPONSE_SENDREDIRECTB7);
       
       /* TestCase: ActionResponse_sendRedirectB8 */
       /* Details: "Throws IllegalStateException if setWindowState has been called before this method " */
       /* TODO: implement test */
-      TestResult tr20 = tcd.getTestResultFailed(ACTIONRESPONSE_SENDREDIRECTB8);
+      TestResult tr21 = tcd.getTestResultFailed(ACTIONRESPONSE_SENDREDIRECTB8);
       
       /* TestCase: ActionResponse_sendRedirectB9 */
       /* Details: "Throws IllegalStateException if setRenderParameter has been called before this method " */
       /* TODO: implement test */
-      TestResult tr21 = tcd.getTestResultFailed(ACTIONRESPONSE_SENDREDIRECTB9);
+      TestResult tr22 = tcd.getTestResultFailed(ACTIONRESPONSE_SENDREDIRECTB9);
       
       /* TestCase: ActionResponse_sendRedirectB10 */
       /* Details: "Throws IllegalStateException if setRenderParameters has been called before this method " */
       /* TODO: implement test */
-      TestResult tr22 = tcd.getTestResultFailed(ACTIONRESPONSE_SENDREDIRECTB10);
+      TestResult tr23 = tcd.getTestResultFailed(ACTIONRESPONSE_SENDREDIRECTB10);
       
       /* TestCase: ActionResponse_sendRedirectB11 */
       /* Details: "Throws IllegalStateException if removePublicRenderParameter has been called before this method" */
       /* TODO: implement test */
-      TestResult tr23 = tcd.getTestResultFailed(ACTIONRESPONSE_SENDREDIRECTB11);
+      TestResult tr24 = tcd.getTestResultFailed(ACTIONRESPONSE_SENDREDIRECTB11);
       
       /* TestCase: ActionResponse_sendRedirectB12 */
       /* Details: "Throws IOException if an IO problem occurs " */
       /* TODO: implement test */
-      TestResult tr24 = tcd.getTestResultFailed(ACTIONRESPONSE_SENDREDIRECTB12);
+      TestResult tr25 = tcd.getTestResultFailed(ACTIONRESPONSE_SENDREDIRECTB12);
       
 
 
@@ -232,6 +237,7 @@ public class V2ResponseTests_ActionResponse implements Portlet {
       tr22.writeTo(writer);
       tr23.writeTo(writer);
       tr24.writeTo(writer);
+      tr25.writeTo(writer);
 
 
    }

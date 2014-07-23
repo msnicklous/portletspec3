@@ -78,18 +78,18 @@ public class V2URLTests_PortletURL implements Portlet {
 
       // Create result objects for the tests
 
-      /* TestCase: PortletURL_extendsBaseURL1 */
-      /* Details: "PortletURL extends BaseURL" */
+      /* TestCase: PortletURL_implementsBaseURL1 */
+      /* Details: "Implements BaseURL" */
       /* TODO: implement test */
-      TestResult tr0 = tcd.getTestResultFailed(PORTLETURL_EXTENDSBASEURL1);
+      TestResult tr0 = tcd.getTestResultFailed(PORTLETURL_IMPLEMENTSBASEURL1);
       
-      /* TestCase: PortletURL_extendsBaseURL2 */
+      /* TestCase: PortletURL_implementsBaseURL2 */
       /* Details: "All tests described for the BaseURL execute correctly with the PortletURL" */
       /* TODO: implement test */
-      TestResult tr1 = tcd.getTestResultFailed(PORTLETURL_EXTENDSBASEURL2);
+      TestResult tr1 = tcd.getTestResultFailed(PORTLETURL_IMPLEMENTSBASEURL2);
       
       /* TestCase: PortletURL_hasSetWindowState */
-      /* Details: "Has a setWindowState(WindowState) method" */
+      /* Details: "Has a setWindowState(WindowState) throws javax.portlet.WindowStateException method" */
       /* TODO: implement test */
       TestResult tr2 = tcd.getTestResultFailed(PORTLETURL_HASSETWINDOWSTATE);
       
@@ -114,7 +114,7 @@ public class V2URLTests_PortletURL implements Portlet {
       TestResult tr6 = tcd.getTestResultFailed(PORTLETURL_SETWINDOWSTATE4);
       
       /* TestCase: PortletURL_hasSetPortletMode */
-      /* Details: "Has a setPortletMode() method" */
+      /* Details: "Has a setPortletMode() throws javax.portlet.PortletModeException method" */
       /* TODO: implement test */
       TestResult tr7 = tcd.getTestResultFailed(PORTLETURL_HASSETPORTLETMODE);
       

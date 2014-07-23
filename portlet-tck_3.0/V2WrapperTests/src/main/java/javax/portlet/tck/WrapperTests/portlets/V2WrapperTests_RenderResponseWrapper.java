@@ -94,7 +94,7 @@ public class V2WrapperTests_RenderResponseWrapper implements Portlet {
       TestResult tr2 = tcd.getTestResultFailed(RENDERRESPONSEWRAPPER_CONSTRUCTOR);
       
       /* TestCase: RenderResponseWrapper_hasFlushBuffer */
-      /* Details: "Has a flushBuffer() method" */
+      /* Details: "Has a flushBuffer() throws java.io.IOException method" */
       /* TODO: implement test */
       TestResult tr3 = tcd.getTestResultFailed(RENDERRESPONSEWRAPPER_HASFLUSHBUFFER);
       
@@ -144,7 +144,7 @@ public class V2WrapperTests_RenderResponseWrapper implements Portlet {
       TestResult tr12 = tcd.getTestResultFailed(RENDERRESPONSEWRAPPER_GETLOCALE);
       
       /* TestCase: RenderResponseWrapper_hasGetPortletOutputStream */
-      /* Details: "Has a getPortletOutputStream() method" */
+      /* Details: "Has a getPortletOutputStream() throws java.io.IOException method" */
       /* TODO: implement test */
       TestResult tr13 = tcd.getTestResultFailed(RENDERRESPONSEWRAPPER_HASGETPORTLETOUTPUTSTREAM);
       
@@ -154,7 +154,7 @@ public class V2WrapperTests_RenderResponseWrapper implements Portlet {
       TestResult tr14 = tcd.getTestResultFailed(RENDERRESPONSEWRAPPER_GETPORTLETOUTPUTSTREAM);
       
       /* TestCase: RenderResponseWrapper_hasGetWriter */
-      /* Details: "Has a getWriter() method" */
+      /* Details: "Has a getWriter() throws java.io.IOException method" */
       /* TODO: implement test */
       TestResult tr15 = tcd.getTestResultFailed(RENDERRESPONSEWRAPPER_HASGETWRITER);
       
@@ -264,7 +264,7 @@ public class V2WrapperTests_RenderResponseWrapper implements Portlet {
       TestResult tr36 = tcd.getTestResultFailed(RENDERRESPONSEWRAPPER_SETRESPONSE);
       
       /* TestCase: RenderResponseWrapper_hasCreateActionURL */
-      /* Details: "Has a createActionURL() method" */
+      /* Details: "Has a createActionURL() throws java.lang.IllegalStateException method" */
       /* TODO: implement test */
       TestResult tr37 = tcd.getTestResultFailed(RENDERRESPONSEWRAPPER_HASCREATEACTIONURL);
       
@@ -274,7 +274,7 @@ public class V2WrapperTests_RenderResponseWrapper implements Portlet {
       TestResult tr38 = tcd.getTestResultFailed(RENDERRESPONSEWRAPPER_CREATEACTIONURL);
       
       /* TestCase: RenderResponseWrapper_hasCreateRenderURL */
-      /* Details: "Has a createRenderURL() method" */
+      /* Details: "Has a createRenderURL() throws java.lang.IllegalStateException method" */
       /* TODO: implement test */
       TestResult tr39 = tcd.getTestResultFailed(RENDERRESPONSEWRAPPER_HASCREATERENDERURL);
       
@@ -284,7 +284,7 @@ public class V2WrapperTests_RenderResponseWrapper implements Portlet {
       TestResult tr40 = tcd.getTestResultFailed(RENDERRESPONSEWRAPPER_CREATERENDERURL);
       
       /* TestCase: RenderResponseWrapper_hasCreateResourceURL */
-      /* Details: "Has a createResourceURL() method" */
+      /* Details: "Has a createResourceURL() throws java.lang.IllegalStateException method" */
       /* TODO: implement test */
       TestResult tr41 = tcd.getTestResultFailed(RENDERRESPONSEWRAPPER_HASCREATERESOURCEURL);
       

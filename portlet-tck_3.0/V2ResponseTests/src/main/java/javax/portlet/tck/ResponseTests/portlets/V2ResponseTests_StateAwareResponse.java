@@ -78,18 +78,18 @@ public class V2ResponseTests_StateAwareResponse implements Portlet {
 
       // Create result objects for the tests
 
-      /* TestCase: StateAwareResponse_extendsPortletResponse1 */
-      /* Details: "StateAwareResponse extends PortletResponse" */
+      /* TestCase: StateAwareResponse_implementsPortletResponse1 */
+      /* Details: "Implements PortletResponse" */
       /* TODO: implement test */
-      TestResult tr0 = tcd.getTestResultFailed(STATEAWARERESPONSE_EXTENDSPORTLETRESPONSE1);
+      TestResult tr0 = tcd.getTestResultFailed(STATEAWARERESPONSE_IMPLEMENTSPORTLETRESPONSE1);
       
-      /* TestCase: StateAwareResponse_extendsPortletResponse2 */
+      /* TestCase: StateAwareResponse_implementsPortletResponse2 */
       /* Details: "All tests described for the PortletResponse execute correctly with the StateAwareResponse" */
       /* TODO: implement test */
-      TestResult tr1 = tcd.getTestResultFailed(STATEAWARERESPONSE_EXTENDSPORTLETRESPONSE2);
+      TestResult tr1 = tcd.getTestResultFailed(STATEAWARERESPONSE_IMPLEMENTSPORTLETRESPONSE2);
       
       /* TestCase: StateAwareResponse_hasSetWindowState */
-      /* Details: "Has a setWindowState(WindowState) method" */
+      /* Details: "Has a setWindowState(WindowState) throws javax.portlet.WindowStateException method" */
       /* TODO: implement test */
       TestResult tr2 = tcd.getTestResultFailed(STATEAWARERESPONSE_HASSETWINDOWSTATE);
       
@@ -109,7 +109,7 @@ public class V2ResponseTests_StateAwareResponse implements Portlet {
       TestResult tr5 = tcd.getTestResultFailed(STATEAWARERESPONSE_SETWINDOWSTATE3);
       
       /* TestCase: StateAwareResponse_hasSetPortletMode */
-      /* Details: "Has a setPortletMode(PortletMode) method" */
+      /* Details: "Has a setPortletMode(PortletMode) throws javax.portlet.PortletModeException method" */
       /* TODO: implement test */
       TestResult tr6 = tcd.getTestResultFailed(STATEAWARERESPONSE_HASSETPORTLETMODE);
       
@@ -174,7 +174,7 @@ public class V2ResponseTests_StateAwareResponse implements Portlet {
       TestResult tr18 = tcd.getTestResultFailed(STATEAWARERESPONSE_SETRENDERPARAMETERS8);
       
       /* TestCase: StateAwareResponse_setRenderParameters9 */
-      /* Details: "Throws IllegalArgumentException if any key in the map is the empty string ("") " */
+      /* Details: "Throws IllegalArgumentException if any key in the map is the empty string (\"\") " */
       /* TODO: implement test */
       TestResult tr19 = tcd.getTestResultFailed(STATEAWARERESPONSE_SETRENDERPARAMETERS9);
       

@@ -79,17 +79,17 @@ public class V2PortletTests_WindowState implements Portlet {
       // Create result objects for the tests
 
       /* TestCase: WindowState_fieldMAXIMIZED */
-      /* Details: "Has String field MAXIMIZED with value of "MAXIMIZED" " */
+      /* Details: "Has String field MAXIMIZED with value of \"MAXIMIZED\" " */
       /* TODO: implement test */
       TestResult tr0 = tcd.getTestResultFailed(WINDOWSTATE_FIELDMAXIMIZED);
       
       /* TestCase: WindowState_fieldMINIMIZED */
-      /* Details: "Has String field MINIMIZED with value of "MINIMIZED" " */
+      /* Details: "Has String field MINIMIZED with value of \"MINIMIZED\" " */
       /* TODO: implement test */
       TestResult tr1 = tcd.getTestResultFailed(WINDOWSTATE_FIELDMINIMIZED);
       
       /* TestCase: WindowState_fieldNORMAL */
-      /* Details: "Has String field NORMAL with value of "NORMAL" " */
+      /* Details: "Has String field NORMAL with value of \"NORMAL\" " */
       /* TODO: implement test */
       TestResult tr2 = tcd.getTestResultFailed(WINDOWSTATE_FIELDNORMAL);
       

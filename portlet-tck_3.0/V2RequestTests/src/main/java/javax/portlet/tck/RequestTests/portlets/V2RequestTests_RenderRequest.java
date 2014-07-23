@@ -78,18 +78,18 @@ public class V2RequestTests_RenderRequest implements Portlet {
 
       // Create result objects for the tests
 
-      /* TestCase: RenderRequest_extendsPortletRequest1 */
-      /* Details: "RenderRequest extends PortletRequest" */
+      /* TestCase: RenderRequest_implementsPortletRequest1 */
+      /* Details: "Implements PortletRequest" */
       /* TODO: implement test */
-      TestResult tr0 = tcd.getTestResultFailed(RENDERREQUEST_EXTENDSPORTLETREQUEST1);
+      TestResult tr0 = tcd.getTestResultFailed(RENDERREQUEST_IMPLEMENTSPORTLETREQUEST1);
       
-      /* TestCase: RenderRequest_extendsPortletRequest2 */
+      /* TestCase: RenderRequest_implementsPortletRequest2 */
       /* Details: "All tests described for the PortletRequest execute correctly with the RenderRequest" */
       /* TODO: implement test */
-      TestResult tr1 = tcd.getTestResultFailed(RENDERREQUEST_EXTENDSPORTLETREQUEST2);
+      TestResult tr1 = tcd.getTestResultFailed(RENDERREQUEST_IMPLEMENTSPORTLETREQUEST2);
       
       /* TestCase: RenderRequest_fieldETAG */
-      /* Details: "Has String field ETAG with value of "portlet.ETag" " */
+      /* Details: "Has String field ETAG with value of \"portlet.ETag\" " */
       /* TODO: implement test */
       TestResult tr2 = tcd.getTestResultFailed(RENDERREQUEST_FIELDETAG);
       

@@ -79,17 +79,17 @@ public class V2PortletTests_PortletMode implements Portlet {
       // Create result objects for the tests
 
       /* TestCase: PortletMode_fieldEDIT */
-      /* Details: "Has String field EDIT with value of "edit" " */
+      /* Details: "Has String field EDIT with value of \"edit\" " */
       /* TODO: implement test */
       TestResult tr0 = tcd.getTestResultFailed(PORTLETMODE_FIELDEDIT);
       
       /* TestCase: PortletMode_fieldHELP */
-      /* Details: "Has String field HELP with value of "help" " */
+      /* Details: "Has String field HELP with value of \"help\" " */
       /* TODO: implement test */
       TestResult tr1 = tcd.getTestResultFailed(PORTLETMODE_FIELDHELP);
       
       /* TestCase: PortletMode_fieldVIEW */
-      /* Details: "Has String field VIEW with value of "view" " */
+      /* Details: "Has String field VIEW with value of \"view\" " */
       /* TODO: implement test */
       TestResult tr2 = tcd.getTestResultFailed(PORTLETMODE_FIELDVIEW);
       

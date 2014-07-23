@@ -79,7 +79,7 @@ public class V2AnnotationTests_ProcessAction implements Portlet {
       // Create result objects for the tests
 
       /* TestCase: ProcessAction_ExtendsAnnotation */
-      /* Details: "ProcessAction extends java.lang.annotation.Annotation" */
+      /* Details: "Extends java.lang.annotation.Annotation" */
       /* TODO: implement test */
       TestResult tr0 = tcd.getTestResultFailed(PROCESSACTION_EXTENDSANNOTATION);
       
@@ -89,7 +89,7 @@ public class V2AnnotationTests_ProcessAction implements Portlet {
       TestResult tr1 = tcd.getTestResultFailed(PROCESSACTION_HASNAME);
       
       /* TestCase: ProcessAction_name */
-      /* Details: "On an action request, the method is executed if the parameter "javax.portlet.action" matches the name field" */
+      /* Details: "On an action request, the method is executed if the parameter \"javax.portlet.action\" matches the name field" */
       /* TODO: implement test */
       TestResult tr2 = tcd.getTestResultFailed(PROCESSACTION_NAME);
       

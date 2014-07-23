@@ -79,7 +79,7 @@ public class V2ExceptionTests_UnavailableException implements Portlet {
       // Create result objects for the tests
 
       /* TestCase: UnavailableException_extendsPortletException */
-      /* Details: "UnavailableException extends PortletException" */
+      /* Details: "Extends PortletException" */
       /* TODO: implement test */
       TestResult tr0 = tcd.getTestResultFailed(UNAVAILABLEEXCEPTION_EXTENDSPORTLETEXCEPTION);
       

@@ -164,7 +164,7 @@ public class V2ResponseTests_PortletResponse implements Portlet {
       TestResult tr16 = tcd.getTestResultFailed(PORTLETRESPONSE_ENCODEURL1);
       
       /* TestCase: PortletResponse_encodeURL2 */
-      /* Details: "Throws IllegalArgumentException if the input string is not an absolute URL and does not start with at "/" character" */
+      /* Details: "Throws IllegalArgumentException if the input string is not an absolute URL and does not start with at \"/\" character" */
       /* TODO: implement test */
       TestResult tr17 = tcd.getTestResultFailed(PORTLETRESPONSE_ENCODEURL2);
       
@@ -184,7 +184,7 @@ public class V2ResponseTests_PortletResponse implements Portlet {
       TestResult tr20 = tcd.getTestResultFailed(PORTLETRESPONSE_GETNAMESPACE2);
       
       /* TestCase: PortletResponse_hasCreateElement */
-      /* Details: "Has a createElement() method" */
+      /* Details: "Has a createElement() throws org.w3c.dom.DOMException method" */
       /* TODO: implement test */
       TestResult tr21 = tcd.getTestResultFailed(PORTLETRESPONSE_HASCREATEELEMENT);
       

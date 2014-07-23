@@ -78,53 +78,53 @@ public class V2ResponseTests_MimeResponse implements Portlet {
 
       // Create result objects for the tests
 
-      /* TestCase: MimeResponse_extendsPortletResponse1 */
-      /* Details: "MimeResponse extends PortletResponse" */
+      /* TestCase: MimeResponse_implementsPortletResponse1 */
+      /* Details: "Implements PortletResponse" */
       /* TODO: implement test */
-      TestResult tr0 = tcd.getTestResultFailed(MIMERESPONSE_EXTENDSPORTLETRESPONSE1);
+      TestResult tr0 = tcd.getTestResultFailed(MIMERESPONSE_IMPLEMENTSPORTLETRESPONSE1);
       
-      /* TestCase: MimeResponse_extendsPortletResponse2 */
+      /* TestCase: MimeResponse_implementsPortletResponse2 */
       /* Details: "All tests described for the PortletResponse execute correctly with the MimeResponse" */
       /* TODO: implement test */
-      TestResult tr1 = tcd.getTestResultFailed(MIMERESPONSE_EXTENDSPORTLETRESPONSE2);
+      TestResult tr1 = tcd.getTestResultFailed(MIMERESPONSE_IMPLEMENTSPORTLETRESPONSE2);
       
       /* TestCase: MimeResponse_fieldEXPIRATION_CACHE */
-      /* Details: "Has String field EXPIRATION_CACHE with value of "portlet.expiration-cache"" */
+      /* Details: "Has String field EXPIRATION_CACHE with value of \"portlet.expiration-cache\"" */
       /* TODO: implement test */
       TestResult tr2 = tcd.getTestResultFailed(MIMERESPONSE_FIELDEXPIRATION_CACHE);
       
       /* TestCase: MimeResponse_fieldCACHE_SCOPE */
-      /* Details: "Has String field CACHE_SCOPE with value of "portlet.cache-scope"" */
+      /* Details: "Has String field CACHE_SCOPE with value of \"portlet.cache-scope\"" */
       /* TODO: implement test */
       TestResult tr3 = tcd.getTestResultFailed(MIMERESPONSE_FIELDCACHE_SCOPE);
       
       /* TestCase: MimeResponse_fieldPUBLIC_SCOPE */
-      /* Details: "Has String field PUBLIC_SCOPE with value of "portlet.public-scope"" */
+      /* Details: "Has String field PUBLIC_SCOPE with value of \"portlet.public-scope\"" */
       /* TODO: implement test */
       TestResult tr4 = tcd.getTestResultFailed(MIMERESPONSE_FIELDPUBLIC_SCOPE);
       
       /* TestCase: MimeResponse_fieldPRIVATE_SCOPE */
-      /* Details: "Has String field PRIVATE_SCOPE with value of "portlet.private-scope"" */
+      /* Details: "Has String field PRIVATE_SCOPE with value of \"portlet.private-scope\"" */
       /* TODO: implement test */
       TestResult tr5 = tcd.getTestResultFailed(MIMERESPONSE_FIELDPRIVATE_SCOPE);
       
       /* TestCase: MimeResponse_fieldETAG */
-      /* Details: "Has String field ETAG with value of "portlet.ETag"" */
+      /* Details: "Has String field ETAG with value of \"portlet.ETag\"" */
       /* TODO: implement test */
       TestResult tr6 = tcd.getTestResultFailed(MIMERESPONSE_FIELDETAG);
       
       /* TestCase: MimeResponse_fieldUSE_CACHED_CONTENT */
-      /* Details: "Has String field USE_CACHED_CONTENT with value of "portlet.use-cached-content"" */
+      /* Details: "Has String field USE_CACHED_CONTENT with value of \"portlet.use-cached-content\"" */
       /* TODO: implement test */
       TestResult tr7 = tcd.getTestResultFailed(MIMERESPONSE_FIELDUSE_CACHED_CONTENT);
       
       /* TestCase: MimeResponse_fieldNAMESPACED_RESPONSE */
-      /* Details: "Has String field NAMESPACED_RESPONSE with value of "X-JAVAX-PORTLET-NAMESPACED-RESPONSE"" */
+      /* Details: "Has String field NAMESPACED_RESPONSE with value of \"X-JAVAX-PORTLET-NAMESPACED-RESPONSE\"" */
       /* TODO: implement test */
       TestResult tr8 = tcd.getTestResultFailed(MIMERESPONSE_FIELDNAMESPACED_RESPONSE);
       
       /* TestCase: MimeResponse_fieldMARKUP_HEAD_ELEMENT */
-      /* Details: "Has String field MARKUP_HEAD_ELEMENT with value of "javax.portlet.markup.head.element"" */
+      /* Details: "Has String field MARKUP_HEAD_ELEMENT with value of \"javax.portlet.markup.head.element\"" */
       /* TODO: implement test */
       TestResult tr9 = tcd.getTestResultFailed(MIMERESPONSE_FIELDMARKUP_HEAD_ELEMENT);
       
@@ -179,7 +179,7 @@ public class V2ResponseTests_MimeResponse implements Portlet {
       TestResult tr19 = tcd.getTestResultFailed(MIMERESPONSE_GETCHARACTERENCODING);
       
       /* TestCase: MimeResponse_hasGetWriter */
-      /* Details: "Has a getWriter() method" */
+      /* Details: "Has a getWriter() throws java.io.IOException method" */
       /* TODO: implement test */
       TestResult tr20 = tcd.getTestResultFailed(MIMERESPONSE_HASGETWRITER);
       
@@ -239,7 +239,7 @@ public class V2ResponseTests_MimeResponse implements Portlet {
       TestResult tr31 = tcd.getTestResultFailed(MIMERESPONSE_GETBUFFERSIZE2);
       
       /* TestCase: MimeResponse_hasFlushBuffer */
-      /* Details: "Has a flushBuffer() method" */
+      /* Details: "Has a flushBuffer() throws java.io.IOException method" */
       /* TODO: implement test */
       TestResult tr32 = tcd.getTestResultFailed(MIMERESPONSE_HASFLUSHBUFFER);
       
@@ -299,7 +299,7 @@ public class V2ResponseTests_MimeResponse implements Portlet {
       TestResult tr43 = tcd.getTestResultFailed(MIMERESPONSE_RESET2);
       
       /* TestCase: MimeResponse_hasGetPortletOutputStream */
-      /* Details: "Has a getPortletOutputStream() method" */
+      /* Details: "Has a getPortletOutputStream() throws java.io.IOException method" */
       /* TODO: implement test */
       TestResult tr44 = tcd.getTestResultFailed(MIMERESPONSE_HASGETPORTLETOUTPUTSTREAM);
       

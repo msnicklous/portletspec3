@@ -78,45 +78,45 @@ public class V2PortletTests_GenericPortlet implements Portlet {
 
       // Create result objects for the tests
 
-      /* TestCase: GenericPortlet_extendsPortlet1 */
-      /* Details: "GenericPortlet extends Portlet" */
+      /* TestCase: GenericPortlet_implementsPortlet1 */
+      /* Details: "Implements Portlet" */
       /* TODO: implement test */
-      TestResult tr0 = tcd.getTestResultFailed(GENERICPORTLET_EXTENDSPORTLET1);
+      TestResult tr0 = tcd.getTestResultFailed(GENERICPORTLET_IMPLEMENTSPORTLET1);
       
-      /* TestCase: GenericPortlet_extendsPortlet2 */
+      /* TestCase: GenericPortlet_implementsPortlet2 */
       /* Details: "All tests described for the Portlet execute correctly with the GenericPortlet" */
       /* TODO: implement test */
-      TestResult tr1 = tcd.getTestResultFailed(GENERICPORTLET_EXTENDSPORTLET2);
+      TestResult tr1 = tcd.getTestResultFailed(GENERICPORTLET_IMPLEMENTSPORTLET2);
       
-      /* TestCase: GenericPortlet_extendsEventPortlet1 */
-      /* Details: "GenericPortlet extends EventPortlet" */
+      /* TestCase: GenericPortlet_implementsEventPortlet1 */
+      /* Details: "Implements EventPortlet" */
       /* TODO: implement test */
-      TestResult tr2 = tcd.getTestResultFailed(GENERICPORTLET_EXTENDSEVENTPORTLET1);
+      TestResult tr2 = tcd.getTestResultFailed(GENERICPORTLET_IMPLEMENTSEVENTPORTLET1);
       
-      /* TestCase: GenericPortlet_extendsEventPortlet2 */
+      /* TestCase: GenericPortlet_implementsEventPortlet2 */
       /* Details: "All tests described for the EventPortlet execute correctly with the GenericPortlet" */
       /* TODO: implement test */
-      TestResult tr3 = tcd.getTestResultFailed(GENERICPORTLET_EXTENDSEVENTPORTLET2);
+      TestResult tr3 = tcd.getTestResultFailed(GENERICPORTLET_IMPLEMENTSEVENTPORTLET2);
       
-      /* TestCase: GenericPortlet_extendsResourceServingPortlet1 */
-      /* Details: "GenericPortlet extends ResourceServingPortlet" */
+      /* TestCase: GenericPortlet_implementsResourceServingPortlet1 */
+      /* Details: "Implements ResourceServingPortlet" */
       /* TODO: implement test */
-      TestResult tr4 = tcd.getTestResultFailed(GENERICPORTLET_EXTENDSRESOURCESERVINGPORTLET1);
+      TestResult tr4 = tcd.getTestResultFailed(GENERICPORTLET_IMPLEMENTSRESOURCESERVINGPORTLET1);
       
-      /* TestCase: GenericPortlet_extendsResourceServingPortlet2 */
+      /* TestCase: GenericPortlet_implementsResourceServingPortlet2 */
       /* Details: "All tests described for the ResourceServingPortlet execute correctly with the GenericPortlet" */
       /* TODO: implement test */
-      TestResult tr5 = tcd.getTestResultFailed(GENERICPORTLET_EXTENDSRESOURCESERVINGPORTLET2);
+      TestResult tr5 = tcd.getTestResultFailed(GENERICPORTLET_IMPLEMENTSRESOURCESERVINGPORTLET2);
       
-      /* TestCase: GenericPortlet_extendsPortletConfig1 */
-      /* Details: "GenericPortlet extends PortletConfig" */
+      /* TestCase: GenericPortlet_implementsPortletConfig1 */
+      /* Details: "Implements PortletConfig" */
       /* TODO: implement test */
-      TestResult tr6 = tcd.getTestResultFailed(GENERICPORTLET_EXTENDSPORTLETCONFIG1);
+      TestResult tr6 = tcd.getTestResultFailed(GENERICPORTLET_IMPLEMENTSPORTLETCONFIG1);
       
-      /* TestCase: GenericPortlet_extendsPortletConfig2 */
+      /* TestCase: GenericPortlet_implementsPortletConfig2 */
       /* Details: "All tests described for the PortletConfig execute correctly with the GenericPortlet" */
       /* TODO: implement test */
-      TestResult tr7 = tcd.getTestResultFailed(GENERICPORTLET_EXTENDSPORTLETCONFIG2);
+      TestResult tr7 = tcd.getTestResultFailed(GENERICPORTLET_IMPLEMENTSPORTLETCONFIG2);
       
       /* TestCase: GenericPortlet_constructor */
       /* Details: "Has a GenericPortlet() constructor" */
@@ -124,7 +124,7 @@ public class V2PortletTests_GenericPortlet implements Portlet {
       TestResult tr8 = tcd.getTestResultFailed(GENERICPORTLET_CONSTRUCTOR);
       
       /* TestCase: GenericPortlet_hasInitA */
-      /* Details: "Has a init() method" */
+      /* Details: "Has a init() throws javax.portlet.PortletException method" */
       /* TODO: implement test */
       TestResult tr9 = tcd.getTestResultFailed(GENERICPORTLET_HASINITA);
       
@@ -134,7 +134,7 @@ public class V2PortletTests_GenericPortlet implements Portlet {
       TestResult tr10 = tcd.getTestResultFailed(GENERICPORTLET_INITA);
       
       /* TestCase: GenericPortlet_hasInitB */
-      /* Details: "Has a init(PortletConfig) method" */
+      /* Details: "Has a init(PortletConfig) throws javax.portlet.PortletException method" */
       /* TODO: implement test */
       TestResult tr11 = tcd.getTestResultFailed(GENERICPORTLET_HASINITB);
       
@@ -144,7 +144,7 @@ public class V2PortletTests_GenericPortlet implements Portlet {
       TestResult tr12 = tcd.getTestResultFailed(GENERICPORTLET_INITB);
       
       /* TestCase: GenericPortlet_hasProcessAction */
-      /* Details: "Has a processAction(ActionRequest, ActionResponse) method" */
+      /* Details: "Has a processAction(ActionRequest, ActionResponse) throws javax.portlet.PortletException, java.io.IOException method" */
       /* TODO: implement test */
       TestResult tr13 = tcd.getTestResultFailed(GENERICPORTLET_HASPROCESSACTION);
       
@@ -164,7 +164,7 @@ public class V2PortletTests_GenericPortlet implements Portlet {
       TestResult tr16 = tcd.getTestResultFailed(GENERICPORTLET_PROCESSACTION3);
       
       /* TestCase: GenericPortlet_hasRender */
-      /* Details: "Has a render(RenderRequest, RenderResponse) method" */
+      /* Details: "Has a render(RenderRequest, RenderResponse) throws javax.portlet.PortletException, java.io.IOException method" */
       /* TODO: implement test */
       TestResult tr17 = tcd.getTestResultFailed(GENERICPORTLET_HASRENDER);
       
@@ -229,7 +229,7 @@ public class V2PortletTests_GenericPortlet implements Portlet {
       TestResult tr29 = tcd.getTestResultFailed(GENERICPORTLET_GETTITLE1);
       
       /* TestCase: GenericPortlet_getTitle2 */
-      /* Details: "Returns a String containing the title from the portlet resource bundle under the key "javax.portlet.title"" */
+      /* Details: "Returns a String containing the title from the portlet resource bundle under the key \"javax.portlet.title\"" */
       /* TODO: implement test */
       TestResult tr30 = tcd.getTestResultFailed(GENERICPORTLET_GETTITLE2);
       
@@ -239,7 +239,7 @@ public class V2PortletTests_GenericPortlet implements Portlet {
       TestResult tr31 = tcd.getTestResultFailed(GENERICPORTLET_GETTITLE3);
       
       /* TestCase: GenericPortlet_hasDoDispatch */
-      /* Details: "Has a doDispatch(RenderRequest, RenderResponse) method" */
+      /* Details: "Has a doDispatch(RenderRequest, RenderResponse) throws javax.portlet.PortletException, java.io.IOException method" */
       /* TODO: implement test */
       TestResult tr32 = tcd.getTestResultFailed(GENERICPORTLET_HASDODISPATCH);
       
@@ -259,17 +259,17 @@ public class V2PortletTests_GenericPortlet implements Portlet {
       TestResult tr35 = tcd.getTestResultFailed(GENERICPORTLET_DODISPATCH3);
       
       /* TestCase: GenericPortlet_doDispatch4 */
-      /* Details: "Else, If the current render mode is "view", the doView(RenderRequest, RenderResponse) method is called  " */
+      /* Details: "Else, If the current render mode is \"view\", the doView(RenderRequest, RenderResponse) method is called  " */
       /* TODO: implement test */
       TestResult tr36 = tcd.getTestResultFailed(GENERICPORTLET_DODISPATCH4);
       
       /* TestCase: GenericPortlet_doDispatch5 */
-      /* Details: "Else, If the current render mode is "edit", the doEdit(RenderRequest, RenderResponse) method is called  " */
+      /* Details: "Else, If the current render mode is \"edit\", the doEdit(RenderRequest, RenderResponse) method is called  " */
       /* TODO: implement test */
       TestResult tr37 = tcd.getTestResultFailed(GENERICPORTLET_DODISPATCH5);
       
       /* TestCase: GenericPortlet_doDispatch6 */
-      /* Details: "Else, If the current render mode is "help", the doHelp(RenderRequest, RenderResponse) method is called  " */
+      /* Details: "Else, If the current render mode is \"help\", the doHelp(RenderRequest, RenderResponse) method is called  " */
       /* TODO: implement test */
       TestResult tr38 = tcd.getTestResultFailed(GENERICPORTLET_DODISPATCH6);
       
@@ -279,7 +279,7 @@ public class V2PortletTests_GenericPortlet implements Portlet {
       TestResult tr39 = tcd.getTestResultFailed(GENERICPORTLET_DODISPATCH7);
       
       /* TestCase: GenericPortlet_hasDoView */
-      /* Details: "Has a doView(RenderRequest, RenderResponse) method" */
+      /* Details: "Has a doView(RenderRequest, RenderResponse) throws javax.portlet.PortletException, java.io.IOException method" */
       /* TODO: implement test */
       TestResult tr40 = tcd.getTestResultFailed(GENERICPORTLET_HASDOVIEW);
       
@@ -294,7 +294,7 @@ public class V2PortletTests_GenericPortlet implements Portlet {
       TestResult tr42 = tcd.getTestResultFailed(GENERICPORTLET_DOVIEW2);
       
       /* TestCase: GenericPortlet_hasDoEdit */
-      /* Details: "Has a doEdit(RenderRequest, RenderResponse) method" */
+      /* Details: "Has a doEdit(RenderRequest, RenderResponse) throws javax.portlet.PortletException, java.io.IOException method" */
       /* TODO: implement test */
       TestResult tr43 = tcd.getTestResultFailed(GENERICPORTLET_HASDOEDIT);
       
@@ -309,7 +309,7 @@ public class V2PortletTests_GenericPortlet implements Portlet {
       TestResult tr45 = tcd.getTestResultFailed(GENERICPORTLET_DOEDIT2);
       
       /* TestCase: GenericPortlet_hasDoHelp */
-      /* Details: "Has a doHelp(RenderRequest, RenderResponse) method" */
+      /* Details: "Has a doHelp(RenderRequest, RenderResponse) throws javax.portlet.PortletException, java.io.IOException method" */
       /* TODO: implement test */
       TestResult tr46 = tcd.getTestResultFailed(GENERICPORTLET_HASDOHELP);
       
@@ -434,7 +434,7 @@ public class V2PortletTests_GenericPortlet implements Portlet {
       TestResult tr70 = tcd.getTestResultFailed(GENERICPORTLET_GETCONTAINERRUNTIMEOPTIONS);
       
       /* TestCase: GenericPortlet_hasServeResource */
-      /* Details: "Has a serveResource(ResourceRequest, ResourceResponse) method" */
+      /* Details: "Has a serveResource(ResourceRequest, ResourceResponse) throws javax.portlet.PortletException, java.io.IOException method" */
       /* TODO: implement test */
       TestResult tr71 = tcd.getTestResultFailed(GENERICPORTLET_HASSERVERESOURCE);
       
@@ -454,7 +454,7 @@ public class V2PortletTests_GenericPortlet implements Portlet {
       TestResult tr74 = tcd.getTestResultFailed(GENERICPORTLET_SERVERESOURCE3);
       
       /* TestCase: GenericPortlet_hasProcessEvent */
-      /* Details: "Has a processEvent(EventRequest, EventResponse) method" */
+      /* Details: "Has a processEvent(EventRequest, EventResponse) throws javax.portlet.PortletException, java.io.IOException method" */
       /* TODO: implement test */
       TestResult tr75 = tcd.getTestResultFailed(GENERICPORTLET_HASPROCESSEVENT);
       

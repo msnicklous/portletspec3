@@ -79,7 +79,7 @@ public class V2ExceptionTests_PortletSecurityException implements Portlet {
       // Create result objects for the tests
 
       /* TestCase: PortletSecurityException_extendsPortletException */
-      /* Details: "PortletSecurityException extends PortletException" */
+      /* Details: "Extends PortletException" */
       /* TODO: implement test */
       TestResult tr0 = tcd.getTestResultFailed(PORTLETSECURITYEXCEPTION_EXTENDSPORTLETEXCEPTION);
       

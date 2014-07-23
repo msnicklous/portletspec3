@@ -94,7 +94,7 @@ public class V2WrapperTests_ResourceRequestWrapper implements Portlet {
       TestResult tr2 = tcd.getTestResultFailed(RESOURCEREQUESTWRAPPER_CONSTRUCTOR);
       
       /* TestCase: ResourceRequestWrapper_hasGetPortletInputStream */
-      /* Details: "Has a getPortletInputStream() method" */
+      /* Details: "Has a getPortletInputStream() throws java.io.IOException method" */
       /* TODO: implement test */
       TestResult tr3 = tcd.getTestResultFailed(RESOURCEREQUESTWRAPPER_HASGETPORTLETINPUTSTREAM);
       
@@ -104,7 +104,7 @@ public class V2WrapperTests_ResourceRequestWrapper implements Portlet {
       TestResult tr4 = tcd.getTestResultFailed(RESOURCEREQUESTWRAPPER_GETPORTLETINPUTSTREAM);
       
       /* TestCase: ResourceRequestWrapper_hasGetReader */
-      /* Details: "Has a getReader() method" */
+      /* Details: "Has a getReader() throws java.io.UnsupportedEncodingException, java.io.IOException method" */
       /* TODO: implement test */
       TestResult tr5 = tcd.getTestResultFailed(RESOURCEREQUESTWRAPPER_HASGETREADER);
       
@@ -114,7 +114,7 @@ public class V2WrapperTests_ResourceRequestWrapper implements Portlet {
       TestResult tr6 = tcd.getTestResultFailed(RESOURCEREQUESTWRAPPER_GETREADER);
       
       /* TestCase: ResourceRequestWrapper_hasSetCharacterEncoding */
-      /* Details: "Has a setCharacterEncoding() method" */
+      /* Details: "Has a setCharacterEncoding() throws java.io.UnsupportedEncodingException method" */
       /* TODO: implement test */
       TestResult tr7 = tcd.getTestResultFailed(RESOURCEREQUESTWRAPPER_HASSETCHARACTERENCODING);
       

@@ -94,7 +94,7 @@ public class V2EnvironmentTests_PortletContext implements Portlet {
       TestResult tr2 = tcd.getTestResultFailed(PORTLETCONTEXT_GETSERVERINFO1);
       
       /* TestCase: PortletContext_getServerInfo2 */
-      /* Details: "The returned string is of the form "([^ ]+)/([^ ]+) *(.*)", where $1 is the portal name, $2 is the version, and $3 is optional additional information" */
+      /* Details: "The returned string is of the form \"([^ ]+)/([^ ]+) *(.*)\", where $1 is the portal name, $2 is the version, and $3 is optional additional information" */
       /* TODO: implement test */
       TestResult tr3 = tcd.getTestResultFailed(PORTLETCONTEXT_GETSERVERINFO2);
       
@@ -124,7 +124,7 @@ public class V2EnvironmentTests_PortletContext implements Portlet {
       TestResult tr8 = tcd.getTestResultFailed(PORTLETCONTEXT_GETREQUESTDISPATCHER1);
       
       /* TestCase: PortletContext_getRequestDispatcher2 */
-      /* Details: "Returns null if the specified path does not begin with "/"" */
+      /* Details: "Returns null if the specified path does not begin with \"/\"" */
       /* TODO: implement test */
       TestResult tr9 = tcd.getTestResultFailed(PORTLETCONTEXT_GETREQUESTDISPATCHER2);
       
@@ -159,7 +159,7 @@ public class V2EnvironmentTests_PortletContext implements Portlet {
       TestResult tr15 = tcd.getTestResultFailed(PORTLETCONTEXT_GETRESOURCEASSTREAM1);
       
       /* TestCase: PortletContext_getResourceAsStream2 */
-      /* Details: "Protected resources can be accessed by prefixing the path with "/WEB-INF/"" */
+      /* Details: "Protected resources can be accessed by prefixing the path with \"/WEB-INF/\"" */
       /* TODO: implement test */
       TestResult tr16 = tcd.getTestResultFailed(PORTLETCONTEXT_GETRESOURCEASSTREAM2);
       
@@ -199,12 +199,12 @@ public class V2EnvironmentTests_PortletContext implements Portlet {
       TestResult tr23 = tcd.getTestResultFailed(PORTLETCONTEXT_GETMIMETYPE1);
       
       /* TestCase: PortletContext_getMimeType2 */
-      /* Details: "Returns "text/html" for an HTML file with the approriate <mime-mapping> element in web.xml " */
+      /* Details: "Returns \"text/html\" for an HTML file with the approriate <mime-mapping> element in web.xml " */
       /* TODO: implement test */
       TestResult tr24 = tcd.getTestResultFailed(PORTLETCONTEXT_GETMIMETYPE2);
       
       /* TestCase: PortletContext_getMimeType3 */
-      /* Details: "Returns "image/gif" for an image file with the approriate <mime-mapping> element in web.xml" */
+      /* Details: "Returns \"image/gif\" for an image file with the approriate <mime-mapping> element in web.xml" */
       /* TODO: implement test */
       TestResult tr25 = tcd.getTestResultFailed(PORTLETCONTEXT_GETMIMETYPE3);
       
@@ -264,7 +264,7 @@ public class V2EnvironmentTests_PortletContext implements Portlet {
       TestResult tr36 = tcd.getTestResultFailed(PORTLETCONTEXT_GETRESOURCEPATHS4);
       
       /* TestCase: PortletContext_hasGetResource */
-      /* Details: "Has a getResource(java.lang.String) method" */
+      /* Details: "Has a getResource(java.lang.String) throws java.net.MalformedURLException method" */
       /* TODO: implement test */
       TestResult tr37 = tcd.getTestResultFailed(PORTLETCONTEXT_HASGETRESOURCE);
       

@@ -79,7 +79,7 @@ public class V2AnnotationTests_ProcessEvent implements Portlet {
       // Create result objects for the tests
 
       /* TestCase: ProcessEvent_ExtendsAnnotation */
-      /* Details: "ProcessEvent extends java.lang.annotation.Annotation" */
+      /* Details: "Extends java.lang.annotation.Annotation" */
       /* TODO: implement test */
       TestResult tr0 = tcd.getTestResultFailed(PROCESSEVENT_EXTENDSANNOTATION);
       

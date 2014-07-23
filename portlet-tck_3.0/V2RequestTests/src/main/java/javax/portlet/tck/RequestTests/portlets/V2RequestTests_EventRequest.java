@@ -78,15 +78,15 @@ public class V2RequestTests_EventRequest implements Portlet {
 
       // Create result objects for the tests
 
-      /* TestCase: EventRequest_extendsPortletRequest1 */
-      /* Details: "EventRequest extendsPortletRequest" */
+      /* TestCase: EventRequest_implementsPortletRequest1 */
+      /* Details: "Implements PortletRequest" */
       /* TODO: implement test */
-      TestResult tr0 = tcd.getTestResultFailed(EVENTREQUEST_EXTENDSPORTLETREQUEST1);
+      TestResult tr0 = tcd.getTestResultFailed(EVENTREQUEST_IMPLEMENTSPORTLETREQUEST1);
       
-      /* TestCase: EventRequest_extendsPortletRequest2 */
+      /* TestCase: EventRequest_implementsPortletRequest2 */
       /* Details: "All tests described for the PortletRequest execute correctly with the EventRequest" */
       /* TODO: implement test */
-      TestResult tr1 = tcd.getTestResultFailed(EVENTREQUEST_EXTENDSPORTLETREQUEST2);
+      TestResult tr1 = tcd.getTestResultFailed(EVENTREQUEST_IMPLEMENTSPORTLETREQUEST2);
       
       /* TestCase: EventRequest_hasgetEvent */
       /* Details: "Has a getEvent() method" */

@@ -79,7 +79,7 @@ public class V2EnvironmentTests_PortalContext implements Portlet {
       // Create result objects for the tests
 
       /* TestCase: PortalContext_fieldMARKUP_HEAD_ELEMENT_SUPPORT */
-      /* Details: "Has String field MARKUP_HEAD_ELEMENT_SUPPORT with value of "javax.portlet.markup.head.element.support" " */
+      /* Details: "Has String field MARKUP_HEAD_ELEMENT_SUPPORT with value of \"javax.portlet.markup.head.element.support\" " */
       /* TODO: implement test */
       TestResult tr0 = tcd.getTestResultFailed(PORTALCONTEXT_FIELDMARKUP_HEAD_ELEMENT_SUPPORT);
       
@@ -179,7 +179,7 @@ public class V2EnvironmentTests_PortalContext implements Portlet {
       TestResult tr19 = tcd.getTestResultFailed(PORTALCONTEXT_GETPORTALINFO1);
       
       /* TestCase: PortalContext_getPortalInfo2 */
-      /* Details: "The returned string is of the form "([^ ]+)/([^ ]+) *(.*)", where $1 is the portal name, $2 is the version, and $3 is optional additional information" */
+      /* Details: "The returned string is of the form \"([^ ]+)/([^ ]+) *(.*)\", where $1 is the portal name, $2 is the version, and $3 is optional additional information" */
       /* TODO: implement test */
       TestResult tr20 = tcd.getTestResultFailed(PORTALCONTEXT_GETPORTALINFO2);
       

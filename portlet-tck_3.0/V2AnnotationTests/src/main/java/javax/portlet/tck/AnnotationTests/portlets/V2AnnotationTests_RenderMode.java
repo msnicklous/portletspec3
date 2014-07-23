@@ -79,7 +79,7 @@ public class V2AnnotationTests_RenderMode implements Portlet {
       // Create result objects for the tests
 
       /* TestCase: RenderMode_ExtendsAnnotation */
-      /* Details: "RenderMode extends java.lang.annotation.Annotation" */
+      /* Details: "Extends java.lang.annotation.Annotation" */
       /* TODO: implement test */
       TestResult tr0 = tcd.getTestResultFailed(RENDERMODE_EXTENDSANNOTATION);
       

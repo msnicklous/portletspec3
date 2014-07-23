@@ -114,7 +114,7 @@ public class V2WrapperTests_EventResponseWrapper implements Portlet {
       TestResult tr6 = tcd.getTestResultFailed(EVENTRESPONSEWRAPPER_SETEVENTB);
       
       /* TestCase: EventResponseWrapper_hasSetPortletMode */
-      /* Details: "Has a setPortletMode(PortletMode) method" */
+      /* Details: "Has a setPortletMode(PortletMode) throws javax.portlet.PortletModeException method" */
       /* TODO: implement test */
       TestResult tr7 = tcd.getTestResultFailed(EVENTRESPONSEWRAPPER_HASSETPORTLETMODE);
       
@@ -164,7 +164,7 @@ public class V2WrapperTests_EventResponseWrapper implements Portlet {
       TestResult tr16 = tcd.getTestResultFailed(EVENTRESPONSEWRAPPER_SETRENDERPARAMETERSB);
       
       /* TestCase: EventResponseWrapper_hasSetWindowState */
-      /* Details: "Has a setWindowState(WindowState) method" */
+      /* Details: "Has a setWindowState(WindowState) throws javax.portlet.WindowStateException method" */
       /* TODO: implement test */
       TestResult tr17 = tcd.getTestResultFailed(EVENTRESPONSEWRAPPER_HASSETWINDOWSTATE);
       

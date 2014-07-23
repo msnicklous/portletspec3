@@ -79,7 +79,7 @@ public class V2FilterTests_FilterChain implements Portlet {
       // Create result objects for the tests
 
       /* TestCase: FilterChain_hasDoFilterForAction */
-      /* Details: "Has a doFilter(ActionRequest, ActionResponse) method" */
+      /* Details: "Has a doFilter(ActionRequest, ActionResponse) throws java.io.IOException, javax.portlet.PortletException method" */
       /* TODO: implement test */
       TestResult tr0 = tcd.getTestResultFailed(FILTERCHAIN_HASDOFILTERFORACTION);
       
@@ -104,7 +104,7 @@ public class V2FilterTests_FilterChain implements Portlet {
       TestResult tr4 = tcd.getTestResultFailed(FILTERCHAIN_INVOKEACTIONEXCEPTION2);
       
       /* TestCase: FilterChain_hasDoFilterForEvent */
-      /* Details: "Has a doFilter(EventRequest, EventResponse) method" */
+      /* Details: "Has a doFilter(EventRequest, EventResponse) throws java.io.IOException, javax.portlet.PortletException method" */
       /* TODO: implement test */
       TestResult tr5 = tcd.getTestResultFailed(FILTERCHAIN_HASDOFILTERFOREVENT);
       
@@ -129,7 +129,7 @@ public class V2FilterTests_FilterChain implements Portlet {
       TestResult tr9 = tcd.getTestResultFailed(FILTERCHAIN_INVOKEEVENTEXCEPTION2);
       
       /* TestCase: FilterChain_hasDoFilterForRender */
-      /* Details: "Has a doFilter(RenderRequest, RenderResponse) method" */
+      /* Details: "Has a doFilter(RenderRequest, RenderResponse) throws java.io.IOException, javax.portlet.PortletException method" */
       /* TODO: implement test */
       TestResult tr10 = tcd.getTestResultFailed(FILTERCHAIN_HASDOFILTERFORRENDER);
       
@@ -154,7 +154,7 @@ public class V2FilterTests_FilterChain implements Portlet {
       TestResult tr14 = tcd.getTestResultFailed(FILTERCHAIN_INVOKERENDEREXCEPTION2);
       
       /* TestCase: FilterChain_hasDoFilterForResource */
-      /* Details: "Has a doFilter(ResourceRequest, ResourceResponse) method" */
+      /* Details: "Has a doFilter(ResourceRequest, ResourceResponse) throws java.io.IOException, javax.portlet.PortletException method" */
       /* TODO: implement test */
       TestResult tr15 = tcd.getTestResultFailed(FILTERCHAIN_HASDOFILTERFORRESOURCE);
       

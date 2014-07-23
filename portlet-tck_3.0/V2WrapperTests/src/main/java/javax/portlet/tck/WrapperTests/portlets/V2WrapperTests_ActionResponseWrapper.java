@@ -94,7 +94,7 @@ public class V2WrapperTests_ActionResponseWrapper implements Portlet {
       TestResult tr2 = tcd.getTestResultFailed(ACTIONRESPONSEWRAPPER_CONSTRUCTOR);
       
       /* TestCase: ActionResponseWrapper_hasSendRedirectA */
-      /* Details: "Has a sendRedirect(java.lang.String) method" */
+      /* Details: "Has a sendRedirect(java.lang.String) throws java.io.IOException method" */
       /* TODO: implement test */
       TestResult tr3 = tcd.getTestResultFailed(ACTIONRESPONSEWRAPPER_HASSENDREDIRECTA);
       
@@ -104,7 +104,7 @@ public class V2WrapperTests_ActionResponseWrapper implements Portlet {
       TestResult tr4 = tcd.getTestResultFailed(ACTIONRESPONSEWRAPPER_SENDREDIRECTA);
       
       /* TestCase: ActionResponseWrapper_hasSendRedirectB */
-      /* Details: "Has a sendRedirect(java.lang.String, java.lang.String) method" */
+      /* Details: "Has a sendRedirect(java.lang.String, java.lang.String) throws java.io.IOException method" */
       /* TODO: implement test */
       TestResult tr5 = tcd.getTestResultFailed(ACTIONRESPONSEWRAPPER_HASSENDREDIRECTB);
       
@@ -134,7 +134,7 @@ public class V2WrapperTests_ActionResponseWrapper implements Portlet {
       TestResult tr10 = tcd.getTestResultFailed(ACTIONRESPONSEWRAPPER_SETEVENTB);
       
       /* TestCase: ActionResponseWrapper_hasSetPortletMode */
-      /* Details: "Has a setPortletMode(PortletMode) method" */
+      /* Details: "Has a setPortletMode(PortletMode) throws javax.portlet.PortletModeException method" */
       /* TODO: implement test */
       TestResult tr11 = tcd.getTestResultFailed(ACTIONRESPONSEWRAPPER_HASSETPORTLETMODE);
       
@@ -174,7 +174,7 @@ public class V2WrapperTests_ActionResponseWrapper implements Portlet {
       TestResult tr18 = tcd.getTestResultFailed(ACTIONRESPONSEWRAPPER_SETRENDERPARAMETERS);
       
       /* TestCase: ActionResponseWrapper_hasSetWindowState */
-      /* Details: "Has a setWindowState(WindowState) method" */
+      /* Details: "Has a setWindowState(WindowState) throws javax.portlet.WindowStateException method" */
       /* TODO: implement test */
       TestResult tr19 = tcd.getTestResultFailed(ACTIONRESPONSEWRAPPER_HASSETWINDOWSTATE);
       

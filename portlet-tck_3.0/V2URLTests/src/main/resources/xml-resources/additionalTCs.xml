@@ -90,8 +90,8 @@
 <entry key="BaseURL_setProperty1">V2URLTests_BaseURL</entry>
 <entry key="BaseURL_setProperty2">V2URLTests_BaseURL</entry>
 <entry key="BaseURL_setProperty3">V2URLTests_BaseURL</entry>
-<entry key="PortletURL_extendsBaseURL1">V2URLTests_PortletURL</entry>
-<entry key="PortletURL_extendsBaseURL2">V2URLTests_PortletURL</entry>
+<entry key="PortletURL_implementsBaseURL1">V2URLTests_PortletURL</entry>
+<entry key="PortletURL_implementsBaseURL2">V2URLTests_PortletURL</entry>
 <entry key="PortletURL_hasSetWindowState">V2URLTests_PortletURL</entry>
 <entry key="PortletURL_setWindowState1">V2URLTests_PortletURL</entry>
 <entry key="PortletURL_setWindowState2">V2URLTests_PortletURL</entry>
@@ -115,8 +115,8 @@
 <entry key="ResourceURL_fieldPAGE">V2URLTests_ResourceURL</entry>
 <entry key="ResourceURL_fieldPORTLET">V2URLTests_ResourceURL</entry>
 <entry key="ResourceURL_fieldSHARED">V2URLTests_ResourceURL</entry>
-<entry key="ResourceURL_extendsBaseURL1">V2URLTests_ResourceURL</entry>
-<entry key="ResourceURL_extendsBaseURL2">V2URLTests_ResourceURL</entry>
+<entry key="ResourceURL_implementsBaseURL1">V2URLTests_ResourceURL</entry>
+<entry key="ResourceURL_implementsBaseURL2">V2URLTests_ResourceURL</entry>
 <entry key="ResourceURL_hasSetResourceID">V2URLTests_ResourceURL</entry>
 <entry key="ResourceURL_setResourceID">V2URLTests_ResourceURL</entry>
 <entry key="ResourceURL_hasGetCacheability">V2URLTests_ResourceURL</entry>

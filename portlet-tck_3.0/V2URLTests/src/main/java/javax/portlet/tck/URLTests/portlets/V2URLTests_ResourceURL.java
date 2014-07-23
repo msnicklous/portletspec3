@@ -79,34 +79,34 @@ public class V2URLTests_ResourceURL implements Portlet {
       // Create result objects for the tests
 
       /* TestCase: ResourceURL_fieldFULL */
-      /* Details: "Has String field FULL with value of "FULL" " */
+      /* Details: "Has String field FULL with value of \"FULL\" " */
       /* TODO: implement test */
       TestResult tr0 = tcd.getTestResultFailed(RESOURCEURL_FIELDFULL);
       
       /* TestCase: ResourceURL_fieldPAGE */
-      /* Details: "Has String field PAGE with value of "PAGE" " */
+      /* Details: "Has String field PAGE with value of \"PAGE\" " */
       /* TODO: implement test */
       TestResult tr1 = tcd.getTestResultFailed(RESOURCEURL_FIELDPAGE);
       
       /* TestCase: ResourceURL_fieldPORTLET */
-      /* Details: "Has String field PORTLET with value of "PORTLET" " */
+      /* Details: "Has String field PORTLET with value of \"PORTLET\" " */
       /* TODO: implement test */
       TestResult tr2 = tcd.getTestResultFailed(RESOURCEURL_FIELDPORTLET);
       
       /* TestCase: ResourceURL_fieldSHARED */
-      /* Details: "Has String field SHARED with value of "SHARED" " */
+      /* Details: "Has String field SHARED with value of \"SHARED\" " */
       /* TODO: implement test */
       TestResult tr3 = tcd.getTestResultFailed(RESOURCEURL_FIELDSHARED);
       
-      /* TestCase: ResourceURL_extendsBaseURL1 */
-      /* Details: "ResourceURL extends BaseURL" */
+      /* TestCase: ResourceURL_implementsBaseURL1 */
+      /* Details: "Implements BaseURL" */
       /* TODO: implement test */
-      TestResult tr4 = tcd.getTestResultFailed(RESOURCEURL_EXTENDSBASEURL1);
+      TestResult tr4 = tcd.getTestResultFailed(RESOURCEURL_IMPLEMENTSBASEURL1);
       
-      /* TestCase: ResourceURL_extendsBaseURL2 */
+      /* TestCase: ResourceURL_implementsBaseURL2 */
       /* Details: "All tests described for the BaseURL execute correctly with the ResourceURL" */
       /* TODO: implement test */
-      TestResult tr5 = tcd.getTestResultFailed(RESOURCEURL_EXTENDSBASEURL2);
+      TestResult tr5 = tcd.getTestResultFailed(RESOURCEURL_IMPLEMENTSBASEURL2);
       
       /* TestCase: ResourceURL_hasSetResourceID */
       /* Details: "Has a setResourceID(java.lang.String) method" */
@@ -139,7 +139,7 @@ public class V2URLTests_ResourceURL implements Portlet {
       TestResult tr11 = tcd.getTestResultFailed(RESOURCEURL_SETCACHEABILITY1);
       
       /* TestCase: ResourceURL_setCacheability2 */
-      /* Details: "Throws IllegalArgumentException if the input parameter does not have a value of "FULL", "PAGE", or "PORTLET"" */
+      /* Details: "Throws IllegalArgumentException if the input parameter does not have a value of \"FULL\", \"PAGE\", or \"PORTLET\"" */
       /* TODO: implement test */
       TestResult tr12 = tcd.getTestResultFailed(RESOURCEURL_SETCACHEABILITY2);
       

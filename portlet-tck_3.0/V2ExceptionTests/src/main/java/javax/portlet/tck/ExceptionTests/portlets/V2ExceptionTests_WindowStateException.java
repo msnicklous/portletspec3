@@ -79,7 +79,7 @@ public class V2ExceptionTests_WindowStateException implements Portlet {
       // Create result objects for the tests
 
       /* TestCase: WindowStateException_extendsPortletException */
-      /* Details: "WindowStateException extends PortletException" */
+      /* Details: "Extends PortletException" */
       /* TODO: implement test */
       TestResult tr0 = tcd.getTestResultFailed(WINDOWSTATEEXCEPTION_EXTENDSPORTLETEXCEPTION);
       

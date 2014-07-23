@@ -154,7 +154,7 @@ public class V2EnvironmentTests_PortletPreferences implements Portlet {
       TestResult tr14 = tcd.getTestResultFailed(PORTLETPREFERENCES_GETVALUES4);
       
       /* TestCase: PortletPreferences_hasSetValue */
-      /* Details: "Has a setValue(java.lang.String, java.lang.String) method" */
+      /* Details: "Has a setValue(java.lang.String, java.lang.String) throws javax.portlet.ReadOnlyException method" */
       /* TODO: implement test */
       TestResult tr15 = tcd.getTestResultFailed(PORTLETPREFERENCES_HASSETVALUE);
       
@@ -184,7 +184,7 @@ public class V2EnvironmentTests_PortletPreferences implements Portlet {
       TestResult tr20 = tcd.getTestResultFailed(PORTLETPREFERENCES_SETVALUE5);
       
       /* TestCase: PortletPreferences_hasSetValues */
-      /* Details: "Has a setValues(java.lang.String, java.lang.String[]) method" */
+      /* Details: "Has a setValues(java.lang.String, java.lang.String[]) throws javax.portlet.ReadOnlyException method" */
       /* TODO: implement test */
       TestResult tr21 = tcd.getTestResultFailed(PORTLETPREFERENCES_HASSETVALUES);
       
@@ -249,7 +249,7 @@ public class V2EnvironmentTests_PortletPreferences implements Portlet {
       TestResult tr33 = tcd.getTestResultFailed(PORTLETPREFERENCES_GETMAP2);
       
       /* TestCase: PortletPreferences_hasReset */
-      /* Details: "Has a reset(java.lang.String) method" */
+      /* Details: "Has a reset(java.lang.String) throws javax.portlet.ReadOnlyException method" */
       /* TODO: implement test */
       TestResult tr34 = tcd.getTestResultFailed(PORTLETPREFERENCES_HASRESET);
       
@@ -269,7 +269,7 @@ public class V2EnvironmentTests_PortletPreferences implements Portlet {
       TestResult tr37 = tcd.getTestResultFailed(PORTLETPREFERENCES_RESET3);
       
       /* TestCase: PortletPreferences_hasStore */
-      /* Details: "Has a store() method" */
+      /* Details: "Has a store() throws java.io.IOException, javax.portlet.ValidatorException method" */
       /* TODO: implement test */
       TestResult tr38 = tcd.getTestResultFailed(PORTLETPREFERENCES_HASSTORE);
       

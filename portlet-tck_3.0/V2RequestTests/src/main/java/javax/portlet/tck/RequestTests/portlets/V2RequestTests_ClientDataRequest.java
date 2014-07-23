@@ -89,7 +89,7 @@ public class V2RequestTests_ClientDataRequest implements Portlet {
       TestResult tr1 = tcd.getTestResultFailed(CLIENTDATAREQUEST_EXTENDSPORTLETREQUEST2);
       
       /* TestCase: ClientDataRequest_hasGetPortletInputStream */
-      /* Details: "Has a getPortletInputStream() method" */
+      /* Details: "Has a getPortletInputStream() throws java.io.IOException method" */
       /* TODO: implement test */
       TestResult tr2 = tcd.getTestResultFailed(CLIENTDATAREQUEST_HASGETPORTLETINPUTSTREAM);
       
@@ -114,7 +114,7 @@ public class V2RequestTests_ClientDataRequest implements Portlet {
       TestResult tr6 = tcd.getTestResultFailed(CLIENTDATAREQUEST_GETPORTLETINPUTSTREAM4);
       
       /* TestCase: ClientDataRequest_hasSetCharacterEncoding */
-      /* Details: "Has a setCharacterEncoding(java.lang.String) method" */
+      /* Details: "Has a setCharacterEncoding(java.lang.String) throws java.io.UnsupportedEncodingException method" */
       /* TODO: implement test */
       TestResult tr7 = tcd.getTestResultFailed(CLIENTDATAREQUEST_HASSETCHARACTERENCODING);
       
@@ -139,7 +139,7 @@ public class V2RequestTests_ClientDataRequest implements Portlet {
       TestResult tr11 = tcd.getTestResultFailed(CLIENTDATAREQUEST_SETCHARACTERENCODING4);
       
       /* TestCase: ClientDataRequest_hasGetReader */
-      /* Details: "Has a getReader() method" */
+      /* Details: "Has a getReader() throws java.io.UnsupportedEncodingException, java.io.IOException method" */
       /* TODO: implement test */
       TestResult tr12 = tcd.getTestResultFailed(CLIENTDATAREQUEST_HASGETREADER);
       

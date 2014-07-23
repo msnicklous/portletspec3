@@ -79,7 +79,7 @@ public class V2ExceptionTests_PortletModeException implements Portlet {
       // Create result objects for the tests
 
       /* TestCase: PortletModeException_extendsPortletException */
-      /* Details: "PortletModeException extends PortletException" */
+      /* Details: "Extends PortletException" */
       /* TODO: implement test */
       TestResult tr0 = tcd.getTestResultFailed(PORTLETMODEEXCEPTION_EXTENDSPORTLETEXCEPTION);
       

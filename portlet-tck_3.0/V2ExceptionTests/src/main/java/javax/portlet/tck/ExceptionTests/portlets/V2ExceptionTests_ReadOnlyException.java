@@ -79,7 +79,7 @@ public class V2ExceptionTests_ReadOnlyException implements Portlet {
       // Create result objects for the tests
 
       /* TestCase: ReadOnlyException_extendsPortletException */
-      /* Details: "ReadOnlyException extends PortletException" */
+      /* Details: "Extends PortletException" */
       /* TODO: implement test */
       TestResult tr0 = tcd.getTestResultFailed(READONLYEXCEPTION_EXTENDSPORTLETEXCEPTION);
       

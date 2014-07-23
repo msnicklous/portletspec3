@@ -79,77 +79,77 @@ public class V2RequestTests_PortletRequest implements Portlet {
       // Create result objects for the tests
 
       /* TestCase: PortletRequest_fieldUSER_INFO */
-      /* Details: "Has String field USER_INFO with value of "javax.portlet.userinfo" " */
+      /* Details: "Has String field USER_INFO with value of \"javax.portlet.userinfo\" " */
       /* TODO: implement test */
       TestResult tr0 = tcd.getTestResultFailed(PORTLETREQUEST_FIELDUSER_INFO);
       
       /* TestCase: PortletRequest_fieldCCPP_PROFILE */
-      /* Details: "Has String field CCPP_PROFILE with value of "javax.portlet.ccpp" " */
+      /* Details: "Has String field CCPP_PROFILE with value of \"javax.portlet.ccpp\" " */
       /* TODO: implement test */
       TestResult tr1 = tcd.getTestResultFailed(PORTLETREQUEST_FIELDCCPP_PROFILE);
       
       /* TestCase: PortletRequest_fieldBASIC_AUTH */
-      /* Details: "Has String field BASIC_AUTH with value of "BASIC" " */
+      /* Details: "Has String field BASIC_AUTH with value of \"BASIC\" " */
       /* TODO: implement test */
       TestResult tr2 = tcd.getTestResultFailed(PORTLETREQUEST_FIELDBASIC_AUTH);
       
       /* TestCase: PortletRequest_fieldFORM_AUTH */
-      /* Details: "Has String field FORM_AUTH with value of "FORM" " */
+      /* Details: "Has String field FORM_AUTH with value of \"FORM\" " */
       /* TODO: implement test */
       TestResult tr3 = tcd.getTestResultFailed(PORTLETREQUEST_FIELDFORM_AUTH);
       
       /* TestCase: PortletRequest_fieldCLIENT_CERT_AUTH */
-      /* Details: "Has String field CLIENT_CERT_AUTH with value of "CLIENT_CERT" " */
+      /* Details: "Has String field CLIENT_CERT_AUTH with value of \"CLIENT_CERT\" " */
       /* TODO: implement test */
       TestResult tr4 = tcd.getTestResultFailed(PORTLETREQUEST_FIELDCLIENT_CERT_AUTH);
       
       /* TestCase: PortletRequest_fieldDIGEST_AUTH */
-      /* Details: "Has String field DIGEST_AUTH with value of "DIGEST" " */
+      /* Details: "Has String field DIGEST_AUTH with value of \"DIGEST\" " */
       /* TODO: implement test */
       TestResult tr5 = tcd.getTestResultFailed(PORTLETREQUEST_FIELDDIGEST_AUTH);
       
       /* TestCase: PortletRequest_fieldACTION_PHASE */
-      /* Details: "Has String field ACTION_PHASE with value of "ACTION_PHASE" " */
+      /* Details: "Has String field ACTION_PHASE with value of \"ACTION_PHASE\" " */
       /* TODO: implement test */
       TestResult tr6 = tcd.getTestResultFailed(PORTLETREQUEST_FIELDACTION_PHASE);
       
       /* TestCase: PortletRequest_fieldEVENT_PHASE */
-      /* Details: "Has String field EVENT_PHASE with value of "EVENT_PHASE" " */
+      /* Details: "Has String field EVENT_PHASE with value of \"EVENT_PHASE\" " */
       /* TODO: implement test */
       TestResult tr7 = tcd.getTestResultFailed(PORTLETREQUEST_FIELDEVENT_PHASE);
       
       /* TestCase: PortletRequest_fieldRENDER_PHASE */
-      /* Details: "Has String field RENDER_PHASE with value of "RENDER_PHASE" " */
+      /* Details: "Has String field RENDER_PHASE with value of \"RENDER_PHASE\" " */
       /* TODO: implement test */
       TestResult tr8 = tcd.getTestResultFailed(PORTLETREQUEST_FIELDRENDER_PHASE);
       
       /* TestCase: PortletRequest_fieldRESOURCE_PHASE */
-      /* Details: "Has String field RESOURCE_PHASE with value of "RESOURCE_PHASE" " */
+      /* Details: "Has String field RESOURCE_PHASE with value of \"RESOURCE_PHASE\" " */
       /* TODO: implement test */
       TestResult tr9 = tcd.getTestResultFailed(PORTLETREQUEST_FIELDRESOURCE_PHASE);
       
       /* TestCase: PortletRequest_fieldLIFECYCLE_PHASE */
-      /* Details: "Has String field LIFECYCLE_PHASE with value of "javax.portlet.lifecycle_phase" " */
+      /* Details: "Has String field LIFECYCLE_PHASE with value of \"javax.portlet.lifecycle_phase\" " */
       /* TODO: implement test */
       TestResult tr10 = tcd.getTestResultFailed(PORTLETREQUEST_FIELDLIFECYCLE_PHASE);
       
       /* TestCase: PortletRequest_fieldRENDER_PART */
-      /* Details: "Has String field RENDER_PART with value of "javax.portlet.render_part" " */
+      /* Details: "Has String field RENDER_PART with value of \"javax.portlet.render_part\" " */
       /* TODO: implement test */
       TestResult tr11 = tcd.getTestResultFailed(PORTLETREQUEST_FIELDRENDER_PART);
       
       /* TestCase: PortletRequest_fieldRENDER_HEADERS */
-      /* Details: "Has String field RENDER_HEADERS with value of "RENDER_HEADERS" " */
+      /* Details: "Has String field RENDER_HEADERS with value of \"RENDER_HEADERS\" " */
       /* TODO: implement test */
       TestResult tr12 = tcd.getTestResultFailed(PORTLETREQUEST_FIELDRENDER_HEADERS);
       
       /* TestCase: PortletRequest_fieldRENDER_MARKUP */
-      /* Details: "Has String field RENDER_MARKUP with value of "RENDER_MARKUP" " */
+      /* Details: "Has String field RENDER_MARKUP with value of \"RENDER_MARKUP\" " */
       /* TODO: implement test */
       TestResult tr13 = tcd.getTestResultFailed(PORTLETREQUEST_FIELDRENDER_MARKUP);
       
       /* TestCase: PortletRequest_fieldACTION_SCOPE_ID */
-      /* Details: "Has String field ACTION_SCOPE_ID with value of "javax.portlet.as" " */
+      /* Details: "Has String field ACTION_SCOPE_ID with value of \"javax.portlet.as\" " */
       /* TODO: implement test */
       TestResult tr14 = tcd.getTestResultFailed(PORTLETREQUEST_FIELDACTION_SCOPE_ID);
       
@@ -349,7 +349,7 @@ public class V2RequestTests_PortletRequest implements Portlet {
       TestResult tr53 = tcd.getTestResultFailed(PORTLETREQUEST_GETCONTEXTPATH2);
       
       /* TestCase: PortletRequest_getContextPath3 */
-      /* Details: "If the context path is not empty, it must start with "/" and may not end with "/"" */
+      /* Details: "If the context path is not empty, it must start with \"/\" and may not end with \"/\"" */
       /* TODO: implement test */
       TestResult tr54 = tcd.getTestResultFailed(PORTLETREQUEST_GETCONTEXTPATH3);
       

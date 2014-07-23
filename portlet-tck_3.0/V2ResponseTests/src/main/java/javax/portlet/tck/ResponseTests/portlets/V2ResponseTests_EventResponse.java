@@ -78,35 +78,40 @@ public class V2ResponseTests_EventResponse implements Portlet {
 
       // Create result objects for the tests
 
-      /* TestCase: EventResponse_extendsStateAwareResponse1 */
-      /* Details: "EventResponse extends StateAwareResponse" */
+      /* TestCase: EventResponse_implementsStateAwareResponse1 */
+      /* Details: "Implements StateAwareResponse" */
       /* TODO: implement test */
-      TestResult tr0 = tcd.getTestResultFailed(EVENTRESPONSE_EXTENDSSTATEAWARERESPONSE1);
+      TestResult tr0 = tcd.getTestResultFailed(EVENTRESPONSE_IMPLEMENTSSTATEAWARERESPONSE1);
       
-      /* TestCase: EventResponse_extendsStateAwareResponse2 */
+      /* TestCase: EventResponse_implementsStateAwareResponse2 */
+      /* Details: "Implements PortletResponse" */
+      /* TODO: implement test */
+      TestResult tr1 = tcd.getTestResultFailed(EVENTRESPONSE_IMPLEMENTSSTATEAWARERESPONSE2);
+      
+      /* TestCase: EventResponse_implementsStateAwareResponse3 */
       /* Details: "All tests described for the PortletResponse execute correctly with the EventResponse" */
       /* TODO: implement test */
-      TestResult tr1 = tcd.getTestResultFailed(EVENTRESPONSE_EXTENDSSTATEAWARERESPONSE2);
+      TestResult tr2 = tcd.getTestResultFailed(EVENTRESPONSE_IMPLEMENTSSTATEAWARERESPONSE3);
       
-      /* TestCase: EventResponse_extendsStateAwareResponse3 */
+      /* TestCase: EventResponse_implementsStateAwareResponse4 */
       /* Details: "All tests described for the StateAwareResponse execute correctly with the EventResponse" */
       /* TODO: implement test */
-      TestResult tr2 = tcd.getTestResultFailed(EVENTRESPONSE_EXTENDSSTATEAWARERESPONSE3);
+      TestResult tr3 = tcd.getTestResultFailed(EVENTRESPONSE_IMPLEMENTSSTATEAWARERESPONSE4);
       
       /* TestCase: EventResponse_hasSetRenderParameters */
       /* Details: "Has a setRenderParameters(EventRequest) method" */
       /* TODO: implement test */
-      TestResult tr3 = tcd.getTestResultFailed(EVENTRESPONSE_HASSETRENDERPARAMETERS);
+      TestResult tr4 = tcd.getTestResultFailed(EVENTRESPONSE_HASSETRENDERPARAMETERS);
       
       /* TestCase: EventResponse_setRenderParameters1 */
       /* Details: "Copies all render parameters set on the EventRequest to the EventResponse" */
       /* TODO: implement test */
-      TestResult tr4 = tcd.getTestResultFailed(EVENTRESPONSE_SETRENDERPARAMETERS1);
+      TestResult tr5 = tcd.getTestResultFailed(EVENTRESPONSE_SETRENDERPARAMETERS1);
       
       /* TestCase: EventResponse_setRenderParameters2 */
       /* Details: "Throws IllegalArgumentException if the input EventRequest parameter is null" */
       /* TODO: implement test */
-      TestResult tr5 = tcd.getTestResultFailed(EVENTRESPONSE_SETRENDERPARAMETERS2);
+      TestResult tr6 = tcd.getTestResultFailed(EVENTRESPONSE_SETRENDERPARAMETERS2);
       
 
 
@@ -118,6 +123,7 @@ public class V2ResponseTests_EventResponse implements Portlet {
       tr3.writeTo(writer);
       tr4.writeTo(writer);
       tr5.writeTo(writer);
+      tr6.writeTo(writer);
 
 
    }

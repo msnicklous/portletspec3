@@ -78,140 +78,145 @@ public class V2ResponseTests_ResourceResponse implements Portlet {
 
       // Create result objects for the tests
 
-      /* TestCase: ResourceResponse_extendsMimeResponse1 */
-      /* Details: "ResourceResponse extends MimeResponse" */
+      /* TestCase: ResourceResponse_implementsMimeResponse1 */
+      /* Details: "Implements MimeResponse" */
       /* TODO: implement test */
-      TestResult tr0 = tcd.getTestResultFailed(RESOURCERESPONSE_EXTENDSMIMERESPONSE1);
+      TestResult tr0 = tcd.getTestResultFailed(RESOURCERESPONSE_IMPLEMENTSMIMERESPONSE1);
       
-      /* TestCase: ResourceResponse_extendsMimeResponse2 */
+      /* TestCase: ResourceResponse_implementsMimeResponse2 */
+      /* Details: "Implements PortletResponse" */
+      /* TODO: implement test */
+      TestResult tr1 = tcd.getTestResultFailed(RESOURCERESPONSE_IMPLEMENTSMIMERESPONSE2);
+      
+      /* TestCase: ResourceResponse_implementsMimeResponse3 */
       /* Details: "All tests described for the PortletResponse execute correctly with the ResourceResponse" */
       /* TODO: implement test */
-      TestResult tr1 = tcd.getTestResultFailed(RESOURCERESPONSE_EXTENDSMIMERESPONSE2);
+      TestResult tr2 = tcd.getTestResultFailed(RESOURCERESPONSE_IMPLEMENTSMIMERESPONSE3);
       
-      /* TestCase: ResourceResponse_extendsMimeResponse3 */
+      /* TestCase: ResourceResponse_implementsMimeResponse4 */
       /* Details: "All tests described for the MimeResponse execute correctly with the ResourceResponse" */
       /* TODO: implement test */
-      TestResult tr2 = tcd.getTestResultFailed(RESOURCERESPONSE_EXTENDSMIMERESPONSE3);
+      TestResult tr3 = tcd.getTestResultFailed(RESOURCERESPONSE_IMPLEMENTSMIMERESPONSE4);
       
       /* TestCase: ResourceResponse_fieldHTTP_STATUS_CODE */
-      /* Details: "Has String field HTTP_STATUS_CODE with value of "portlet.http-status-code"" */
+      /* Details: "Has String field HTTP_STATUS_CODE with value of \"portlet.http-status-code\"" */
       /* TODO: implement test */
-      TestResult tr3 = tcd.getTestResultFailed(RESOURCERESPONSE_FIELDHTTP_STATUS_CODE);
+      TestResult tr4 = tcd.getTestResultFailed(RESOURCERESPONSE_FIELDHTTP_STATUS_CODE);
       
       /* TestCase: ResourceResponse_hasSetLocale */
       /* Details: "Has a setLocale(java.util.Locale) method" */
       /* TODO: implement test */
-      TestResult tr4 = tcd.getTestResultFailed(RESOURCERESPONSE_HASSETLOCALE);
+      TestResult tr5 = tcd.getTestResultFailed(RESOURCERESPONSE_HASSETLOCALE);
       
       /* TestCase: ResourceResponse_setLocale1 */
       /* Details: "Sets the locale of the response" */
       /* TODO: implement test */
-      TestResult tr5 = tcd.getTestResultFailed(RESOURCERESPONSE_SETLOCALE1);
+      TestResult tr6 = tcd.getTestResultFailed(RESOURCERESPONSE_SETLOCALE1);
       
       /* TestCase: ResourceResponse_setLocale2 */
       /* Details: "Has no effect if called after the getWriter method has been called" */
       /* TODO: implement test */
-      TestResult tr6 = tcd.getTestResultFailed(RESOURCERESPONSE_SETLOCALE2);
+      TestResult tr7 = tcd.getTestResultFailed(RESOURCERESPONSE_SETLOCALE2);
       
       /* TestCase: ResourceResponse_setLocale3 */
       /* Details: "Has no effect if called after the getPortletOutputStream method has been called" */
       /* TODO: implement test */
-      TestResult tr7 = tcd.getTestResultFailed(RESOURCERESPONSE_SETLOCALE3);
+      TestResult tr8 = tcd.getTestResultFailed(RESOURCERESPONSE_SETLOCALE3);
       
       /* TestCase: ResourceResponse_setLocale4 */
       /* Details: "Throws IllegalArgumentException if the Locale parameter is null" */
       /* TODO: implement test */
-      TestResult tr8 = tcd.getTestResultFailed(RESOURCERESPONSE_SETLOCALE4);
+      TestResult tr9 = tcd.getTestResultFailed(RESOURCERESPONSE_SETLOCALE4);
       
       /* TestCase: ResourceResponse_hasSetCharacterEncoding */
       /* Details: "Has a setCharacterEncoding(java.lang.String) method" */
       /* TODO: implement test */
-      TestResult tr9 = tcd.getTestResultFailed(RESOURCERESPONSE_HASSETCHARACTERENCODING);
+      TestResult tr10 = tcd.getTestResultFailed(RESOURCERESPONSE_HASSETCHARACTERENCODING);
       
       /* TestCase: ResourceResponse_setCharacterEncoding1 */
       /* Details: "Sets the character encoding of the response" */
       /* TODO: implement test */
-      TestResult tr10 = tcd.getTestResultFailed(RESOURCERESPONSE_SETCHARACTERENCODING1);
+      TestResult tr11 = tcd.getTestResultFailed(RESOURCERESPONSE_SETCHARACTERENCODING1);
       
       /* TestCase: ResourceResponse_setCharacterEncoding2 */
       /* Details: "Has no effect if called after the getWriter method has been called" */
       /* TODO: implement test */
-      TestResult tr11 = tcd.getTestResultFailed(RESOURCERESPONSE_SETCHARACTERENCODING2);
+      TestResult tr12 = tcd.getTestResultFailed(RESOURCERESPONSE_SETCHARACTERENCODING2);
       
       /* TestCase: ResourceResponse_setCharacterEncoding3 */
       /* Details: "Has no effect if called after the getPortletOutputStream method has been called" */
       /* TODO: implement test */
-      TestResult tr12 = tcd.getTestResultFailed(RESOURCERESPONSE_SETCHARACTERENCODING3);
+      TestResult tr13 = tcd.getTestResultFailed(RESOURCERESPONSE_SETCHARACTERENCODING3);
       
       /* TestCase: ResourceResponse_setCharacterEncoding4 */
       /* Details: "Throws IllegalArgumentException if the Locale parameter is null" */
       /* TODO: implement test */
-      TestResult tr13 = tcd.getTestResultFailed(RESOURCERESPONSE_SETCHARACTERENCODING4);
+      TestResult tr14 = tcd.getTestResultFailed(RESOURCERESPONSE_SETCHARACTERENCODING4);
       
       /* TestCase: ResourceResponse_hasSetContentLength */
       /* Details: "Has a setContentLength(int) method" */
       /* TODO: implement test */
-      TestResult tr14 = tcd.getTestResultFailed(RESOURCERESPONSE_HASSETCONTENTLENGTH);
+      TestResult tr15 = tcd.getTestResultFailed(RESOURCERESPONSE_HASSETCONTENTLENGTH);
       
       /* TestCase: ResourceResponse_setContentLength1 */
       /* Details: "Sets the length of the content body" */
       /* TODO: implement test */
-      TestResult tr15 = tcd.getTestResultFailed(RESOURCERESPONSE_SETCONTENTLENGTH1);
+      TestResult tr16 = tcd.getTestResultFailed(RESOURCERESPONSE_SETCONTENTLENGTH1);
       
       /* TestCase: ResourceResponse_setContentLength2 */
       /* Details: "Has no effect if called after the getWriter method has been called" */
       /* TODO: implement test */
-      TestResult tr16 = tcd.getTestResultFailed(RESOURCERESPONSE_SETCONTENTLENGTH2);
+      TestResult tr17 = tcd.getTestResultFailed(RESOURCERESPONSE_SETCONTENTLENGTH2);
       
       /* TestCase: ResourceResponse_setContentLength3 */
       /* Details: "Has no effect if called after the getPortletOutputStream method has been called" */
       /* TODO: implement test */
-      TestResult tr17 = tcd.getTestResultFailed(RESOURCERESPONSE_SETCONTENTLENGTH3);
+      TestResult tr18 = tcd.getTestResultFailed(RESOURCERESPONSE_SETCONTENTLENGTH3);
       
       /* TestCase: ResourceResponse_hasCreateRenderURL */
       /* Details: "Has a createRenderURL() method" */
       /* TODO: implement test */
-      TestResult tr18 = tcd.getTestResultFailed(RESOURCERESPONSE_HASCREATERENDERURL);
+      TestResult tr19 = tcd.getTestResultFailed(RESOURCERESPONSE_HASCREATERENDERURL);
       
       /* TestCase: ResourceResponse_createRenderURL1 */
       /* Details: "Tests described for overridden method in MimeResponse execute correctly" */
       /* TODO: implement test */
-      TestResult tr19 = tcd.getTestResultFailed(RESOURCERESPONSE_CREATERENDERURL1);
+      TestResult tr20 = tcd.getTestResultFailed(RESOURCERESPONSE_CREATERENDERURL1);
       
       /* TestCase: ResourceResponse_createRenderURL2 */
       /* Details: "Throws IllegalStateException if the cacheability level for the resource URL triggering the serveResource call is not PAGE" */
       /* TODO: implement test */
-      TestResult tr20 = tcd.getTestResultFailed(RESOURCERESPONSE_CREATERENDERURL2);
+      TestResult tr21 = tcd.getTestResultFailed(RESOURCERESPONSE_CREATERENDERURL2);
       
       /* TestCase: ResourceResponse_hasCreateActionURL */
       /* Details: "Has a createActionURL() method" */
       /* TODO: implement test */
-      TestResult tr21 = tcd.getTestResultFailed(RESOURCERESPONSE_HASCREATEACTIONURL);
+      TestResult tr22 = tcd.getTestResultFailed(RESOURCERESPONSE_HASCREATEACTIONURL);
       
       /* TestCase: ResourceResponse_createActionURL1 */
       /* Details: "Tests described for overridden method in MimeResponse execute correctly" */
       /* TODO: implement test */
-      TestResult tr22 = tcd.getTestResultFailed(RESOURCERESPONSE_CREATEACTIONURL1);
+      TestResult tr23 = tcd.getTestResultFailed(RESOURCERESPONSE_CREATEACTIONURL1);
       
       /* TestCase: ResourceResponse_createActionURL2 */
       /* Details: "Throws IllegalStateException if the cacheability level for the resource URL triggering the serveResource call is not PAGE" */
       /* TODO: implement test */
-      TestResult tr23 = tcd.getTestResultFailed(RESOURCERESPONSE_CREATEACTIONURL2);
+      TestResult tr24 = tcd.getTestResultFailed(RESOURCERESPONSE_CREATEACTIONURL2);
       
       /* TestCase: ResourceResponse_hasCreateResourceURL */
       /* Details: "Has a createResourceURL() method" */
       /* TODO: implement test */
-      TestResult tr24 = tcd.getTestResultFailed(RESOURCERESPONSE_HASCREATERESOURCEURL);
+      TestResult tr25 = tcd.getTestResultFailed(RESOURCERESPONSE_HASCREATERESOURCEURL);
       
       /* TestCase: ResourceResponse_createResourceURL1 */
       /* Details: "Tests described for overridden method in MimeResponse execute correctly" */
       /* TODO: implement test */
-      TestResult tr25 = tcd.getTestResultFailed(RESOURCERESPONSE_CREATERESOURCEURL1);
+      TestResult tr26 = tcd.getTestResultFailed(RESOURCERESPONSE_CREATERESOURCEURL1);
       
       /* TestCase: ResourceResponse_createResourceURL2 */
       /* Details: "Throws IllegalStateException if the cacheability level for the resource URL triggering the serveResource call is not PAGE" */
       /* TODO: implement test */
-      TestResult tr26 = tcd.getTestResultFailed(RESOURCERESPONSE_CREATERESOURCEURL2);
+      TestResult tr27 = tcd.getTestResultFailed(RESOURCERESPONSE_CREATERESOURCEURL2);
       
 
 
@@ -244,6 +249,7 @@ public class V2ResponseTests_ResourceResponse implements Portlet {
       tr24.writeTo(writer);
       tr25.writeTo(writer);
       tr26.writeTo(writer);
+      tr27.writeTo(writer);
 
 
    }

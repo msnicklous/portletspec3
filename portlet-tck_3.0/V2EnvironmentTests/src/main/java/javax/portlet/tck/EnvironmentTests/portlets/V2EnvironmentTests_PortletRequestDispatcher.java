@@ -79,7 +79,7 @@ public class V2EnvironmentTests_PortletRequestDispatcher implements Portlet {
       // Create result objects for the tests
 
       /* TestCase: PortletRequestDispatcher_hasIncludeA */
-      /* Details: "Has a include(RenderRequest request, RenderResponse response) method" */
+      /* Details: "Has a include(RenderRequest request, RenderResponse response) throws javax.portlet.PortletException, java.io.IOException method" */
       /* TODO: implement test */
       TestResult tr0 = tcd.getTestResultFailed(PORTLETREQUESTDISPATCHER_HASINCLUDEA);
       
@@ -104,7 +104,7 @@ public class V2EnvironmentTests_PortletRequestDispatcher implements Portlet {
       TestResult tr4 = tcd.getTestResultFailed(PORTLETREQUESTDISPATCHER_INCLUDEA4);
       
       /* TestCase: PortletRequestDispatcher_hasIncludeB */
-      /* Details: "Has a include(PortletRequest request, PortletResponse response) method" */
+      /* Details: "Has a include(PortletRequest request, PortletResponse response) throws javax.portlet.PortletException, java.io.IOException method" */
       /* TODO: implement test */
       TestResult tr5 = tcd.getTestResultFailed(PORTLETREQUESTDISPATCHER_HASINCLUDEB);
       
@@ -129,7 +129,7 @@ public class V2EnvironmentTests_PortletRequestDispatcher implements Portlet {
       TestResult tr9 = tcd.getTestResultFailed(PORTLETREQUESTDISPATCHER_INCLUDEB4);
       
       /* TestCase: PortletRequestDispatcher_hasForward */
-      /* Details: "Has a forward(PortletRequest request, PortletResponse response) method" */
+      /* Details: "Has a forward(PortletRequest request, PortletResponse response) throws javax.portlet.PortletException, java.io.IOException method" */
       /* TODO: implement test */
       TestResult tr10 = tcd.getTestResultFailed(PORTLETREQUESTDISPATCHER_HASFORWARD);
       

@@ -124,7 +124,7 @@ public class V2WrapperTests_ActionRequestWrapper implements Portlet {
       TestResult tr8 = tcd.getTestResultFailed(ACTIONREQUESTWRAPPER_GETCONTENTTYPE);
       
       /* TestCase: ActionRequestWrapper_hasGetPortletInputStream */
-      /* Details: "Has a getPortletInputStream() method" */
+      /* Details: "Has a getPortletInputStream() throws java.io.IOException method" */
       /* TODO: implement test */
       TestResult tr9 = tcd.getTestResultFailed(ACTIONREQUESTWRAPPER_HASGETPORTLETINPUTSTREAM);
       
@@ -134,7 +134,7 @@ public class V2WrapperTests_ActionRequestWrapper implements Portlet {
       TestResult tr10 = tcd.getTestResultFailed(ACTIONREQUESTWRAPPER_GETPORTLETINPUTSTREAM);
       
       /* TestCase: ActionRequestWrapper_hasGetReader */
-      /* Details: "Has a getReader() method" */
+      /* Details: "Has a getReader() throws java.io.UnsupportedEncodingException, java.io.IOException method" */
       /* TODO: implement test */
       TestResult tr11 = tcd.getTestResultFailed(ACTIONREQUESTWRAPPER_HASGETREADER);
       
@@ -144,7 +144,7 @@ public class V2WrapperTests_ActionRequestWrapper implements Portlet {
       TestResult tr12 = tcd.getTestResultFailed(ACTIONREQUESTWRAPPER_GETREADER);
       
       /* TestCase: ActionRequestWrapper_hasSetCharacterEncoding */
-      /* Details: "Has a setCharacterEncoding(java.lang.String) method" */
+      /* Details: "Has a setCharacterEncoding(java.lang.String) throws java.io.UnsupportedEncodingException method" */
       /* TODO: implement test */
       TestResult tr13 = tcd.getTestResultFailed(ACTIONREQUESTWRAPPER_HASSETCHARACTERENCODING);
       

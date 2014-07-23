@@ -224,7 +224,7 @@ public class V2URLTests_BaseURL implements Portlet {
       TestResult tr28 = tcd.getTestResultFailed(BASEURL_SETPARAMETERS10);
       
       /* TestCase: BaseURL_setParameters11 */
-      /* Details: "Throws IllegalArgumentException if any key in the map is the empty string ("") " */
+      /* Details: "Throws IllegalArgumentException if any key in the map is the empty string (\"\") " */
       /* TODO: implement test */
       TestResult tr29 = tcd.getTestResultFailed(BASEURL_SETPARAMETERS11);
       
@@ -244,7 +244,7 @@ public class V2URLTests_BaseURL implements Portlet {
       TestResult tr32 = tcd.getTestResultFailed(BASEURL_SETPARAMETERS14);
       
       /* TestCase: BaseURL_hasSetSecure */
-      /* Details: "Has a setSecure(boolean) method" */
+      /* Details: "Has a setSecure(boolean) throws javax.portlet.PortletSecurityException method" */
       /* TODO: implement test */
       TestResult tr33 = tcd.getTestResultFailed(BASEURL_HASSETSECURE);
       
@@ -314,7 +314,7 @@ public class V2URLTests_BaseURL implements Portlet {
       TestResult tr46 = tcd.getTestResultFailed(BASEURL_GETPARAMETERMAP6);
       
       /* TestCase: BaseURL_hasWriteA */
-      /* Details: "Has a write(java.io.Writer) method" */
+      /* Details: "Has a write(java.io.Writer) throws java.io.IOException method" */
       /* TODO: implement test */
       TestResult tr47 = tcd.getTestResultFailed(BASEURL_HASWRITEA);
       
@@ -334,7 +334,7 @@ public class V2URLTests_BaseURL implements Portlet {
       TestResult tr50 = tcd.getTestResultFailed(BASEURL_WRITEA3);
       
       /* TestCase: BaseURL_hasWriteB */
-      /* Details: "Has a write(java.io.Writer, boolean) method" */
+      /* Details: "Has a write(java.io.Writer, boolean) throws java.io.IOException method" */
       /* TODO: implement test */
       TestResult tr51 = tcd.getTestResultFailed(BASEURL_HASWRITEB);
       
