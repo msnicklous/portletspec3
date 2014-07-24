@@ -26,13 +26,9 @@ import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.portlet.ActionRequest;
-import javax.portlet.ActionResponse;
-import javax.portlet.Portlet;
-import javax.portlet.PortletConfig;
-import javax.portlet.PortletException;
-import javax.portlet.RenderRequest;
-import javax.portlet.RenderResponse;
+import javax.portlet.*;
+import javax.portlet.filter.*;
+import javax.portlet.tck.beans.ClassChecker;
 import javax.portlet.tck.beans.TestCaseDetails;
 import javax.portlet.tck.beans.JSR286ApiTestCaseDetails;
 import static javax.portlet.tck.beans.JSR286ApiTestCaseDetails.*;
@@ -49,11 +45,11 @@ public class V2ResponseTests_RenderResponse implements Portlet {
          V2ResponseTests_RenderResponse.class.getName();
    private final Logger LOGGER = Logger.getLogger(LOG_CLASS);
    
-   private PortletConfig config = null;
+   private PortletConfig portletConfig = null;
 
    @Override
    public void init(PortletConfig config) throws PortletException {
-      this.config = config;
+      this.portletConfig = config;
    }
 
    @Override
@@ -61,88 +57,108 @@ public class V2ResponseTests_RenderResponse implements Portlet {
    }
 
    @Override
-   public void processAction(ActionRequest request, ActionResponse response)
+   public void processAction(ActionRequest actionRequest, ActionResponse actionResponse)
          throws PortletException, IOException {
    }
 
    @Override
-   public void render(RenderRequest request, RenderResponse response)
+   public void render(RenderRequest renderRequest, RenderResponse renderResponse)
          throws PortletException, IOException {
       
       if (LOGGER.isLoggable(Level.FINE)) {
          LOGGER.logp(Level.FINE, LOG_CLASS, "render", "Entry");
       }
 
-      PrintWriter writer = response.getWriter();
+      PrintWriter writer = renderResponse.getWriter();
       JSR286ApiTestCaseDetails tcd = new JSR286ApiTestCaseDetails();
+      ClassChecker cc = new ClassChecker(renderResponse.getClass());
 
       // Create result objects for the tests
 
       /* TestCase: RenderResponse_implementsMimeResponse1 */
       /* Details: "Implements MimeResponse" */
-      /* TODO: implement test */
       TestResult tr0 = tcd.getTestResultFailed(RENDERRESPONSE_IMPLEMENTSMIMERESPONSE1);
-      
+      {
+         tr0.setTcSuccess(cc.implementsInterface(MimeResponse.class));
+      }
+
       /* TestCase: RenderResponse_implementsMimeResponse2 */
       /* Details: "Implements PortletResponse" */
-      /* TODO: implement test */
       TestResult tr1 = tcd.getTestResultFailed(RENDERRESPONSE_IMPLEMENTSMIMERESPONSE2);
-      
+      {
+         tr1.setTcSuccess(cc.implementsInterface(PortletResponse.class));
+      }
+
       /* TestCase: RenderResponse_implementsMimeResponse3 */
       /* Details: "All tests described for the PortletResponse execute correctly with the RenderResponse" */
-      /* TODO: implement test */
       TestResult tr2 = tcd.getTestResultFailed(RENDERRESPONSE_IMPLEMENTSMIMERESPONSE3);
-      
+      /* TODO: implement test */
+
       /* TestCase: RenderResponse_implementsMimeResponse4 */
       /* Details: "All tests described for the MimeResponse execute correctly with the RenderResponse" */
-      /* TODO: implement test */
       TestResult tr3 = tcd.getTestResultFailed(RENDERRESPONSE_IMPLEMENTSMIMERESPONSE4);
-      
+      /* TODO: implement test */
+
       /* TestCase: RenderResponse_hasSetTitle */
       /* Details: "Has a setTitle(java.lang.String) method" */
-      /* TODO: implement test */
       TestResult tr4 = tcd.getTestResultFailed(RENDERRESPONSE_HASSETTITLE);
-      
+      {
+         String name = "setTitle";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {java.lang.String.class};
+         tr4.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
+
       /* TestCase: RenderResponse_setTitle1 */
       /* Details: "Returns void" */
-      /* TODO: implement test */
       TestResult tr5 = tcd.getTestResultFailed(RENDERRESPONSE_SETTITLE1);
-      
+      /* TODO: implement test */
+
       /* TestCase: RenderResponse_setTitle2 */
       /* Details: "Sets the portlet title to the specified value" */
-      /* TODO: implement test */
       TestResult tr6 = tcd.getTestResultFailed(RENDERRESPONSE_SETTITLE2);
-      
+      /* TODO: implement test */
+
       /* TestCase: RenderResponse_hasSetNextPossiblePortletModes */
       /* Details: "Has a setNextPossiblePortletModes(java.util.Collection<PortletMode> portletModes) method" */
-      /* TODO: implement test */
       TestResult tr7 = tcd.getTestResultFailed(RENDERRESPONSE_HASSETNEXTPOSSIBLEPORTLETMODES);
-      
+      {
+         String name = "setNextPossiblePortletModes";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {java.util.Collection.class};
+         tr7.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
+
       /* TestCase: RenderResponse_setNextPossiblePortletModes1 */
       /* Details: "Returns void" */
-      /* TODO: implement test */
       TestResult tr8 = tcd.getTestResultFailed(RENDERRESPONSE_SETNEXTPOSSIBLEPORTLETMODES1);
-      
+      /* TODO: implement test */
+
       /* TestCase: RenderResponse_setNextPossiblePortletModes2 */
       /* Details: "Sets the next possible portlet modes to the specified value" */
-      /* TODO: implement test */
       TestResult tr9 = tcd.getTestResultFailed(RENDERRESPONSE_SETNEXTPOSSIBLEPORTLETMODES2);
-      
+      /* TODO: implement test */
+
       /* TestCase: RenderResponse_hasSetContentType */
       /* Details: "Has a setContentType() method" */
-      /* TODO: implement test */
       TestResult tr10 = tcd.getTestResultFailed(RENDERRESPONSE_HASSETCONTENTTYPE);
-      
+      {
+         String name = "setContentType";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr10.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
+
       /* TestCase: RenderResponse_setContentType1 */
       /* Details: "The portlet container will ignore any character encoding specified as part of the content type for render calls" */
-      /* TODO: implement test */
       TestResult tr11 = tcd.getTestResultFailed(RENDERRESPONSE_SETCONTENTTYPE1);
-      
+      /* TODO: implement test */
+
       /* TestCase: RenderResponse_setContentType2 */
       /* Details: "Throws IllegalArgumentException if the content type is not valid" */
-      /* TODO: implement test */
       TestResult tr12 = tcd.getTestResultFailed(RENDERRESPONSE_SETCONTENTTYPE2);
-      
+      /* TODO: implement test */
+
 
 
       // Write the results to the output stream

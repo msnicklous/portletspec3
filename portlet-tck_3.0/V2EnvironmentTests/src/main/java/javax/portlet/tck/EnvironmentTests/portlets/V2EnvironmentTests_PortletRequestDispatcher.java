@@ -26,13 +26,9 @@ import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.portlet.ActionRequest;
-import javax.portlet.ActionResponse;
-import javax.portlet.Portlet;
-import javax.portlet.PortletConfig;
-import javax.portlet.PortletException;
-import javax.portlet.RenderRequest;
-import javax.portlet.RenderResponse;
+import javax.portlet.*;
+import javax.portlet.filter.*;
+import javax.portlet.tck.beans.ClassChecker;
 import javax.portlet.tck.beans.TestCaseDetails;
 import javax.portlet.tck.beans.JSR286ApiTestCaseDetails;
 import static javax.portlet.tck.beans.JSR286ApiTestCaseDetails.*;
@@ -49,11 +45,11 @@ public class V2EnvironmentTests_PortletRequestDispatcher implements Portlet {
          V2EnvironmentTests_PortletRequestDispatcher.class.getName();
    private final Logger LOGGER = Logger.getLogger(LOG_CLASS);
    
-   private PortletConfig config = null;
+   private PortletConfig portletConfig = null;
 
    @Override
    public void init(PortletConfig config) throws PortletException {
-      this.config = config;
+      this.portletConfig = config;
    }
 
    @Override
@@ -61,103 +57,123 @@ public class V2EnvironmentTests_PortletRequestDispatcher implements Portlet {
    }
 
    @Override
-   public void processAction(ActionRequest request, ActionResponse response)
+   public void processAction(ActionRequest actionRequest, ActionResponse actionResponse)
          throws PortletException, IOException {
    }
 
    @Override
-   public void render(RenderRequest request, RenderResponse response)
+   public void render(RenderRequest renderRequest, RenderResponse renderResponse)
          throws PortletException, IOException {
       
       if (LOGGER.isLoggable(Level.FINE)) {
          LOGGER.logp(Level.FINE, LOG_CLASS, "render", "Entry");
       }
 
-      PrintWriter writer = response.getWriter();
+      PrintWriter writer = renderResponse.getWriter();
       JSR286ApiTestCaseDetails tcd = new JSR286ApiTestCaseDetails();
+      // TODO: access the class under test and uncomment this code.
+      // ClassChecker cc = new ClassChecker(PortletRequestDispatcher);
 
       // Create result objects for the tests
 
       /* TestCase: PortletRequestDispatcher_hasIncludeA */
       /* Details: "Has a include(RenderRequest request, RenderResponse response) throws javax.portlet.PortletException, java.io.IOException method" */
-      /* TODO: implement test */
       TestResult tr0 = tcd.getTestResultFailed(PORTLETREQUESTDISPATCHER_HASINCLUDEA);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    String name = "include";
+      //    Class<?>[] exceptions = {javax.portlet.PortletException.class, java.io.IOException.class};
+      //    Class<?>[] parms = {RenderRequest.class, RenderResponse.class};
+      //    tr0.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      // }
+
       /* TestCase: PortletRequestDispatcher_includeA1 */
       /* Details: "Includes the content of a JSP page in the response" */
-      /* TODO: implement test */
       TestResult tr1 = tcd.getTestResultFailed(PORTLETREQUESTDISPATCHER_INCLUDEA1);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletRequestDispatcher_includeA2 */
       /* Details: "Includes the content of a HTML Page in the response" */
-      /* TODO: implement test */
       TestResult tr2 = tcd.getTestResultFailed(PORTLETREQUESTDISPATCHER_INCLUDEA2);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletRequestDispatcher_includeA3 */
       /* Details: "The included servlet cannot change the status code. The attempt is ignored" */
-      /* TODO: implement test */
       TestResult tr3 = tcd.getTestResultFailed(PORTLETREQUESTDISPATCHER_INCLUDEA3);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletRequestDispatcher_includeA4 */
       /* Details: "The included servlet cannot set the headers. The Attempt is ignored" */
-      /* TODO: implement test */
       TestResult tr4 = tcd.getTestResultFailed(PORTLETREQUESTDISPATCHER_INCLUDEA4);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletRequestDispatcher_hasIncludeB */
       /* Details: "Has a include(PortletRequest request, PortletResponse response) throws javax.portlet.PortletException, java.io.IOException method" */
-      /* TODO: implement test */
       TestResult tr5 = tcd.getTestResultFailed(PORTLETREQUESTDISPATCHER_HASINCLUDEB);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    String name = "include";
+      //    Class<?>[] exceptions = {javax.portlet.PortletException.class, java.io.IOException.class};
+      //    Class<?>[] parms = {PortletRequest.class, PortletResponse.class};
+      //    tr5.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      // }
+
       /* TestCase: PortletRequestDispatcher_includeB1 */
       /* Details: "Includes the content of a JSP page in the response" */
-      /* TODO: implement test */
       TestResult tr6 = tcd.getTestResultFailed(PORTLETREQUESTDISPATCHER_INCLUDEB1);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletRequestDispatcher_includeB2 */
       /* Details: "Includes the content of a HTML Page in the response" */
-      /* TODO: implement test */
       TestResult tr7 = tcd.getTestResultFailed(PORTLETREQUESTDISPATCHER_INCLUDEB2);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletRequestDispatcher_includeB3 */
       /* Details: "The included servlet cannot change the status code. The attempt is ignored" */
-      /* TODO: implement test */
       TestResult tr8 = tcd.getTestResultFailed(PORTLETREQUESTDISPATCHER_INCLUDEB3);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletRequestDispatcher_includeB4 */
       /* Details: "The included servlet cannot set the headers. The attempt is ignored" */
-      /* TODO: implement test */
       TestResult tr9 = tcd.getTestResultFailed(PORTLETREQUESTDISPATCHER_INCLUDEB4);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletRequestDispatcher_hasForward */
       /* Details: "Has a forward(PortletRequest request, PortletResponse response) throws javax.portlet.PortletException, java.io.IOException method" */
-      /* TODO: implement test */
       TestResult tr10 = tcd.getTestResultFailed(PORTLETREQUESTDISPATCHER_HASFORWARD);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    String name = "forward";
+      //    Class<?>[] exceptions = {javax.portlet.PortletException.class, java.io.IOException.class};
+      //    Class<?>[] parms = {PortletRequest.class, PortletResponse.class};
+      //    tr10.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      // }
+
       /* TestCase: PortletRequestDispatcher_forward1 */
       /* Details: "Can forward to a JSP page to create the response" */
-      /* TODO: implement test */
       TestResult tr11 = tcd.getTestResultFailed(PORTLETREQUESTDISPATCHER_FORWARD1);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletRequestDispatcher_forward2 */
       /* Details: "Can forward to a HTML Page to create the response" */
-      /* TODO: implement test */
       TestResult tr12 = tcd.getTestResultFailed(PORTLETREQUESTDISPATCHER_FORWARD2);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletRequestDispatcher_forward3 */
       /* Details: "Throws IllegalStateException if the response was already committed" */
-      /* TODO: implement test */
       TestResult tr13 = tcd.getTestResultFailed(PORTLETREQUESTDISPATCHER_FORWARD3);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletRequestDispatcher_forward4 */
       /* Details: "Throws PortletException if the forwarded servlet throws any excpetion other than IOException or a runtime exception " */
-      /* TODO: implement test */
       TestResult tr14 = tcd.getTestResultFailed(PORTLETREQUESTDISPATCHER_FORWARD4);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletRequestDispatcher_forward5 */
       /* Details: "Throws IOException if the forwarded servlet an IOException" */
-      /* TODO: implement test */
       TestResult tr15 = tcd.getTestResultFailed(PORTLETREQUESTDISPATCHER_FORWARD5);
-      
+      /* TODO: implement test */
+
 
 
       // Write the results to the output stream

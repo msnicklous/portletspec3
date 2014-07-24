@@ -26,13 +26,9 @@ import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.portlet.ActionRequest;
-import javax.portlet.ActionResponse;
-import javax.portlet.Portlet;
-import javax.portlet.PortletConfig;
-import javax.portlet.PortletException;
-import javax.portlet.RenderRequest;
-import javax.portlet.RenderResponse;
+import javax.portlet.*;
+import javax.portlet.filter.*;
+import javax.portlet.tck.beans.ClassChecker;
 import javax.portlet.tck.beans.TestCaseDetails;
 import javax.portlet.tck.beans.JSR286ApiTestCaseDetails;
 import static javax.portlet.tck.beans.JSR286ApiTestCaseDetails.*;
@@ -49,11 +45,11 @@ public class V2FilterTests_EventFilter implements Portlet {
          V2FilterTests_EventFilter.class.getName();
    private final Logger LOGGER = Logger.getLogger(LOG_CLASS);
    
-   private PortletConfig config = null;
+   private PortletConfig portletConfig = null;
 
    @Override
    public void init(PortletConfig config) throws PortletException {
-      this.config = config;
+      this.portletConfig = config;
    }
 
    @Override
@@ -61,68 +57,70 @@ public class V2FilterTests_EventFilter implements Portlet {
    }
 
    @Override
-   public void processAction(ActionRequest request, ActionResponse response)
+   public void processAction(ActionRequest actionRequest, ActionResponse actionResponse)
          throws PortletException, IOException {
    }
 
    @Override
-   public void render(RenderRequest request, RenderResponse response)
+   public void render(RenderRequest renderRequest, RenderResponse renderResponse)
          throws PortletException, IOException {
       
       if (LOGGER.isLoggable(Level.FINE)) {
          LOGGER.logp(Level.FINE, LOG_CLASS, "render", "Entry");
       }
 
-      PrintWriter writer = response.getWriter();
+      PrintWriter writer = renderResponse.getWriter();
       JSR286ApiTestCaseDetails tcd = new JSR286ApiTestCaseDetails();
+      // TODO: access the class under test and uncomment this code.
+      // ClassChecker cc = new ClassChecker(EventFilter);
 
       // Create result objects for the tests
 
       /* TestCase: EventFilter_canBeConfigured1 */
       /* Details: "An EventFilter can be configured in the portlet descriptor" */
-      /* TODO: implement test */
       TestResult tr0 = tcd.getTestResultFailed(EVENTFILTER_CANBECONFIGURED1);
-      
+      /* TODO: implement test */
+
       /* TestCase: EventFilter_canBeConfigured2 */
       /* Details: "Multiple EventFilter classes can be configured in the portlet descriptor" */
-      /* TODO: implement test */
       TestResult tr1 = tcd.getTestResultFailed(EVENTFILTER_CANBECONFIGURED2);
-      
+      /* TODO: implement test */
+
       /* TestCase: EventFilter_doFilterIsCalled */
       /* Details: "The doFilter(EventRequest, EventResponse, FilterChain) method is called before the processEvent method for the portlet" */
-      /* TODO: implement test */
       TestResult tr2 = tcd.getTestResultFailed(EVENTFILTER_DOFILTERISCALLED);
-      
+      /* TODO: implement test */
+
       /* TestCase: EventFilter_doFilterProcessEvent1 */
       /* Details: "After the method has sucessfully completed and invokes the next filter, the processEventMethod is called" */
-      /* TODO: implement test */
       TestResult tr3 = tcd.getTestResultFailed(EVENTFILTER_DOFILTERPROCESSEVENT1);
-      
+      /* TODO: implement test */
+
       /* TestCase: EventFilter_doFilterProcessEvent2 */
       /* Details: "After the method has sucessfully completed and invokes the next filter, the next filter in the chain is called if multiple filters are defined" */
-      /* TODO: implement test */
       TestResult tr4 = tcd.getTestResultFailed(EVENTFILTER_DOFILTERPROCESSEVENT2);
-      
+      /* TODO: implement test */
+
       /* TestCase: EventFilter_doFilterBlock */
       /* Details: "If the method does not invoke the next filter, processEvent is not called" */
-      /* TODO: implement test */
       TestResult tr5 = tcd.getTestResultFailed(EVENTFILTER_DOFILTERBLOCK);
-      
+      /* TODO: implement test */
+
       /* TestCase: EventFilter_doFilterException1 */
       /* Details: "If the method throws an UnavailableException, processEvent is not called" */
-      /* TODO: implement test */
       TestResult tr6 = tcd.getTestResultFailed(EVENTFILTER_DOFILTEREXCEPTION1);
-      
+      /* TODO: implement test */
+
       /* TestCase: EventFilter_doFilterException2 */
       /* Details: "If the method throws an UnavailableException, no further filter is called" */
-      /* TODO: implement test */
       TestResult tr7 = tcd.getTestResultFailed(EVENTFILTER_DOFILTEREXCEPTION2);
-      
+      /* TODO: implement test */
+
       /* TestCase: EventFilter_doFilterExamine */
       /* Details: "After the next filter has been successfully invoked, the EventResponse may be examined" */
-      /* TODO: implement test */
       TestResult tr8 = tcd.getTestResultFailed(EVENTFILTER_DOFILTEREXAMINE);
-      
+      /* TODO: implement test */
+
 
 
       // Write the results to the output stream

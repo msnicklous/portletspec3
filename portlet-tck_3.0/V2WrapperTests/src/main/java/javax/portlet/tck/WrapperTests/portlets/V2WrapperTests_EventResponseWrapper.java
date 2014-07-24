@@ -26,13 +26,9 @@ import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.portlet.ActionRequest;
-import javax.portlet.ActionResponse;
-import javax.portlet.Portlet;
-import javax.portlet.PortletConfig;
-import javax.portlet.PortletException;
-import javax.portlet.RenderRequest;
-import javax.portlet.RenderResponse;
+import javax.portlet.*;
+import javax.portlet.filter.*;
+import javax.portlet.tck.beans.ClassChecker;
 import javax.portlet.tck.beans.TestCaseDetails;
 import javax.portlet.tck.beans.JSR286ApiTestCaseDetails;
 import static javax.portlet.tck.beans.JSR286ApiTestCaseDetails.*;
@@ -49,11 +45,11 @@ public class V2WrapperTests_EventResponseWrapper implements Portlet {
          V2WrapperTests_EventResponseWrapper.class.getName();
    private final Logger LOGGER = Logger.getLogger(LOG_CLASS);
    
-   private PortletConfig config = null;
+   private PortletConfig portletConfig = null;
 
    @Override
    public void init(PortletConfig config) throws PortletException {
-      this.config = config;
+      this.portletConfig = config;
    }
 
    @Override
@@ -61,183 +57,261 @@ public class V2WrapperTests_EventResponseWrapper implements Portlet {
    }
 
    @Override
-   public void processAction(ActionRequest request, ActionResponse response)
+   public void processAction(ActionRequest actionRequest, ActionResponse actionResponse)
          throws PortletException, IOException {
    }
 
    @Override
-   public void render(RenderRequest request, RenderResponse response)
+   public void render(RenderRequest renderRequest, RenderResponse renderResponse)
          throws PortletException, IOException {
       
       if (LOGGER.isLoggable(Level.FINE)) {
          LOGGER.logp(Level.FINE, LOG_CLASS, "render", "Entry");
       }
 
-      PrintWriter writer = response.getWriter();
+      PrintWriter writer = renderResponse.getWriter();
       JSR286ApiTestCaseDetails tcd = new JSR286ApiTestCaseDetails();
+      ClassChecker cc = new ClassChecker(EventResponseWrapper.class);
 
       // Create result objects for the tests
 
       /* TestCase: EventResponseWrapper_extendsPortletResponseWrapper */
       /* Details: "Extends PortletResponseWrapper" */
-      /* TODO: implement test */
       TestResult tr0 = tcd.getTestResultFailed(EVENTRESPONSEWRAPPER_EXTENDSPORTLETRESPONSEWRAPPER);
-      
+      {
+         tr0.setTcSuccess(cc.hasSuperclass(PortletResponseWrapper.class));
+      }
+
       /* TestCase: EventResponseWrapper_implementsEventResponse */
       /* Details: "Implements EventResponse" */
-      /* TODO: implement test */
       TestResult tr1 = tcd.getTestResultFailed(EVENTRESPONSEWRAPPER_IMPLEMENTSEVENTRESPONSE);
-      
+      {
+         tr1.setTcSuccess(cc.implementsInterface(EventResponse.class));
+      }
+
       /* TestCase: EventResponseWrapper_constructor */
-      /* Details: "Constructs EventResponseWrapper with specified wrapped EventResponse object" */
-      /* TODO: implement test */
+      /* Details: "Provides constructor EventResponseWrapper(EventResponse) with specified wrapped EventResponse object" */
       TestResult tr2 = tcd.getTestResultFailed(EVENTRESPONSEWRAPPER_CONSTRUCTOR);
-      
+      {
+         Class<?>[] parms = {EventResponse.class};
+         tr2.setTcSuccess(cc.hasConstructor(parms));
+      }
+
       /* TestCase: EventResponseWrapper_hasSetEventA */
       /* Details: "Has a setEvent(javax.xml.namespace.QName, java.io.Serializable) method" */
-      /* TODO: implement test */
       TestResult tr3 = tcd.getTestResultFailed(EVENTRESPONSEWRAPPER_HASSETEVENTA);
-      
+      {
+         String name = "setEvent";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {javax.xml.namespace.QName.class, java.io.Serializable.class};
+         tr3.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
+
       /* TestCase: EventResponseWrapper_setEventA */
       /* Details: "Calls wrapped method" */
-      /* TODO: implement test */
       TestResult tr4 = tcd.getTestResultFailed(EVENTRESPONSEWRAPPER_SETEVENTA);
-      
+      /* TODO: implement test */
+
       /* TestCase: EventResponseWrapper_hasSetEventB */
       /* Details: "Has a setEvent(java.lang.String name, java.io.Serializable) method" */
-      /* TODO: implement test */
       TestResult tr5 = tcd.getTestResultFailed(EVENTRESPONSEWRAPPER_HASSETEVENTB);
-      
+      {
+         String name = "setEvent";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {java.lang.String.class, java.io.Serializable.class};
+         tr5.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
+
       /* TestCase: EventResponseWrapper_setEventB */
       /* Details: "Calls wrapped method" */
-      /* TODO: implement test */
       TestResult tr6 = tcd.getTestResultFailed(EVENTRESPONSEWRAPPER_SETEVENTB);
-      
+      /* TODO: implement test */
+
       /* TestCase: EventResponseWrapper_hasSetPortletMode */
       /* Details: "Has a setPortletMode(PortletMode) throws javax.portlet.PortletModeException method" */
-      /* TODO: implement test */
       TestResult tr7 = tcd.getTestResultFailed(EVENTRESPONSEWRAPPER_HASSETPORTLETMODE);
-      
+      {
+         String name = "setPortletMode";
+         Class<?>[] exceptions = {javax.portlet.PortletModeException.class};
+         Class<?>[] parms = {PortletMode.class};
+         tr7.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
+
       /* TestCase: EventResponseWrapper_setPortletMode */
       /* Details: "Calls wrapped method" */
-      /* TODO: implement test */
       TestResult tr8 = tcd.getTestResultFailed(EVENTRESPONSEWRAPPER_SETPORTLETMODE);
-      
+      /* TODO: implement test */
+
       /* TestCase: EventResponseWrapper_hasSetRenderParameterA */
       /* Details: "Has a setRenderParameter(java.lang.String, java.lang.String) method" */
-      /* TODO: implement test */
       TestResult tr9 = tcd.getTestResultFailed(EVENTRESPONSEWRAPPER_HASSETRENDERPARAMETERA);
-      
+      {
+         String name = "setRenderParameter";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {java.lang.String.class, java.lang.String.class};
+         tr9.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
+
       /* TestCase: EventResponseWrapper_setRenderParameterA */
       /* Details: "Calls wrapped method" */
-      /* TODO: implement test */
       TestResult tr10 = tcd.getTestResultFailed(EVENTRESPONSEWRAPPER_SETRENDERPARAMETERA);
-      
+      /* TODO: implement test */
+
       /* TestCase: EventResponseWrapper_hasSetRenderParameterB */
       /* Details: "Has a setRenderParameter(java.lang.String, java.lang.String[]) method" */
-      /* TODO: implement test */
       TestResult tr11 = tcd.getTestResultFailed(EVENTRESPONSEWRAPPER_HASSETRENDERPARAMETERB);
-      
+      {
+         String name = "setRenderParameter";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {java.lang.String.class, java.lang.String[].class};
+         tr11.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
+
       /* TestCase: EventResponseWrapper_setRenderParameterB */
       /* Details: "Calls wrapped method" */
-      /* TODO: implement test */
       TestResult tr12 = tcd.getTestResultFailed(EVENTRESPONSEWRAPPER_SETRENDERPARAMETERB);
-      
+      /* TODO: implement test */
+
       /* TestCase: EventResponseWrapper_hasSetRenderParametersA */
       /* Details: "Has a setRenderParameters(java.util.Map<java.lang.String,java.lang.String[]>) method" */
-      /* TODO: implement test */
       TestResult tr13 = tcd.getTestResultFailed(EVENTRESPONSEWRAPPER_HASSETRENDERPARAMETERSA);
-      
+      {
+         String name = "setRenderParameters";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {java.util.Map.class};
+         tr13.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
+
       /* TestCase: EventResponseWrapper_setRenderParametersA */
       /* Details: "Calls wrapped method" */
-      /* TODO: implement test */
       TestResult tr14 = tcd.getTestResultFailed(EVENTRESPONSEWRAPPER_SETRENDERPARAMETERSA);
-      
+      /* TODO: implement test */
+
       /* TestCase: EventResponseWrapper_hasSetRenderParametersB */
       /* Details: "Has a setRenderParameters(EventRequest) method" */
-      /* TODO: implement test */
       TestResult tr15 = tcd.getTestResultFailed(EVENTRESPONSEWRAPPER_HASSETRENDERPARAMETERSB);
-      
+      {
+         String name = "setRenderParameters";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {EventRequest.class};
+         tr15.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
+
       /* TestCase: EventResponseWrapper_setRenderParametersB */
       /* Details: "Calls wrapped method" */
-      /* TODO: implement test */
       TestResult tr16 = tcd.getTestResultFailed(EVENTRESPONSEWRAPPER_SETRENDERPARAMETERSB);
-      
+      /* TODO: implement test */
+
       /* TestCase: EventResponseWrapper_hasSetWindowState */
       /* Details: "Has a setWindowState(WindowState) throws javax.portlet.WindowStateException method" */
-      /* TODO: implement test */
       TestResult tr17 = tcd.getTestResultFailed(EVENTRESPONSEWRAPPER_HASSETWINDOWSTATE);
-      
+      {
+         String name = "setWindowState";
+         Class<?>[] exceptions = {javax.portlet.WindowStateException.class};
+         Class<?>[] parms = {WindowState.class};
+         tr17.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
+
       /* TestCase: EventResponseWrapper_setWindowState */
       /* Details: "Calls wrapped method" */
-      /* TODO: implement test */
       TestResult tr18 = tcd.getTestResultFailed(EVENTRESPONSEWRAPPER_SETWINDOWSTATE);
-      
+      /* TODO: implement test */
+
       /* TestCase: EventResponseWrapper_hasGetResponse */
       /* Details: "Has a getResponse() method" */
-      /* TODO: implement test */
       TestResult tr19 = tcd.getTestResultFailed(EVENTRESPONSEWRAPPER_HASGETRESPONSE);
-      
+      {
+         String name = "getResponse";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr19.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
+
       /* TestCase: EventResponseWrapper_getResponse */
       /* Details: "Returns wrapped EventResponse obect" */
-      /* TODO: implement test */
       TestResult tr20 = tcd.getTestResultFailed(EVENTRESPONSEWRAPPER_GETRESPONSE);
-      
+      /* TODO: implement test */
+
       /* TestCase: EventResponseWrapper_hasSetResponse */
       /* Details: "Has a setResponse(EventResponse) method" */
-      /* TODO: implement test */
       TestResult tr21 = tcd.getTestResultFailed(EVENTRESPONSEWRAPPER_HASSETRESPONSE);
-      
+      {
+         String name = "setResponse";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {EventResponse.class};
+         tr21.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
+
       /* TestCase: EventResponseWrapper_setResponse */
       /* Details: "Allows wrapped EventResponse object to be set" */
-      /* TODO: implement test */
       TestResult tr22 = tcd.getTestResultFailed(EVENTRESPONSEWRAPPER_SETRESPONSE);
-      
+      /* TODO: implement test */
+
       /* TestCase: EventResponseWrapper_hasGetPortletMode */
       /* Details: "Has a getPortletMode() method" */
-      /* TODO: implement test */
       TestResult tr23 = tcd.getTestResultFailed(EVENTRESPONSEWRAPPER_HASGETPORTLETMODE);
-      
+      {
+         String name = "getPortletMode";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr23.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
+
       /* TestCase: EventResponseWrapper_getPortletMode */
       /* Details: "Calls wrapped method" */
-      /* TODO: implement test */
       TestResult tr24 = tcd.getTestResultFailed(EVENTRESPONSEWRAPPER_GETPORTLETMODE);
-      
+      /* TODO: implement test */
+
       /* TestCase: EventResponseWrapper_hasGetRenderParameterMap */
       /* Details: "Has a getRenderParameterMap() method" */
-      /* TODO: implement test */
       TestResult tr25 = tcd.getTestResultFailed(EVENTRESPONSEWRAPPER_HASGETRENDERPARAMETERMAP);
-      
+      {
+         String name = "getRenderParameterMap";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr25.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
+
       /* TestCase: EventResponseWrapper_getRenderParameterMap1 */
       /* Details: "Calls wrapped method" */
-      /* TODO: implement test */
       TestResult tr26 = tcd.getTestResultFailed(EVENTRESPONSEWRAPPER_GETRENDERPARAMETERMAP1);
-      
+      /* TODO: implement test */
+
       /* TestCase: EventResponseWrapper_getRenderParameterMap2 */
       /* Details: "Returns java.util.Map<java.lang.String,java.lang.String[]> object" */
-      /* TODO: implement test */
       TestResult tr27 = tcd.getTestResultFailed(EVENTRESPONSEWRAPPER_GETRENDERPARAMETERMAP2);
-      
+      /* TODO: implement test */
+
       /* TestCase: EventResponseWrapper_hasGetWindowState */
       /* Details: "Has a getWindowState() method" */
-      /* TODO: implement test */
       TestResult tr28 = tcd.getTestResultFailed(EVENTRESPONSEWRAPPER_HASGETWINDOWSTATE);
-      
+      {
+         String name = "getWindowState";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr28.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
+
       /* TestCase: EventResponseWrapper_getWindowState */
       /* Details: "Calls wrapped method" */
-      /* TODO: implement test */
       TestResult tr29 = tcd.getTestResultFailed(EVENTRESPONSEWRAPPER_GETWINDOWSTATE);
-      
+      /* TODO: implement test */
+
       /* TestCase: EventResponseWrapper_hasRemovePublicRenderParameter */
       /* Details: "Has a removePublicRenderParameter(java.lang.String) method" */
-      /* TODO: implement test */
       TestResult tr30 = tcd.getTestResultFailed(EVENTRESPONSEWRAPPER_HASREMOVEPUBLICRENDERPARAMETER);
-      
+      {
+         String name = "removePublicRenderParameter";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {java.lang.String.class};
+         tr30.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
+
       /* TestCase: EventResponseWrapper_removePublicRenderParameter */
       /* Details: "Calls wrapped method" */
-      /* TODO: implement test */
       TestResult tr31 = tcd.getTestResultFailed(EVENTRESPONSEWRAPPER_REMOVEPUBLICRENDERPARAMETER);
-      
+      /* TODO: implement test */
+
 
 
       // Write the results to the output stream

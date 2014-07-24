@@ -26,13 +26,9 @@ import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.portlet.ActionRequest;
-import javax.portlet.ActionResponse;
-import javax.portlet.Portlet;
-import javax.portlet.PortletConfig;
-import javax.portlet.PortletException;
-import javax.portlet.RenderRequest;
-import javax.portlet.RenderResponse;
+import javax.portlet.*;
+import javax.portlet.filter.*;
+import javax.portlet.tck.beans.ClassChecker;
 import javax.portlet.tck.beans.TestCaseDetails;
 import javax.portlet.tck.beans.JSR286ApiTestCaseDetails;
 import static javax.portlet.tck.beans.JSR286ApiTestCaseDetails.*;
@@ -49,11 +45,11 @@ public class V2PortletTests_WindowState implements Portlet {
          V2PortletTests_WindowState.class.getName();
    private final Logger LOGGER = Logger.getLogger(LOG_CLASS);
    
-   private PortletConfig config = null;
+   private PortletConfig portletConfig = null;
 
    @Override
    public void init(PortletConfig config) throws PortletException {
-      this.config = config;
+      this.portletConfig = config;
    }
 
    @Override
@@ -61,73 +57,100 @@ public class V2PortletTests_WindowState implements Portlet {
    }
 
    @Override
-   public void processAction(ActionRequest request, ActionResponse response)
+   public void processAction(ActionRequest actionRequest, ActionResponse actionResponse)
          throws PortletException, IOException {
    }
 
    @Override
-   public void render(RenderRequest request, RenderResponse response)
+   public void render(RenderRequest renderRequest, RenderResponse renderResponse)
          throws PortletException, IOException {
       
       if (LOGGER.isLoggable(Level.FINE)) {
          LOGGER.logp(Level.FINE, LOG_CLASS, "render", "Entry");
       }
 
-      PrintWriter writer = response.getWriter();
+      PrintWriter writer = renderResponse.getWriter();
       JSR286ApiTestCaseDetails tcd = new JSR286ApiTestCaseDetails();
+      ClassChecker cc = new ClassChecker(WindowState.class);
 
       // Create result objects for the tests
 
       /* TestCase: WindowState_fieldMAXIMIZED */
       /* Details: "Has String field MAXIMIZED with value of \"MAXIMIZED\" " */
-      /* TODO: implement test */
       TestResult tr0 = tcd.getTestResultFailed(WINDOWSTATE_FIELDMAXIMIZED);
-      
+      {
+         tr0.setTcSuccess(cc.hasField("MAXIMIZED", "MAXIMIZED"));
+      }
+
       /* TestCase: WindowState_fieldMINIMIZED */
       /* Details: "Has String field MINIMIZED with value of \"MINIMIZED\" " */
-      /* TODO: implement test */
       TestResult tr1 = tcd.getTestResultFailed(WINDOWSTATE_FIELDMINIMIZED);
-      
+      {
+         tr1.setTcSuccess(cc.hasField("MINIMIZED", "MINIMIZED"));
+      }
+
       /* TestCase: WindowState_fieldNORMAL */
       /* Details: "Has String field NORMAL with value of \"NORMAL\" " */
-      /* TODO: implement test */
       TestResult tr2 = tcd.getTestResultFailed(WINDOWSTATE_FIELDNORMAL);
-      
+      {
+         tr2.setTcSuccess(cc.hasField("NORMAL", "NORMAL"));
+      }
+
       /* TestCase: WindowState_constructor */
       /* Details: "Has a WindowState(java.lang.String) constructor that creates a new WindowState with the specified name" */
-      /* TODO: implement test */
       TestResult tr3 = tcd.getTestResultFailed(WINDOWSTATE_CONSTRUCTOR);
-      
+      {
+         String name = "WindowState";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {java.lang.String.class};
+         tr3.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
+
       /* TestCase: WindowState_hasToString */
       /* Details: "Has a toString() method" */
-      /* TODO: implement test */
       TestResult tr4 = tcd.getTestResultFailed(WINDOWSTATE_HASTOSTRING);
-      
+      {
+         String name = "toString";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr4.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
+
       /* TestCase: WindowState_toString */
       /* Details: "Returns a String representation of the portlet mode" */
-      /* TODO: implement test */
       TestResult tr5 = tcd.getTestResultFailed(WINDOWSTATE_TOSTRING);
-      
+      /* TODO: implement test */
+
       /* TestCase: WindowState_hasHashCode */
       /* Details: "Has a hashCode() method" */
-      /* TODO: implement test */
       TestResult tr6 = tcd.getTestResultFailed(WINDOWSTATE_HASHASHCODE);
-      
+      {
+         String name = "hashCode";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr6.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
+
       /* TestCase: WindowState_hashCode */
       /* Details: "Returns an int containing the has code for the portlet mode" */
-      /* TODO: implement test */
       TestResult tr7 = tcd.getTestResultFailed(WINDOWSTATE_HASHCODE);
-      
+      /* TODO: implement test */
+
       /* TestCase: WindowState_hasEquals */
       /* Details: "Has a equals(java.lang.Object) method" */
-      /* TODO: implement test */
       TestResult tr8 = tcd.getTestResultFailed(WINDOWSTATE_HASEQUALS);
-      
+      {
+         String name = "equals";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {java.lang.Object.class};
+         tr8.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
+
       /* TestCase: WindowState_equals */
       /* Details: "Returns true if the WindowState equals the specified WindowState" */
-      /* TODO: implement test */
       TestResult tr9 = tcd.getTestResultFailed(WINDOWSTATE_EQUALS);
-      
+      /* TODO: implement test */
+
 
 
       // Write the results to the output stream

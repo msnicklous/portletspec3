@@ -26,13 +26,9 @@ import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.portlet.ActionRequest;
-import javax.portlet.ActionResponse;
-import javax.portlet.Portlet;
-import javax.portlet.PortletConfig;
-import javax.portlet.PortletException;
-import javax.portlet.RenderRequest;
-import javax.portlet.RenderResponse;
+import javax.portlet.*;
+import javax.portlet.filter.*;
+import javax.portlet.tck.beans.ClassChecker;
 import javax.portlet.tck.beans.TestCaseDetails;
 import javax.portlet.tck.beans.JSR286ApiTestCaseDetails;
 import static javax.portlet.tck.beans.JSR286ApiTestCaseDetails.*;
@@ -49,11 +45,11 @@ public class V2WrapperTests_RenderResponseWrapper implements Portlet {
          V2WrapperTests_RenderResponseWrapper.class.getName();
    private final Logger LOGGER = Logger.getLogger(LOG_CLASS);
    
-   private PortletConfig config = null;
+   private PortletConfig portletConfig = null;
 
    @Override
    public void init(PortletConfig config) throws PortletException {
-      this.config = config;
+      this.portletConfig = config;
    }
 
    @Override
@@ -61,238 +57,346 @@ public class V2WrapperTests_RenderResponseWrapper implements Portlet {
    }
 
    @Override
-   public void processAction(ActionRequest request, ActionResponse response)
+   public void processAction(ActionRequest actionRequest, ActionResponse actionResponse)
          throws PortletException, IOException {
    }
 
    @Override
-   public void render(RenderRequest request, RenderResponse response)
+   public void render(RenderRequest renderRequest, RenderResponse renderResponse)
          throws PortletException, IOException {
       
       if (LOGGER.isLoggable(Level.FINE)) {
          LOGGER.logp(Level.FINE, LOG_CLASS, "render", "Entry");
       }
 
-      PrintWriter writer = response.getWriter();
+      PrintWriter writer = renderResponse.getWriter();
       JSR286ApiTestCaseDetails tcd = new JSR286ApiTestCaseDetails();
+      ClassChecker cc = new ClassChecker(RenderResponseWrapper.class);
 
       // Create result objects for the tests
 
       /* TestCase: RenderResponseWrapper_extendsPortletResponseWrapper */
       /* Details: "Extends PortletResponseWrapper" */
-      /* TODO: implement test */
       TestResult tr0 = tcd.getTestResultFailed(RENDERRESPONSEWRAPPER_EXTENDSPORTLETRESPONSEWRAPPER);
-      
+      {
+         tr0.setTcSuccess(cc.hasSuperclass(PortletResponseWrapper.class));
+      }
+
       /* TestCase: RenderResponseWrapper_implementsRenderResponse */
       /* Details: "Implements RenderResponse" */
-      /* TODO: implement test */
       TestResult tr1 = tcd.getTestResultFailed(RENDERRESPONSEWRAPPER_IMPLEMENTSRENDERRESPONSE);
-      
+      {
+         tr1.setTcSuccess(cc.implementsInterface(RenderResponse.class));
+      }
+
       /* TestCase: RenderResponseWrapper_constructor */
-      /* Details: "Constructs RenderResponseWrapper with specified wrapped RenderResponse object" */
-      /* TODO: implement test */
+      /* Details: "Provides constructor RenderResponseWrapper(RenderResponse) with specified wrapped RenderResponse object" */
       TestResult tr2 = tcd.getTestResultFailed(RENDERRESPONSEWRAPPER_CONSTRUCTOR);
-      
+      {
+         Class<?>[] parms = {RenderResponse.class};
+         tr2.setTcSuccess(cc.hasConstructor(parms));
+      }
+
       /* TestCase: RenderResponseWrapper_hasFlushBuffer */
       /* Details: "Has a flushBuffer() throws java.io.IOException method" */
-      /* TODO: implement test */
       TestResult tr3 = tcd.getTestResultFailed(RENDERRESPONSEWRAPPER_HASFLUSHBUFFER);
-      
+      {
+         String name = "flushBuffer";
+         Class<?>[] exceptions = {java.io.IOException.class};
+         Class<?>[] parms = null;
+         tr3.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
+
       /* TestCase: RenderResponseWrapper_flushBuffer */
       /* Details: "Calls wrapped method" */
-      /* TODO: implement test */
       TestResult tr4 = tcd.getTestResultFailed(RENDERRESPONSEWRAPPER_FLUSHBUFFER);
-      
+      /* TODO: implement test */
+
       /* TestCase: RenderResponseWrapper_hasGetBufferSize */
       /* Details: "Has a getBufferSize() method" */
-      /* TODO: implement test */
       TestResult tr5 = tcd.getTestResultFailed(RENDERRESPONSEWRAPPER_HASGETBUFFERSIZE);
-      
+      {
+         String name = "getBufferSize";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr5.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
+
       /* TestCase: RenderResponseWrapper_getBufferSize */
       /* Details: "Calls wrapped method" */
-      /* TODO: implement test */
       TestResult tr6 = tcd.getTestResultFailed(RENDERRESPONSEWRAPPER_GETBUFFERSIZE);
-      
+      /* TODO: implement test */
+
       /* TestCase: RenderResponseWrapper_hasGetCharacterEncoding */
       /* Details: "Has a getCharacterEncoding() method" */
-      /* TODO: implement test */
       TestResult tr7 = tcd.getTestResultFailed(RENDERRESPONSEWRAPPER_HASGETCHARACTERENCODING);
-      
+      {
+         String name = "getCharacterEncoding";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr7.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
+
       /* TestCase: RenderResponseWrapper_getCharacterEncoding */
       /* Details: "Calls wrapped method" */
-      /* TODO: implement test */
       TestResult tr8 = tcd.getTestResultFailed(RENDERRESPONSEWRAPPER_GETCHARACTERENCODING);
-      
+      /* TODO: implement test */
+
       /* TestCase: RenderResponseWrapper_hasGetContentType */
       /* Details: "Has a getContentType() method" */
-      /* TODO: implement test */
       TestResult tr9 = tcd.getTestResultFailed(RENDERRESPONSEWRAPPER_HASGETCONTENTTYPE);
-      
+      {
+         String name = "getContentType";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr9.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
+
       /* TestCase: RenderResponseWrapper_getContentType */
       /* Details: "Calls wrapped method" */
-      /* TODO: implement test */
       TestResult tr10 = tcd.getTestResultFailed(RENDERRESPONSEWRAPPER_GETCONTENTTYPE);
-      
+      /* TODO: implement test */
+
       /* TestCase: RenderResponseWrapper_hasGetLocale */
       /* Details: "Has a getLocale() method" */
-      /* TODO: implement test */
       TestResult tr11 = tcd.getTestResultFailed(RENDERRESPONSEWRAPPER_HASGETLOCALE);
-      
+      {
+         String name = "getLocale";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr11.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
+
       /* TestCase: RenderResponseWrapper_getLocale */
       /* Details: "Calls wrapped method" */
-      /* TODO: implement test */
       TestResult tr12 = tcd.getTestResultFailed(RENDERRESPONSEWRAPPER_GETLOCALE);
-      
+      /* TODO: implement test */
+
       /* TestCase: RenderResponseWrapper_hasGetPortletOutputStream */
       /* Details: "Has a getPortletOutputStream() throws java.io.IOException method" */
-      /* TODO: implement test */
       TestResult tr13 = tcd.getTestResultFailed(RENDERRESPONSEWRAPPER_HASGETPORTLETOUTPUTSTREAM);
-      
+      {
+         String name = "getPortletOutputStream";
+         Class<?>[] exceptions = {java.io.IOException.class};
+         Class<?>[] parms = null;
+         tr13.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
+
       /* TestCase: RenderResponseWrapper_getPortletOutputStream */
       /* Details: "Calls wrapped method" */
-      /* TODO: implement test */
       TestResult tr14 = tcd.getTestResultFailed(RENDERRESPONSEWRAPPER_GETPORTLETOUTPUTSTREAM);
-      
+      /* TODO: implement test */
+
       /* TestCase: RenderResponseWrapper_hasGetWriter */
       /* Details: "Has a getWriter() throws java.io.IOException method" */
-      /* TODO: implement test */
       TestResult tr15 = tcd.getTestResultFailed(RENDERRESPONSEWRAPPER_HASGETWRITER);
-      
+      {
+         String name = "getWriter";
+         Class<?>[] exceptions = {java.io.IOException.class};
+         Class<?>[] parms = null;
+         tr15.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
+
       /* TestCase: RenderResponseWrapper_getWriter */
       /* Details: "Calls wrapped method" */
-      /* TODO: implement test */
       TestResult tr16 = tcd.getTestResultFailed(RENDERRESPONSEWRAPPER_GETWRITER);
-      
+      /* TODO: implement test */
+
       /* TestCase: RenderResponseWrapper_hasIsCommitted */
       /* Details: "Has a isCommitted() method" */
-      /* TODO: implement test */
       TestResult tr17 = tcd.getTestResultFailed(RENDERRESPONSEWRAPPER_HASISCOMMITTED);
-      
+      {
+         String name = "isCommitted";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr17.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
+
       /* TestCase: RenderResponseWrapper_isCommitted */
       /* Details: "Calls wrapped method" */
-      /* TODO: implement test */
       TestResult tr18 = tcd.getTestResultFailed(RENDERRESPONSEWRAPPER_ISCOMMITTED);
-      
+      /* TODO: implement test */
+
       /* TestCase: RenderResponseWrapper_hasReset */
       /* Details: "Has a reset() method" */
-      /* TODO: implement test */
       TestResult tr19 = tcd.getTestResultFailed(RENDERRESPONSEWRAPPER_HASRESET);
-      
+      {
+         String name = "reset";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr19.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
+
       /* TestCase: RenderResponseWrapper_reset */
       /* Details: "Calls wrapped method" */
-      /* TODO: implement test */
       TestResult tr20 = tcd.getTestResultFailed(RENDERRESPONSEWRAPPER_RESET);
-      
+      /* TODO: implement test */
+
       /* TestCase: RenderResponseWrapper_hasResetBuffer */
       /* Details: "Has a resetBuffer() method" */
-      /* TODO: implement test */
       TestResult tr21 = tcd.getTestResultFailed(RENDERRESPONSEWRAPPER_HASRESETBUFFER);
-      
+      {
+         String name = "resetBuffer";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr21.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
+
       /* TestCase: RenderResponseWrapper_resetBuffer */
       /* Details: "Calls wrapped method" */
-      /* TODO: implement test */
       TestResult tr22 = tcd.getTestResultFailed(RENDERRESPONSEWRAPPER_RESETBUFFER);
-      
+      /* TODO: implement test */
+
       /* TestCase: RenderResponseWrapper_hasSetBufferSize */
       /* Details: "Has a setBufferSize(int) method" */
-      /* TODO: implement test */
       TestResult tr23 = tcd.getTestResultFailed(RENDERRESPONSEWRAPPER_HASSETBUFFERSIZE);
-      
+      {
+         String name = "setBufferSize";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {int.class};
+         tr23.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
+
       /* TestCase: RenderResponseWrapper_setBufferSize */
       /* Details: "Calls wrapped method" */
-      /* TODO: implement test */
       TestResult tr24 = tcd.getTestResultFailed(RENDERRESPONSEWRAPPER_SETBUFFERSIZE);
-      
+      /* TODO: implement test */
+
       /* TestCase: RenderResponseWrapper_hasSetContentType */
       /* Details: "Has a setContentType(java.lang.String) method" */
-      /* TODO: implement test */
       TestResult tr25 = tcd.getTestResultFailed(RENDERRESPONSEWRAPPER_HASSETCONTENTTYPE);
-      
+      {
+         String name = "setContentType";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {java.lang.String.class};
+         tr25.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
+
       /* TestCase: RenderResponseWrapper_setContentType */
       /* Details: "Calls wrapped method" */
-      /* TODO: implement test */
       TestResult tr26 = tcd.getTestResultFailed(RENDERRESPONSEWRAPPER_SETCONTENTTYPE);
-      
+      /* TODO: implement test */
+
       /* TestCase: RenderResponseWrapper_hasSetTitle */
       /* Details: "Has a setTitle(java.lang.String) method" */
-      /* TODO: implement test */
       TestResult tr27 = tcd.getTestResultFailed(RENDERRESPONSEWRAPPER_HASSETTITLE);
-      
+      {
+         String name = "setTitle";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {java.lang.String.class};
+         tr27.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
+
       /* TestCase: RenderResponseWrapper_setTitle */
       /* Details: "Calls wrapped method" */
-      /* TODO: implement test */
       TestResult tr28 = tcd.getTestResultFailed(RENDERRESPONSEWRAPPER_SETTITLE);
-      
+      /* TODO: implement test */
+
       /* TestCase: RenderResponseWrapper_hasGetCacheControl */
       /* Details: "Has a getCacheControl() method" */
-      /* TODO: implement test */
       TestResult tr29 = tcd.getTestResultFailed(RENDERRESPONSEWRAPPER_HASGETCACHECONTROL);
-      
+      {
+         String name = "getCacheControl";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr29.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
+
       /* TestCase: RenderResponseWrapper_getCacheControl */
       /* Details: "Calls wrapped method" */
-      /* TODO: implement test */
       TestResult tr30 = tcd.getTestResultFailed(RENDERRESPONSEWRAPPER_GETCACHECONTROL);
-      
+      /* TODO: implement test */
+
       /* TestCase: RenderResponseWrapper_hasSetNextPossiblePortletModes */
       /* Details: "Has a setNextPossiblePortletModes(java.util.Collection<PortletMode>) method" */
-      /* TODO: implement test */
       TestResult tr31 = tcd.getTestResultFailed(RENDERRESPONSEWRAPPER_HASSETNEXTPOSSIBLEPORTLETMODES);
-      
+      {
+         String name = "setNextPossiblePortletModes";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {java.util.Collection.class};
+         tr31.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
+
       /* TestCase: RenderResponseWrapper_setNextPossiblePortletModes */
       /* Details: "Calls wrapped method" */
-      /* TODO: implement test */
       TestResult tr32 = tcd.getTestResultFailed(RENDERRESPONSEWRAPPER_SETNEXTPOSSIBLEPORTLETMODES);
-      
+      /* TODO: implement test */
+
       /* TestCase: RenderResponseWrapper_hasGetResponse */
       /* Details: "Has a getResponse() method" */
-      /* TODO: implement test */
       TestResult tr33 = tcd.getTestResultFailed(RENDERRESPONSEWRAPPER_HASGETRESPONSE);
-      
+      {
+         String name = "getResponse";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr33.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
+
       /* TestCase: RenderResponseWrapper_getResponse */
       /* Details: "Calls wrapped method" */
-      /* TODO: implement test */
       TestResult tr34 = tcd.getTestResultFailed(RENDERRESPONSEWRAPPER_GETRESPONSE);
-      
+      /* TODO: implement test */
+
       /* TestCase: RenderResponseWrapper_hasSetResponse */
       /* Details: "Has a setResponse(RenderResponse) method" */
-      /* TODO: implement test */
       TestResult tr35 = tcd.getTestResultFailed(RENDERRESPONSEWRAPPER_HASSETRESPONSE);
-      
+      {
+         String name = "setResponse";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {RenderResponse.class};
+         tr35.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
+
       /* TestCase: RenderResponseWrapper_setResponse */
       /* Details: "Calls wrapped method" */
-      /* TODO: implement test */
       TestResult tr36 = tcd.getTestResultFailed(RENDERRESPONSEWRAPPER_SETRESPONSE);
-      
+      /* TODO: implement test */
+
       /* TestCase: RenderResponseWrapper_hasCreateActionURL */
       /* Details: "Has a createActionURL() throws java.lang.IllegalStateException method" */
-      /* TODO: implement test */
       TestResult tr37 = tcd.getTestResultFailed(RENDERRESPONSEWRAPPER_HASCREATEACTIONURL);
-      
+      {
+         String name = "createActionURL";
+         Class<?>[] exceptions = {java.lang.IllegalStateException.class};
+         Class<?>[] parms = null;
+         tr37.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
+
       /* TestCase: RenderResponseWrapper_createActionURL */
       /* Details: "Calls wrapped method" */
-      /* TODO: implement test */
       TestResult tr38 = tcd.getTestResultFailed(RENDERRESPONSEWRAPPER_CREATEACTIONURL);
-      
+      /* TODO: implement test */
+
       /* TestCase: RenderResponseWrapper_hasCreateRenderURL */
       /* Details: "Has a createRenderURL() throws java.lang.IllegalStateException method" */
-      /* TODO: implement test */
       TestResult tr39 = tcd.getTestResultFailed(RENDERRESPONSEWRAPPER_HASCREATERENDERURL);
-      
+      {
+         String name = "createRenderURL";
+         Class<?>[] exceptions = {java.lang.IllegalStateException.class};
+         Class<?>[] parms = null;
+         tr39.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
+
       /* TestCase: RenderResponseWrapper_createRenderURL */
       /* Details: "Calls wrapped method" */
-      /* TODO: implement test */
       TestResult tr40 = tcd.getTestResultFailed(RENDERRESPONSEWRAPPER_CREATERENDERURL);
-      
+      /* TODO: implement test */
+
       /* TestCase: RenderResponseWrapper_hasCreateResourceURL */
       /* Details: "Has a createResourceURL() throws java.lang.IllegalStateException method" */
-      /* TODO: implement test */
       TestResult tr41 = tcd.getTestResultFailed(RENDERRESPONSEWRAPPER_HASCREATERESOURCEURL);
-      
+      {
+         String name = "createResourceURL";
+         Class<?>[] exceptions = {java.lang.IllegalStateException.class};
+         Class<?>[] parms = null;
+         tr41.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
+
       /* TestCase: RenderResponseWrapper_createResourceURL */
       /* Details: "Calls wrapped method" */
-      /* TODO: implement test */
       TestResult tr42 = tcd.getTestResultFailed(RENDERRESPONSEWRAPPER_CREATERESOURCEURL);
-      
+      /* TODO: implement test */
+
 
 
       // Write the results to the output stream

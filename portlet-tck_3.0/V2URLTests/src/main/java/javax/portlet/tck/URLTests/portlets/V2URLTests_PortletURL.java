@@ -26,13 +26,9 @@ import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.portlet.ActionRequest;
-import javax.portlet.ActionResponse;
-import javax.portlet.Portlet;
-import javax.portlet.PortletConfig;
-import javax.portlet.PortletException;
-import javax.portlet.RenderRequest;
-import javax.portlet.RenderResponse;
+import javax.portlet.*;
+import javax.portlet.filter.*;
+import javax.portlet.tck.beans.ClassChecker;
 import javax.portlet.tck.beans.TestCaseDetails;
 import javax.portlet.tck.beans.JSR286ApiTestCaseDetails;
 import static javax.portlet.tck.beans.JSR286ApiTestCaseDetails.*;
@@ -49,11 +45,11 @@ public class V2URLTests_PortletURL implements Portlet {
          V2URLTests_PortletURL.class.getName();
    private final Logger LOGGER = Logger.getLogger(LOG_CLASS);
    
-   private PortletConfig config = null;
+   private PortletConfig portletConfig = null;
 
    @Override
    public void init(PortletConfig config) throws PortletException {
-      this.config = config;
+      this.portletConfig = config;
    }
 
    @Override
@@ -61,128 +57,163 @@ public class V2URLTests_PortletURL implements Portlet {
    }
 
    @Override
-   public void processAction(ActionRequest request, ActionResponse response)
+   public void processAction(ActionRequest actionRequest, ActionResponse actionResponse)
          throws PortletException, IOException {
    }
 
    @Override
-   public void render(RenderRequest request, RenderResponse response)
+   public void render(RenderRequest renderRequest, RenderResponse renderResponse)
          throws PortletException, IOException {
       
       if (LOGGER.isLoggable(Level.FINE)) {
          LOGGER.logp(Level.FINE, LOG_CLASS, "render", "Entry");
       }
 
-      PrintWriter writer = response.getWriter();
+      PrintWriter writer = renderResponse.getWriter();
       JSR286ApiTestCaseDetails tcd = new JSR286ApiTestCaseDetails();
+      // TODO: access the class under test and uncomment this code.
+      // ClassChecker cc = new ClassChecker(PortletURL);
 
       // Create result objects for the tests
 
       /* TestCase: PortletURL_implementsBaseURL1 */
       /* Details: "Implements BaseURL" */
-      /* TODO: implement test */
       TestResult tr0 = tcd.getTestResultFailed(PORTLETURL_IMPLEMENTSBASEURL1);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    tr0.setTcSuccess(cc.implementsInterface(BaseURL.class));
+      // }
+
       /* TestCase: PortletURL_implementsBaseURL2 */
       /* Details: "All tests described for the BaseURL execute correctly with the PortletURL" */
-      /* TODO: implement test */
       TestResult tr1 = tcd.getTestResultFailed(PORTLETURL_IMPLEMENTSBASEURL2);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletURL_hasSetWindowState */
       /* Details: "Has a setWindowState(WindowState) throws javax.portlet.WindowStateException method" */
-      /* TODO: implement test */
       TestResult tr2 = tcd.getTestResultFailed(PORTLETURL_HASSETWINDOWSTATE);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    String name = "setWindowState";
+      //    Class<?>[] exceptions = {javax.portlet.WindowStateException.class};
+      //    Class<?>[] parms = {WindowState.class};
+      //    tr2.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      // }
+
       /* TestCase: PortletURL_setWindowState1 */
       /* Details: "Sets the WindowState to be used when the URL is activated" */
-      /* TODO: implement test */
       TestResult tr3 = tcd.getTestResultFailed(PORTLETURL_SETWINDOWSTATE1);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletURL_setWindowState2 */
       /* Details: "Throws WindowStateException if the portal does not support the specified Window State" */
-      /* TODO: implement test */
       TestResult tr4 = tcd.getTestResultFailed(PORTLETURL_SETWINDOWSTATE2);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletURL_setWindowState3 */
       /* Details: "Throws WindowStateException if the specified WindowState is not declared in the deployment descriptor" */
-      /* TODO: implement test */
       TestResult tr5 = tcd.getTestResultFailed(PORTLETURL_SETWINDOWSTATE3);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletURL_setWindowState4 */
       /* Details: "Throws WindowStateException if the user is not allowed to switch to the specified WindowState" */
-      /* TODO: implement test */
       TestResult tr6 = tcd.getTestResultFailed(PORTLETURL_SETWINDOWSTATE4);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletURL_hasSetPortletMode */
       /* Details: "Has a setPortletMode() throws javax.portlet.PortletModeException method" */
-      /* TODO: implement test */
       TestResult tr7 = tcd.getTestResultFailed(PORTLETURL_HASSETPORTLETMODE);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    String name = "setPortletMode";
+      //    Class<?>[] exceptions = {javax.portlet.PortletModeException.class};
+      //    Class<?>[] parms = null;
+      //    tr7.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      // }
+
       /* TestCase: PortletURL_setPortletMode1 */
       /* Details: "Sets the PortletMode to be used when the URL is activated" */
-      /* TODO: implement test */
       TestResult tr8 = tcd.getTestResultFailed(PORTLETURL_SETPORTLETMODE1);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletURL_setPortletMode2 */
       /* Details: "Throws PortletModeException if the portal does not support the specified Window State" */
-      /* TODO: implement test */
       TestResult tr9 = tcd.getTestResultFailed(PORTLETURL_SETPORTLETMODE2);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletURL_setPortletMode3 */
       /* Details: "Throws PortletModeException if the specified PortletMode is not declared in the deployment descriptor" */
-      /* TODO: implement test */
       TestResult tr10 = tcd.getTestResultFailed(PORTLETURL_SETPORTLETMODE3);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletURL_setPortletMode4 */
       /* Details: "Throws PortletModeException if the user is not allowed to switch to the specified PortletMode" */
-      /* TODO: implement test */
       TestResult tr11 = tcd.getTestResultFailed(PORTLETURL_SETPORTLETMODE4);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletURL_hasGetPortletMode */
       /* Details: "Has a getPortletMode() method" */
-      /* TODO: implement test */
       TestResult tr12 = tcd.getTestResultFailed(PORTLETURL_HASGETPORTLETMODE);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    String name = "getPortletMode";
+      //    Class<?>[] exceptions = null;
+      //    Class<?>[] parms = null;
+      //    tr12.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      // }
+
       /* TestCase: PortletURL_getPortletMode1 */
       /* Details: "Returns the PortletMode object set on the URL" */
-      /* TODO: implement test */
       TestResult tr13 = tcd.getTestResultFailed(PORTLETURL_GETPORTLETMODE1);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletURL_getPortletMode2 */
       /* Details: "Returns null if the PortletMode has not been set" */
-      /* TODO: implement test */
       TestResult tr14 = tcd.getTestResultFailed(PORTLETURL_GETPORTLETMODE2);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletURL_hasGetWindowState */
       /* Details: "Has a getWindowState() method" */
-      /* TODO: implement test */
       TestResult tr15 = tcd.getTestResultFailed(PORTLETURL_HASGETWINDOWSTATE);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    String name = "getWindowState";
+      //    Class<?>[] exceptions = null;
+      //    Class<?>[] parms = null;
+      //    tr15.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      // }
+
       /* TestCase: PortletURL_getWindowState1 */
       /* Details: "Returns the WindowState object set on the URL" */
-      /* TODO: implement test */
       TestResult tr16 = tcd.getTestResultFailed(PORTLETURL_GETWINDOWSTATE1);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletURL_getWindowState2 */
       /* Details: "Returns null if the Window State has not been set" */
-      /* TODO: implement test */
       TestResult tr17 = tcd.getTestResultFailed(PORTLETURL_GETWINDOWSTATE2);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletURL_hasRemovePublicRenderParameter */
       /* Details: "Has a removePublicRenderParameter(java.lang.String) method" */
-      /* TODO: implement test */
       TestResult tr18 = tcd.getTestResultFailed(PORTLETURL_HASREMOVEPUBLICRENDERPARAMETER);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    String name = "removePublicRenderParameter";
+      //    Class<?>[] exceptions = null;
+      //    Class<?>[] parms = {java.lang.String.class};
+      //    tr18.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      // }
+
       /* TestCase: PortletURL_removePublicRenderParameter1 */
       /* Details: "Removes the specified public render parameter" */
-      /* TODO: implement test */
       TestResult tr19 = tcd.getTestResultFailed(PORTLETURL_REMOVEPUBLICRENDERPARAMETER1);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletURL_removePublicRenderParameter2 */
       /* Details: "Throws IllegalArgumentException if the name is null" */
-      /* TODO: implement test */
       TestResult tr20 = tcd.getTestResultFailed(PORTLETURL_REMOVEPUBLICRENDERPARAMETER2);
-      
+      /* TODO: implement test */
+
 
 
       // Write the results to the output stream

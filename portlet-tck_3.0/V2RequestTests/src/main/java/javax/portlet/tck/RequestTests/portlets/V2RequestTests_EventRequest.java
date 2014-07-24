@@ -26,13 +26,9 @@ import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.portlet.ActionRequest;
-import javax.portlet.ActionResponse;
-import javax.portlet.Portlet;
-import javax.portlet.PortletConfig;
-import javax.portlet.PortletException;
-import javax.portlet.RenderRequest;
-import javax.portlet.RenderResponse;
+import javax.portlet.*;
+import javax.portlet.filter.*;
+import javax.portlet.tck.beans.ClassChecker;
 import javax.portlet.tck.beans.TestCaseDetails;
 import javax.portlet.tck.beans.JSR286ApiTestCaseDetails;
 import static javax.portlet.tck.beans.JSR286ApiTestCaseDetails.*;
@@ -49,11 +45,11 @@ public class V2RequestTests_EventRequest implements Portlet {
          V2RequestTests_EventRequest.class.getName();
    private final Logger LOGGER = Logger.getLogger(LOG_CLASS);
    
-   private PortletConfig config = null;
+   private PortletConfig portletConfig = null;
 
    @Override
    public void init(PortletConfig config) throws PortletException {
-      this.config = config;
+      this.portletConfig = config;
    }
 
    @Override
@@ -61,53 +57,70 @@ public class V2RequestTests_EventRequest implements Portlet {
    }
 
    @Override
-   public void processAction(ActionRequest request, ActionResponse response)
+   public void processAction(ActionRequest actionRequest, ActionResponse actionResponse)
          throws PortletException, IOException {
    }
 
    @Override
-   public void render(RenderRequest request, RenderResponse response)
+   public void render(RenderRequest renderRequest, RenderResponse renderResponse)
          throws PortletException, IOException {
       
       if (LOGGER.isLoggable(Level.FINE)) {
          LOGGER.logp(Level.FINE, LOG_CLASS, "render", "Entry");
       }
 
-      PrintWriter writer = response.getWriter();
+      PrintWriter writer = renderResponse.getWriter();
       JSR286ApiTestCaseDetails tcd = new JSR286ApiTestCaseDetails();
+      // TODO: access the class under test and uncomment this code.
+      // ClassChecker cc = new ClassChecker(EventRequest);
 
       // Create result objects for the tests
 
       /* TestCase: EventRequest_implementsPortletRequest1 */
       /* Details: "Implements PortletRequest" */
-      /* TODO: implement test */
       TestResult tr0 = tcd.getTestResultFailed(EVENTREQUEST_IMPLEMENTSPORTLETREQUEST1);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    tr0.setTcSuccess(cc.implementsInterface(PortletRequest.class));
+      // }
+
       /* TestCase: EventRequest_implementsPortletRequest2 */
       /* Details: "All tests described for the PortletRequest execute correctly with the EventRequest" */
-      /* TODO: implement test */
       TestResult tr1 = tcd.getTestResultFailed(EVENTREQUEST_IMPLEMENTSPORTLETREQUEST2);
-      
+      /* TODO: implement test */
+
       /* TestCase: EventRequest_hasgetEvent */
       /* Details: "Has a getEvent() method" */
-      /* TODO: implement test */
       TestResult tr2 = tcd.getTestResultFailed(EVENTREQUEST_HASGETEVENT);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    String name = "getEvent";
+      //    Class<?>[] exceptions = null;
+      //    Class<?>[] parms = null;
+      //    tr2.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      // }
+
       /* TestCase: EventRequest_getEvent */
       /* Details: "Returns the Event object that triggered the call to the processEvent method" */
-      /* TODO: implement test */
       TestResult tr3 = tcd.getTestResultFailed(EVENTREQUEST_GETEVENT);
-      
+      /* TODO: implement test */
+
       /* TestCase: EventRequest_hasgetMethod */
       /* Details: "Has a getMethod() method" */
-      /* TODO: implement test */
       TestResult tr4 = tcd.getTestResultFailed(EVENTREQUEST_HASGETMETHOD);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    String name = "getMethod";
+      //    Class<?>[] exceptions = null;
+      //    Class<?>[] parms = null;
+      //    tr4.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      // }
+
       /* TestCase: EventRequest_getMethod */
       /* Details: "Returns a String containing the name of the HTTP method with which the request was made" */
-      /* TODO: implement test */
       TestResult tr5 = tcd.getTestResultFailed(EVENTREQUEST_GETMETHOD);
-      
+      /* TODO: implement test */
+
 
 
       // Write the results to the output stream

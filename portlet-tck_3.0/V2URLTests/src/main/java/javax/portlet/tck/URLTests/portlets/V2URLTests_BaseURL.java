@@ -26,13 +26,9 @@ import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.portlet.ActionRequest;
-import javax.portlet.ActionResponse;
-import javax.portlet.Portlet;
-import javax.portlet.PortletConfig;
-import javax.portlet.PortletException;
-import javax.portlet.RenderRequest;
-import javax.portlet.RenderResponse;
+import javax.portlet.*;
+import javax.portlet.filter.*;
+import javax.portlet.tck.beans.ClassChecker;
 import javax.portlet.tck.beans.TestCaseDetails;
 import javax.portlet.tck.beans.JSR286ApiTestCaseDetails;
 import static javax.portlet.tck.beans.JSR286ApiTestCaseDetails.*;
@@ -49,11 +45,11 @@ public class V2URLTests_BaseURL implements Portlet {
          V2URLTests_BaseURL.class.getName();
    private final Logger LOGGER = Logger.getLogger(LOG_CLASS);
    
-   private PortletConfig config = null;
+   private PortletConfig portletConfig = null;
 
    @Override
    public void init(PortletConfig config) throws PortletException {
-      this.config = config;
+      this.portletConfig = config;
    }
 
    @Override
@@ -61,343 +57,405 @@ public class V2URLTests_BaseURL implements Portlet {
    }
 
    @Override
-   public void processAction(ActionRequest request, ActionResponse response)
+   public void processAction(ActionRequest actionRequest, ActionResponse actionResponse)
          throws PortletException, IOException {
    }
 
    @Override
-   public void render(RenderRequest request, RenderResponse response)
+   public void render(RenderRequest renderRequest, RenderResponse renderResponse)
          throws PortletException, IOException {
       
       if (LOGGER.isLoggable(Level.FINE)) {
          LOGGER.logp(Level.FINE, LOG_CLASS, "render", "Entry");
       }
 
-      PrintWriter writer = response.getWriter();
+      PrintWriter writer = renderResponse.getWriter();
       JSR286ApiTestCaseDetails tcd = new JSR286ApiTestCaseDetails();
+      // TODO: access the class under test and uncomment this code.
+      // ClassChecker cc = new ClassChecker(BaseURL);
 
       // Create result objects for the tests
 
       /* TestCase: BaseURL_hasSetParameterA */
       /* Details: "Has a setParameter(java.lang.String, java.lang.String) method" */
-      /* TODO: implement test */
       TestResult tr0 = tcd.getTestResultFailed(BASEURL_HASSETPARAMETERA);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    String name = "setParameter";
+      //    Class<?>[] exceptions = null;
+      //    Class<?>[] parms = {java.lang.String.class, java.lang.String.class};
+      //    tr0.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      // }
+
       /* TestCase: BaseURL_setParameterA1 */
       /* Details: "Sets the parameter value for the specified name" */
-      /* TODO: implement test */
       TestResult tr1 = tcd.getTestResultFailed(BASEURL_SETPARAMETERA1);
-      
+      /* TODO: implement test */
+
       /* TestCase: BaseURL_setParameterA2 */
       /* Details: "For a render URL, a private parameter can be set" */
-      /* TODO: implement test */
       TestResult tr2 = tcd.getTestResultFailed(BASEURL_SETPARAMETERA2);
-      
+      /* TODO: implement test */
+
       /* TestCase: BaseURL_setParameterA3 */
       /* Details: "For a render URL, a public parameter can be set" */
-      /* TODO: implement test */
       TestResult tr3 = tcd.getTestResultFailed(BASEURL_SETPARAMETERA3);
-      
+      /* TODO: implement test */
+
       /* TestCase: BaseURL_setParameterA4 */
       /* Details: "For an action URL, an action parameter can be set" */
-      /* TODO: implement test */
       TestResult tr4 = tcd.getTestResultFailed(BASEURL_SETPARAMETERA4);
-      
+      /* TODO: implement test */
+
       /* TestCase: BaseURL_setParameterA5 */
       /* Details: "For a resource URL, a resource parameter can be set" */
-      /* TODO: implement test */
       TestResult tr5 = tcd.getTestResultFailed(BASEURL_SETPARAMETERA5);
-      
+      /* TODO: implement test */
+
       /* TestCase: BaseURL_setParameterA6 */
       /* Details: "All previously existing values for the specified key are removed" */
-      /* TODO: implement test */
       TestResult tr6 = tcd.getTestResultFailed(BASEURL_SETPARAMETERA6);
-      
+      /* TODO: implement test */
+
       /* TestCase: BaseURL_setParameterA7 */
       /* Details: "If the value is null, all values for the specified key are removed" */
-      /* TODO: implement test */
       TestResult tr7 = tcd.getTestResultFailed(BASEURL_SETPARAMETERA7);
-      
+      /* TODO: implement test */
+
       /* TestCase: BaseURL_setParameterA8 */
       /* Details: "Throws IllegalArgumentException if the name is null" */
-      /* TODO: implement test */
       TestResult tr8 = tcd.getTestResultFailed(BASEURL_SETPARAMETERA8);
-      
+      /* TODO: implement test */
+
       /* TestCase: BaseURL_hasSetParameterB */
       /* Details: "Has a setParameter(java.lang.String, java.lang.String[]) method" */
-      /* TODO: implement test */
       TestResult tr9 = tcd.getTestResultFailed(BASEURL_HASSETPARAMETERB);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    String name = "setParameter";
+      //    Class<?>[] exceptions = null;
+      //    Class<?>[] parms = {java.lang.String.class, java.lang.String[].class};
+      //    tr9.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      // }
+
       /* TestCase: BaseURL_setParameterB1 */
       /* Details: "Sets the parameter value array for the specified name" */
-      /* TODO: implement test */
       TestResult tr10 = tcd.getTestResultFailed(BASEURL_SETPARAMETERB1);
-      
+      /* TODO: implement test */
+
       /* TestCase: BaseURL_setParameterB2 */
       /* Details: "For a render URL, a private parameter can be set" */
-      /* TODO: implement test */
       TestResult tr11 = tcd.getTestResultFailed(BASEURL_SETPARAMETERB2);
-      
+      /* TODO: implement test */
+
       /* TestCase: BaseURL_setParameterB3 */
       /* Details: "For a render URL, a public parameter can be set" */
-      /* TODO: implement test */
       TestResult tr12 = tcd.getTestResultFailed(BASEURL_SETPARAMETERB3);
-      
+      /* TODO: implement test */
+
       /* TestCase: BaseURL_setParameterB4 */
       /* Details: "For an action URL, an action parameter can be set" */
-      /* TODO: implement test */
       TestResult tr13 = tcd.getTestResultFailed(BASEURL_SETPARAMETERB4);
-      
+      /* TODO: implement test */
+
       /* TestCase: BaseURL_setParameterB5 */
       /* Details: "For a resource URL, a resource parameter can be set" */
-      /* TODO: implement test */
       TestResult tr14 = tcd.getTestResultFailed(BASEURL_SETPARAMETERB5);
-      
+      /* TODO: implement test */
+
       /* TestCase: BaseURL_setParameterB6 */
       /* Details: "All previously existing values for the specified key are removed" */
-      /* TODO: implement test */
       TestResult tr15 = tcd.getTestResultFailed(BASEURL_SETPARAMETERB6);
-      
+      /* TODO: implement test */
+
       /* TestCase: BaseURL_setParameterB7 */
       /* Details: "If the value is null, all values for the specified key are removed" */
-      /* TODO: implement test */
       TestResult tr16 = tcd.getTestResultFailed(BASEURL_SETPARAMETERB7);
-      
+      /* TODO: implement test */
+
       /* TestCase: BaseURL_setParameterB8 */
       /* Details: "Throws IllegalArgumentException if the name is null" */
-      /* TODO: implement test */
       TestResult tr17 = tcd.getTestResultFailed(BASEURL_SETPARAMETERB8);
-      
+      /* TODO: implement test */
+
       /* TestCase: BaseURL_hasSetParameters */
       /* Details: "Has a setParameters(java.util.Map<java.lang.String,java.lang.String[]>) method" */
-      /* TODO: implement test */
       TestResult tr18 = tcd.getTestResultFailed(BASEURL_HASSETPARAMETERS);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    String name = "setParameters";
+      //    Class<?>[] exceptions = null;
+      //    Class<?>[] parms = {java.util.Map.class};
+      //    tr18.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      // }
+
       /* TestCase: BaseURL_setParameters1 */
       /* Details: "Sets the parameter map to the specified value" */
-      /* TODO: implement test */
       TestResult tr19 = tcd.getTestResultFailed(BASEURL_SETPARAMETERS1);
-      
+      /* TODO: implement test */
+
       /* TestCase: BaseURL_setParameters2 */
       /* Details: "For a render URL, public parameters can be set through the map" */
-      /* TODO: implement test */
       TestResult tr20 = tcd.getTestResultFailed(BASEURL_SETPARAMETERS2);
-      
+      /* TODO: implement test */
+
       /* TestCase: BaseURL_setParameters3 */
       /* Details: "For a render URL, private parameters can be set through the map" */
-      /* TODO: implement test */
       TestResult tr21 = tcd.getTestResultFailed(BASEURL_SETPARAMETERS3);
-      
+      /* TODO: implement test */
+
       /* TestCase: BaseURL_setParameters4 */
       /* Details: "For an action URL, action parameters can be set through the map" */
-      /* TODO: implement test */
       TestResult tr22 = tcd.getTestResultFailed(BASEURL_SETPARAMETERS4);
-      
+      /* TODO: implement test */
+
       /* TestCase: BaseURL_setParameters5 */
       /* Details: "For a resource URL, resource parameters can be set through the map" */
-      /* TODO: implement test */
       TestResult tr23 = tcd.getTestResultFailed(BASEURL_SETPARAMETERS5);
-      
+      /* TODO: implement test */
+
       /* TestCase: BaseURL_setParameters6 */
       /* Details: "Previously existing private, action, or resource parameters not contained in the specified input map are removed" */
-      /* TODO: implement test */
       TestResult tr24 = tcd.getTestResultFailed(BASEURL_SETPARAMETERS6);
-      
+      /* TODO: implement test */
+
       /* TestCase: BaseURL_setParameters7 */
       /* Details: "Previously existing public parameters not contained in the specified input map remain unchanged" */
-      /* TODO: implement test */
       TestResult tr25 = tcd.getTestResultFailed(BASEURL_SETPARAMETERS7);
-      
+      /* TODO: implement test */
+
       /* TestCase: BaseURL_setParameters8 */
       /* Details: "Parameters that are set are available in requests initiated through the URL" */
-      /* TODO: implement test */
       TestResult tr26 = tcd.getTestResultFailed(BASEURL_SETPARAMETERS8);
-      
+      /* TODO: implement test */
+
       /* TestCase: BaseURL_setParameters9 */
       /* Details: "Throws IllegalArgumentException if the input map is null" */
-      /* TODO: implement test */
       TestResult tr27 = tcd.getTestResultFailed(BASEURL_SETPARAMETERS9);
-      
+      /* TODO: implement test */
+
       /* TestCase: BaseURL_setParameters10 */
       /* Details: "Throws IllegalArgumentException if any key in the map is null" */
-      /* TODO: implement test */
       TestResult tr28 = tcd.getTestResultFailed(BASEURL_SETPARAMETERS10);
-      
+      /* TODO: implement test */
+
       /* TestCase: BaseURL_setParameters11 */
       /* Details: "Throws IllegalArgumentException if any key in the map is the empty string (\"\") " */
-      /* TODO: implement test */
       TestResult tr29 = tcd.getTestResultFailed(BASEURL_SETPARAMETERS11);
-      
+      /* TODO: implement test */
+
       /* TestCase: BaseURL_setParameters12 */
       /* Details: "Throws IllegalArgumentException if the values array for any key is null " */
-      /* TODO: implement test */
       TestResult tr30 = tcd.getTestResultFailed(BASEURL_SETPARAMETERS12);
-      
+      /* TODO: implement test */
+
       /* TestCase: BaseURL_setParameters13 */
       /* Details: "Throws IllegalArgumentException if any element in any values array is null " */
-      /* TODO: implement test */
       TestResult tr31 = tcd.getTestResultFailed(BASEURL_SETPARAMETERS13);
-      
+      /* TODO: implement test */
+
       /* TestCase: BaseURL_setParameters14 */
       /* Details: "Throws IllegalStateException if the method is invoked after the sendRedirect method has been called" */
-      /* TODO: implement test */
       TestResult tr32 = tcd.getTestResultFailed(BASEURL_SETPARAMETERS14);
-      
+      /* TODO: implement test */
+
       /* TestCase: BaseURL_hasSetSecure */
       /* Details: "Has a setSecure(boolean) throws javax.portlet.PortletSecurityException method" */
-      /* TODO: implement test */
       TestResult tr33 = tcd.getTestResultFailed(BASEURL_HASSETSECURE);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    String name = "setSecure";
+      //    Class<?>[] exceptions = {javax.portlet.PortletSecurityException.class};
+      //    Class<?>[] parms = {boolean.class};
+      //    tr33.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      // }
+
       /* TestCase: BaseURL_setSecure1 */
       /* Details: "Returns void" */
-      /* TODO: implement test */
       TestResult tr34 = tcd.getTestResultFailed(BASEURL_SETSECURE1);
-      
+      /* TODO: implement test */
+
       /* TestCase: BaseURL_setSecure2 */
       /* Details: "If the input parameter is true, the resulting URL uses a secure connection (HTTPS)" */
-      /* TODO: implement test */
       TestResult tr35 = tcd.getTestResultFailed(BASEURL_SETSECURE2);
-      
+      /* TODO: implement test */
+
       /* TestCase: BaseURL_setSecure3 */
       /* Details: "If the input parameter is false, the resulting URL can use either a secure or non-secure connection" */
-      /* TODO: implement test */
       TestResult tr36 = tcd.getTestResultFailed(BASEURL_SETSECURE3);
-      
+      /* TODO: implement test */
+
       /* TestCase: BaseURL_setSecure4 */
       /* Details: "Throws a PortletSecurityException if the run-time environment does not support the setting" */
-      /* TODO: implement test */
       TestResult tr37 = tcd.getTestResultFailed(BASEURL_SETSECURE4);
-      
+      /* TODO: implement test */
+
       /* TestCase: BaseURL_hasToString */
       /* Details: "Has a toString() method" */
-      /* TODO: implement test */
       TestResult tr38 = tcd.getTestResultFailed(BASEURL_HASTOSTRING);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    String name = "toString";
+      //    Class<?>[] exceptions = null;
+      //    Class<?>[] parms = null;
+      //    tr38.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      // }
+
       /* TestCase: BaseURL_toString */
       /* Details: "Returns a String containing the portlet URL representation to be included in the markup" */
-      /* TODO: implement test */
       TestResult tr39 = tcd.getTestResultFailed(BASEURL_TOSTRING);
-      
+      /* TODO: implement test */
+
       /* TestCase: BaseURL_hasGetParameterMap */
       /* Details: "Has a getParameterMap() method" */
-      /* TODO: implement test */
       TestResult tr40 = tcd.getTestResultFailed(BASEURL_HASGETPARAMETERMAP);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    String name = "getParameterMap";
+      //    Class<?>[] exceptions = null;
+      //    Class<?>[] parms = null;
+      //    tr40.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      // }
+
       /* TestCase: BaseURL_getParameterMap1 */
       /* Details: "Returns an java.util.Map<java.lang.String,java.lang.String[]> object for the parameter names and values if parameters are available" */
-      /* TODO: implement test */
       TestResult tr41 = tcd.getTestResultFailed(BASEURL_GETPARAMETERMAP1);
-      
+      /* TODO: implement test */
+
       /* TestCase: BaseURL_getParameterMap2 */
       /* Details: "For a render URL, the returned map contains all public and private parameters for the request" */
-      /* TODO: implement test */
       TestResult tr42 = tcd.getTestResultFailed(BASEURL_GETPARAMETERMAP2);
-      
+      /* TODO: implement test */
+
       /* TestCase: BaseURL_getParameterMap3 */
       /* Details: "For an action URL, the returned map contains all action parameters for the request" */
-      /* TODO: implement test */
       TestResult tr43 = tcd.getTestResultFailed(BASEURL_GETPARAMETERMAP3);
-      
+      /* TODO: implement test */
+
       /* TestCase: BaseURL_getParameterMap4 */
       /* Details: "For a resource URL, the returned map contains all resource parameters for the request" */
-      /* TODO: implement test */
       TestResult tr44 = tcd.getTestResultFailed(BASEURL_GETPARAMETERMAP4);
-      
+      /* TODO: implement test */
+
       /* TestCase: BaseURL_getParameterMap5 */
       /* Details: "For a resource URL, the returned map does not contain any render parameters for the request" */
-      /* TODO: implement test */
       TestResult tr45 = tcd.getTestResultFailed(BASEURL_GETPARAMETERMAP5);
-      
+      /* TODO: implement test */
+
       /* TestCase: BaseURL_getParameterMap6 */
       /* Details: "Returns an empty map if no parameters exist" */
-      /* TODO: implement test */
       TestResult tr46 = tcd.getTestResultFailed(BASEURL_GETPARAMETERMAP6);
-      
+      /* TODO: implement test */
+
       /* TestCase: BaseURL_hasWriteA */
       /* Details: "Has a write(java.io.Writer) throws java.io.IOException method" */
-      /* TODO: implement test */
       TestResult tr47 = tcd.getTestResultFailed(BASEURL_HASWRITEA);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    String name = "write";
+      //    Class<?>[] exceptions = {java.io.IOException.class};
+      //    Class<?>[] parms = {java.io.Writer.class};
+      //    tr47.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      // }
+
       /* TestCase: BaseURL_writeA1 */
       /* Details: "Writes the URL to the output stream through the provided Writer" */
-      /* TODO: implement test */
       TestResult tr48 = tcd.getTestResultFailed(BASEURL_WRITEA1);
-      
+      /* TODO: implement test */
+
       /* TestCase: BaseURL_writeA2 */
       /* Details: "The written URL is XML escaped (although it may be a token rather than a valid URL)" */
-      /* TODO: implement test */
       TestResult tr49 = tcd.getTestResultFailed(BASEURL_WRITEA2);
-      
+      /* TODO: implement test */
+
       /* TestCase: BaseURL_writeA3 */
       /* Details: "Throws IOException if an error occurs during IO " */
-      /* TODO: implement test */
       TestResult tr50 = tcd.getTestResultFailed(BASEURL_WRITEA3);
-      
+      /* TODO: implement test */
+
       /* TestCase: BaseURL_hasWriteB */
       /* Details: "Has a write(java.io.Writer, boolean) throws java.io.IOException method" */
-      /* TODO: implement test */
       TestResult tr51 = tcd.getTestResultFailed(BASEURL_HASWRITEB);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    String name = "write";
+      //    Class<?>[] exceptions = {java.io.IOException.class};
+      //    Class<?>[] parms = {java.io.Writer.class, boolean.class};
+      //    tr51.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      // }
+
       /* TestCase: BaseURL_writeB1 */
       /* Details: "Writes the URL to the output stream through the provided Writer" */
-      /* TODO: implement test */
       TestResult tr52 = tcd.getTestResultFailed(BASEURL_WRITEB1);
-      
+      /* TODO: implement test */
+
       /* TestCase: BaseURL_writeB2 */
       /* Details: "If the escapeXML parameter is true, the written URL is XML escaped (although it may be a token rather than a valid URL)" */
-      /* TODO: implement test */
       TestResult tr53 = tcd.getTestResultFailed(BASEURL_WRITEB2);
-      
+      /* TODO: implement test */
+
       /* TestCase: BaseURL_writeB3 */
       /* Details: "If the escapeXML parameter is false, no excaping is performed" */
-      /* TODO: implement test */
       TestResult tr54 = tcd.getTestResultFailed(BASEURL_WRITEB3);
-      
+      /* TODO: implement test */
+
       /* TestCase: BaseURL_writeB4 */
       /* Details: "Throws IOException if an error occurs during IO " */
-      /* TODO: implement test */
       TestResult tr55 = tcd.getTestResultFailed(BASEURL_WRITEB4);
-      
+      /* TODO: implement test */
+
       /* TestCase: BaseURL_hasAddProperty */
       /* Details: "Has a addProperty(java.lang.String, java.lang.String) method" */
-      /* TODO: implement test */
       TestResult tr56 = tcd.getTestResultFailed(BASEURL_HASADDPROPERTY);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    String name = "addProperty";
+      //    Class<?>[] exceptions = null;
+      //    Class<?>[] parms = {java.lang.String.class, java.lang.String.class};
+      //    tr56.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      // }
+
       /* TestCase: BaseURL_addProperty1 */
       /* Details: "Adds a property value to an existing key" */
-      /* TODO: implement test */
       TestResult tr57 = tcd.getTestResultFailed(BASEURL_ADDPROPERTY1);
-      
+      /* TODO: implement test */
+
       /* TestCase: BaseURL_addProperty2 */
       /* Details: "Existing property values for the key are retained" */
-      /* TODO: implement test */
       TestResult tr58 = tcd.getTestResultFailed(BASEURL_ADDPROPERTY2);
-      
+      /* TODO: implement test */
+
       /* TestCase: BaseURL_addProperty3 */
       /* Details: "Throws IllegalArgumentException if the specified key is null" */
-      /* TODO: implement test */
       TestResult tr59 = tcd.getTestResultFailed(BASEURL_ADDPROPERTY3);
-      
+      /* TODO: implement test */
+
       /* TestCase: BaseURL_hasSetProperty */
       /* Details: "Has a setProperty() method" */
-      /* TODO: implement test */
       TestResult tr60 = tcd.getTestResultFailed(BASEURL_HASSETPROPERTY);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    String name = "setProperty";
+      //    Class<?>[] exceptions = null;
+      //    Class<?>[] parms = null;
+      //    tr60.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      // }
+
       /* TestCase: BaseURL_setProperty1 */
       /* Details: "Sets a property value for the specified key" */
-      /* TODO: implement test */
       TestResult tr61 = tcd.getTestResultFailed(BASEURL_SETPROPERTY1);
-      
+      /* TODO: implement test */
+
       /* TestCase: BaseURL_setProperty2 */
       /* Details: "Resets any existing property values for the specified key" */
-      /* TODO: implement test */
       TestResult tr62 = tcd.getTestResultFailed(BASEURL_SETPROPERTY2);
-      
+      /* TODO: implement test */
+
       /* TestCase: BaseURL_setProperty3 */
       /* Details: "Throws IllegalArgumentException if the specified key is null" */
-      /* TODO: implement test */
       TestResult tr63 = tcd.getTestResultFailed(BASEURL_SETPROPERTY3);
-      
+      /* TODO: implement test */
+
 
 
       // Write the results to the output stream

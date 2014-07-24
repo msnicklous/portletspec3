@@ -26,13 +26,9 @@ import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.portlet.ActionRequest;
-import javax.portlet.ActionResponse;
-import javax.portlet.Portlet;
-import javax.portlet.PortletConfig;
-import javax.portlet.PortletException;
-import javax.portlet.RenderRequest;
-import javax.portlet.RenderResponse;
+import javax.portlet.*;
+import javax.portlet.filter.*;
+import javax.portlet.tck.beans.ClassChecker;
 import javax.portlet.tck.beans.TestCaseDetails;
 import javax.portlet.tck.beans.JSR286ApiTestCaseDetails;
 import static javax.portlet.tck.beans.JSR286ApiTestCaseDetails.*;
@@ -49,11 +45,11 @@ public class V2PortletTests_Portlet implements Portlet {
          V2PortletTests_Portlet.class.getName();
    private final Logger LOGGER = Logger.getLogger(LOG_CLASS);
    
-   private PortletConfig config = null;
+   private PortletConfig portletConfig = null;
 
    @Override
    public void init(PortletConfig config) throws PortletException {
-      this.config = config;
+      this.portletConfig = config;
    }
 
    @Override
@@ -61,53 +57,55 @@ public class V2PortletTests_Portlet implements Portlet {
    }
 
    @Override
-   public void processAction(ActionRequest request, ActionResponse response)
+   public void processAction(ActionRequest actionRequest, ActionResponse actionResponse)
          throws PortletException, IOException {
    }
 
    @Override
-   public void render(RenderRequest request, RenderResponse response)
+   public void render(RenderRequest renderRequest, RenderResponse renderResponse)
          throws PortletException, IOException {
       
       if (LOGGER.isLoggable(Level.FINE)) {
          LOGGER.logp(Level.FINE, LOG_CLASS, "render", "Entry");
       }
 
-      PrintWriter writer = response.getWriter();
+      PrintWriter writer = renderResponse.getWriter();
       JSR286ApiTestCaseDetails tcd = new JSR286ApiTestCaseDetails();
+      // TODO: access the class under test and uncomment this code.
+      // ClassChecker cc = new ClassChecker(Portlet);
 
       // Create result objects for the tests
 
       /* TestCase: Portlet_init1 */
       /* Details: "The init(PortletConfig) method is called for a portlet defined in the deployment descriptor" */
-      /* TODO: implement test */
       TestResult tr0 = tcd.getTestResultFailed(PORTLET_INIT1);
-      
+      /* TODO: implement test */
+
       /* TestCase: Portlet_init2 */
       /* Details: "If the init method throws a PortletException, the portlet wil not be placed in service" */
-      /* TODO: implement test */
       TestResult tr1 = tcd.getTestResultFailed(PORTLET_INIT2);
-      
+      /* TODO: implement test */
+
       /* TestCase: Portlet_processAction */
       /* Details: "The processAction(ActionRequest, ActionResponse) method is called when an action URL for the portlet is triggered" */
-      /* TODO: implement test */
       TestResult tr2 = tcd.getTestResultFailed(PORTLET_PROCESSACTION);
-      
+      /* TODO: implement test */
+
       /* TestCase: Portlet_render1 */
       /* Details: "The render(RenderRequest, RenderResponse) method is called when the portlet is to be rendered" */
-      /* TODO: implement test */
       TestResult tr3 = tcd.getTestResultFailed(PORTLET_RENDER1);
-      
+      /* TODO: implement test */
+
       /* TestCase: Portlet_render2 */
       /* Details: "The render(RenderRequest, RenderResponse) method is called when a Render URL for the portlet is triggered" */
-      /* TODO: implement test */
       TestResult tr4 = tcd.getTestResultFailed(PORTLET_RENDER2);
-      
+      /* TODO: implement test */
+
       /* TestCase: Portlet_destroy */
       /* Details: "The destroy() method is called when the portlet is to be taken out of service" */
-      /* TODO: implement test */
       TestResult tr5 = tcd.getTestResultFailed(PORTLET_DESTROY);
-      
+      /* TODO: implement test */
+
 
 
       // Write the results to the output stream

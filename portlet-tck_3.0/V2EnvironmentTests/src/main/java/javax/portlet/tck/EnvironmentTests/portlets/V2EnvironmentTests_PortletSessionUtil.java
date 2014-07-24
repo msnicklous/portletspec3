@@ -26,13 +26,9 @@ import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.portlet.ActionRequest;
-import javax.portlet.ActionResponse;
-import javax.portlet.Portlet;
-import javax.portlet.PortletConfig;
-import javax.portlet.PortletException;
-import javax.portlet.RenderRequest;
-import javax.portlet.RenderResponse;
+import javax.portlet.*;
+import javax.portlet.filter.*;
+import javax.portlet.tck.beans.ClassChecker;
 import javax.portlet.tck.beans.TestCaseDetails;
 import javax.portlet.tck.beans.JSR286ApiTestCaseDetails;
 import static javax.portlet.tck.beans.JSR286ApiTestCaseDetails.*;
@@ -49,11 +45,11 @@ public class V2EnvironmentTests_PortletSessionUtil implements Portlet {
          V2EnvironmentTests_PortletSessionUtil.class.getName();
    private final Logger LOGGER = Logger.getLogger(LOG_CLASS);
    
-   private PortletConfig config = null;
+   private PortletConfig portletConfig = null;
 
    @Override
    public void init(PortletConfig config) throws PortletException {
-      this.config = config;
+      this.portletConfig = config;
    }
 
    @Override
@@ -61,63 +57,79 @@ public class V2EnvironmentTests_PortletSessionUtil implements Portlet {
    }
 
    @Override
-   public void processAction(ActionRequest request, ActionResponse response)
+   public void processAction(ActionRequest actionRequest, ActionResponse actionResponse)
          throws PortletException, IOException {
    }
 
    @Override
-   public void render(RenderRequest request, RenderResponse response)
+   public void render(RenderRequest renderRequest, RenderResponse renderResponse)
          throws PortletException, IOException {
       
       if (LOGGER.isLoggable(Level.FINE)) {
          LOGGER.logp(Level.FINE, LOG_CLASS, "render", "Entry");
       }
 
-      PrintWriter writer = response.getWriter();
+      PrintWriter writer = renderResponse.getWriter();
       JSR286ApiTestCaseDetails tcd = new JSR286ApiTestCaseDetails();
+      ClassChecker cc = new ClassChecker(PortletSessionUtil.class);
 
       // Create result objects for the tests
 
       /* TestCase: PortletSessionUtil_constructor */
       /* Details: "Has a PortletSessionUtil() constructor" */
-      /* TODO: implement test */
       TestResult tr0 = tcd.getTestResultFailed(PORTLETSESSIONUTIL_CONSTRUCTOR);
-      
+      {
+         String name = "PortletSessionUtil";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr0.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
+
       /* TestCase: PortletSessionUtil_hasDecodeAttributeName */
       /* Details: "Has a decodeAttributeName(java.lang.String) method" */
-      /* TODO: implement test */
       TestResult tr1 = tcd.getTestResultFailed(PORTLETSESSIONUTIL_HASDECODEATTRIBUTENAME);
-      
+      {
+         String name = "decodeAttributeName";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {java.lang.String.class};
+         tr1.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
+
       /* TestCase: PortletSessionUtil_decodeAttributeName1 */
       /* Details: "Returns a String containing the decoded name of the attribute if the input name is an encoded name in PORTLET_SCOPE" */
-      /* TODO: implement test */
       TestResult tr2 = tcd.getTestResultFailed(PORTLETSESSIONUTIL_DECODEATTRIBUTENAME1);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletSessionUtil_decodeAttributeName2 */
       /* Details: "Returns a String containing the input name unchanged if the input name is in APPLICATION_SCOPE " */
-      /* TODO: implement test */
       TestResult tr3 = tcd.getTestResultFailed(PORTLETSESSIONUTIL_DECODEATTRIBUTENAME2);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletSessionUtil_hasDecodeScope */
       /* Details: "Has a decodeScope(java.lang.String) method" */
-      /* TODO: implement test */
       TestResult tr4 = tcd.getTestResultFailed(PORTLETSESSIONUTIL_HASDECODESCOPE);
-      
+      {
+         String name = "decodeScope";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {java.lang.String.class};
+         tr4.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
+
       /* TestCase: PortletSessionUtil_decodeScope1 */
       /* Details: "Returns the decoded attribute scope for the input encoded attribute name" */
-      /* TODO: implement test */
       TestResult tr5 = tcd.getTestResultFailed(PORTLETSESSIONUTIL_DECODESCOPE1);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletSessionUtil_decodeScope2 */
       /* Details: "Returns PortletSession.APPLICATION_SCOPE if the attribute name is in APPLICATION_SCOPE" */
-      /* TODO: implement test */
       TestResult tr6 = tcd.getTestResultFailed(PORTLETSESSIONUTIL_DECODESCOPE2);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletSessionUtil_decodeScope3 */
       /* Details: "Returns PortletSession.PORTLET_SCOPE if the attribute name is in PORTLET_SCOPE" */
-      /* TODO: implement test */
       TestResult tr7 = tcd.getTestResultFailed(PORTLETSESSIONUTIL_DECODESCOPE3);
-      
+      /* TODO: implement test */
+
 
 
       // Write the results to the output stream

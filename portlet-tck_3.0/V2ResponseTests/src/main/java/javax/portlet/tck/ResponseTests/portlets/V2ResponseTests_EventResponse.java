@@ -26,13 +26,9 @@ import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.portlet.ActionRequest;
-import javax.portlet.ActionResponse;
-import javax.portlet.Portlet;
-import javax.portlet.PortletConfig;
-import javax.portlet.PortletException;
-import javax.portlet.RenderRequest;
-import javax.portlet.RenderResponse;
+import javax.portlet.*;
+import javax.portlet.filter.*;
+import javax.portlet.tck.beans.ClassChecker;
 import javax.portlet.tck.beans.TestCaseDetails;
 import javax.portlet.tck.beans.JSR286ApiTestCaseDetails;
 import static javax.portlet.tck.beans.JSR286ApiTestCaseDetails.*;
@@ -49,11 +45,11 @@ public class V2ResponseTests_EventResponse implements Portlet {
          V2ResponseTests_EventResponse.class.getName();
    private final Logger LOGGER = Logger.getLogger(LOG_CLASS);
    
-   private PortletConfig config = null;
+   private PortletConfig portletConfig = null;
 
    @Override
    public void init(PortletConfig config) throws PortletException {
-      this.config = config;
+      this.portletConfig = config;
    }
 
    @Override
@@ -61,58 +57,72 @@ public class V2ResponseTests_EventResponse implements Portlet {
    }
 
    @Override
-   public void processAction(ActionRequest request, ActionResponse response)
+   public void processAction(ActionRequest actionRequest, ActionResponse actionResponse)
          throws PortletException, IOException {
    }
 
    @Override
-   public void render(RenderRequest request, RenderResponse response)
+   public void render(RenderRequest renderRequest, RenderResponse renderResponse)
          throws PortletException, IOException {
       
       if (LOGGER.isLoggable(Level.FINE)) {
          LOGGER.logp(Level.FINE, LOG_CLASS, "render", "Entry");
       }
 
-      PrintWriter writer = response.getWriter();
+      PrintWriter writer = renderResponse.getWriter();
       JSR286ApiTestCaseDetails tcd = new JSR286ApiTestCaseDetails();
+      // TODO: access the class under test and uncomment this code.
+      // ClassChecker cc = new ClassChecker(EventResponse);
 
       // Create result objects for the tests
 
       /* TestCase: EventResponse_implementsStateAwareResponse1 */
       /* Details: "Implements StateAwareResponse" */
-      /* TODO: implement test */
       TestResult tr0 = tcd.getTestResultFailed(EVENTRESPONSE_IMPLEMENTSSTATEAWARERESPONSE1);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    tr0.setTcSuccess(cc.implementsInterface(StateAwareResponse.class));
+      // }
+
       /* TestCase: EventResponse_implementsStateAwareResponse2 */
       /* Details: "Implements PortletResponse" */
-      /* TODO: implement test */
       TestResult tr1 = tcd.getTestResultFailed(EVENTRESPONSE_IMPLEMENTSSTATEAWARERESPONSE2);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    tr1.setTcSuccess(cc.implementsInterface(PortletResponse.class));
+      // }
+
       /* TestCase: EventResponse_implementsStateAwareResponse3 */
       /* Details: "All tests described for the PortletResponse execute correctly with the EventResponse" */
-      /* TODO: implement test */
       TestResult tr2 = tcd.getTestResultFailed(EVENTRESPONSE_IMPLEMENTSSTATEAWARERESPONSE3);
-      
+      /* TODO: implement test */
+
       /* TestCase: EventResponse_implementsStateAwareResponse4 */
       /* Details: "All tests described for the StateAwareResponse execute correctly with the EventResponse" */
-      /* TODO: implement test */
       TestResult tr3 = tcd.getTestResultFailed(EVENTRESPONSE_IMPLEMENTSSTATEAWARERESPONSE4);
-      
+      /* TODO: implement test */
+
       /* TestCase: EventResponse_hasSetRenderParameters */
       /* Details: "Has a setRenderParameters(EventRequest) method" */
-      /* TODO: implement test */
       TestResult tr4 = tcd.getTestResultFailed(EVENTRESPONSE_HASSETRENDERPARAMETERS);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    String name = "setRenderParameters";
+      //    Class<?>[] exceptions = null;
+      //    Class<?>[] parms = {EventRequest.class};
+      //    tr4.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      // }
+
       /* TestCase: EventResponse_setRenderParameters1 */
       /* Details: "Copies all render parameters set on the EventRequest to the EventResponse" */
-      /* TODO: implement test */
       TestResult tr5 = tcd.getTestResultFailed(EVENTRESPONSE_SETRENDERPARAMETERS1);
-      
+      /* TODO: implement test */
+
       /* TestCase: EventResponse_setRenderParameters2 */
       /* Details: "Throws IllegalArgumentException if the input EventRequest parameter is null" */
-      /* TODO: implement test */
       TestResult tr6 = tcd.getTestResultFailed(EVENTRESPONSE_SETRENDERPARAMETERS2);
-      
+      /* TODO: implement test */
+
 
 
       // Write the results to the output stream

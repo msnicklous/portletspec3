@@ -26,13 +26,9 @@ import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.portlet.ActionRequest;
-import javax.portlet.ActionResponse;
-import javax.portlet.Portlet;
-import javax.portlet.PortletConfig;
-import javax.portlet.PortletException;
-import javax.portlet.RenderRequest;
-import javax.portlet.RenderResponse;
+import javax.portlet.*;
+import javax.portlet.filter.*;
+import javax.portlet.tck.beans.ClassChecker;
 import javax.portlet.tck.beans.TestCaseDetails;
 import javax.portlet.tck.beans.JSR286ApiTestCaseDetails;
 import static javax.portlet.tck.beans.JSR286ApiTestCaseDetails.*;
@@ -49,11 +45,11 @@ public class V2ExceptionTests_UnavailableException implements Portlet {
          V2ExceptionTests_UnavailableException.class.getName();
    private final Logger LOGGER = Logger.getLogger(LOG_CLASS);
    
-   private PortletConfig config = null;
+   private PortletConfig portletConfig = null;
 
    @Override
    public void init(PortletConfig config) throws PortletException {
-      this.config = config;
+      this.portletConfig = config;
    }
 
    @Override
@@ -61,73 +57,92 @@ public class V2ExceptionTests_UnavailableException implements Portlet {
    }
 
    @Override
-   public void processAction(ActionRequest request, ActionResponse response)
+   public void processAction(ActionRequest actionRequest, ActionResponse actionResponse)
          throws PortletException, IOException {
    }
 
    @Override
-   public void render(RenderRequest request, RenderResponse response)
+   public void render(RenderRequest renderRequest, RenderResponse renderResponse)
          throws PortletException, IOException {
       
       if (LOGGER.isLoggable(Level.FINE)) {
          LOGGER.logp(Level.FINE, LOG_CLASS, "render", "Entry");
       }
 
-      PrintWriter writer = response.getWriter();
+      PrintWriter writer = renderResponse.getWriter();
       JSR286ApiTestCaseDetails tcd = new JSR286ApiTestCaseDetails();
+      ClassChecker cc = new ClassChecker(UnavailableException.class);
 
       // Create result objects for the tests
 
       /* TestCase: UnavailableException_extendsPortletException */
       /* Details: "Extends PortletException" */
-      /* TODO: implement test */
       TestResult tr0 = tcd.getTestResultFailed(UNAVAILABLEEXCEPTION_EXTENDSPORTLETEXCEPTION);
-      
+      {
+         tr0.setTcSuccess(cc.hasSuperclass(PortletException.class));
+      }
+
       /* TestCase: UnavailableException_constructor1 */
       /* Details: "Provides constructor UnavailableException(java.lang.String) to indicate permanent unavailability" */
-      /* TODO: implement test */
       TestResult tr1 = tcd.getTestResultFailed(UNAVAILABLEEXCEPTION_CONSTRUCTOR1);
-      
+      {
+         Class<?>[] parms = {java.lang.String.class};
+         tr1.setTcSuccess(cc.hasConstructor(parms));
+      }
+
       /* TestCase: UnavailableException_constructor2 */
       /* Details: "Provides constructor UnavailableException(java.lang.String, int) to indicate temporary unavailability" */
-      /* TODO: implement test */
       TestResult tr2 = tcd.getTestResultFailed(UNAVAILABLEEXCEPTION_CONSTRUCTOR2);
-      
+      {
+         Class<?>[] parms = {java.lang.String.class, int.class};
+         tr2.setTcSuccess(cc.hasConstructor(parms));
+      }
+
       /* TestCase: UnavailableException_hasIsPermanent */
       /* Details: "Has a isPermanent() method" */
-      /* TODO: implement test */
       TestResult tr3 = tcd.getTestResultFailed(UNAVAILABLEEXCEPTION_HASISPERMANENT);
-      
+      {
+         String name = "isPermanent";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr3.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
+
       /* TestCase: UnavailableException_isPermanent1 */
       /* Details: "Returns a boolean" */
-      /* TODO: implement test */
       TestResult tr4 = tcd.getTestResultFailed(UNAVAILABLEEXCEPTION_ISPERMANENT1);
-      
+      /* TODO: implement test */
+
       /* TestCase: UnavailableException_isPermanent2 */
       /* Details: "Returns true if the portlet is permanently unavailable " */
-      /* TODO: implement test */
       TestResult tr5 = tcd.getTestResultFailed(UNAVAILABLEEXCEPTION_ISPERMANENT2);
-      
+      /* TODO: implement test */
+
       /* TestCase: UnavailableException_isPermanent3 */
       /* Details: "Returns false if the portlet is temporarily unavailable " */
-      /* TODO: implement test */
       TestResult tr6 = tcd.getTestResultFailed(UNAVAILABLEEXCEPTION_ISPERMANENT3);
-      
+      /* TODO: implement test */
+
       /* TestCase: UnavailableException_hasGetUnavailableSeconds */
       /* Details: "Has a getUnavailableSeconds() method" */
-      /* TODO: implement test */
       TestResult tr7 = tcd.getTestResultFailed(UNAVAILABLEEXCEPTION_HASGETUNAVAILABLESECONDS);
-      
+      {
+         String name = "getUnavailableSeconds";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr7.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
+
       /* TestCase: UnavailableException_getUnavailableSeconds1 */
       /* Details: "Returns an integer " */
-      /* TODO: implement test */
       TestResult tr8 = tcd.getTestResultFailed(UNAVAILABLEEXCEPTION_GETUNAVAILABLESECONDS1);
-      
+      /* TODO: implement test */
+
       /* TestCase: UnavailableException_getUnavailableSeconds2 */
       /* Details: "Returns a number <= 0 if the portlet is permanently unavailable" */
-      /* TODO: implement test */
       TestResult tr9 = tcd.getTestResultFailed(UNAVAILABLEEXCEPTION_GETUNAVAILABLESECONDS2);
-      
+      /* TODO: implement test */
+
 
 
       // Write the results to the output stream

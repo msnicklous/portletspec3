@@ -1561,7 +1561,7 @@ public class JSR286ApiTestCaseDetails extends TestCaseDetails {
       t.put(RESOURCEFILTER_DOFILTEREXAMINE, "After the next filter has been successfully invoked, the ResourceResponse may be examined");
       t.put(ACTIONREQUESTWRAPPER_EXTENDSPORTLETREQUESTWRAPPER, "Extends PortletRequestWrapper");
       t.put(ACTIONREQUESTWRAPPER_IMPLEMENTSACTIONREQUEST, "Implements ActionRequest");
-      t.put(ACTIONREQUESTWRAPPER_CONSTRUCTOR, "Constructs ActionRequestWrapper(ActionRequest) with specified wrapped ActionRequest object");
+      t.put(ACTIONREQUESTWRAPPER_CONSTRUCTOR, "Provides constructor ActionRequestWrapper(ActionRequest) with specified wrapped ActionRequest object");
       t.put(ACTIONREQUESTWRAPPER_HASGETCHARACTERENCODING, "Has a getCharacterEncoding() method");
       t.put(ACTIONREQUESTWRAPPER_GETCHARACTERENCODING, "Calls wrapped method");
       t.put(ACTIONREQUESTWRAPPER_HASGETCONTENTLENGTH, "Has a getContentLength() method");
@@ -1582,7 +1582,7 @@ public class JSR286ApiTestCaseDetails extends TestCaseDetails {
       t.put(ACTIONREQUESTWRAPPER_GETMETHOD, "Calls wrapped method");
       t.put(ACTIONRESPONSEWRAPPER_EXTENDSPORTLETRESPONSEWRAPPER, "Extends PortletResponseWrapper");
       t.put(ACTIONRESPONSEWRAPPER_IMPLEMENTSACTIONRESPONSE, "Implements ActionResponse");
-      t.put(ACTIONRESPONSEWRAPPER_CONSTRUCTOR, "Constructs ActionResponseWrapper with specified wrapped ActionResponse object");
+      t.put(ACTIONRESPONSEWRAPPER_CONSTRUCTOR, "Provides constructor ActionResponseWrapper(ActionResponse) with specified wrapped ActionResponse object");
       t.put(ACTIONRESPONSEWRAPPER_HASSENDREDIRECTA, "Has a sendRedirect(java.lang.String) throws java.io.IOException method");
       t.put(ACTIONRESPONSEWRAPPER_SENDREDIRECTA, "Calls wrapped method");
       t.put(ACTIONRESPONSEWRAPPER_HASSENDREDIRECTB, "Has a sendRedirect(java.lang.String, java.lang.String) throws java.io.IOException method");
@@ -1616,7 +1616,7 @@ public class JSR286ApiTestCaseDetails extends TestCaseDetails {
       t.put(ACTIONRESPONSEWRAPPER_REMOVEPUBLICRENDERPARAMETER, "Calls wrapped method");
       t.put(EVENTREQUESTWRAPPER_EXTENDSPORTLETREQUESTWRAPPER, "Extends PortletRequestWrapper");
       t.put(EVENTREQUESTWRAPPER_IMPLEMENTSEVENTREQUEST, "Implements EventRequest");
-      t.put(EVENTREQUESTWRAPPER_CONSTRUCTOR, "Constructs EventRequestWrapper with specified wrapped EventRequest object");
+      t.put(EVENTREQUESTWRAPPER_CONSTRUCTOR, "Provides constructor EventRequestWrapper(EventRequest) with specified wrapped EventRequest object");
       t.put(EVENTREQUESTWRAPPER_HASGETREQUEST, "Has a getRequest() method");
       t.put(EVENTREQUESTWRAPPER_GETREQUEST, "Returns wrapped EventRequest object");
       t.put(EVENTREQUESTWRAPPER_HASSETREQUEST, "Has a setRequest(EventRequest) method");
@@ -1628,7 +1628,7 @@ public class JSR286ApiTestCaseDetails extends TestCaseDetails {
       t.put(EVENTREQUESTWRAPPER_GETMETHOD, "Calls wrapped method");
       t.put(EVENTRESPONSEWRAPPER_EXTENDSPORTLETRESPONSEWRAPPER, "Extends PortletResponseWrapper");
       t.put(EVENTRESPONSEWRAPPER_IMPLEMENTSEVENTRESPONSE, "Implements EventResponse");
-      t.put(EVENTRESPONSEWRAPPER_CONSTRUCTOR, "Constructs EventResponseWrapper with specified wrapped EventResponse object");
+      t.put(EVENTRESPONSEWRAPPER_CONSTRUCTOR, "Provides constructor EventResponseWrapper(EventResponse) with specified wrapped EventResponse object");
       t.put(EVENTRESPONSEWRAPPER_HASSETEVENTA, "Has a setEvent(javax.xml.namespace.QName, java.io.Serializable) method");
       t.put(EVENTRESPONSEWRAPPER_SETEVENTA, "Calls wrapped method");
       t.put(EVENTRESPONSEWRAPPER_HASSETEVENTB, "Has a setEvent(java.lang.String name, java.io.Serializable) method");
@@ -1659,7 +1659,7 @@ public class JSR286ApiTestCaseDetails extends TestCaseDetails {
       t.put(EVENTRESPONSEWRAPPER_HASREMOVEPUBLICRENDERPARAMETER, "Has a removePublicRenderParameter(java.lang.String) method");
       t.put(EVENTRESPONSEWRAPPER_REMOVEPUBLICRENDERPARAMETER, "Calls wrapped method");
       t.put(PORTLETREQUESTWRAPPER_IMPLEMENTSPORTLETREQUEST, "Implements PortletRequest");
-      t.put(PORTLETREQUESTWRAPPER_CONSTRUCTOR, "Constructs PortletRequestWrapper with specified wrapped PortletRequest object");
+      t.put(PORTLETREQUESTWRAPPER_CONSTRUCTOR, "Provides constructor PortletRequestWrapper(PortletRequest) with specified wrapped PortletRequest object");
       t.put(PORTLETREQUESTWRAPPER_HASGETATTRIBUTE, "Has a getAttribute(java.lang.String) method");
       t.put(PORTLETREQUESTWRAPPER_GETATTRIBUTE, "Calls wrapped method");
       t.put(PORTLETREQUESTWRAPPER_HASGETATTRIBUTENAMES, "Has a getAttributeNames() method");
@@ -1741,7 +1741,7 @@ public class JSR286ApiTestCaseDetails extends TestCaseDetails {
       t.put(PORTLETREQUESTWRAPPER_HASGETPUBLICPARAMETERMAP, "Has a getPublicParameterMap() method");
       t.put(PORTLETREQUESTWRAPPER_GETPUBLICPARAMETERMAP, "Calls wrapped method");
       t.put(PORTLETRESPONSEWRAPPER_IMPLEMENTSPORTLETRESPONSE, "Implements PortletResponse");
-      t.put(PORTLETRESPONSEWRAPPER_CONSTRUCTOR, "Constructs PortletResponseWrapper with specified wrapped PortletResponse object");
+      t.put(PORTLETRESPONSEWRAPPER_CONSTRUCTOR, "Provides constructor PortletResponseWrapper(PortletResponse) with specified wrapped PortletResponse object");
       t.put(PORTLETRESPONSEWRAPPER_HASADDPROPERTYA, "Has a addProperty(javax.servlet.http.Cookie) method");
       t.put(PORTLETRESPONSEWRAPPER_ADDPROPERTYA, "Calls wrapped method");
       t.put(PORTLETRESPONSEWRAPPER_HASADDPROPERTYB, "Has a addProperty(java.lang.String, org.w3c.dom.Element) method");
@@ -1762,7 +1762,7 @@ public class JSR286ApiTestCaseDetails extends TestCaseDetails {
       t.put(PORTLETRESPONSEWRAPPER_CREATEELEMENT, "Calls wrapped method");
       t.put(RENDERREQUESTWRAPPER_EXTENDSPORTLETREQUESTWRAPPER, "Extends PortletRequestWrapper");
       t.put(RENDERREQUESTWRAPPER_IMPLEMENTSRENDERREQUEST, "Implements RenderRequest");
-      t.put(RENDERREQUESTWRAPPER_CONSTRUCTOR, "Constructs RenderRequestWrapper with specified wrapped RenderRequest object");
+      t.put(RENDERREQUESTWRAPPER_CONSTRUCTOR, "Provides constructor RenderRequestWrapper(RenderRequest) with specified wrapped RenderRequest object");
       t.put(RENDERREQUESTWRAPPER_HASGETREQUEST, "Has a getRequest() method");
       t.put(RENDERREQUESTWRAPPER_GETREQUEST, "Returns wrapped RenderRequest object");
       t.put(RENDERREQUESTWRAPPER_HASSETREQUEST, "Has a setRequest(RenderRequest) method");
@@ -1771,7 +1771,7 @@ public class JSR286ApiTestCaseDetails extends TestCaseDetails {
       t.put(RENDERREQUESTWRAPPER_GETETAG, "Calls wrapped method");
       t.put(RENDERRESPONSEWRAPPER_EXTENDSPORTLETRESPONSEWRAPPER, "Extends PortletResponseWrapper");
       t.put(RENDERRESPONSEWRAPPER_IMPLEMENTSRENDERRESPONSE, "Implements RenderResponse");
-      t.put(RENDERRESPONSEWRAPPER_CONSTRUCTOR, "Constructs RenderResponseWrapper with specified wrapped RenderResponse object");
+      t.put(RENDERRESPONSEWRAPPER_CONSTRUCTOR, "Provides constructor RenderResponseWrapper(RenderResponse) with specified wrapped RenderResponse object");
       t.put(RENDERRESPONSEWRAPPER_HASFLUSHBUFFER, "Has a flushBuffer() throws java.io.IOException method");
       t.put(RENDERRESPONSEWRAPPER_FLUSHBUFFER, "Calls wrapped method");
       t.put(RENDERRESPONSEWRAPPER_HASGETBUFFERSIZE, "Has a getBufferSize() method");
@@ -1814,7 +1814,7 @@ public class JSR286ApiTestCaseDetails extends TestCaseDetails {
       t.put(RENDERRESPONSEWRAPPER_CREATERESOURCEURL, "Calls wrapped method");
       t.put(RESOURCEREQUESTWRAPPER_EXTENDSPORTLETREQUESTWRAPPER, "Extends PortletRequestWrapper");
       t.put(RESOURCEREQUESTWRAPPER_IMPLEMENTSRESOURCEREQUEST, "Implements ResourceRequest");
-      t.put(RESOURCEREQUESTWRAPPER_CONSTRUCTOR, "Constructs ResourceRequestWrapper with specified wrapped ResourceRequest object");
+      t.put(RESOURCEREQUESTWRAPPER_CONSTRUCTOR, "Provides constructor ResourceRequestWrapper(ResourceRequest) with specified wrapped ResourceRequest object");
       t.put(RESOURCEREQUESTWRAPPER_HASGETPORTLETINPUTSTREAM, "Has a getPortletInputStream() throws java.io.IOException method");
       t.put(RESOURCEREQUESTWRAPPER_GETPORTLETINPUTSTREAM, "Calls wrapped method");
       t.put(RESOURCEREQUESTWRAPPER_HASGETREADER, "Has a getReader() throws java.io.UnsupportedEncodingException, java.io.IOException method");
@@ -1843,7 +1843,7 @@ public class JSR286ApiTestCaseDetails extends TestCaseDetails {
       t.put(RESOURCEREQUESTWRAPPER_GETCACHEABILITY, "Calls wrapped method");
       t.put(RESOURCERESPONSEWRAPPER_EXTENDSPORTLETRESPONSEWRAPPER, "Extends PortletResponseWrapper");
       t.put(RESOURCERESPONSEWRAPPER_IMPLEMENTSRESOURCERESPONSE, "Implements ResourceResponse");
-      t.put(RESOURCERESPONSEWRAPPER_CONSTRUCTOR, "Constructs ResourceResponseWrapper with specified wrapped ResourceResponse object");
+      t.put(RESOURCERESPONSEWRAPPER_CONSTRUCTOR, "Provides constructor ResourceResponseWrapper(ResourceResponse) with specified wrapped ResourceResponse object");
       t.put(RESOURCERESPONSEWRAPPER_HASFLUSHBUFFER, "Has a flushBuffer() throws java.io.IOException method");
       t.put(RESOURCERESPONSEWRAPPER_FLUSHBUFFER, "Calls wrapped method");
       t.put(RESOURCERESPONSEWRAPPER_HASGETBUFFERSIZE, "Has a getBufferSize() method");
@@ -2472,15 +2472,15 @@ public class JSR286ApiTestCaseDetails extends TestCaseDetails {
       t.put(WINDOWSTATEEXCEPTION_HASGETSTATE, "Has a getState() method");
       t.put(WINDOWSTATEEXCEPTION_GETSTATE, "Returns the WindowState object causing this exception");
       t.put(PROCESSACTION_EXTENDSANNOTATION, "Extends java.lang.annotation.Annotation");
-      t.put(PROCESSACTION_HASNAME, "Has a name(java.lang.String) method");
+      t.put(PROCESSACTION_HASNAME, "Has a name() method");
       t.put(PROCESSACTION_NAME, "On an action request, the method is executed if the parameter \"javax.portlet.action\" matches the name field");
       t.put(PROCESSEVENT_EXTENDSANNOTATION, "Extends java.lang.annotation.Annotation");
-      t.put(PROCESSEVENT_HASQNAME, "Has a qname(java.lang.String) method");
+      t.put(PROCESSEVENT_HASQNAME, "Has a qname() method");
       t.put(PROCESSEVENT_QNAME, "On an event request, the method is executed if the Event qname matches the qname field");
-      t.put(PROCESSEVENT_HASNAME, "Has a name(java.lang.String) method");
+      t.put(PROCESSEVENT_HASNAME, "Has a name() method");
       t.put(PROCESSEVENT_NAME, "On an event request, the method is executed if the Event name matches the name field");
       t.put(RENDERMODE_EXTENDSANNOTATION, "Extends java.lang.annotation.Annotation");
-      t.put(RENDERMODE_HASNAME, "Has a name(java.lang.String) method");
+      t.put(RENDERMODE_HASNAME, "Has a name() method");
       t.put(RENDERMODE_NAME, "On a render request, the method is executed if the portlet mode matches the name field");
       t.put(PORTLETCONFIG_HASGETPORTLETNAME, "Has a getPortletName() method");
       t.put(PORTLETCONFIG_GETPORTLETNAME, "Returns a String containing the portlet name");

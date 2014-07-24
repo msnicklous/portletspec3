@@ -26,13 +26,9 @@ import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.portlet.ActionRequest;
-import javax.portlet.ActionResponse;
-import javax.portlet.Portlet;
-import javax.portlet.PortletConfig;
-import javax.portlet.PortletException;
-import javax.portlet.RenderRequest;
-import javax.portlet.RenderResponse;
+import javax.portlet.*;
+import javax.portlet.filter.*;
+import javax.portlet.tck.beans.ClassChecker;
 import javax.portlet.tck.beans.TestCaseDetails;
 import javax.portlet.tck.beans.JSR286ApiTestCaseDetails;
 import static javax.portlet.tck.beans.JSR286ApiTestCaseDetails.*;
@@ -49,11 +45,11 @@ public class V2ResponseTests_MimeResponse implements Portlet {
          V2ResponseTests_MimeResponse.class.getName();
    private final Logger LOGGER = Logger.getLogger(LOG_CLASS);
    
-   private PortletConfig config = null;
+   private PortletConfig portletConfig = null;
 
    @Override
    public void init(PortletConfig config) throws PortletException {
-      this.config = config;
+      this.portletConfig = config;
    }
 
    @Override
@@ -61,303 +57,428 @@ public class V2ResponseTests_MimeResponse implements Portlet {
    }
 
    @Override
-   public void processAction(ActionRequest request, ActionResponse response)
+   public void processAction(ActionRequest actionRequest, ActionResponse actionResponse)
          throws PortletException, IOException {
    }
 
    @Override
-   public void render(RenderRequest request, RenderResponse response)
+   public void render(RenderRequest renderRequest, RenderResponse renderResponse)
          throws PortletException, IOException {
       
       if (LOGGER.isLoggable(Level.FINE)) {
          LOGGER.logp(Level.FINE, LOG_CLASS, "render", "Entry");
       }
 
-      PrintWriter writer = response.getWriter();
+      PrintWriter writer = renderResponse.getWriter();
       JSR286ApiTestCaseDetails tcd = new JSR286ApiTestCaseDetails();
+      // TODO: access the class under test and uncomment this code.
+      // ClassChecker cc = new ClassChecker(MimeResponse);
 
       // Create result objects for the tests
 
       /* TestCase: MimeResponse_implementsPortletResponse1 */
       /* Details: "Implements PortletResponse" */
-      /* TODO: implement test */
       TestResult tr0 = tcd.getTestResultFailed(MIMERESPONSE_IMPLEMENTSPORTLETRESPONSE1);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    tr0.setTcSuccess(cc.implementsInterface(PortletResponse.class));
+      // }
+
       /* TestCase: MimeResponse_implementsPortletResponse2 */
       /* Details: "All tests described for the PortletResponse execute correctly with the MimeResponse" */
-      /* TODO: implement test */
       TestResult tr1 = tcd.getTestResultFailed(MIMERESPONSE_IMPLEMENTSPORTLETRESPONSE2);
-      
+      /* TODO: implement test */
+
       /* TestCase: MimeResponse_fieldEXPIRATION_CACHE */
       /* Details: "Has String field EXPIRATION_CACHE with value of \"portlet.expiration-cache\"" */
-      /* TODO: implement test */
       TestResult tr2 = tcd.getTestResultFailed(MIMERESPONSE_FIELDEXPIRATION_CACHE);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    tr2.setTcSuccess(cc.hasField("EXPIRATION_CACHE", "portlet.expiration-cache""));
+      // }
+
       /* TestCase: MimeResponse_fieldCACHE_SCOPE */
       /* Details: "Has String field CACHE_SCOPE with value of \"portlet.cache-scope\"" */
-      /* TODO: implement test */
       TestResult tr3 = tcd.getTestResultFailed(MIMERESPONSE_FIELDCACHE_SCOPE);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    tr3.setTcSuccess(cc.hasField("CACHE_SCOPE", "portlet.cache-scope""));
+      // }
+
       /* TestCase: MimeResponse_fieldPUBLIC_SCOPE */
       /* Details: "Has String field PUBLIC_SCOPE with value of \"portlet.public-scope\"" */
-      /* TODO: implement test */
       TestResult tr4 = tcd.getTestResultFailed(MIMERESPONSE_FIELDPUBLIC_SCOPE);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    tr4.setTcSuccess(cc.hasField("PUBLIC_SCOPE", "portlet.public-scope""));
+      // }
+
       /* TestCase: MimeResponse_fieldPRIVATE_SCOPE */
       /* Details: "Has String field PRIVATE_SCOPE with value of \"portlet.private-scope\"" */
-      /* TODO: implement test */
       TestResult tr5 = tcd.getTestResultFailed(MIMERESPONSE_FIELDPRIVATE_SCOPE);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    tr5.setTcSuccess(cc.hasField("PRIVATE_SCOPE", "portlet.private-scope""));
+      // }
+
       /* TestCase: MimeResponse_fieldETAG */
       /* Details: "Has String field ETAG with value of \"portlet.ETag\"" */
-      /* TODO: implement test */
       TestResult tr6 = tcd.getTestResultFailed(MIMERESPONSE_FIELDETAG);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    tr6.setTcSuccess(cc.hasField("ETAG", "portlet.ETag""));
+      // }
+
       /* TestCase: MimeResponse_fieldUSE_CACHED_CONTENT */
       /* Details: "Has String field USE_CACHED_CONTENT with value of \"portlet.use-cached-content\"" */
-      /* TODO: implement test */
       TestResult tr7 = tcd.getTestResultFailed(MIMERESPONSE_FIELDUSE_CACHED_CONTENT);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    tr7.setTcSuccess(cc.hasField("USE_CACHED_CONTENT", "portlet.use-cached-content""));
+      // }
+
       /* TestCase: MimeResponse_fieldNAMESPACED_RESPONSE */
       /* Details: "Has String field NAMESPACED_RESPONSE with value of \"X-JAVAX-PORTLET-NAMESPACED-RESPONSE\"" */
-      /* TODO: implement test */
       TestResult tr8 = tcd.getTestResultFailed(MIMERESPONSE_FIELDNAMESPACED_RESPONSE);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    tr8.setTcSuccess(cc.hasField("NAMESPACED_RESPONSE", "X-JAVAX-PORTLET-NAMESPACED-RESPONSE""));
+      // }
+
       /* TestCase: MimeResponse_fieldMARKUP_HEAD_ELEMENT */
       /* Details: "Has String field MARKUP_HEAD_ELEMENT with value of \"javax.portlet.markup.head.element\"" */
-      /* TODO: implement test */
       TestResult tr9 = tcd.getTestResultFailed(MIMERESPONSE_FIELDMARKUP_HEAD_ELEMENT);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    tr9.setTcSuccess(cc.hasField("MARKUP_HEAD_ELEMENT", "javax.portlet.markup.head.element""));
+      // }
+
       /* TestCase: MimeResponse_hasGetContentType */
       /* Details: "Has a getContentType() method" */
-      /* TODO: implement test */
       TestResult tr10 = tcd.getTestResultFailed(MIMERESPONSE_HASGETCONTENTTYPE);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    String name = "getContentType";
+      //    Class<?>[] exceptions = null;
+      //    Class<?>[] parms = null;
+      //    tr10.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      // }
+
       /* TestCase: MimeResponse_getContentType1 */
       /* Details: "Returns a String containing the MIME type that can be used with the response" */
-      /* TODO: implement test */
       TestResult tr11 = tcd.getTestResultFailed(MIMERESPONSE_GETCONTENTTYPE1);
-      
+      /* TODO: implement test */
+
       /* TestCase: MimeResponse_getContentType2 */
       /* Details: "Returns null if no content type is set" */
-      /* TODO: implement test */
       TestResult tr12 = tcd.getTestResultFailed(MIMERESPONSE_GETCONTENTTYPE2);
-      
+      /* TODO: implement test */
+
       /* TestCase: MimeResponse_hasSetContentType */
       /* Details: "Has a setContentType(java.lang.String) method" */
-      /* TODO: implement test */
       TestResult tr13 = tcd.getTestResultFailed(MIMERESPONSE_HASSETCONTENTTYPE);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    String name = "setContentType";
+      //    Class<?>[] exceptions = null;
+      //    Class<?>[] parms = {java.lang.String.class};
+      //    tr13.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      // }
+
       /* TestCase: MimeResponse_setContentType1 */
       /* Details: "Sets the MIME type for the response" */
-      /* TODO: implement test */
       TestResult tr14 = tcd.getTestResultFailed(MIMERESPONSE_SETCONTENTTYPE1);
-      
+      /* TODO: implement test */
+
       /* TestCase: MimeResponse_setContentType2 */
       /* Details: "Has no effect if called after the getWriter method has been called" */
-      /* TODO: implement test */
       TestResult tr15 = tcd.getTestResultFailed(MIMERESPONSE_SETCONTENTTYPE2);
-      
+      /* TODO: implement test */
+
       /* TestCase: MimeResponse_setContentType3 */
       /* Details: "Has no effect if called after the getPortletOutputStream method has been called" */
-      /* TODO: implement test */
       TestResult tr16 = tcd.getTestResultFailed(MIMERESPONSE_SETCONTENTTYPE3);
-      
+      /* TODO: implement test */
+
       /* TestCase: MimeResponse_setContentType4 */
       /* Details: "Throws IllegalArgumentException if the specified MIME type is invalid" */
-      /* TODO: implement test */
       TestResult tr17 = tcd.getTestResultFailed(MIMERESPONSE_SETCONTENTTYPE4);
-      
+      /* TODO: implement test */
+
       /* TestCase: MimeResponse_hasGetCharacterEncoding */
       /* Details: "Has a getCharacterEncoding() method" */
-      /* TODO: implement test */
       TestResult tr18 = tcd.getTestResultFailed(MIMERESPONSE_HASGETCHARACTERENCODING);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    String name = "getCharacterEncoding";
+      //    Class<?>[] exceptions = null;
+      //    Class<?>[] parms = null;
+      //    tr18.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      // }
+
       /* TestCase: MimeResponse_getCharacterEncoding */
       /* Details: "Returns a String containing the name of the charset used for the response body" */
-      /* TODO: implement test */
       TestResult tr19 = tcd.getTestResultFailed(MIMERESPONSE_GETCHARACTERENCODING);
-      
+      /* TODO: implement test */
+
       /* TestCase: MimeResponse_hasGetWriter */
       /* Details: "Has a getWriter() throws java.io.IOException method" */
-      /* TODO: implement test */
       TestResult tr20 = tcd.getTestResultFailed(MIMERESPONSE_HASGETWRITER);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    String name = "getWriter";
+      //    Class<?>[] exceptions = {java.io.IOException.class};
+      //    Class<?>[] parms = null;
+      //    tr20.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      // }
+
       /* TestCase: MimeResponse_getWriter1 */
       /* Details: "Returns a PrintWriter object" */
-      /* TODO: implement test */
       TestResult tr21 = tcd.getTestResultFailed(MIMERESPONSE_GETWRITER1);
-      
+      /* TODO: implement test */
+
       /* TestCase: MimeResponse_getWriter2 */
       /* Details: "Throws IllegalStateException if called after the getPortletOutputStream method has been called" */
-      /* TODO: implement test */
       TestResult tr22 = tcd.getTestResultFailed(MIMERESPONSE_GETWRITER2);
-      
+      /* TODO: implement test */
+
       /* TestCase: MimeResponse_getWriter3 */
       /* Details: "Throws IOException if an IO problem occurs" */
-      /* TODO: implement test */
       TestResult tr23 = tcd.getTestResultFailed(MIMERESPONSE_GETWRITER3);
-      
+      /* TODO: implement test */
+
       /* TestCase: MimeResponse_hasGetLocale */
       /* Details: "Has a getLocale() method" */
-      /* TODO: implement test */
       TestResult tr24 = tcd.getTestResultFailed(MIMERESPONSE_HASGETLOCALE);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    String name = "getLocale";
+      //    Class<?>[] exceptions = null;
+      //    Class<?>[] parms = null;
+      //    tr24.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      // }
+
       /* TestCase: MimeResponse_getLocale */
       /* Details: "Returns an java.util.Locale representing the locale assigned to the response" */
-      /* TODO: implement test */
       TestResult tr25 = tcd.getTestResultFailed(MIMERESPONSE_GETLOCALE);
-      
+      /* TODO: implement test */
+
       /* TestCase: MimeResponse_hasSetBufferSize */
       /* Details: "Has a setBufferSize(int) method" */
-      /* TODO: implement test */
       TestResult tr26 = tcd.getTestResultFailed(MIMERESPONSE_HASSETBUFFERSIZE);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    String name = "setBufferSize";
+      //    Class<?>[] exceptions = null;
+      //    Class<?>[] parms = {int.class};
+      //    tr26.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      // }
+
       /* TestCase: MimeResponse_setBufferSize1 */
       /* Details: "Sets the preferred buffer size for the response body" */
-      /* TODO: implement test */
       TestResult tr27 = tcd.getTestResultFailed(MIMERESPONSE_SETBUFFERSIZE1);
-      
+      /* TODO: implement test */
+
       /* TestCase: MimeResponse_setBufferSize2 */
       /* Details: "Throws IllegalStateException if called after content has been written" */
-      /* TODO: implement test */
       TestResult tr28 = tcd.getTestResultFailed(MIMERESPONSE_SETBUFFERSIZE2);
-      
+      /* TODO: implement test */
+
       /* TestCase: MimeResponse_hasGetBufferSize */
       /* Details: "Has a getBufferSize() method" */
-      /* TODO: implement test */
       TestResult tr29 = tcd.getTestResultFailed(MIMERESPONSE_HASGETBUFFERSIZE);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    String name = "getBufferSize";
+      //    Class<?>[] exceptions = null;
+      //    Class<?>[] parms = null;
+      //    tr29.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      // }
+
       /* TestCase: MimeResponse_getBufferSize1 */
       /* Details: "Returns an int designating the actual buffer size used for the response" */
-      /* TODO: implement test */
       TestResult tr30 = tcd.getTestResultFailed(MIMERESPONSE_GETBUFFERSIZE1);
-      
+      /* TODO: implement test */
+
       /* TestCase: MimeResponse_getBufferSize2 */
       /* Details: "Returns null if buffering is not used" */
-      /* TODO: implement test */
       TestResult tr31 = tcd.getTestResultFailed(MIMERESPONSE_GETBUFFERSIZE2);
-      
+      /* TODO: implement test */
+
       /* TestCase: MimeResponse_hasFlushBuffer */
       /* Details: "Has a flushBuffer() throws java.io.IOException method" */
-      /* TODO: implement test */
       TestResult tr32 = tcd.getTestResultFailed(MIMERESPONSE_HASFLUSHBUFFER);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    String name = "flushBuffer";
+      //    Class<?>[] exceptions = {java.io.IOException.class};
+      //    Class<?>[] parms = null;
+      //    tr32.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      // }
+
       /* TestCase: MimeResponse_flushBuffer1 */
       /* Details: "Returns void and flushes buffer to OutputStream" */
-      /* TODO: implement test */
       TestResult tr33 = tcd.getTestResultFailed(MIMERESPONSE_FLUSHBUFFER1);
-      
+      /* TODO: implement test */
+
       /* TestCase: MimeResponse_flushBuffer2 */
       /* Details: "Throws IOException if an IO problem occurs" */
-      /* TODO: implement test */
       TestResult tr34 = tcd.getTestResultFailed(MIMERESPONSE_FLUSHBUFFER2);
-      
+      /* TODO: implement test */
+
       /* TestCase: MimeResponse_hasResetBuffer */
       /* Details: "Has a resetBuffer() method" */
-      /* TODO: implement test */
       TestResult tr35 = tcd.getTestResultFailed(MIMERESPONSE_HASRESETBUFFER);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    String name = "resetBuffer";
+      //    Class<?>[] exceptions = null;
+      //    Class<?>[] parms = null;
+      //    tr35.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      // }
+
       /* TestCase: MimeResponse_resetBuffer1 */
       /* Details: "Returns void and clears and data and properties from the buffer" */
-      /* TODO: implement test */
       TestResult tr36 = tcd.getTestResultFailed(MIMERESPONSE_RESETBUFFER1);
-      
+      /* TODO: implement test */
+
       /* TestCase: MimeResponse_resetBuffer2 */
       /* Details: "Throws IllegalStateException if called after the response has been committed" */
-      /* TODO: implement test */
       TestResult tr37 = tcd.getTestResultFailed(MIMERESPONSE_RESETBUFFER2);
-      
+      /* TODO: implement test */
+
       /* TestCase: MimeResponse_hasIsCommitted */
       /* Details: "Has a isCommitted() method" */
-      /* TODO: implement test */
       TestResult tr38 = tcd.getTestResultFailed(MIMERESPONSE_HASISCOMMITTED);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    String name = "isCommitted";
+      //    Class<?>[] exceptions = null;
+      //    Class<?>[] parms = null;
+      //    tr38.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      // }
+
       /* TestCase: MimeResponse_isCommitted1 */
       /* Details: "Returns true if the response has been committed" */
-      /* TODO: implement test */
       TestResult tr39 = tcd.getTestResultFailed(MIMERESPONSE_ISCOMMITTED1);
-      
+      /* TODO: implement test */
+
       /* TestCase: MimeResponse_isCommitted2 */
       /* Details: "Returns false if the response has not been committed" */
-      /* TODO: implement test */
       TestResult tr40 = tcd.getTestResultFailed(MIMERESPONSE_ISCOMMITTED2);
-      
+      /* TODO: implement test */
+
       /* TestCase: MimeResponse_hasReset */
       /* Details: "Has a reset() method" */
-      /* TODO: implement test */
       TestResult tr41 = tcd.getTestResultFailed(MIMERESPONSE_HASRESET);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    String name = "reset";
+      //    Class<?>[] exceptions = null;
+      //    Class<?>[] parms = null;
+      //    tr41.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      // }
+
       /* TestCase: MimeResponse_reset1 */
       /* Details: "Returns void and clears and data and properties from the buffer" */
-      /* TODO: implement test */
       TestResult tr42 = tcd.getTestResultFailed(MIMERESPONSE_RESET1);
-      
+      /* TODO: implement test */
+
       /* TestCase: MimeResponse_reset2 */
       /* Details: "Throws IllegalStateException if called after the response has been committed" */
-      /* TODO: implement test */
       TestResult tr43 = tcd.getTestResultFailed(MIMERESPONSE_RESET2);
-      
+      /* TODO: implement test */
+
       /* TestCase: MimeResponse_hasGetPortletOutputStream */
       /* Details: "Has a getPortletOutputStream() throws java.io.IOException method" */
-      /* TODO: implement test */
       TestResult tr44 = tcd.getTestResultFailed(MIMERESPONSE_HASGETPORTLETOUTPUTSTREAM);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    String name = "getPortletOutputStream";
+      //    Class<?>[] exceptions = {java.io.IOException.class};
+      //    Class<?>[] parms = null;
+      //    tr44.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      // }
+
       /* TestCase: MimeResponse_getPortletOutputStream1 */
       /* Details: "Returns a PortletOutputStream object" */
-      /* TODO: implement test */
       TestResult tr45 = tcd.getTestResultFailed(MIMERESPONSE_GETPORTLETOUTPUTSTREAM1);
-      
+      /* TODO: implement test */
+
       /* TestCase: MimeResponse_getPortletOutputStream2 */
       /* Details: "Throws IllegalStateException if called after the getWriter method has been called" */
-      /* TODO: implement test */
       TestResult tr46 = tcd.getTestResultFailed(MIMERESPONSE_GETPORTLETOUTPUTSTREAM2);
-      
+      /* TODO: implement test */
+
       /* TestCase: MimeResponse_getPortletOutputStream3 */
       /* Details: "Throws IOException if an IO problem occurs" */
-      /* TODO: implement test */
       TestResult tr47 = tcd.getTestResultFailed(MIMERESPONSE_GETPORTLETOUTPUTSTREAM3);
-      
+      /* TODO: implement test */
+
       /* TestCase: MimeResponse_hasCreateRenderURL */
       /* Details: "Has a createRenderURL() method" */
-      /* TODO: implement test */
       TestResult tr48 = tcd.getTestResultFailed(MIMERESPONSE_HASCREATERENDERURL);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    String name = "createRenderURL";
+      //    Class<?>[] exceptions = null;
+      //    Class<?>[] parms = null;
+      //    tr48.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      // }
+
       /* TestCase: MimeResponse_createRenderURL */
       /* Details: "Returns a PortletURL object representing a render URL targeting the portlet" */
-      /* TODO: implement test */
       TestResult tr49 = tcd.getTestResultFailed(MIMERESPONSE_CREATERENDERURL);
-      
+      /* TODO: implement test */
+
       /* TestCase: MimeResponse_hasCreateActionURL */
       /* Details: "Has a createActionURL() method" */
-      /* TODO: implement test */
       TestResult tr50 = tcd.getTestResultFailed(MIMERESPONSE_HASCREATEACTIONURL);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    String name = "createActionURL";
+      //    Class<?>[] exceptions = null;
+      //    Class<?>[] parms = null;
+      //    tr50.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      // }
+
       /* TestCase: MimeResponse_createActionURL */
       /* Details: "Returns a PortletURL object representing an action URL targeting the portlet" */
-      /* TODO: implement test */
       TestResult tr51 = tcd.getTestResultFailed(MIMERESPONSE_CREATEACTIONURL);
-      
+      /* TODO: implement test */
+
       /* TestCase: MimeResponse_hasCreateResourceURL */
       /* Details: "Has a createResourceURL() method" */
-      /* TODO: implement test */
       TestResult tr52 = tcd.getTestResultFailed(MIMERESPONSE_HASCREATERESOURCEURL);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    String name = "createResourceURL";
+      //    Class<?>[] exceptions = null;
+      //    Class<?>[] parms = null;
+      //    tr52.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      // }
+
       /* TestCase: MimeResponse_createResourceURL */
       /* Details: "Returns a ResourceURL object targeting the portlet" */
-      /* TODO: implement test */
       TestResult tr53 = tcd.getTestResultFailed(MIMERESPONSE_CREATERESOURCEURL);
-      
+      /* TODO: implement test */
+
       /* TestCase: MimeResponse_hasGetCacheControl */
       /* Details: "Has a getCacheControl() method" */
-      /* TODO: implement test */
       TestResult tr54 = tcd.getTestResultFailed(MIMERESPONSE_HASGETCACHECONTROL);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    String name = "getCacheControl";
+      //    Class<?>[] exceptions = null;
+      //    Class<?>[] parms = null;
+      //    tr54.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      // }
+
       /* TestCase: MimeResponse_getCacheControl */
       /* Details: "Returns a CacheControl object" */
-      /* TODO: implement test */
       TestResult tr55 = tcd.getTestResultFailed(MIMERESPONSE_GETCACHECONTROL);
-      
+      /* TODO: implement test */
+
 
 
       // Write the results to the output stream

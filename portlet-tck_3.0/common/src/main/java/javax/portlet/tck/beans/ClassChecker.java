@@ -66,6 +66,27 @@ public class ClassChecker {
       
       return result;
    }
+
+   /**
+    * Returns true if the class under test has a field by the specified name and value.
+    * 
+    * @param fname   Field name
+    * @param value   Field value
+    * @return        true if the class under test defines the field with the specified value
+    */
+   public boolean hasField(String fname, String value) {
+      boolean result = false;
+      
+      try {
+         Field f = cut.getField(fname);
+         String fValue = (String) f.get(null);
+         if (fValue.equals(value)) {
+            result = true;
+         }
+      } catch (Exception e) { }
+      
+      return result;
+   }
    
    /**
     * Tests whether class under test implements given interface
@@ -147,6 +168,26 @@ public class ClassChecker {
    }
    
    /**
+    * Tests whether the class method has specified return type.
+    * 
+    * @param name          Method name
+    * @param retType       return type
+    * @param parms         list of parameter types
+    * @return              true, if the method has the return type
+    */
+   public boolean methodHasReturnType(String name, Class<?> retType,  Class<?>[] parms) {
+      boolean result = false;
+      
+      try {
+         Method m = cut.getMethod(name, parms);
+         Class<?> cutRT = m.getReturnType();
+         result = cutRT.equals(retType);
+      } catch (Exception e) { }
+      
+      return result;
+   }
+   
+   /**
     * Tests whether class under test implements given interface
     * 
     * @param   scType
@@ -156,9 +197,27 @@ public class ClassChecker {
       boolean result = false;
       
       Class<?> c = cut.getSuperclass();
-      result = (c.getCanonicalName().equals(scType.getCanonicalName()));
+      result = c.equals(scType);
       
       return result;
+   }
+   
+   /**
+    * Tests whether the class under test is an annotation
+    * 
+    * @return     true if the class under test is an annotation
+    */
+   public boolean isAnnotation() {
+      return cut.isAnnotation();
+   }
+   
+   /**
+    * Tests whether the class under test is an Enum
+    * 
+    * @return     true if the class under test is an Enum
+    */
+   public boolean isEnum() {
+      return cut.isEnum();
    }
    
    private ArrayList<Class<?>> getAllInterfaces (Class<?> c) {

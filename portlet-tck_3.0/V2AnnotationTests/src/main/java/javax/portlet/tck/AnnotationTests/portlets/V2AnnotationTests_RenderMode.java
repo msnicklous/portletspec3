@@ -26,13 +26,9 @@ import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.portlet.ActionRequest;
-import javax.portlet.ActionResponse;
-import javax.portlet.Portlet;
-import javax.portlet.PortletConfig;
-import javax.portlet.PortletException;
-import javax.portlet.RenderRequest;
-import javax.portlet.RenderResponse;
+import javax.portlet.*;
+import javax.portlet.filter.*;
+import javax.portlet.tck.beans.ClassChecker;
 import javax.portlet.tck.beans.TestCaseDetails;
 import javax.portlet.tck.beans.JSR286ApiTestCaseDetails;
 import static javax.portlet.tck.beans.JSR286ApiTestCaseDetails.*;
@@ -49,11 +45,11 @@ public class V2AnnotationTests_RenderMode implements Portlet {
          V2AnnotationTests_RenderMode.class.getName();
    private final Logger LOGGER = Logger.getLogger(LOG_CLASS);
    
-   private PortletConfig config = null;
+   private PortletConfig portletConfig = null;
 
    @Override
    public void init(PortletConfig config) throws PortletException {
-      this.config = config;
+      this.portletConfig = config;
    }
 
    @Override
@@ -61,38 +57,46 @@ public class V2AnnotationTests_RenderMode implements Portlet {
    }
 
    @Override
-   public void processAction(ActionRequest request, ActionResponse response)
+   public void processAction(ActionRequest actionRequest, ActionResponse actionResponse)
          throws PortletException, IOException {
    }
 
    @Override
-   public void render(RenderRequest request, RenderResponse response)
+   public void render(RenderRequest renderRequest, RenderResponse renderResponse)
          throws PortletException, IOException {
       
       if (LOGGER.isLoggable(Level.FINE)) {
          LOGGER.logp(Level.FINE, LOG_CLASS, "render", "Entry");
       }
 
-      PrintWriter writer = response.getWriter();
+      PrintWriter writer = renderResponse.getWriter();
       JSR286ApiTestCaseDetails tcd = new JSR286ApiTestCaseDetails();
+      ClassChecker cc = new ClassChecker(RenderMode.class);
 
       // Create result objects for the tests
 
       /* TestCase: RenderMode_ExtendsAnnotation */
       /* Details: "Extends java.lang.annotation.Annotation" */
-      /* TODO: implement test */
       TestResult tr0 = tcd.getTestResultFailed(RENDERMODE_EXTENDSANNOTATION);
-      
+      {
+         tr0.setTcSuccess(cc.isAnnotation());
+      }
+
       /* TestCase: RenderMode_hasName */
-      /* Details: "Has a name(java.lang.String) method" */
-      /* TODO: implement test */
+      /* Details: "Has a name() method" */
       TestResult tr1 = tcd.getTestResultFailed(RENDERMODE_HASNAME);
-      
+      {
+         String name = "name";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr1.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
+
       /* TestCase: RenderMode_name */
       /* Details: "On a render request, the method is executed if the portlet mode matches the name field" */
-      /* TODO: implement test */
       TestResult tr2 = tcd.getTestResultFailed(RENDERMODE_NAME);
-      
+      /* TODO: implement test */
+
 
 
       // Write the results to the output stream

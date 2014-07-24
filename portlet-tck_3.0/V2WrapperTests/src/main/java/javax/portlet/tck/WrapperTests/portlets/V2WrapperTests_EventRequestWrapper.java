@@ -26,13 +26,9 @@ import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.portlet.ActionRequest;
-import javax.portlet.ActionResponse;
-import javax.portlet.Portlet;
-import javax.portlet.PortletConfig;
-import javax.portlet.PortletException;
-import javax.portlet.RenderRequest;
-import javax.portlet.RenderResponse;
+import javax.portlet.*;
+import javax.portlet.filter.*;
+import javax.portlet.tck.beans.ClassChecker;
 import javax.portlet.tck.beans.TestCaseDetails;
 import javax.portlet.tck.beans.JSR286ApiTestCaseDetails;
 import static javax.portlet.tck.beans.JSR286ApiTestCaseDetails.*;
@@ -49,11 +45,11 @@ public class V2WrapperTests_EventRequestWrapper implements Portlet {
          V2WrapperTests_EventRequestWrapper.class.getName();
    private final Logger LOGGER = Logger.getLogger(LOG_CLASS);
    
-   private PortletConfig config = null;
+   private PortletConfig portletConfig = null;
 
    @Override
    public void init(PortletConfig config) throws PortletException {
-      this.config = config;
+      this.portletConfig = config;
    }
 
    @Override
@@ -61,83 +57,111 @@ public class V2WrapperTests_EventRequestWrapper implements Portlet {
    }
 
    @Override
-   public void processAction(ActionRequest request, ActionResponse response)
+   public void processAction(ActionRequest actionRequest, ActionResponse actionResponse)
          throws PortletException, IOException {
    }
 
    @Override
-   public void render(RenderRequest request, RenderResponse response)
+   public void render(RenderRequest renderRequest, RenderResponse renderResponse)
          throws PortletException, IOException {
       
       if (LOGGER.isLoggable(Level.FINE)) {
          LOGGER.logp(Level.FINE, LOG_CLASS, "render", "Entry");
       }
 
-      PrintWriter writer = response.getWriter();
+      PrintWriter writer = renderResponse.getWriter();
       JSR286ApiTestCaseDetails tcd = new JSR286ApiTestCaseDetails();
+      ClassChecker cc = new ClassChecker(EventRequestWrapper.class);
 
       // Create result objects for the tests
 
       /* TestCase: EventRequestWrapper_extendsPortletRequestWrapper */
       /* Details: "Extends PortletRequestWrapper" */
-      /* TODO: implement test */
       TestResult tr0 = tcd.getTestResultFailed(EVENTREQUESTWRAPPER_EXTENDSPORTLETREQUESTWRAPPER);
-      
+      {
+         tr0.setTcSuccess(cc.hasSuperclass(PortletRequestWrapper.class));
+      }
+
       /* TestCase: EventRequestWrapper_implementsEventRequest */
       /* Details: "Implements EventRequest" */
-      /* TODO: implement test */
       TestResult tr1 = tcd.getTestResultFailed(EVENTREQUESTWRAPPER_IMPLEMENTSEVENTREQUEST);
-      
+      {
+         tr1.setTcSuccess(cc.implementsInterface(EventRequest.class));
+      }
+
       /* TestCase: EventRequestWrapper_constructor */
-      /* Details: "Constructs EventRequestWrapper with specified wrapped EventRequest object" */
-      /* TODO: implement test */
+      /* Details: "Provides constructor EventRequestWrapper(EventRequest) with specified wrapped EventRequest object" */
       TestResult tr2 = tcd.getTestResultFailed(EVENTREQUESTWRAPPER_CONSTRUCTOR);
-      
+      {
+         Class<?>[] parms = {EventRequest.class};
+         tr2.setTcSuccess(cc.hasConstructor(parms));
+      }
+
       /* TestCase: EventRequestWrapper_hasGetRequest */
       /* Details: "Has a getRequest() method" */
-      /* TODO: implement test */
       TestResult tr3 = tcd.getTestResultFailed(EVENTREQUESTWRAPPER_HASGETREQUEST);
-      
+      {
+         String name = "getRequest";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr3.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
+
       /* TestCase: EventRequestWrapper_getRequest */
       /* Details: "Returns wrapped EventRequest object" */
-      /* TODO: implement test */
       TestResult tr4 = tcd.getTestResultFailed(EVENTREQUESTWRAPPER_GETREQUEST);
-      
+      /* TODO: implement test */
+
       /* TestCase: EventRequestWrapper_hasSetRequest */
       /* Details: "Has a setRequest(EventRequest) method" */
-      /* TODO: implement test */
       TestResult tr5 = tcd.getTestResultFailed(EVENTREQUESTWRAPPER_HASSETREQUEST);
-      
+      {
+         String name = "setRequest";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {EventRequest.class};
+         tr5.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
+
       /* TestCase: EventRequestWrapper_setRequest */
       /* Details: "Allows wrapped EventRequest object to be set" */
-      /* TODO: implement test */
       TestResult tr6 = tcd.getTestResultFailed(EVENTREQUESTWRAPPER_SETREQUEST);
-      
+      /* TODO: implement test */
+
       /* TestCase: EventRequestWrapper_hasGetEvent */
       /* Details: "Has a getEvent() method" */
-      /* TODO: implement test */
       TestResult tr7 = tcd.getTestResultFailed(EVENTREQUESTWRAPPER_HASGETEVENT);
-      
+      {
+         String name = "getEvent";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr7.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
+
       /* TestCase: EventRequestWrapper_getEvent1 */
       /* Details: "Calls wrapped method" */
-      /* TODO: implement test */
       TestResult tr8 = tcd.getTestResultFailed(EVENTREQUESTWRAPPER_GETEVENT1);
-      
+      /* TODO: implement test */
+
       /* TestCase: EventRequestWrapper_getEvent2 */
       /* Details: "Returns Event object" */
-      /* TODO: implement test */
       TestResult tr9 = tcd.getTestResultFailed(EVENTREQUESTWRAPPER_GETEVENT2);
-      
+      /* TODO: implement test */
+
       /* TestCase: EventRequestWrapper_hasGetMethod */
       /* Details: "Has a getMethod() method" */
-      /* TODO: implement test */
       TestResult tr10 = tcd.getTestResultFailed(EVENTREQUESTWRAPPER_HASGETMETHOD);
-      
+      {
+         String name = "getMethod";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr10.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
+
       /* TestCase: EventRequestWrapper_getMethod */
       /* Details: "Calls wrapped method" */
-      /* TODO: implement test */
       TestResult tr11 = tcd.getTestResultFailed(EVENTREQUESTWRAPPER_GETMETHOD);
-      
+      /* TODO: implement test */
+
 
 
       // Write the results to the output stream

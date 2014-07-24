@@ -26,13 +26,9 @@ import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.portlet.ActionRequest;
-import javax.portlet.ActionResponse;
-import javax.portlet.Portlet;
-import javax.portlet.PortletConfig;
-import javax.portlet.PortletException;
-import javax.portlet.RenderRequest;
-import javax.portlet.RenderResponse;
+import javax.portlet.*;
+import javax.portlet.filter.*;
+import javax.portlet.tck.beans.ClassChecker;
 import javax.portlet.tck.beans.TestCaseDetails;
 import javax.portlet.tck.beans.JSR286ApiTestCaseDetails;
 import static javax.portlet.tck.beans.JSR286ApiTestCaseDetails.*;
@@ -49,11 +45,11 @@ public class V2PortletTests_Event implements Portlet {
          V2PortletTests_Event.class.getName();
    private final Logger LOGGER = Logger.getLogger(LOG_CLASS);
    
-   private PortletConfig config = null;
+   private PortletConfig portletConfig = null;
 
    @Override
    public void init(PortletConfig config) throws PortletException {
-      this.config = config;
+      this.portletConfig = config;
    }
 
    @Override
@@ -61,68 +57,88 @@ public class V2PortletTests_Event implements Portlet {
    }
 
    @Override
-   public void processAction(ActionRequest request, ActionResponse response)
+   public void processAction(ActionRequest actionRequest, ActionResponse actionResponse)
          throws PortletException, IOException {
    }
 
    @Override
-   public void render(RenderRequest request, RenderResponse response)
+   public void render(RenderRequest renderRequest, RenderResponse renderResponse)
          throws PortletException, IOException {
       
       if (LOGGER.isLoggable(Level.FINE)) {
          LOGGER.logp(Level.FINE, LOG_CLASS, "render", "Entry");
       }
 
-      PrintWriter writer = response.getWriter();
+      PrintWriter writer = renderResponse.getWriter();
       JSR286ApiTestCaseDetails tcd = new JSR286ApiTestCaseDetails();
+      // TODO: access the class under test and uncomment this code.
+      // ClassChecker cc = new ClassChecker(Event);
 
       // Create result objects for the tests
 
       /* TestCase: Event_hasGetQName */
       /* Details: "Has a getQName() method" */
-      /* TODO: implement test */
       TestResult tr0 = tcd.getTestResultFailed(EVENT_HASGETQNAME);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    String name = "getQName";
+      //    Class<?>[] exceptions = null;
+      //    Class<?>[] parms = null;
+      //    tr0.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      // }
+
       /* TestCase: Event_getQName1 */
       /* Details: "Returns the javax.xml.namespace.QName object for the Event" */
-      /* TODO: implement test */
       TestResult tr1 = tcd.getTestResultFailed(EVENT_GETQNAME1);
-      
+      /* TODO: implement test */
+
       /* TestCase: Event_getQName2 */
       /* Details: "Returned value may not be null" */
-      /* TODO: implement test */
       TestResult tr2 = tcd.getTestResultFailed(EVENT_GETQNAME2);
-      
+      /* TODO: implement test */
+
       /* TestCase: Event_hasGetName */
       /* Details: "Has a getName() method" */
-      /* TODO: implement test */
       TestResult tr3 = tcd.getTestResultFailed(EVENT_HASGETNAME);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    String name = "getName";
+      //    Class<?>[] exceptions = null;
+      //    Class<?>[] parms = null;
+      //    tr3.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      // }
+
       /* TestCase: Event_getName1 */
       /* Details: "Returns a String containing the event local name" */
-      /* TODO: implement test */
       TestResult tr4 = tcd.getTestResultFailed(EVENT_GETNAME1);
-      
+      /* TODO: implement test */
+
       /* TestCase: Event_getName2 */
       /* Details: "Returned value may not be null" */
-      /* TODO: implement test */
       TestResult tr5 = tcd.getTestResultFailed(EVENT_GETNAME2);
-      
+      /* TODO: implement test */
+
       /* TestCase: Event_hasGetValue */
       /* Details: "Has a getValue() method" */
-      /* TODO: implement test */
       TestResult tr6 = tcd.getTestResultFailed(EVENT_HASGETVALUE);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    String name = "getValue";
+      //    Class<?>[] exceptions = null;
+      //    Class<?>[] parms = null;
+      //    tr6.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      // }
+
       /* TestCase: Event_getValue1 */
       /* Details: "Returns a java.io.Serializable object representing the event payload" */
-      /* TODO: implement test */
       TestResult tr7 = tcd.getTestResultFailed(EVENT_GETVALUE1);
-      
+      /* TODO: implement test */
+
       /* TestCase: Event_getValue2 */
       /* Details: "Returned value is null if the event has no payload" */
-      /* TODO: implement test */
       TestResult tr8 = tcd.getTestResultFailed(EVENT_GETVALUE2);
-      
+      /* TODO: implement test */
+
 
 
       // Write the results to the output stream

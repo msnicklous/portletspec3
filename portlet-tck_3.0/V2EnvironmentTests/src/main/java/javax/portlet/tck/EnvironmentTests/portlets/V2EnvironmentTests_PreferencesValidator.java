@@ -26,13 +26,9 @@ import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.portlet.ActionRequest;
-import javax.portlet.ActionResponse;
-import javax.portlet.Portlet;
-import javax.portlet.PortletConfig;
-import javax.portlet.PortletException;
-import javax.portlet.RenderRequest;
-import javax.portlet.RenderResponse;
+import javax.portlet.*;
+import javax.portlet.filter.*;
+import javax.portlet.tck.beans.ClassChecker;
 import javax.portlet.tck.beans.TestCaseDetails;
 import javax.portlet.tck.beans.JSR286ApiTestCaseDetails;
 import static javax.portlet.tck.beans.JSR286ApiTestCaseDetails.*;
@@ -49,11 +45,11 @@ public class V2EnvironmentTests_PreferencesValidator implements Portlet {
          V2EnvironmentTests_PreferencesValidator.class.getName();
    private final Logger LOGGER = Logger.getLogger(LOG_CLASS);
    
-   private PortletConfig config = null;
+   private PortletConfig portletConfig = null;
 
    @Override
    public void init(PortletConfig config) throws PortletException {
-      this.config = config;
+      this.portletConfig = config;
    }
 
    @Override
@@ -61,38 +57,40 @@ public class V2EnvironmentTests_PreferencesValidator implements Portlet {
    }
 
    @Override
-   public void processAction(ActionRequest request, ActionResponse response)
+   public void processAction(ActionRequest actionRequest, ActionResponse actionResponse)
          throws PortletException, IOException {
    }
 
    @Override
-   public void render(RenderRequest request, RenderResponse response)
+   public void render(RenderRequest renderRequest, RenderResponse renderResponse)
          throws PortletException, IOException {
       
       if (LOGGER.isLoggable(Level.FINE)) {
          LOGGER.logp(Level.FINE, LOG_CLASS, "render", "Entry");
       }
 
-      PrintWriter writer = response.getWriter();
+      PrintWriter writer = renderResponse.getWriter();
       JSR286ApiTestCaseDetails tcd = new JSR286ApiTestCaseDetails();
+      // TODO: access the class under test and uncomment this code.
+      // ClassChecker cc = new ClassChecker(PreferencesValidator);
 
       // Create result objects for the tests
 
       /* TestCase: PreferencesValidator_canBeConfigured */
       /* Details: "A PreferencesValidator can be configured in the deployment descriptor" */
-      /* TODO: implement test */
       TestResult tr0 = tcd.getTestResultFailed(PREFERENCESVALIDATOR_CANBECONFIGURED);
-      
+      /* TODO: implement test */
+
       /* TestCase: PreferencesValidator_validate1 */
       /* Details: "The validate(PortletPreferences) method is called when the preferences are stored " */
-      /* TODO: implement test */
       TestResult tr1 = tcd.getTestResultFailed(PREFERENCESVALIDATOR_VALIDATE1);
-      
+      /* TODO: implement test */
+
       /* TestCase: PreferencesValidator_validate2 */
       /* Details: "If a ValidatorException is thrown, the preferences are not stored" */
-      /* TODO: implement test */
       TestResult tr2 = tcd.getTestResultFailed(PREFERENCESVALIDATOR_VALIDATE2);
-      
+      /* TODO: implement test */
+
 
 
       // Write the results to the output stream

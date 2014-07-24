@@ -26,13 +26,9 @@ import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.portlet.ActionRequest;
-import javax.portlet.ActionResponse;
-import javax.portlet.Portlet;
-import javax.portlet.PortletConfig;
-import javax.portlet.PortletException;
-import javax.portlet.RenderRequest;
-import javax.portlet.RenderResponse;
+import javax.portlet.*;
+import javax.portlet.filter.*;
+import javax.portlet.tck.beans.ClassChecker;
 import javax.portlet.tck.beans.TestCaseDetails;
 import javax.portlet.tck.beans.JSR286ApiTestCaseDetails;
 import static javax.portlet.tck.beans.JSR286ApiTestCaseDetails.*;
@@ -49,11 +45,11 @@ public class V2ResponseTests_StateAwareResponse implements Portlet {
          V2ResponseTests_StateAwareResponse.class.getName();
    private final Logger LOGGER = Logger.getLogger(LOG_CLASS);
    
-   private PortletConfig config = null;
+   private PortletConfig portletConfig = null;
 
    @Override
    public void init(PortletConfig config) throws PortletException {
-      this.config = config;
+      this.portletConfig = config;
    }
 
    @Override
@@ -61,348 +57,419 @@ public class V2ResponseTests_StateAwareResponse implements Portlet {
    }
 
    @Override
-   public void processAction(ActionRequest request, ActionResponse response)
+   public void processAction(ActionRequest actionRequest, ActionResponse actionResponse)
          throws PortletException, IOException {
    }
 
    @Override
-   public void render(RenderRequest request, RenderResponse response)
+   public void render(RenderRequest renderRequest, RenderResponse renderResponse)
          throws PortletException, IOException {
       
       if (LOGGER.isLoggable(Level.FINE)) {
          LOGGER.logp(Level.FINE, LOG_CLASS, "render", "Entry");
       }
 
-      PrintWriter writer = response.getWriter();
+      PrintWriter writer = renderResponse.getWriter();
       JSR286ApiTestCaseDetails tcd = new JSR286ApiTestCaseDetails();
+      // TODO: access the class under test and uncomment this code.
+      // ClassChecker cc = new ClassChecker(StateAwareResponse);
 
       // Create result objects for the tests
 
       /* TestCase: StateAwareResponse_implementsPortletResponse1 */
       /* Details: "Implements PortletResponse" */
-      /* TODO: implement test */
       TestResult tr0 = tcd.getTestResultFailed(STATEAWARERESPONSE_IMPLEMENTSPORTLETRESPONSE1);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    tr0.setTcSuccess(cc.implementsInterface(PortletResponse.class));
+      // }
+
       /* TestCase: StateAwareResponse_implementsPortletResponse2 */
       /* Details: "All tests described for the PortletResponse execute correctly with the StateAwareResponse" */
-      /* TODO: implement test */
       TestResult tr1 = tcd.getTestResultFailed(STATEAWARERESPONSE_IMPLEMENTSPORTLETRESPONSE2);
-      
+      /* TODO: implement test */
+
       /* TestCase: StateAwareResponse_hasSetWindowState */
       /* Details: "Has a setWindowState(WindowState) throws javax.portlet.WindowStateException method" */
-      /* TODO: implement test */
       TestResult tr2 = tcd.getTestResultFailed(STATEAWARERESPONSE_HASSETWINDOWSTATE);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    String name = "setWindowState";
+      //    Class<?>[] exceptions = {javax.portlet.WindowStateException.class};
+      //    Class<?>[] parms = {WindowState.class};
+      //    tr2.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      // }
+
       /* TestCase: StateAwareResponse_setWindowState1 */
       /* Details: "Sets the WindowState to the specified value" */
-      /* TODO: implement test */
       TestResult tr3 = tcd.getTestResultFailed(STATEAWARERESPONSE_SETWINDOWSTATE1);
-      
+      /* TODO: implement test */
+
       /* TestCase: StateAwareResponse_setWindowState2 */
       /* Details: "Throws WindowStateException if the portlet cannot switch to the specified WindowState" */
-      /* TODO: implement test */
       TestResult tr4 = tcd.getTestResultFailed(STATEAWARERESPONSE_SETWINDOWSTATE2);
-      
+      /* TODO: implement test */
+
       /* TestCase: StateAwareResponse_setWindowState3 */
       /* Details: "Throws IllegalStateException if the method is invoked after the sendRedirect method has been called" */
-      /* TODO: implement test */
       TestResult tr5 = tcd.getTestResultFailed(STATEAWARERESPONSE_SETWINDOWSTATE3);
-      
+      /* TODO: implement test */
+
       /* TestCase: StateAwareResponse_hasSetPortletMode */
       /* Details: "Has a setPortletMode(PortletMode) throws javax.portlet.PortletModeException method" */
-      /* TODO: implement test */
       TestResult tr6 = tcd.getTestResultFailed(STATEAWARERESPONSE_HASSETPORTLETMODE);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    String name = "setPortletMode";
+      //    Class<?>[] exceptions = {javax.portlet.PortletModeException.class};
+      //    Class<?>[] parms = {PortletMode.class};
+      //    tr6.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      // }
+
       /* TestCase: StateAwareResponse_setPortletMode1 */
       /* Details: "Sets the PortletMode to the specified value" */
-      /* TODO: implement test */
       TestResult tr7 = tcd.getTestResultFailed(STATEAWARERESPONSE_SETPORTLETMODE1);
-      
+      /* TODO: implement test */
+
       /* TestCase: StateAwareResponse_setPortletMode2 */
       /* Details: "Throws PortletModeException if the portlet cannot switch to the specified PortletMode" */
-      /* TODO: implement test */
       TestResult tr8 = tcd.getTestResultFailed(STATEAWARERESPONSE_SETPORTLETMODE2);
-      
+      /* TODO: implement test */
+
       /* TestCase: StateAwareResponse_setPortletMode3 */
       /* Details: "Throws IllegalStateException if the method is invoked after the sendRedirect method has been called" */
-      /* TODO: implement test */
       TestResult tr9 = tcd.getTestResultFailed(STATEAWARERESPONSE_SETPORTLETMODE3);
-      
+      /* TODO: implement test */
+
       /* TestCase: StateAwareResponse_hasSetRenderParameters */
       /* Details: "Has a setRenderParameters(java.util.Map<java.lang.String,java.lang.String[]>) method" */
-      /* TODO: implement test */
       TestResult tr10 = tcd.getTestResultFailed(STATEAWARERESPONSE_HASSETRENDERPARAMETERS);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    String name = "setRenderParameters";
+      //    Class<?>[] exceptions = null;
+      //    Class<?>[] parms = {java.util.Map.class};
+      //    tr10.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      // }
+
       /* TestCase: StateAwareResponse_setRenderParameters1 */
       /* Details: "Sets the render parameter map to the specified value" */
-      /* TODO: implement test */
       TestResult tr11 = tcd.getTestResultFailed(STATEAWARERESPONSE_SETRENDERPARAMETERS1);
-      
+      /* TODO: implement test */
+
       /* TestCase: StateAwareResponse_setRenderParameters2 */
       /* Details: "Public render parameters can be set through the map" */
-      /* TODO: implement test */
       TestResult tr12 = tcd.getTestResultFailed(STATEAWARERESPONSE_SETRENDERPARAMETERS2);
-      
+      /* TODO: implement test */
+
       /* TestCase: StateAwareResponse_setRenderParameters3 */
       /* Details: "Private render parameters can be set through the map" */
-      /* TODO: implement test */
       TestResult tr13 = tcd.getTestResultFailed(STATEAWARERESPONSE_SETRENDERPARAMETERS3);
-      
+      /* TODO: implement test */
+
       /* TestCase: StateAwareResponse_setRenderParameters4 */
       /* Details: "Previously existing private render parameters not contained in the specified input map are removed" */
-      /* TODO: implement test */
       TestResult tr14 = tcd.getTestResultFailed(STATEAWARERESPONSE_SETRENDERPARAMETERS4);
-      
+      /* TODO: implement test */
+
       /* TestCase: StateAwareResponse_setRenderParameters5 */
       /* Details: "Previously existing public render parameters not contained in the specified input map remain unchanged" */
-      /* TODO: implement test */
       TestResult tr15 = tcd.getTestResultFailed(STATEAWARERESPONSE_SETRENDERPARAMETERS5);
-      
+      /* TODO: implement test */
+
       /* TestCase: StateAwareResponse_setRenderParameters6 */
       /* Details: "Parameters that are set are available in subsequent render requests" */
-      /* TODO: implement test */
       TestResult tr16 = tcd.getTestResultFailed(STATEAWARERESPONSE_SETRENDERPARAMETERS6);
-      
+      /* TODO: implement test */
+
       /* TestCase: StateAwareResponse_setRenderParameters7 */
       /* Details: "Throws IllegalArgumentException if the input map is null" */
-      /* TODO: implement test */
       TestResult tr17 = tcd.getTestResultFailed(STATEAWARERESPONSE_SETRENDERPARAMETERS7);
-      
+      /* TODO: implement test */
+
       /* TestCase: StateAwareResponse_setRenderParameters8 */
       /* Details: "Throws IllegalArgumentException if any key in the map is null" */
-      /* TODO: implement test */
       TestResult tr18 = tcd.getTestResultFailed(STATEAWARERESPONSE_SETRENDERPARAMETERS8);
-      
+      /* TODO: implement test */
+
       /* TestCase: StateAwareResponse_setRenderParameters9 */
       /* Details: "Throws IllegalArgumentException if any key in the map is the empty string (\"\") " */
-      /* TODO: implement test */
       TestResult tr19 = tcd.getTestResultFailed(STATEAWARERESPONSE_SETRENDERPARAMETERS9);
-      
+      /* TODO: implement test */
+
       /* TestCase: StateAwareResponse_setRenderParameters10 */
       /* Details: "Throws IllegalArgumentException if the values array for any key is null " */
-      /* TODO: implement test */
       TestResult tr20 = tcd.getTestResultFailed(STATEAWARERESPONSE_SETRENDERPARAMETERS10);
-      
+      /* TODO: implement test */
+
       /* TestCase: StateAwareResponse_setRenderParameters11 */
       /* Details: "Throws IllegalArgumentException if any element in any values array is null " */
-      /* TODO: implement test */
       TestResult tr21 = tcd.getTestResultFailed(STATEAWARERESPONSE_SETRENDERPARAMETERS11);
-      
+      /* TODO: implement test */
+
       /* TestCase: StateAwareResponse_setRenderParameters12 */
       /* Details: "Throws IllegalStateException if the method is invoked after the sendRedirect method has been called" */
-      /* TODO: implement test */
       TestResult tr22 = tcd.getTestResultFailed(STATEAWARERESPONSE_SETRENDERPARAMETERS12);
-      
+      /* TODO: implement test */
+
       /* TestCase: StateAwareResponse_hasSetRenderParameterA */
       /* Details: "Has a setRenderParameter(java.lang.String,java.lang.String) method" */
-      /* TODO: implement test */
       TestResult tr23 = tcd.getTestResultFailed(STATEAWARERESPONSE_HASSETRENDERPARAMETERA);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    String name = "setRenderParameter";
+      //    Class<?>[] exceptions = null;
+      //    Class<?>[] parms = {java.lang.String.class, java.lang.String.class};
+      //    tr23.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      // }
+
       /* TestCase: StateAwareResponse_setRenderParameterA1 */
       /* Details: "Sets the parameter value for the specified name" */
-      /* TODO: implement test */
       TestResult tr24 = tcd.getTestResultFailed(STATEAWARERESPONSE_SETRENDERPARAMETERA1);
-      
+      /* TODO: implement test */
+
       /* TestCase: StateAwareResponse_setRenderParameterA2 */
       /* Details: "A private parameter can be set" */
-      /* TODO: implement test */
       TestResult tr25 = tcd.getTestResultFailed(STATEAWARERESPONSE_SETRENDERPARAMETERA2);
-      
+      /* TODO: implement test */
+
       /* TestCase: StateAwareResponse_setRenderParameterA3 */
       /* Details: "A public parameter can be set" */
-      /* TODO: implement test */
       TestResult tr26 = tcd.getTestResultFailed(STATEAWARERESPONSE_SETRENDERPARAMETERA3);
-      
+      /* TODO: implement test */
+
       /* TestCase: StateAwareResponse_setRenderParameterA4 */
       /* Details: "All previously existing values for the specified name are removed" */
-      /* TODO: implement test */
       TestResult tr27 = tcd.getTestResultFailed(STATEAWARERESPONSE_SETRENDERPARAMETERA4);
-      
+      /* TODO: implement test */
+
       /* TestCase: StateAwareResponse_setRenderParameterA5 */
       /* Details: "If the value is null, all values for the specified name are removed" */
-      /* TODO: implement test */
       TestResult tr28 = tcd.getTestResultFailed(STATEAWARERESPONSE_SETRENDERPARAMETERA5);
-      
+      /* TODO: implement test */
+
       /* TestCase: StateAwareResponse_setRenderParameterA6 */
       /* Details: "Parameters that are set are available in subsequent render requests" */
-      /* TODO: implement test */
       TestResult tr29 = tcd.getTestResultFailed(STATEAWARERESPONSE_SETRENDERPARAMETERA6);
-      
+      /* TODO: implement test */
+
       /* TestCase: StateAwareResponse_setRenderParameterA7 */
       /* Details: "Throws IllegalArgumentException if the name is null" */
-      /* TODO: implement test */
       TestResult tr30 = tcd.getTestResultFailed(STATEAWARERESPONSE_SETRENDERPARAMETERA7);
-      
+      /* TODO: implement test */
+
       /* TestCase: StateAwareResponse_setRenderParameterA8 */
       /* Details: "Throws IllegalStateException if the method is invoked after the sendRedirect method has been called" */
-      /* TODO: implement test */
       TestResult tr31 = tcd.getTestResultFailed(STATEAWARERESPONSE_SETRENDERPARAMETERA8);
-      
+      /* TODO: implement test */
+
       /* TestCase: StateAwareResponse_hasSetRenderParameterB */
       /* Details: "Has a setRenderParameter(java.lang.String,java.lang.String[]) method" */
-      /* TODO: implement test */
       TestResult tr32 = tcd.getTestResultFailed(STATEAWARERESPONSE_HASSETRENDERPARAMETERB);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    String name = "setRenderParameter";
+      //    Class<?>[] exceptions = null;
+      //    Class<?>[] parms = {java.lang.String.class, java.lang.String[].class};
+      //    tr32.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      // }
+
       /* TestCase: StateAwareResponse_setRenderParameterB1 */
       /* Details: "Sets the parameter values for the specified name." */
-      /* TODO: implement test */
       TestResult tr33 = tcd.getTestResultFailed(STATEAWARERESPONSE_SETRENDERPARAMETERB1);
-      
+      /* TODO: implement test */
+
       /* TestCase: StateAwareResponse_setRenderParameterB2 */
       /* Details: "All existing values are removed" */
-      /* TODO: implement test */
       TestResult tr34 = tcd.getTestResultFailed(STATEAWARERESPONSE_SETRENDERPARAMETERB2);
-      
+      /* TODO: implement test */
+
       /* TestCase: StateAwareResponse_setRenderParameterB3 */
       /* Details: "Parameters that are set are available in subsequent render requests" */
-      /* TODO: implement test */
       TestResult tr35 = tcd.getTestResultFailed(STATEAWARERESPONSE_SETRENDERPARAMETERB3);
-      
+      /* TODO: implement test */
+
       /* TestCase: StateAwareResponse_setRenderParameterB4 */
       /* Details: "Throws IllegalArgumentException if the name is null" */
-      /* TODO: implement test */
       TestResult tr36 = tcd.getTestResultFailed(STATEAWARERESPONSE_SETRENDERPARAMETERB4);
-      
+      /* TODO: implement test */
+
       /* TestCase: StateAwareResponse_setRenderParameterB5 */
       /* Details: "Throws IllegalArgumentException if the values array is null" */
-      /* TODO: implement test */
       TestResult tr37 = tcd.getTestResultFailed(STATEAWARERESPONSE_SETRENDERPARAMETERB5);
-      
+      /* TODO: implement test */
+
       /* TestCase: StateAwareResponse_setRenderParameterB6 */
       /* Details: "Throws IllegalStateException if the method is invoked after the sendRedirect method has been called" */
-      /* TODO: implement test */
       TestResult tr38 = tcd.getTestResultFailed(STATEAWARERESPONSE_SETRENDERPARAMETERB6);
-      
+      /* TODO: implement test */
+
       /* TestCase: StateAwareResponse_hasSetEventA */
       /* Details: "Has a setEvent(javax.xml.namespace.QName, java.io.Serializable) method" */
-      /* TODO: implement test */
       TestResult tr39 = tcd.getTestResultFailed(STATEAWARERESPONSE_HASSETEVENTA);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    String name = "setEvent";
+      //    Class<?>[] exceptions = null;
+      //    Class<?>[] parms = {javax.xml.namespace.QName.class, java.io.Serializable.class};
+      //    tr39.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      // }
+
       /* TestCase: StateAwareResponse_setEventA1 */
       /* Details: "Publishes an event with the specified name and payload" */
-      /* TODO: implement test */
       TestResult tr40 = tcd.getTestResultFailed(STATEAWARERESPONSE_SETEVENTA1);
-      
+      /* TODO: implement test */
+
       /* TestCase: StateAwareResponse_setEventA2 */
       /* Details: "Throws IllegalArgumentException if the name is null" */
-      /* TODO: implement test */
       TestResult tr41 = tcd.getTestResultFailed(STATEAWARERESPONSE_SETEVENTA2);
-      
+      /* TODO: implement test */
+
       /* TestCase: StateAwareResponse_setEventA3 */
       /* Details: "Throws IllegalArgumentException if the value is not serializable" */
-      /* TODO: implement test */
       TestResult tr42 = tcd.getTestResultFailed(STATEAWARERESPONSE_SETEVENTA3);
-      
+      /* TODO: implement test */
+
       /* TestCase: StateAwareResponse_setEventA4 */
       /* Details: "Throws IllegalArgumentException if the value does not have a valid JAXB binding" */
-      /* TODO: implement test */
       TestResult tr43 = tcd.getTestResultFailed(STATEAWARERESPONSE_SETEVENTA4);
-      
+      /* TODO: implement test */
+
       /* TestCase: StateAwareResponse_setEventA5 */
       /* Details: "Throws IllegalArgumentException if the value object type is not as specified in the deployment descriptor" */
-      /* TODO: implement test */
       TestResult tr44 = tcd.getTestResultFailed(STATEAWARERESPONSE_SETEVENTA5);
-      
+      /* TODO: implement test */
+
       /* TestCase: StateAwareResponse_hasSetEventB */
       /* Details: "Has a setEvent(java.lang.String name, java.io.Serializable value) method" */
-      /* TODO: implement test */
       TestResult tr45 = tcd.getTestResultFailed(STATEAWARERESPONSE_HASSETEVENTB);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    String name = "setEvent";
+      //    Class<?>[] exceptions = null;
+      //    Class<?>[] parms = {java.lang.String.class, java.io.Serializable.class};
+      //    tr45.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      // }
+
       /* TestCase: StateAwareResponse_setEventB1 */
       /* Details: "Publishes an event with the specified name and payload" */
-      /* TODO: implement test */
       TestResult tr46 = tcd.getTestResultFailed(STATEAWARERESPONSE_SETEVENTB1);
-      
+      /* TODO: implement test */
+
       /* TestCase: StateAwareResponse_setEventB2 */
       /* Details: "Throws IllegalArgumentException if the name is null" */
-      /* TODO: implement test */
       TestResult tr47 = tcd.getTestResultFailed(STATEAWARERESPONSE_SETEVENTB2);
-      
+      /* TODO: implement test */
+
       /* TestCase: StateAwareResponse_setEventB3 */
       /* Details: "Throws IllegalArgumentException if the value is not serializable" */
-      /* TODO: implement test */
       TestResult tr48 = tcd.getTestResultFailed(STATEAWARERESPONSE_SETEVENTB3);
-      
+      /* TODO: implement test */
+
       /* TestCase: StateAwareResponse_setEventB4 */
       /* Details: "Throws IllegalArgumentException if the value does not have a valid JAXB binding" */
-      /* TODO: implement test */
       TestResult tr49 = tcd.getTestResultFailed(STATEAWARERESPONSE_SETEVENTB4);
-      
+      /* TODO: implement test */
+
       /* TestCase: StateAwareResponse_setEventB5 */
       /* Details: "Throws IllegalArgumentException if the value object type is not as specified in the deployment descriptor" */
-      /* TODO: implement test */
       TestResult tr50 = tcd.getTestResultFailed(STATEAWARERESPONSE_SETEVENTB5);
-      
+      /* TODO: implement test */
+
       /* TestCase: StateAwareResponse_hasGetRenderParameterMap */
       /* Details: "Has a getRenderParameterMap() method" */
-      /* TODO: implement test */
       TestResult tr51 = tcd.getTestResultFailed(STATEAWARERESPONSE_HASGETRENDERPARAMETERMAP);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    String name = "getRenderParameterMap";
+      //    Class<?>[] exceptions = null;
+      //    Class<?>[] parms = null;
+      //    tr51.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      // }
+
       /* TestCase: StateAwareResponse_getRenderParameterMap1 */
       /* Details: "Returns a map of the render parameters currently set on the response" */
-      /* TODO: implement test */
       TestResult tr52 = tcd.getTestResultFailed(STATEAWARERESPONSE_GETRENDERPARAMETERMAP1);
-      
+      /* TODO: implement test */
+
       /* TestCase: StateAwareResponse_getRenderParameterMap2 */
       /* Details: "The returned map contains public render parameters" */
-      /* TODO: implement test */
       TestResult tr53 = tcd.getTestResultFailed(STATEAWARERESPONSE_GETRENDERPARAMETERMAP2);
-      
+      /* TODO: implement test */
+
       /* TestCase: StateAwareResponse_getRenderParameterMap3 */
       /* Details: "The returned map contains private render parameters" */
-      /* TODO: implement test */
       TestResult tr54 = tcd.getTestResultFailed(STATEAWARERESPONSE_GETRENDERPARAMETERMAP3);
-      
+      /* TODO: implement test */
+
       /* TestCase: StateAwareResponse_getRenderParameterMap4 */
       /* Details: "An empty map is returned if no parameters have been set " */
-      /* TODO: implement test */
       TestResult tr55 = tcd.getTestResultFailed(STATEAWARERESPONSE_GETRENDERPARAMETERMAP4);
-      
+      /* TODO: implement test */
+
       /* TestCase: StateAwareResponse_hasGetPortletMode */
       /* Details: "Has a getPortletMode() method" */
-      /* TODO: implement test */
       TestResult tr56 = tcd.getTestResultFailed(STATEAWARERESPONSE_HASGETPORTLETMODE);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    String name = "getPortletMode";
+      //    Class<?>[] exceptions = null;
+      //    Class<?>[] parms = null;
+      //    tr56.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      // }
+
       /* TestCase: StateAwareResponse_getPortletMode1 */
       /* Details: "Returns the current PortletMode for the portlet" */
-      /* TODO: implement test */
       TestResult tr57 = tcd.getTestResultFailed(STATEAWARERESPONSE_GETPORTLETMODE1);
-      
+      /* TODO: implement test */
+
       /* TestCase: StateAwareResponse_getPortletMode2 */
       /* Details: "Returns null if no PortletMode has been set" */
-      /* TODO: implement test */
       TestResult tr58 = tcd.getTestResultFailed(STATEAWARERESPONSE_GETPORTLETMODE2);
-      
+      /* TODO: implement test */
+
       /* TestCase: StateAwareResponse_hasGetWindowState */
       /* Details: "Has a getWindowState() method" */
-      /* TODO: implement test */
       TestResult tr59 = tcd.getTestResultFailed(STATEAWARERESPONSE_HASGETWINDOWSTATE);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    String name = "getWindowState";
+      //    Class<?>[] exceptions = null;
+      //    Class<?>[] parms = null;
+      //    tr59.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      // }
+
       /* TestCase: StateAwareResponse_getWindowState1 */
       /* Details: "Returns the current WindowState for the portlet" */
-      /* TODO: implement test */
       TestResult tr60 = tcd.getTestResultFailed(STATEAWARERESPONSE_GETWINDOWSTATE1);
-      
+      /* TODO: implement test */
+
       /* TestCase: StateAwareResponse_getWindowState2 */
       /* Details: "Returns null if no WindowState has been set" */
-      /* TODO: implement test */
       TestResult tr61 = tcd.getTestResultFailed(STATEAWARERESPONSE_GETWINDOWSTATE2);
-      
+      /* TODO: implement test */
+
       /* TestCase: StateAwareResponse_hasRemovePublicRenderParameter */
       /* Details: "Has a removePublicRenderParameter(java.lang.String) method" */
-      /* TODO: implement test */
       TestResult tr62 = tcd.getTestResultFailed(STATEAWARERESPONSE_HASREMOVEPUBLICRENDERPARAMETER);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    String name = "removePublicRenderParameter";
+      //    Class<?>[] exceptions = null;
+      //    Class<?>[] parms = {java.lang.String.class};
+      //    tr62.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      // }
+
       /* TestCase: StateAwareResponse_removePublicRenderParameter1 */
       /* Details: "Removes the specified public render parameter" */
-      /* TODO: implement test */
       TestResult tr63 = tcd.getTestResultFailed(STATEAWARERESPONSE_REMOVEPUBLICRENDERPARAMETER1);
-      
+      /* TODO: implement test */
+
       /* TestCase: StateAwareResponse_removePublicRenderParameter2 */
       /* Details: "Throws IllegalArgumentException if the name is null" */
-      /* TODO: implement test */
       TestResult tr64 = tcd.getTestResultFailed(STATEAWARERESPONSE_REMOVEPUBLICRENDERPARAMETER2);
-      
+      /* TODO: implement test */
+
 
 
       // Write the results to the output stream

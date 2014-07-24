@@ -26,13 +26,9 @@ import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.portlet.ActionRequest;
-import javax.portlet.ActionResponse;
-import javax.portlet.Portlet;
-import javax.portlet.PortletConfig;
-import javax.portlet.PortletException;
-import javax.portlet.RenderRequest;
-import javax.portlet.RenderResponse;
+import javax.portlet.*;
+import javax.portlet.filter.*;
+import javax.portlet.tck.beans.ClassChecker;
 import javax.portlet.tck.beans.TestCaseDetails;
 import javax.portlet.tck.beans.JSR286ApiTestCaseDetails;
 import static javax.portlet.tck.beans.JSR286ApiTestCaseDetails.*;
@@ -49,11 +45,11 @@ public class V2WrapperTests_PortletResponseWrapper implements Portlet {
          V2WrapperTests_PortletResponseWrapper.class.getName();
    private final Logger LOGGER = Logger.getLogger(LOG_CLASS);
    
-   private PortletConfig config = null;
+   private PortletConfig portletConfig = null;
 
    @Override
    public void init(PortletConfig config) throws PortletException {
-      this.config = config;
+      this.portletConfig = config;
    }
 
    @Override
@@ -61,123 +57,174 @@ public class V2WrapperTests_PortletResponseWrapper implements Portlet {
    }
 
    @Override
-   public void processAction(ActionRequest request, ActionResponse response)
+   public void processAction(ActionRequest actionRequest, ActionResponse actionResponse)
          throws PortletException, IOException {
    }
 
    @Override
-   public void render(RenderRequest request, RenderResponse response)
+   public void render(RenderRequest renderRequest, RenderResponse renderResponse)
          throws PortletException, IOException {
       
       if (LOGGER.isLoggable(Level.FINE)) {
          LOGGER.logp(Level.FINE, LOG_CLASS, "render", "Entry");
       }
 
-      PrintWriter writer = response.getWriter();
+      PrintWriter writer = renderResponse.getWriter();
       JSR286ApiTestCaseDetails tcd = new JSR286ApiTestCaseDetails();
+      ClassChecker cc = new ClassChecker(PortletResponseWrapper.class);
 
       // Create result objects for the tests
 
       /* TestCase: PortletResponseWrapper_implementsPortletResponse */
       /* Details: "Implements PortletResponse" */
-      /* TODO: implement test */
       TestResult tr0 = tcd.getTestResultFailed(PORTLETRESPONSEWRAPPER_IMPLEMENTSPORTLETRESPONSE);
-      
+      {
+         tr0.setTcSuccess(cc.implementsInterface(PortletResponse.class));
+      }
+
       /* TestCase: PortletResponseWrapper_constructor */
-      /* Details: "Constructs PortletResponseWrapper with specified wrapped PortletResponse object" */
-      /* TODO: implement test */
+      /* Details: "Provides constructor PortletResponseWrapper(PortletResponse) with specified wrapped PortletResponse object" */
       TestResult tr1 = tcd.getTestResultFailed(PORTLETRESPONSEWRAPPER_CONSTRUCTOR);
-      
+      {
+         Class<?>[] parms = {PortletResponse.class};
+         tr1.setTcSuccess(cc.hasConstructor(parms));
+      }
+
       /* TestCase: PortletResponseWrapper_hasAddPropertyA */
       /* Details: "Has a addProperty(javax.servlet.http.Cookie) method" */
-      /* TODO: implement test */
       TestResult tr2 = tcd.getTestResultFailed(PORTLETRESPONSEWRAPPER_HASADDPROPERTYA);
-      
+      {
+         String name = "addProperty";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {javax.servlet.http.Cookie.class};
+         tr2.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
+
       /* TestCase: PortletResponseWrapper_addPropertyA */
       /* Details: "Calls wrapped method" */
-      /* TODO: implement test */
       TestResult tr3 = tcd.getTestResultFailed(PORTLETRESPONSEWRAPPER_ADDPROPERTYA);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletResponseWrapper_hasAddPropertyB */
       /* Details: "Has a addProperty(java.lang.String, org.w3c.dom.Element) method" */
-      /* TODO: implement test */
       TestResult tr4 = tcd.getTestResultFailed(PORTLETRESPONSEWRAPPER_HASADDPROPERTYB);
-      
+      {
+         String name = "addProperty";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {java.lang.String.class, org.w3c.dom.Element.class};
+         tr4.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
+
       /* TestCase: PortletResponseWrapper_addPropertyB */
       /* Details: "Calls wrapped method" */
-      /* TODO: implement test */
       TestResult tr5 = tcd.getTestResultFailed(PORTLETRESPONSEWRAPPER_ADDPROPERTYB);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletResponseWrapper_hasAddPropertyC */
       /* Details: "Has a addProperty(java.lang.String, java.lang.String) method" */
-      /* TODO: implement test */
       TestResult tr6 = tcd.getTestResultFailed(PORTLETRESPONSEWRAPPER_HASADDPROPERTYC);
-      
+      {
+         String name = "addProperty";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {java.lang.String.class, java.lang.String.class};
+         tr6.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
+
       /* TestCase: PortletResponseWrapper_addPropertyC */
       /* Details: "Calls wrapped method" */
-      /* TODO: implement test */
       TestResult tr7 = tcd.getTestResultFailed(PORTLETRESPONSEWRAPPER_ADDPROPERTYC);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletResponseWrapper_hasEncodeURL */
       /* Details: "Has a encodeURL(java.lang.String) method" */
-      /* TODO: implement test */
       TestResult tr8 = tcd.getTestResultFailed(PORTLETRESPONSEWRAPPER_HASENCODEURL);
-      
+      {
+         String name = "encodeURL";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {java.lang.String.class};
+         tr8.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
+
       /* TestCase: PortletResponseWrapper_encodeURL */
       /* Details: "Calls wrapped method" */
-      /* TODO: implement test */
       TestResult tr9 = tcd.getTestResultFailed(PORTLETRESPONSEWRAPPER_ENCODEURL);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletResponseWrapper_hasGetNamespace */
       /* Details: "Has a getNamespace() method" */
-      /* TODO: implement test */
       TestResult tr10 = tcd.getTestResultFailed(PORTLETRESPONSEWRAPPER_HASGETNAMESPACE);
-      
+      {
+         String name = "getNamespace";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr10.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
+
       /* TestCase: PortletResponseWrapper_getNamespace */
       /* Details: "Calls wrapped method" */
-      /* TODO: implement test */
       TestResult tr11 = tcd.getTestResultFailed(PORTLETRESPONSEWRAPPER_GETNAMESPACE);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletResponseWrapper_hasSetProperty */
       /* Details: "Has a setProperty(java.lang.String, java.lang.String) method" */
-      /* TODO: implement test */
       TestResult tr12 = tcd.getTestResultFailed(PORTLETRESPONSEWRAPPER_HASSETPROPERTY);
-      
+      {
+         String name = "setProperty";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {java.lang.String.class, java.lang.String.class};
+         tr12.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
+
       /* TestCase: PortletResponseWrapper_setProperty */
       /* Details: "Calls wrapped method" */
-      /* TODO: implement test */
       TestResult tr13 = tcd.getTestResultFailed(PORTLETRESPONSEWRAPPER_SETPROPERTY);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletResponseWrapper_hasGetResponse */
       /* Details: "Has a getResponse() method" */
-      /* TODO: implement test */
       TestResult tr14 = tcd.getTestResultFailed(PORTLETRESPONSEWRAPPER_HASGETRESPONSE);
-      
+      {
+         String name = "getResponse";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr14.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
+
       /* TestCase: PortletResponseWrapper_getResponse */
       /* Details: "Returns wrapped PortletResponse object" */
-      /* TODO: implement test */
       TestResult tr15 = tcd.getTestResultFailed(PORTLETRESPONSEWRAPPER_GETRESPONSE);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletResponseWrapper_hasSetResponse */
       /* Details: "Has a setResponse(PortletResponse) method" */
-      /* TODO: implement test */
       TestResult tr16 = tcd.getTestResultFailed(PORTLETRESPONSEWRAPPER_HASSETRESPONSE);
-      
+      {
+         String name = "setResponse";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {PortletResponse.class};
+         tr16.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
+
       /* TestCase: PortletResponseWrapper_setResponse */
       /* Details: "Allows wrapped PortletResponse object to be set" */
-      /* TODO: implement test */
       TestResult tr17 = tcd.getTestResultFailed(PORTLETRESPONSEWRAPPER_SETRESPONSE);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletResponseWrapper_hasCreateElement */
       /* Details: "Has a createElement(java.lang.String) method" */
-      /* TODO: implement test */
       TestResult tr18 = tcd.getTestResultFailed(PORTLETRESPONSEWRAPPER_HASCREATEELEMENT);
-      
+      {
+         String name = "createElement";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {java.lang.String.class};
+         tr18.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
+
       /* TestCase: PortletResponseWrapper_createElement */
       /* Details: "Calls wrapped method" */
-      /* TODO: implement test */
       TestResult tr19 = tcd.getTestResultFailed(PORTLETRESPONSEWRAPPER_CREATEELEMENT);
-      
+      /* TODO: implement test */
+
 
 
       // Write the results to the output stream

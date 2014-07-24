@@ -26,13 +26,9 @@ import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.portlet.ActionRequest;
-import javax.portlet.ActionResponse;
-import javax.portlet.Portlet;
-import javax.portlet.PortletConfig;
-import javax.portlet.PortletException;
-import javax.portlet.RenderRequest;
-import javax.portlet.RenderResponse;
+import javax.portlet.*;
+import javax.portlet.filter.*;
+import javax.portlet.tck.beans.ClassChecker;
 import javax.portlet.tck.beans.TestCaseDetails;
 import javax.portlet.tck.beans.JSR286ApiTestCaseDetails;
 import static javax.portlet.tck.beans.JSR286ApiTestCaseDetails.*;
@@ -49,11 +45,11 @@ public class V2RequestTests_ActionRequest implements Portlet {
          V2RequestTests_ActionRequest.class.getName();
    private final Logger LOGGER = Logger.getLogger(LOG_CLASS);
    
-   private PortletConfig config = null;
+   private PortletConfig portletConfig = null;
 
    @Override
    public void init(PortletConfig config) throws PortletException {
-      this.config = config;
+      this.portletConfig = config;
    }
 
    @Override
@@ -61,48 +57,59 @@ public class V2RequestTests_ActionRequest implements Portlet {
    }
 
    @Override
-   public void processAction(ActionRequest request, ActionResponse response)
+   public void processAction(ActionRequest actionRequest, ActionResponse actionResponse)
          throws PortletException, IOException {
    }
 
    @Override
-   public void render(RenderRequest request, RenderResponse response)
+   public void render(RenderRequest renderRequest, RenderResponse renderResponse)
          throws PortletException, IOException {
       
       if (LOGGER.isLoggable(Level.FINE)) {
          LOGGER.logp(Level.FINE, LOG_CLASS, "render", "Entry");
       }
 
-      PrintWriter writer = response.getWriter();
+      PrintWriter writer = renderResponse.getWriter();
       JSR286ApiTestCaseDetails tcd = new JSR286ApiTestCaseDetails();
+      // TODO: access the class under test and uncomment this code.
+      // ClassChecker cc = new ClassChecker(ActionRequest);
 
       // Create result objects for the tests
 
       /* TestCase: ActionRequest_implementsClientDataRequest1 */
       /* Details: "Implements ClientDataRequest" */
-      /* TODO: implement test */
       TestResult tr0 = tcd.getTestResultFailed(ACTIONREQUEST_IMPLEMENTSCLIENTDATAREQUEST1);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    tr0.setTcSuccess(cc.implementsInterface(ClientDataRequest.class));
+      // }
+
       /* TestCase: ActionRequest_implementsClientDataRequest2 */
       /* Details: "Implements PortletRequest" */
-      /* TODO: implement test */
       TestResult tr1 = tcd.getTestResultFailed(ACTIONREQUEST_IMPLEMENTSCLIENTDATAREQUEST2);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    tr1.setTcSuccess(cc.implementsInterface(PortletRequest.class));
+      // }
+
       /* TestCase: ActionRequest_implementsClientDataRequest3 */
       /* Details: "All tests described for the ClientDataRequest execute correctly with the ActionRequest" */
-      /* TODO: implement test */
       TestResult tr2 = tcd.getTestResultFailed(ACTIONREQUEST_IMPLEMENTSCLIENTDATAREQUEST3);
-      
+      /* TODO: implement test */
+
       /* TestCase: ActionRequest_implementsClientDataRequest4 */
       /* Details: "All tests described for the PortletRequest execute correctly with the ActionRequest" */
-      /* TODO: implement test */
       TestResult tr3 = tcd.getTestResultFailed(ACTIONREQUEST_IMPLEMENTSCLIENTDATAREQUEST4);
-      
+      /* TODO: implement test */
+
       /* TestCase: ActionRequest_fieldACTION_NAME */
       /* Details: "Has String field ACTION_NAME with value of \"javax.portlet.action\" " */
-      /* TODO: implement test */
       TestResult tr4 = tcd.getTestResultFailed(ACTIONREQUEST_FIELDACTION_NAME);
-      
+      // TODO: access the class under test and uncomment this code.
+      // {
+      //    tr4.setTcSuccess(cc.hasField("ACTION_NAME", "javax.portlet.action"));
+      // }
+
 
 
       // Write the results to the output stream
