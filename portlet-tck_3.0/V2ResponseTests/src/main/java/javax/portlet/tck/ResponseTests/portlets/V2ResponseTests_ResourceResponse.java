@@ -71,26 +71,23 @@ public class V2ResponseTests_ResourceResponse implements Portlet {
 
       PrintWriter writer = renderResponse.getWriter();
       JSR286ApiTestCaseDetails tcd = new JSR286ApiTestCaseDetails();
-      // TODO: access the class under test and uncomment this code.
-      // ClassChecker cc = new ClassChecker(ResourceResponse);
+      ClassChecker cc = new ClassChecker(ResourceResponseWrapper.class);
 
       // Create result objects for the tests
 
       /* TestCase: ResourceResponse_implementsMimeResponse1 */
       /* Details: "Implements MimeResponse" */
       TestResult tr0 = tcd.getTestResultFailed(RESOURCERESPONSE_IMPLEMENTSMIMERESPONSE1);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    tr0.setTcSuccess(cc.implementsInterface(MimeResponse.class));
-      // }
+      {
+         tr0.setTcSuccess(cc.implementsInterface(MimeResponse.class));
+      }
 
       /* TestCase: ResourceResponse_implementsMimeResponse2 */
       /* Details: "Implements PortletResponse" */
       TestResult tr1 = tcd.getTestResultFailed(RESOURCERESPONSE_IMPLEMENTSMIMERESPONSE2);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    tr1.setTcSuccess(cc.implementsInterface(PortletResponse.class));
-      // }
+      {
+         tr1.setTcSuccess(cc.implementsInterface(PortletResponse.class));
+      }
 
       /* TestCase: ResourceResponse_implementsMimeResponse3 */
       /* Details: "All tests described for the PortletResponse execute correctly with the ResourceResponse" */
@@ -105,21 +102,19 @@ public class V2ResponseTests_ResourceResponse implements Portlet {
       /* TestCase: ResourceResponse_fieldHTTP_STATUS_CODE */
       /* Details: "Has String field HTTP_STATUS_CODE with value of \"portlet.http-status-code\"" */
       TestResult tr4 = tcd.getTestResultFailed(RESOURCERESPONSE_FIELDHTTP_STATUS_CODE);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    tr4.setTcSuccess(cc.hasField("HTTP_STATUS_CODE", "portlet.http-status-code""));
-      // }
+      {
+         tr4.setTcSuccess(cc.hasField("HTTP_STATUS_CODE", "portlet.http-status-code"));
+      }
 
       /* TestCase: ResourceResponse_hasSetLocale */
       /* Details: "Has a setLocale(java.util.Locale) method" */
       TestResult tr5 = tcd.getTestResultFailed(RESOURCERESPONSE_HASSETLOCALE);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "setLocale";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = {java.util.Locale.class};
-      //    tr5.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "setLocale";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {java.util.Locale.class};
+         tr5.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: ResourceResponse_setLocale1 */
       /* Details: "Sets the locale of the response" */
@@ -144,13 +139,12 @@ public class V2ResponseTests_ResourceResponse implements Portlet {
       /* TestCase: ResourceResponse_hasSetCharacterEncoding */
       /* Details: "Has a setCharacterEncoding(java.lang.String) method" */
       TestResult tr10 = tcd.getTestResultFailed(RESOURCERESPONSE_HASSETCHARACTERENCODING);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "setCharacterEncoding";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = {java.lang.String.class};
-      //    tr10.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "setCharacterEncoding";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {java.lang.String.class};
+         tr10.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: ResourceResponse_setCharacterEncoding1 */
       /* Details: "Sets the character encoding of the response" */
@@ -175,13 +169,12 @@ public class V2ResponseTests_ResourceResponse implements Portlet {
       /* TestCase: ResourceResponse_hasSetContentLength */
       /* Details: "Has a setContentLength(int) method" */
       TestResult tr15 = tcd.getTestResultFailed(RESOURCERESPONSE_HASSETCONTENTLENGTH);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "setContentLength";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = {int.class};
-      //    tr15.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "setContentLength";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {int.class};
+         tr15.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: ResourceResponse_setContentLength1 */
       /* Details: "Sets the length of the content body" */
@@ -201,13 +194,12 @@ public class V2ResponseTests_ResourceResponse implements Portlet {
       /* TestCase: ResourceResponse_hasCreateRenderURL */
       /* Details: "Has a createRenderURL() method" */
       TestResult tr19 = tcd.getTestResultFailed(RESOURCERESPONSE_HASCREATERENDERURL);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "createRenderURL";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = null;
-      //    tr19.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "createRenderURL";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr19.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: ResourceResponse_createRenderURL1 */
       /* Details: "Tests described for overridden method in MimeResponse execute correctly" */
@@ -222,13 +214,12 @@ public class V2ResponseTests_ResourceResponse implements Portlet {
       /* TestCase: ResourceResponse_hasCreateActionURL */
       /* Details: "Has a createActionURL() method" */
       TestResult tr22 = tcd.getTestResultFailed(RESOURCERESPONSE_HASCREATEACTIONURL);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "createActionURL";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = null;
-      //    tr22.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "createActionURL";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr22.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: ResourceResponse_createActionURL1 */
       /* Details: "Tests described for overridden method in MimeResponse execute correctly" */
@@ -243,13 +234,12 @@ public class V2ResponseTests_ResourceResponse implements Portlet {
       /* TestCase: ResourceResponse_hasCreateResourceURL */
       /* Details: "Has a createResourceURL() method" */
       TestResult tr25 = tcd.getTestResultFailed(RESOURCERESPONSE_HASCREATERESOURCEURL);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "createResourceURL";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = null;
-      //    tr25.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "createResourceURL";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr25.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: ResourceResponse_createResourceURL1 */
       /* Details: "Tests described for overridden method in MimeResponse execute correctly" */

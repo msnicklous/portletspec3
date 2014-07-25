@@ -71,26 +71,23 @@ public class V2RequestTests_ResourceRequest implements Portlet {
 
       PrintWriter writer = renderResponse.getWriter();
       JSR286ApiTestCaseDetails tcd = new JSR286ApiTestCaseDetails();
-      // TODO: access the class under test and uncomment this code.
-      // ClassChecker cc = new ClassChecker(ResourceRequest);
+      ClassChecker cc = new ClassChecker(ResourceRequestWrapper.class);
 
       // Create result objects for the tests
 
       /* TestCase: ResourceRequest_implementsClientDataRequest1 */
       /* Details: "Implements ClientDataRequest" */
       TestResult tr0 = tcd.getTestResultFailed(RESOURCEREQUEST_IMPLEMENTSCLIENTDATAREQUEST1);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    tr0.setTcSuccess(cc.implementsInterface(ClientDataRequest.class));
-      // }
+      {
+         tr0.setTcSuccess(cc.implementsInterface(ClientDataRequest.class));
+      }
 
       /* TestCase: ResourceRequest_implementsClientDataRequest2 */
       /* Details: "Implements PortletRequest" */
       TestResult tr1 = tcd.getTestResultFailed(RESOURCEREQUEST_IMPLEMENTSCLIENTDATAREQUEST2);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    tr1.setTcSuccess(cc.implementsInterface(PortletRequest.class));
-      // }
+      {
+         tr1.setTcSuccess(cc.implementsInterface(PortletRequest.class));
+      }
 
       /* TestCase: ResourceRequest_implementsClientDataRequest3 */
       /* Details: "All tests described for the ClientDataRequest execute correctly with the ResourceRequest" */
@@ -105,21 +102,19 @@ public class V2RequestTests_ResourceRequest implements Portlet {
       /* TestCase: ResourceRequest_fieldETAG */
       /* Details: "Has String field ETAG with value of \"portlet.ETag\" " */
       TestResult tr4 = tcd.getTestResultFailed(RESOURCEREQUEST_FIELDETAG);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    tr4.setTcSuccess(cc.hasField("ETAG", "portlet.ETag"));
-      // }
+      {
+         tr4.setTcSuccess(cc.hasField("ETAG", "portlet.ETag"));
+      }
 
       /* TestCase: ResourceRequest_hasgetETag */
       /* Details: "Has a getETag() method" */
       TestResult tr5 = tcd.getTestResultFailed(RESOURCEREQUEST_HASGETETAG);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "getETag";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = null;
-      //    tr5.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "getETag";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr5.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: ResourceRequest_getETag1 */
       /* Details: "Returns a String containing the validation tag if the portlet container has a cached response for this request" */
@@ -134,13 +129,12 @@ public class V2RequestTests_ResourceRequest implements Portlet {
       /* TestCase: ResourceRequest_hasgetResourceID */
       /* Details: "Has a getResourceID() method" */
       TestResult tr8 = tcd.getTestResultFailed(RESOURCEREQUEST_HASGETRESOURCEID);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "getResourceID";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = null;
-      //    tr8.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "getResourceID";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr8.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: ResourceRequest_getResourceID1 */
       /* Details: "Returns a String containing the resource ID set on the resource URL" */
@@ -155,13 +149,12 @@ public class V2RequestTests_ResourceRequest implements Portlet {
       /* TestCase: ResourceRequest_hasgetPrivateRenderParameterMap */
       /* Details: "Has a getPrivateRenderParameterMap() method" */
       TestResult tr11 = tcd.getTestResultFailed(RESOURCEREQUEST_HASGETPRIVATERENDERPARAMETERMAP);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "getPrivateRenderParameterMap";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = null;
-      //    tr11.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "getPrivateRenderParameterMap";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr11.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: ResourceRequest_getPrivateRenderParameterMap1 */
       /* Details: "Returns a java.util.Map<java.lang.String,java.lang.String[]> object containing the private render parameters for the request" */
@@ -186,13 +179,12 @@ public class V2RequestTests_ResourceRequest implements Portlet {
       /* TestCase: ResourceRequest_hasgetResponseContentType */
       /* Details: "Has a getResponseContentType() method" */
       TestResult tr16 = tcd.getTestResultFailed(RESOURCEREQUEST_HASGETRESPONSECONTENTTYPE);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "getResponseContentType";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = null;
-      //    tr16.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "getResponseContentType";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr16.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: ResourceRequest_getResponseContentType */
       /* Details: "Returns a String containing the preferred content type for the resonse" */
@@ -202,13 +194,12 @@ public class V2RequestTests_ResourceRequest implements Portlet {
       /* TestCase: ResourceRequest_hasgetResponseContentTypes */
       /* Details: "Has a getResponseContentTypes() method" */
       TestResult tr18 = tcd.getTestResultFailed(RESOURCEREQUEST_HASGETRESPONSECONTENTTYPES);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "getResponseContentTypes";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = null;
-      //    tr18.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "getResponseContentTypes";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr18.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: ResourceRequest_getResponseContentTypes */
       /* Details: "Returns an java.util.Enumeration<java.lang.String> object containing the content types that will be accepted for the response" */
@@ -218,13 +209,12 @@ public class V2RequestTests_ResourceRequest implements Portlet {
       /* TestCase: ResourceRequest_hasgetCacheability */
       /* Details: "Has a getCacheability() method" */
       TestResult tr20 = tcd.getTestResultFailed(RESOURCEREQUEST_HASGETCACHEABILITY);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "getCacheability";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = null;
-      //    tr20.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "getCacheability";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr20.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: ResourceRequest_getCacheability */
       /* Details: "Returns a String containing the cache level of the resource request" */

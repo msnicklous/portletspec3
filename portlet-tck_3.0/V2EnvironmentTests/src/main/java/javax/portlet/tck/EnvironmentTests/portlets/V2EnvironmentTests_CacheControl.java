@@ -71,21 +71,19 @@ public class V2EnvironmentTests_CacheControl implements Portlet {
 
       PrintWriter writer = renderResponse.getWriter();
       JSR286ApiTestCaseDetails tcd = new JSR286ApiTestCaseDetails();
-      // TODO: access the class under test and uncomment this code.
-      // ClassChecker cc = new ClassChecker(CacheControl);
+      ClassChecker cc = new ClassChecker(renderResponse.getCacheControl().getClass());
 
       // Create result objects for the tests
 
       /* TestCase: CacheControl_hasGetExpirationTime */
       /* Details: "Has a getExpirationTime() method" */
       TestResult tr0 = tcd.getTestResultFailed(CACHECONTROL_HASGETEXPIRATIONTIME);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "getExpirationTime";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = null;
-      //    tr0.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "getExpirationTime";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr0.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: CacheControl_getExpirationTime1 */
       /* Details: "Returns the expiration time set through setExpirationTime" */
@@ -105,13 +103,12 @@ public class V2EnvironmentTests_CacheControl implements Portlet {
       /* TestCase: CacheControl_hasSetExpirationTime */
       /* Details: "Has a setExpirationTime(int) method" */
       TestResult tr4 = tcd.getTestResultFailed(CACHECONTROL_HASSETEXPIRATIONTIME);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "setExpirationTime";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = {int.class};
-      //    tr4.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "setExpirationTime";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {int.class};
+         tr4.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: CacheControl_setExpirationTime1 */
       /* Details: "Sets the expiration time for the current response to the specified value" */
@@ -131,13 +128,12 @@ public class V2EnvironmentTests_CacheControl implements Portlet {
       /* TestCase: CacheControl_hasIsPublicScope */
       /* Details: "Has a isPublicScope() method" */
       TestResult tr8 = tcd.getTestResultFailed(CACHECONTROL_HASISPUBLICSCOPE);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "isPublicScope";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = null;
-      //    tr8.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "isPublicScope";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr8.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: CacheControl_isPublicScope1 */
       /* Details: "Returns true if the caching scope has been set to public through the setPublicScope method" */
@@ -167,13 +163,12 @@ public class V2EnvironmentTests_CacheControl implements Portlet {
       /* TestCase: CacheControl_hasSetPublicScope */
       /* Details: "Has a setPublicScope(boolean) method" */
       TestResult tr14 = tcd.getTestResultFailed(CACHECONTROL_HASSETPUBLICSCOPE);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "setPublicScope";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = {boolean.class};
-      //    tr14.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "setPublicScope";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {boolean.class};
+         tr14.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: CacheControl_setPublicScope1 */
       /* Details: "If the input parameter is true, the cache scope is set to public" */
@@ -188,13 +183,12 @@ public class V2EnvironmentTests_CacheControl implements Portlet {
       /* TestCase: CacheControl_hasGetETag */
       /* Details: "Has a getETag() method" */
       TestResult tr17 = tcd.getTestResultFailed(CACHECONTROL_HASGETETAG);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "getETag";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = null;
-      //    tr17.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "getETag";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr17.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: CacheControl_getETag1 */
       /* Details: "Returns a String containing the ETag for the current response" */
@@ -209,13 +203,12 @@ public class V2EnvironmentTests_CacheControl implements Portlet {
       /* TestCase: CacheControl_hasSetETag */
       /* Details: "Has a setETag(java.lang.String) method" */
       TestResult tr20 = tcd.getTestResultFailed(CACHECONTROL_HASSETETAG);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "setETag";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = {java.lang.String.class};
-      //    tr20.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "setETag";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {java.lang.String.class};
+         tr20.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: CacheControl_setETag1 */
       /* Details: "Sets an ETag for the current response" */
@@ -235,13 +228,12 @@ public class V2EnvironmentTests_CacheControl implements Portlet {
       /* TestCase: CacheControl_hasUseCachedContent */
       /* Details: "Has a useCachedContent() method" */
       TestResult tr24 = tcd.getTestResultFailed(CACHECONTROL_HASUSECACHEDCONTENT);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "useCachedContent";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = null;
-      //    tr24.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "useCachedContent";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr24.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: CacheControl_useCachedContent1 */
       /* Details: "Returns true if cached content has been set to valid through the setUseCachedContent method" */
@@ -261,13 +253,12 @@ public class V2EnvironmentTests_CacheControl implements Portlet {
       /* TestCase: CacheControl_hasSetUseCachedContent */
       /* Details: "Has a setUseCachedContent(boolean) method" */
       TestResult tr28 = tcd.getTestResultFailed(CACHECONTROL_HASSETUSECACHEDCONTENT);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "setUseCachedContent";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = {boolean.class};
-      //    tr28.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "setUseCachedContent";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {boolean.class};
+         tr28.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: CacheControl_setUseCachedContent1 */
       /* Details: "If set to true, the cached content is valid " */

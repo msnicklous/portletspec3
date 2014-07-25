@@ -71,8 +71,7 @@ public class V2RequestTests_ClientDataRequest implements Portlet {
 
       PrintWriter writer = renderResponse.getWriter();
       JSR286ApiTestCaseDetails tcd = new JSR286ApiTestCaseDetails();
-      // TODO: access the class under test and uncomment this code.
-      // ClassChecker cc = new ClassChecker(ClientDataRequest);
+      ClassChecker cc = new ClassChecker(ActionRequestWrapper.class);
 
       // Create result objects for the tests
 
@@ -89,13 +88,12 @@ public class V2RequestTests_ClientDataRequest implements Portlet {
       /* TestCase: ClientDataRequest_hasGetPortletInputStream */
       /* Details: "Has a getPortletInputStream() throws java.io.IOException method" */
       TestResult tr2 = tcd.getTestResultFailed(CLIENTDATAREQUEST_HASGETPORTLETINPUTSTREAM);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "getPortletInputStream";
-      //    Class<?>[] exceptions = {java.io.IOException.class};
-      //    Class<?>[] parms = null;
-      //    tr2.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "getPortletInputStream";
+         Class<?>[] exceptions = {java.io.IOException.class};
+         Class<?>[] parms = null;
+         tr2.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: ClientDataRequest_getPortletInputStream1 */
       /* Details: "Returns an InputStream object" */
@@ -120,13 +118,12 @@ public class V2RequestTests_ClientDataRequest implements Portlet {
       /* TestCase: ClientDataRequest_hasSetCharacterEncoding */
       /* Details: "Has a setCharacterEncoding(java.lang.String) throws java.io.UnsupportedEncodingException method" */
       TestResult tr7 = tcd.getTestResultFailed(CLIENTDATAREQUEST_HASSETCHARACTERENCODING);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "setCharacterEncoding";
-      //    Class<?>[] exceptions = {java.io.UnsupportedEncodingException.class};
-      //    Class<?>[] parms = {java.lang.String.class};
-      //    tr7.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "setCharacterEncoding";
+         Class<?>[] exceptions = {java.io.UnsupportedEncodingException.class};
+         Class<?>[] parms = {java.lang.String.class};
+         tr7.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: ClientDataRequest_setCharacterEncoding1 */
       /* Details: "Allows the character encoding for the body of the request to be overridden" */
@@ -151,13 +148,12 @@ public class V2RequestTests_ClientDataRequest implements Portlet {
       /* TestCase: ClientDataRequest_hasGetReader */
       /* Details: "Has a getReader() throws java.io.UnsupportedEncodingException, java.io.IOException method" */
       TestResult tr12 = tcd.getTestResultFailed(CLIENTDATAREQUEST_HASGETREADER);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "getReader";
-      //    Class<?>[] exceptions = {java.io.UnsupportedEncodingException.class, java.io.IOException.class};
-      //    Class<?>[] parms = null;
-      //    tr12.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "getReader";
+         Class<?>[] exceptions = {java.io.UnsupportedEncodingException.class, java.io.IOException.class};
+         Class<?>[] parms = null;
+         tr12.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: ClientDataRequest_getReader1 */
       /* Details: "Returns a BufferedReader object for reading the request" */
@@ -187,13 +183,12 @@ public class V2RequestTests_ClientDataRequest implements Portlet {
       /* TestCase: ClientDataRequest_hasGetCharacterEncoding */
       /* Details: "Has a getCharacterEncoding() method" */
       TestResult tr18 = tcd.getTestResultFailed(CLIENTDATAREQUEST_HASGETCHARACTERENCODING);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "getCharacterEncoding";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = null;
-      //    tr18.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "getCharacterEncoding";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr18.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: ClientDataRequest_getCharacterEncoding1 */
       /* Details: "Returns a String containing the name of the character encoding used in the request body" */
@@ -208,13 +203,12 @@ public class V2RequestTests_ClientDataRequest implements Portlet {
       /* TestCase: ClientDataRequest_hasGetContentType */
       /* Details: "Has a getContentType() method" */
       TestResult tr21 = tcd.getTestResultFailed(CLIENTDATAREQUEST_HASGETCONTENTTYPE);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "getContentType";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = null;
-      //    tr21.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "getContentType";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr21.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: ClientDataRequest_getContentType1 */
       /* Details: "Returns a String containing the MIME type of the request body" */
@@ -229,13 +223,12 @@ public class V2RequestTests_ClientDataRequest implements Portlet {
       /* TestCase: ClientDataRequest_hasGetContentLength */
       /* Details: "Has a getContentLength() method" */
       TestResult tr24 = tcd.getTestResultFailed(CLIENTDATAREQUEST_HASGETCONTENTLENGTH);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "getContentLength";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = null;
-      //    tr24.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "getContentLength";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr24.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: ClientDataRequest_getContentLength1 */
       /* Details: "Returns the length in bytes of the request body" */
@@ -250,13 +243,12 @@ public class V2RequestTests_ClientDataRequest implements Portlet {
       /* TestCase: ClientDataRequest_hasGetMethod */
       /* Details: "Has a getMethod() method" */
       TestResult tr27 = tcd.getTestResultFailed(CLIENTDATAREQUEST_HASGETMETHOD);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "getMethod";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = null;
-      //    tr27.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "getMethod";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr27.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: ClientDataRequest_getMethod */
       /* Details: "Returns a String containing the name of the HTTP method with which the request was made" */

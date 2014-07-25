@@ -71,21 +71,19 @@ public class V2EnvironmentTests_PortletPreferences implements Portlet {
 
       PrintWriter writer = renderResponse.getWriter();
       JSR286ApiTestCaseDetails tcd = new JSR286ApiTestCaseDetails();
-      // TODO: access the class under test and uncomment this code.
-      // ClassChecker cc = new ClassChecker(PortletPreferences);
+      ClassChecker cc = new ClassChecker(renderRequest.getPreferences().getClass());
 
       // Create result objects for the tests
 
       /* TestCase: PortletPreferences_hasIsReadOnly */
       /* Details: "Has a isReadOnly(java.lang.String) method" */
       TestResult tr0 = tcd.getTestResultFailed(PORTLETPREFERENCES_HASISREADONLY);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "isReadOnly";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = {java.lang.String.class};
-      //    tr0.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "isReadOnly";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {java.lang.String.class};
+         tr0.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: PortletPreferences_isReadOnly1 */
       /* Details: "Returns true if the preference specified by the key is defined to be read-only in the deployment descriptor" */
@@ -110,13 +108,12 @@ public class V2EnvironmentTests_PortletPreferences implements Portlet {
       /* TestCase: PortletPreferences_hasGetValue */
       /* Details: "Has a getValue(java.lang.String, java.lang.String) method" */
       TestResult tr5 = tcd.getTestResultFailed(PORTLETPREFERENCES_HASGETVALUE);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "getValue";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = {java.lang.String.class, java.lang.String.class};
-      //    tr5.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "getValue";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {java.lang.String.class, java.lang.String.class};
+         tr5.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: PortletPreferences_getValue1 */
       /* Details: "Returns the first String value for the specified key" */
@@ -141,13 +138,12 @@ public class V2EnvironmentTests_PortletPreferences implements Portlet {
       /* TestCase: PortletPreferences_hasGetValues */
       /* Details: "Has a getValues(java.lang.String, java.lang.String[]) method" */
       TestResult tr10 = tcd.getTestResultFailed(PORTLETPREFERENCES_HASGETVALUES);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "getValues";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = {java.lang.String.class, java.lang.String[].class};
-      //    tr10.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "getValues";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {java.lang.String.class, java.lang.String[].class};
+         tr10.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: PortletPreferences_getValues1 */
       /* Details: "Returns the values String[] for the specified key" */
@@ -172,13 +168,12 @@ public class V2EnvironmentTests_PortletPreferences implements Portlet {
       /* TestCase: PortletPreferences_hasSetValue */
       /* Details: "Has a setValue(java.lang.String, java.lang.String) throws javax.portlet.ReadOnlyException method" */
       TestResult tr15 = tcd.getTestResultFailed(PORTLETPREFERENCES_HASSETVALUE);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "setValue";
-      //    Class<?>[] exceptions = {javax.portlet.ReadOnlyException.class};
-      //    Class<?>[] parms = {java.lang.String.class, java.lang.String.class};
-      //    tr15.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "setValue";
+         Class<?>[] exceptions = {javax.portlet.ReadOnlyException.class};
+         Class<?>[] parms = {java.lang.String.class, java.lang.String.class};
+         tr15.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: PortletPreferences_setValue1 */
       /* Details: "Sets the specified value for the specified key" */
@@ -208,13 +203,12 @@ public class V2EnvironmentTests_PortletPreferences implements Portlet {
       /* TestCase: PortletPreferences_hasSetValues */
       /* Details: "Has a setValues(java.lang.String, java.lang.String[]) throws javax.portlet.ReadOnlyException method" */
       TestResult tr21 = tcd.getTestResultFailed(PORTLETPREFERENCES_HASSETVALUES);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "setValues";
-      //    Class<?>[] exceptions = {javax.portlet.ReadOnlyException.class};
-      //    Class<?>[] parms = {java.lang.String.class, java.lang.String[].class};
-      //    tr21.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "setValues";
+         Class<?>[] exceptions = {javax.portlet.ReadOnlyException.class};
+         Class<?>[] parms = {java.lang.String.class, java.lang.String[].class};
+         tr21.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: PortletPreferences_setValues1 */
       /* Details: "Sets the specified value array for the specified key" */
@@ -249,13 +243,12 @@ public class V2EnvironmentTests_PortletPreferences implements Portlet {
       /* TestCase: PortletPreferences_hasGetNames */
       /* Details: "Has a getNames() method" */
       TestResult tr28 = tcd.getTestResultFailed(PORTLETPREFERENCES_HASGETNAMES);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "getNames";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = null;
-      //    tr28.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "getNames";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr28.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: PortletPreferences_getNames1 */
       /* Details: "Returns an java.util.Enumeration<java.lang.String> containing the available preference keys" */
@@ -270,13 +263,12 @@ public class V2EnvironmentTests_PortletPreferences implements Portlet {
       /* TestCase: PortletPreferences_hasGetMap */
       /* Details: "Has a getMap() method" */
       TestResult tr31 = tcd.getTestResultFailed(PORTLETPREFERENCES_HASGETMAP);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "getMap";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = null;
-      //    tr31.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "getMap";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr31.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: PortletPreferences_getMap1 */
       /* Details: "Returns an java.util.Map<java.lang.String> containing the available preferences" */
@@ -291,13 +283,12 @@ public class V2EnvironmentTests_PortletPreferences implements Portlet {
       /* TestCase: PortletPreferences_hasReset */
       /* Details: "Has a reset(java.lang.String) throws javax.portlet.ReadOnlyException method" */
       TestResult tr34 = tcd.getTestResultFailed(PORTLETPREFERENCES_HASRESET);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "reset";
-      //    Class<?>[] exceptions = {javax.portlet.ReadOnlyException.class};
-      //    Class<?>[] parms = {java.lang.String.class};
-      //    tr34.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "reset";
+         Class<?>[] exceptions = {javax.portlet.ReadOnlyException.class};
+         Class<?>[] parms = {java.lang.String.class};
+         tr34.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: PortletPreferences_reset1 */
       /* Details: "Removes the value associated with the specified key" */
@@ -317,13 +308,12 @@ public class V2EnvironmentTests_PortletPreferences implements Portlet {
       /* TestCase: PortletPreferences_hasStore */
       /* Details: "Has a store() throws java.io.IOException, javax.portlet.ValidatorException method" */
       TestResult tr38 = tcd.getTestResultFailed(PORTLETPREFERENCES_HASSTORE);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "store";
-      //    Class<?>[] exceptions = {java.io.IOException.class, javax.portlet.ValidatorException.class};
-      //    Class<?>[] parms = null;
-      //    tr38.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "store";
+         Class<?>[] exceptions = {java.io.IOException.class, javax.portlet.ValidatorException.class};
+         Class<?>[] parms = null;
+         tr38.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: PortletPreferences_store1 */
       /* Details: "Commits changes made to the preferences to the persistent store " */

@@ -71,18 +71,16 @@ public class V2URLTests_PortletURL implements Portlet {
 
       PrintWriter writer = renderResponse.getWriter();
       JSR286ApiTestCaseDetails tcd = new JSR286ApiTestCaseDetails();
-      // TODO: access the class under test and uncomment this code.
-      // ClassChecker cc = new ClassChecker(PortletURL);
+      ClassChecker cc = new ClassChecker(renderResponse.createRenderURL().getClass());
 
       // Create result objects for the tests
 
       /* TestCase: PortletURL_implementsBaseURL1 */
       /* Details: "Implements BaseURL" */
       TestResult tr0 = tcd.getTestResultFailed(PORTLETURL_IMPLEMENTSBASEURL1);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    tr0.setTcSuccess(cc.implementsInterface(BaseURL.class));
-      // }
+      {
+         tr0.setTcSuccess(cc.implementsInterface(BaseURL.class));
+      }
 
       /* TestCase: PortletURL_implementsBaseURL2 */
       /* Details: "All tests described for the BaseURL execute correctly with the PortletURL" */
@@ -92,13 +90,12 @@ public class V2URLTests_PortletURL implements Portlet {
       /* TestCase: PortletURL_hasSetWindowState */
       /* Details: "Has a setWindowState(WindowState) throws javax.portlet.WindowStateException method" */
       TestResult tr2 = tcd.getTestResultFailed(PORTLETURL_HASSETWINDOWSTATE);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "setWindowState";
-      //    Class<?>[] exceptions = {javax.portlet.WindowStateException.class};
-      //    Class<?>[] parms = {WindowState.class};
-      //    tr2.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "setWindowState";
+         Class<?>[] exceptions = {javax.portlet.WindowStateException.class};
+         Class<?>[] parms = {WindowState.class};
+         tr2.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: PortletURL_setWindowState1 */
       /* Details: "Sets the WindowState to be used when the URL is activated" */
@@ -123,13 +120,12 @@ public class V2URLTests_PortletURL implements Portlet {
       /* TestCase: PortletURL_hasSetPortletMode */
       /* Details: "Has a setPortletMode() throws javax.portlet.PortletModeException method" */
       TestResult tr7 = tcd.getTestResultFailed(PORTLETURL_HASSETPORTLETMODE);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "setPortletMode";
-      //    Class<?>[] exceptions = {javax.portlet.PortletModeException.class};
-      //    Class<?>[] parms = null;
-      //    tr7.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "setPortletMode";
+         Class<?>[] exceptions = {javax.portlet.PortletModeException.class};
+         Class<?>[] parms = null;
+         tr7.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: PortletURL_setPortletMode1 */
       /* Details: "Sets the PortletMode to be used when the URL is activated" */
@@ -154,13 +150,12 @@ public class V2URLTests_PortletURL implements Portlet {
       /* TestCase: PortletURL_hasGetPortletMode */
       /* Details: "Has a getPortletMode() method" */
       TestResult tr12 = tcd.getTestResultFailed(PORTLETURL_HASGETPORTLETMODE);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "getPortletMode";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = null;
-      //    tr12.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "getPortletMode";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr12.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: PortletURL_getPortletMode1 */
       /* Details: "Returns the PortletMode object set on the URL" */
@@ -175,13 +170,12 @@ public class V2URLTests_PortletURL implements Portlet {
       /* TestCase: PortletURL_hasGetWindowState */
       /* Details: "Has a getWindowState() method" */
       TestResult tr15 = tcd.getTestResultFailed(PORTLETURL_HASGETWINDOWSTATE);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "getWindowState";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = null;
-      //    tr15.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "getWindowState";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr15.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: PortletURL_getWindowState1 */
       /* Details: "Returns the WindowState object set on the URL" */
@@ -196,13 +190,12 @@ public class V2URLTests_PortletURL implements Portlet {
       /* TestCase: PortletURL_hasRemovePublicRenderParameter */
       /* Details: "Has a removePublicRenderParameter(java.lang.String) method" */
       TestResult tr18 = tcd.getTestResultFailed(PORTLETURL_HASREMOVEPUBLICRENDERPARAMETER);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "removePublicRenderParameter";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = {java.lang.String.class};
-      //    tr18.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "removePublicRenderParameter";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {java.lang.String.class};
+         tr18.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: PortletURL_removePublicRenderParameter1 */
       /* Details: "Removes the specified public render parameter" */

@@ -71,21 +71,19 @@ public class V2ResponseTests_PortletResponse implements Portlet {
 
       PrintWriter writer = renderResponse.getWriter();
       JSR286ApiTestCaseDetails tcd = new JSR286ApiTestCaseDetails();
-      // TODO: access the class under test and uncomment this code.
-      // ClassChecker cc = new ClassChecker(PortletResponse);
+      ClassChecker cc = new ClassChecker(renderResponse.getClass());
 
       // Create result objects for the tests
 
       /* TestCase: PortletResponse_hasAddPropertyA */
       /* Details: "Has a addProperty(javax.servlet.http.Cookie) method" */
       TestResult tr0 = tcd.getTestResultFailed(PORTLETRESPONSE_HASADDPROPERTYA);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "addProperty";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = {javax.servlet.http.Cookie.class};
-      //    tr0.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "addProperty";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {javax.servlet.http.Cookie.class};
+         tr0.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: PortletResponse_addPropertyA1 */
       /* Details: "Adds the specified cookie property to the response" */
@@ -100,13 +98,12 @@ public class V2ResponseTests_PortletResponse implements Portlet {
       /* TestCase: PortletResponse_hasAddPropertyB */
       /* Details: "Has a addProperty(java.lang.String key, org.w3c.dom.Element element) method" */
       TestResult tr3 = tcd.getTestResultFailed(PORTLETRESPONSE_HASADDPROPERTYB);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "addProperty";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = {java.lang.String.class, org.w3c.dom.Element.class};
-      //    tr3.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "addProperty";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {java.lang.String.class, org.w3c.dom.Element.class};
+         tr3.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: PortletResponse_addPropertyB1 */
       /* Details: "Adds an XML DOM Element to the response for the specified key" */
@@ -131,13 +128,12 @@ public class V2ResponseTests_PortletResponse implements Portlet {
       /* TestCase: PortletResponse_hasAddPropertyC */
       /* Details: "Has a addProperty(java.lang.String, java.lang.String) method" */
       TestResult tr8 = tcd.getTestResultFailed(PORTLETRESPONSE_HASADDPROPERTYC);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "addProperty";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = {java.lang.String.class, java.lang.String.class};
-      //    tr8.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "addProperty";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {java.lang.String.class, java.lang.String.class};
+         tr8.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: PortletResponse_addPropertyC1 */
       /* Details: "Adds a property value to an existing key to allow the key to have multiple values" */
@@ -152,13 +148,12 @@ public class V2ResponseTests_PortletResponse implements Portlet {
       /* TestCase: PortletResponse_hasSetProperty */
       /* Details: "Has a setProperty(java.lang.String, java.lang.String) method" */
       TestResult tr11 = tcd.getTestResultFailed(PORTLETRESPONSE_HASSETPROPERTY);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "setProperty";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = {java.lang.String.class, java.lang.String.class};
-      //    tr11.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "setProperty";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {java.lang.String.class, java.lang.String.class};
+         tr11.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: PortletResponse_setProperty1 */
       /* Details: "Sets a property value for the specified key" */
@@ -178,13 +173,12 @@ public class V2ResponseTests_PortletResponse implements Portlet {
       /* TestCase: PortletResponse_hasEncodeURL */
       /* Details: "Has a encodeURL(java.lang.String) method" */
       TestResult tr15 = tcd.getTestResultFailed(PORTLETRESPONSE_HASENCODEURL);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "encodeURL";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = {java.lang.String.class};
-      //    tr15.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "encodeURL";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {java.lang.String.class};
+         tr15.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: PortletResponse_encodeURL1 */
       /* Details: "Returns a String representing the encoded URL" */
@@ -199,13 +193,12 @@ public class V2ResponseTests_PortletResponse implements Portlet {
       /* TestCase: PortletResponse_hasGetNamespace */
       /* Details: "Has a getNamespace() method" */
       TestResult tr18 = tcd.getTestResultFailed(PORTLETRESPONSE_HASGETNAMESPACE);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "getNamespace";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = null;
-      //    tr18.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "getNamespace";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr18.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: PortletResponse_getNamespace1 */
       /* Details: "Returns a String containing the namespace value" */
@@ -220,13 +213,12 @@ public class V2ResponseTests_PortletResponse implements Portlet {
       /* TestCase: PortletResponse_hasCreateElement */
       /* Details: "Has a createElement() throws org.w3c.dom.DOMException method" */
       TestResult tr21 = tcd.getTestResultFailed(PORTLETRESPONSE_HASCREATEELEMENT);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "createElement";
-      //    Class<?>[] exceptions = {org.w3c.dom.DOMException.class};
-      //    Class<?>[] parms = null;
-      //    tr21.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "createElement";
+         Class<?>[] exceptions = {org.w3c.dom.DOMException.class};
+         Class<?>[] parms = null;
+         tr21.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: PortletResponse_createElement1 */
       /* Details: "Returns an org.w3c.dom.Element object for the specified tag name" */

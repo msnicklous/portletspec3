@@ -71,26 +71,23 @@ public class V2ResponseTests_ActionResponse implements Portlet {
 
       PrintWriter writer = renderResponse.getWriter();
       JSR286ApiTestCaseDetails tcd = new JSR286ApiTestCaseDetails();
-      // TODO: access the class under test and uncomment this code.
-      // ClassChecker cc = new ClassChecker(ActionResponse);
+      ClassChecker cc = new ClassChecker(ActionResponseWrapper.class);
 
       // Create result objects for the tests
 
       /* TestCase: ActionResponse_implementsStateAwareResponse1 */
       /* Details: "Implements StateAwareResponse" */
       TestResult tr0 = tcd.getTestResultFailed(ACTIONRESPONSE_IMPLEMENTSSTATEAWARERESPONSE1);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    tr0.setTcSuccess(cc.implementsInterface(StateAwareResponse.class));
-      // }
+      {
+         tr0.setTcSuccess(cc.implementsInterface(StateAwareResponse.class));
+      }
 
       /* TestCase: ActionResponse_implementsStateAwareResponse2 */
       /* Details: "Implements PortletResponse" */
       TestResult tr1 = tcd.getTestResultFailed(ACTIONRESPONSE_IMPLEMENTSSTATEAWARERESPONSE2);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    tr1.setTcSuccess(cc.implementsInterface(PortletResponse.class));
-      // }
+      {
+         tr1.setTcSuccess(cc.implementsInterface(PortletResponse.class));
+      }
 
       /* TestCase: ActionResponse_implementsStateAwareResponse3 */
       /* Details: "All tests described for the PortletResponse execute correctly with the ActionResponse" */
@@ -105,13 +102,12 @@ public class V2ResponseTests_ActionResponse implements Portlet {
       /* TestCase: ActionResponse_hasSendRedirectA */
       /* Details: "Has a sendRedirect(java.lang.String) throws java.io.IOException method" */
       TestResult tr4 = tcd.getTestResultFailed(ACTIONRESPONSE_HASSENDREDIRECTA);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "sendRedirect";
-      //    Class<?>[] exceptions = {java.io.IOException.class};
-      //    Class<?>[] parms = {java.lang.String.class};
-      //    tr4.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "sendRedirect";
+         Class<?>[] exceptions = {java.io.IOException.class};
+         Class<?>[] parms = {java.lang.String.class};
+         tr4.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: ActionResponse_sendRedirectA1 */
       /* Details: "Allows a redirect response to be sent to the client" */
@@ -156,13 +152,12 @@ public class V2ResponseTests_ActionResponse implements Portlet {
       /* TestCase: ActionResponse_hasSendRedirectB */
       /* Details: "Has a sendRedirect(java.lang.String, java.lang.String) throws java.io.IOException method" */
       TestResult tr13 = tcd.getTestResultFailed(ACTIONRESPONSE_HASSENDREDIRECTB);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "sendRedirect";
-      //    Class<?>[] exceptions = {java.io.IOException.class};
-      //    Class<?>[] parms = {java.lang.String.class, java.lang.String.class};
-      //    tr13.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "sendRedirect";
+         Class<?>[] exceptions = {java.io.IOException.class};
+         Class<?>[] parms = {java.lang.String.class, java.lang.String.class};
+         tr13.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: ActionResponse_sendRedirectB1 */
       /* Details: "Allows a redirect response to be sent to the client" */

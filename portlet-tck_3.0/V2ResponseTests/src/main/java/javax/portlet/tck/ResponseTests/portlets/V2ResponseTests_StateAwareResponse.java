@@ -71,18 +71,16 @@ public class V2ResponseTests_StateAwareResponse implements Portlet {
 
       PrintWriter writer = renderResponse.getWriter();
       JSR286ApiTestCaseDetails tcd = new JSR286ApiTestCaseDetails();
-      // TODO: access the class under test and uncomment this code.
-      // ClassChecker cc = new ClassChecker(StateAwareResponse);
+      ClassChecker cc = new ClassChecker(ActionResponseWrapper.class);
 
       // Create result objects for the tests
 
       /* TestCase: StateAwareResponse_implementsPortletResponse1 */
       /* Details: "Implements PortletResponse" */
       TestResult tr0 = tcd.getTestResultFailed(STATEAWARERESPONSE_IMPLEMENTSPORTLETRESPONSE1);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    tr0.setTcSuccess(cc.implementsInterface(PortletResponse.class));
-      // }
+      {
+         tr0.setTcSuccess(cc.implementsInterface(PortletResponse.class));
+      }
 
       /* TestCase: StateAwareResponse_implementsPortletResponse2 */
       /* Details: "All tests described for the PortletResponse execute correctly with the StateAwareResponse" */
@@ -92,13 +90,12 @@ public class V2ResponseTests_StateAwareResponse implements Portlet {
       /* TestCase: StateAwareResponse_hasSetWindowState */
       /* Details: "Has a setWindowState(WindowState) throws javax.portlet.WindowStateException method" */
       TestResult tr2 = tcd.getTestResultFailed(STATEAWARERESPONSE_HASSETWINDOWSTATE);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "setWindowState";
-      //    Class<?>[] exceptions = {javax.portlet.WindowStateException.class};
-      //    Class<?>[] parms = {WindowState.class};
-      //    tr2.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "setWindowState";
+         Class<?>[] exceptions = {javax.portlet.WindowStateException.class};
+         Class<?>[] parms = {WindowState.class};
+         tr2.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: StateAwareResponse_setWindowState1 */
       /* Details: "Sets the WindowState to the specified value" */
@@ -118,13 +115,12 @@ public class V2ResponseTests_StateAwareResponse implements Portlet {
       /* TestCase: StateAwareResponse_hasSetPortletMode */
       /* Details: "Has a setPortletMode(PortletMode) throws javax.portlet.PortletModeException method" */
       TestResult tr6 = tcd.getTestResultFailed(STATEAWARERESPONSE_HASSETPORTLETMODE);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "setPortletMode";
-      //    Class<?>[] exceptions = {javax.portlet.PortletModeException.class};
-      //    Class<?>[] parms = {PortletMode.class};
-      //    tr6.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "setPortletMode";
+         Class<?>[] exceptions = {javax.portlet.PortletModeException.class};
+         Class<?>[] parms = {PortletMode.class};
+         tr6.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: StateAwareResponse_setPortletMode1 */
       /* Details: "Sets the PortletMode to the specified value" */
@@ -144,13 +140,12 @@ public class V2ResponseTests_StateAwareResponse implements Portlet {
       /* TestCase: StateAwareResponse_hasSetRenderParameters */
       /* Details: "Has a setRenderParameters(java.util.Map<java.lang.String,java.lang.String[]>) method" */
       TestResult tr10 = tcd.getTestResultFailed(STATEAWARERESPONSE_HASSETRENDERPARAMETERS);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "setRenderParameters";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = {java.util.Map.class};
-      //    tr10.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "setRenderParameters";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {java.util.Map.class};
+         tr10.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: StateAwareResponse_setRenderParameters1 */
       /* Details: "Sets the render parameter map to the specified value" */
@@ -215,13 +210,12 @@ public class V2ResponseTests_StateAwareResponse implements Portlet {
       /* TestCase: StateAwareResponse_hasSetRenderParameterA */
       /* Details: "Has a setRenderParameter(java.lang.String,java.lang.String) method" */
       TestResult tr23 = tcd.getTestResultFailed(STATEAWARERESPONSE_HASSETRENDERPARAMETERA);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "setRenderParameter";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = {java.lang.String.class, java.lang.String.class};
-      //    tr23.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "setRenderParameter";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {java.lang.String.class, java.lang.String.class};
+         tr23.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: StateAwareResponse_setRenderParameterA1 */
       /* Details: "Sets the parameter value for the specified name" */
@@ -266,13 +260,12 @@ public class V2ResponseTests_StateAwareResponse implements Portlet {
       /* TestCase: StateAwareResponse_hasSetRenderParameterB */
       /* Details: "Has a setRenderParameter(java.lang.String,java.lang.String[]) method" */
       TestResult tr32 = tcd.getTestResultFailed(STATEAWARERESPONSE_HASSETRENDERPARAMETERB);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "setRenderParameter";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = {java.lang.String.class, java.lang.String[].class};
-      //    tr32.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "setRenderParameter";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {java.lang.String.class, java.lang.String[].class};
+         tr32.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: StateAwareResponse_setRenderParameterB1 */
       /* Details: "Sets the parameter values for the specified name." */
@@ -307,13 +300,12 @@ public class V2ResponseTests_StateAwareResponse implements Portlet {
       /* TestCase: StateAwareResponse_hasSetEventA */
       /* Details: "Has a setEvent(javax.xml.namespace.QName, java.io.Serializable) method" */
       TestResult tr39 = tcd.getTestResultFailed(STATEAWARERESPONSE_HASSETEVENTA);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "setEvent";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = {javax.xml.namespace.QName.class, java.io.Serializable.class};
-      //    tr39.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "setEvent";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {javax.xml.namespace.QName.class, java.io.Serializable.class};
+         tr39.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: StateAwareResponse_setEventA1 */
       /* Details: "Publishes an event with the specified name and payload" */
@@ -343,13 +335,12 @@ public class V2ResponseTests_StateAwareResponse implements Portlet {
       /* TestCase: StateAwareResponse_hasSetEventB */
       /* Details: "Has a setEvent(java.lang.String name, java.io.Serializable value) method" */
       TestResult tr45 = tcd.getTestResultFailed(STATEAWARERESPONSE_HASSETEVENTB);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "setEvent";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = {java.lang.String.class, java.io.Serializable.class};
-      //    tr45.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "setEvent";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {java.lang.String.class, java.io.Serializable.class};
+         tr45.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: StateAwareResponse_setEventB1 */
       /* Details: "Publishes an event with the specified name and payload" */
@@ -379,13 +370,12 @@ public class V2ResponseTests_StateAwareResponse implements Portlet {
       /* TestCase: StateAwareResponse_hasGetRenderParameterMap */
       /* Details: "Has a getRenderParameterMap() method" */
       TestResult tr51 = tcd.getTestResultFailed(STATEAWARERESPONSE_HASGETRENDERPARAMETERMAP);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "getRenderParameterMap";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = null;
-      //    tr51.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "getRenderParameterMap";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr51.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: StateAwareResponse_getRenderParameterMap1 */
       /* Details: "Returns a map of the render parameters currently set on the response" */
@@ -410,13 +400,12 @@ public class V2ResponseTests_StateAwareResponse implements Portlet {
       /* TestCase: StateAwareResponse_hasGetPortletMode */
       /* Details: "Has a getPortletMode() method" */
       TestResult tr56 = tcd.getTestResultFailed(STATEAWARERESPONSE_HASGETPORTLETMODE);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "getPortletMode";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = null;
-      //    tr56.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "getPortletMode";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr56.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: StateAwareResponse_getPortletMode1 */
       /* Details: "Returns the current PortletMode for the portlet" */
@@ -431,13 +420,12 @@ public class V2ResponseTests_StateAwareResponse implements Portlet {
       /* TestCase: StateAwareResponse_hasGetWindowState */
       /* Details: "Has a getWindowState() method" */
       TestResult tr59 = tcd.getTestResultFailed(STATEAWARERESPONSE_HASGETWINDOWSTATE);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "getWindowState";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = null;
-      //    tr59.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "getWindowState";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr59.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: StateAwareResponse_getWindowState1 */
       /* Details: "Returns the current WindowState for the portlet" */
@@ -452,13 +440,12 @@ public class V2ResponseTests_StateAwareResponse implements Portlet {
       /* TestCase: StateAwareResponse_hasRemovePublicRenderParameter */
       /* Details: "Has a removePublicRenderParameter(java.lang.String) method" */
       TestResult tr62 = tcd.getTestResultFailed(STATEAWARERESPONSE_HASREMOVEPUBLICRENDERPARAMETER);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "removePublicRenderParameter";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = {java.lang.String.class};
-      //    tr62.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "removePublicRenderParameter";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {java.lang.String.class};
+         tr62.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: StateAwareResponse_removePublicRenderParameter1 */
       /* Details: "Removes the specified public render parameter" */

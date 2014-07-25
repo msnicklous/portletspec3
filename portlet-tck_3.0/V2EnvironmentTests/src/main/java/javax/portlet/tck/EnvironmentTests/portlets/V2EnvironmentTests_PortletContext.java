@@ -71,21 +71,19 @@ public class V2EnvironmentTests_PortletContext implements Portlet {
 
       PrintWriter writer = renderResponse.getWriter();
       JSR286ApiTestCaseDetails tcd = new JSR286ApiTestCaseDetails();
-      // TODO: access the class under test and uncomment this code.
-      // ClassChecker cc = new ClassChecker(PortletContext);
+      ClassChecker cc = new ClassChecker(portletConfig.getPortletContext().getClass());
 
       // Create result objects for the tests
 
       /* TestCase: PortletContext_hasGetServerInfo */
       /* Details: "Has a getServerInfo() method" */
       TestResult tr0 = tcd.getTestResultFailed(PORTLETCONTEXT_HASGETSERVERINFO);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "getServerInfo";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = null;
-      //    tr0.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "getServerInfo";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr0.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: PortletContext_getServerInfo */
       /* Details: "" */
@@ -120,13 +118,12 @@ public class V2EnvironmentTests_PortletContext implements Portlet {
       /* TestCase: PortletContext_hasGetRequestDispatcher */
       /* Details: "Has a getRequestDispatcher(java.lang.String) method" */
       TestResult tr7 = tcd.getTestResultFailed(PORTLETCONTEXT_HASGETREQUESTDISPATCHER);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "getRequestDispatcher";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = {java.lang.String.class};
-      //    tr7.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "getRequestDispatcher";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {java.lang.String.class};
+         tr7.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: PortletContext_getRequestDispatcher1 */
       /* Details: "Returns a PortletRequestDispatcher for the specified path" */
@@ -146,13 +143,12 @@ public class V2EnvironmentTests_PortletContext implements Portlet {
       /* TestCase: PortletContext_hasGetNamedDispatcher */
       /* Details: "Has a getNamedDispatcher(java.lang.String) method" */
       TestResult tr11 = tcd.getTestResultFailed(PORTLETCONTEXT_HASGETNAMEDDISPATCHER);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "getNamedDispatcher";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = {java.lang.String.class};
-      //    tr11.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "getNamedDispatcher";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {java.lang.String.class};
+         tr11.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: PortletContext_getNamedDispatcher1 */
       /* Details: "Returns a PortletRequestDispatcher for the specified servlet name" */
@@ -167,13 +163,12 @@ public class V2EnvironmentTests_PortletContext implements Portlet {
       /* TestCase: PortletContext_hasGetResourceAsStream */
       /* Details: "Has a getResourceAsStream(java.lang.String) method" */
       TestResult tr14 = tcd.getTestResultFailed(PORTLETCONTEXT_HASGETRESOURCEASSTREAM);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "getResourceAsStream";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = {java.lang.String.class};
-      //    tr14.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "getResourceAsStream";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {java.lang.String.class};
+         tr14.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: PortletContext_getResourceAsStream1 */
       /* Details: "Returns a java.io.InputStream for the resource at the specified path" */
@@ -193,13 +188,12 @@ public class V2EnvironmentTests_PortletContext implements Portlet {
       /* TestCase: PortletContext_hasGetMajorVersion */
       /* Details: "Has a getMajorVersion() method" */
       TestResult tr18 = tcd.getTestResultFailed(PORTLETCONTEXT_HASGETMAJORVERSION);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "getMajorVersion";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = null;
-      //    tr18.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "getMajorVersion";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr18.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: PortletContext_getMajorVersion */
       /* Details: "Returns the major version of the portlet API supported by the container " */
@@ -209,13 +203,12 @@ public class V2EnvironmentTests_PortletContext implements Portlet {
       /* TestCase: PortletContext_hasGetMinorVersion */
       /* Details: "Has a getMinorVersion() method" */
       TestResult tr20 = tcd.getTestResultFailed(PORTLETCONTEXT_HASGETMINORVERSION);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "getMinorVersion";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = null;
-      //    tr20.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "getMinorVersion";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr20.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: PortletContext_getMinorVersion */
       /* Details: "Returns the minor version of the portlet API supported by the container" */
@@ -225,13 +218,12 @@ public class V2EnvironmentTests_PortletContext implements Portlet {
       /* TestCase: PortletContext_hasGetMimeType */
       /* Details: "Has a getMimeType(java.lang.String) method" */
       TestResult tr22 = tcd.getTestResultFailed(PORTLETCONTEXT_HASGETMIMETYPE);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "getMimeType";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = {java.lang.String.class};
-      //    tr22.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "getMimeType";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {java.lang.String.class};
+         tr22.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: PortletContext_getMimeType1 */
       /* Details: "Returns a String containing the MIME type of the specified file name" */
@@ -261,13 +253,12 @@ public class V2EnvironmentTests_PortletContext implements Portlet {
       /* TestCase: PortletContext_hasGetRealPath */
       /* Details: "Has a getRealPath(java.lang.String) method" */
       TestResult tr28 = tcd.getTestResultFailed(PORTLETCONTEXT_HASGETREALPATH);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "getRealPath";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = {java.lang.String.class};
-      //    tr28.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "getRealPath";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {java.lang.String.class};
+         tr28.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: PortletContext_getRealPath1 */
       /* Details: "Returns a String containing the OS-specific real path for the given virtual path" */
@@ -287,13 +278,12 @@ public class V2EnvironmentTests_PortletContext implements Portlet {
       /* TestCase: PortletContext_hasGetResourcePaths */
       /* Details: "Has a getResourcePaths(java.lang.String) method" */
       TestResult tr32 = tcd.getTestResultFailed(PORTLETCONTEXT_HASGETRESOURCEPATHS);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "getResourcePaths";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = {java.lang.String.class};
-      //    tr32.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "getResourcePaths";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {java.lang.String.class};
+         tr32.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: PortletContext_getResourcePaths1 */
       /* Details: "Returns a java.util.Set<java.lang.String> containing all the paths to resources within the web application longest sub-path of which matches the supplied path argument  " */
@@ -318,13 +308,12 @@ public class V2EnvironmentTests_PortletContext implements Portlet {
       /* TestCase: PortletContext_hasGetResource */
       /* Details: "Has a getResource(java.lang.String) throws java.net.MalformedURLException method" */
       TestResult tr37 = tcd.getTestResultFailed(PORTLETCONTEXT_HASGETRESOURCE);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "getResource";
-      //    Class<?>[] exceptions = {java.net.MalformedURLException.class};
-      //    Class<?>[] parms = {java.lang.String.class};
-      //    tr37.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "getResource";
+         Class<?>[] exceptions = {java.net.MalformedURLException.class};
+         Class<?>[] parms = {java.lang.String.class};
+         tr37.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: PortletContext_getResource1 */
       /* Details: "Returns a java.net.URL object that maps to the specified path" */
@@ -349,13 +338,12 @@ public class V2EnvironmentTests_PortletContext implements Portlet {
       /* TestCase: PortletContext_hasGetAttribute */
       /* Details: "Has a getAttribute(java.lang.String) method" */
       TestResult tr42 = tcd.getTestResultFailed(PORTLETCONTEXT_HASGETATTRIBUTE);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "getAttribute";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = {java.lang.String.class};
-      //    tr42.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "getAttribute";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {java.lang.String.class};
+         tr42.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: PortletContext_getAttribute1 */
       /* Details: "Returns a java.lang.Object attribute value for the specified name" */
@@ -375,13 +363,12 @@ public class V2EnvironmentTests_PortletContext implements Portlet {
       /* TestCase: PortletContext_hasGetAttributeNames */
       /* Details: "Has a getAttributeNames() method" */
       TestResult tr46 = tcd.getTestResultFailed(PORTLETCONTEXT_HASGETATTRIBUTENAMES);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "getAttributeNames";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = null;
-      //    tr46.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "getAttributeNames";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr46.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: PortletContext_getAttributeNames1 */
       /* Details: "Returns an java.util.Enumeration<java.lang.String> containing the attribute names in the PortletContext" */
@@ -396,13 +383,12 @@ public class V2EnvironmentTests_PortletContext implements Portlet {
       /* TestCase: PortletContext_hasGetInitParameter */
       /* Details: "Has a getInitParameter(java.lang.String) method" */
       TestResult tr49 = tcd.getTestResultFailed(PORTLETCONTEXT_HASGETINITPARAMETER);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "getInitParameter";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = {java.lang.String.class};
-      //    tr49.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "getInitParameter";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {java.lang.String.class};
+         tr49.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: PortletContext_getInitParameter1 */
       /* Details: "Returns a java.lang.String PortletContext initialization parameter value for the specified name" */
@@ -422,13 +408,12 @@ public class V2EnvironmentTests_PortletContext implements Portlet {
       /* TestCase: PortletContext_hasGetInitParameterNames */
       /* Details: "Has a getInitParameterNames() method" */
       TestResult tr53 = tcd.getTestResultFailed(PORTLETCONTEXT_HASGETINITPARAMETERNAMES);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "getInitParameterNames";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = null;
-      //    tr53.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "getInitParameterNames";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr53.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: PortletContext_getInitParameterNames1 */
       /* Details: "Returns an java.util.Enumeration<java.lang.String> containing the InitParameter names in the PortletContext" */
@@ -443,13 +428,12 @@ public class V2EnvironmentTests_PortletContext implements Portlet {
       /* TestCase: PortletContext_hasLogA */
       /* Details: "Has a log(java.lang.String) method" */
       TestResult tr56 = tcd.getTestResultFailed(PORTLETCONTEXT_HASLOGA);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "log";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = {java.lang.String.class};
-      //    tr56.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "log";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {java.lang.String.class};
+         tr56.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: PortletContext_logA */
       /* Details: "Writes specified message to a portlet log file" */
@@ -459,13 +443,12 @@ public class V2EnvironmentTests_PortletContext implements Portlet {
       /* TestCase: PortletContext_hasLogB */
       /* Details: "Has a log(java.lang.String, java.lang.Throwable) method" */
       TestResult tr58 = tcd.getTestResultFailed(PORTLETCONTEXT_HASLOGB);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "log";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = {java.lang.String.class, java.lang.Throwable.class};
-      //    tr58.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "log";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {java.lang.String.class, java.lang.Throwable.class};
+         tr58.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: PortletContext_logB */
       /* Details: "Writes specified message and stack trace to a portlet log file" */
@@ -475,13 +458,12 @@ public class V2EnvironmentTests_PortletContext implements Portlet {
       /* TestCase: PortletContext_hasRemoveAttribute */
       /* Details: "Has a removeAttribute(java.lang.String) method" */
       TestResult tr60 = tcd.getTestResultFailed(PORTLETCONTEXT_HASREMOVEATTRIBUTE);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "removeAttribute";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = {java.lang.String.class};
-      //    tr60.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "removeAttribute";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {java.lang.String.class};
+         tr60.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: PortletContext_removeAttribute1 */
       /* Details: "Removes the attribute with the specified nale" */
@@ -496,13 +478,12 @@ public class V2EnvironmentTests_PortletContext implements Portlet {
       /* TestCase: PortletContext_hasSetAttribute */
       /* Details: "Has a setAttribute(java.lang.String, java.lang.Object) method" */
       TestResult tr63 = tcd.getTestResultFailed(PORTLETCONTEXT_HASSETATTRIBUTE);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "setAttribute";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = {java.lang.String.class, java.lang.Object.class};
-      //    tr63.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "setAttribute";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {java.lang.String.class, java.lang.Object.class};
+         tr63.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: PortletContext_setAttribute1 */
       /* Details: "Sets an attribute for the specified name in the portlet context" */
@@ -527,13 +508,12 @@ public class V2EnvironmentTests_PortletContext implements Portlet {
       /* TestCase: PortletContext_hasGetPortletContextName */
       /* Details: "Has a getPortletContextName() method" */
       TestResult tr68 = tcd.getTestResultFailed(PORTLETCONTEXT_HASGETPORTLETCONTEXTNAME);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "getPortletContextName";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = null;
-      //    tr68.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "getPortletContextName";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr68.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: PortletContext_getPortletContextName1 */
       /* Details: "Returns the portlet application name" */
@@ -553,13 +533,12 @@ public class V2EnvironmentTests_PortletContext implements Portlet {
       /* TestCase: PortletContext_hasGetContainerRuntimeOptions */
       /* Details: "Has a getContainerRuntimeOptions() method" */
       TestResult tr72 = tcd.getTestResultFailed(PORTLETCONTEXT_HASGETCONTAINERRUNTIMEOPTIONS);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "getContainerRuntimeOptions";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = null;
-      //    tr72.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "getContainerRuntimeOptions";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr72.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: PortletContext_getContainerRuntimeOptions1 */
       /* Details: "Returns an java.util.Enumeration<java.lang.String> containing the available runtime option names" */

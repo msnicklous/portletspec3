@@ -71,18 +71,16 @@ public class V2RequestTests_EventRequest implements Portlet {
 
       PrintWriter writer = renderResponse.getWriter();
       JSR286ApiTestCaseDetails tcd = new JSR286ApiTestCaseDetails();
-      // TODO: access the class under test and uncomment this code.
-      // ClassChecker cc = new ClassChecker(EventRequest);
+      ClassChecker cc = new ClassChecker(EventRequestWrapper.class);
 
       // Create result objects for the tests
 
       /* TestCase: EventRequest_implementsPortletRequest1 */
       /* Details: "Implements PortletRequest" */
       TestResult tr0 = tcd.getTestResultFailed(EVENTREQUEST_IMPLEMENTSPORTLETREQUEST1);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    tr0.setTcSuccess(cc.implementsInterface(PortletRequest.class));
-      // }
+      {
+         tr0.setTcSuccess(cc.implementsInterface(PortletRequest.class));
+      }
 
       /* TestCase: EventRequest_implementsPortletRequest2 */
       /* Details: "All tests described for the PortletRequest execute correctly with the EventRequest" */
@@ -92,13 +90,12 @@ public class V2RequestTests_EventRequest implements Portlet {
       /* TestCase: EventRequest_hasgetEvent */
       /* Details: "Has a getEvent() method" */
       TestResult tr2 = tcd.getTestResultFailed(EVENTREQUEST_HASGETEVENT);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "getEvent";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = null;
-      //    tr2.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "getEvent";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr2.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: EventRequest_getEvent */
       /* Details: "Returns the Event object that triggered the call to the processEvent method" */
@@ -108,13 +105,12 @@ public class V2RequestTests_EventRequest implements Portlet {
       /* TestCase: EventRequest_hasgetMethod */
       /* Details: "Has a getMethod() method" */
       TestResult tr4 = tcd.getTestResultFailed(EVENTREQUEST_HASGETMETHOD);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "getMethod";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = null;
-      //    tr4.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "getMethod";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr4.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: EventRequest_getMethod */
       /* Details: "Returns a String containing the name of the HTTP method with which the request was made" */

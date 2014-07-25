@@ -71,50 +71,44 @@ public class V2URLTests_ResourceURL implements Portlet {
 
       PrintWriter writer = renderResponse.getWriter();
       JSR286ApiTestCaseDetails tcd = new JSR286ApiTestCaseDetails();
-      // TODO: access the class under test and uncomment this code.
-      // ClassChecker cc = new ClassChecker(ResourceURL);
+      ClassChecker cc = new ClassChecker(renderResponse.createResourceURL().getClass());
 
       // Create result objects for the tests
 
       /* TestCase: ResourceURL_fieldFULL */
       /* Details: "Has String field FULL with value of \"FULL\" " */
       TestResult tr0 = tcd.getTestResultFailed(RESOURCEURL_FIELDFULL);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    tr0.setTcSuccess(cc.hasField("FULL", "FULL"));
-      // }
+      {
+         tr0.setTcSuccess(cc.hasField("FULL", "FULL"));
+      }
 
       /* TestCase: ResourceURL_fieldPAGE */
       /* Details: "Has String field PAGE with value of \"PAGE\" " */
       TestResult tr1 = tcd.getTestResultFailed(RESOURCEURL_FIELDPAGE);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    tr1.setTcSuccess(cc.hasField("PAGE", "PAGE"));
-      // }
+      {
+         tr1.setTcSuccess(cc.hasField("PAGE", "PAGE"));
+      }
 
       /* TestCase: ResourceURL_fieldPORTLET */
       /* Details: "Has String field PORTLET with value of \"PORTLET\" " */
       TestResult tr2 = tcd.getTestResultFailed(RESOURCEURL_FIELDPORTLET);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    tr2.setTcSuccess(cc.hasField("PORTLET", "PORTLET"));
-      // }
+      {
+         tr2.setTcSuccess(cc.hasField("PORTLET", "PORTLET"));
+      }
 
       /* TestCase: ResourceURL_fieldSHARED */
       /* Details: "Has String field SHARED with value of \"SHARED\" " */
       TestResult tr3 = tcd.getTestResultFailed(RESOURCEURL_FIELDSHARED);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    tr3.setTcSuccess(cc.hasField("SHARED", "SHARED"));
-      // }
+      {
+         tr3.setTcSuccess(cc.hasField("SHARED", "SHARED"));
+      }
 
       /* TestCase: ResourceURL_implementsBaseURL1 */
       /* Details: "Implements BaseURL" */
       TestResult tr4 = tcd.getTestResultFailed(RESOURCEURL_IMPLEMENTSBASEURL1);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    tr4.setTcSuccess(cc.implementsInterface(BaseURL.class));
-      // }
+      {
+         tr4.setTcSuccess(cc.implementsInterface(BaseURL.class));
+      }
 
       /* TestCase: ResourceURL_implementsBaseURL2 */
       /* Details: "All tests described for the BaseURL execute correctly with the ResourceURL" */
@@ -124,13 +118,12 @@ public class V2URLTests_ResourceURL implements Portlet {
       /* TestCase: ResourceURL_hasSetResourceID */
       /* Details: "Has a setResourceID(java.lang.String) method" */
       TestResult tr6 = tcd.getTestResultFailed(RESOURCEURL_HASSETRESOURCEID);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "setResourceID";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = {java.lang.String.class};
-      //    tr6.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "setResourceID";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {java.lang.String.class};
+         tr6.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: ResourceURL_setResourceID */
       /* Details: "Sets the specified String as the portlet resource ID" */
@@ -140,13 +133,12 @@ public class V2URLTests_ResourceURL implements Portlet {
       /* TestCase: ResourceURL_hasGetCacheability */
       /* Details: "Has a getCacheability() method" */
       TestResult tr8 = tcd.getTestResultFailed(RESOURCEURL_HASGETCACHEABILITY);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "getCacheability";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = null;
-      //    tr8.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "getCacheability";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr8.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: ResourceURL_getCacheability */
       /* Details: "Returns a String containing the cacheability level set on the resource URL" */
@@ -156,13 +148,12 @@ public class V2URLTests_ResourceURL implements Portlet {
       /* TestCase: ResourceURL_hasSetCacheability */
       /* Details: "Has a setCacheability(java.lang.String) method" */
       TestResult tr10 = tcd.getTestResultFailed(RESOURCEURL_HASSETCACHEABILITY);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "setCacheability";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = {java.lang.String.class};
-      //    tr10.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "setCacheability";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {java.lang.String.class};
+         tr10.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: ResourceURL_setCacheability1 */
       /* Details: "Sets the cacheability level for the resource URL" */

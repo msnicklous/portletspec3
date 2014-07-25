@@ -71,26 +71,23 @@ public class V2RequestTests_ActionRequest implements Portlet {
 
       PrintWriter writer = renderResponse.getWriter();
       JSR286ApiTestCaseDetails tcd = new JSR286ApiTestCaseDetails();
-      // TODO: access the class under test and uncomment this code.
-      // ClassChecker cc = new ClassChecker(ActionRequest);
+      ClassChecker cc = new ClassChecker(ActionRequestWrapper.class);
 
       // Create result objects for the tests
 
       /* TestCase: ActionRequest_implementsClientDataRequest1 */
       /* Details: "Implements ClientDataRequest" */
       TestResult tr0 = tcd.getTestResultFailed(ACTIONREQUEST_IMPLEMENTSCLIENTDATAREQUEST1);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    tr0.setTcSuccess(cc.implementsInterface(ClientDataRequest.class));
-      // }
+      {
+         tr0.setTcSuccess(cc.implementsInterface(ClientDataRequest.class));
+      }
 
       /* TestCase: ActionRequest_implementsClientDataRequest2 */
       /* Details: "Implements PortletRequest" */
       TestResult tr1 = tcd.getTestResultFailed(ACTIONREQUEST_IMPLEMENTSCLIENTDATAREQUEST2);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    tr1.setTcSuccess(cc.implementsInterface(PortletRequest.class));
-      // }
+      {
+         tr1.setTcSuccess(cc.implementsInterface(PortletRequest.class));
+      }
 
       /* TestCase: ActionRequest_implementsClientDataRequest3 */
       /* Details: "All tests described for the ClientDataRequest execute correctly with the ActionRequest" */
@@ -105,10 +102,9 @@ public class V2RequestTests_ActionRequest implements Portlet {
       /* TestCase: ActionRequest_fieldACTION_NAME */
       /* Details: "Has String field ACTION_NAME with value of \"javax.portlet.action\" " */
       TestResult tr4 = tcd.getTestResultFailed(ACTIONREQUEST_FIELDACTION_NAME);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    tr4.setTcSuccess(cc.hasField("ACTION_NAME", "javax.portlet.action"));
-      // }
+      {
+         tr4.setTcSuccess(cc.hasField("ACTION_NAME", "javax.portlet.action"));
+      }
 
 
 

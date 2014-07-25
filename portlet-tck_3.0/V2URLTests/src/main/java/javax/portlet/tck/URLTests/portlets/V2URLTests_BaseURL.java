@@ -71,21 +71,19 @@ public class V2URLTests_BaseURL implements Portlet {
 
       PrintWriter writer = renderResponse.getWriter();
       JSR286ApiTestCaseDetails tcd = new JSR286ApiTestCaseDetails();
-      // TODO: access the class under test and uncomment this code.
-      // ClassChecker cc = new ClassChecker(BaseURL);
+      ClassChecker cc = new ClassChecker(renderResponse.createRenderURL().getClass());
 
       // Create result objects for the tests
 
       /* TestCase: BaseURL_hasSetParameterA */
       /* Details: "Has a setParameter(java.lang.String, java.lang.String) method" */
       TestResult tr0 = tcd.getTestResultFailed(BASEURL_HASSETPARAMETERA);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "setParameter";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = {java.lang.String.class, java.lang.String.class};
-      //    tr0.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "setParameter";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {java.lang.String.class, java.lang.String.class};
+         tr0.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: BaseURL_setParameterA1 */
       /* Details: "Sets the parameter value for the specified name" */
@@ -130,13 +128,12 @@ public class V2URLTests_BaseURL implements Portlet {
       /* TestCase: BaseURL_hasSetParameterB */
       /* Details: "Has a setParameter(java.lang.String, java.lang.String[]) method" */
       TestResult tr9 = tcd.getTestResultFailed(BASEURL_HASSETPARAMETERB);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "setParameter";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = {java.lang.String.class, java.lang.String[].class};
-      //    tr9.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "setParameter";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {java.lang.String.class, java.lang.String[].class};
+         tr9.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: BaseURL_setParameterB1 */
       /* Details: "Sets the parameter value array for the specified name" */
@@ -181,13 +178,12 @@ public class V2URLTests_BaseURL implements Portlet {
       /* TestCase: BaseURL_hasSetParameters */
       /* Details: "Has a setParameters(java.util.Map<java.lang.String,java.lang.String[]>) method" */
       TestResult tr18 = tcd.getTestResultFailed(BASEURL_HASSETPARAMETERS);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "setParameters";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = {java.util.Map.class};
-      //    tr18.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "setParameters";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {java.util.Map.class};
+         tr18.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: BaseURL_setParameters1 */
       /* Details: "Sets the parameter map to the specified value" */
@@ -262,13 +258,12 @@ public class V2URLTests_BaseURL implements Portlet {
       /* TestCase: BaseURL_hasSetSecure */
       /* Details: "Has a setSecure(boolean) throws javax.portlet.PortletSecurityException method" */
       TestResult tr33 = tcd.getTestResultFailed(BASEURL_HASSETSECURE);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "setSecure";
-      //    Class<?>[] exceptions = {javax.portlet.PortletSecurityException.class};
-      //    Class<?>[] parms = {boolean.class};
-      //    tr33.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "setSecure";
+         Class<?>[] exceptions = {javax.portlet.PortletSecurityException.class};
+         Class<?>[] parms = {boolean.class};
+         tr33.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: BaseURL_setSecure1 */
       /* Details: "Returns void" */
@@ -293,13 +288,12 @@ public class V2URLTests_BaseURL implements Portlet {
       /* TestCase: BaseURL_hasToString */
       /* Details: "Has a toString() method" */
       TestResult tr38 = tcd.getTestResultFailed(BASEURL_HASTOSTRING);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "toString";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = null;
-      //    tr38.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "toString";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr38.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: BaseURL_toString */
       /* Details: "Returns a String containing the portlet URL representation to be included in the markup" */
@@ -309,13 +303,12 @@ public class V2URLTests_BaseURL implements Portlet {
       /* TestCase: BaseURL_hasGetParameterMap */
       /* Details: "Has a getParameterMap() method" */
       TestResult tr40 = tcd.getTestResultFailed(BASEURL_HASGETPARAMETERMAP);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "getParameterMap";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = null;
-      //    tr40.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "getParameterMap";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr40.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: BaseURL_getParameterMap1 */
       /* Details: "Returns an java.util.Map<java.lang.String,java.lang.String[]> object for the parameter names and values if parameters are available" */
@@ -350,13 +343,12 @@ public class V2URLTests_BaseURL implements Portlet {
       /* TestCase: BaseURL_hasWriteA */
       /* Details: "Has a write(java.io.Writer) throws java.io.IOException method" */
       TestResult tr47 = tcd.getTestResultFailed(BASEURL_HASWRITEA);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "write";
-      //    Class<?>[] exceptions = {java.io.IOException.class};
-      //    Class<?>[] parms = {java.io.Writer.class};
-      //    tr47.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "write";
+         Class<?>[] exceptions = {java.io.IOException.class};
+         Class<?>[] parms = {java.io.Writer.class};
+         tr47.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: BaseURL_writeA1 */
       /* Details: "Writes the URL to the output stream through the provided Writer" */
@@ -376,13 +368,12 @@ public class V2URLTests_BaseURL implements Portlet {
       /* TestCase: BaseURL_hasWriteB */
       /* Details: "Has a write(java.io.Writer, boolean) throws java.io.IOException method" */
       TestResult tr51 = tcd.getTestResultFailed(BASEURL_HASWRITEB);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "write";
-      //    Class<?>[] exceptions = {java.io.IOException.class};
-      //    Class<?>[] parms = {java.io.Writer.class, boolean.class};
-      //    tr51.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "write";
+         Class<?>[] exceptions = {java.io.IOException.class};
+         Class<?>[] parms = {java.io.Writer.class, boolean.class};
+         tr51.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: BaseURL_writeB1 */
       /* Details: "Writes the URL to the output stream through the provided Writer" */
@@ -407,13 +398,12 @@ public class V2URLTests_BaseURL implements Portlet {
       /* TestCase: BaseURL_hasAddProperty */
       /* Details: "Has a addProperty(java.lang.String, java.lang.String) method" */
       TestResult tr56 = tcd.getTestResultFailed(BASEURL_HASADDPROPERTY);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "addProperty";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = {java.lang.String.class, java.lang.String.class};
-      //    tr56.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "addProperty";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {java.lang.String.class, java.lang.String.class};
+         tr56.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: BaseURL_addProperty1 */
       /* Details: "Adds a property value to an existing key" */
@@ -433,13 +423,12 @@ public class V2URLTests_BaseURL implements Portlet {
       /* TestCase: BaseURL_hasSetProperty */
       /* Details: "Has a setProperty() method" */
       TestResult tr60 = tcd.getTestResultFailed(BASEURL_HASSETPROPERTY);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "setProperty";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = null;
-      //    tr60.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "setProperty";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr60.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: BaseURL_setProperty1 */
       /* Details: "Sets a property value for the specified key" */

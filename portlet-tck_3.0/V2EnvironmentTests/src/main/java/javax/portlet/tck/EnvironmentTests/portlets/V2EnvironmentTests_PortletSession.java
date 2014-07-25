@@ -71,21 +71,19 @@ public class V2EnvironmentTests_PortletSession implements Portlet {
 
       PrintWriter writer = renderResponse.getWriter();
       JSR286ApiTestCaseDetails tcd = new JSR286ApiTestCaseDetails();
-      // TODO: access the class under test and uncomment this code.
-      // ClassChecker cc = new ClassChecker(PortletSession);
+      ClassChecker cc = new ClassChecker(renderRequest.getPortletSession().getClass());
 
       // Create result objects for the tests
 
       /* TestCase: PortletSession_hasGetAttributeA */
       /* Details: "Has a getAttribute(java.lang.String) method" */
       TestResult tr0 = tcd.getTestResultFailed(PORTLETSESSION_HASGETATTRIBUTEA);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "getAttribute";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = {java.lang.String.class};
-      //    tr0.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "getAttribute";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {java.lang.String.class};
+         tr0.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: PortletSession_getAttributeA1 */
       /* Details: "Returns a java.lang.Object for the specified attribute name in the PORTLET_SCOPE" */
@@ -110,13 +108,12 @@ public class V2EnvironmentTests_PortletSession implements Portlet {
       /* TestCase: PortletSession_hasGetAttributeB */
       /* Details: "Has a getAttribute(java.lang.String, int) method" */
       TestResult tr5 = tcd.getTestResultFailed(PORTLETSESSION_HASGETATTRIBUTEB);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "getAttribute";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = {java.lang.String.class, int.class};
-      //    tr5.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "getAttribute";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {java.lang.String.class, int.class};
+         tr5.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: PortletSession_getAttributeB1 */
       /* Details: "Returns a java.lang.Object for the specified attribute name in the specified scope" */
@@ -141,13 +138,12 @@ public class V2EnvironmentTests_PortletSession implements Portlet {
       /* TestCase: PortletSession_hasGetAttributeNamesA */
       /* Details: "Has a getAttributeNames() method" */
       TestResult tr10 = tcd.getTestResultFailed(PORTLETSESSION_HASGETATTRIBUTENAMESA);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "getAttributeNames";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = null;
-      //    tr10.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "getAttributeNames";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr10.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: PortletSession_getAttributeNamesA1 */
       /* Details: "Returns a java.util.Enumeration<java.lang.String> of the available attribute names in the PORTLET_SCOPE" */
@@ -162,13 +158,12 @@ public class V2EnvironmentTests_PortletSession implements Portlet {
       /* TestCase: PortletSession_hasGetAttributeNamesB */
       /* Details: "Has a getAttributeNames(int) method" */
       TestResult tr13 = tcd.getTestResultFailed(PORTLETSESSION_HASGETATTRIBUTENAMESB);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "getAttributeNames";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = {int.class};
-      //    tr13.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "getAttributeNames";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {int.class};
+         tr13.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: PortletSession_getAttributeNamesB1 */
       /* Details: "Returns a java.util.Enumeration<java.lang.String> of the available attribute names in the specified scope" */
@@ -183,13 +178,12 @@ public class V2EnvironmentTests_PortletSession implements Portlet {
       /* TestCase: PortletSession_hasGetCreationTime */
       /* Details: "Has a getCreationTime() method" */
       TestResult tr16 = tcd.getTestResultFailed(PORTLETSESSION_HASGETCREATIONTIME);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "getCreationTime";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = null;
-      //    tr16.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "getCreationTime";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr16.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: PortletSession_getCreationTime1 */
       /* Details: "Returns a long containing the time the session was created in milliseconds since 1/1/1970  " */
@@ -204,13 +198,12 @@ public class V2EnvironmentTests_PortletSession implements Portlet {
       /* TestCase: PortletSession_hasGetId */
       /* Details: "Has a getId() method" */
       TestResult tr19 = tcd.getTestResultFailed(PORTLETSESSION_HASGETID);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "getId";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = null;
-      //    tr19.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "getId";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr19.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: PortletSession_getId */
       /* Details: "Returns a String containing a unique identifier for the session" */
@@ -220,13 +213,12 @@ public class V2EnvironmentTests_PortletSession implements Portlet {
       /* TestCase: PortletSession_hasGetLastAccessedTime */
       /* Details: "Has a getLastAccessedTime() method" */
       TestResult tr21 = tcd.getTestResultFailed(PORTLETSESSION_HASGETLASTACCESSEDTIME);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "getLastAccessedTime";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = null;
-      //    tr21.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "getLastAccessedTime";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr21.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: PortletSession_getLastAccessedTime */
       /* Details: "Returns a long containing the last time the session was accessed in milliseconds since 1/1/1970" */
@@ -236,13 +228,12 @@ public class V2EnvironmentTests_PortletSession implements Portlet {
       /* TestCase: PortletSession_hasGetMaxInactiveInterval */
       /* Details: "Has a getMaxInactiveInterval() method" */
       TestResult tr23 = tcd.getTestResultFailed(PORTLETSESSION_HASGETMAXINACTIVEINTERVAL);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "getMaxInactiveInterval";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = null;
-      //    tr23.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "getMaxInactiveInterval";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr23.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: PortletSession_getMaxInactiveInterval */
       /* Details: "Returns the maximum time interval, in seconds, for which the portlet container keeps this session open between client accesses" */
@@ -252,13 +243,12 @@ public class V2EnvironmentTests_PortletSession implements Portlet {
       /* TestCase: PortletSession_hasInvalidate */
       /* Details: "Has a invalidate() method" */
       TestResult tr25 = tcd.getTestResultFailed(PORTLETSESSION_HASINVALIDATE);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "invalidate";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = null;
-      //    tr25.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "invalidate";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr25.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: PortletSession_invalidate1 */
       /* Details: "Invalidates this session (all scopes) and unbinds any objects bound to it" */
@@ -273,13 +263,12 @@ public class V2EnvironmentTests_PortletSession implements Portlet {
       /* TestCase: PortletSession_hasIsNew */
       /* Details: "Has a isNew() method" */
       TestResult tr28 = tcd.getTestResultFailed(PORTLETSESSION_HASISNEW);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "isNew";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = null;
-      //    tr28.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "isNew";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr28.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: PortletSession_isNew1 */
       /* Details: "Returns true if the client has not yet joined the session" */
@@ -294,13 +283,12 @@ public class V2EnvironmentTests_PortletSession implements Portlet {
       /* TestCase: PortletSession_hasRemoveAttributeA */
       /* Details: "Has a removeAttribute(java.lang.String) method" */
       TestResult tr31 = tcd.getTestResultFailed(PORTLETSESSION_HASREMOVEATTRIBUTEA);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "removeAttribute";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = {java.lang.String.class};
-      //    tr31.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "removeAttribute";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {java.lang.String.class};
+         tr31.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: PortletSession_removeAttributeA1 */
       /* Details: "Removes the attribute specified by the name from the PORTLET_SCOPE" */
@@ -325,13 +313,12 @@ public class V2EnvironmentTests_PortletSession implements Portlet {
       /* TestCase: PortletSession_hasRemoveAttributeB */
       /* Details: "Has a removeAttribute(java.lang.String, int) method" */
       TestResult tr36 = tcd.getTestResultFailed(PORTLETSESSION_HASREMOVEATTRIBUTEB);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "removeAttribute";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = {java.lang.String.class, int.class};
-      //    tr36.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "removeAttribute";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {java.lang.String.class, int.class};
+         tr36.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: PortletSession_removeAttributeB1 */
       /* Details: "Removes the attribute specified by the name from the specified scope" */
@@ -356,13 +343,12 @@ public class V2EnvironmentTests_PortletSession implements Portlet {
       /* TestCase: PortletSession_hasSetAttributeA */
       /* Details: "Has a setAttribute(java.lang.String, java.lang.Object) method" */
       TestResult tr41 = tcd.getTestResultFailed(PORTLETSESSION_HASSETATTRIBUTEA);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "setAttribute";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = {java.lang.String.class, java.lang.Object.class};
-      //    tr41.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "setAttribute";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {java.lang.String.class, java.lang.Object.class};
+         tr41.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: PortletSession_setAttributeA1 */
       /* Details: "Stores an attribute object under the specified name in the PORTLET_SCOPE" */
@@ -407,13 +393,12 @@ public class V2EnvironmentTests_PortletSession implements Portlet {
       /* TestCase: PortletSession_hasSetAttributeB */
       /* Details: "Has a setAttribute(java.lang.String, java.lang.Object, int) method" */
       TestResult tr50 = tcd.getTestResultFailed(PORTLETSESSION_HASSETATTRIBUTEB);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "setAttribute";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = {java.lang.String.class, java.lang.Object.class, int.class};
-      //    tr50.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "setAttribute";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {java.lang.String.class, java.lang.Object.class, int.class};
+         tr50.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: PortletSession_setAttributeB1 */
       /* Details: "Stores an attribute object under the specified name in the specified scope" */
@@ -458,13 +443,12 @@ public class V2EnvironmentTests_PortletSession implements Portlet {
       /* TestCase: PortletSession_hasSetMaxInactiveInterval */
       /* Details: "Has a setMaxInactiveInterval(int) method" */
       TestResult tr59 = tcd.getTestResultFailed(PORTLETSESSION_HASSETMAXINACTIVEINTERVAL);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "setMaxInactiveInterval";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = {int.class};
-      //    tr59.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "setMaxInactiveInterval";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {int.class};
+         tr59.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: PortletSession_setMaxInactiveInterval1 */
       /* Details: "Specifies the time in seconds between client requests before the portlet contaner invalidates the session" */
@@ -479,13 +463,12 @@ public class V2EnvironmentTests_PortletSession implements Portlet {
       /* TestCase: PortletSession_hasGetPortletContext */
       /* Details: "Has a getPortletContext() method" */
       TestResult tr62 = tcd.getTestResultFailed(PORTLETSESSION_HASGETPORTLETCONTEXT);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "getPortletContext";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = null;
-      //    tr62.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "getPortletContext";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr62.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: PortletSession_getPortletContext */
       /* Details: "Returns the PortletContext object for this session" */
@@ -495,13 +478,12 @@ public class V2EnvironmentTests_PortletSession implements Portlet {
       /* TestCase: PortletSession_hasGetAttributeMapA */
       /* Details: "Has a getAttributeMap() method" */
       TestResult tr64 = tcd.getTestResultFailed(PORTLETSESSION_HASGETATTRIBUTEMAPA);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "getAttributeMap";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = null;
-      //    tr64.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "getAttributeMap";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr64.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: PortletSession_getAttributeMapA1 */
       /* Details: "Returns an java.util.Map<java.lang.String,java.lang.Object> object for the attributes available in the PORTLET_SCOPE" */
@@ -516,13 +498,12 @@ public class V2EnvironmentTests_PortletSession implements Portlet {
       /* TestCase: PortletSession_hasGetAttributeMapB */
       /* Details: "Has a getAttributeMap(int) method" */
       TestResult tr67 = tcd.getTestResultFailed(PORTLETSESSION_HASGETATTRIBUTEMAPB);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "getAttributeMap";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = {int.class};
-      //    tr67.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "getAttributeMap";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {int.class};
+         tr67.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: PortletSession_getAttributeMapB1 */
       /* Details: "Returns an java.util.Map<java.lang.String,java.lang.Object> object for the attributes available in the PORTLET_SCOPE" */

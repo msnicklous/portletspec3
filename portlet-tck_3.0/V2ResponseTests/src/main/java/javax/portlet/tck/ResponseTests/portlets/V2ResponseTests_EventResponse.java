@@ -71,26 +71,23 @@ public class V2ResponseTests_EventResponse implements Portlet {
 
       PrintWriter writer = renderResponse.getWriter();
       JSR286ApiTestCaseDetails tcd = new JSR286ApiTestCaseDetails();
-      // TODO: access the class under test and uncomment this code.
-      // ClassChecker cc = new ClassChecker(EventResponse);
+      ClassChecker cc = new ClassChecker(EventResponseWrapper.class);
 
       // Create result objects for the tests
 
       /* TestCase: EventResponse_implementsStateAwareResponse1 */
       /* Details: "Implements StateAwareResponse" */
       TestResult tr0 = tcd.getTestResultFailed(EVENTRESPONSE_IMPLEMENTSSTATEAWARERESPONSE1);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    tr0.setTcSuccess(cc.implementsInterface(StateAwareResponse.class));
-      // }
+      {
+         tr0.setTcSuccess(cc.implementsInterface(StateAwareResponse.class));
+      }
 
       /* TestCase: EventResponse_implementsStateAwareResponse2 */
       /* Details: "Implements PortletResponse" */
       TestResult tr1 = tcd.getTestResultFailed(EVENTRESPONSE_IMPLEMENTSSTATEAWARERESPONSE2);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    tr1.setTcSuccess(cc.implementsInterface(PortletResponse.class));
-      // }
+      {
+         tr1.setTcSuccess(cc.implementsInterface(PortletResponse.class));
+      }
 
       /* TestCase: EventResponse_implementsStateAwareResponse3 */
       /* Details: "All tests described for the PortletResponse execute correctly with the EventResponse" */
@@ -105,13 +102,12 @@ public class V2ResponseTests_EventResponse implements Portlet {
       /* TestCase: EventResponse_hasSetRenderParameters */
       /* Details: "Has a setRenderParameters(EventRequest) method" */
       TestResult tr4 = tcd.getTestResultFailed(EVENTRESPONSE_HASSETRENDERPARAMETERS);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "setRenderParameters";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = {EventRequest.class};
-      //    tr4.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "setRenderParameters";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {EventRequest.class};
+         tr4.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: EventResponse_setRenderParameters1 */
       /* Details: "Copies all render parameters set on the EventRequest to the EventResponse" */

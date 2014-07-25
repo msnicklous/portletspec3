@@ -71,21 +71,19 @@ public class V2EnvironmentTests_PortletRequestDispatcher implements Portlet {
 
       PrintWriter writer = renderResponse.getWriter();
       JSR286ApiTestCaseDetails tcd = new JSR286ApiTestCaseDetails();
-      // TODO: access the class under test and uncomment this code.
-      // ClassChecker cc = new ClassChecker(PortletRequestDispatcher);
+      ClassChecker cc = new ClassChecker(portletConfig.getPortletContext().getRequestDispatcher("/generated-resources/xml/module/tck-V2EnvironmentTests-tests.xml").getClass());
 
       // Create result objects for the tests
 
       /* TestCase: PortletRequestDispatcher_hasIncludeA */
       /* Details: "Has a include(RenderRequest request, RenderResponse response) throws javax.portlet.PortletException, java.io.IOException method" */
       TestResult tr0 = tcd.getTestResultFailed(PORTLETREQUESTDISPATCHER_HASINCLUDEA);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "include";
-      //    Class<?>[] exceptions = {javax.portlet.PortletException.class, java.io.IOException.class};
-      //    Class<?>[] parms = {RenderRequest.class, RenderResponse.class};
-      //    tr0.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "include";
+         Class<?>[] exceptions = {javax.portlet.PortletException.class, java.io.IOException.class};
+         Class<?>[] parms = {RenderRequest.class, RenderResponse.class};
+         tr0.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: PortletRequestDispatcher_includeA1 */
       /* Details: "Includes the content of a JSP page in the response" */
@@ -110,13 +108,12 @@ public class V2EnvironmentTests_PortletRequestDispatcher implements Portlet {
       /* TestCase: PortletRequestDispatcher_hasIncludeB */
       /* Details: "Has a include(PortletRequest request, PortletResponse response) throws javax.portlet.PortletException, java.io.IOException method" */
       TestResult tr5 = tcd.getTestResultFailed(PORTLETREQUESTDISPATCHER_HASINCLUDEB);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "include";
-      //    Class<?>[] exceptions = {javax.portlet.PortletException.class, java.io.IOException.class};
-      //    Class<?>[] parms = {PortletRequest.class, PortletResponse.class};
-      //    tr5.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "include";
+         Class<?>[] exceptions = {javax.portlet.PortletException.class, java.io.IOException.class};
+         Class<?>[] parms = {PortletRequest.class, PortletResponse.class};
+         tr5.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: PortletRequestDispatcher_includeB1 */
       /* Details: "Includes the content of a JSP page in the response" */
@@ -141,13 +138,12 @@ public class V2EnvironmentTests_PortletRequestDispatcher implements Portlet {
       /* TestCase: PortletRequestDispatcher_hasForward */
       /* Details: "Has a forward(PortletRequest request, PortletResponse response) throws javax.portlet.PortletException, java.io.IOException method" */
       TestResult tr10 = tcd.getTestResultFailed(PORTLETREQUESTDISPATCHER_HASFORWARD);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "forward";
-      //    Class<?>[] exceptions = {javax.portlet.PortletException.class, java.io.IOException.class};
-      //    Class<?>[] parms = {PortletRequest.class, PortletResponse.class};
-      //    tr10.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "forward";
+         Class<?>[] exceptions = {javax.portlet.PortletException.class, java.io.IOException.class};
+         Class<?>[] parms = {PortletRequest.class, PortletResponse.class};
+         tr10.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: PortletRequestDispatcher_forward1 */
       /* Details: "Can forward to a JSP page to create the response" */

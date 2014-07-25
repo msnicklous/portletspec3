@@ -71,29 +71,26 @@ public class V2EnvironmentTests_PortalContext implements Portlet {
 
       PrintWriter writer = renderResponse.getWriter();
       JSR286ApiTestCaseDetails tcd = new JSR286ApiTestCaseDetails();
-      // TODO: access the class under test and uncomment this code.
-      // ClassChecker cc = new ClassChecker(PortalContext);
+      ClassChecker cc = new ClassChecker(renderRequest.getPortalContext().getClass());
 
       // Create result objects for the tests
 
       /* TestCase: PortalContext_fieldMARKUP_HEAD_ELEMENT_SUPPORT */
       /* Details: "Has String field MARKUP_HEAD_ELEMENT_SUPPORT with value of \"javax.portlet.markup.head.element.support\" " */
       TestResult tr0 = tcd.getTestResultFailed(PORTALCONTEXT_FIELDMARKUP_HEAD_ELEMENT_SUPPORT);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    tr0.setTcSuccess(cc.hasField("MARKUP_HEAD_ELEMENT_SUPPORT", "javax.portlet.markup.head.element.support"));
-      // }
+      {
+         tr0.setTcSuccess(cc.hasField("MARKUP_HEAD_ELEMENT_SUPPORT", "javax.portlet.markup.head.element.support"));
+      }
 
       /* TestCase: PortalContext_hasGetProperty */
       /* Details: "Has a getProperty(java.lang.String) method" */
       TestResult tr1 = tcd.getTestResultFailed(PORTALCONTEXT_HASGETPROPERTY);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "getProperty";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = {java.lang.String.class};
-      //    tr1.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "getProperty";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = {java.lang.String.class};
+         tr1.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: PortalContext_getProperty1 */
       /* Details: "Returns a String containing the value for the specified property " */
@@ -113,13 +110,12 @@ public class V2EnvironmentTests_PortalContext implements Portlet {
       /* TestCase: PortalContext_hasGetPropertyNames */
       /* Details: "Has a getPropertyNames() method" */
       TestResult tr5 = tcd.getTestResultFailed(PORTALCONTEXT_HASGETPROPERTYNAMES);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "getPropertyNames";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = null;
-      //    tr5.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "getPropertyNames";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr5.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: PortalContext_getPropertyNames1 */
       /* Details: "Returns an java.util.Enumeration<java.lang.String> containing all portal property names" */
@@ -134,13 +130,12 @@ public class V2EnvironmentTests_PortalContext implements Portlet {
       /* TestCase: PortalContext_hasGetSupportedPortletModes */
       /* Details: "Has a getSupportedPortletModes() method" */
       TestResult tr8 = tcd.getTestResultFailed(PORTALCONTEXT_HASGETSUPPORTEDPORTLETMODES);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "getSupportedPortletModes";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = null;
-      //    tr8.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "getSupportedPortletModes";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr8.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: PortalContext_getSupportedPortletModes1 */
       /* Details: "Returns an java.util.Enumeration<PortletMode> containing all supported portlet modes" */
@@ -165,13 +160,12 @@ public class V2EnvironmentTests_PortalContext implements Portlet {
       /* TestCase: PortalContext_hasGetSupportedWindowStates */
       /* Details: "Has a getSupportedWindowStates() method" */
       TestResult tr13 = tcd.getTestResultFailed(PORTALCONTEXT_HASGETSUPPORTEDWINDOWSTATES);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "getSupportedWindowStates";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = null;
-      //    tr13.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "getSupportedWindowStates";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr13.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: PortalContext_getSupportedWindowStates1 */
       /* Details: "Returns an java.util.Enumeration<WindowState> containing all supported window states" */
@@ -196,13 +190,12 @@ public class V2EnvironmentTests_PortalContext implements Portlet {
       /* TestCase: PortalContext_hasGetPortalInfo */
       /* Details: "Has a getPortalInfo() method" */
       TestResult tr18 = tcd.getTestResultFailed(PORTALCONTEXT_HASGETPORTALINFO);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "getPortalInfo";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = null;
-      //    tr18.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
+      {
+         String name = "getPortalInfo";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr18.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
 
       /* TestCase: PortalContext_getPortalInfo1 */
       /* Details: "Returns a String containing information about the portal" */
