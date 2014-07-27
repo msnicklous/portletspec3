@@ -75,70 +75,29 @@ public class V2ExceptionTests_ValidatorException implements Portlet {
 
       // Create result objects for the tests
 
-      /* TestCase: ValidatorException_extendsPortletException */
-      /* Details: "Extends PortletException" */
-      TestResult tr0 = tcd.getTestResultFailed(VALIDATOREXCEPTION_EXTENDSPORTLETEXCEPTION);
-      {
-         tr0.setTcSuccess(cc.hasSuperclass(PortletException.class));
-      }
-
-      /* TestCase: ValidatorException_constructor1 */
-      /* Details: "Provides constructor ValidatorException(java.lang.String, java.util.Collection<java.lang.String>)" */
-      TestResult tr1 = tcd.getTestResultFailed(VALIDATOREXCEPTION_CONSTRUCTOR1);
-      {
-         Class<?>[] parms = {java.lang.String.class, java.util.Collection.class};
-         tr1.setTcSuccess(cc.hasConstructor(parms));
-      }
-
       /* TestCase: ValidatorException_constructor2 */
       /* Details: "For ValidatorException(java.lang.String, java.util.Collection<java.lang.String>), the failedKeys parameter may be null" */
-      TestResult tr2 = tcd.getTestResultFailed(VALIDATOREXCEPTION_CONSTRUCTOR2);
+      TestResult tr0 = tcd.getTestResultFailed(VALIDATOREXCEPTION_CONSTRUCTOR2);
       /* TODO: implement test */
-
-      /* TestCase: ValidatorException_constructor3 */
-      /* Details: "Provides constructor ValidatorException(java.lang.String, java.lang.Throwable, java.util.Collection<java.lang.String>)" */
-      TestResult tr3 = tcd.getTestResultFailed(VALIDATOREXCEPTION_CONSTRUCTOR3);
-      {
-         Class<?>[] parms = {java.lang.String.class, java.lang.Throwable.class, java.util.Collection.class};
-         tr3.setTcSuccess(cc.hasConstructor(parms));
-      }
 
       /* TestCase: ValidatorException_constructor4 */
       /* Details: "For ValidatorException(java.lang.String, java.lang.Throwable, java.util.Collection<java.lang.String>), the failedKeys parameter may be null" */
-      TestResult tr4 = tcd.getTestResultFailed(VALIDATOREXCEPTION_CONSTRUCTOR4);
+      TestResult tr1 = tcd.getTestResultFailed(VALIDATOREXCEPTION_CONSTRUCTOR4);
       /* TODO: implement test */
-
-      /* TestCase: ValidatorException_constructor5 */
-      /* Details: "Provides constructor ValidatorException(java.lang.Throwable, java.util.Collection<java.lang.String>)" */
-      TestResult tr5 = tcd.getTestResultFailed(VALIDATOREXCEPTION_CONSTRUCTOR5);
-      {
-         Class<?>[] parms = {java.lang.Throwable.class, java.util.Collection.class};
-         tr5.setTcSuccess(cc.hasConstructor(parms));
-      }
 
       /* TestCase: ValidatorException_constructor6 */
       /* Details: "For ValidatorException(java.lang.Throwable, java.util.Collection<java.lang.String>), the failedKeys parameter may be null" */
-      TestResult tr6 = tcd.getTestResultFailed(VALIDATOREXCEPTION_CONSTRUCTOR6);
+      TestResult tr2 = tcd.getTestResultFailed(VALIDATOREXCEPTION_CONSTRUCTOR6);
       /* TODO: implement test */
-
-      /* TestCase: ValidatorException_hasGetFailedKeys */
-      /* Details: "Has a getFailedKeys() method" */
-      TestResult tr7 = tcd.getTestResultFailed(VALIDATOREXCEPTION_HASGETFAILEDKEYS);
-      {
-         String name = "getFailedKeys";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr7.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: ValidatorException_getFailedKeys1 */
       /* Details: "Returns a java.util.Enumeration<java.lang.String> object containing the preference keys that failed validation" */
-      TestResult tr8 = tcd.getTestResultFailed(VALIDATOREXCEPTION_GETFAILEDKEYS1);
+      TestResult tr3 = tcd.getTestResultFailed(VALIDATOREXCEPTION_GETFAILEDKEYS1);
       /* TODO: implement test */
 
       /* TestCase: ValidatorException_getFailedKeys2 */
       /* Details: "Returns an empty enmueration if no failed keys are available" */
-      TestResult tr9 = tcd.getTestResultFailed(VALIDATOREXCEPTION_GETFAILEDKEYS2);
+      TestResult tr4 = tcd.getTestResultFailed(VALIDATOREXCEPTION_GETFAILEDKEYS2);
       /* TODO: implement test */
 
 
@@ -150,11 +109,6 @@ public class V2ExceptionTests_ValidatorException implements Portlet {
       tr2.writeTo(writer);
       tr3.writeTo(writer);
       tr4.writeTo(writer);
-      tr5.writeTo(writer);
-      tr6.writeTo(writer);
-      tr7.writeTo(writer);
-      tr8.writeTo(writer);
-      tr9.writeTo(writer);
 
 
    }

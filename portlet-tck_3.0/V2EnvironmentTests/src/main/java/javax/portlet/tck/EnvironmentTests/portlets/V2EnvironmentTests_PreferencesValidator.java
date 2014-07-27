@@ -71,8 +71,7 @@ public class V2EnvironmentTests_PreferencesValidator implements Portlet {
 
       PrintWriter writer = renderResponse.getWriter();
       JSR286ApiTestCaseDetails tcd = new JSR286ApiTestCaseDetails();
-      // TODO: access the class under test and uncomment this code.
-      // ClassChecker cc = new ClassChecker(PreferencesValidator);
+      ClassChecker cc = new ClassChecker(PreferencesValidator.class);
 
       // Create result objects for the tests
 

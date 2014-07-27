@@ -75,161 +75,49 @@ public class V2WrapperTests_ActionRequestWrapper implements Portlet {
 
       // Create result objects for the tests
 
-      /* TestCase: ActionRequestWrapper_extendsPortletRequestWrapper */
-      /* Details: "Extends PortletRequestWrapper" */
-      TestResult tr0 = tcd.getTestResultFailed(ACTIONREQUESTWRAPPER_EXTENDSPORTLETREQUESTWRAPPER);
-      {
-         tr0.setTcSuccess(cc.hasSuperclass(PortletRequestWrapper.class));
-      }
-
-      /* TestCase: ActionRequestWrapper_implementsActionRequest */
-      /* Details: "Implements ActionRequest" */
-      TestResult tr1 = tcd.getTestResultFailed(ACTIONREQUESTWRAPPER_IMPLEMENTSACTIONREQUEST);
-      {
-         tr1.setTcSuccess(cc.implementsInterface(ActionRequest.class));
-      }
-
-      /* TestCase: ActionRequestWrapper_constructor */
-      /* Details: "Provides constructor ActionRequestWrapper(ActionRequest) with specified wrapped ActionRequest object" */
-      TestResult tr2 = tcd.getTestResultFailed(ACTIONREQUESTWRAPPER_CONSTRUCTOR);
-      {
-         Class<?>[] parms = {ActionRequest.class};
-         tr2.setTcSuccess(cc.hasConstructor(parms));
-      }
-
-      /* TestCase: ActionRequestWrapper_hasGetCharacterEncoding */
-      /* Details: "Has a getCharacterEncoding() method" */
-      TestResult tr3 = tcd.getTestResultFailed(ACTIONREQUESTWRAPPER_HASGETCHARACTERENCODING);
-      {
-         String name = "getCharacterEncoding";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr3.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
-
       /* TestCase: ActionRequestWrapper_getCharacterEncoding */
       /* Details: "Calls wrapped method" */
-      TestResult tr4 = tcd.getTestResultFailed(ACTIONREQUESTWRAPPER_GETCHARACTERENCODING);
+      TestResult tr0 = tcd.getTestResultFailed(ACTIONREQUESTWRAPPER_GETCHARACTERENCODING);
       /* TODO: implement test */
-
-      /* TestCase: ActionRequestWrapper_hasGetContentLength */
-      /* Details: "Has a getContentLength() method" */
-      TestResult tr5 = tcd.getTestResultFailed(ACTIONREQUESTWRAPPER_HASGETCONTENTLENGTH);
-      {
-         String name = "getContentLength";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr5.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: ActionRequestWrapper_getContentLength */
       /* Details: "Calls wrapped method" */
-      TestResult tr6 = tcd.getTestResultFailed(ACTIONREQUESTWRAPPER_GETCONTENTLENGTH);
+      TestResult tr1 = tcd.getTestResultFailed(ACTIONREQUESTWRAPPER_GETCONTENTLENGTH);
       /* TODO: implement test */
-
-      /* TestCase: ActionRequestWrapper_hasGetContentType */
-      /* Details: "Has a getContentType() method" */
-      TestResult tr7 = tcd.getTestResultFailed(ACTIONREQUESTWRAPPER_HASGETCONTENTTYPE);
-      {
-         String name = "getContentType";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr7.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: ActionRequestWrapper_getContentType */
       /* Details: "Calls wrapped method" */
-      TestResult tr8 = tcd.getTestResultFailed(ACTIONREQUESTWRAPPER_GETCONTENTTYPE);
+      TestResult tr2 = tcd.getTestResultFailed(ACTIONREQUESTWRAPPER_GETCONTENTTYPE);
       /* TODO: implement test */
-
-      /* TestCase: ActionRequestWrapper_hasGetPortletInputStream */
-      /* Details: "Has a getPortletInputStream() throws java.io.IOException method" */
-      TestResult tr9 = tcd.getTestResultFailed(ACTIONREQUESTWRAPPER_HASGETPORTLETINPUTSTREAM);
-      {
-         String name = "getPortletInputStream";
-         Class<?>[] exceptions = {java.io.IOException.class};
-         Class<?>[] parms = null;
-         tr9.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: ActionRequestWrapper_getPortletInputStream */
       /* Details: "Calls wrapped method" */
-      TestResult tr10 = tcd.getTestResultFailed(ACTIONREQUESTWRAPPER_GETPORTLETINPUTSTREAM);
+      TestResult tr3 = tcd.getTestResultFailed(ACTIONREQUESTWRAPPER_GETPORTLETINPUTSTREAM);
       /* TODO: implement test */
-
-      /* TestCase: ActionRequestWrapper_hasGetReader */
-      /* Details: "Has a getReader() throws java.io.UnsupportedEncodingException, java.io.IOException method" */
-      TestResult tr11 = tcd.getTestResultFailed(ACTIONREQUESTWRAPPER_HASGETREADER);
-      {
-         String name = "getReader";
-         Class<?>[] exceptions = {java.io.UnsupportedEncodingException.class, java.io.IOException.class};
-         Class<?>[] parms = null;
-         tr11.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: ActionRequestWrapper_getReader */
       /* Details: "Calls wrapped method" */
-      TestResult tr12 = tcd.getTestResultFailed(ACTIONREQUESTWRAPPER_GETREADER);
+      TestResult tr4 = tcd.getTestResultFailed(ACTIONREQUESTWRAPPER_GETREADER);
       /* TODO: implement test */
-
-      /* TestCase: ActionRequestWrapper_hasSetCharacterEncoding */
-      /* Details: "Has a setCharacterEncoding(java.lang.String) throws java.io.UnsupportedEncodingException method" */
-      TestResult tr13 = tcd.getTestResultFailed(ACTIONREQUESTWRAPPER_HASSETCHARACTERENCODING);
-      {
-         String name = "setCharacterEncoding";
-         Class<?>[] exceptions = {java.io.UnsupportedEncodingException.class};
-         Class<?>[] parms = {java.lang.String.class};
-         tr13.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: ActionRequestWrapper_setCharacterEncoding */
       /* Details: "Calls wrapped method" */
-      TestResult tr14 = tcd.getTestResultFailed(ACTIONREQUESTWRAPPER_SETCHARACTERENCODING);
+      TestResult tr5 = tcd.getTestResultFailed(ACTIONREQUESTWRAPPER_SETCHARACTERENCODING);
       /* TODO: implement test */
-
-      /* TestCase: ActionRequestWrapper_hasGetRequest */
-      /* Details: "Has a getRequest() method" */
-      TestResult tr15 = tcd.getTestResultFailed(ACTIONREQUESTWRAPPER_HASGETREQUEST);
-      {
-         String name = "getRequest";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr15.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: ActionRequestWrapper_getRequest */
       /* Details: "Returns wrapped ActionRequest object" */
-      TestResult tr16 = tcd.getTestResultFailed(ACTIONREQUESTWRAPPER_GETREQUEST);
+      TestResult tr6 = tcd.getTestResultFailed(ACTIONREQUESTWRAPPER_GETREQUEST);
       /* TODO: implement test */
-
-      /* TestCase: ActionRequestWrapper_hasSetRequest */
-      /* Details: "Has a setRequest(ActionRequest) method" */
-      TestResult tr17 = tcd.getTestResultFailed(ACTIONREQUESTWRAPPER_HASSETREQUEST);
-      {
-         String name = "setRequest";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = {ActionRequest.class};
-         tr17.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: ActionRequestWrapper_setRequest */
       /* Details: "Allows wrapped ActionRequest object to be set" */
-      TestResult tr18 = tcd.getTestResultFailed(ACTIONREQUESTWRAPPER_SETREQUEST);
+      TestResult tr7 = tcd.getTestResultFailed(ACTIONREQUESTWRAPPER_SETREQUEST);
       /* TODO: implement test */
-
-      /* TestCase: ActionRequestWrapper_hasGetMethod */
-      /* Details: "Has a getMethod() method" */
-      TestResult tr19 = tcd.getTestResultFailed(ACTIONREQUESTWRAPPER_HASGETMETHOD);
-      {
-         String name = "getMethod";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr19.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: ActionRequestWrapper_getMethod */
       /* Details: "Calls wrapped method" */
-      TestResult tr20 = tcd.getTestResultFailed(ACTIONREQUESTWRAPPER_GETMETHOD);
+      TestResult tr8 = tcd.getTestResultFailed(ACTIONREQUESTWRAPPER_GETMETHOD);
       /* TODO: implement test */
 
 
@@ -245,18 +133,6 @@ public class V2WrapperTests_ActionRequestWrapper implements Portlet {
       tr6.writeTo(writer);
       tr7.writeTo(writer);
       tr8.writeTo(writer);
-      tr9.writeTo(writer);
-      tr10.writeTo(writer);
-      tr11.writeTo(writer);
-      tr12.writeTo(writer);
-      tr13.writeTo(writer);
-      tr14.writeTo(writer);
-      tr15.writeTo(writer);
-      tr16.writeTo(writer);
-      tr17.writeTo(writer);
-      tr18.writeTo(writer);
-      tr19.writeTo(writer);
-      tr20.writeTo(writer);
 
 
    }

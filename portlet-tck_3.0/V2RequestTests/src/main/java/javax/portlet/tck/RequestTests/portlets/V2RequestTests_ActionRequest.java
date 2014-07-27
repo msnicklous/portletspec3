@@ -75,35 +75,21 @@ public class V2RequestTests_ActionRequest implements Portlet {
 
       // Create result objects for the tests
 
-      /* TestCase: ActionRequest_implementsClientDataRequest1 */
-      /* Details: "Implements ClientDataRequest" */
-      TestResult tr0 = tcd.getTestResultFailed(ACTIONREQUEST_IMPLEMENTSCLIENTDATAREQUEST1);
-      {
-         tr0.setTcSuccess(cc.implementsInterface(ClientDataRequest.class));
-      }
-
-      /* TestCase: ActionRequest_implementsClientDataRequest2 */
-      /* Details: "Implements PortletRequest" */
-      TestResult tr1 = tcd.getTestResultFailed(ACTIONREQUEST_IMPLEMENTSCLIENTDATAREQUEST2);
-      {
-         tr1.setTcSuccess(cc.implementsInterface(PortletRequest.class));
-      }
-
       /* TestCase: ActionRequest_implementsClientDataRequest3 */
       /* Details: "All tests described for the ClientDataRequest execute correctly with the ActionRequest" */
-      TestResult tr2 = tcd.getTestResultFailed(ACTIONREQUEST_IMPLEMENTSCLIENTDATAREQUEST3);
+      TestResult tr0 = tcd.getTestResultFailed(ACTIONREQUEST_IMPLEMENTSCLIENTDATAREQUEST3);
       /* TODO: implement test */
 
       /* TestCase: ActionRequest_implementsClientDataRequest4 */
       /* Details: "All tests described for the PortletRequest execute correctly with the ActionRequest" */
-      TestResult tr3 = tcd.getTestResultFailed(ACTIONREQUEST_IMPLEMENTSCLIENTDATAREQUEST4);
+      TestResult tr1 = tcd.getTestResultFailed(ACTIONREQUEST_IMPLEMENTSCLIENTDATAREQUEST4);
       /* TODO: implement test */
 
       /* TestCase: ActionRequest_fieldACTION_NAME */
       /* Details: "Has String field ACTION_NAME with value of \"javax.portlet.action\" " */
-      TestResult tr4 = tcd.getTestResultFailed(ACTIONREQUEST_FIELDACTION_NAME);
+      TestResult tr2 = tcd.getTestResultFailed(ACTIONREQUEST_FIELDACTION_NAME);
       {
-         tr4.setTcSuccess(cc.hasField("ACTION_NAME", "javax.portlet.action"));
+         tr2.setTcSuccess(cc.hasField("ACTION_NAME", "javax.portlet.action"));
       }
 
 
@@ -113,8 +99,6 @@ public class V2RequestTests_ActionRequest implements Portlet {
       tr0.writeTo(writer);
       tr1.writeTo(writer);
       tr2.writeTo(writer);
-      tr3.writeTo(writer);
-      tr4.writeTo(writer);
 
 
    }

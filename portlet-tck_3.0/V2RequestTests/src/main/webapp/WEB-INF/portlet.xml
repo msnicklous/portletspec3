@@ -45,6 +45,72 @@
    </portlet>
 
    <portlet>
+      <portlet-name>V2RequestTests_SIG_PortletRequest</portlet-name>
+      <portlet-class>javax.portlet.tck.RequestTests.portlets.V2RequestTests_SIG_PortletRequest</portlet-class>
+
+      <init-param>
+         <name>TestParameter</name>
+         <value>TestValue</value>
+      </init-param>
+
+      <expiration-cache>0</expiration-cache>
+
+      <supports>
+         <mime-type>text/html</mime-type>
+      </supports>
+
+      <supported-locale>en_US</supported-locale>
+
+      <portlet-info>
+         <title>V2RequestTests_SIG_PortletRequest</title>
+      </portlet-info>
+   </portlet>
+
+   <portlet>
+      <portlet-name>V2RequestTests_PortletRequest$P3PUserInfos</portlet-name>
+      <portlet-class>javax.portlet.tck.RequestTests.portlets.V2RequestTests_PortletRequest$P3PUserInfos</portlet-class>
+
+      <init-param>
+         <name>TestParameter</name>
+         <value>TestValue</value>
+      </init-param>
+
+      <expiration-cache>0</expiration-cache>
+
+      <supports>
+         <mime-type>text/html</mime-type>
+      </supports>
+
+      <supported-locale>en_US</supported-locale>
+
+      <portlet-info>
+         <title>V2RequestTests_PortletRequest$P3PUserInfos</title>
+      </portlet-info>
+   </portlet>
+
+   <portlet>
+      <portlet-name>V2RequestTests_SIG_PortletRequest$P3PUserInfos</portlet-name>
+      <portlet-class>javax.portlet.tck.RequestTests.portlets.V2RequestTests_SIG_PortletRequest$P3PUserInfos</portlet-class>
+
+      <init-param>
+         <name>TestParameter</name>
+         <value>TestValue</value>
+      </init-param>
+
+      <expiration-cache>0</expiration-cache>
+
+      <supports>
+         <mime-type>text/html</mime-type>
+      </supports>
+
+      <supported-locale>en_US</supported-locale>
+
+      <portlet-info>
+         <title>V2RequestTests_SIG_PortletRequest$P3PUserInfos</title>
+      </portlet-info>
+   </portlet>
+
+   <portlet>
       <portlet-name>V2RequestTests_ClientDataRequest</portlet-name>
       <portlet-class>javax.portlet.tck.RequestTests.portlets.V2RequestTests_ClientDataRequest</portlet-class>
 
@@ -63,6 +129,28 @@
 
       <portlet-info>
          <title>V2RequestTests_ClientDataRequest</title>
+      </portlet-info>
+   </portlet>
+
+   <portlet>
+      <portlet-name>V2RequestTests_SIG_ClientDataRequest</portlet-name>
+      <portlet-class>javax.portlet.tck.RequestTests.portlets.V2RequestTests_SIG_ClientDataRequest</portlet-class>
+
+      <init-param>
+         <name>TestParameter</name>
+         <value>TestValue</value>
+      </init-param>
+
+      <expiration-cache>0</expiration-cache>
+
+      <supports>
+         <mime-type>text/html</mime-type>
+      </supports>
+
+      <supported-locale>en_US</supported-locale>
+
+      <portlet-info>
+         <title>V2RequestTests_SIG_ClientDataRequest</title>
       </portlet-info>
    </portlet>
 
@@ -89,6 +177,28 @@
    </portlet>
 
    <portlet>
+      <portlet-name>V2RequestTests_SIG_ActionRequest</portlet-name>
+      <portlet-class>javax.portlet.tck.RequestTests.portlets.V2RequestTests_SIG_ActionRequest</portlet-class>
+
+      <init-param>
+         <name>TestParameter</name>
+         <value>TestValue</value>
+      </init-param>
+
+      <expiration-cache>0</expiration-cache>
+
+      <supports>
+         <mime-type>text/html</mime-type>
+      </supports>
+
+      <supported-locale>en_US</supported-locale>
+
+      <portlet-info>
+         <title>V2RequestTests_SIG_ActionRequest</title>
+      </portlet-info>
+   </portlet>
+
+   <portlet>
       <portlet-name>V2RequestTests_ResourceRequest</portlet-name>
       <portlet-class>javax.portlet.tck.RequestTests.portlets.V2RequestTests_ResourceRequest</portlet-class>
 
@@ -107,6 +217,28 @@
 
       <portlet-info>
          <title>V2RequestTests_ResourceRequest</title>
+      </portlet-info>
+   </portlet>
+
+   <portlet>
+      <portlet-name>V2RequestTests_SIG_ResourceRequest</portlet-name>
+      <portlet-class>javax.portlet.tck.RequestTests.portlets.V2RequestTests_SIG_ResourceRequest</portlet-class>
+
+      <init-param>
+         <name>TestParameter</name>
+         <value>TestValue</value>
+      </init-param>
+
+      <expiration-cache>0</expiration-cache>
+
+      <supports>
+         <mime-type>text/html</mime-type>
+      </supports>
+
+      <supported-locale>en_US</supported-locale>
+
+      <portlet-info>
+         <title>V2RequestTests_SIG_ResourceRequest</title>
       </portlet-info>
    </portlet>
 
@@ -133,6 +265,28 @@
    </portlet>
 
    <portlet>
+      <portlet-name>V2RequestTests_SIG_EventRequest</portlet-name>
+      <portlet-class>javax.portlet.tck.RequestTests.portlets.V2RequestTests_SIG_EventRequest</portlet-class>
+
+      <init-param>
+         <name>TestParameter</name>
+         <value>TestValue</value>
+      </init-param>
+
+      <expiration-cache>0</expiration-cache>
+
+      <supports>
+         <mime-type>text/html</mime-type>
+      </supports>
+
+      <supported-locale>en_US</supported-locale>
+
+      <portlet-info>
+         <title>V2RequestTests_SIG_EventRequest</title>
+      </portlet-info>
+   </portlet>
+
+   <portlet>
       <portlet-name>V2RequestTests_RenderRequest</portlet-name>
       <portlet-class>javax.portlet.tck.RequestTests.portlets.V2RequestTests_RenderRequest</portlet-class>
 
@@ -151,6 +305,28 @@
 
       <portlet-info>
          <title>V2RequestTests_RenderRequest</title>
+      </portlet-info>
+   </portlet>
+
+   <portlet>
+      <portlet-name>V2RequestTests_SIG_RenderRequest</portlet-name>
+      <portlet-class>javax.portlet.tck.RequestTests.portlets.V2RequestTests_SIG_RenderRequest</portlet-class>
+
+      <init-param>
+         <name>TestParameter</name>
+         <value>TestValue</value>
+      </init-param>
+
+      <expiration-cache>0</expiration-cache>
+
+      <supports>
+         <mime-type>text/html</mime-type>
+      </supports>
+
+      <supported-locale>en_US</supported-locale>
+
+      <portlet-info>
+         <title>V2RequestTests_SIG_RenderRequest</title>
       </portlet-info>
    </portlet>
 

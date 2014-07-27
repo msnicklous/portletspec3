@@ -71,72 +71,38 @@ public class V2PortletTests_Event implements Portlet {
 
       PrintWriter writer = renderResponse.getWriter();
       JSR286ApiTestCaseDetails tcd = new JSR286ApiTestCaseDetails();
-      // TODO: access the class under test and uncomment this code.
-      // ClassChecker cc = new ClassChecker(Event);
+      ClassChecker cc = new ClassChecker(Event.class);
 
       // Create result objects for the tests
 
-      /* TestCase: Event_hasGetQName */
-      /* Details: "Has a getQName() method" */
-      TestResult tr0 = tcd.getTestResultFailed(EVENT_HASGETQNAME);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "getQName";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = null;
-      //    tr0.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
-
       /* TestCase: Event_getQName1 */
       /* Details: "Returns the javax.xml.namespace.QName object for the Event" */
-      TestResult tr1 = tcd.getTestResultFailed(EVENT_GETQNAME1);
+      TestResult tr0 = tcd.getTestResultFailed(EVENT_GETQNAME1);
       /* TODO: implement test */
 
       /* TestCase: Event_getQName2 */
       /* Details: "Returned value may not be null" */
-      TestResult tr2 = tcd.getTestResultFailed(EVENT_GETQNAME2);
+      TestResult tr1 = tcd.getTestResultFailed(EVENT_GETQNAME2);
       /* TODO: implement test */
-
-      /* TestCase: Event_hasGetName */
-      /* Details: "Has a getName() method" */
-      TestResult tr3 = tcd.getTestResultFailed(EVENT_HASGETNAME);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "getName";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = null;
-      //    tr3.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
 
       /* TestCase: Event_getName1 */
       /* Details: "Returns a String containing the event local name" */
-      TestResult tr4 = tcd.getTestResultFailed(EVENT_GETNAME1);
+      TestResult tr2 = tcd.getTestResultFailed(EVENT_GETNAME1);
       /* TODO: implement test */
 
       /* TestCase: Event_getName2 */
       /* Details: "Returned value may not be null" */
-      TestResult tr5 = tcd.getTestResultFailed(EVENT_GETNAME2);
+      TestResult tr3 = tcd.getTestResultFailed(EVENT_GETNAME2);
       /* TODO: implement test */
-
-      /* TestCase: Event_hasGetValue */
-      /* Details: "Has a getValue() method" */
-      TestResult tr6 = tcd.getTestResultFailed(EVENT_HASGETVALUE);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "getValue";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = null;
-      //    tr6.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
 
       /* TestCase: Event_getValue1 */
       /* Details: "Returns a java.io.Serializable object representing the event payload" */
-      TestResult tr7 = tcd.getTestResultFailed(EVENT_GETVALUE1);
+      TestResult tr4 = tcd.getTestResultFailed(EVENT_GETVALUE1);
       /* TODO: implement test */
 
       /* TestCase: Event_getValue2 */
       /* Details: "Returned value is null if the event has no payload" */
-      TestResult tr8 = tcd.getTestResultFailed(EVENT_GETVALUE2);
+      TestResult tr5 = tcd.getTestResultFailed(EVENT_GETVALUE2);
       /* TODO: implement test */
 
 
@@ -149,9 +115,6 @@ public class V2PortletTests_Event implements Portlet {
       tr3.writeTo(writer);
       tr4.writeTo(writer);
       tr5.writeTo(writer);
-      tr6.writeTo(writer);
-      tr7.writeTo(writer);
-      tr8.writeTo(writer);
 
 
    }

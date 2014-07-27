@@ -75,221 +75,69 @@ public class V2WrapperTests_ResourceRequestWrapper implements Portlet {
 
       // Create result objects for the tests
 
-      /* TestCase: ResourceRequestWrapper_extendsPortletRequestWrapper */
-      /* Details: "Extends PortletRequestWrapper" */
-      TestResult tr0 = tcd.getTestResultFailed(RESOURCEREQUESTWRAPPER_EXTENDSPORTLETREQUESTWRAPPER);
-      {
-         tr0.setTcSuccess(cc.hasSuperclass(PortletRequestWrapper.class));
-      }
-
-      /* TestCase: ResourceRequestWrapper_implementsResourceRequest */
-      /* Details: "Implements ResourceRequest" */
-      TestResult tr1 = tcd.getTestResultFailed(RESOURCEREQUESTWRAPPER_IMPLEMENTSRESOURCEREQUEST);
-      {
-         tr1.setTcSuccess(cc.implementsInterface(ResourceRequest.class));
-      }
-
-      /* TestCase: ResourceRequestWrapper_constructor */
-      /* Details: "Provides constructor ResourceRequestWrapper(ResourceRequest) with specified wrapped ResourceRequest object" */
-      TestResult tr2 = tcd.getTestResultFailed(RESOURCEREQUESTWRAPPER_CONSTRUCTOR);
-      {
-         Class<?>[] parms = {ResourceRequest.class};
-         tr2.setTcSuccess(cc.hasConstructor(parms));
-      }
-
-      /* TestCase: ResourceRequestWrapper_hasGetPortletInputStream */
-      /* Details: "Has a getPortletInputStream() throws java.io.IOException method" */
-      TestResult tr3 = tcd.getTestResultFailed(RESOURCEREQUESTWRAPPER_HASGETPORTLETINPUTSTREAM);
-      {
-         String name = "getPortletInputStream";
-         Class<?>[] exceptions = {java.io.IOException.class};
-         Class<?>[] parms = null;
-         tr3.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
-
       /* TestCase: ResourceRequestWrapper_getPortletInputStream */
       /* Details: "Calls wrapped method" */
-      TestResult tr4 = tcd.getTestResultFailed(RESOURCEREQUESTWRAPPER_GETPORTLETINPUTSTREAM);
+      TestResult tr0 = tcd.getTestResultFailed(RESOURCEREQUESTWRAPPER_GETPORTLETINPUTSTREAM);
       /* TODO: implement test */
-
-      /* TestCase: ResourceRequestWrapper_hasGetReader */
-      /* Details: "Has a getReader() throws java.io.UnsupportedEncodingException, java.io.IOException method" */
-      TestResult tr5 = tcd.getTestResultFailed(RESOURCEREQUESTWRAPPER_HASGETREADER);
-      {
-         String name = "getReader";
-         Class<?>[] exceptions = {java.io.UnsupportedEncodingException.class, java.io.IOException.class};
-         Class<?>[] parms = null;
-         tr5.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: ResourceRequestWrapper_getReader */
       /* Details: "Calls wrapped method" */
-      TestResult tr6 = tcd.getTestResultFailed(RESOURCEREQUESTWRAPPER_GETREADER);
+      TestResult tr1 = tcd.getTestResultFailed(RESOURCEREQUESTWRAPPER_GETREADER);
       /* TODO: implement test */
-
-      /* TestCase: ResourceRequestWrapper_hasSetCharacterEncoding */
-      /* Details: "Has a setCharacterEncoding() throws java.io.UnsupportedEncodingException method" */
-      TestResult tr7 = tcd.getTestResultFailed(RESOURCEREQUESTWRAPPER_HASSETCHARACTERENCODING);
-      {
-         String name = "setCharacterEncoding";
-         Class<?>[] exceptions = {java.io.UnsupportedEncodingException.class};
-         Class<?>[] parms = null;
-         tr7.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: ResourceRequestWrapper_setCharacterEncoding */
       /* Details: "Calls wrapped method" */
-      TestResult tr8 = tcd.getTestResultFailed(RESOURCEREQUESTWRAPPER_SETCHARACTERENCODING);
+      TestResult tr2 = tcd.getTestResultFailed(RESOURCEREQUESTWRAPPER_SETCHARACTERENCODING);
       /* TODO: implement test */
-
-      /* TestCase: ResourceRequestWrapper_hasGetRequest */
-      /* Details: "Has a getRequest() method" */
-      TestResult tr9 = tcd.getTestResultFailed(RESOURCEREQUESTWRAPPER_HASGETREQUEST);
-      {
-         String name = "getRequest";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr9.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: ResourceRequestWrapper_getRequest */
       /* Details: "Returns wrapped ResourceRequest object" */
-      TestResult tr10 = tcd.getTestResultFailed(RESOURCEREQUESTWRAPPER_GETREQUEST);
+      TestResult tr3 = tcd.getTestResultFailed(RESOURCEREQUESTWRAPPER_GETREQUEST);
       /* TODO: implement test */
-
-      /* TestCase: ResourceRequestWrapper_hasSetRequest */
-      /* Details: "Has a setRequest(ResourceRequest) method" */
-      TestResult tr11 = tcd.getTestResultFailed(RESOURCEREQUESTWRAPPER_HASSETREQUEST);
-      {
-         String name = "setRequest";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = {ResourceRequest.class};
-         tr11.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: ResourceRequestWrapper_setRequest */
       /* Details: "Allows wrapped ResourceRequest object to be set" */
-      TestResult tr12 = tcd.getTestResultFailed(RESOURCEREQUESTWRAPPER_SETREQUEST);
+      TestResult tr4 = tcd.getTestResultFailed(RESOURCEREQUESTWRAPPER_SETREQUEST);
       /* TODO: implement test */
-
-      /* TestCase: ResourceRequestWrapper_hasGetCharacterEncoding */
-      /* Details: "Has a getCharacterEncoding() method" */
-      TestResult tr13 = tcd.getTestResultFailed(RESOURCEREQUESTWRAPPER_HASGETCHARACTERENCODING);
-      {
-         String name = "getCharacterEncoding";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr13.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: ResourceRequestWrapper_getCharacterEncoding */
       /* Details: "Calls wrapped method" */
-      TestResult tr14 = tcd.getTestResultFailed(RESOURCEREQUESTWRAPPER_GETCHARACTERENCODING);
+      TestResult tr5 = tcd.getTestResultFailed(RESOURCEREQUESTWRAPPER_GETCHARACTERENCODING);
       /* TODO: implement test */
-
-      /* TestCase: ResourceRequestWrapper_hasGetContentLength */
-      /* Details: "Has a getContentLength() method" */
-      TestResult tr15 = tcd.getTestResultFailed(RESOURCEREQUESTWRAPPER_HASGETCONTENTLENGTH);
-      {
-         String name = "getContentLength";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr15.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: ResourceRequestWrapper_getContentLength */
       /* Details: "Calls wrapped method" */
-      TestResult tr16 = tcd.getTestResultFailed(RESOURCEREQUESTWRAPPER_GETCONTENTLENGTH);
+      TestResult tr6 = tcd.getTestResultFailed(RESOURCEREQUESTWRAPPER_GETCONTENTLENGTH);
       /* TODO: implement test */
-
-      /* TestCase: ResourceRequestWrapper_hasGetContentType */
-      /* Details: "Has a getContentType() method" */
-      TestResult tr17 = tcd.getTestResultFailed(RESOURCEREQUESTWRAPPER_HASGETCONTENTTYPE);
-      {
-         String name = "getContentType";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr17.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: ResourceRequestWrapper_getContentType */
       /* Details: "Calls wrapped method" */
-      TestResult tr18 = tcd.getTestResultFailed(RESOURCEREQUESTWRAPPER_GETCONTENTTYPE);
+      TestResult tr7 = tcd.getTestResultFailed(RESOURCEREQUESTWRAPPER_GETCONTENTTYPE);
       /* TODO: implement test */
-
-      /* TestCase: ResourceRequestWrapper_hasGetETag */
-      /* Details: "Has a getETag() method" */
-      TestResult tr19 = tcd.getTestResultFailed(RESOURCEREQUESTWRAPPER_HASGETETAG);
-      {
-         String name = "getETag";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr19.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: ResourceRequestWrapper_getETag */
       /* Details: "Calls wrapped method" */
-      TestResult tr20 = tcd.getTestResultFailed(RESOURCEREQUESTWRAPPER_GETETAG);
+      TestResult tr8 = tcd.getTestResultFailed(RESOURCEREQUESTWRAPPER_GETETAG);
       /* TODO: implement test */
-
-      /* TestCase: ResourceRequestWrapper_hasGetMethod */
-      /* Details: "Has a getMethod() method" */
-      TestResult tr21 = tcd.getTestResultFailed(RESOURCEREQUESTWRAPPER_HASGETMETHOD);
-      {
-         String name = "getMethod";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr21.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: ResourceRequestWrapper_getMethod */
       /* Details: "Calls wrapped method" */
-      TestResult tr22 = tcd.getTestResultFailed(RESOURCEREQUESTWRAPPER_GETMETHOD);
+      TestResult tr9 = tcd.getTestResultFailed(RESOURCEREQUESTWRAPPER_GETMETHOD);
       /* TODO: implement test */
-
-      /* TestCase: ResourceRequestWrapper_hasGetResourceID */
-      /* Details: "Has a getResourceID() method" */
-      TestResult tr23 = tcd.getTestResultFailed(RESOURCEREQUESTWRAPPER_HASGETRESOURCEID);
-      {
-         String name = "getResourceID";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr23.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: ResourceRequestWrapper_getResourceID */
       /* Details: "Calls wrapped method" */
-      TestResult tr24 = tcd.getTestResultFailed(RESOURCEREQUESTWRAPPER_GETRESOURCEID);
+      TestResult tr10 = tcd.getTestResultFailed(RESOURCEREQUESTWRAPPER_GETRESOURCEID);
       /* TODO: implement test */
-
-      /* TestCase: ResourceRequestWrapper_hasGetPrivateRenderParameterMap */
-      /* Details: "Has a getPrivateRenderParameterMap() method" */
-      TestResult tr25 = tcd.getTestResultFailed(RESOURCEREQUESTWRAPPER_HASGETPRIVATERENDERPARAMETERMAP);
-      {
-         String name = "getPrivateRenderParameterMap";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr25.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: ResourceRequestWrapper_getPrivateRenderParameterMap */
       /* Details: "Calls wrapped method" */
-      TestResult tr26 = tcd.getTestResultFailed(RESOURCEREQUESTWRAPPER_GETPRIVATERENDERPARAMETERMAP);
+      TestResult tr11 = tcd.getTestResultFailed(RESOURCEREQUESTWRAPPER_GETPRIVATERENDERPARAMETERMAP);
       /* TODO: implement test */
-
-      /* TestCase: ResourceRequestWrapper_hasGetCacheability */
-      /* Details: "Has a getCacheability() method" */
-      TestResult tr27 = tcd.getTestResultFailed(RESOURCEREQUESTWRAPPER_HASGETCACHEABILITY);
-      {
-         String name = "getCacheability";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr27.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: ResourceRequestWrapper_getCacheability */
       /* Details: "Calls wrapped method" */
-      TestResult tr28 = tcd.getTestResultFailed(RESOURCEREQUESTWRAPPER_GETCACHEABILITY);
+      TestResult tr12 = tcd.getTestResultFailed(RESOURCEREQUESTWRAPPER_GETCACHEABILITY);
       /* TODO: implement test */
 
 
@@ -309,22 +157,6 @@ public class V2WrapperTests_ResourceRequestWrapper implements Portlet {
       tr10.writeTo(writer);
       tr11.writeTo(writer);
       tr12.writeTo(writer);
-      tr13.writeTo(writer);
-      tr14.writeTo(writer);
-      tr15.writeTo(writer);
-      tr16.writeTo(writer);
-      tr17.writeTo(writer);
-      tr18.writeTo(writer);
-      tr19.writeTo(writer);
-      tr20.writeTo(writer);
-      tr21.writeTo(writer);
-      tr22.writeTo(writer);
-      tr23.writeTo(writer);
-      tr24.writeTo(writer);
-      tr25.writeTo(writer);
-      tr26.writeTo(writer);
-      tr27.writeTo(writer);
-      tr28.writeTo(writer);
 
 
    }

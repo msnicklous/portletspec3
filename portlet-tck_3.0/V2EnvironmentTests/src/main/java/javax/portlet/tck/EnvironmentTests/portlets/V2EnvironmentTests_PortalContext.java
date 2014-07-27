@@ -82,144 +82,94 @@ public class V2EnvironmentTests_PortalContext implements Portlet {
          tr0.setTcSuccess(cc.hasField("MARKUP_HEAD_ELEMENT_SUPPORT", "javax.portlet.markup.head.element.support"));
       }
 
-      /* TestCase: PortalContext_hasGetProperty */
-      /* Details: "Has a getProperty(java.lang.String) method" */
-      TestResult tr1 = tcd.getTestResultFailed(PORTALCONTEXT_HASGETPROPERTY);
-      {
-         String name = "getProperty";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = {java.lang.String.class};
-         tr1.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
-
       /* TestCase: PortalContext_getProperty1 */
       /* Details: "Returns a String containing the value for the specified property " */
-      TestResult tr2 = tcd.getTestResultFailed(PORTALCONTEXT_GETPROPERTY1);
+      TestResult tr1 = tcd.getTestResultFailed(PORTALCONTEXT_GETPROPERTY1);
       /* TODO: implement test */
 
       /* TestCase: PortalContext_getProperty2 */
       /* Details: "Returns null if there is no property defined for the specified name" */
-      TestResult tr3 = tcd.getTestResultFailed(PORTALCONTEXT_GETPROPERTY2);
+      TestResult tr2 = tcd.getTestResultFailed(PORTALCONTEXT_GETPROPERTY2);
       /* TODO: implement test */
 
       /* TestCase: PortalContext_getProperty3 */
       /* Details: "Throws IllegalArgumentException if the specified name is null " */
-      TestResult tr4 = tcd.getTestResultFailed(PORTALCONTEXT_GETPROPERTY3);
+      TestResult tr3 = tcd.getTestResultFailed(PORTALCONTEXT_GETPROPERTY3);
       /* TODO: implement test */
-
-      /* TestCase: PortalContext_hasGetPropertyNames */
-      /* Details: "Has a getPropertyNames() method" */
-      TestResult tr5 = tcd.getTestResultFailed(PORTALCONTEXT_HASGETPROPERTYNAMES);
-      {
-         String name = "getPropertyNames";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr5.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: PortalContext_getPropertyNames1 */
       /* Details: "Returns an java.util.Enumeration<java.lang.String> containing all portal property names" */
-      TestResult tr6 = tcd.getTestResultFailed(PORTALCONTEXT_GETPROPERTYNAMES1);
+      TestResult tr4 = tcd.getTestResultFailed(PORTALCONTEXT_GETPROPERTYNAMES1);
       /* TODO: implement test */
 
       /* TestCase: PortalContext_getPropertyNames2 */
       /* Details: "Returns an empty Enumeration if there are no portal property names defined" */
-      TestResult tr7 = tcd.getTestResultFailed(PORTALCONTEXT_GETPROPERTYNAMES2);
+      TestResult tr5 = tcd.getTestResultFailed(PORTALCONTEXT_GETPROPERTYNAMES2);
       /* TODO: implement test */
-
-      /* TestCase: PortalContext_hasGetSupportedPortletModes */
-      /* Details: "Has a getSupportedPortletModes() method" */
-      TestResult tr8 = tcd.getTestResultFailed(PORTALCONTEXT_HASGETSUPPORTEDPORTLETMODES);
-      {
-         String name = "getSupportedPortletModes";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr8.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: PortalContext_getSupportedPortletModes1 */
       /* Details: "Returns an java.util.Enumeration<PortletMode> containing all supported portlet modes" */
-      TestResult tr9 = tcd.getTestResultFailed(PORTALCONTEXT_GETSUPPORTEDPORTLETMODES1);
+      TestResult tr6 = tcd.getTestResultFailed(PORTALCONTEXT_GETSUPPORTEDPORTLETMODES1);
       /* TODO: implement test */
 
       /* TestCase: PortalContext_getSupportedPortletModes2 */
       /* Details: "The Enumeration returned must contain the view mode" */
-      TestResult tr10 = tcd.getTestResultFailed(PORTALCONTEXT_GETSUPPORTEDPORTLETMODES2);
+      TestResult tr7 = tcd.getTestResultFailed(PORTALCONTEXT_GETSUPPORTEDPORTLETMODES2);
       /* TODO: implement test */
 
       /* TestCase: PortalContext_getSupportedPortletModes3 */
       /* Details: "The Enumeration returned must contain the edit mode" */
-      TestResult tr11 = tcd.getTestResultFailed(PORTALCONTEXT_GETSUPPORTEDPORTLETMODES3);
+      TestResult tr8 = tcd.getTestResultFailed(PORTALCONTEXT_GETSUPPORTEDPORTLETMODES3);
       /* TODO: implement test */
 
       /* TestCase: PortalContext_getSupportedPortletModes4 */
       /* Details: "The Enumeration returned must contain the help mode" */
-      TestResult tr12 = tcd.getTestResultFailed(PORTALCONTEXT_GETSUPPORTEDPORTLETMODES4);
+      TestResult tr9 = tcd.getTestResultFailed(PORTALCONTEXT_GETSUPPORTEDPORTLETMODES4);
       /* TODO: implement test */
-
-      /* TestCase: PortalContext_hasGetSupportedWindowStates */
-      /* Details: "Has a getSupportedWindowStates() method" */
-      TestResult tr13 = tcd.getTestResultFailed(PORTALCONTEXT_HASGETSUPPORTEDWINDOWSTATES);
-      {
-         String name = "getSupportedWindowStates";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr13.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: PortalContext_getSupportedWindowStates1 */
       /* Details: "Returns an java.util.Enumeration<WindowState> containing all supported window states" */
-      TestResult tr14 = tcd.getTestResultFailed(PORTALCONTEXT_GETSUPPORTEDWINDOWSTATES1);
+      TestResult tr10 = tcd.getTestResultFailed(PORTALCONTEXT_GETSUPPORTEDWINDOWSTATES1);
       /* TODO: implement test */
 
       /* TestCase: PortalContext_getSupportedWindowStates2 */
       /* Details: "The Enumeration returned must contain the maximized state" */
-      TestResult tr15 = tcd.getTestResultFailed(PORTALCONTEXT_GETSUPPORTEDWINDOWSTATES2);
+      TestResult tr11 = tcd.getTestResultFailed(PORTALCONTEXT_GETSUPPORTEDWINDOWSTATES2);
       /* TODO: implement test */
 
       /* TestCase: PortalContext_getSupportedWindowStates3 */
       /* Details: "The Enumeration returned must contain the minimized state" */
-      TestResult tr16 = tcd.getTestResultFailed(PORTALCONTEXT_GETSUPPORTEDWINDOWSTATES3);
+      TestResult tr12 = tcd.getTestResultFailed(PORTALCONTEXT_GETSUPPORTEDWINDOWSTATES3);
       /* TODO: implement test */
 
       /* TestCase: PortalContext_getSupportedWindowStates4 */
       /* Details: "The Enumeration returned must contain the normal state" */
-      TestResult tr17 = tcd.getTestResultFailed(PORTALCONTEXT_GETSUPPORTEDWINDOWSTATES4);
+      TestResult tr13 = tcd.getTestResultFailed(PORTALCONTEXT_GETSUPPORTEDWINDOWSTATES4);
       /* TODO: implement test */
-
-      /* TestCase: PortalContext_hasGetPortalInfo */
-      /* Details: "Has a getPortalInfo() method" */
-      TestResult tr18 = tcd.getTestResultFailed(PORTALCONTEXT_HASGETPORTALINFO);
-      {
-         String name = "getPortalInfo";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr18.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: PortalContext_getPortalInfo1 */
       /* Details: "Returns a String containing information about the portal" */
-      TestResult tr19 = tcd.getTestResultFailed(PORTALCONTEXT_GETPORTALINFO1);
+      TestResult tr14 = tcd.getTestResultFailed(PORTALCONTEXT_GETPORTALINFO1);
       /* TODO: implement test */
 
       /* TestCase: PortalContext_getPortalInfo2 */
       /* Details: "The returned string is of the form \"([^ ]+)/([^ ]+) *(.*)\", where $1 is the portal name, $2 is the version, and $3 is optional additional information" */
-      TestResult tr20 = tcd.getTestResultFailed(PORTALCONTEXT_GETPORTALINFO2);
+      TestResult tr15 = tcd.getTestResultFailed(PORTALCONTEXT_GETPORTALINFO2);
       /* TODO: implement test */
 
       /* TestCase: PortalContext_getPortalInfo3 */
       /* Details: "The returned string contains the portal name" */
-      TestResult tr21 = tcd.getTestResultFailed(PORTALCONTEXT_GETPORTALINFO3);
+      TestResult tr16 = tcd.getTestResultFailed(PORTALCONTEXT_GETPORTALINFO3);
       /* TODO: implement test */
 
       /* TestCase: PortalContext_getPortalInfo4 */
       /* Details: "The returned string contains the portal version" */
-      TestResult tr22 = tcd.getTestResultFailed(PORTALCONTEXT_GETPORTALINFO4);
+      TestResult tr17 = tcd.getTestResultFailed(PORTALCONTEXT_GETPORTALINFO4);
       /* TODO: implement test */
 
       /* TestCase: PortalContext_getPortalInfo5 */
       /* Details: "The returned string may not be null" */
-      TestResult tr23 = tcd.getTestResultFailed(PORTALCONTEXT_GETPORTALINFO5);
+      TestResult tr18 = tcd.getTestResultFailed(PORTALCONTEXT_GETPORTALINFO5);
       /* TODO: implement test */
 
 
@@ -245,11 +195,6 @@ public class V2EnvironmentTests_PortalContext implements Portlet {
       tr16.writeTo(writer);
       tr17.writeTo(writer);
       tr18.writeTo(writer);
-      tr19.writeTo(writer);
-      tr20.writeTo(writer);
-      tr21.writeTo(writer);
-      tr22.writeTo(writer);
-      tr23.writeTo(writer);
 
 
    }

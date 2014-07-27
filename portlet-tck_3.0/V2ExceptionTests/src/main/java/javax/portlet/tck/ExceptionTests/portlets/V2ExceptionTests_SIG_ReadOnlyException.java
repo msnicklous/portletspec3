@@ -16,7 +16,7 @@
  *  under the License.
  */
 
-package javax.portlet.tck.EnvironmentTests.portlets;
+package javax.portlet.tck.ExceptionTests.portlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -40,9 +40,9 @@ import javax.portlet.tck.beans.TestResult;
  * file. The build process will integrate the test case names defined in the 
  * additionalTCs.xml file into the complete list of test case names for execution by the driver.
  */
-public class V2EnvironmentTests_PortletMode implements Portlet {
+public class V2ExceptionTests_SIG_ReadOnlyException implements Portlet {
    private static final String LOG_CLASS = 
-         V2EnvironmentTests_PortletMode.class.getName();
+         V2ExceptionTests_SIG_ReadOnlyException.class.getName();
    private final Logger LOGGER = Logger.getLogger(LOG_CLASS);
    
    private PortletConfig portletConfig = null;
@@ -71,22 +71,39 @@ public class V2EnvironmentTests_PortletMode implements Portlet {
 
       PrintWriter writer = renderResponse.getWriter();
       JSR286ApiTestCaseDetails tcd = new JSR286ApiTestCaseDetails();
-      ClassChecker cc = new ClassChecker(PortletMode.class);
+      ClassChecker cc = new ClassChecker(ReadOnlyException.class);
 
       // Create result objects for the tests
 
-      /* TestCase: PortletMode_fieldAPPLICATION_SCOPE */
-      /* Details: "Has String field APPLICATION_SCOPE with value of 0x01 " */
-      TestResult tr0 = tcd.getTestResultFailed(PORTLETMODE_FIELDAPPLICATION_SCOPE);
+      /* TestCase: ReadOnlyException_SIG_extendsPortletException */
+      /* Details: "Extends PortletException " */
+      TestResult tr0 = tcd.getTestResultFailed(READONLYEXCEPTION_SIG_EXTENDSPORTLETEXCEPTION);
       {
-         tr0.setTcSuccess(cc.hasField("APPLICATION_SCOPE", "0x01"));
+         tr0.setTcSuccess(cc.hasSuperclass(PortletException.class));
       }
 
-      /* TestCase: PortletMode_fieldPORTLET_SCOPE */
-      /* Details: "Has String field PORTLET_SCOPE with value of 0x02 " */
-      TestResult tr1 = tcd.getTestResultFailed(PORTLETMODE_FIELDPORTLET_SCOPE);
+      /* TestCase: ReadOnlyException_SIG_constructor */
+      /* Details: "Provides constructor ReadOnlyException(String) " */
+      TestResult tr1 = tcd.getTestResultFailed(READONLYEXCEPTION_SIG_CONSTRUCTOR);
       {
-         tr1.setTcSuccess(cc.hasField("PORTLET_SCOPE", "0x02"));
+         Class<?>[] parms = {String.class};
+         tr1.setTcSuccess(cc.hasConstructor(parms));
+      }
+
+      /* TestCase: ReadOnlyException_SIG_constructorA */
+      /* Details: "Provides constructor ReadOnlyException(String, Throwable) " */
+      TestResult tr2 = tcd.getTestResultFailed(READONLYEXCEPTION_SIG_CONSTRUCTORA);
+      {
+         Class<?>[] parms = {String.class, Throwable.class};
+         tr2.setTcSuccess(cc.hasConstructor(parms));
+      }
+
+      /* TestCase: ReadOnlyException_SIG_constructorB */
+      /* Details: "Provides constructor ReadOnlyException(Throwable) " */
+      TestResult tr3 = tcd.getTestResultFailed(READONLYEXCEPTION_SIG_CONSTRUCTORB);
+      {
+         Class<?>[] parms = {Throwable.class};
+         tr3.setTcSuccess(cc.hasConstructor(parms));
       }
 
 
@@ -95,6 +112,8 @@ public class V2EnvironmentTests_PortletMode implements Portlet {
 
       tr0.writeTo(writer);
       tr1.writeTo(writer);
+      tr2.writeTo(writer);
+      tr3.writeTo(writer);
 
 
    }

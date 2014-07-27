@@ -85,174 +85,104 @@ public class V2RequestTests_ClientDataRequest implements Portlet {
       TestResult tr1 = tcd.getTestResultFailed(CLIENTDATAREQUEST_EXTENDSPORTLETREQUEST2);
       /* TODO: implement test */
 
-      /* TestCase: ClientDataRequest_hasGetPortletInputStream */
-      /* Details: "Has a getPortletInputStream() throws java.io.IOException method" */
-      TestResult tr2 = tcd.getTestResultFailed(CLIENTDATAREQUEST_HASGETPORTLETINPUTSTREAM);
-      {
-         String name = "getPortletInputStream";
-         Class<?>[] exceptions = {java.io.IOException.class};
-         Class<?>[] parms = null;
-         tr2.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
-
       /* TestCase: ClientDataRequest_getPortletInputStream1 */
       /* Details: "Returns an InputStream object" */
-      TestResult tr3 = tcd.getTestResultFailed(CLIENTDATAREQUEST_GETPORTLETINPUTSTREAM1);
+      TestResult tr2 = tcd.getTestResultFailed(CLIENTDATAREQUEST_GETPORTLETINPUTSTREAM1);
       /* TODO: implement test */
 
       /* TestCase: ClientDataRequest_getPortletInputStream2 */
       /* Details: "Throws IllegalStateException if getReader was already called" */
-      TestResult tr4 = tcd.getTestResultFailed(CLIENTDATAREQUEST_GETPORTLETINPUTSTREAM2);
+      TestResult tr3 = tcd.getTestResultFailed(CLIENTDATAREQUEST_GETPORTLETINPUTSTREAM2);
       /* TODO: implement test */
 
       /* TestCase: ClientDataRequest_getPortletInputStream3 */
       /* Details: "Throws IllegalStateException if the request has HTTP POST data of type application/x-www-form-urlencoded" */
-      TestResult tr5 = tcd.getTestResultFailed(CLIENTDATAREQUEST_GETPORTLETINPUTSTREAM3);
+      TestResult tr4 = tcd.getTestResultFailed(CLIENTDATAREQUEST_GETPORTLETINPUTSTREAM3);
       /* TODO: implement test */
 
       /* TestCase: ClientDataRequest_getPortletInputStream4 */
       /* Details: "Throws IOException if an error occurs during IO" */
-      TestResult tr6 = tcd.getTestResultFailed(CLIENTDATAREQUEST_GETPORTLETINPUTSTREAM4);
+      TestResult tr5 = tcd.getTestResultFailed(CLIENTDATAREQUEST_GETPORTLETINPUTSTREAM4);
       /* TODO: implement test */
-
-      /* TestCase: ClientDataRequest_hasSetCharacterEncoding */
-      /* Details: "Has a setCharacterEncoding(java.lang.String) throws java.io.UnsupportedEncodingException method" */
-      TestResult tr7 = tcd.getTestResultFailed(CLIENTDATAREQUEST_HASSETCHARACTERENCODING);
-      {
-         String name = "setCharacterEncoding";
-         Class<?>[] exceptions = {java.io.UnsupportedEncodingException.class};
-         Class<?>[] parms = {java.lang.String.class};
-         tr7.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: ClientDataRequest_setCharacterEncoding1 */
       /* Details: "Allows the character encoding for the body of the request to be overridden" */
-      TestResult tr8 = tcd.getTestResultFailed(CLIENTDATAREQUEST_SETCHARACTERENCODING1);
+      TestResult tr6 = tcd.getTestResultFailed(CLIENTDATAREQUEST_SETCHARACTERENCODING1);
       /* TODO: implement test */
 
       /* TestCase: ClientDataRequest_setCharacterEncoding2 */
       /* Details: "Throws IllegalStateException if method is called after reading request parameters" */
-      TestResult tr9 = tcd.getTestResultFailed(CLIENTDATAREQUEST_SETCHARACTERENCODING2);
+      TestResult tr7 = tcd.getTestResultFailed(CLIENTDATAREQUEST_SETCHARACTERENCODING2);
       /* TODO: implement test */
 
       /* TestCase: ClientDataRequest_setCharacterEncoding3 */
       /* Details: "Throws IllegalStateException if method is called after using the getReader() method" */
-      TestResult tr10 = tcd.getTestResultFailed(CLIENTDATAREQUEST_SETCHARACTERENCODING3);
+      TestResult tr8 = tcd.getTestResultFailed(CLIENTDATAREQUEST_SETCHARACTERENCODING3);
       /* TODO: implement test */
 
       /* TestCase: ClientDataRequest_setCharacterEncoding4 */
       /* Details: "Throws UnsupportedEncodingException if the specified encoding is not valid" */
-      TestResult tr11 = tcd.getTestResultFailed(CLIENTDATAREQUEST_SETCHARACTERENCODING4);
+      TestResult tr9 = tcd.getTestResultFailed(CLIENTDATAREQUEST_SETCHARACTERENCODING4);
       /* TODO: implement test */
-
-      /* TestCase: ClientDataRequest_hasGetReader */
-      /* Details: "Has a getReader() throws java.io.UnsupportedEncodingException, java.io.IOException method" */
-      TestResult tr12 = tcd.getTestResultFailed(CLIENTDATAREQUEST_HASGETREADER);
-      {
-         String name = "getReader";
-         Class<?>[] exceptions = {java.io.UnsupportedEncodingException.class, java.io.IOException.class};
-         Class<?>[] parms = null;
-         tr12.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: ClientDataRequest_getReader1 */
       /* Details: "Returns a BufferedReader object for reading the request" */
-      TestResult tr13 = tcd.getTestResultFailed(CLIENTDATAREQUEST_GETREADER1);
+      TestResult tr10 = tcd.getTestResultFailed(CLIENTDATAREQUEST_GETREADER1);
       /* TODO: implement test */
 
       /* TestCase: ClientDataRequest_getReader2 */
       /* Details: "Throws IllegalStateException if getPortletInputStream was already called" */
-      TestResult tr14 = tcd.getTestResultFailed(CLIENTDATAREQUEST_GETREADER2);
+      TestResult tr11 = tcd.getTestResultFailed(CLIENTDATAREQUEST_GETREADER2);
       /* TODO: implement test */
 
       /* TestCase: ClientDataRequest_getReader3 */
       /* Details: "Throws IllegalStateException if the request has HTTP POST data of type application/x-www-form-urlencoded" */
-      TestResult tr15 = tcd.getTestResultFailed(CLIENTDATAREQUEST_GETREADER3);
+      TestResult tr12 = tcd.getTestResultFailed(CLIENTDATAREQUEST_GETREADER3);
       /* TODO: implement test */
 
       /* TestCase: ClientDataRequest_getReader4 */
       /* Details: "Throws IOException if an error occurs during IO" */
-      TestResult tr16 = tcd.getTestResultFailed(CLIENTDATAREQUEST_GETREADER4);
+      TestResult tr13 = tcd.getTestResultFailed(CLIENTDATAREQUEST_GETREADER4);
       /* TODO: implement test */
 
       /* TestCase: ClientDataRequest_getReader5 */
       /* Details: "Throws UnsupportedEncodingException if the character set encoding is not valid so that the text cannot be decoded" */
-      TestResult tr17 = tcd.getTestResultFailed(CLIENTDATAREQUEST_GETREADER5);
+      TestResult tr14 = tcd.getTestResultFailed(CLIENTDATAREQUEST_GETREADER5);
       /* TODO: implement test */
-
-      /* TestCase: ClientDataRequest_hasGetCharacterEncoding */
-      /* Details: "Has a getCharacterEncoding() method" */
-      TestResult tr18 = tcd.getTestResultFailed(CLIENTDATAREQUEST_HASGETCHARACTERENCODING);
-      {
-         String name = "getCharacterEncoding";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr18.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: ClientDataRequest_getCharacterEncoding1 */
       /* Details: "Returns a String containing the name of the character encoding used in the request body" */
-      TestResult tr19 = tcd.getTestResultFailed(CLIENTDATAREQUEST_GETCHARACTERENCODING1);
+      TestResult tr15 = tcd.getTestResultFailed(CLIENTDATAREQUEST_GETCHARACTERENCODING1);
       /* TODO: implement test */
 
       /* TestCase: ClientDataRequest_getCharacterEncoding2 */
       /* Details: "Returns null if the request does not specify a character encoding" */
-      TestResult tr20 = tcd.getTestResultFailed(CLIENTDATAREQUEST_GETCHARACTERENCODING2);
+      TestResult tr16 = tcd.getTestResultFailed(CLIENTDATAREQUEST_GETCHARACTERENCODING2);
       /* TODO: implement test */
-
-      /* TestCase: ClientDataRequest_hasGetContentType */
-      /* Details: "Has a getContentType() method" */
-      TestResult tr21 = tcd.getTestResultFailed(CLIENTDATAREQUEST_HASGETCONTENTTYPE);
-      {
-         String name = "getContentType";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr21.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: ClientDataRequest_getContentType1 */
       /* Details: "Returns a String containing the MIME type of the request body" */
-      TestResult tr22 = tcd.getTestResultFailed(CLIENTDATAREQUEST_GETCONTENTTYPE1);
+      TestResult tr17 = tcd.getTestResultFailed(CLIENTDATAREQUEST_GETCONTENTTYPE1);
       /* TODO: implement test */
 
       /* TestCase: ClientDataRequest_getContentType2 */
       /* Details: "Returns null if the MIME type is unknown" */
-      TestResult tr23 = tcd.getTestResultFailed(CLIENTDATAREQUEST_GETCONTENTTYPE2);
+      TestResult tr18 = tcd.getTestResultFailed(CLIENTDATAREQUEST_GETCONTENTTYPE2);
       /* TODO: implement test */
-
-      /* TestCase: ClientDataRequest_hasGetContentLength */
-      /* Details: "Has a getContentLength() method" */
-      TestResult tr24 = tcd.getTestResultFailed(CLIENTDATAREQUEST_HASGETCONTENTLENGTH);
-      {
-         String name = "getContentLength";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr24.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: ClientDataRequest_getContentLength1 */
       /* Details: "Returns the length in bytes of the request body" */
-      TestResult tr25 = tcd.getTestResultFailed(CLIENTDATAREQUEST_GETCONTENTLENGTH1);
+      TestResult tr19 = tcd.getTestResultFailed(CLIENTDATAREQUEST_GETCONTENTLENGTH1);
       /* TODO: implement test */
 
       /* TestCase: ClientDataRequest_getContentLength2 */
       /* Details: "Returns -1 if the length is unknown" */
-      TestResult tr26 = tcd.getTestResultFailed(CLIENTDATAREQUEST_GETCONTENTLENGTH2);
+      TestResult tr20 = tcd.getTestResultFailed(CLIENTDATAREQUEST_GETCONTENTLENGTH2);
       /* TODO: implement test */
-
-      /* TestCase: ClientDataRequest_hasGetMethod */
-      /* Details: "Has a getMethod() method" */
-      TestResult tr27 = tcd.getTestResultFailed(CLIENTDATAREQUEST_HASGETMETHOD);
-      {
-         String name = "getMethod";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr27.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: ClientDataRequest_getMethod */
       /* Details: "Returns a String containing the name of the HTTP method with which the request was made" */
-      TestResult tr28 = tcd.getTestResultFailed(CLIENTDATAREQUEST_GETMETHOD);
+      TestResult tr21 = tcd.getTestResultFailed(CLIENTDATAREQUEST_GETMETHOD);
       /* TODO: implement test */
 
 
@@ -281,13 +211,6 @@ public class V2RequestTests_ClientDataRequest implements Portlet {
       tr19.writeTo(writer);
       tr20.writeTo(writer);
       tr21.writeTo(writer);
-      tr22.writeTo(writer);
-      tr23.writeTo(writer);
-      tr24.writeTo(writer);
-      tr25.writeTo(writer);
-      tr26.writeTo(writer);
-      tr27.writeTo(writer);
-      tr28.writeTo(writer);
 
 
    }

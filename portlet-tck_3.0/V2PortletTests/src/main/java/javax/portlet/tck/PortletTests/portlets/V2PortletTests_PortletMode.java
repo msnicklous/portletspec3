@@ -76,79 +76,39 @@ public class V2PortletTests_PortletMode implements Portlet {
       // Create result objects for the tests
 
       /* TestCase: PortletMode_fieldEDIT */
-      /* Details: "Has String field EDIT with value of \"edit\" " */
+      /* Details: "Has PortletMode field EDIT with value of PortletMode.EDIT " */
       TestResult tr0 = tcd.getTestResultFailed(PORTLETMODE_FIELDEDIT);
       {
-         tr0.setTcSuccess(cc.hasField("EDIT", "edit"));
+         tr0.setTcSuccess(cc.hasField("EDIT", "PortletMode.EDIT"));
       }
 
       /* TestCase: PortletMode_fieldHELP */
-      /* Details: "Has String field HELP with value of \"help\" " */
+      /* Details: "Has PortletMode field HELP with value of PortletMode.HELP " */
       TestResult tr1 = tcd.getTestResultFailed(PORTLETMODE_FIELDHELP);
       {
-         tr1.setTcSuccess(cc.hasField("HELP", "help"));
+         tr1.setTcSuccess(cc.hasField("HELP", "PortletMode.HELP"));
       }
 
       /* TestCase: PortletMode_fieldVIEW */
-      /* Details: "Has String field VIEW with value of \"view\" " */
+      /* Details: "Has PortletMode field VIEW with value of PortletMode.VIEW " */
       TestResult tr2 = tcd.getTestResultFailed(PORTLETMODE_FIELDVIEW);
       {
-         tr2.setTcSuccess(cc.hasField("VIEW", "view"));
-      }
-
-      /* TestCase: PortletMode_constructor */
-      /* Details: "Has a PortletMode(java.lang.String) constructor that creates a new PortletMode with the specified name" */
-      TestResult tr3 = tcd.getTestResultFailed(PORTLETMODE_CONSTRUCTOR);
-      {
-         String name = "PortletMode";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = {java.lang.String.class};
-         tr3.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
-
-      /* TestCase: PortletMode_hasToString */
-      /* Details: "Has a toString() method" */
-      TestResult tr4 = tcd.getTestResultFailed(PORTLETMODE_HASTOSTRING);
-      {
-         String name = "toString";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr4.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+         tr2.setTcSuccess(cc.hasField("VIEW", "PortletMode.VIEW"));
       }
 
       /* TestCase: PortletMode_toString */
       /* Details: "Returns a String representation of the portlet mode" */
-      TestResult tr5 = tcd.getTestResultFailed(PORTLETMODE_TOSTRING);
+      TestResult tr3 = tcd.getTestResultFailed(PORTLETMODE_TOSTRING);
       /* TODO: implement test */
-
-      /* TestCase: PortletMode_hasHashCode */
-      /* Details: "Has a hashCode() method" */
-      TestResult tr6 = tcd.getTestResultFailed(PORTLETMODE_HASHASHCODE);
-      {
-         String name = "hashCode";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr6.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: PortletMode_hashCode */
       /* Details: "Returns an int containing the has code for the portlet mode" */
-      TestResult tr7 = tcd.getTestResultFailed(PORTLETMODE_HASHCODE);
+      TestResult tr4 = tcd.getTestResultFailed(PORTLETMODE_HASHCODE);
       /* TODO: implement test */
-
-      /* TestCase: PortletMode_hasEquals */
-      /* Details: "Has a equals(java.lang.Object) method" */
-      TestResult tr8 = tcd.getTestResultFailed(PORTLETMODE_HASEQUALS);
-      {
-         String name = "equals";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = {java.lang.Object.class};
-         tr8.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: PortletMode_equals */
       /* Details: "Returns true if the PortletMode equals the specified PortletMode" */
-      TestResult tr9 = tcd.getTestResultFailed(PORTLETMODE_EQUALS);
+      TestResult tr5 = tcd.getTestResultFailed(PORTLETMODE_EQUALS);
       /* TODO: implement test */
 
 
@@ -161,10 +121,6 @@ public class V2PortletTests_PortletMode implements Portlet {
       tr3.writeTo(writer);
       tr4.writeTo(writer);
       tr5.writeTo(writer);
-      tr6.writeTo(writer);
-      tr7.writeTo(writer);
-      tr8.writeTo(writer);
-      tr9.writeTo(writer);
 
 
    }

@@ -75,26 +75,9 @@ public class V2AnnotationTests_ProcessAction implements Portlet {
 
       // Create result objects for the tests
 
-      /* TestCase: ProcessAction_ExtendsAnnotation */
-      /* Details: "Extends java.lang.annotation.Annotation" */
-      TestResult tr0 = tcd.getTestResultFailed(PROCESSACTION_EXTENDSANNOTATION);
-      {
-         tr0.setTcSuccess(cc.isAnnotation());
-      }
-
-      /* TestCase: ProcessAction_hasName */
-      /* Details: "Has a name() method" */
-      TestResult tr1 = tcd.getTestResultFailed(PROCESSACTION_HASNAME);
-      {
-         String name = "name";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr1.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
-
       /* TestCase: ProcessAction_name */
       /* Details: "On an action request, the method is executed if the parameter \"javax.portlet.action\" matches the name field" */
-      TestResult tr2 = tcd.getTestResultFailed(PROCESSACTION_NAME);
+      TestResult tr0 = tcd.getTestResultFailed(PROCESSACTION_NAME);
       /* TODO: implement test */
 
 
@@ -102,8 +85,6 @@ public class V2AnnotationTests_ProcessAction implements Portlet {
       // Write the results to the output stream
 
       tr0.writeTo(writer);
-      tr1.writeTo(writer);
-      tr2.writeTo(writer);
 
 
    }

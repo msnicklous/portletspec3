@@ -75,26 +75,9 @@ public class V2AnnotationTests_RenderMode implements Portlet {
 
       // Create result objects for the tests
 
-      /* TestCase: RenderMode_ExtendsAnnotation */
-      /* Details: "Extends java.lang.annotation.Annotation" */
-      TestResult tr0 = tcd.getTestResultFailed(RENDERMODE_EXTENDSANNOTATION);
-      {
-         tr0.setTcSuccess(cc.isAnnotation());
-      }
-
-      /* TestCase: RenderMode_hasName */
-      /* Details: "Has a name() method" */
-      TestResult tr1 = tcd.getTestResultFailed(RENDERMODE_HASNAME);
-      {
-         String name = "name";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr1.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
-
       /* TestCase: RenderMode_name */
       /* Details: "On a render request, the method is executed if the portlet mode matches the name field" */
-      TestResult tr2 = tcd.getTestResultFailed(RENDERMODE_NAME);
+      TestResult tr0 = tcd.getTestResultFailed(RENDERMODE_NAME);
       /* TODO: implement test */
 
 
@@ -102,8 +85,6 @@ public class V2AnnotationTests_RenderMode implements Portlet {
       // Write the results to the output stream
 
       tr0.writeTo(writer);
-      tr1.writeTo(writer);
-      tr2.writeTo(writer);
 
 
    }

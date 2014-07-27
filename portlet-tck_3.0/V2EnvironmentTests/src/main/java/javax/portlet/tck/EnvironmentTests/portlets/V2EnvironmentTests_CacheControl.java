@@ -75,199 +75,119 @@ public class V2EnvironmentTests_CacheControl implements Portlet {
 
       // Create result objects for the tests
 
-      /* TestCase: CacheControl_hasGetExpirationTime */
-      /* Details: "Has a getExpirationTime() method" */
-      TestResult tr0 = tcd.getTestResultFailed(CACHECONTROL_HASGETEXPIRATIONTIME);
-      {
-         String name = "getExpirationTime";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr0.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
-
       /* TestCase: CacheControl_getExpirationTime1 */
       /* Details: "Returns the expiration time set through setExpirationTime" */
-      TestResult tr1 = tcd.getTestResultFailed(CACHECONTROL_GETEXPIRATIONTIME1);
+      TestResult tr0 = tcd.getTestResultFailed(CACHECONTROL_GETEXPIRATIONTIME1);
       /* TODO: implement test */
 
       /* TestCase: CacheControl_getExpirationTime2 */
       /* Details: "Returns the default expiration time from the deployment descriptor if the expiration time has not been set" */
-      TestResult tr2 = tcd.getTestResultFailed(CACHECONTROL_GETEXPIRATIONTIME2);
+      TestResult tr1 = tcd.getTestResultFailed(CACHECONTROL_GETEXPIRATIONTIME2);
       /* TODO: implement test */
 
       /* TestCase: CacheControl_getExpirationTime3 */
       /* Details: "Returns 0 if the expiration time has not been set and no default is set in the deployment descriptor" */
-      TestResult tr3 = tcd.getTestResultFailed(CACHECONTROL_GETEXPIRATIONTIME3);
+      TestResult tr2 = tcd.getTestResultFailed(CACHECONTROL_GETEXPIRATIONTIME3);
       /* TODO: implement test */
-
-      /* TestCase: CacheControl_hasSetExpirationTime */
-      /* Details: "Has a setExpirationTime(int) method" */
-      TestResult tr4 = tcd.getTestResultFailed(CACHECONTROL_HASSETEXPIRATIONTIME);
-      {
-         String name = "setExpirationTime";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = {int.class};
-         tr4.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: CacheControl_setExpirationTime1 */
       /* Details: "Sets the expiration time for the current response to the specified value" */
-      TestResult tr5 = tcd.getTestResultFailed(CACHECONTROL_SETEXPIRATIONTIME1);
+      TestResult tr3 = tcd.getTestResultFailed(CACHECONTROL_SETEXPIRATIONTIME1);
       /* TODO: implement test */
 
       /* TestCase: CacheControl_setExpirationTime2 */
       /* Details: "If the expiration value is set to 0, caching is disabled" */
-      TestResult tr6 = tcd.getTestResultFailed(CACHECONTROL_SETEXPIRATIONTIME2);
+      TestResult tr4 = tcd.getTestResultFailed(CACHECONTROL_SETEXPIRATIONTIME2);
       /* TODO: implement test */
 
       /* TestCase: CacheControl_setExpirationTime3 */
       /* Details: "If the expiration value is set to -1, the cache does not expire" */
-      TestResult tr7 = tcd.getTestResultFailed(CACHECONTROL_SETEXPIRATIONTIME3);
+      TestResult tr5 = tcd.getTestResultFailed(CACHECONTROL_SETEXPIRATIONTIME3);
       /* TODO: implement test */
-
-      /* TestCase: CacheControl_hasIsPublicScope */
-      /* Details: "Has a isPublicScope() method" */
-      TestResult tr8 = tcd.getTestResultFailed(CACHECONTROL_HASISPUBLICSCOPE);
-      {
-         String name = "isPublicScope";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr8.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: CacheControl_isPublicScope1 */
       /* Details: "Returns true if the caching scope has been set to public through the setPublicScope method" */
-      TestResult tr9 = tcd.getTestResultFailed(CACHECONTROL_ISPUBLICSCOPE1);
+      TestResult tr6 = tcd.getTestResultFailed(CACHECONTROL_ISPUBLICSCOPE1);
       /* TODO: implement test */
 
       /* TestCase: CacheControl_isPublicScope2 */
       /* Details: "Returns true if the caching scope default has been set to public in the deployment descriptor " */
-      TestResult tr10 = tcd.getTestResultFailed(CACHECONTROL_ISPUBLICSCOPE2);
+      TestResult tr7 = tcd.getTestResultFailed(CACHECONTROL_ISPUBLICSCOPE2);
       /* TODO: implement test */
 
       /* TestCase: CacheControl_isPublicScope3 */
       /* Details: "Returns false if the caching scope has been set to non-public through the setPublicScope method " */
-      TestResult tr11 = tcd.getTestResultFailed(CACHECONTROL_ISPUBLICSCOPE3);
+      TestResult tr8 = tcd.getTestResultFailed(CACHECONTROL_ISPUBLICSCOPE3);
       /* TODO: implement test */
 
       /* TestCase: CacheControl_isPublicScope4 */
       /* Details: "Returns false if the caching scope  default has been set to public in the deployment descriptor" */
-      TestResult tr12 = tcd.getTestResultFailed(CACHECONTROL_ISPUBLICSCOPE4);
+      TestResult tr9 = tcd.getTestResultFailed(CACHECONTROL_ISPUBLICSCOPE4);
       /* TODO: implement test */
 
       /* TestCase: CacheControl_isPublicScope5 */
       /* Details: "Returns false if the caching scope has not been set ans has no default" */
-      TestResult tr13 = tcd.getTestResultFailed(CACHECONTROL_ISPUBLICSCOPE5);
+      TestResult tr10 = tcd.getTestResultFailed(CACHECONTROL_ISPUBLICSCOPE5);
       /* TODO: implement test */
-
-      /* TestCase: CacheControl_hasSetPublicScope */
-      /* Details: "Has a setPublicScope(boolean) method" */
-      TestResult tr14 = tcd.getTestResultFailed(CACHECONTROL_HASSETPUBLICSCOPE);
-      {
-         String name = "setPublicScope";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = {boolean.class};
-         tr14.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: CacheControl_setPublicScope1 */
       /* Details: "If the input parameter is true, the cache scope is set to public" */
-      TestResult tr15 = tcd.getTestResultFailed(CACHECONTROL_SETPUBLICSCOPE1);
+      TestResult tr11 = tcd.getTestResultFailed(CACHECONTROL_SETPUBLICSCOPE1);
       /* TODO: implement test */
 
       /* TestCase: CacheControl_setPublicScope2 */
       /* Details: "If the input parameter is false, the cache scope is set to non-public" */
-      TestResult tr16 = tcd.getTestResultFailed(CACHECONTROL_SETPUBLICSCOPE2);
+      TestResult tr12 = tcd.getTestResultFailed(CACHECONTROL_SETPUBLICSCOPE2);
       /* TODO: implement test */
-
-      /* TestCase: CacheControl_hasGetETag */
-      /* Details: "Has a getETag() method" */
-      TestResult tr17 = tcd.getTestResultFailed(CACHECONTROL_HASGETETAG);
-      {
-         String name = "getETag";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr17.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: CacheControl_getETag1 */
       /* Details: "Returns a String containing the ETag for the current response" */
-      TestResult tr18 = tcd.getTestResultFailed(CACHECONTROL_GETETAG1);
+      TestResult tr13 = tcd.getTestResultFailed(CACHECONTROL_GETETAG1);
       /* TODO: implement test */
 
       /* TestCase: CacheControl_getETag2 */
       /* Details: "Returns null if no ETag is set on the response" */
-      TestResult tr19 = tcd.getTestResultFailed(CACHECONTROL_GETETAG2);
+      TestResult tr14 = tcd.getTestResultFailed(CACHECONTROL_GETETAG2);
       /* TODO: implement test */
-
-      /* TestCase: CacheControl_hasSetETag */
-      /* Details: "Has a setETag(java.lang.String) method" */
-      TestResult tr20 = tcd.getTestResultFailed(CACHECONTROL_HASSETETAG);
-      {
-         String name = "setETag";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = {java.lang.String.class};
-         tr20.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: CacheControl_setETag1 */
       /* Details: "Sets an ETag for the current response" */
-      TestResult tr21 = tcd.getTestResultFailed(CACHECONTROL_SETETAG1);
+      TestResult tr15 = tcd.getTestResultFailed(CACHECONTROL_SETETAG1);
       /* TODO: implement test */
 
       /* TestCase: CacheControl_setETag2 */
       /* Details: "A previously-set ETag is overwritten" */
-      TestResult tr22 = tcd.getTestResultFailed(CACHECONTROL_SETETAG2);
+      TestResult tr16 = tcd.getTestResultFailed(CACHECONTROL_SETETAG2);
       /* TODO: implement test */
 
       /* TestCase: CacheControl_setETag3 */
       /* Details: "Removes the ETag if the input parameter is null" */
-      TestResult tr23 = tcd.getTestResultFailed(CACHECONTROL_SETETAG3);
+      TestResult tr17 = tcd.getTestResultFailed(CACHECONTROL_SETETAG3);
       /* TODO: implement test */
-
-      /* TestCase: CacheControl_hasUseCachedContent */
-      /* Details: "Has a useCachedContent() method" */
-      TestResult tr24 = tcd.getTestResultFailed(CACHECONTROL_HASUSECACHEDCONTENT);
-      {
-         String name = "useCachedContent";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr24.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: CacheControl_useCachedContent1 */
       /* Details: "Returns true if cached content has been set to valid through the setUseCachedContent method" */
-      TestResult tr25 = tcd.getTestResultFailed(CACHECONTROL_USECACHEDCONTENT1);
+      TestResult tr18 = tcd.getTestResultFailed(CACHECONTROL_USECACHEDCONTENT1);
       /* TODO: implement test */
 
       /* TestCase: CacheControl_useCachedContent2 */
       /* Details: "Returns false if cached content has been set to invalid through the setUseCachedContent method" */
-      TestResult tr26 = tcd.getTestResultFailed(CACHECONTROL_USECACHEDCONTENT2);
+      TestResult tr19 = tcd.getTestResultFailed(CACHECONTROL_USECACHEDCONTENT2);
       /* TODO: implement test */
 
       /* TestCase: CacheControl_useCachedContent3 */
       /* Details: "Returns false if the use cached content indcator has not been set" */
-      TestResult tr27 = tcd.getTestResultFailed(CACHECONTROL_USECACHEDCONTENT3);
+      TestResult tr20 = tcd.getTestResultFailed(CACHECONTROL_USECACHEDCONTENT3);
       /* TODO: implement test */
-
-      /* TestCase: CacheControl_hasSetUseCachedContent */
-      /* Details: "Has a setUseCachedContent(boolean) method" */
-      TestResult tr28 = tcd.getTestResultFailed(CACHECONTROL_HASSETUSECACHEDCONTENT);
-      {
-         String name = "setUseCachedContent";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = {boolean.class};
-         tr28.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: CacheControl_setUseCachedContent1 */
       /* Details: "If set to true, the cached content is valid " */
-      TestResult tr29 = tcd.getTestResultFailed(CACHECONTROL_SETUSECACHEDCONTENT1);
+      TestResult tr21 = tcd.getTestResultFailed(CACHECONTROL_SETUSECACHEDCONTENT1);
       /* TODO: implement test */
 
       /* TestCase: CacheControl_setUseCachedContent2 */
       /* Details: "If set to false, the cached content is invalid " */
-      TestResult tr30 = tcd.getTestResultFailed(CACHECONTROL_SETUSECACHEDCONTENT2);
+      TestResult tr22 = tcd.getTestResultFailed(CACHECONTROL_SETUSECACHEDCONTENT2);
       /* TODO: implement test */
 
 
@@ -297,14 +217,6 @@ public class V2EnvironmentTests_CacheControl implements Portlet {
       tr20.writeTo(writer);
       tr21.writeTo(writer);
       tr22.writeTo(writer);
-      tr23.writeTo(writer);
-      tr24.writeTo(writer);
-      tr25.writeTo(writer);
-      tr26.writeTo(writer);
-      tr27.writeTo(writer);
-      tr28.writeTo(writer);
-      tr29.writeTo(writer);
-      tr30.writeTo(writer);
 
 
    }

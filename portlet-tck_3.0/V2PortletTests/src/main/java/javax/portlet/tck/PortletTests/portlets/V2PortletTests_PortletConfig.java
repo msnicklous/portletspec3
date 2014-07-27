@@ -75,224 +75,114 @@ public class V2PortletTests_PortletConfig implements Portlet {
 
       // Create result objects for the tests
 
-      /* TestCase: PortletConfig_hasGetPortletName */
-      /* Details: "Has a getPortletName() method" */
-      TestResult tr0 = tcd.getTestResultFailed(PORTLETCONFIG_HASGETPORTLETNAME);
-      {
-         String name = "getPortletName";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr0.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
-
       /* TestCase: PortletConfig_getPortletName */
       /* Details: "Returns a String containing the portlet name" */
-      TestResult tr1 = tcd.getTestResultFailed(PORTLETCONFIG_GETPORTLETNAME);
+      TestResult tr0 = tcd.getTestResultFailed(PORTLETCONFIG_GETPORTLETNAME);
       /* TODO: implement test */
-
-      /* TestCase: PortletConfig_hasGetPortletContext */
-      /* Details: "Has a getPortletContext() method" */
-      TestResult tr2 = tcd.getTestResultFailed(PORTLETCONFIG_HASGETPORTLETCONTEXT);
-      {
-         String name = "getPortletContext";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr2.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: PortletConfig_getPortletContext */
       /* Details: "Returns the PortletContext object associated with the portlet" */
-      TestResult tr3 = tcd.getTestResultFailed(PORTLETCONFIG_GETPORTLETCONTEXT);
+      TestResult tr1 = tcd.getTestResultFailed(PORTLETCONFIG_GETPORTLETCONTEXT);
       /* TODO: implement test */
-
-      /* TestCase: PortletConfig_hasGetResourceBundle */
-      /* Details: "Has a getResourceBundle(java.util.Locale locale) method" */
-      TestResult tr4 = tcd.getTestResultFailed(PORTLETCONFIG_HASGETRESOURCEBUNDLE);
-      {
-         String name = "getResourceBundle";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = {java.util.Locale.class};
-         tr4.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: PortletConfig_getResourceBundle */
       /* Details: "Returns the ResourceBundle for the specified locale" */
-      TestResult tr5 = tcd.getTestResultFailed(PORTLETCONFIG_GETRESOURCEBUNDLE);
+      TestResult tr2 = tcd.getTestResultFailed(PORTLETCONFIG_GETRESOURCEBUNDLE);
       /* TODO: implement test */
-
-      /* TestCase: PortletConfig_hasGetInitParameter */
-      /* Details: "Has a getInitParameter(java.lang.String) method" */
-      TestResult tr6 = tcd.getTestResultFailed(PORTLETCONFIG_HASGETINITPARAMETER);
-      {
-         String name = "getInitParameter";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = {java.lang.String.class};
-         tr6.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: PortletConfig_getInitParameter1 */
       /* Details: "Returns a String containing the initialization parameter value for the given name" */
-      TestResult tr7 = tcd.getTestResultFailed(PORTLETCONFIG_GETINITPARAMETER1);
+      TestResult tr3 = tcd.getTestResultFailed(PORTLETCONFIG_GETINITPARAMETER1);
       /* TODO: implement test */
 
       /* TestCase: PortletConfig_getInitParameter2 */
       /* Details: "Returns null if the specified initialization parameter does not exist" */
-      TestResult tr8 = tcd.getTestResultFailed(PORTLETCONFIG_GETINITPARAMETER2);
+      TestResult tr4 = tcd.getTestResultFailed(PORTLETCONFIG_GETINITPARAMETER2);
       /* TODO: implement test */
 
       /* TestCase: PortletConfig_getInitParameter3 */
       /* Details: "Throws IllegalArgumentException if the name parameter is null" */
-      TestResult tr9 = tcd.getTestResultFailed(PORTLETCONFIG_GETINITPARAMETER3);
+      TestResult tr5 = tcd.getTestResultFailed(PORTLETCONFIG_GETINITPARAMETER3);
       /* TODO: implement test */
-
-      /* TestCase: PortletConfig_hasGetInitParameterNames */
-      /* Details: "Has a getInitParameterNames() method" */
-      TestResult tr10 = tcd.getTestResultFailed(PORTLETCONFIG_HASGETINITPARAMETERNAMES);
-      {
-         String name = "getInitParameterNames";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr10.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: PortletConfig_getInitParameterNames1 */
       /* Details: "Returns an java.util.Enumeration<java.lang.String> containing the names of the initialization parameters" */
-      TestResult tr11 = tcd.getTestResultFailed(PORTLETCONFIG_GETINITPARAMETERNAMES1);
+      TestResult tr6 = tcd.getTestResultFailed(PORTLETCONFIG_GETINITPARAMETERNAMES1);
       /* TODO: implement test */
 
       /* TestCase: PortletConfig_getInitParameterNames2 */
       /* Details: "Returns an empty Enumeration if there are no initialization parameters available " */
-      TestResult tr12 = tcd.getTestResultFailed(PORTLETCONFIG_GETINITPARAMETERNAMES2);
+      TestResult tr7 = tcd.getTestResultFailed(PORTLETCONFIG_GETINITPARAMETERNAMES2);
       /* TODO: implement test */
-
-      /* TestCase: PortletConfig_hasGetPublicRenderParameterNames */
-      /* Details: "Has a getPublicRenderParameterNames() method" */
-      TestResult tr13 = tcd.getTestResultFailed(PORTLETCONFIG_HASGETPUBLICRENDERPARAMETERNAMES);
-      {
-         String name = "getPublicRenderParameterNames";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr13.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: PortletConfig_getPublicRenderParameterNames1 */
       /* Details: "Returns an java.util.Enumeration<java.lang.String> containing the names of the public render parameters" */
-      TestResult tr14 = tcd.getTestResultFailed(PORTLETCONFIG_GETPUBLICRENDERPARAMETERNAMES1);
+      TestResult tr8 = tcd.getTestResultFailed(PORTLETCONFIG_GETPUBLICRENDERPARAMETERNAMES1);
       /* TODO: implement test */
 
       /* TestCase: PortletConfig_getPublicRenderParameterNames2 */
       /* Details: "Returns an empty Enumeration if there are no public render parameters are defined " */
-      TestResult tr15 = tcd.getTestResultFailed(PORTLETCONFIG_GETPUBLICRENDERPARAMETERNAMES2);
+      TestResult tr9 = tcd.getTestResultFailed(PORTLETCONFIG_GETPUBLICRENDERPARAMETERNAMES2);
       /* TODO: implement test */
-
-      /* TestCase: PortletConfig_hasGetDefaultNamespace */
-      /* Details: "Has a getDefaultNamespace() method" */
-      TestResult tr16 = tcd.getTestResultFailed(PORTLETCONFIG_HASGETDEFAULTNAMESPACE);
-      {
-         String name = "getDefaultNamespace";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr16.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: PortletConfig_getDefaultNamespace1 */
       /* Details: "Returns a String containing the default namespace for events and public render parameters as defined in the deployment descriptor" */
-      TestResult tr17 = tcd.getTestResultFailed(PORTLETCONFIG_GETDEFAULTNAMESPACE1);
+      TestResult tr10 = tcd.getTestResultFailed(PORTLETCONFIG_GETDEFAULTNAMESPACE1);
       /* TODO: implement test */
 
       /* TestCase: PortletConfig_getDefaultNamespace2 */
       /* Details: "Returns XMLConstants.NULL_NS_URI if no default namespace is defined in the deployment descriptor " */
-      TestResult tr18 = tcd.getTestResultFailed(PORTLETCONFIG_GETDEFAULTNAMESPACE2);
+      TestResult tr11 = tcd.getTestResultFailed(PORTLETCONFIG_GETDEFAULTNAMESPACE2);
       /* TODO: implement test */
-
-      /* TestCase: PortletConfig_hasGetPublishingEventQNames */
-      /* Details: "Has a getPublishingEventQNames() method" */
-      TestResult tr19 = tcd.getTestResultFailed(PORTLETCONFIG_HASGETPUBLISHINGEVENTQNAMES);
-      {
-         String name = "getPublishingEventQNames";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr19.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: PortletConfig_getPublishingEventQNames1 */
       /* Details: "Returns an java.util.Enumeration<java.lang.String> containing the publishing event qnames as defined in the deployment descriptor" */
-      TestResult tr20 = tcd.getTestResultFailed(PORTLETCONFIG_GETPUBLISHINGEVENTQNAMES1);
+      TestResult tr12 = tcd.getTestResultFailed(PORTLETCONFIG_GETPUBLISHINGEVENTQNAMES1);
       /* TODO: implement test */
 
       /* TestCase: PortletConfig_getPublishingEventQNames2 */
       /* Details: "Returns an empty Enumeration if there are no processing events are defined" */
-      TestResult tr21 = tcd.getTestResultFailed(PORTLETCONFIG_GETPUBLISHINGEVENTQNAMES2);
+      TestResult tr13 = tcd.getTestResultFailed(PORTLETCONFIG_GETPUBLISHINGEVENTQNAMES2);
       /* TODO: implement test */
-
-      /* TestCase: PortletConfig_hasGetProcessingEventQNames */
-      /* Details: "Has a getProcessingEventQNames() method" */
-      TestResult tr22 = tcd.getTestResultFailed(PORTLETCONFIG_HASGETPROCESSINGEVENTQNAMES);
-      {
-         String name = "getProcessingEventQNames";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr22.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: PortletConfig_getProcessingEventQNames1 */
       /* Details: "Returns an java.util.Enumeration<java.lang.String> containing the processing event qnames as defined in the deployment descriptor" */
-      TestResult tr23 = tcd.getTestResultFailed(PORTLETCONFIG_GETPROCESSINGEVENTQNAMES1);
+      TestResult tr14 = tcd.getTestResultFailed(PORTLETCONFIG_GETPROCESSINGEVENTQNAMES1);
       /* TODO: implement test */
 
       /* TestCase: PortletConfig_getProcessingEventQNames2 */
       /* Details: "Returns an empty Enumeration if there are no processing events are defined" */
-      TestResult tr24 = tcd.getTestResultFailed(PORTLETCONFIG_GETPROCESSINGEVENTQNAMES2);
+      TestResult tr15 = tcd.getTestResultFailed(PORTLETCONFIG_GETPROCESSINGEVENTQNAMES2);
       /* TODO: implement test */
-
-      /* TestCase: PortletConfig_hasGetSupportedLocales */
-      /* Details: "Has a getSupportedLocales() method" */
-      TestResult tr25 = tcd.getTestResultFailed(PORTLETCONFIG_HASGETSUPPORTEDLOCALES);
-      {
-         String name = "getSupportedLocales";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr25.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: PortletConfig_getSupportedLocales1 */
       /* Details: "Returns an java.util.Enumeration<java.lang.String> containing the names of the supported locales as defined in the deployment descriptor" */
-      TestResult tr26 = tcd.getTestResultFailed(PORTLETCONFIG_GETSUPPORTEDLOCALES1);
+      TestResult tr16 = tcd.getTestResultFailed(PORTLETCONFIG_GETSUPPORTEDLOCALES1);
       /* TODO: implement test */
 
       /* TestCase: PortletConfig_getSupportedLocales2 */
       /* Details: "Returns an empty Enumeration if there are no supported locales are defined" */
-      TestResult tr27 = tcd.getTestResultFailed(PORTLETCONFIG_GETSUPPORTEDLOCALES2);
+      TestResult tr17 = tcd.getTestResultFailed(PORTLETCONFIG_GETSUPPORTEDLOCALES2);
       /* TODO: implement test */
-
-      /* TestCase: PortletConfig_hasGetContainerRuntimeOptions */
-      /* Details: "Has a getContainerRuntimeOptions() method" */
-      TestResult tr28 = tcd.getTestResultFailed(PORTLETCONFIG_HASGETCONTAINERRUNTIMEOPTIONS);
-      {
-         String name = "getContainerRuntimeOptions";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr28.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: PortletConfig_getContainerRuntimeOptions1 */
       /* Details: "Returns an java.util.Map<java.lang.String,java.lang.String[]> object containing the container runtime options as defined in the deployment descriptor" */
-      TestResult tr29 = tcd.getTestResultFailed(PORTLETCONFIG_GETCONTAINERRUNTIMEOPTIONS1);
+      TestResult tr18 = tcd.getTestResultFailed(PORTLETCONFIG_GETCONTAINERRUNTIMEOPTIONS1);
       /* TODO: implement test */
 
       /* TestCase: PortletConfig_getContainerRuntimeOptions2 */
       /* Details: "If the same option is defined at the portlet application and at the portlet level, the definition at the portlet level takes precedence" */
-      TestResult tr30 = tcd.getTestResultFailed(PORTLETCONFIG_GETCONTAINERRUNTIMEOPTIONS2);
+      TestResult tr19 = tcd.getTestResultFailed(PORTLETCONFIG_GETCONTAINERRUNTIMEOPTIONS2);
       /* TODO: implement test */
 
       /* TestCase: PortletConfig_getContainerRuntimeOptions3 */
       /* Details: "If the portlet container does not support a runtime option defined in the portlet descriptor, that option will not be returned in this map" */
-      TestResult tr31 = tcd.getTestResultFailed(PORTLETCONFIG_GETCONTAINERRUNTIMEOPTIONS3);
+      TestResult tr20 = tcd.getTestResultFailed(PORTLETCONFIG_GETCONTAINERRUNTIMEOPTIONS3);
       /* TODO: implement test */
 
       /* TestCase: PortletConfig_getContainerRuntimeOptions4 */
       /* Details: "Returns an empty map if no container runtime options have been defined " */
-      TestResult tr32 = tcd.getTestResultFailed(PORTLETCONFIG_GETCONTAINERRUNTIMEOPTIONS4);
+      TestResult tr21 = tcd.getTestResultFailed(PORTLETCONFIG_GETCONTAINERRUNTIMEOPTIONS4);
       /* TODO: implement test */
 
 
@@ -321,17 +211,6 @@ public class V2PortletTests_PortletConfig implements Portlet {
       tr19.writeTo(writer);
       tr20.writeTo(writer);
       tr21.writeTo(writer);
-      tr22.writeTo(writer);
-      tr23.writeTo(writer);
-      tr24.writeTo(writer);
-      tr25.writeTo(writer);
-      tr26.writeTo(writer);
-      tr27.writeTo(writer);
-      tr28.writeTo(writer);
-      tr29.writeTo(writer);
-      tr30.writeTo(writer);
-      tr31.writeTo(writer);
-      tr32.writeTo(writer);
 
 
    }

@@ -75,50 +75,9 @@ public class V2ExceptionTests_WindowStateException implements Portlet {
 
       // Create result objects for the tests
 
-      /* TestCase: WindowStateException_extendsPortletException */
-      /* Details: "Extends PortletException" */
-      TestResult tr0 = tcd.getTestResultFailed(WINDOWSTATEEXCEPTION_EXTENDSPORTLETEXCEPTION);
-      {
-         tr0.setTcSuccess(cc.hasSuperclass(PortletException.class));
-      }
-
-      /* TestCase: WindowStateException_constructor1 */
-      /* Details: "Provides constructor WindowStateException(java.lang.String, WindowState)" */
-      TestResult tr1 = tcd.getTestResultFailed(WINDOWSTATEEXCEPTION_CONSTRUCTOR1);
-      {
-         Class<?>[] parms = {java.lang.String.class, WindowState.class};
-         tr1.setTcSuccess(cc.hasConstructor(parms));
-      }
-
-      /* TestCase: WindowStateException_constructor2 */
-      /* Details: "Provides constructor WindowStateException(java.lang.String, java.lang.Throwable, WindowState)" */
-      TestResult tr2 = tcd.getTestResultFailed(WINDOWSTATEEXCEPTION_CONSTRUCTOR2);
-      {
-         Class<?>[] parms = {java.lang.String.class, java.lang.Throwable.class, WindowState.class};
-         tr2.setTcSuccess(cc.hasConstructor(parms));
-      }
-
-      /* TestCase: WindowStateException_constructor3 */
-      /* Details: "Provides constructor WindowStateException(java.lang.Throwable, WindowState)" */
-      TestResult tr3 = tcd.getTestResultFailed(WINDOWSTATEEXCEPTION_CONSTRUCTOR3);
-      {
-         Class<?>[] parms = {java.lang.Throwable.class, WindowState.class};
-         tr3.setTcSuccess(cc.hasConstructor(parms));
-      }
-
-      /* TestCase: WindowStateException_hasGetState */
-      /* Details: "Has a getState() method" */
-      TestResult tr4 = tcd.getTestResultFailed(WINDOWSTATEEXCEPTION_HASGETSTATE);
-      {
-         String name = "getState";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr4.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
-
       /* TestCase: WindowStateException_getState */
       /* Details: "Returns the WindowState object causing this exception" */
-      TestResult tr5 = tcd.getTestResultFailed(WINDOWSTATEEXCEPTION_GETSTATE);
+      TestResult tr0 = tcd.getTestResultFailed(WINDOWSTATEEXCEPTION_GETSTATE);
       /* TODO: implement test */
 
 
@@ -126,11 +85,6 @@ public class V2ExceptionTests_WindowStateException implements Portlet {
       // Write the results to the output stream
 
       tr0.writeTo(writer);
-      tr1.writeTo(writer);
-      tr2.writeTo(writer);
-      tr3.writeTo(writer);
-      tr4.writeTo(writer);
-      tr5.writeTo(writer);
 
 
    }

@@ -16,7 +16,7 @@
  *  under the License.
  */
 
-package javax.portlet.tck.ExceptionTests.portlets;
+package javax.portlet.tck.PortletTests.portlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -40,9 +40,9 @@ import javax.portlet.tck.beans.TestResult;
  * file. The build process will integrate the test case names defined in the 
  * additionalTCs.xml file into the complete list of test case names for execution by the driver.
  */
-public class V2ExceptionTests_ReadOnlyException implements Portlet {
+public class V2PortletTests_SIG_ResourceServingPortlet implements Portlet {
    private static final String LOG_CLASS = 
-         V2ExceptionTests_ReadOnlyException.class.getName();
+         V2PortletTests_SIG_ResourceServingPortlet.class.getName();
    private final Logger LOGGER = Logger.getLogger(LOG_CLASS);
    
    private PortletConfig portletConfig = null;
@@ -71,39 +71,28 @@ public class V2ExceptionTests_ReadOnlyException implements Portlet {
 
       PrintWriter writer = renderResponse.getWriter();
       JSR286ApiTestCaseDetails tcd = new JSR286ApiTestCaseDetails();
-      ClassChecker cc = new ClassChecker(ReadOnlyException.class);
+      ClassChecker cc = new ClassChecker(ResourceServingPortlet.class);
 
       // Create result objects for the tests
 
-      /* TestCase: ReadOnlyException_extendsPortletException */
-      /* Details: "Extends PortletException" */
-      TestResult tr0 = tcd.getTestResultFailed(READONLYEXCEPTION_EXTENDSPORTLETEXCEPTION);
+      /* TestCase: ResourceServingPortlet_SIG_hasServeResource */
+      /* Details: "Has a serveResource(ResourceRequest, ResourceResponse) throws PortletException, java.io.IOException method " */
+      TestResult tr0 = tcd.getTestResultFailed(RESOURCESERVINGPORTLET_SIG_HASSERVERESOURCE);
       {
-         tr0.setTcSuccess(cc.hasSuperclass(PortletException.class));
+         String name = "serveResource";
+         Class<?>[] exceptions = {PortletException.class, java.io.IOException.class};
+         Class<?>[] parms = {ResourceRequest.class, ResourceResponse.class};
+         tr0.setTcSuccess(cc.hasMethod(name, parms, exceptions));
       }
 
-      /* TestCase: ReadOnlyException_constructor1 */
-      /* Details: "Provides constructor ReadOnlyException(java.lang.String)" */
-      TestResult tr1 = tcd.getTestResultFailed(READONLYEXCEPTION_CONSTRUCTOR1);
+      /* TestCase: ResourceServingPortlet_SIG_hasServeResourceReturns */
+      /* Details: "Method serveResource(ResourceRequest, ResourceResponse) returns void " */
+      TestResult tr1 = tcd.getTestResultFailed(RESOURCESERVINGPORTLET_SIG_HASSERVERESOURCERETURNS);
       {
-         Class<?>[] parms = {java.lang.String.class};
-         tr1.setTcSuccess(cc.hasConstructor(parms));
-      }
-
-      /* TestCase: ReadOnlyException_constructor2 */
-      /* Details: "Provides constructor ReadOnlyException(java.lang.String, java.lang.Throwable)" */
-      TestResult tr2 = tcd.getTestResultFailed(READONLYEXCEPTION_CONSTRUCTOR2);
-      {
-         Class<?>[] parms = {java.lang.String.class, java.lang.Throwable.class};
-         tr2.setTcSuccess(cc.hasConstructor(parms));
-      }
-
-      /* TestCase: ReadOnlyException_constructor3 */
-      /* Details: "Provides constructor ReadOnlyException(java.lang.Throwable)" */
-      TestResult tr3 = tcd.getTestResultFailed(READONLYEXCEPTION_CONSTRUCTOR3);
-      {
-         Class<?>[] parms = {java.lang.Throwable.class};
-         tr3.setTcSuccess(cc.hasConstructor(parms));
+         String name = "serveResource";
+         Class<?> retType = void.class;
+         Class<?>[] parms = {ResourceRequest.class, ResourceResponse.class};
+         tr1.setTcSuccess(cc.methodHasReturnType(name, retType, parms));
       }
 
 
@@ -112,8 +101,6 @@ public class V2ExceptionTests_ReadOnlyException implements Portlet {
 
       tr0.writeTo(writer);
       tr1.writeTo(writer);
-      tr2.writeTo(writer);
-      tr3.writeTo(writer);
 
 
    }

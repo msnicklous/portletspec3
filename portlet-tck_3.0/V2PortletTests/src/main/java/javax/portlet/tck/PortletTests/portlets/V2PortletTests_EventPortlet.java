@@ -71,8 +71,7 @@ public class V2PortletTests_EventPortlet implements Portlet {
 
       PrintWriter writer = renderResponse.getWriter();
       JSR286ApiTestCaseDetails tcd = new JSR286ApiTestCaseDetails();
-      // TODO: access the class under test and uncomment this code.
-      // ClassChecker cc = new ClassChecker(EventPortlet);
+      ClassChecker cc = new ClassChecker(EventPortlet.class);
 
       // Create result objects for the tests
 

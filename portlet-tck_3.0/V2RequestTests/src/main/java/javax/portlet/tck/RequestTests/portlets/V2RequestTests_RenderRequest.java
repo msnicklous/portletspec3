@@ -75,43 +75,21 @@ public class V2RequestTests_RenderRequest implements Portlet {
 
       // Create result objects for the tests
 
-      /* TestCase: RenderRequest_implementsPortletRequest1 */
-      /* Details: "Implements PortletRequest" */
-      TestResult tr0 = tcd.getTestResultFailed(RENDERREQUEST_IMPLEMENTSPORTLETREQUEST1);
-      {
-         tr0.setTcSuccess(cc.implementsInterface(PortletRequest.class));
-      }
-
       /* TestCase: RenderRequest_implementsPortletRequest2 */
       /* Details: "All tests described for the PortletRequest execute correctly with the RenderRequest" */
-      TestResult tr1 = tcd.getTestResultFailed(RENDERREQUEST_IMPLEMENTSPORTLETREQUEST2);
+      TestResult tr0 = tcd.getTestResultFailed(RENDERREQUEST_IMPLEMENTSPORTLETREQUEST2);
       /* TODO: implement test */
 
       /* TestCase: RenderRequest_fieldETAG */
       /* Details: "Has String field ETAG with value of \"portlet.ETag\" " */
-      TestResult tr2 = tcd.getTestResultFailed(RENDERREQUEST_FIELDETAG);
+      TestResult tr1 = tcd.getTestResultFailed(RENDERREQUEST_FIELDETAG);
       {
-         tr2.setTcSuccess(cc.hasField("ETAG", "portlet.ETag"));
+         tr1.setTcSuccess(cc.hasField("ETAG", "portlet.ETag"));
       }
-
-      /* TestCase: RenderRequest_hasgetETag */
-      /* Details: "Has a getETag() method" */
-      TestResult tr3 = tcd.getTestResultFailed(RENDERREQUEST_HASGETETAG);
-      {
-         String name = "getETag";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr3.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
-
-      /* TestCase: RenderRequest_getETag1 */
-      /* Details: "Returns a String containing the validation tag if the portlet container has a cached response for this request" */
-      TestResult tr4 = tcd.getTestResultFailed(RENDERREQUEST_GETETAG1);
-      /* TODO: implement test */
 
       /* TestCase: RenderRequest_getETag2 */
       /* Details: "Returns null if there is no cached response" */
-      TestResult tr5 = tcd.getTestResultFailed(RENDERREQUEST_GETETAG2);
+      TestResult tr2 = tcd.getTestResultFailed(RENDERREQUEST_GETETAG2);
       /* TODO: implement test */
 
 
@@ -121,9 +99,6 @@ public class V2RequestTests_RenderRequest implements Portlet {
       tr0.writeTo(writer);
       tr1.writeTo(writer);
       tr2.writeTo(writer);
-      tr3.writeTo(writer);
-      tr4.writeTo(writer);
-      tr5.writeTo(writer);
 
 
    }

@@ -76,79 +76,39 @@ public class V2PortletTests_WindowState implements Portlet {
       // Create result objects for the tests
 
       /* TestCase: WindowState_fieldMAXIMIZED */
-      /* Details: "Has String field MAXIMIZED with value of \"MAXIMIZED\" " */
+      /* Details: "Has WindowState field MAXIMIZED with value of WindowState.MAXIMIZED " */
       TestResult tr0 = tcd.getTestResultFailed(WINDOWSTATE_FIELDMAXIMIZED);
       {
-         tr0.setTcSuccess(cc.hasField("MAXIMIZED", "MAXIMIZED"));
+         tr0.setTcSuccess(cc.hasField("MAXIMIZED", "WindowState.MAXIMIZED"));
       }
 
       /* TestCase: WindowState_fieldMINIMIZED */
-      /* Details: "Has String field MINIMIZED with value of \"MINIMIZED\" " */
+      /* Details: "Has WindowState field MINIMIZED with value of WindowState.MINIMIZED " */
       TestResult tr1 = tcd.getTestResultFailed(WINDOWSTATE_FIELDMINIMIZED);
       {
-         tr1.setTcSuccess(cc.hasField("MINIMIZED", "MINIMIZED"));
+         tr1.setTcSuccess(cc.hasField("MINIMIZED", "WindowState.MINIMIZED"));
       }
 
       /* TestCase: WindowState_fieldNORMAL */
-      /* Details: "Has String field NORMAL with value of \"NORMAL\" " */
+      /* Details: "Has WindowState field NORMAL with value of WindowState.NORMAL " */
       TestResult tr2 = tcd.getTestResultFailed(WINDOWSTATE_FIELDNORMAL);
       {
-         tr2.setTcSuccess(cc.hasField("NORMAL", "NORMAL"));
-      }
-
-      /* TestCase: WindowState_constructor */
-      /* Details: "Has a WindowState(java.lang.String) constructor that creates a new WindowState with the specified name" */
-      TestResult tr3 = tcd.getTestResultFailed(WINDOWSTATE_CONSTRUCTOR);
-      {
-         String name = "WindowState";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = {java.lang.String.class};
-         tr3.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
-
-      /* TestCase: WindowState_hasToString */
-      /* Details: "Has a toString() method" */
-      TestResult tr4 = tcd.getTestResultFailed(WINDOWSTATE_HASTOSTRING);
-      {
-         String name = "toString";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr4.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+         tr2.setTcSuccess(cc.hasField("NORMAL", "WindowState.NORMAL"));
       }
 
       /* TestCase: WindowState_toString */
       /* Details: "Returns a String representation of the portlet mode" */
-      TestResult tr5 = tcd.getTestResultFailed(WINDOWSTATE_TOSTRING);
+      TestResult tr3 = tcd.getTestResultFailed(WINDOWSTATE_TOSTRING);
       /* TODO: implement test */
-
-      /* TestCase: WindowState_hasHashCode */
-      /* Details: "Has a hashCode() method" */
-      TestResult tr6 = tcd.getTestResultFailed(WINDOWSTATE_HASHASHCODE);
-      {
-         String name = "hashCode";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr6.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: WindowState_hashCode */
       /* Details: "Returns an int containing the has code for the portlet mode" */
-      TestResult tr7 = tcd.getTestResultFailed(WINDOWSTATE_HASHCODE);
+      TestResult tr4 = tcd.getTestResultFailed(WINDOWSTATE_HASHCODE);
       /* TODO: implement test */
-
-      /* TestCase: WindowState_hasEquals */
-      /* Details: "Has a equals(java.lang.Object) method" */
-      TestResult tr8 = tcd.getTestResultFailed(WINDOWSTATE_HASEQUALS);
-      {
-         String name = "equals";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = {java.lang.Object.class};
-         tr8.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: WindowState_equals */
       /* Details: "Returns true if the WindowState equals the specified WindowState" */
-      TestResult tr9 = tcd.getTestResultFailed(WINDOWSTATE_EQUALS);
+      TestResult tr5 = tcd.getTestResultFailed(WINDOWSTATE_EQUALS);
       /* TODO: implement test */
 
 
@@ -161,10 +121,6 @@ public class V2PortletTests_WindowState implements Portlet {
       tr3.writeTo(writer);
       tr4.writeTo(writer);
       tr5.writeTo(writer);
-      tr6.writeTo(writer);
-      tr7.writeTo(writer);
-      tr8.writeTo(writer);
-      tr9.writeTo(writer);
 
 
    }

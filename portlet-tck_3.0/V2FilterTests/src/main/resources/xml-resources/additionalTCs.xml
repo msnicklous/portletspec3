@@ -26,36 +26,44 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 <!-- JSR 286 API FilterTests test case names and page mappings -->
-<entry key="FilterChain_hasDoFilterForAction">V2FilterTests_FilterChain</entry>
 <entry key="FilterChain_invokeActionFilter">V2FilterTests_FilterChain</entry>
 <entry key="FilterChain_invokeActionFilter2">V2FilterTests_FilterChain</entry>
 <entry key="FilterChain_invokeActionException">V2FilterTests_FilterChain</entry>
 <entry key="FilterChain_invokeActionException2">V2FilterTests_FilterChain</entry>
-<entry key="FilterChain_hasDoFilterForEvent">V2FilterTests_FilterChain</entry>
 <entry key="FilterChain_invokeEventFilter">V2FilterTests_FilterChain</entry>
 <entry key="FilterChain_invokeEventFilter2">V2FilterTests_FilterChain</entry>
 <entry key="FilterChain_invokeEventException">V2FilterTests_FilterChain</entry>
 <entry key="FilterChain_invokeEventException2">V2FilterTests_FilterChain</entry>
-<entry key="FilterChain_hasDoFilterForRender">V2FilterTests_FilterChain</entry>
 <entry key="FilterChain_invokeRenderFilter">V2FilterTests_FilterChain</entry>
 <entry key="FilterChain_invokeRenderFilter2">V2FilterTests_FilterChain</entry>
 <entry key="FilterChain_invokeRenderException">V2FilterTests_FilterChain</entry>
 <entry key="FilterChain_invokeRenderException2">V2FilterTests_FilterChain</entry>
-<entry key="FilterChain_hasDoFilterForResource">V2FilterTests_FilterChain</entry>
 <entry key="FilterChain_invokeResourceFilter">V2FilterTests_FilterChain</entry>
 <entry key="FilterChain_invokeResourceFilter2">V2FilterTests_FilterChain</entry>
 <entry key="FilterChain_invokeResourceException">V2FilterTests_FilterChain</entry>
 <entry key="FilterChain_invokeResourceException2">V2FilterTests_FilterChain</entry>
-<entry key="FilterConfig_hasGetFilterName">V2FilterTests_FilterConfig</entry>
+<entry key="FilterChain_SIG_hasDoFilter">V2FilterTests_SIG_FilterChain</entry>
+<entry key="FilterChain_SIG_hasDoFilterReturns">V2FilterTests_SIG_FilterChain</entry>
+<entry key="FilterChain_SIG_hasDoFilterA">V2FilterTests_SIG_FilterChain</entry>
+<entry key="FilterChain_SIG_hasDoFilterReturnsA">V2FilterTests_SIG_FilterChain</entry>
+<entry key="FilterChain_SIG_hasDoFilterB">V2FilterTests_SIG_FilterChain</entry>
+<entry key="FilterChain_SIG_hasDoFilterReturnsB">V2FilterTests_SIG_FilterChain</entry>
+<entry key="FilterChain_SIG_hasDoFilterC">V2FilterTests_SIG_FilterChain</entry>
+<entry key="FilterChain_SIG_hasDoFilterReturnsC">V2FilterTests_SIG_FilterChain</entry>
 <entry key="FilterConfig_getFilterName">V2FilterTests_FilterConfig</entry>
-<entry key="FilterConfig_hasGetPortletContext">V2FilterTests_FilterConfig</entry>
 <entry key="FilterConfig_getPortletContext">V2FilterTests_FilterConfig</entry>
-<entry key="FilterConfig_hasGetInitParameter">V2FilterTests_FilterConfig</entry>
 <entry key="FilterConfig_getInitParameter1">V2FilterTests_FilterConfig</entry>
 <entry key="FilterConfig_getInitParameter2">V2FilterTests_FilterConfig</entry>
-<entry key="FilterConfig_hasGetInitParameterNames">V2FilterTests_FilterConfig</entry>
 <entry key="FilterConfig_getInitParameterNames1">V2FilterTests_FilterConfig</entry>
 <entry key="FilterConfig_getInitParameterNames2">V2FilterTests_FilterConfig</entry>
+<entry key="FilterConfig_SIG_hasGetFilterName">V2FilterTests_SIG_FilterConfig</entry>
+<entry key="FilterConfig_SIG_hasGetFilterNameReturns">V2FilterTests_SIG_FilterConfig</entry>
+<entry key="FilterConfig_SIG_hasGetPortletContext">V2FilterTests_SIG_FilterConfig</entry>
+<entry key="FilterConfig_SIG_hasGetPortletContextReturns">V2FilterTests_SIG_FilterConfig</entry>
+<entry key="FilterConfig_SIG_hasGetInitParameter">V2FilterTests_SIG_FilterConfig</entry>
+<entry key="FilterConfig_SIG_hasGetInitParameterReturns">V2FilterTests_SIG_FilterConfig</entry>
+<entry key="FilterConfig_SIG_hasGetInitParameterNames">V2FilterTests_SIG_FilterConfig</entry>
+<entry key="FilterConfig_SIG_hasGetInitParameterNamesReturns">V2FilterTests_SIG_FilterConfig</entry>
 <entry key="PortletFilter_initAction1">V2FilterTests_PortletFilter</entry>
 <entry key="PortletFilter_initAction2">V2FilterTests_PortletFilter</entry>
 <entry key="PortletFilter_initAction3">V2FilterTests_PortletFilter</entry>
@@ -76,6 +84,10 @@
 <entry key="PortletFilter_initResource3">V2FilterTests_PortletFilter</entry>
 <entry key="PortletFilter_destroyResource1">V2FilterTests_PortletFilter</entry>
 <entry key="PortletFilter_destroyResource2">V2FilterTests_PortletFilter</entry>
+<entry key="PortletFilter_SIG_hasInit">V2FilterTests_SIG_PortletFilter</entry>
+<entry key="PortletFilter_SIG_hasInitReturns">V2FilterTests_SIG_PortletFilter</entry>
+<entry key="PortletFilter_SIG_hasDestroy">V2FilterTests_SIG_PortletFilter</entry>
+<entry key="PortletFilter_SIG_hasDestroyReturns">V2FilterTests_SIG_PortletFilter</entry>
 <entry key="ActionFilter_canBeConfigured1">V2FilterTests_ActionFilter</entry>
 <entry key="ActionFilter_canBeConfigured2">V2FilterTests_ActionFilter</entry>
 <entry key="ActionFilter_doFilterIsCalled">V2FilterTests_ActionFilter</entry>
@@ -85,6 +97,9 @@
 <entry key="ActionFilter_doFilterException1">V2FilterTests_ActionFilter</entry>
 <entry key="ActionFilter_doFilterException2">V2FilterTests_ActionFilter</entry>
 <entry key="ActionFilter_doFilterExamine">V2FilterTests_ActionFilter</entry>
+<entry key="ActionFilter_SIG_implementsPortletFilter">V2FilterTests_SIG_ActionFilter</entry>
+<entry key="ActionFilter_SIG_hasDoFilter">V2FilterTests_SIG_ActionFilter</entry>
+<entry key="ActionFilter_SIG_hasDoFilterReturns">V2FilterTests_SIG_ActionFilter</entry>
 <entry key="EventFilter_canBeConfigured1">V2FilterTests_EventFilter</entry>
 <entry key="EventFilter_canBeConfigured2">V2FilterTests_EventFilter</entry>
 <entry key="EventFilter_doFilterIsCalled">V2FilterTests_EventFilter</entry>
@@ -94,6 +109,9 @@
 <entry key="EventFilter_doFilterException1">V2FilterTests_EventFilter</entry>
 <entry key="EventFilter_doFilterException2">V2FilterTests_EventFilter</entry>
 <entry key="EventFilter_doFilterExamine">V2FilterTests_EventFilter</entry>
+<entry key="EventFilter_SIG_implementsPortletFilter">V2FilterTests_SIG_EventFilter</entry>
+<entry key="EventFilter_SIG_hasDoFilter">V2FilterTests_SIG_EventFilter</entry>
+<entry key="EventFilter_SIG_hasDoFilterReturns">V2FilterTests_SIG_EventFilter</entry>
 <entry key="RenderFilter_canBeConfigured1">V2FilterTests_RenderFilter</entry>
 <entry key="RenderFilter_canBeConfigured2">V2FilterTests_RenderFilter</entry>
 <entry key="RenderFilter_doFilterIsCalled">V2FilterTests_RenderFilter</entry>
@@ -103,6 +121,9 @@
 <entry key="RenderFilter_doFilterException1">V2FilterTests_RenderFilter</entry>
 <entry key="RenderFilter_doFilterException2">V2FilterTests_RenderFilter</entry>
 <entry key="RenderFilter_doFilterExamine">V2FilterTests_RenderFilter</entry>
+<entry key="RenderFilter_SIG_implementsPortletFilter">V2FilterTests_SIG_RenderFilter</entry>
+<entry key="RenderFilter_SIG_hasDoFilter">V2FilterTests_SIG_RenderFilter</entry>
+<entry key="RenderFilter_SIG_hasDoFilterReturns">V2FilterTests_SIG_RenderFilter</entry>
 <entry key="ResourceFilter_canBeConfigured1">V2FilterTests_ResourceFilter</entry>
 <entry key="ResourceFilter_canBeConfigured2">V2FilterTests_ResourceFilter</entry>
 <entry key="ResourceFilter_doFilterIsCalled">V2FilterTests_ResourceFilter</entry>
@@ -112,5 +133,8 @@
 <entry key="ResourceFilter_doFilterException1">V2FilterTests_ResourceFilter</entry>
 <entry key="ResourceFilter_doFilterException2">V2FilterTests_ResourceFilter</entry>
 <entry key="ResourceFilter_doFilterExamine">V2FilterTests_ResourceFilter</entry>
+<entry key="ResourceFilter_SIG_implementsPortletFilter">V2FilterTests_SIG_ResourceFilter</entry>
+<entry key="ResourceFilter_SIG_hasDoFilter">V2FilterTests_SIG_ResourceFilter</entry>
+<entry key="ResourceFilter_SIG_hasDoFilterReturns">V2FilterTests_SIG_ResourceFilter</entry>
 
 </properties>

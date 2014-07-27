@@ -75,279 +75,189 @@ public class V2EnvironmentTests_PortletPreferences implements Portlet {
 
       // Create result objects for the tests
 
-      /* TestCase: PortletPreferences_hasIsReadOnly */
-      /* Details: "Has a isReadOnly(java.lang.String) method" */
-      TestResult tr0 = tcd.getTestResultFailed(PORTLETPREFERENCES_HASISREADONLY);
-      {
-         String name = "isReadOnly";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = {java.lang.String.class};
-         tr0.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
-
       /* TestCase: PortletPreferences_isReadOnly1 */
       /* Details: "Returns true if the preference specified by the key is defined to be read-only in the deployment descriptor" */
-      TestResult tr1 = tcd.getTestResultFailed(PORTLETPREFERENCES_ISREADONLY1);
+      TestResult tr0 = tcd.getTestResultFailed(PORTLETPREFERENCES_ISREADONLY1);
       /* TODO: implement test */
 
       /* TestCase: PortletPreferences_isReadOnly2 */
       /* Details: "Returns false if the preference specified by the key is not defined to be read-only in the deployment descriptor" */
-      TestResult tr2 = tcd.getTestResultFailed(PORTLETPREFERENCES_ISREADONLY2);
+      TestResult tr1 = tcd.getTestResultFailed(PORTLETPREFERENCES_ISREADONLY2);
       /* TODO: implement test */
 
       /* TestCase: PortletPreferences_isReadOnly3 */
       /* Details: "Returns false if the preference specified by the key is undefined" */
-      TestResult tr3 = tcd.getTestResultFailed(PORTLETPREFERENCES_ISREADONLY3);
+      TestResult tr2 = tcd.getTestResultFailed(PORTLETPREFERENCES_ISREADONLY3);
       /* TODO: implement test */
 
       /* TestCase: PortletPreferences_isReadOnly4 */
       /* Details: "Throws IllegalArgumentException if the key is null" */
-      TestResult tr4 = tcd.getTestResultFailed(PORTLETPREFERENCES_ISREADONLY4);
+      TestResult tr3 = tcd.getTestResultFailed(PORTLETPREFERENCES_ISREADONLY4);
       /* TODO: implement test */
-
-      /* TestCase: PortletPreferences_hasGetValue */
-      /* Details: "Has a getValue(java.lang.String, java.lang.String) method" */
-      TestResult tr5 = tcd.getTestResultFailed(PORTLETPREFERENCES_HASGETVALUE);
-      {
-         String name = "getValue";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = {java.lang.String.class, java.lang.String.class};
-         tr5.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: PortletPreferences_getValue1 */
       /* Details: "Returns the first String value for the specified key" */
-      TestResult tr6 = tcd.getTestResultFailed(PORTLETPREFERENCES_GETVALUE1);
+      TestResult tr4 = tcd.getTestResultFailed(PORTLETPREFERENCES_GETVALUE1);
       /* TODO: implement test */
 
       /* TestCase: PortletPreferences_getValue2 */
       /* Details: "Returns the specified default value if there is no value for the specified key " */
-      TestResult tr7 = tcd.getTestResultFailed(PORTLETPREFERENCES_GETVALUE2);
+      TestResult tr5 = tcd.getTestResultFailed(PORTLETPREFERENCES_GETVALUE2);
       /* TODO: implement test */
 
       /* TestCase: PortletPreferences_getValue3 */
       /* Details: "Returns the specified default value if the existing value for the specified key is null " */
-      TestResult tr8 = tcd.getTestResultFailed(PORTLETPREFERENCES_GETVALUE3);
+      TestResult tr6 = tcd.getTestResultFailed(PORTLETPREFERENCES_GETVALUE3);
       /* TODO: implement test */
 
       /* TestCase: PortletPreferences_getValue4 */
       /* Details: "Throws IllegalArgumentException if the key is null" */
-      TestResult tr9 = tcd.getTestResultFailed(PORTLETPREFERENCES_GETVALUE4);
+      TestResult tr7 = tcd.getTestResultFailed(PORTLETPREFERENCES_GETVALUE4);
       /* TODO: implement test */
-
-      /* TestCase: PortletPreferences_hasGetValues */
-      /* Details: "Has a getValues(java.lang.String, java.lang.String[]) method" */
-      TestResult tr10 = tcd.getTestResultFailed(PORTLETPREFERENCES_HASGETVALUES);
-      {
-         String name = "getValues";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = {java.lang.String.class, java.lang.String[].class};
-         tr10.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: PortletPreferences_getValues1 */
       /* Details: "Returns the values String[] for the specified key" */
-      TestResult tr11 = tcd.getTestResultFailed(PORTLETPREFERENCES_GETVALUES1);
+      TestResult tr8 = tcd.getTestResultFailed(PORTLETPREFERENCES_GETVALUES1);
       /* TODO: implement test */
 
       /* TestCase: PortletPreferences_getValues2 */
       /* Details: "Returns the specified default String[] if there is no Values for the specified key " */
-      TestResult tr12 = tcd.getTestResultFailed(PORTLETPREFERENCES_GETVALUES2);
+      TestResult tr9 = tcd.getTestResultFailed(PORTLETPREFERENCES_GETVALUES2);
       /* TODO: implement test */
 
       /* TestCase: PortletPreferences_getValues3 */
       /* Details: "Returns the specified default String[] if the existing String[] for the specified key is null " */
-      TestResult tr13 = tcd.getTestResultFailed(PORTLETPREFERENCES_GETVALUES3);
+      TestResult tr10 = tcd.getTestResultFailed(PORTLETPREFERENCES_GETVALUES3);
       /* TODO: implement test */
 
       /* TestCase: PortletPreferences_getValues4 */
       /* Details: "Throws IllegalArgumentException if the key is null" */
-      TestResult tr14 = tcd.getTestResultFailed(PORTLETPREFERENCES_GETVALUES4);
+      TestResult tr11 = tcd.getTestResultFailed(PORTLETPREFERENCES_GETVALUES4);
       /* TODO: implement test */
-
-      /* TestCase: PortletPreferences_hasSetValue */
-      /* Details: "Has a setValue(java.lang.String, java.lang.String) throws javax.portlet.ReadOnlyException method" */
-      TestResult tr15 = tcd.getTestResultFailed(PORTLETPREFERENCES_HASSETVALUE);
-      {
-         String name = "setValue";
-         Class<?>[] exceptions = {javax.portlet.ReadOnlyException.class};
-         Class<?>[] parms = {java.lang.String.class, java.lang.String.class};
-         tr15.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: PortletPreferences_setValue1 */
       /* Details: "Sets the specified value for the specified key" */
-      TestResult tr16 = tcd.getTestResultFailed(PORTLETPREFERENCES_SETVALUE1);
+      TestResult tr12 = tcd.getTestResultFailed(PORTLETPREFERENCES_SETVALUE1);
       /* TODO: implement test */
 
       /* TestCase: PortletPreferences_setValue2 */
       /* Details: "Any existing String or String[] value for the specified key is replaced" */
-      TestResult tr17 = tcd.getTestResultFailed(PORTLETPREFERENCES_SETVALUE2);
+      TestResult tr13 = tcd.getTestResultFailed(PORTLETPREFERENCES_SETVALUE2);
       /* TODO: implement test */
 
       /* TestCase: PortletPreferences_setValue3 */
       /* Details: "The value may be set to null" */
-      TestResult tr18 = tcd.getTestResultFailed(PORTLETPREFERENCES_SETVALUE3);
+      TestResult tr14 = tcd.getTestResultFailed(PORTLETPREFERENCES_SETVALUE3);
       /* TODO: implement test */
 
       /* TestCase: PortletPreferences_setValue4 */
       /* Details: "Throws ReadOnlyException if the preference cannot be modified for this request" */
-      TestResult tr19 = tcd.getTestResultFailed(PORTLETPREFERENCES_SETVALUE4);
+      TestResult tr15 = tcd.getTestResultFailed(PORTLETPREFERENCES_SETVALUE4);
       /* TODO: implement test */
 
       /* TestCase: PortletPreferences_setValue5 */
       /* Details: "Throws IllegalArgumentException if the key is null" */
-      TestResult tr20 = tcd.getTestResultFailed(PORTLETPREFERENCES_SETVALUE5);
+      TestResult tr16 = tcd.getTestResultFailed(PORTLETPREFERENCES_SETVALUE5);
       /* TODO: implement test */
-
-      /* TestCase: PortletPreferences_hasSetValues */
-      /* Details: "Has a setValues(java.lang.String, java.lang.String[]) throws javax.portlet.ReadOnlyException method" */
-      TestResult tr21 = tcd.getTestResultFailed(PORTLETPREFERENCES_HASSETVALUES);
-      {
-         String name = "setValues";
-         Class<?>[] exceptions = {javax.portlet.ReadOnlyException.class};
-         Class<?>[] parms = {java.lang.String.class, java.lang.String[].class};
-         tr21.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: PortletPreferences_setValues1 */
       /* Details: "Sets the specified value array for the specified key" */
-      TestResult tr22 = tcd.getTestResultFailed(PORTLETPREFERENCES_SETVALUES1);
+      TestResult tr17 = tcd.getTestResultFailed(PORTLETPREFERENCES_SETVALUES1);
       /* TODO: implement test */
 
       /* TestCase: PortletPreferences_setValues2 */
       /* Details: "Any existing String or String[] Values for the specified key is replaced" */
-      TestResult tr23 = tcd.getTestResultFailed(PORTLETPREFERENCES_SETVALUES2);
+      TestResult tr18 = tcd.getTestResultFailed(PORTLETPREFERENCES_SETVALUES2);
       /* TODO: implement test */
 
       /* TestCase: PortletPreferences_setValues3 */
       /* Details: "The value array may be set to null" */
-      TestResult tr24 = tcd.getTestResultFailed(PORTLETPREFERENCES_SETVALUES3);
+      TestResult tr19 = tcd.getTestResultFailed(PORTLETPREFERENCES_SETVALUES3);
       /* TODO: implement test */
 
       /* TestCase: PortletPreferences_setValues4 */
       /* Details: "The value array may contain null members" */
-      TestResult tr25 = tcd.getTestResultFailed(PORTLETPREFERENCES_SETVALUES4);
+      TestResult tr20 = tcd.getTestResultFailed(PORTLETPREFERENCES_SETVALUES4);
       /* TODO: implement test */
 
       /* TestCase: PortletPreferences_setValues5 */
       /* Details: "Throws ReadOnlyException if the preference cannot be modified for this request" */
-      TestResult tr26 = tcd.getTestResultFailed(PORTLETPREFERENCES_SETVALUES5);
+      TestResult tr21 = tcd.getTestResultFailed(PORTLETPREFERENCES_SETVALUES5);
       /* TODO: implement test */
 
       /* TestCase: PortletPreferences_setValues6 */
       /* Details: "Throws IllegalArgumentException if the key is null" */
-      TestResult tr27 = tcd.getTestResultFailed(PORTLETPREFERENCES_SETVALUES6);
+      TestResult tr22 = tcd.getTestResultFailed(PORTLETPREFERENCES_SETVALUES6);
       /* TODO: implement test */
-
-      /* TestCase: PortletPreferences_hasGetNames */
-      /* Details: "Has a getNames() method" */
-      TestResult tr28 = tcd.getTestResultFailed(PORTLETPREFERENCES_HASGETNAMES);
-      {
-         String name = "getNames";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr28.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: PortletPreferences_getNames1 */
       /* Details: "Returns an java.util.Enumeration<java.lang.String> containing the available preference keys" */
-      TestResult tr29 = tcd.getTestResultFailed(PORTLETPREFERENCES_GETNAMES1);
+      TestResult tr23 = tcd.getTestResultFailed(PORTLETPREFERENCES_GETNAMES1);
       /* TODO: implement test */
 
       /* TestCase: PortletPreferences_getNames2 */
       /* Details: "Returns an empty Enumeration if no preference keys are available" */
-      TestResult tr30 = tcd.getTestResultFailed(PORTLETPREFERENCES_GETNAMES2);
+      TestResult tr24 = tcd.getTestResultFailed(PORTLETPREFERENCES_GETNAMES2);
       /* TODO: implement test */
-
-      /* TestCase: PortletPreferences_hasGetMap */
-      /* Details: "Has a getMap() method" */
-      TestResult tr31 = tcd.getTestResultFailed(PORTLETPREFERENCES_HASGETMAP);
-      {
-         String name = "getMap";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr31.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: PortletPreferences_getMap1 */
       /* Details: "Returns an java.util.Map<java.lang.String> containing the available preferences" */
-      TestResult tr32 = tcd.getTestResultFailed(PORTLETPREFERENCES_GETMAP1);
+      TestResult tr25 = tcd.getTestResultFailed(PORTLETPREFERENCES_GETMAP1);
       /* TODO: implement test */
 
       /* TestCase: PortletPreferences_getMap2 */
       /* Details: "Returns an empty Map if no preferences are available" */
-      TestResult tr33 = tcd.getTestResultFailed(PORTLETPREFERENCES_GETMAP2);
+      TestResult tr26 = tcd.getTestResultFailed(PORTLETPREFERENCES_GETMAP2);
       /* TODO: implement test */
-
-      /* TestCase: PortletPreferences_hasReset */
-      /* Details: "Has a reset(java.lang.String) throws javax.portlet.ReadOnlyException method" */
-      TestResult tr34 = tcd.getTestResultFailed(PORTLETPREFERENCES_HASRESET);
-      {
-         String name = "reset";
-         Class<?>[] exceptions = {javax.portlet.ReadOnlyException.class};
-         Class<?>[] parms = {java.lang.String.class};
-         tr34.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: PortletPreferences_reset1 */
       /* Details: "Removes the value associated with the specified key" */
-      TestResult tr35 = tcd.getTestResultFailed(PORTLETPREFERENCES_RESET1);
+      TestResult tr27 = tcd.getTestResultFailed(PORTLETPREFERENCES_RESET1);
       /* TODO: implement test */
 
       /* TestCase: PortletPreferences_reset2 */
       /* Details: "Throws ReadOnlyException if the preference cannot be modified for this request" */
-      TestResult tr36 = tcd.getTestResultFailed(PORTLETPREFERENCES_RESET2);
+      TestResult tr28 = tcd.getTestResultFailed(PORTLETPREFERENCES_RESET2);
       /* TODO: implement test */
 
       /* TestCase: PortletPreferences_reset3 */
       /* Details: "Throws IllegalArgumentException if the key is null" */
-      TestResult tr37 = tcd.getTestResultFailed(PORTLETPREFERENCES_RESET3);
+      TestResult tr29 = tcd.getTestResultFailed(PORTLETPREFERENCES_RESET3);
       /* TODO: implement test */
-
-      /* TestCase: PortletPreferences_hasStore */
-      /* Details: "Has a store() throws java.io.IOException, javax.portlet.ValidatorException method" */
-      TestResult tr38 = tcd.getTestResultFailed(PORTLETPREFERENCES_HASSTORE);
-      {
-         String name = "store";
-         Class<?>[] exceptions = {java.io.IOException.class, javax.portlet.ValidatorException.class};
-         Class<?>[] parms = null;
-         tr38.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: PortletPreferences_store1 */
       /* Details: "Commits changes made to the preferences to the persistent store " */
-      TestResult tr39 = tcd.getTestResultFailed(PORTLETPREFERENCES_STORE1);
+      TestResult tr30 = tcd.getTestResultFailed(PORTLETPREFERENCES_STORE1);
       /* TODO: implement test */
 
       /* TestCase: PortletPreferences_store2 */
       /* Details: "If the store() method is not called, changes made are discarded" */
-      TestResult tr40 = tcd.getTestResultFailed(PORTLETPREFERENCES_STORE2);
+      TestResult tr31 = tcd.getTestResultFailed(PORTLETPREFERENCES_STORE2);
       /* TODO: implement test */
 
       /* TestCase: PortletPreferences_store3 */
       /* Details: "If a validator is defined, it is called before the actual store is performed" */
-      TestResult tr41 = tcd.getTestResultFailed(PORTLETPREFERENCES_STORE3);
+      TestResult tr32 = tcd.getTestResultFailed(PORTLETPREFERENCES_STORE3);
       /* TODO: implement test */
 
       /* TestCase: PortletPreferences_store4 */
       /* Details: "If validation fails, the store is not performed" */
-      TestResult tr42 = tcd.getTestResultFailed(PORTLETPREFERENCES_STORE4);
+      TestResult tr33 = tcd.getTestResultFailed(PORTLETPREFERENCES_STORE4);
       /* TODO: implement test */
 
       /* TestCase: PortletPreferences_store5 */
       /* Details: "Throws IllegalStateException if store() is called in the render method  " */
-      TestResult tr43 = tcd.getTestResultFailed(PORTLETPREFERENCES_STORE5);
+      TestResult tr34 = tcd.getTestResultFailed(PORTLETPREFERENCES_STORE5);
       /* TODO: implement test */
 
       /* TestCase: PortletPreferences_store6 */
       /* Details: "Throws ValidatorException if the validation performed by the associated validator fails " */
-      TestResult tr44 = tcd.getTestResultFailed(PORTLETPREFERENCES_STORE6);
+      TestResult tr35 = tcd.getTestResultFailed(PORTLETPREFERENCES_STORE6);
       /* TODO: implement test */
 
       /* TestCase: PortletPreferences_store7 */
       /* Details: "Throws IOException if an IO error occurs " */
-      TestResult tr45 = tcd.getTestResultFailed(PORTLETPREFERENCES_STORE7);
+      TestResult tr36 = tcd.getTestResultFailed(PORTLETPREFERENCES_STORE7);
       /* TODO: implement test */
 
 
@@ -391,15 +301,6 @@ public class V2EnvironmentTests_PortletPreferences implements Portlet {
       tr34.writeTo(writer);
       tr35.writeTo(writer);
       tr36.writeTo(writer);
-      tr37.writeTo(writer);
-      tr38.writeTo(writer);
-      tr39.writeTo(writer);
-      tr40.writeTo(writer);
-      tr41.writeTo(writer);
-      tr42.writeTo(writer);
-      tr43.writeTo(writer);
-      tr44.writeTo(writer);
-      tr45.writeTo(writer);
 
 
    }

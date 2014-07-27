@@ -16,7 +16,7 @@
  *  under the License.
  */
 
-package javax.portlet.tck.ExceptionTests.portlets;
+package javax.portlet.tck.FilterTests.portlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -40,9 +40,9 @@ import javax.portlet.tck.beans.TestResult;
  * file. The build process will integrate the test case names defined in the 
  * additionalTCs.xml file into the complete list of test case names for execution by the driver.
  */
-public class V2ExceptionTests_PortletException implements Portlet {
+public class V2FilterTests_SIG_PortletFilter implements Portlet {
    private static final String LOG_CLASS = 
-         V2ExceptionTests_PortletException.class.getName();
+         V2FilterTests_SIG_PortletFilter.class.getName();
    private final Logger LOGGER = Logger.getLogger(LOG_CLASS);
    
    private PortletConfig portletConfig = null;
@@ -71,47 +71,48 @@ public class V2ExceptionTests_PortletException implements Portlet {
 
       PrintWriter writer = renderResponse.getWriter();
       JSR286ApiTestCaseDetails tcd = new JSR286ApiTestCaseDetails();
-      ClassChecker cc = new ClassChecker(PortletException.class);
+      ClassChecker cc = new ClassChecker(PortletFilter.class);
 
       // Create result objects for the tests
 
-      /* TestCase: PortletException_extendsException */
-      /* Details: "Extends java.lang.Exception" */
-      TestResult tr0 = tcd.getTestResultFailed(PORTLETEXCEPTION_EXTENDSEXCEPTION);
+      /* TestCase: PortletFilter_SIG_hasInit */
+      /* Details: "Has a init(FilterConfig) throws PortletException method " */
+      TestResult tr0 = tcd.getTestResultFailed(PORTLETFILTER_SIG_HASINIT);
       {
-         tr0.setTcSuccess(cc.hasSuperclass(java.lang.Exception.class));
+         String name = "init";
+         Class<?>[] exceptions = {PortletException.class};
+         Class<?>[] parms = {FilterConfig.class};
+         tr0.setTcSuccess(cc.hasMethod(name, parms, exceptions));
       }
 
-      /* TestCase: PortletException_constructor1 */
-      /* Details: "Provides constructor PortletException()" */
-      TestResult tr1 = tcd.getTestResultFailed(PORTLETEXCEPTION_CONSTRUCTOR1);
+      /* TestCase: PortletFilter_SIG_hasInitReturns */
+      /* Details: "Method init(FilterConfig) returns void " */
+      TestResult tr1 = tcd.getTestResultFailed(PORTLETFILTER_SIG_HASINITRETURNS);
       {
+         String name = "init";
+         Class<?> retType = void.class;
+         Class<?>[] parms = {FilterConfig.class};
+         tr1.setTcSuccess(cc.methodHasReturnType(name, retType, parms));
+      }
+
+      /* TestCase: PortletFilter_SIG_hasDestroy */
+      /* Details: "Has a destroy()  method " */
+      TestResult tr2 = tcd.getTestResultFailed(PORTLETFILTER_SIG_HASDESTROY);
+      {
+         String name = "destroy";
+         Class<?>[] exceptions = null;
          Class<?>[] parms = null;
-         tr1.setTcSuccess(cc.hasConstructor(parms));
+         tr2.setTcSuccess(cc.hasMethod(name, parms, exceptions));
       }
 
-      /* TestCase: PortletException_constructor2 */
-      /* Details: "Provides constructor PortletException(java.lang.String)" */
-      TestResult tr2 = tcd.getTestResultFailed(PORTLETEXCEPTION_CONSTRUCTOR2);
+      /* TestCase: PortletFilter_SIG_hasDestroyReturns */
+      /* Details: "Method destroy() returns void " */
+      TestResult tr3 = tcd.getTestResultFailed(PORTLETFILTER_SIG_HASDESTROYRETURNS);
       {
-         Class<?>[] parms = {java.lang.String.class};
-         tr2.setTcSuccess(cc.hasConstructor(parms));
-      }
-
-      /* TestCase: PortletException_constructor3 */
-      /* Details: "Provides constructor PortletException(java.lang.String, java.lang.Throwable)" */
-      TestResult tr3 = tcd.getTestResultFailed(PORTLETEXCEPTION_CONSTRUCTOR3);
-      {
-         Class<?>[] parms = {java.lang.String.class, java.lang.Throwable.class};
-         tr3.setTcSuccess(cc.hasConstructor(parms));
-      }
-
-      /* TestCase: PortletException_constructor4 */
-      /* Details: "Provides constructor PortletException(java.lang.Throwable)" */
-      TestResult tr4 = tcd.getTestResultFailed(PORTLETEXCEPTION_CONSTRUCTOR4);
-      {
-         Class<?>[] parms = {java.lang.Throwable.class};
-         tr4.setTcSuccess(cc.hasConstructor(parms));
+         String name = "destroy";
+         Class<?> retType = void.class;
+         Class<?>[] parms = null;
+         tr3.setTcSuccess(cc.methodHasReturnType(name, retType, parms));
       }
 
 
@@ -122,7 +123,6 @@ public class V2ExceptionTests_PortletException implements Portlet {
       tr1.writeTo(writer);
       tr2.writeTo(writer);
       tr3.writeTo(writer);
-      tr4.writeTo(writer);
 
 
    }

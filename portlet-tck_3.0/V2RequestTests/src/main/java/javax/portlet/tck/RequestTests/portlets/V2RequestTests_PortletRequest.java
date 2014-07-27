@@ -180,799 +180,414 @@ public class V2RequestTests_PortletRequest implements Portlet {
          tr14.setTcSuccess(cc.hasField("ACTION_SCOPE_ID", "javax.portlet.as"));
       }
 
-      /* TestCase: PortletRequest_hasIsWindowStateAllowed */
-      /* Details: "Has a isWindowStateAllowed(WindowState) method" */
-      TestResult tr15 = tcd.getTestResultFailed(PORTLETREQUEST_HASISWINDOWSTATEALLOWED);
-      {
-         String name = "isWindowStateAllowed";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = {WindowState.class};
-         tr15.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
-
       /* TestCase: PortletRequest_isWindowStateAllowed1 */
       /* Details: "Returns true if the specified WindowState is allowed" */
-      TestResult tr16 = tcd.getTestResultFailed(PORTLETREQUEST_ISWINDOWSTATEALLOWED1);
+      TestResult tr15 = tcd.getTestResultFailed(PORTLETREQUEST_ISWINDOWSTATEALLOWED1);
       /* TODO: implement test */
 
       /* TestCase: PortletRequest_isWindowStateAllowed2 */
       /* Details: "Returns false if the specified WindowState is not allowed" */
-      TestResult tr17 = tcd.getTestResultFailed(PORTLETREQUEST_ISWINDOWSTATEALLOWED2);
+      TestResult tr16 = tcd.getTestResultFailed(PORTLETREQUEST_ISWINDOWSTATEALLOWED2);
       /* TODO: implement test */
-
-      /* TestCase: PortletRequest_hasIsPortletModeAllowed */
-      /* Details: "Has a isPortletModeAllowed(PortletMode) method" */
-      TestResult tr18 = tcd.getTestResultFailed(PORTLETREQUEST_HASISPORTLETMODEALLOWED);
-      {
-         String name = "isPortletModeAllowed";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = {PortletMode.class};
-         tr18.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: PortletRequest_isPortletModeAllowed1 */
       /* Details: "Returns true if the specified PortletMode is allowed" */
-      TestResult tr19 = tcd.getTestResultFailed(PORTLETREQUEST_ISPORTLETMODEALLOWED1);
+      TestResult tr17 = tcd.getTestResultFailed(PORTLETREQUEST_ISPORTLETMODEALLOWED1);
       /* TODO: implement test */
 
       /* TestCase: PortletRequest_isPortletModeAllowed2 */
       /* Details: "Returns false if the specified PortletMode is not allowed" */
-      TestResult tr20 = tcd.getTestResultFailed(PORTLETREQUEST_ISPORTLETMODEALLOWED2);
+      TestResult tr18 = tcd.getTestResultFailed(PORTLETREQUEST_ISPORTLETMODEALLOWED2);
       /* TODO: implement test */
-
-      /* TestCase: PortletRequest_hasGetPortletMode */
-      /* Details: "Has a getPortletMode() method" */
-      TestResult tr21 = tcd.getTestResultFailed(PORTLETREQUEST_HASGETPORTLETMODE);
-      {
-         String name = "getPortletMode";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr21.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: PortletRequest_getPortletMode */
       /* Details: "Returns current PortletMode " */
-      TestResult tr22 = tcd.getTestResultFailed(PORTLETREQUEST_GETPORTLETMODE);
+      TestResult tr19 = tcd.getTestResultFailed(PORTLETREQUEST_GETPORTLETMODE);
       /* TODO: implement test */
-
-      /* TestCase: PortletRequest_hasGetWindowState */
-      /* Details: "Has a getWindowState() method" */
-      TestResult tr23 = tcd.getTestResultFailed(PORTLETREQUEST_HASGETWINDOWSTATE);
-      {
-         String name = "getWindowState";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr23.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: PortletRequest_getWindowState */
       /* Details: "Returns current WindowState" */
-      TestResult tr24 = tcd.getTestResultFailed(PORTLETREQUEST_GETWINDOWSTATE);
+      TestResult tr20 = tcd.getTestResultFailed(PORTLETREQUEST_GETWINDOWSTATE);
       /* TODO: implement test */
-
-      /* TestCase: PortletRequest_hasGetPreferences */
-      /* Details: "Has a getPreferences() method" */
-      TestResult tr25 = tcd.getTestResultFailed(PORTLETREQUEST_HASGETPREFERENCES);
-      {
-         String name = "getPreferences";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr25.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: PortletRequest_getPreferences */
       /* Details: "Returns the PortletPreferences object associated with the portlet" */
-      TestResult tr26 = tcd.getTestResultFailed(PORTLETREQUEST_GETPREFERENCES);
+      TestResult tr21 = tcd.getTestResultFailed(PORTLETREQUEST_GETPREFERENCES);
       /* TODO: implement test */
-
-      /* TestCase: PortletRequest_hasGetPortletSessionA */
-      /* Details: "Has a getPortletSession() method" */
-      TestResult tr27 = tcd.getTestResultFailed(PORTLETREQUEST_HASGETPORTLETSESSIONA);
-      {
-         String name = "getPortletSession";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr27.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: PortletRequest_getPortletSessionA1 */
       /* Details: "Returns current PortletSession if one already exists" */
-      TestResult tr28 = tcd.getTestResultFailed(PORTLETREQUEST_GETPORTLETSESSIONA1);
+      TestResult tr22 = tcd.getTestResultFailed(PORTLETREQUEST_GETPORTLETSESSIONA1);
       /* TODO: implement test */
 
       /* TestCase: PortletRequest_getPortletSessionA2 */
       /* Details: "Returns new PortletSession if one does not already exist" */
-      TestResult tr29 = tcd.getTestResultFailed(PORTLETREQUEST_GETPORTLETSESSIONA2);
+      TestResult tr23 = tcd.getTestResultFailed(PORTLETREQUEST_GETPORTLETSESSIONA2);
       /* TODO: implement test */
-
-      /* TestCase: PortletRequest_hasGetPortletSessionB */
-      /* Details: "Has a getPortletSession(boolean) method" */
-      TestResult tr30 = tcd.getTestResultFailed(PORTLETREQUEST_HASGETPORTLETSESSIONB);
-      {
-         String name = "getPortletSession";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = {boolean.class};
-         tr30.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: PortletRequest_getPortletSessionB1 */
       /* Details: "If input flag is true, returns current PortletSession if one already exists" */
-      TestResult tr31 = tcd.getTestResultFailed(PORTLETREQUEST_GETPORTLETSESSIONB1);
+      TestResult tr24 = tcd.getTestResultFailed(PORTLETREQUEST_GETPORTLETSESSIONB1);
       /* TODO: implement test */
 
       /* TestCase: PortletRequest_getPortletSessionB2 */
       /* Details: "If input flag is true, returns new PortletSession if one does not already exist" */
-      TestResult tr32 = tcd.getTestResultFailed(PORTLETREQUEST_GETPORTLETSESSIONB2);
+      TestResult tr25 = tcd.getTestResultFailed(PORTLETREQUEST_GETPORTLETSESSIONB2);
       /* TODO: implement test */
 
       /* TestCase: PortletRequest_getPortletSessionB3 */
       /* Details: "If input flag is false, returns current PortletSession if one already exists" */
-      TestResult tr33 = tcd.getTestResultFailed(PORTLETREQUEST_GETPORTLETSESSIONB3);
+      TestResult tr26 = tcd.getTestResultFailed(PORTLETREQUEST_GETPORTLETSESSIONB3);
       /* TODO: implement test */
 
       /* TestCase: PortletRequest_getPortletSessionB4 */
       /* Details: "If input flag is false, returns null if one does not already exist" */
-      TestResult tr34 = tcd.getTestResultFailed(PORTLETREQUEST_GETPORTLETSESSIONB4);
+      TestResult tr27 = tcd.getTestResultFailed(PORTLETREQUEST_GETPORTLETSESSIONB4);
       /* TODO: implement test */
-
-      /* TestCase: PortletRequest_hasGetProperty */
-      /* Details: "Has a getProperty(java.lang.String) method" */
-      TestResult tr35 = tcd.getTestResultFailed(PORTLETREQUEST_HASGETPROPERTY);
-      {
-         String name = "getProperty";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = {java.lang.String.class};
-         tr35.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: PortletRequest_getProperty1 */
       /* Details: "If specified request property exists, returns its value " */
-      TestResult tr36 = tcd.getTestResultFailed(PORTLETREQUEST_GETPROPERTY1);
+      TestResult tr28 = tcd.getTestResultFailed(PORTLETREQUEST_GETPROPERTY1);
       /* TODO: implement test */
 
       /* TestCase: PortletRequest_getProperty2 */
       /* Details: "If specified request property does not exist, returns null" */
-      TestResult tr37 = tcd.getTestResultFailed(PORTLETREQUEST_GETPROPERTY2);
+      TestResult tr29 = tcd.getTestResultFailed(PORTLETREQUEST_GETPROPERTY2);
       /* TODO: implement test */
 
       /* TestCase: PortletRequest_getProperty3 */
       /* Details: "Throws IllegalArgumentException if the name is null" */
-      TestResult tr38 = tcd.getTestResultFailed(PORTLETREQUEST_GETPROPERTY3);
+      TestResult tr30 = tcd.getTestResultFailed(PORTLETREQUEST_GETPROPERTY3);
       /* TODO: implement test */
-
-      /* TestCase: PortletRequest_hasGetProperties */
-      /* Details: "Has a getProperties() method" */
-      TestResult tr39 = tcd.getTestResultFailed(PORTLETREQUEST_HASGETPROPERTIES);
-      {
-         String name = "getProperties";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr39.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: PortletRequest_getProperties1 */
       /* Details: "If specified request property exists, returns its values as an Enumeration " */
-      TestResult tr40 = tcd.getTestResultFailed(PORTLETREQUEST_GETPROPERTIES1);
+      TestResult tr31 = tcd.getTestResultFailed(PORTLETREQUEST_GETPROPERTIES1);
       /* TODO: implement test */
 
       /* TestCase: PortletRequest_getProperties2 */
       /* Details: "If specified request property does not exist, returns an empty Enumeration" */
-      TestResult tr41 = tcd.getTestResultFailed(PORTLETREQUEST_GETPROPERTIES2);
+      TestResult tr32 = tcd.getTestResultFailed(PORTLETREQUEST_GETPROPERTIES2);
       /* TODO: implement test */
 
       /* TestCase: PortletRequest_getProperties3 */
       /* Details: "Throws IllegalArgumentException if the name is null" */
-      TestResult tr42 = tcd.getTestResultFailed(PORTLETREQUEST_GETPROPERTIES3);
+      TestResult tr33 = tcd.getTestResultFailed(PORTLETREQUEST_GETPROPERTIES3);
       /* TODO: implement test */
-
-      /* TestCase: PortletRequest_hasGetPropertyNames */
-      /* Details: "Has a getPropertyNames() method" */
-      TestResult tr43 = tcd.getTestResultFailed(PORTLETREQUEST_HASGETPROPERTYNAMES);
-      {
-         String name = "getPropertyNames";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr43.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: PortletRequest_getPropertyNames1 */
       /* Details: "Returns an Enumeration of all request property names" */
-      TestResult tr44 = tcd.getTestResultFailed(PORTLETREQUEST_GETPROPERTYNAMES1);
+      TestResult tr34 = tcd.getTestResultFailed(PORTLETREQUEST_GETPROPERTYNAMES1);
       /* TODO: implement test */
 
       /* TestCase: PortletRequest_getPropertyNames2 */
       /* Details: "Returns an empty Enumeration if there are no request properties defined" */
-      TestResult tr45 = tcd.getTestResultFailed(PORTLETREQUEST_GETPROPERTYNAMES2);
+      TestResult tr35 = tcd.getTestResultFailed(PORTLETREQUEST_GETPROPERTYNAMES2);
       /* TODO: implement test */
-
-      /* TestCase: PortletRequest_hasGetPortalContext */
-      /* Details: "Has a getPortalContext() method" */
-      TestResult tr46 = tcd.getTestResultFailed(PORTLETREQUEST_HASGETPORTALCONTEXT);
-      {
-         String name = "getPortalContext";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr46.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: PortletRequest_getPortalContext */
       /* Details: "Returns the context of the portal" */
-      TestResult tr47 = tcd.getTestResultFailed(PORTLETREQUEST_GETPORTALCONTEXT);
+      TestResult tr36 = tcd.getTestResultFailed(PORTLETREQUEST_GETPORTALCONTEXT);
       /* TODO: implement test */
-
-      /* TestCase: PortletRequest_hasGetAuthType */
-      /* Details: "Has a getAuthType() method" */
-      TestResult tr48 = tcd.getTestResultFailed(PORTLETREQUEST_HASGETAUTHTYPE);
-      {
-         String name = "getAuthType";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr48.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: PortletRequest_getAuthType1 */
       /* Details: "Returns a String indicating the authentication type if the request was authenticated" */
-      TestResult tr49 = tcd.getTestResultFailed(PORTLETREQUEST_GETAUTHTYPE1);
+      TestResult tr37 = tcd.getTestResultFailed(PORTLETREQUEST_GETAUTHTYPE1);
       /* TODO: implement test */
 
       /* TestCase: PortletRequest_getAuthType2 */
       /* Details: "Returns null if the request was not authenticated" */
-      TestResult tr50 = tcd.getTestResultFailed(PORTLETREQUEST_GETAUTHTYPE2);
+      TestResult tr38 = tcd.getTestResultFailed(PORTLETREQUEST_GETAUTHTYPE2);
       /* TODO: implement test */
-
-      /* TestCase: PortletRequest_hasGetContextPath */
-      /* Details: "Has a getContextPath() method" */
-      TestResult tr51 = tcd.getTestResultFailed(PORTLETREQUEST_HASGETCONTEXTPATH);
-      {
-         String name = "getContextPath";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr51.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: PortletRequest_getContextPath1 */
       /* Details: "Returns a String representing the context path associated with the portlet" */
-      TestResult tr52 = tcd.getTestResultFailed(PORTLETREQUEST_GETCONTEXTPATH1);
+      TestResult tr39 = tcd.getTestResultFailed(PORTLETREQUEST_GETCONTEXTPATH1);
       /* TODO: implement test */
 
       /* TestCase: PortletRequest_getContextPath2 */
       /* Details: "Returns an empty String if the portlet is deployed in the default context" */
-      TestResult tr53 = tcd.getTestResultFailed(PORTLETREQUEST_GETCONTEXTPATH2);
+      TestResult tr40 = tcd.getTestResultFailed(PORTLETREQUEST_GETCONTEXTPATH2);
       /* TODO: implement test */
 
       /* TestCase: PortletRequest_getContextPath3 */
       /* Details: "If the context path is not empty, it must start with \"/\" and may not end with \"/\"" */
-      TestResult tr54 = tcd.getTestResultFailed(PORTLETREQUEST_GETCONTEXTPATH3);
+      TestResult tr41 = tcd.getTestResultFailed(PORTLETREQUEST_GETCONTEXTPATH3);
       /* TODO: implement test */
-
-      /* TestCase: PortletRequest_hasGetRemoteUser */
-      /* Details: "Has a getRemoteUser() method" */
-      TestResult tr55 = tcd.getTestResultFailed(PORTLETREQUEST_HASGETREMOTEUSER);
-      {
-         String name = "getRemoteUser";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr55.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: PortletRequest_getRemoteUser1 */
       /* Details: "Returns a String representing the login of the user if the request is authenticated" */
-      TestResult tr56 = tcd.getTestResultFailed(PORTLETREQUEST_GETREMOTEUSER1);
+      TestResult tr42 = tcd.getTestResultFailed(PORTLETREQUEST_GETREMOTEUSER1);
       /* TODO: implement test */
 
       /* TestCase: PortletRequest_getRemoteUser2 */
       /* Details: "Returns null if the request has not been authenticated" */
-      TestResult tr57 = tcd.getTestResultFailed(PORTLETREQUEST_GETREMOTEUSER2);
+      TestResult tr43 = tcd.getTestResultFailed(PORTLETREQUEST_GETREMOTEUSER2);
       /* TODO: implement test */
-
-      /* TestCase: PortletRequest_hasGetUserPrincipal */
-      /* Details: "Has a getUserPrincipal() method" */
-      TestResult tr58 = tcd.getTestResultFailed(PORTLETREQUEST_HASGETUSERPRINCIPAL);
-      {
-         String name = "getUserPrincipal";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr58.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: PortletRequest_getUserPrincipal1 */
       /* Details: "Returns a java.security.Principal object representing the user if the request has been authenticated" */
-      TestResult tr59 = tcd.getTestResultFailed(PORTLETREQUEST_GETUSERPRINCIPAL1);
+      TestResult tr44 = tcd.getTestResultFailed(PORTLETREQUEST_GETUSERPRINCIPAL1);
       /* TODO: implement test */
 
       /* TestCase: PortletRequest_getUserPrincipal2 */
       /* Details: "Returns null if the request has not been authenticated" */
-      TestResult tr60 = tcd.getTestResultFailed(PORTLETREQUEST_GETUSERPRINCIPAL2);
+      TestResult tr45 = tcd.getTestResultFailed(PORTLETREQUEST_GETUSERPRINCIPAL2);
       /* TODO: implement test */
-
-      /* TestCase: PortletRequest_hasIsUserInRole */
-      /* Details: "Has a isUserInRole(java.lang.String) method" */
-      TestResult tr61 = tcd.getTestResultFailed(PORTLETREQUEST_HASISUSERINROLE);
-      {
-         String name = "isUserInRole";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = {java.lang.String.class};
-         tr61.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: PortletRequest_isUserInRole1 */
       /* Details: "Returns true if the authenticated user is in the specified role" */
-      TestResult tr62 = tcd.getTestResultFailed(PORTLETREQUEST_ISUSERINROLE1);
+      TestResult tr46 = tcd.getTestResultFailed(PORTLETREQUEST_ISUSERINROLE1);
       /* TODO: implement test */
 
       /* TestCase: PortletRequest_isUserInRole2 */
       /* Details: "Returns false if the authenticated user is not in the specified role" */
-      TestResult tr63 = tcd.getTestResultFailed(PORTLETREQUEST_ISUSERINROLE2);
+      TestResult tr47 = tcd.getTestResultFailed(PORTLETREQUEST_ISUSERINROLE2);
       /* TODO: implement test */
 
       /* TestCase: PortletRequest_isUserInRole3 */
       /* Details: "Returns true if the user is not authenticated" */
-      TestResult tr64 = tcd.getTestResultFailed(PORTLETREQUEST_ISUSERINROLE3);
+      TestResult tr48 = tcd.getTestResultFailed(PORTLETREQUEST_ISUSERINROLE3);
       /* TODO: implement test */
-
-      /* TestCase: PortletRequest_hasGetAttribute */
-      /* Details: "Has a getAttribute(java.lang.String) method" */
-      TestResult tr65 = tcd.getTestResultFailed(PORTLETREQUEST_HASGETATTRIBUTE);
-      {
-         String name = "getAttribute";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = {java.lang.String.class};
-         tr65.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: PortletRequest_getAttribute1 */
       /* Details: "Returns a java.lang.Object for the specified attribute name" */
-      TestResult tr66 = tcd.getTestResultFailed(PORTLETREQUEST_GETATTRIBUTE1);
+      TestResult tr49 = tcd.getTestResultFailed(PORTLETREQUEST_GETATTRIBUTE1);
       /* TODO: implement test */
 
       /* TestCase: PortletRequest_getAttribute2 */
       /* Details: "Returns null if no attribute with the specified name exists" */
-      TestResult tr67 = tcd.getTestResultFailed(PORTLETREQUEST_GETATTRIBUTE2);
+      TestResult tr50 = tcd.getTestResultFailed(PORTLETREQUEST_GETATTRIBUTE2);
       /* TODO: implement test */
 
       /* TestCase: PortletRequest_getAttribute3 */
       /* Details: "Throws IllegalArgumentException if the name is null" */
-      TestResult tr68 = tcd.getTestResultFailed(PORTLETREQUEST_GETATTRIBUTE3);
+      TestResult tr51 = tcd.getTestResultFailed(PORTLETREQUEST_GETATTRIBUTE3);
       /* TODO: implement test */
-
-      /* TestCase: PortletRequest_hasGetAttributeNames */
-      /* Details: "Has a getAttributeNames() method" */
-      TestResult tr69 = tcd.getTestResultFailed(PORTLETREQUEST_HASGETATTRIBUTENAMES);
-      {
-         String name = "getAttributeNames";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr69.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: PortletRequest_getAttributeNames1 */
       /* Details: "Returns a java.util.Enumeration<java.lang.String> of the available attribute names" */
-      TestResult tr70 = tcd.getTestResultFailed(PORTLETREQUEST_GETATTRIBUTENAMES1);
+      TestResult tr52 = tcd.getTestResultFailed(PORTLETREQUEST_GETATTRIBUTENAMES1);
       /* TODO: implement test */
 
       /* TestCase: PortletRequest_getAttributeNames2 */
       /* Details: "Returns an empty Enumeration if there are no attributes available" */
-      TestResult tr71 = tcd.getTestResultFailed(PORTLETREQUEST_GETATTRIBUTENAMES2);
+      TestResult tr53 = tcd.getTestResultFailed(PORTLETREQUEST_GETATTRIBUTENAMES2);
       /* TODO: implement test */
-
-      /* TestCase: PortletRequest_hasGetParameter */
-      /* Details: "Has a getParameter(java.lang.String) method" */
-      TestResult tr72 = tcd.getTestResultFailed(PORTLETREQUEST_HASGETPARAMETER);
-      {
-         String name = "getParameter";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = {java.lang.String.class};
-         tr72.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: PortletRequest_getParameter1 */
       /* Details: "Returns String value of parameter specified by the name" */
-      TestResult tr73 = tcd.getTestResultFailed(PORTLETREQUEST_GETPARAMETER1);
+      TestResult tr54 = tcd.getTestResultFailed(PORTLETREQUEST_GETPARAMETER1);
       /* TODO: implement test */
 
       /* TestCase: PortletRequest_getParameter2 */
       /* Details: "Returns String value of a public render parameter specified by the name" */
-      TestResult tr74 = tcd.getTestResultFailed(PORTLETREQUEST_GETPARAMETER2);
+      TestResult tr55 = tcd.getTestResultFailed(PORTLETREQUEST_GETPARAMETER2);
       /* TODO: implement test */
 
       /* TestCase: PortletRequest_getParameter3 */
       /* Details: "Returns null if no parameter exists for the specified name" */
-      TestResult tr75 = tcd.getTestResultFailed(PORTLETREQUEST_GETPARAMETER3);
+      TestResult tr56 = tcd.getTestResultFailed(PORTLETREQUEST_GETPARAMETER3);
       /* TODO: implement test */
 
       /* TestCase: PortletRequest_getParameter4 */
       /* Details: "Returns first String value from values array if use with a multivalued parameter" */
-      TestResult tr76 = tcd.getTestResultFailed(PORTLETREQUEST_GETPARAMETER4);
+      TestResult tr57 = tcd.getTestResultFailed(PORTLETREQUEST_GETPARAMETER4);
       /* TODO: implement test */
 
       /* TestCase: PortletRequest_getParameter5 */
       /* Details: "Throws IllegalArgumentException if the name is null" */
-      TestResult tr77 = tcd.getTestResultFailed(PORTLETREQUEST_GETPARAMETER5);
+      TestResult tr58 = tcd.getTestResultFailed(PORTLETREQUEST_GETPARAMETER5);
       /* TODO: implement test */
-
-      /* TestCase: PortletRequest_hasGetParameterNames */
-      /* Details: "Has a getParameterNames() method" */
-      TestResult tr78 = tcd.getTestResultFailed(PORTLETREQUEST_HASGETPARAMETERNAMES);
-      {
-         String name = "getParameterNames";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr78.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: PortletRequest_getParameterNames1 */
       /* Details: "Returns a java.util.Enumeration<java.lang.String> of the available parameter names" */
-      TestResult tr79 = tcd.getTestResultFailed(PORTLETREQUEST_GETPARAMETERNAMES1);
+      TestResult tr59 = tcd.getTestResultFailed(PORTLETREQUEST_GETPARAMETERNAMES1);
       /* TODO: implement test */
 
       /* TestCase: PortletRequest_getParameterNames2 */
       /* Details: "Returns an empty Enumeration if there are no parameters available" */
-      TestResult tr80 = tcd.getTestResultFailed(PORTLETREQUEST_GETPARAMETERNAMES2);
+      TestResult tr60 = tcd.getTestResultFailed(PORTLETREQUEST_GETPARAMETERNAMES2);
       /* TODO: implement test */
-
-      /* TestCase: PortletRequest_hasGetParameterValues */
-      /* Details: "Has a getParameterValues(java.lang.String) method" */
-      TestResult tr81 = tcd.getTestResultFailed(PORTLETREQUEST_HASGETPARAMETERVALUES);
-      {
-         String name = "getParameterValues";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = {java.lang.String.class};
-         tr81.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: PortletRequest_getParameterValues1 */
       /* Details: "Returns String[] value of parameter specified by the name" */
-      TestResult tr82 = tcd.getTestResultFailed(PORTLETREQUEST_GETPARAMETERVALUES1);
+      TestResult tr61 = tcd.getTestResultFailed(PORTLETREQUEST_GETPARAMETERVALUES1);
       /* TODO: implement test */
 
       /* TestCase: PortletRequest_getParameterValues2 */
       /* Details: "Returns String[] value of a public render parameter specified by the name" */
-      TestResult tr83 = tcd.getTestResultFailed(PORTLETREQUEST_GETPARAMETERVALUES2);
+      TestResult tr62 = tcd.getTestResultFailed(PORTLETREQUEST_GETPARAMETERVALUES2);
       /* TODO: implement test */
 
       /* TestCase: PortletRequest_getParameterValues3 */
       /* Details: "Returns null if no parameter exists for the specified name" */
-      TestResult tr84 = tcd.getTestResultFailed(PORTLETREQUEST_GETPARAMETERVALUES3);
+      TestResult tr63 = tcd.getTestResultFailed(PORTLETREQUEST_GETPARAMETERVALUES3);
       /* TODO: implement test */
 
       /* TestCase: PortletRequest_getParameterValues4 */
       /* Details: "Throws IllegalArgumentException if the name is null" */
-      TestResult tr85 = tcd.getTestResultFailed(PORTLETREQUEST_GETPARAMETERVALUES4);
+      TestResult tr64 = tcd.getTestResultFailed(PORTLETREQUEST_GETPARAMETERVALUES4);
       /* TODO: implement test */
-
-      /* TestCase: PortletRequest_hasGetParameterMap */
-      /* Details: "Has a getParameterMap() method" */
-      TestResult tr86 = tcd.getTestResultFailed(PORTLETREQUEST_HASGETPARAMETERMAP);
-      {
-         String name = "getParameterMap";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr86.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: PortletRequest_getParameterMap1 */
       /* Details: "Returns an java.util.Map<java.lang.String,java.lang.String[]> object for the parameter names and values if parameters are available" */
-      TestResult tr87 = tcd.getTestResultFailed(PORTLETREQUEST_GETPARAMETERMAP1);
+      TestResult tr65 = tcd.getTestResultFailed(PORTLETREQUEST_GETPARAMETERMAP1);
       /* TODO: implement test */
 
       /* TestCase: PortletRequest_getParameterMap2 */
       /* Details: "The returned map contains all public and private parameters for the request" */
-      TestResult tr88 = tcd.getTestResultFailed(PORTLETREQUEST_GETPARAMETERMAP2);
+      TestResult tr66 = tcd.getTestResultFailed(PORTLETREQUEST_GETPARAMETERMAP2);
       /* TODO: implement test */
 
       /* TestCase: PortletRequest_getParameterMap3 */
       /* Details: "Returns an empty map if no parameters exist" */
-      TestResult tr89 = tcd.getTestResultFailed(PORTLETREQUEST_GETPARAMETERMAP3);
+      TestResult tr67 = tcd.getTestResultFailed(PORTLETREQUEST_GETPARAMETERMAP3);
       /* TODO: implement test */
-
-      /* TestCase: PortletRequest_hasIsSecure */
-      /* Details: "Has a isSecure() method" */
-      TestResult tr90 = tcd.getTestResultFailed(PORTLETREQUEST_HASISSECURE);
-      {
-         String name = "isSecure";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr90.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: PortletRequest_isSecure1 */
       /* Details: "Returns true if the request was made through a secure channel" */
-      TestResult tr91 = tcd.getTestResultFailed(PORTLETREQUEST_ISSECURE1);
+      TestResult tr68 = tcd.getTestResultFailed(PORTLETREQUEST_ISSECURE1);
       /* TODO: implement test */
 
       /* TestCase: PortletRequest_isSecure2 */
       /* Details: "Returns false if the request was not made through a secure channel" */
-      TestResult tr92 = tcd.getTestResultFailed(PORTLETREQUEST_ISSECURE2);
+      TestResult tr69 = tcd.getTestResultFailed(PORTLETREQUEST_ISSECURE2);
       /* TODO: implement test */
-
-      /* TestCase: PortletRequest_hasSetAttribute */
-      /* Details: "Has a setAttribute(java.lang.String, java.lang.Object) method" */
-      TestResult tr93 = tcd.getTestResultFailed(PORTLETREQUEST_HASSETATTRIBUTE);
-      {
-         String name = "setAttribute";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = {java.lang.String.class, java.lang.Object.class};
-         tr93.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: PortletRequest_setAttribute1 */
       /* Details: "Stores an attribute object under the specified name in the request" */
-      TestResult tr94 = tcd.getTestResultFailed(PORTLETREQUEST_SETATTRIBUTE1);
+      TestResult tr70 = tcd.getTestResultFailed(PORTLETREQUEST_SETATTRIBUTE1);
       /* TODO: implement test */
 
       /* TestCase: PortletRequest_setAttribute2 */
       /* Details: "Removes the attribute by the specified name if the object is null" */
-      TestResult tr95 = tcd.getTestResultFailed(PORTLETREQUEST_SETATTRIBUTE2);
+      TestResult tr71 = tcd.getTestResultFailed(PORTLETREQUEST_SETATTRIBUTE2);
       /* TODO: implement test */
 
       /* TestCase: PortletRequest_setAttribute3 */
       /* Details: "Throws IllegalArgumentException if the name is null" */
-      TestResult tr96 = tcd.getTestResultFailed(PORTLETREQUEST_SETATTRIBUTE3);
+      TestResult tr72 = tcd.getTestResultFailed(PORTLETREQUEST_SETATTRIBUTE3);
       /* TODO: implement test */
-
-      /* TestCase: PortletRequest_hasRemoveAttribute */
-      /* Details: "Has a removeAttribute(java.lang.String) method" */
-      TestResult tr97 = tcd.getTestResultFailed(PORTLETREQUEST_HASREMOVEATTRIBUTE);
-      {
-         String name = "removeAttribute";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = {java.lang.String.class};
-         tr97.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: PortletRequest_removeAttribute1 */
       /* Details: "Removes the attribute specified by the name from the request" */
-      TestResult tr98 = tcd.getTestResultFailed(PORTLETREQUEST_REMOVEATTRIBUTE1);
+      TestResult tr73 = tcd.getTestResultFailed(PORTLETREQUEST_REMOVEATTRIBUTE1);
       /* TODO: implement test */
 
       /* TestCase: PortletRequest_removeAttribute2 */
       /* Details: "Throws IllegalArgumentException if the name is null" */
-      TestResult tr99 = tcd.getTestResultFailed(PORTLETREQUEST_REMOVEATTRIBUTE2);
+      TestResult tr74 = tcd.getTestResultFailed(PORTLETREQUEST_REMOVEATTRIBUTE2);
       /* TODO: implement test */
-
-      /* TestCase: PortletRequest_hasGetRequestedSessionId */
-      /* Details: "Has a getRequestedSessionId() method" */
-      TestResult tr100 = tcd.getTestResultFailed(PORTLETREQUEST_HASGETREQUESTEDSESSIONID);
-      {
-         String name = "getRequestedSessionId";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr100.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: PortletRequest_getRequestedSessionId1 */
       /* Details: "Returns the session ID indicated in the client request" */
-      TestResult tr101 = tcd.getTestResultFailed(PORTLETREQUEST_GETREQUESTEDSESSIONID1);
+      TestResult tr75 = tcd.getTestResultFailed(PORTLETREQUEST_GETREQUESTEDSESSIONID1);
       /* TODO: implement test */
 
       /* TestCase: PortletRequest_getRequestedSessionId2 */
       /* Details: "Returns null if no session ID was indicated in the client request" */
-      TestResult tr102 = tcd.getTestResultFailed(PORTLETREQUEST_GETREQUESTEDSESSIONID2);
+      TestResult tr76 = tcd.getTestResultFailed(PORTLETREQUEST_GETREQUESTEDSESSIONID2);
       /* TODO: implement test */
-
-      /* TestCase: PortletRequest_hasIsRequestedSessionIdValid */
-      /* Details: "Has a isRequestedSessionIdValid() method" */
-      TestResult tr103 = tcd.getTestResultFailed(PORTLETREQUEST_HASISREQUESTEDSESSIONIDVALID);
-      {
-         String name = "isRequestedSessionIdValid";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr103.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: PortletRequest_isRequestedSessionIdValid1 */
       /* Details: "Returns true if the session ID is valid" */
-      TestResult tr104 = tcd.getTestResultFailed(PORTLETREQUEST_ISREQUESTEDSESSIONIDVALID1);
+      TestResult tr77 = tcd.getTestResultFailed(PORTLETREQUEST_ISREQUESTEDSESSIONIDVALID1);
       /* TODO: implement test */
 
       /* TestCase: PortletRequest_isRequestedSessionIdValid2 */
       /* Details: "Returns false if the session ID is not valid" */
-      TestResult tr105 = tcd.getTestResultFailed(PORTLETREQUEST_ISREQUESTEDSESSIONIDVALID2);
+      TestResult tr78 = tcd.getTestResultFailed(PORTLETREQUEST_ISREQUESTEDSESSIONIDVALID2);
       /* TODO: implement test */
-
-      /* TestCase: PortletRequest_hasGetResponseContentType */
-      /* Details: "Has a getResponseContentType() method" */
-      TestResult tr106 = tcd.getTestResultFailed(PORTLETREQUEST_HASGETRESPONSECONTENTTYPE);
-      {
-         String name = "getResponseContentType";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr106.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: PortletRequest_getResponseContentType1 */
       /* Details: "Returns a String representing the portal preferred content type for the response if the content type is defined in the portlet descriptor  " */
-      TestResult tr107 = tcd.getTestResultFailed(PORTLETREQUEST_GETRESPONSECONTENTTYPE1);
+      TestResult tr79 = tcd.getTestResultFailed(PORTLETREQUEST_GETRESPONSECONTENTTYPE1);
       /* TODO: implement test */
 
       /* TestCase: PortletRequest_getResponseContentType2 */
       /* Details: "Returns ??? if the content type is not defined in the portlet descriptor" */
-      TestResult tr108 = tcd.getTestResultFailed(PORTLETREQUEST_GETRESPONSECONTENTTYPE2);
+      TestResult tr80 = tcd.getTestResultFailed(PORTLETREQUEST_GETRESPONSECONTENTTYPE2);
       /* TODO: implement test */
-
-      /* TestCase: PortletRequest_hasGetResponseContentTypes */
-      /* Details: "Has a getResponseContentTypes() method" */
-      TestResult tr109 = tcd.getTestResultFailed(PORTLETREQUEST_HASGETRESPONSECONTENTTYPES);
-      {
-         String name = "getResponseContentTypes";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr109.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: PortletRequest_getResponseContentTypes1 */
       /* Details: "Returns an java.util.Enumeration<java.lang.String> object representing the portal preferred content types for the response if the content types are defined in the portlet descriptor" */
-      TestResult tr110 = tcd.getTestResultFailed(PORTLETREQUEST_GETRESPONSECONTENTTYPES1);
+      TestResult tr81 = tcd.getTestResultFailed(PORTLETREQUEST_GETRESPONSECONTENTTYPES1);
       /* TODO: implement test */
 
       /* TestCase: PortletRequest_getResponseContentTypes2 */
       /* Details: "Returns ??? if the content types are not defined in the portlet descriptor" */
-      TestResult tr111 = tcd.getTestResultFailed(PORTLETREQUEST_GETRESPONSECONTENTTYPES2);
+      TestResult tr82 = tcd.getTestResultFailed(PORTLETREQUEST_GETRESPONSECONTENTTYPES2);
       /* TODO: implement test */
-
-      /* TestCase: PortletRequest_hasGetLocale */
-      /* Details: "Has a getLocale() method" */
-      TestResult tr112 = tcd.getTestResultFailed(PORTLETREQUEST_HASGETLOCALE);
-      {
-         String name = "getLocale";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr112.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: PortletRequest_getLocale */
       /* Details: "Returns an java.util.Locale object representing the preferred Locale for the response" */
-      TestResult tr113 = tcd.getTestResultFailed(PORTLETREQUEST_GETLOCALE);
+      TestResult tr83 = tcd.getTestResultFailed(PORTLETREQUEST_GETLOCALE);
       /* TODO: implement test */
-
-      /* TestCase: PortletRequest_hasGetLocales */
-      /* Details: "Has a getLocales() method" */
-      TestResult tr114 = tcd.getTestResultFailed(PORTLETREQUEST_HASGETLOCALES);
-      {
-         String name = "getLocales";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr114.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: PortletRequest_getLocales */
       /* Details: "Returns an java.util.Enumeration<java.util.Locale> of the Locales in which the portal will accept content" */
-      TestResult tr115 = tcd.getTestResultFailed(PORTLETREQUEST_GETLOCALES);
+      TestResult tr84 = tcd.getTestResultFailed(PORTLETREQUEST_GETLOCALES);
       /* TODO: implement test */
-
-      /* TestCase: PortletRequest_hasGetScheme */
-      /* Details: "Has a getScheme() method" */
-      TestResult tr116 = tcd.getTestResultFailed(PORTLETREQUEST_HASGETSCHEME);
-      {
-         String name = "getScheme";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr116.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: PortletRequest_getScheme */
       /* Details: "Returns a String value representing the scheme name for the request" */
-      TestResult tr117 = tcd.getTestResultFailed(PORTLETREQUEST_GETSCHEME);
+      TestResult tr85 = tcd.getTestResultFailed(PORTLETREQUEST_GETSCHEME);
       /* TODO: implement test */
-
-      /* TestCase: PortletRequest_hasGetServerName */
-      /* Details: "Has a getServerName() method" */
-      TestResult tr118 = tcd.getTestResultFailed(PORTLETREQUEST_HASGETSERVERNAME);
-      {
-         String name = "getServerName";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr118.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: PortletRequest_getServerName */
       /* Details: "Returns a String value representing the host name for the request" */
-      TestResult tr119 = tcd.getTestResultFailed(PORTLETREQUEST_GETSERVERNAME);
+      TestResult tr86 = tcd.getTestResultFailed(PORTLETREQUEST_GETSERVERNAME);
       /* TODO: implement test */
-
-      /* TestCase: PortletRequest_hasGetServerPort */
-      /* Details: "Has a getServerPort() method" */
-      TestResult tr120 = tcd.getTestResultFailed(PORTLETREQUEST_HASGETSERVERPORT);
-      {
-         String name = "getServerPort";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr120.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: PortletRequest_getServerPort */
       /* Details: "Returns an int value representing the port number for the request" */
-      TestResult tr121 = tcd.getTestResultFailed(PORTLETREQUEST_GETSERVERPORT);
+      TestResult tr87 = tcd.getTestResultFailed(PORTLETREQUEST_GETSERVERPORT);
       /* TODO: implement test */
-
-      /* TestCase: PortletRequest_hasGetWindowID */
-      /* Details: "Has a getWindowID() method" */
-      TestResult tr122 = tcd.getTestResultFailed(PORTLETREQUEST_HASGETWINDOWID);
-      {
-         String name = "getWindowID";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr122.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: PortletRequest_getWindowID */
       /* Details: "Returns a String value representing the portlet window ID" */
-      TestResult tr123 = tcd.getTestResultFailed(PORTLETREQUEST_GETWINDOWID);
+      TestResult tr88 = tcd.getTestResultFailed(PORTLETREQUEST_GETWINDOWID);
       /* TODO: implement test */
-
-      /* TestCase: PortletRequest_hasGetCookies */
-      /* Details: "Has a getCookies() method" */
-      TestResult tr124 = tcd.getTestResultFailed(PORTLETREQUEST_HASGETCOOKIES);
-      {
-         String name = "getCookies";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr124.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: PortletRequest_getCookies1 */
       /* Details: "Returns a javax.servlet.http.Cookie[] array containing the cookies for this request" */
-      TestResult tr125 = tcd.getTestResultFailed(PORTLETREQUEST_GETCOOKIES1);
+      TestResult tr89 = tcd.getTestResultFailed(PORTLETREQUEST_GETCOOKIES1);
       /* TODO: implement test */
 
       /* TestCase: PortletRequest_getCookies2 */
       /* Details: "Returns null if no cookies are present" */
-      TestResult tr126 = tcd.getTestResultFailed(PORTLETREQUEST_GETCOOKIES2);
+      TestResult tr90 = tcd.getTestResultFailed(PORTLETREQUEST_GETCOOKIES2);
       /* TODO: implement test */
-
-      /* TestCase: PortletRequest_hasGetPrivateParameterMap */
-      /* Details: "Has a getPrivateParameterMap() method" */
-      TestResult tr127 = tcd.getTestResultFailed(PORTLETREQUEST_HASGETPRIVATEPARAMETERMAP);
-      {
-         String name = "getPrivateParameterMap";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr127.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: PortletRequest_getPrivateParameterMap1 */
       /* Details: "Returns an java.util.Map<java.lang.String,java.lang.String[]> object for the private parameter names and values if available" */
-      TestResult tr128 = tcd.getTestResultFailed(PORTLETREQUEST_GETPRIVATEPARAMETERMAP1);
+      TestResult tr91 = tcd.getTestResultFailed(PORTLETREQUEST_GETPRIVATEPARAMETERMAP1);
       /* TODO: implement test */
 
       /* TestCase: PortletRequest_getPrivateParameterMap2 */
       /* Details: "The returned map is immutable" */
-      TestResult tr129 = tcd.getTestResultFailed(PORTLETREQUEST_GETPRIVATEPARAMETERMAP2);
+      TestResult tr92 = tcd.getTestResultFailed(PORTLETREQUEST_GETPRIVATEPARAMETERMAP2);
       /* TODO: implement test */
 
       /* TestCase: PortletRequest_getPrivateParameterMap3 */
       /* Details: "Returns an empty map if no private parameters exist" */
-      TestResult tr130 = tcd.getTestResultFailed(PORTLETREQUEST_GETPRIVATEPARAMETERMAP3);
+      TestResult tr93 = tcd.getTestResultFailed(PORTLETREQUEST_GETPRIVATEPARAMETERMAP3);
       /* TODO: implement test */
-
-      /* TestCase: PortletRequest_hasGetPublicParameterMap */
-      /* Details: "Has a getPublicParameterMap() method" */
-      TestResult tr131 = tcd.getTestResultFailed(PORTLETREQUEST_HASGETPUBLICPARAMETERMAP);
-      {
-         String name = "getPublicParameterMap";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr131.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: PortletRequest_getPublicParameterMap1 */
       /* Details: "Returns an java.util.Map<java.lang.String,java.lang.String[]> object for the public parameter names and values if available" */
-      TestResult tr132 = tcd.getTestResultFailed(PORTLETREQUEST_GETPUBLICPARAMETERMAP1);
+      TestResult tr94 = tcd.getTestResultFailed(PORTLETREQUEST_GETPUBLICPARAMETERMAP1);
       /* TODO: implement test */
 
       /* TestCase: PortletRequest_getPublicParameterMap2 */
       /* Details: "The returned map is immutable" */
-      TestResult tr133 = tcd.getTestResultFailed(PORTLETREQUEST_GETPUBLICPARAMETERMAP2);
+      TestResult tr95 = tcd.getTestResultFailed(PORTLETREQUEST_GETPUBLICPARAMETERMAP2);
       /* TODO: implement test */
 
       /* TestCase: PortletRequest_getPublicParameterMap3 */
       /* Details: "Returns an empty map if no public parameters exist" */
-      TestResult tr134 = tcd.getTestResultFailed(PORTLETREQUEST_GETPUBLICPARAMETERMAP3);
-      /* TODO: implement test */
-
-      /* TestCase: PortletRequest_P3PUserInfos_exists */
-      /* Details: "The P3PUserInfos exist as a public static enum" */
-      TestResult tr135 = tcd.getTestResultFailed(PORTLETREQUEST_P3PUSERINFOS_EXISTS);
+      TestResult tr96 = tcd.getTestResultFailed(PORTLETREQUEST_GETPUBLICPARAMETERMAP3);
       /* TODO: implement test */
 
 
@@ -1076,45 +691,6 @@ public class V2RequestTests_PortletRequest implements Portlet {
       tr94.writeTo(writer);
       tr95.writeTo(writer);
       tr96.writeTo(writer);
-      tr97.writeTo(writer);
-      tr98.writeTo(writer);
-      tr99.writeTo(writer);
-      tr100.writeTo(writer);
-      tr101.writeTo(writer);
-      tr102.writeTo(writer);
-      tr103.writeTo(writer);
-      tr104.writeTo(writer);
-      tr105.writeTo(writer);
-      tr106.writeTo(writer);
-      tr107.writeTo(writer);
-      tr108.writeTo(writer);
-      tr109.writeTo(writer);
-      tr110.writeTo(writer);
-      tr111.writeTo(writer);
-      tr112.writeTo(writer);
-      tr113.writeTo(writer);
-      tr114.writeTo(writer);
-      tr115.writeTo(writer);
-      tr116.writeTo(writer);
-      tr117.writeTo(writer);
-      tr118.writeTo(writer);
-      tr119.writeTo(writer);
-      tr120.writeTo(writer);
-      tr121.writeTo(writer);
-      tr122.writeTo(writer);
-      tr123.writeTo(writer);
-      tr124.writeTo(writer);
-      tr125.writeTo(writer);
-      tr126.writeTo(writer);
-      tr127.writeTo(writer);
-      tr128.writeTo(writer);
-      tr129.writeTo(writer);
-      tr130.writeTo(writer);
-      tr131.writeTo(writer);
-      tr132.writeTo(writer);
-      tr133.writeTo(writer);
-      tr134.writeTo(writer);
-      tr135.writeTo(writer);
 
 
    }

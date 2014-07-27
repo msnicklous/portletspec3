@@ -75,50 +75,9 @@ public class V2ExceptionTests_PortletModeException implements Portlet {
 
       // Create result objects for the tests
 
-      /* TestCase: PortletModeException_extendsPortletException */
-      /* Details: "Extends PortletException" */
-      TestResult tr0 = tcd.getTestResultFailed(PORTLETMODEEXCEPTION_EXTENDSPORTLETEXCEPTION);
-      {
-         tr0.setTcSuccess(cc.hasSuperclass(PortletException.class));
-      }
-
-      /* TestCase: PortletModeException_constructor1 */
-      /* Details: "Provides constructor PortletModeException(java.lang.String, PortletMode)" */
-      TestResult tr1 = tcd.getTestResultFailed(PORTLETMODEEXCEPTION_CONSTRUCTOR1);
-      {
-         Class<?>[] parms = {java.lang.String.class, PortletMode.class};
-         tr1.setTcSuccess(cc.hasConstructor(parms));
-      }
-
-      /* TestCase: PortletModeException_constructor2 */
-      /* Details: "Provides constructor PortletModeException(java.lang.String, java.lang.Throwable, PortletMode)" */
-      TestResult tr2 = tcd.getTestResultFailed(PORTLETMODEEXCEPTION_CONSTRUCTOR2);
-      {
-         Class<?>[] parms = {java.lang.String.class, java.lang.Throwable.class, PortletMode.class};
-         tr2.setTcSuccess(cc.hasConstructor(parms));
-      }
-
-      /* TestCase: PortletModeException_constructor3 */
-      /* Details: "Provides constructor PortletModeException(java.lang.Throwable, PortletMode)" */
-      TestResult tr3 = tcd.getTestResultFailed(PORTLETMODEEXCEPTION_CONSTRUCTOR3);
-      {
-         Class<?>[] parms = {java.lang.Throwable.class, PortletMode.class};
-         tr3.setTcSuccess(cc.hasConstructor(parms));
-      }
-
-      /* TestCase: PortletModeException_hasGetMode1 */
-      /* Details: "Has a getMode() method" */
-      TestResult tr4 = tcd.getTestResultFailed(PORTLETMODEEXCEPTION_HASGETMODE1);
-      {
-         String name = "getMode";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr4.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
-
       /* TestCase: PortletModeException_hasGetMode2 */
       /* Details: "Returns the PortletMode object causing this exception" */
-      TestResult tr5 = tcd.getTestResultFailed(PORTLETMODEEXCEPTION_HASGETMODE2);
+      TestResult tr0 = tcd.getTestResultFailed(PORTLETMODEEXCEPTION_HASGETMODE2);
       /* TODO: implement test */
 
 
@@ -126,11 +85,6 @@ public class V2ExceptionTests_PortletModeException implements Portlet {
       // Write the results to the output stream
 
       tr0.writeTo(writer);
-      tr1.writeTo(writer);
-      tr2.writeTo(writer);
-      tr3.writeTo(writer);
-      tr4.writeTo(writer);
-      tr5.writeTo(writer);
 
 
    }

@@ -45,6 +45,28 @@
    </portlet>
 
    <portlet>
+      <portlet-name>V2PortletTests_SIG_PortletConfig</portlet-name>
+      <portlet-class>javax.portlet.tck.PortletTests.portlets.V2PortletTests_SIG_PortletConfig</portlet-class>
+
+      <init-param>
+         <name>TestParameter</name>
+         <value>TestValue</value>
+      </init-param>
+
+      <expiration-cache>0</expiration-cache>
+
+      <supports>
+         <mime-type>text/html</mime-type>
+      </supports>
+
+      <supported-locale>en_US</supported-locale>
+
+      <portlet-info>
+         <title>V2PortletTests_SIG_PortletConfig</title>
+      </portlet-info>
+   </portlet>
+
+   <portlet>
       <portlet-name>V2PortletTests_PortletMode</portlet-name>
       <portlet-class>javax.portlet.tck.PortletTests.portlets.V2PortletTests_PortletMode</portlet-class>
 
@@ -63,6 +85,28 @@
 
       <portlet-info>
          <title>V2PortletTests_PortletMode</title>
+      </portlet-info>
+   </portlet>
+
+   <portlet>
+      <portlet-name>V2PortletTests_SIG_PortletMode</portlet-name>
+      <portlet-class>javax.portlet.tck.PortletTests.portlets.V2PortletTests_SIG_PortletMode</portlet-class>
+
+      <init-param>
+         <name>TestParameter</name>
+         <value>TestValue</value>
+      </init-param>
+
+      <expiration-cache>0</expiration-cache>
+
+      <supports>
+         <mime-type>text/html</mime-type>
+      </supports>
+
+      <supported-locale>en_US</supported-locale>
+
+      <portlet-info>
+         <title>V2PortletTests_SIG_PortletMode</title>
       </portlet-info>
    </portlet>
 
@@ -89,6 +133,28 @@
    </portlet>
 
    <portlet>
+      <portlet-name>V2PortletTests_SIG_WindowState</portlet-name>
+      <portlet-class>javax.portlet.tck.PortletTests.portlets.V2PortletTests_SIG_WindowState</portlet-class>
+
+      <init-param>
+         <name>TestParameter</name>
+         <value>TestValue</value>
+      </init-param>
+
+      <expiration-cache>0</expiration-cache>
+
+      <supports>
+         <mime-type>text/html</mime-type>
+      </supports>
+
+      <supported-locale>en_US</supported-locale>
+
+      <portlet-info>
+         <title>V2PortletTests_SIG_WindowState</title>
+      </portlet-info>
+   </portlet>
+
+   <portlet>
       <portlet-name>V2PortletTests_Portlet</portlet-name>
       <portlet-class>javax.portlet.tck.PortletTests.portlets.V2PortletTests_Portlet</portlet-class>
 
@@ -107,6 +173,28 @@
 
       <portlet-info>
          <title>V2PortletTests_Portlet</title>
+      </portlet-info>
+   </portlet>
+
+   <portlet>
+      <portlet-name>V2PortletTests_SIG_Portlet</portlet-name>
+      <portlet-class>javax.portlet.tck.PortletTests.portlets.V2PortletTests_SIG_Portlet</portlet-class>
+
+      <init-param>
+         <name>TestParameter</name>
+         <value>TestValue</value>
+      </init-param>
+
+      <expiration-cache>0</expiration-cache>
+
+      <supports>
+         <mime-type>text/html</mime-type>
+      </supports>
+
+      <supported-locale>en_US</supported-locale>
+
+      <portlet-info>
+         <title>V2PortletTests_SIG_Portlet</title>
       </portlet-info>
    </portlet>
 
@@ -133,6 +221,28 @@
    </portlet>
 
    <portlet>
+      <portlet-name>V2PortletTests_SIG_Event</portlet-name>
+      <portlet-class>javax.portlet.tck.PortletTests.portlets.V2PortletTests_SIG_Event</portlet-class>
+
+      <init-param>
+         <name>TestParameter</name>
+         <value>TestValue</value>
+      </init-param>
+
+      <expiration-cache>0</expiration-cache>
+
+      <supports>
+         <mime-type>text/html</mime-type>
+      </supports>
+
+      <supported-locale>en_US</supported-locale>
+
+      <portlet-info>
+         <title>V2PortletTests_SIG_Event</title>
+      </portlet-info>
+   </portlet>
+
+   <portlet>
       <portlet-name>V2PortletTests_EventPortlet</portlet-name>
       <portlet-class>javax.portlet.tck.PortletTests.portlets.V2PortletTests_EventPortlet</portlet-class>
 
@@ -151,6 +261,28 @@
 
       <portlet-info>
          <title>V2PortletTests_EventPortlet</title>
+      </portlet-info>
+   </portlet>
+
+   <portlet>
+      <portlet-name>V2PortletTests_SIG_EventPortlet</portlet-name>
+      <portlet-class>javax.portlet.tck.PortletTests.portlets.V2PortletTests_SIG_EventPortlet</portlet-class>
+
+      <init-param>
+         <name>TestParameter</name>
+         <value>TestValue</value>
+      </init-param>
+
+      <expiration-cache>0</expiration-cache>
+
+      <supports>
+         <mime-type>text/html</mime-type>
+      </supports>
+
+      <supported-locale>en_US</supported-locale>
+
+      <portlet-info>
+         <title>V2PortletTests_SIG_EventPortlet</title>
       </portlet-info>
    </portlet>
 
@@ -177,6 +309,28 @@
    </portlet>
 
    <portlet>
+      <portlet-name>V2PortletTests_SIG_ResourceServingPortlet</portlet-name>
+      <portlet-class>javax.portlet.tck.PortletTests.portlets.V2PortletTests_SIG_ResourceServingPortlet</portlet-class>
+
+      <init-param>
+         <name>TestParameter</name>
+         <value>TestValue</value>
+      </init-param>
+
+      <expiration-cache>0</expiration-cache>
+
+      <supports>
+         <mime-type>text/html</mime-type>
+      </supports>
+
+      <supported-locale>en_US</supported-locale>
+
+      <portlet-info>
+         <title>V2PortletTests_SIG_ResourceServingPortlet</title>
+      </portlet-info>
+   </portlet>
+
+   <portlet>
       <portlet-name>V2PortletTests_GenericPortlet</portlet-name>
       <portlet-class>javax.portlet.tck.PortletTests.portlets.V2PortletTests_GenericPortlet</portlet-class>
 
@@ -195,6 +349,28 @@
 
       <portlet-info>
          <title>V2PortletTests_GenericPortlet</title>
+      </portlet-info>
+   </portlet>
+
+   <portlet>
+      <portlet-name>V2PortletTests_SIG_GenericPortlet</portlet-name>
+      <portlet-class>javax.portlet.tck.PortletTests.portlets.V2PortletTests_SIG_GenericPortlet</portlet-class>
+
+      <init-param>
+         <name>TestParameter</name>
+         <value>TestValue</value>
+      </init-param>
+
+      <expiration-cache>0</expiration-cache>
+
+      <supports>
+         <mime-type>text/html</mime-type>
+      </supports>
+
+      <supported-locale>en_US</supported-locale>
+
+      <portlet-info>
+         <title>V2PortletTests_SIG_GenericPortlet</title>
       </portlet-info>
    </portlet>
 

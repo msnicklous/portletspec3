@@ -71,83 +71,38 @@ public class V2FilterTests_FilterConfig implements Portlet {
 
       PrintWriter writer = renderResponse.getWriter();
       JSR286ApiTestCaseDetails tcd = new JSR286ApiTestCaseDetails();
-      // TODO: access the class under test and uncomment this code.
-      // ClassChecker cc = new ClassChecker(FilterConfig);
+      ClassChecker cc = new ClassChecker(FilterConfig.class);
 
       // Create result objects for the tests
 
-      /* TestCase: FilterConfig_hasGetFilterName */
-      /* Details: "Has a getFilterName() method" */
-      TestResult tr0 = tcd.getTestResultFailed(FILTERCONFIG_HASGETFILTERNAME);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "getFilterName";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = null;
-      //    tr0.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
-
       /* TestCase: FilterConfig_getFilterName */
       /* Details: "getFilterName method returns filter name as defined in deployment descriptor" */
-      TestResult tr1 = tcd.getTestResultFailed(FILTERCONFIG_GETFILTERNAME);
+      TestResult tr0 = tcd.getTestResultFailed(FILTERCONFIG_GETFILTERNAME);
       /* TODO: implement test */
-
-      /* TestCase: FilterConfig_hasGetPortletContext */
-      /* Details: "Has a getPortletContext() method" */
-      TestResult tr2 = tcd.getTestResultFailed(FILTERCONFIG_HASGETPORTLETCONTEXT);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "getPortletContext";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = null;
-      //    tr2.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
 
       /* TestCase: FilterConfig_getPortletContext */
       /* Details: "Returns reference to PortletContext object" */
-      TestResult tr3 = tcd.getTestResultFailed(FILTERCONFIG_GETPORTLETCONTEXT);
+      TestResult tr1 = tcd.getTestResultFailed(FILTERCONFIG_GETPORTLETCONTEXT);
       /* TODO: implement test */
-
-      /* TestCase: FilterConfig_hasGetInitParameter */
-      /* Details: "Has a getInitParameter(java.lang.String) method" */
-      TestResult tr4 = tcd.getTestResultFailed(FILTERCONFIG_HASGETINITPARAMETER);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "getInitParameter";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = {java.lang.String.class};
-      //    tr4.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
 
       /* TestCase: FilterConfig_getInitParameter1 */
       /* Details: "Returns null if initialization parameter does not exist" */
-      TestResult tr5 = tcd.getTestResultFailed(FILTERCONFIG_GETINITPARAMETER1);
+      TestResult tr2 = tcd.getTestResultFailed(FILTERCONFIG_GETINITPARAMETER1);
       /* TODO: implement test */
 
       /* TestCase: FilterConfig_getInitParameter2 */
       /* Details: "Returns value of specified initialization parameter" */
-      TestResult tr6 = tcd.getTestResultFailed(FILTERCONFIG_GETINITPARAMETER2);
+      TestResult tr3 = tcd.getTestResultFailed(FILTERCONFIG_GETINITPARAMETER2);
       /* TODO: implement test */
-
-      /* TestCase: FilterConfig_hasGetInitParameterNames */
-      /* Details: "Has a getInitParameterNames() method" */
-      TestResult tr7 = tcd.getTestResultFailed(FILTERCONFIG_HASGETINITPARAMETERNAMES);
-      // TODO: access the class under test and uncomment this code.
-      // {
-      //    String name = "getInitParameterNames";
-      //    Class<?>[] exceptions = null;
-      //    Class<?>[] parms = null;
-      //    tr7.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      // }
 
       /* TestCase: FilterConfig_getInitParameterNames1 */
       /* Details: "Returns empty Enumeration if no parameters defined" */
-      TestResult tr8 = tcd.getTestResultFailed(FILTERCONFIG_GETINITPARAMETERNAMES1);
+      TestResult tr4 = tcd.getTestResultFailed(FILTERCONFIG_GETINITPARAMETERNAMES1);
       /* TODO: implement test */
 
       /* TestCase: FilterConfig_getInitParameterNames2 */
       /* Details: "Returns an Enumeration of initialization parameters defined in deployment descriptor" */
-      TestResult tr9 = tcd.getTestResultFailed(FILTERCONFIG_GETINITPARAMETERNAMES2);
+      TestResult tr5 = tcd.getTestResultFailed(FILTERCONFIG_GETINITPARAMETERNAMES2);
       /* TODO: implement test */
 
 
@@ -160,10 +115,6 @@ public class V2FilterTests_FilterConfig implements Portlet {
       tr3.writeTo(writer);
       tr4.writeTo(writer);
       tr5.writeTo(writer);
-      tr6.writeTo(writer);
-      tr7.writeTo(writer);
-      tr8.writeTo(writer);
-      tr9.writeTo(writer);
 
 
    }

@@ -75,59 +75,29 @@ public class V2EnvironmentTests_PortletSessionUtil implements Portlet {
 
       // Create result objects for the tests
 
-      /* TestCase: PortletSessionUtil_constructor */
-      /* Details: "Has a PortletSessionUtil() constructor" */
-      TestResult tr0 = tcd.getTestResultFailed(PORTLETSESSIONUTIL_CONSTRUCTOR);
-      {
-         String name = "PortletSessionUtil";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr0.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
-
-      /* TestCase: PortletSessionUtil_hasDecodeAttributeName */
-      /* Details: "Has a decodeAttributeName(java.lang.String) method" */
-      TestResult tr1 = tcd.getTestResultFailed(PORTLETSESSIONUTIL_HASDECODEATTRIBUTENAME);
-      {
-         String name = "decodeAttributeName";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = {java.lang.String.class};
-         tr1.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
-
       /* TestCase: PortletSessionUtil_decodeAttributeName1 */
       /* Details: "Returns a String containing the decoded name of the attribute if the input name is an encoded name in PORTLET_SCOPE" */
-      TestResult tr2 = tcd.getTestResultFailed(PORTLETSESSIONUTIL_DECODEATTRIBUTENAME1);
+      TestResult tr0 = tcd.getTestResultFailed(PORTLETSESSIONUTIL_DECODEATTRIBUTENAME1);
       /* TODO: implement test */
 
       /* TestCase: PortletSessionUtil_decodeAttributeName2 */
       /* Details: "Returns a String containing the input name unchanged if the input name is in APPLICATION_SCOPE " */
-      TestResult tr3 = tcd.getTestResultFailed(PORTLETSESSIONUTIL_DECODEATTRIBUTENAME2);
+      TestResult tr1 = tcd.getTestResultFailed(PORTLETSESSIONUTIL_DECODEATTRIBUTENAME2);
       /* TODO: implement test */
-
-      /* TestCase: PortletSessionUtil_hasDecodeScope */
-      /* Details: "Has a decodeScope(java.lang.String) method" */
-      TestResult tr4 = tcd.getTestResultFailed(PORTLETSESSIONUTIL_HASDECODESCOPE);
-      {
-         String name = "decodeScope";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = {java.lang.String.class};
-         tr4.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: PortletSessionUtil_decodeScope1 */
       /* Details: "Returns the decoded attribute scope for the input encoded attribute name" */
-      TestResult tr5 = tcd.getTestResultFailed(PORTLETSESSIONUTIL_DECODESCOPE1);
+      TestResult tr2 = tcd.getTestResultFailed(PORTLETSESSIONUTIL_DECODESCOPE1);
       /* TODO: implement test */
 
       /* TestCase: PortletSessionUtil_decodeScope2 */
       /* Details: "Returns PortletSession.APPLICATION_SCOPE if the attribute name is in APPLICATION_SCOPE" */
-      TestResult tr6 = tcd.getTestResultFailed(PORTLETSESSIONUTIL_DECODESCOPE2);
+      TestResult tr3 = tcd.getTestResultFailed(PORTLETSESSIONUTIL_DECODESCOPE2);
       /* TODO: implement test */
 
       /* TestCase: PortletSessionUtil_decodeScope3 */
       /* Details: "Returns PortletSession.PORTLET_SCOPE if the attribute name is in PORTLET_SCOPE" */
-      TestResult tr7 = tcd.getTestResultFailed(PORTLETSESSIONUTIL_DECODESCOPE3);
+      TestResult tr4 = tcd.getTestResultFailed(PORTLETSESSIONUTIL_DECODESCOPE3);
       /* TODO: implement test */
 
 
@@ -139,9 +109,6 @@ public class V2EnvironmentTests_PortletSessionUtil implements Portlet {
       tr2.writeTo(writer);
       tr3.writeTo(writer);
       tr4.writeTo(writer);
-      tr5.writeTo(writer);
-      tr6.writeTo(writer);
-      tr7.writeTo(writer);
 
 
    }

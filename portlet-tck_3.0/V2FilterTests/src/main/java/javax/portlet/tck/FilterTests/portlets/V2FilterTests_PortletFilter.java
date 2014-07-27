@@ -71,8 +71,7 @@ public class V2FilterTests_PortletFilter implements Portlet {
 
       PrintWriter writer = renderResponse.getWriter();
       JSR286ApiTestCaseDetails tcd = new JSR286ApiTestCaseDetails();
-      // TODO: access the class under test and uncomment this code.
-      // ClassChecker cc = new ClassChecker(PortletFilter);
+      ClassChecker cc = new ClassChecker(PortletFilter.class);
 
       // Create result objects for the tests
 

@@ -293,7 +293,7 @@ public class TCKSimpleTestDriver {
          WebElement detEl = driver.findElement(By.ById.id(detailId));
 
          String res = resEl.getText();
-         String det = detEl.getText();
+         String det = "Test case " + tcName + " failed. " + detEl.getText();
 
          boolean ok = res.contains(Constants.SUCCESS);
          assertTrue(det, ok);

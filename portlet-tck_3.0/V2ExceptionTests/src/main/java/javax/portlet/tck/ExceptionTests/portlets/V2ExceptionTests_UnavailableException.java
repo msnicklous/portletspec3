@@ -75,72 +75,29 @@ public class V2ExceptionTests_UnavailableException implements Portlet {
 
       // Create result objects for the tests
 
-      /* TestCase: UnavailableException_extendsPortletException */
-      /* Details: "Extends PortletException" */
-      TestResult tr0 = tcd.getTestResultFailed(UNAVAILABLEEXCEPTION_EXTENDSPORTLETEXCEPTION);
-      {
-         tr0.setTcSuccess(cc.hasSuperclass(PortletException.class));
-      }
-
-      /* TestCase: UnavailableException_constructor1 */
-      /* Details: "Provides constructor UnavailableException(java.lang.String) to indicate permanent unavailability" */
-      TestResult tr1 = tcd.getTestResultFailed(UNAVAILABLEEXCEPTION_CONSTRUCTOR1);
-      {
-         Class<?>[] parms = {java.lang.String.class};
-         tr1.setTcSuccess(cc.hasConstructor(parms));
-      }
-
-      /* TestCase: UnavailableException_constructor2 */
-      /* Details: "Provides constructor UnavailableException(java.lang.String, int) to indicate temporary unavailability" */
-      TestResult tr2 = tcd.getTestResultFailed(UNAVAILABLEEXCEPTION_CONSTRUCTOR2);
-      {
-         Class<?>[] parms = {java.lang.String.class, int.class};
-         tr2.setTcSuccess(cc.hasConstructor(parms));
-      }
-
-      /* TestCase: UnavailableException_hasIsPermanent */
-      /* Details: "Has a isPermanent() method" */
-      TestResult tr3 = tcd.getTestResultFailed(UNAVAILABLEEXCEPTION_HASISPERMANENT);
-      {
-         String name = "isPermanent";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr3.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
-
       /* TestCase: UnavailableException_isPermanent1 */
       /* Details: "Returns a boolean" */
-      TestResult tr4 = tcd.getTestResultFailed(UNAVAILABLEEXCEPTION_ISPERMANENT1);
+      TestResult tr0 = tcd.getTestResultFailed(UNAVAILABLEEXCEPTION_ISPERMANENT1);
       /* TODO: implement test */
 
       /* TestCase: UnavailableException_isPermanent2 */
       /* Details: "Returns true if the portlet is permanently unavailable " */
-      TestResult tr5 = tcd.getTestResultFailed(UNAVAILABLEEXCEPTION_ISPERMANENT2);
+      TestResult tr1 = tcd.getTestResultFailed(UNAVAILABLEEXCEPTION_ISPERMANENT2);
       /* TODO: implement test */
 
       /* TestCase: UnavailableException_isPermanent3 */
       /* Details: "Returns false if the portlet is temporarily unavailable " */
-      TestResult tr6 = tcd.getTestResultFailed(UNAVAILABLEEXCEPTION_ISPERMANENT3);
+      TestResult tr2 = tcd.getTestResultFailed(UNAVAILABLEEXCEPTION_ISPERMANENT3);
       /* TODO: implement test */
-
-      /* TestCase: UnavailableException_hasGetUnavailableSeconds */
-      /* Details: "Has a getUnavailableSeconds() method" */
-      TestResult tr7 = tcd.getTestResultFailed(UNAVAILABLEEXCEPTION_HASGETUNAVAILABLESECONDS);
-      {
-         String name = "getUnavailableSeconds";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr7.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: UnavailableException_getUnavailableSeconds1 */
       /* Details: "Returns an integer " */
-      TestResult tr8 = tcd.getTestResultFailed(UNAVAILABLEEXCEPTION_GETUNAVAILABLESECONDS1);
+      TestResult tr3 = tcd.getTestResultFailed(UNAVAILABLEEXCEPTION_GETUNAVAILABLESECONDS1);
       /* TODO: implement test */
 
       /* TestCase: UnavailableException_getUnavailableSeconds2 */
       /* Details: "Returns a number <= 0 if the portlet is permanently unavailable" */
-      TestResult tr9 = tcd.getTestResultFailed(UNAVAILABLEEXCEPTION_GETUNAVAILABLESECONDS2);
+      TestResult tr4 = tcd.getTestResultFailed(UNAVAILABLEEXCEPTION_GETUNAVAILABLESECONDS2);
       /* TODO: implement test */
 
 
@@ -152,11 +109,6 @@ public class V2ExceptionTests_UnavailableException implements Portlet {
       tr2.writeTo(writer);
       tr3.writeTo(writer);
       tr4.writeTo(writer);
-      tr5.writeTo(writer);
-      tr6.writeTo(writer);
-      tr7.writeTo(writer);
-      tr8.writeTo(writer);
-      tr9.writeTo(writer);
 
 
    }

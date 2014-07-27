@@ -140,7 +140,14 @@ public class ClassChecker {
             exParm.addAll(Arrays.asList(exceptions));
          }
 
-         Method m = cut.getMethod(name, parms);
+         // if it isn't public, it might be protected
+         Method m = null;
+         try {
+            m = cut.getMethod(name, parms);
+         } catch (Exception e) {
+            m = cut.getDeclaredMethod(name, parms);
+         }
+         
          HashSet<Class<?>> mexs = new HashSet<Class<?>>();
          mexs.addAll(Arrays.asList(m.getExceptionTypes()));
          
@@ -179,9 +186,20 @@ public class ClassChecker {
       boolean result = false;
       
       try {
-         Method m = cut.getMethod(name, parms);
+
+         // if it isn't public, it might be protected
+         Method m = null;
+         try {
+            m = cut.getMethod(name, parms);
+         } catch (Exception e) {
+            m = cut.getDeclaredMethod(name, parms);
+         }
+
          Class<?> cutRT = m.getReturnType();
          result = cutRT.equals(retType);
+         if (result == false) {
+            result = retType.isAssignableFrom(cutRT);
+         }
       } catch (Exception e) { }
       
       return result;

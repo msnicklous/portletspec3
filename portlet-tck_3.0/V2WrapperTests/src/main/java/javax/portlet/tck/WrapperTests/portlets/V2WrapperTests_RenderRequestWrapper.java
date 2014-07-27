@@ -75,71 +75,19 @@ public class V2WrapperTests_RenderRequestWrapper implements Portlet {
 
       // Create result objects for the tests
 
-      /* TestCase: RenderRequestWrapper_extendsPortletRequestWrapper */
-      /* Details: "Extends PortletRequestWrapper" */
-      TestResult tr0 = tcd.getTestResultFailed(RENDERREQUESTWRAPPER_EXTENDSPORTLETREQUESTWRAPPER);
-      {
-         tr0.setTcSuccess(cc.hasSuperclass(PortletRequestWrapper.class));
-      }
-
-      /* TestCase: RenderRequestWrapper_implementsRenderRequest */
-      /* Details: "Implements RenderRequest" */
-      TestResult tr1 = tcd.getTestResultFailed(RENDERREQUESTWRAPPER_IMPLEMENTSRENDERREQUEST);
-      {
-         tr1.setTcSuccess(cc.implementsInterface(RenderRequest.class));
-      }
-
-      /* TestCase: RenderRequestWrapper_constructor */
-      /* Details: "Provides constructor RenderRequestWrapper(RenderRequest) with specified wrapped RenderRequest object" */
-      TestResult tr2 = tcd.getTestResultFailed(RENDERREQUESTWRAPPER_CONSTRUCTOR);
-      {
-         Class<?>[] parms = {RenderRequest.class};
-         tr2.setTcSuccess(cc.hasConstructor(parms));
-      }
-
-      /* TestCase: RenderRequestWrapper_hasGetRequest */
-      /* Details: "Has a getRequest() method" */
-      TestResult tr3 = tcd.getTestResultFailed(RENDERREQUESTWRAPPER_HASGETREQUEST);
-      {
-         String name = "getRequest";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr3.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
-
       /* TestCase: RenderRequestWrapper_getRequest */
       /* Details: "Returns wrapped RenderRequest object" */
-      TestResult tr4 = tcd.getTestResultFailed(RENDERREQUESTWRAPPER_GETREQUEST);
+      TestResult tr0 = tcd.getTestResultFailed(RENDERREQUESTWRAPPER_GETREQUEST);
       /* TODO: implement test */
-
-      /* TestCase: RenderRequestWrapper_hasSetRequest */
-      /* Details: "Has a setRequest(RenderRequest) method" */
-      TestResult tr5 = tcd.getTestResultFailed(RENDERREQUESTWRAPPER_HASSETREQUEST);
-      {
-         String name = "setRequest";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = {RenderRequest.class};
-         tr5.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: RenderRequestWrapper_setRequest */
       /* Details: "Allows wrapped RenderRequest object to be set " */
-      TestResult tr6 = tcd.getTestResultFailed(RENDERREQUESTWRAPPER_SETREQUEST);
+      TestResult tr1 = tcd.getTestResultFailed(RENDERREQUESTWRAPPER_SETREQUEST);
       /* TODO: implement test */
-
-      /* TestCase: RenderRequestWrapper_hasGetETag */
-      /* Details: "Has a getETag() method" */
-      TestResult tr7 = tcd.getTestResultFailed(RENDERREQUESTWRAPPER_HASGETETAG);
-      {
-         String name = "getETag";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr7.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: RenderRequestWrapper_getETag */
       /* Details: "Calls wrapped method" */
-      TestResult tr8 = tcd.getTestResultFailed(RENDERREQUESTWRAPPER_GETETAG);
+      TestResult tr2 = tcd.getTestResultFailed(RENDERREQUESTWRAPPER_GETETAG);
       /* TODO: implement test */
 
 
@@ -149,12 +97,6 @@ public class V2WrapperTests_RenderRequestWrapper implements Portlet {
       tr0.writeTo(writer);
       tr1.writeTo(writer);
       tr2.writeTo(writer);
-      tr3.writeTo(writer);
-      tr4.writeTo(writer);
-      tr5.writeTo(writer);
-      tr6.writeTo(writer);
-      tr7.writeTo(writer);
-      tr8.writeTo(writer);
 
 
    }

@@ -75,46 +75,19 @@ public class V2RequestTests_EventRequest implements Portlet {
 
       // Create result objects for the tests
 
-      /* TestCase: EventRequest_implementsPortletRequest1 */
-      /* Details: "Implements PortletRequest" */
-      TestResult tr0 = tcd.getTestResultFailed(EVENTREQUEST_IMPLEMENTSPORTLETREQUEST1);
-      {
-         tr0.setTcSuccess(cc.implementsInterface(PortletRequest.class));
-      }
-
       /* TestCase: EventRequest_implementsPortletRequest2 */
       /* Details: "All tests described for the PortletRequest execute correctly with the EventRequest" */
-      TestResult tr1 = tcd.getTestResultFailed(EVENTREQUEST_IMPLEMENTSPORTLETREQUEST2);
+      TestResult tr0 = tcd.getTestResultFailed(EVENTREQUEST_IMPLEMENTSPORTLETREQUEST2);
       /* TODO: implement test */
-
-      /* TestCase: EventRequest_hasgetEvent */
-      /* Details: "Has a getEvent() method" */
-      TestResult tr2 = tcd.getTestResultFailed(EVENTREQUEST_HASGETEVENT);
-      {
-         String name = "getEvent";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr2.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: EventRequest_getEvent */
       /* Details: "Returns the Event object that triggered the call to the processEvent method" */
-      TestResult tr3 = tcd.getTestResultFailed(EVENTREQUEST_GETEVENT);
+      TestResult tr1 = tcd.getTestResultFailed(EVENTREQUEST_GETEVENT);
       /* TODO: implement test */
-
-      /* TestCase: EventRequest_hasgetMethod */
-      /* Details: "Has a getMethod() method" */
-      TestResult tr4 = tcd.getTestResultFailed(EVENTREQUEST_HASGETMETHOD);
-      {
-         String name = "getMethod";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr4.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: EventRequest_getMethod */
       /* Details: "Returns a String containing the name of the HTTP method with which the request was made" */
-      TestResult tr5 = tcd.getTestResultFailed(EVENTREQUEST_GETMETHOD);
+      TestResult tr2 = tcd.getTestResultFailed(EVENTREQUEST_GETMETHOD);
       /* TODO: implement test */
 
 
@@ -124,9 +97,6 @@ public class V2RequestTests_EventRequest implements Portlet {
       tr0.writeTo(writer);
       tr1.writeTo(writer);
       tr2.writeTo(writer);
-      tr3.writeTo(writer);
-      tr4.writeTo(writer);
-      tr5.writeTo(writer);
 
 
    }

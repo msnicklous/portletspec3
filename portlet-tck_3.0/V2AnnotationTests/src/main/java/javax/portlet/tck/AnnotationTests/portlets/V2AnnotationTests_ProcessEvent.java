@@ -75,41 +75,14 @@ public class V2AnnotationTests_ProcessEvent implements Portlet {
 
       // Create result objects for the tests
 
-      /* TestCase: ProcessEvent_ExtendsAnnotation */
-      /* Details: "Extends java.lang.annotation.Annotation" */
-      TestResult tr0 = tcd.getTestResultFailed(PROCESSEVENT_EXTENDSANNOTATION);
-      {
-         tr0.setTcSuccess(cc.isAnnotation());
-      }
-
-      /* TestCase: ProcessEvent_hasQname */
-      /* Details: "Has a qname() method" */
-      TestResult tr1 = tcd.getTestResultFailed(PROCESSEVENT_HASQNAME);
-      {
-         String name = "qname";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr1.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
-
       /* TestCase: ProcessEvent_qname */
       /* Details: "On an event request, the method is executed if the Event qname matches the qname field" */
-      TestResult tr2 = tcd.getTestResultFailed(PROCESSEVENT_QNAME);
+      TestResult tr0 = tcd.getTestResultFailed(PROCESSEVENT_QNAME);
       /* TODO: implement test */
-
-      /* TestCase: ProcessEvent_hasName */
-      /* Details: "Has a name() method" */
-      TestResult tr3 = tcd.getTestResultFailed(PROCESSEVENT_HASNAME);
-      {
-         String name = "name";
-         Class<?>[] exceptions = null;
-         Class<?>[] parms = null;
-         tr3.setTcSuccess(cc.hasMethod(name, parms, exceptions));
-      }
 
       /* TestCase: ProcessEvent_name */
       /* Details: "On an event request, the method is executed if the Event name matches the name field" */
-      TestResult tr4 = tcd.getTestResultFailed(PROCESSEVENT_NAME);
+      TestResult tr1 = tcd.getTestResultFailed(PROCESSEVENT_NAME);
       /* TODO: implement test */
 
 
@@ -118,9 +91,6 @@ public class V2AnnotationTests_ProcessEvent implements Portlet {
 
       tr0.writeTo(writer);
       tr1.writeTo(writer);
-      tr2.writeTo(writer);
-      tr3.writeTo(writer);
-      tr4.writeTo(writer);
 
 
    }
