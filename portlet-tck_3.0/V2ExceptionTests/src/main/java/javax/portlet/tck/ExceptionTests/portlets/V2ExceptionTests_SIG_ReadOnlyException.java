@@ -26,13 +26,9 @@ import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.portlet.ActionRequest;
-import javax.portlet.ActionResponse;
-import javax.portlet.Portlet;
-import javax.portlet.PortletConfig;
-import javax.portlet.PortletException;
-import javax.portlet.RenderRequest;
-import javax.portlet.RenderResponse;
+import javax.portlet.*;
+import javax.portlet.filter.*;
+import javax.portlet.tck.beans.ClassChecker;
 import javax.portlet.tck.beans.TestCaseDetails;
 import javax.portlet.tck.beans.JSR286ApiTestCaseDetails;
 import static javax.portlet.tck.beans.JSR286ApiTestCaseDetails.*;
@@ -44,16 +40,16 @@ import javax.portlet.tck.beans.TestResult;
  * file. The build process will integrate the test case names defined in the 
  * additionalTCs.xml file into the complete list of test case names for execution by the driver.
  */
-public class V2ExceptionTests_ReadOnlyException implements Portlet {
+public class V2ExceptionTests_SIG_ReadOnlyException implements Portlet {
    private static final String LOG_CLASS = 
-         V2ExceptionTests_ReadOnlyException.class.getName();
+         V2ExceptionTests_SIG_ReadOnlyException.class.getName();
    private final Logger LOGGER = Logger.getLogger(LOG_CLASS);
    
-   private PortletConfig config = null;
+   private PortletConfig portletConfig = null;
 
    @Override
    public void init(PortletConfig config) throws PortletException {
-      this.config = config;
+      this.portletConfig = config;
    }
 
    @Override
@@ -61,43 +57,55 @@ public class V2ExceptionTests_ReadOnlyException implements Portlet {
    }
 
    @Override
-   public void processAction(ActionRequest request, ActionResponse response)
+   public void processAction(ActionRequest actionRequest, ActionResponse actionResponse)
          throws PortletException, IOException {
    }
 
    @Override
-   public void render(RenderRequest request, RenderResponse response)
+   public void render(RenderRequest renderRequest, RenderResponse renderResponse)
          throws PortletException, IOException {
       
       if (LOGGER.isLoggable(Level.FINE)) {
          LOGGER.logp(Level.FINE, LOG_CLASS, "render", "Entry");
       }
 
-      PrintWriter writer = response.getWriter();
+      PrintWriter writer = renderResponse.getWriter();
       JSR286ApiTestCaseDetails tcd = new JSR286ApiTestCaseDetails();
+      ClassChecker cc = new ClassChecker(ReadOnlyException.class);
 
       // Create result objects for the tests
 
-      /* TestCase: ReadOnlyException_extendsPortletException */
-      /* Details: "ReadOnlyException extends PortletException" */
-      /* TODO: implement test */
-      TestResult tr0 = tcd.getTestResultFailed(READONLYEXCEPTION_EXTENDSPORTLETEXCEPTION);
-      
-      /* TestCase: ReadOnlyException_constructor1 */
-      /* Details: "Provides constructor ReadOnlyException(java.lang.String)" */
-      /* TODO: implement test */
-      TestResult tr1 = tcd.getTestResultFailed(READONLYEXCEPTION_CONSTRUCTOR1);
-      
-      /* TestCase: ReadOnlyException_constructor2 */
-      /* Details: "Provides constructor ReadOnlyException(java.lang.String, java.lang.Throwable)" */
-      /* TODO: implement test */
-      TestResult tr2 = tcd.getTestResultFailed(READONLYEXCEPTION_CONSTRUCTOR2);
-      
-      /* TestCase: ReadOnlyException_constructor3 */
-      /* Details: "Provides constructor ReadOnlyException(java.lang.Throwable)" */
-      /* TODO: implement test */
-      TestResult tr3 = tcd.getTestResultFailed(READONLYEXCEPTION_CONSTRUCTOR3);
-      
+      /* TestCase: ReadOnlyException_SIG_extendsPortletException */
+      /* Details: "Extends PortletException " */
+      TestResult tr0 = tcd.getTestResultFailed(READONLYEXCEPTION_SIG_EXTENDSPORTLETEXCEPTION);
+      {
+         tr0.setTcSuccess(cc.hasSuperclass(PortletException.class));
+      }
+
+      /* TestCase: ReadOnlyException_SIG_constructor */
+      /* Details: "Provides constructor ReadOnlyException(String) " */
+      TestResult tr1 = tcd.getTestResultFailed(READONLYEXCEPTION_SIG_CONSTRUCTOR);
+      {
+         Class<?>[] parms = {String.class};
+         tr1.setTcSuccess(cc.hasConstructor(parms));
+      }
+
+      /* TestCase: ReadOnlyException_SIG_constructorA */
+      /* Details: "Provides constructor ReadOnlyException(String, Throwable) " */
+      TestResult tr2 = tcd.getTestResultFailed(READONLYEXCEPTION_SIG_CONSTRUCTORA);
+      {
+         Class<?>[] parms = {String.class, Throwable.class};
+         tr2.setTcSuccess(cc.hasConstructor(parms));
+      }
+
+      /* TestCase: ReadOnlyException_SIG_constructorB */
+      /* Details: "Provides constructor ReadOnlyException(Throwable) " */
+      TestResult tr3 = tcd.getTestResultFailed(READONLYEXCEPTION_SIG_CONSTRUCTORB);
+      {
+         Class<?>[] parms = {Throwable.class};
+         tr3.setTcSuccess(cc.hasConstructor(parms));
+      }
+
 
 
       // Write the results to the output stream

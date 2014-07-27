@@ -26,13 +26,9 @@ import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.portlet.ActionRequest;
-import javax.portlet.ActionResponse;
-import javax.portlet.Portlet;
-import javax.portlet.PortletConfig;
-import javax.portlet.PortletException;
-import javax.portlet.RenderRequest;
-import javax.portlet.RenderResponse;
+import javax.portlet.*;
+import javax.portlet.filter.*;
+import javax.portlet.tck.beans.ClassChecker;
 import javax.portlet.tck.beans.TestCaseDetails;
 import javax.portlet.tck.beans.JSR286ApiTestCaseDetails;
 import static javax.portlet.tck.beans.JSR286ApiTestCaseDetails.*;
@@ -49,11 +45,11 @@ public class V2FilterTests_FilterChain implements Portlet {
          V2FilterTests_FilterChain.class.getName();
    private final Logger LOGGER = Logger.getLogger(LOG_CLASS);
    
-   private PortletConfig config = null;
+   private PortletConfig portletConfig = null;
 
    @Override
    public void init(PortletConfig config) throws PortletException {
-      this.config = config;
+      this.portletConfig = config;
    }
 
    @Override
@@ -61,123 +57,104 @@ public class V2FilterTests_FilterChain implements Portlet {
    }
 
    @Override
-   public void processAction(ActionRequest request, ActionResponse response)
+   public void processAction(ActionRequest actionRequest, ActionResponse actionResponse)
          throws PortletException, IOException {
    }
 
    @Override
-   public void render(RenderRequest request, RenderResponse response)
+   public void render(RenderRequest renderRequest, RenderResponse renderResponse)
          throws PortletException, IOException {
       
       if (LOGGER.isLoggable(Level.FINE)) {
          LOGGER.logp(Level.FINE, LOG_CLASS, "render", "Entry");
       }
 
-      PrintWriter writer = response.getWriter();
+      PrintWriter writer = renderResponse.getWriter();
       JSR286ApiTestCaseDetails tcd = new JSR286ApiTestCaseDetails();
+      ClassChecker cc = new ClassChecker(FilterChain.class);
 
       // Create result objects for the tests
 
-      /* TestCase: FilterChain_hasDoFilterForAction */
-      /* Details: "Has a doFilter(ActionRequest, ActionResponse) method" */
-      /* TODO: implement test */
-      TestResult tr0 = tcd.getTestResultFailed(FILTERCHAIN_HASDOFILTERFORACTION);
-      
       /* TestCase: FilterChain_invokeActionFilter */
       /* Details: "Invoking doFilter(ActionRequest, ActionResponse) causes next filter to be invoked" */
+      TestResult tr0 = tcd.getTestResultFailed(FILTERCHAIN_INVOKEACTIONFILTER);
       /* TODO: implement test */
-      TestResult tr1 = tcd.getTestResultFailed(FILTERCHAIN_INVOKEACTIONFILTER);
-      
+
       /* TestCase: FilterChain_invokeActionFilter2 */
       /* Details: "Invoking doFilter(ActionRequest, ActionResponse) causes portlet action method to be invoked" */
+      TestResult tr1 = tcd.getTestResultFailed(FILTERCHAIN_INVOKEACTIONFILTER2);
       /* TODO: implement test */
-      TestResult tr2 = tcd.getTestResultFailed(FILTERCHAIN_INVOKEACTIONFILTER2);
-      
+
       /* TestCase: FilterChain_invokeActionException */
       /* Details: "Invoking doFilter(ActionRequest, ActionResponse) throws PortletException" */
+      TestResult tr2 = tcd.getTestResultFailed(FILTERCHAIN_INVOKEACTIONEXCEPTION);
       /* TODO: implement test */
-      TestResult tr3 = tcd.getTestResultFailed(FILTERCHAIN_INVOKEACTIONEXCEPTION);
-      
+
       /* TestCase: FilterChain_invokeActionException2 */
       /* Details: "Invoking doFilter(ActionRequest, ActionResponse) throws IOException" */
+      TestResult tr3 = tcd.getTestResultFailed(FILTERCHAIN_INVOKEACTIONEXCEPTION2);
       /* TODO: implement test */
-      TestResult tr4 = tcd.getTestResultFailed(FILTERCHAIN_INVOKEACTIONEXCEPTION2);
-      
-      /* TestCase: FilterChain_hasDoFilterForEvent */
-      /* Details: "Has a doFilter(EventRequest, EventResponse) method" */
-      /* TODO: implement test */
-      TestResult tr5 = tcd.getTestResultFailed(FILTERCHAIN_HASDOFILTERFOREVENT);
-      
+
       /* TestCase: FilterChain_invokeEventFilter */
       /* Details: "Invoking doFilter(EventRequest, EventResponse) causes next filter to be invoked" */
+      TestResult tr4 = tcd.getTestResultFailed(FILTERCHAIN_INVOKEEVENTFILTER);
       /* TODO: implement test */
-      TestResult tr6 = tcd.getTestResultFailed(FILTERCHAIN_INVOKEEVENTFILTER);
-      
+
       /* TestCase: FilterChain_invokeEventFilter2 */
       /* Details: "Invoking doFilter(EventRequest, EventResponse) causes portlet Event method to be invoked" */
+      TestResult tr5 = tcd.getTestResultFailed(FILTERCHAIN_INVOKEEVENTFILTER2);
       /* TODO: implement test */
-      TestResult tr7 = tcd.getTestResultFailed(FILTERCHAIN_INVOKEEVENTFILTER2);
-      
+
       /* TestCase: FilterChain_invokeEventException */
       /* Details: "Invoking doFilter(EventRequest, EventResponse) throws PortletException" */
+      TestResult tr6 = tcd.getTestResultFailed(FILTERCHAIN_INVOKEEVENTEXCEPTION);
       /* TODO: implement test */
-      TestResult tr8 = tcd.getTestResultFailed(FILTERCHAIN_INVOKEEVENTEXCEPTION);
-      
+
       /* TestCase: FilterChain_invokeEventException2 */
       /* Details: "Invoking doFilter(EventRequest, EventResponse) throws IOException" */
+      TestResult tr7 = tcd.getTestResultFailed(FILTERCHAIN_INVOKEEVENTEXCEPTION2);
       /* TODO: implement test */
-      TestResult tr9 = tcd.getTestResultFailed(FILTERCHAIN_INVOKEEVENTEXCEPTION2);
-      
-      /* TestCase: FilterChain_hasDoFilterForRender */
-      /* Details: "Has a doFilter(RenderRequest, RenderResponse) method" */
-      /* TODO: implement test */
-      TestResult tr10 = tcd.getTestResultFailed(FILTERCHAIN_HASDOFILTERFORRENDER);
-      
+
       /* TestCase: FilterChain_invokeRenderFilter */
       /* Details: "Invoking doFilter(RenderRequest, RenderResponse) causes next filter to be invoked" */
+      TestResult tr8 = tcd.getTestResultFailed(FILTERCHAIN_INVOKERENDERFILTER);
       /* TODO: implement test */
-      TestResult tr11 = tcd.getTestResultFailed(FILTERCHAIN_INVOKERENDERFILTER);
-      
+
       /* TestCase: FilterChain_invokeRenderFilter2 */
       /* Details: "Invoking doFilter(RenderRequest, RenderResponse) causes portlet Render method to be invoked" */
+      TestResult tr9 = tcd.getTestResultFailed(FILTERCHAIN_INVOKERENDERFILTER2);
       /* TODO: implement test */
-      TestResult tr12 = tcd.getTestResultFailed(FILTERCHAIN_INVOKERENDERFILTER2);
-      
+
       /* TestCase: FilterChain_invokeRenderException */
       /* Details: "Invoking doFilter(RenderRequest, RenderResponse) throws PortletException" */
+      TestResult tr10 = tcd.getTestResultFailed(FILTERCHAIN_INVOKERENDEREXCEPTION);
       /* TODO: implement test */
-      TestResult tr13 = tcd.getTestResultFailed(FILTERCHAIN_INVOKERENDEREXCEPTION);
-      
+
       /* TestCase: FilterChain_invokeRenderException2 */
       /* Details: "Invoking doFilter(RenderRequest, RenderResponse) throws IOException" */
+      TestResult tr11 = tcd.getTestResultFailed(FILTERCHAIN_INVOKERENDEREXCEPTION2);
       /* TODO: implement test */
-      TestResult tr14 = tcd.getTestResultFailed(FILTERCHAIN_INVOKERENDEREXCEPTION2);
-      
-      /* TestCase: FilterChain_hasDoFilterForResource */
-      /* Details: "Has a doFilter(ResourceRequest, ResourceResponse) method" */
-      /* TODO: implement test */
-      TestResult tr15 = tcd.getTestResultFailed(FILTERCHAIN_HASDOFILTERFORRESOURCE);
-      
+
       /* TestCase: FilterChain_invokeResourceFilter */
       /* Details: "Invoking doFilter(ResourceRequest, ResourceResponse) causes next filter to be invoked" */
+      TestResult tr12 = tcd.getTestResultFailed(FILTERCHAIN_INVOKERESOURCEFILTER);
       /* TODO: implement test */
-      TestResult tr16 = tcd.getTestResultFailed(FILTERCHAIN_INVOKERESOURCEFILTER);
-      
+
       /* TestCase: FilterChain_invokeResourceFilter2 */
       /* Details: "Invoking doFilter(ResourceRequest, ResourceResponse) causes portlet Resource method to be invoked" */
+      TestResult tr13 = tcd.getTestResultFailed(FILTERCHAIN_INVOKERESOURCEFILTER2);
       /* TODO: implement test */
-      TestResult tr17 = tcd.getTestResultFailed(FILTERCHAIN_INVOKERESOURCEFILTER2);
-      
+
       /* TestCase: FilterChain_invokeResourceException */
       /* Details: "Invoking doFilter(ResourceRequest, ResourceResponse) throws PortletException" */
+      TestResult tr14 = tcd.getTestResultFailed(FILTERCHAIN_INVOKERESOURCEEXCEPTION);
       /* TODO: implement test */
-      TestResult tr18 = tcd.getTestResultFailed(FILTERCHAIN_INVOKERESOURCEEXCEPTION);
-      
+
       /* TestCase: FilterChain_invokeResourceException2 */
       /* Details: "Invoking doFilter(ResourceRequest, ResourceResponse) throws IOException" */
+      TestResult tr15 = tcd.getTestResultFailed(FILTERCHAIN_INVOKERESOURCEEXCEPTION2);
       /* TODO: implement test */
-      TestResult tr19 = tcd.getTestResultFailed(FILTERCHAIN_INVOKERESOURCEEXCEPTION2);
-      
+
 
 
       // Write the results to the output stream
@@ -198,10 +175,6 @@ public class V2FilterTests_FilterChain implements Portlet {
       tr13.writeTo(writer);
       tr14.writeTo(writer);
       tr15.writeTo(writer);
-      tr16.writeTo(writer);
-      tr17.writeTo(writer);
-      tr18.writeTo(writer);
-      tr19.writeTo(writer);
 
 
    }

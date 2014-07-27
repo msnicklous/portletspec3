@@ -26,13 +26,9 @@ import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.portlet.ActionRequest;
-import javax.portlet.ActionResponse;
-import javax.portlet.Portlet;
-import javax.portlet.PortletConfig;
-import javax.portlet.PortletException;
-import javax.portlet.RenderRequest;
-import javax.portlet.RenderResponse;
+import javax.portlet.*;
+import javax.portlet.filter.*;
+import javax.portlet.tck.beans.ClassChecker;
 import javax.portlet.tck.beans.TestCaseDetails;
 import javax.portlet.tck.beans.JSR286ApiTestCaseDetails;
 import static javax.portlet.tck.beans.JSR286ApiTestCaseDetails.*;
@@ -49,11 +45,11 @@ public class V2ExceptionTests_WindowStateException implements Portlet {
          V2ExceptionTests_WindowStateException.class.getName();
    private final Logger LOGGER = Logger.getLogger(LOG_CLASS);
    
-   private PortletConfig config = null;
+   private PortletConfig portletConfig = null;
 
    @Override
    public void init(PortletConfig config) throws PortletException {
-      this.config = config;
+      this.portletConfig = config;
    }
 
    @Override
@@ -61,63 +57,34 @@ public class V2ExceptionTests_WindowStateException implements Portlet {
    }
 
    @Override
-   public void processAction(ActionRequest request, ActionResponse response)
+   public void processAction(ActionRequest actionRequest, ActionResponse actionResponse)
          throws PortletException, IOException {
    }
 
    @Override
-   public void render(RenderRequest request, RenderResponse response)
+   public void render(RenderRequest renderRequest, RenderResponse renderResponse)
          throws PortletException, IOException {
       
       if (LOGGER.isLoggable(Level.FINE)) {
          LOGGER.logp(Level.FINE, LOG_CLASS, "render", "Entry");
       }
 
-      PrintWriter writer = response.getWriter();
+      PrintWriter writer = renderResponse.getWriter();
       JSR286ApiTestCaseDetails tcd = new JSR286ApiTestCaseDetails();
+      ClassChecker cc = new ClassChecker(WindowStateException.class);
 
       // Create result objects for the tests
 
-      /* TestCase: WindowStateException_extendsPortletException */
-      /* Details: "WindowStateException extends PortletException" */
-      /* TODO: implement test */
-      TestResult tr0 = tcd.getTestResultFailed(WINDOWSTATEEXCEPTION_EXTENDSPORTLETEXCEPTION);
-      
-      /* TestCase: WindowStateException_constructor1 */
-      /* Details: "Provides constructor WindowStateException(java.lang.String, WindowState)" */
-      /* TODO: implement test */
-      TestResult tr1 = tcd.getTestResultFailed(WINDOWSTATEEXCEPTION_CONSTRUCTOR1);
-      
-      /* TestCase: WindowStateException_constructor2 */
-      /* Details: "Provides constructor WindowStateException(java.lang.String, java.lang.Throwable, WindowState)" */
-      /* TODO: implement test */
-      TestResult tr2 = tcd.getTestResultFailed(WINDOWSTATEEXCEPTION_CONSTRUCTOR2);
-      
-      /* TestCase: WindowStateException_constructor3 */
-      /* Details: "Provides constructor WindowStateException(java.lang.Throwable, WindowState)" */
-      /* TODO: implement test */
-      TestResult tr3 = tcd.getTestResultFailed(WINDOWSTATEEXCEPTION_CONSTRUCTOR3);
-      
-      /* TestCase: WindowStateException_hasGetState */
-      /* Details: "Has a getState() method" */
-      /* TODO: implement test */
-      TestResult tr4 = tcd.getTestResultFailed(WINDOWSTATEEXCEPTION_HASGETSTATE);
-      
       /* TestCase: WindowStateException_getState */
       /* Details: "Returns the WindowState object causing this exception" */
+      TestResult tr0 = tcd.getTestResultFailed(WINDOWSTATEEXCEPTION_GETSTATE);
       /* TODO: implement test */
-      TestResult tr5 = tcd.getTestResultFailed(WINDOWSTATEEXCEPTION_GETSTATE);
-      
+
 
 
       // Write the results to the output stream
 
       tr0.writeTo(writer);
-      tr1.writeTo(writer);
-      tr2.writeTo(writer);
-      tr3.writeTo(writer);
-      tr4.writeTo(writer);
-      tr5.writeTo(writer);
 
 
    }

@@ -26,13 +26,9 @@ import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.portlet.ActionRequest;
-import javax.portlet.ActionResponse;
-import javax.portlet.Portlet;
-import javax.portlet.PortletConfig;
-import javax.portlet.PortletException;
-import javax.portlet.RenderRequest;
-import javax.portlet.RenderResponse;
+import javax.portlet.*;
+import javax.portlet.filter.*;
+import javax.portlet.tck.beans.ClassChecker;
 import javax.portlet.tck.beans.TestCaseDetails;
 import javax.portlet.tck.beans.JSR286ApiTestCaseDetails;
 import static javax.portlet.tck.beans.JSR286ApiTestCaseDetails.*;
@@ -49,11 +45,11 @@ public class V2FilterTests_PortletFilter implements Portlet {
          V2FilterTests_PortletFilter.class.getName();
    private final Logger LOGGER = Logger.getLogger(LOG_CLASS);
    
-   private PortletConfig config = null;
+   private PortletConfig portletConfig = null;
 
    @Override
    public void init(PortletConfig config) throws PortletException {
-      this.config = config;
+      this.portletConfig = config;
    }
 
    @Override
@@ -61,123 +57,124 @@ public class V2FilterTests_PortletFilter implements Portlet {
    }
 
    @Override
-   public void processAction(ActionRequest request, ActionResponse response)
+   public void processAction(ActionRequest actionRequest, ActionResponse actionResponse)
          throws PortletException, IOException {
    }
 
    @Override
-   public void render(RenderRequest request, RenderResponse response)
+   public void render(RenderRequest renderRequest, RenderResponse renderResponse)
          throws PortletException, IOException {
       
       if (LOGGER.isLoggable(Level.FINE)) {
          LOGGER.logp(Level.FINE, LOG_CLASS, "render", "Entry");
       }
 
-      PrintWriter writer = response.getWriter();
+      PrintWriter writer = renderResponse.getWriter();
       JSR286ApiTestCaseDetails tcd = new JSR286ApiTestCaseDetails();
+      ClassChecker cc = new ClassChecker(PortletFilter.class);
 
       // Create result objects for the tests
 
       /* TestCase: PortletFilter_initAction1 */
       /* Details: "The init(FilterConfig) method is called when an ActionFilter is configured" */
-      /* TODO: implement test */
       TestResult tr0 = tcd.getTestResultFailed(PORTLETFILTER_INITACTION1);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletFilter_initAction2 */
       /* Details: "The init(FilterConfig) method for an ActionFilter is passed a FilterConfig object" */
-      /* TODO: implement test */
       TestResult tr1 = tcd.getTestResultFailed(PORTLETFILTER_INITACTION2);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletFilter_initAction3 */
       /* Details: "If the init(FilterConfig) method for an ActionFilter throws a PortletException, the filter is not placed in service" */
-      /* TODO: implement test */
       TestResult tr2 = tcd.getTestResultFailed(PORTLETFILTER_INITACTION3);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletFilter_destroyAction1 */
       /* Details: "The destroy() method is called when an ActionFilter is taken out of service" */
-      /* TODO: implement test */
       TestResult tr3 = tcd.getTestResultFailed(PORTLETFILTER_DESTROYACTION1);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletFilter_destroyAction2 */
       /* Details: "After the destroy() method for an ActionFilter is called, no other filter method is called" */
-      /* TODO: implement test */
       TestResult tr4 = tcd.getTestResultFailed(PORTLETFILTER_DESTROYACTION2);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletFilter_initEvent1 */
       /* Details: "The init(FilterConfig) method is called when an EventFilter is configured" */
-      /* TODO: implement test */
       TestResult tr5 = tcd.getTestResultFailed(PORTLETFILTER_INITEVENT1);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletFilter_initEvent2 */
       /* Details: "The init(FilterConfig) method for an EventFilter is passed a FilterConfig object" */
-      /* TODO: implement test */
       TestResult tr6 = tcd.getTestResultFailed(PORTLETFILTER_INITEVENT2);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletFilter_initEvent3 */
       /* Details: "If the init(FilterConfig) method for an EventFilter throws a PortletException, the filter is not placed in service" */
-      /* TODO: implement test */
       TestResult tr7 = tcd.getTestResultFailed(PORTLETFILTER_INITEVENT3);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletFilter_destroyEvent1 */
       /* Details: "The destroy() method is called when an EventFilter is taken out of service" */
-      /* TODO: implement test */
       TestResult tr8 = tcd.getTestResultFailed(PORTLETFILTER_DESTROYEVENT1);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletFilter_destroyEvent2 */
       /* Details: "After the destroy() method for an EventFilter is called, no other filter method is called" */
-      /* TODO: implement test */
       TestResult tr9 = tcd.getTestResultFailed(PORTLETFILTER_DESTROYEVENT2);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletFilter_initRender1 */
       /* Details: "The init(FilterConfig) method is called when an RenderFilter is configured" */
-      /* TODO: implement test */
       TestResult tr10 = tcd.getTestResultFailed(PORTLETFILTER_INITRENDER1);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletFilter_initRender2 */
       /* Details: "The init(FilterConfig) method for an RenderFilter is passed a FilterConfig object" */
-      /* TODO: implement test */
       TestResult tr11 = tcd.getTestResultFailed(PORTLETFILTER_INITRENDER2);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletFilter_initRender3 */
       /* Details: "If the init(FilterConfig) method for an RenderFilter throws a PortletException, the filter is not placed in service" */
-      /* TODO: implement test */
       TestResult tr12 = tcd.getTestResultFailed(PORTLETFILTER_INITRENDER3);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletFilter_destroyRender1 */
       /* Details: "The destroy() method is called when an RenderFilter is taken out of service" */
-      /* TODO: implement test */
       TestResult tr13 = tcd.getTestResultFailed(PORTLETFILTER_DESTROYRENDER1);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletFilter_destroyRender2 */
       /* Details: "After the destroy() method for an RenderFilter is called, no other filter method is called" */
-      /* TODO: implement test */
       TestResult tr14 = tcd.getTestResultFailed(PORTLETFILTER_DESTROYRENDER2);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletFilter_initResource1 */
       /* Details: "The init(FilterConfig) method is called when an ResourceFilter is configured" */
-      /* TODO: implement test */
       TestResult tr15 = tcd.getTestResultFailed(PORTLETFILTER_INITRESOURCE1);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletFilter_initResource2 */
       /* Details: "The init(FilterConfig) method for an ResourceFilter is passed a FilterConfig object" */
-      /* TODO: implement test */
       TestResult tr16 = tcd.getTestResultFailed(PORTLETFILTER_INITRESOURCE2);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletFilter_initResource3 */
       /* Details: "If the init(FilterConfig) method for an ResourceFilter throws a PortletException, the filter is not placed in service" */
-      /* TODO: implement test */
       TestResult tr17 = tcd.getTestResultFailed(PORTLETFILTER_INITRESOURCE3);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletFilter_destroyResource1 */
       /* Details: "The destroy() method is called when an ResourceFilter is taken out of service" */
-      /* TODO: implement test */
       TestResult tr18 = tcd.getTestResultFailed(PORTLETFILTER_DESTROYRESOURCE1);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletFilter_destroyResource2 */
       /* Details: "After the destroy() method for an ResourceFilter is called, no other filter method is called" */
-      /* TODO: implement test */
       TestResult tr19 = tcd.getTestResultFailed(PORTLETFILTER_DESTROYRESOURCE2);
-      
+      /* TODO: implement test */
+
 
 
       // Write the results to the output stream

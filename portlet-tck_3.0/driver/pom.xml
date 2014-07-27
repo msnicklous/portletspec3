@@ -254,7 +254,7 @@
    
    <!-- To a subset of the tests, use "mvn test -Prun-tck -Dtest.module=<match string>" from the driver directory. -->
    <!-- the driver will then execute all tests whose test case name contains the specified string. -->
-   <!-- Example: "mvn test -Prun-tck -Dtestmodule=PortletRequest" will execute all PortletRequest TCs. -->
+   <!-- Example: "mvn test -Prun-tck -Dtest.module=PortletRequest" will execute all PortletRequest TCs. -->
    
    <profiles>
       <profile>

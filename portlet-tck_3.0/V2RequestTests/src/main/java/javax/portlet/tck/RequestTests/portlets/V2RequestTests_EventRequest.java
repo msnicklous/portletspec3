@@ -26,13 +26,9 @@ import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.portlet.ActionRequest;
-import javax.portlet.ActionResponse;
-import javax.portlet.Portlet;
-import javax.portlet.PortletConfig;
-import javax.portlet.PortletException;
-import javax.portlet.RenderRequest;
-import javax.portlet.RenderResponse;
+import javax.portlet.*;
+import javax.portlet.filter.*;
+import javax.portlet.tck.beans.ClassChecker;
 import javax.portlet.tck.beans.TestCaseDetails;
 import javax.portlet.tck.beans.JSR286ApiTestCaseDetails;
 import static javax.portlet.tck.beans.JSR286ApiTestCaseDetails.*;
@@ -49,11 +45,11 @@ public class V2RequestTests_EventRequest implements Portlet {
          V2RequestTests_EventRequest.class.getName();
    private final Logger LOGGER = Logger.getLogger(LOG_CLASS);
    
-   private PortletConfig config = null;
+   private PortletConfig portletConfig = null;
 
    @Override
    public void init(PortletConfig config) throws PortletException {
-      this.config = config;
+      this.portletConfig = config;
    }
 
    @Override
@@ -61,53 +57,39 @@ public class V2RequestTests_EventRequest implements Portlet {
    }
 
    @Override
-   public void processAction(ActionRequest request, ActionResponse response)
+   public void processAction(ActionRequest actionRequest, ActionResponse actionResponse)
          throws PortletException, IOException {
    }
 
    @Override
-   public void render(RenderRequest request, RenderResponse response)
+   public void render(RenderRequest renderRequest, RenderResponse renderResponse)
          throws PortletException, IOException {
       
       if (LOGGER.isLoggable(Level.FINE)) {
          LOGGER.logp(Level.FINE, LOG_CLASS, "render", "Entry");
       }
 
-      PrintWriter writer = response.getWriter();
+      PrintWriter writer = renderResponse.getWriter();
       JSR286ApiTestCaseDetails tcd = new JSR286ApiTestCaseDetails();
+      ClassChecker cc = new ClassChecker(EventRequestWrapper.class);
 
       // Create result objects for the tests
 
-      /* TestCase: EventRequest_extendsPortletRequest1 */
-      /* Details: "EventRequest extendsPortletRequest" */
-      /* TODO: implement test */
-      TestResult tr0 = tcd.getTestResultFailed(EVENTREQUEST_EXTENDSPORTLETREQUEST1);
-      
-      /* TestCase: EventRequest_extendsPortletRequest2 */
+      /* TestCase: EventRequest_implementsPortletRequest2 */
       /* Details: "All tests described for the PortletRequest execute correctly with the EventRequest" */
+      TestResult tr0 = tcd.getTestResultFailed(EVENTREQUEST_IMPLEMENTSPORTLETREQUEST2);
       /* TODO: implement test */
-      TestResult tr1 = tcd.getTestResultFailed(EVENTREQUEST_EXTENDSPORTLETREQUEST2);
-      
-      /* TestCase: EventRequest_hasgetEvent */
-      /* Details: "Has a getEvent() method" */
-      /* TODO: implement test */
-      TestResult tr2 = tcd.getTestResultFailed(EVENTREQUEST_HASGETEVENT);
-      
+
       /* TestCase: EventRequest_getEvent */
       /* Details: "Returns the Event object that triggered the call to the processEvent method" */
+      TestResult tr1 = tcd.getTestResultFailed(EVENTREQUEST_GETEVENT);
       /* TODO: implement test */
-      TestResult tr3 = tcd.getTestResultFailed(EVENTREQUEST_GETEVENT);
-      
-      /* TestCase: EventRequest_hasgetMethod */
-      /* Details: "Has a getMethod() method" */
-      /* TODO: implement test */
-      TestResult tr4 = tcd.getTestResultFailed(EVENTREQUEST_HASGETMETHOD);
-      
+
       /* TestCase: EventRequest_getMethod */
       /* Details: "Returns a String containing the name of the HTTP method with which the request was made" */
+      TestResult tr2 = tcd.getTestResultFailed(EVENTREQUEST_GETMETHOD);
       /* TODO: implement test */
-      TestResult tr5 = tcd.getTestResultFailed(EVENTREQUEST_GETMETHOD);
-      
+
 
 
       // Write the results to the output stream
@@ -115,9 +97,6 @@ public class V2RequestTests_EventRequest implements Portlet {
       tr0.writeTo(writer);
       tr1.writeTo(writer);
       tr2.writeTo(writer);
-      tr3.writeTo(writer);
-      tr4.writeTo(writer);
-      tr5.writeTo(writer);
 
 
    }

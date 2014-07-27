@@ -45,6 +45,28 @@
    </portlet>
 
    <portlet>
+      <portlet-name>V2URLTests_SIG_BaseURL</portlet-name>
+      <portlet-class>javax.portlet.tck.URLTests.portlets.V2URLTests_SIG_BaseURL</portlet-class>
+
+      <init-param>
+         <name>TestParameter</name>
+         <value>TestValue</value>
+      </init-param>
+
+      <expiration-cache>0</expiration-cache>
+
+      <supports>
+         <mime-type>text/html</mime-type>
+      </supports>
+
+      <supported-locale>en_US</supported-locale>
+
+      <portlet-info>
+         <title>V2URLTests_SIG_BaseURL</title>
+      </portlet-info>
+   </portlet>
+
+   <portlet>
       <portlet-name>V2URLTests_PortletURL</portlet-name>
       <portlet-class>javax.portlet.tck.URLTests.portlets.V2URLTests_PortletURL</portlet-class>
 
@@ -63,6 +85,28 @@
 
       <portlet-info>
          <title>V2URLTests_PortletURL</title>
+      </portlet-info>
+   </portlet>
+
+   <portlet>
+      <portlet-name>V2URLTests_SIG_PortletURL</portlet-name>
+      <portlet-class>javax.portlet.tck.URLTests.portlets.V2URLTests_SIG_PortletURL</portlet-class>
+
+      <init-param>
+         <name>TestParameter</name>
+         <value>TestValue</value>
+      </init-param>
+
+      <expiration-cache>0</expiration-cache>
+
+      <supports>
+         <mime-type>text/html</mime-type>
+      </supports>
+
+      <supported-locale>en_US</supported-locale>
+
+      <portlet-info>
+         <title>V2URLTests_SIG_PortletURL</title>
       </portlet-info>
    </portlet>
 
@@ -89,6 +133,28 @@
    </portlet>
 
    <portlet>
+      <portlet-name>V2URLTests_SIG_ResourceURL</portlet-name>
+      <portlet-class>javax.portlet.tck.URLTests.portlets.V2URLTests_SIG_ResourceURL</portlet-class>
+
+      <init-param>
+         <name>TestParameter</name>
+         <value>TestValue</value>
+      </init-param>
+
+      <expiration-cache>0</expiration-cache>
+
+      <supports>
+         <mime-type>text/html</mime-type>
+      </supports>
+
+      <supported-locale>en_US</supported-locale>
+
+      <portlet-info>
+         <title>V2URLTests_SIG_ResourceURL</title>
+      </portlet-info>
+   </portlet>
+
+   <portlet>
       <portlet-name>V2URLTests_PortletURLGenerationListener</portlet-name>
       <portlet-class>javax.portlet.tck.URLTests.portlets.V2URLTests_PortletURLGenerationListener</portlet-class>
 
@@ -107,6 +173,28 @@
 
       <portlet-info>
          <title>V2URLTests_PortletURLGenerationListener</title>
+      </portlet-info>
+   </portlet>
+
+   <portlet>
+      <portlet-name>V2URLTests_SIG_PortletURLGenerationListener</portlet-name>
+      <portlet-class>javax.portlet.tck.URLTests.portlets.V2URLTests_SIG_PortletURLGenerationListener</portlet-class>
+
+      <init-param>
+         <name>TestParameter</name>
+         <value>TestValue</value>
+      </init-param>
+
+      <expiration-cache>0</expiration-cache>
+
+      <supports>
+         <mime-type>text/html</mime-type>
+      </supports>
+
+      <supported-locale>en_US</supported-locale>
+
+      <portlet-info>
+         <title>V2URLTests_SIG_PortletURLGenerationListener</title>
       </portlet-info>
    </portlet>
 

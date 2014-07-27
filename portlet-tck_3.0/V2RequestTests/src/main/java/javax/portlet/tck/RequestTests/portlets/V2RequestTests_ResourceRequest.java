@@ -26,13 +26,9 @@ import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.portlet.ActionRequest;
-import javax.portlet.ActionResponse;
-import javax.portlet.Portlet;
-import javax.portlet.PortletConfig;
-import javax.portlet.PortletException;
-import javax.portlet.RenderRequest;
-import javax.portlet.RenderResponse;
+import javax.portlet.*;
+import javax.portlet.filter.*;
+import javax.portlet.tck.beans.ClassChecker;
 import javax.portlet.tck.beans.TestCaseDetails;
 import javax.portlet.tck.beans.JSR286ApiTestCaseDetails;
 import static javax.portlet.tck.beans.JSR286ApiTestCaseDetails.*;
@@ -49,11 +45,11 @@ public class V2RequestTests_ResourceRequest implements Portlet {
          V2RequestTests_ResourceRequest.class.getName();
    private final Logger LOGGER = Logger.getLogger(LOG_CLASS);
    
-   private PortletConfig config = null;
+   private PortletConfig portletConfig = null;
 
    @Override
    public void init(PortletConfig config) throws PortletException {
-      this.config = config;
+      this.portletConfig = config;
    }
 
    @Override
@@ -61,128 +57,91 @@ public class V2RequestTests_ResourceRequest implements Portlet {
    }
 
    @Override
-   public void processAction(ActionRequest request, ActionResponse response)
+   public void processAction(ActionRequest actionRequest, ActionResponse actionResponse)
          throws PortletException, IOException {
    }
 
    @Override
-   public void render(RenderRequest request, RenderResponse response)
+   public void render(RenderRequest renderRequest, RenderResponse renderResponse)
          throws PortletException, IOException {
       
       if (LOGGER.isLoggable(Level.FINE)) {
          LOGGER.logp(Level.FINE, LOG_CLASS, "render", "Entry");
       }
 
-      PrintWriter writer = response.getWriter();
+      PrintWriter writer = renderResponse.getWriter();
       JSR286ApiTestCaseDetails tcd = new JSR286ApiTestCaseDetails();
+      ClassChecker cc = new ClassChecker(ResourceRequestWrapper.class);
 
       // Create result objects for the tests
 
-      /* TestCase: ResourceRequest_extendsClientDataRequest1 */
-      /* Details: "ResourceRequest extends ClientDataRequest" */
-      /* TODO: implement test */
-      TestResult tr0 = tcd.getTestResultFailed(RESOURCEREQUEST_EXTENDSCLIENTDATAREQUEST1);
-      
-      /* TestCase: ResourceRequest_extendsClientDataRequest2 */
+      /* TestCase: ResourceRequest_implementsClientDataRequest3 */
       /* Details: "All tests described for the ClientDataRequest execute correctly with the ResourceRequest" */
+      TestResult tr0 = tcd.getTestResultFailed(RESOURCEREQUEST_IMPLEMENTSCLIENTDATAREQUEST3);
       /* TODO: implement test */
-      TestResult tr1 = tcd.getTestResultFailed(RESOURCEREQUEST_EXTENDSCLIENTDATAREQUEST2);
-      
-      /* TestCase: ResourceRequest_extendsClientDataRequest3 */
+
+      /* TestCase: ResourceRequest_implementsClientDataRequest4 */
       /* Details: "All tests described for the PortletRequest execute correctly with the ResourceRequest" */
+      TestResult tr1 = tcd.getTestResultFailed(RESOURCEREQUEST_IMPLEMENTSCLIENTDATAREQUEST4);
       /* TODO: implement test */
-      TestResult tr2 = tcd.getTestResultFailed(RESOURCEREQUEST_EXTENDSCLIENTDATAREQUEST3);
-      
+
       /* TestCase: ResourceRequest_fieldETAG */
-      /* Details: "Has String field ETAG with value of "portlet.ETag" " */
-      /* TODO: implement test */
-      TestResult tr3 = tcd.getTestResultFailed(RESOURCEREQUEST_FIELDETAG);
-      
-      /* TestCase: ResourceRequest_hasgetETag */
-      /* Details: "Has a getETag() method" */
-      /* TODO: implement test */
-      TestResult tr4 = tcd.getTestResultFailed(RESOURCEREQUEST_HASGETETAG);
-      
-      /* TestCase: ResourceRequest_getETag1 */
-      /* Details: "Returns a String containing the validation tag if the portlet container has a cached response for this request" */
-      /* TODO: implement test */
-      TestResult tr5 = tcd.getTestResultFailed(RESOURCEREQUEST_GETETAG1);
-      
+      /* Details: "Has String field ETAG with value of \"portlet.ETag\" " */
+      TestResult tr2 = tcd.getTestResultFailed(RESOURCEREQUEST_FIELDETAG);
+      {
+         tr2.setTcSuccess(cc.hasField("ETAG", "portlet.ETag"));
+      }
+
       /* TestCase: ResourceRequest_getETag2 */
       /* Details: "Returns null if there is no cached response" */
+      TestResult tr3 = tcd.getTestResultFailed(RESOURCEREQUEST_GETETAG2);
       /* TODO: implement test */
-      TestResult tr6 = tcd.getTestResultFailed(RESOURCEREQUEST_GETETAG2);
-      
-      /* TestCase: ResourceRequest_hasgetResourceID */
-      /* Details: "Has a getResourceID() method" */
-      /* TODO: implement test */
-      TestResult tr7 = tcd.getTestResultFailed(RESOURCEREQUEST_HASGETRESOURCEID);
-      
+
       /* TestCase: ResourceRequest_getResourceID1 */
       /* Details: "Returns a String containing the resource ID set on the resource URL" */
+      TestResult tr4 = tcd.getTestResultFailed(RESOURCEREQUEST_GETRESOURCEID1);
       /* TODO: implement test */
-      TestResult tr8 = tcd.getTestResultFailed(RESOURCEREQUEST_GETRESOURCEID1);
-      
+
       /* TestCase: ResourceRequest_getResourceID2 */
       /* Details: "Returns null if no resource ID was set on the URL" */
+      TestResult tr5 = tcd.getTestResultFailed(RESOURCEREQUEST_GETRESOURCEID2);
       /* TODO: implement test */
-      TestResult tr9 = tcd.getTestResultFailed(RESOURCEREQUEST_GETRESOURCEID2);
-      
-      /* TestCase: ResourceRequest_hasgetPrivateRenderParameterMap */
-      /* Details: "Has a getPrivateRenderParameterMap() method" */
-      /* TODO: implement test */
-      TestResult tr10 = tcd.getTestResultFailed(RESOURCEREQUEST_HASGETPRIVATERENDERPARAMETERMAP);
-      
+
       /* TestCase: ResourceRequest_getPrivateRenderParameterMap1 */
       /* Details: "Returns a java.util.Map<java.lang.String,java.lang.String[]> object containing the private render parameters for the request" */
+      TestResult tr6 = tcd.getTestResultFailed(RESOURCEREQUEST_GETPRIVATERENDERPARAMETERMAP1);
       /* TODO: implement test */
-      TestResult tr11 = tcd.getTestResultFailed(RESOURCEREQUEST_GETPRIVATERENDERPARAMETERMAP1);
-      
+
       /* TestCase: ResourceRequest_getPrivateRenderParameterMap2 */
       /* Details: "The returned map does not contain the resource parameters set on the URL" */
+      TestResult tr7 = tcd.getTestResultFailed(RESOURCEREQUEST_GETPRIVATERENDERPARAMETERMAP2);
       /* TODO: implement test */
-      TestResult tr12 = tcd.getTestResultFailed(RESOURCEREQUEST_GETPRIVATERENDERPARAMETERMAP2);
-      
+
       /* TestCase: ResourceRequest_getPrivateRenderParameterMap3 */
       /* Details: "The returned map is immutable" */
+      TestResult tr8 = tcd.getTestResultFailed(RESOURCEREQUEST_GETPRIVATERENDERPARAMETERMAP3);
       /* TODO: implement test */
-      TestResult tr13 = tcd.getTestResultFailed(RESOURCEREQUEST_GETPRIVATERENDERPARAMETERMAP3);
-      
+
       /* TestCase: ResourceRequest_getPrivateRenderParameterMap4 */
       /* Details: "Returns an empty map if there are no private render parameters" */
+      TestResult tr9 = tcd.getTestResultFailed(RESOURCEREQUEST_GETPRIVATERENDERPARAMETERMAP4);
       /* TODO: implement test */
-      TestResult tr14 = tcd.getTestResultFailed(RESOURCEREQUEST_GETPRIVATERENDERPARAMETERMAP4);
-      
-      /* TestCase: ResourceRequest_hasgetResponseContentType */
-      /* Details: "Has a getResponseContentType() method" */
-      /* TODO: implement test */
-      TestResult tr15 = tcd.getTestResultFailed(RESOURCEREQUEST_HASGETRESPONSECONTENTTYPE);
-      
+
       /* TestCase: ResourceRequest_getResponseContentType */
       /* Details: "Returns a String containing the preferred content type for the resonse" */
+      TestResult tr10 = tcd.getTestResultFailed(RESOURCEREQUEST_GETRESPONSECONTENTTYPE);
       /* TODO: implement test */
-      TestResult tr16 = tcd.getTestResultFailed(RESOURCEREQUEST_GETRESPONSECONTENTTYPE);
-      
-      /* TestCase: ResourceRequest_hasgetResponseContentTypes */
-      /* Details: "Has a getResponseContentTypes() method" */
-      /* TODO: implement test */
-      TestResult tr17 = tcd.getTestResultFailed(RESOURCEREQUEST_HASGETRESPONSECONTENTTYPES);
-      
+
       /* TestCase: ResourceRequest_getResponseContentTypes */
       /* Details: "Returns an java.util.Enumeration<java.lang.String> object containing the content types that will be accepted for the response" */
+      TestResult tr11 = tcd.getTestResultFailed(RESOURCEREQUEST_GETRESPONSECONTENTTYPES);
       /* TODO: implement test */
-      TestResult tr18 = tcd.getTestResultFailed(RESOURCEREQUEST_GETRESPONSECONTENTTYPES);
-      
-      /* TestCase: ResourceRequest_hasgetCacheability */
-      /* Details: "Has a getCacheability() method" */
-      /* TODO: implement test */
-      TestResult tr19 = tcd.getTestResultFailed(RESOURCEREQUEST_HASGETCACHEABILITY);
-      
+
       /* TestCase: ResourceRequest_getCacheability */
       /* Details: "Returns a String containing the cache level of the resource request" */
+      TestResult tr12 = tcd.getTestResultFailed(RESOURCEREQUEST_GETCACHEABILITY);
       /* TODO: implement test */
-      TestResult tr20 = tcd.getTestResultFailed(RESOURCEREQUEST_GETCACHEABILITY);
-      
+
 
 
       // Write the results to the output stream
@@ -200,14 +159,6 @@ public class V2RequestTests_ResourceRequest implements Portlet {
       tr10.writeTo(writer);
       tr11.writeTo(writer);
       tr12.writeTo(writer);
-      tr13.writeTo(writer);
-      tr14.writeTo(writer);
-      tr15.writeTo(writer);
-      tr16.writeTo(writer);
-      tr17.writeTo(writer);
-      tr18.writeTo(writer);
-      tr19.writeTo(writer);
-      tr20.writeTo(writer);
 
 
    }

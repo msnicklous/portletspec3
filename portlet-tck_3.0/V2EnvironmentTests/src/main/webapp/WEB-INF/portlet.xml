@@ -45,6 +45,28 @@
    </portlet>
 
    <portlet>
+      <portlet-name>V2EnvironmentTests_SIG_CacheControl</portlet-name>
+      <portlet-class>javax.portlet.tck.EnvironmentTests.portlets.V2EnvironmentTests_SIG_CacheControl</portlet-class>
+
+      <init-param>
+         <name>TestParameter</name>
+         <value>TestValue</value>
+      </init-param>
+
+      <expiration-cache>0</expiration-cache>
+
+      <supports>
+         <mime-type>text/html</mime-type>
+      </supports>
+
+      <supported-locale>en_US</supported-locale>
+
+      <portlet-info>
+         <title>V2EnvironmentTests_SIG_CacheControl</title>
+      </portlet-info>
+   </portlet>
+
+   <portlet>
       <portlet-name>V2EnvironmentTests_PortalContext</portlet-name>
       <portlet-class>javax.portlet.tck.EnvironmentTests.portlets.V2EnvironmentTests_PortalContext</portlet-class>
 
@@ -63,6 +85,28 @@
 
       <portlet-info>
          <title>V2EnvironmentTests_PortalContext</title>
+      </portlet-info>
+   </portlet>
+
+   <portlet>
+      <portlet-name>V2EnvironmentTests_SIG_PortalContext</portlet-name>
+      <portlet-class>javax.portlet.tck.EnvironmentTests.portlets.V2EnvironmentTests_SIG_PortalContext</portlet-class>
+
+      <init-param>
+         <name>TestParameter</name>
+         <value>TestValue</value>
+      </init-param>
+
+      <expiration-cache>0</expiration-cache>
+
+      <supports>
+         <mime-type>text/html</mime-type>
+      </supports>
+
+      <supported-locale>en_US</supported-locale>
+
+      <portlet-info>
+         <title>V2EnvironmentTests_SIG_PortalContext</title>
       </portlet-info>
    </portlet>
 
@@ -89,6 +133,28 @@
    </portlet>
 
    <portlet>
+      <portlet-name>V2EnvironmentTests_SIG_PortletContext</portlet-name>
+      <portlet-class>javax.portlet.tck.EnvironmentTests.portlets.V2EnvironmentTests_SIG_PortletContext</portlet-class>
+
+      <init-param>
+         <name>TestParameter</name>
+         <value>TestValue</value>
+      </init-param>
+
+      <expiration-cache>0</expiration-cache>
+
+      <supports>
+         <mime-type>text/html</mime-type>
+      </supports>
+
+      <supported-locale>en_US</supported-locale>
+
+      <portlet-info>
+         <title>V2EnvironmentTests_SIG_PortletContext</title>
+      </portlet-info>
+   </portlet>
+
+   <portlet>
       <portlet-name>V2EnvironmentTests_PortletPreferences</portlet-name>
       <portlet-class>javax.portlet.tck.EnvironmentTests.portlets.V2EnvironmentTests_PortletPreferences</portlet-class>
 
@@ -107,6 +173,28 @@
 
       <portlet-info>
          <title>V2EnvironmentTests_PortletPreferences</title>
+      </portlet-info>
+   </portlet>
+
+   <portlet>
+      <portlet-name>V2EnvironmentTests_SIG_PortletPreferences</portlet-name>
+      <portlet-class>javax.portlet.tck.EnvironmentTests.portlets.V2EnvironmentTests_SIG_PortletPreferences</portlet-class>
+
+      <init-param>
+         <name>TestParameter</name>
+         <value>TestValue</value>
+      </init-param>
+
+      <expiration-cache>0</expiration-cache>
+
+      <supports>
+         <mime-type>text/html</mime-type>
+      </supports>
+
+      <supported-locale>en_US</supported-locale>
+
+      <portlet-info>
+         <title>V2EnvironmentTests_SIG_PortletPreferences</title>
       </portlet-info>
    </portlet>
 
@@ -133,6 +221,28 @@
    </portlet>
 
    <portlet>
+      <portlet-name>V2EnvironmentTests_SIG_PreferencesValidator</portlet-name>
+      <portlet-class>javax.portlet.tck.EnvironmentTests.portlets.V2EnvironmentTests_SIG_PreferencesValidator</portlet-class>
+
+      <init-param>
+         <name>TestParameter</name>
+         <value>TestValue</value>
+      </init-param>
+
+      <expiration-cache>0</expiration-cache>
+
+      <supports>
+         <mime-type>text/html</mime-type>
+      </supports>
+
+      <supported-locale>en_US</supported-locale>
+
+      <portlet-info>
+         <title>V2EnvironmentTests_SIG_PreferencesValidator</title>
+      </portlet-info>
+   </portlet>
+
+   <portlet>
       <portlet-name>V2EnvironmentTests_PortletRequestDispatcher</portlet-name>
       <portlet-class>javax.portlet.tck.EnvironmentTests.portlets.V2EnvironmentTests_PortletRequestDispatcher</portlet-class>
 
@@ -155,8 +265,8 @@
    </portlet>
 
    <portlet>
-      <portlet-name>V2EnvironmentTests_PortletMode</portlet-name>
-      <portlet-class>javax.portlet.tck.EnvironmentTests.portlets.V2EnvironmentTests_PortletMode</portlet-class>
+      <portlet-name>V2EnvironmentTests_SIG_PortletRequestDispatcher</portlet-name>
+      <portlet-class>javax.portlet.tck.EnvironmentTests.portlets.V2EnvironmentTests_SIG_PortletRequestDispatcher</portlet-class>
 
       <init-param>
          <name>TestParameter</name>
@@ -172,7 +282,7 @@
       <supported-locale>en_US</supported-locale>
 
       <portlet-info>
-         <title>V2EnvironmentTests_PortletMode</title>
+         <title>V2EnvironmentTests_SIG_PortletRequestDispatcher</title>
       </portlet-info>
    </portlet>
 
@@ -199,6 +309,28 @@
    </portlet>
 
    <portlet>
+      <portlet-name>V2EnvironmentTests_SIG_PortletSession</portlet-name>
+      <portlet-class>javax.portlet.tck.EnvironmentTests.portlets.V2EnvironmentTests_SIG_PortletSession</portlet-class>
+
+      <init-param>
+         <name>TestParameter</name>
+         <value>TestValue</value>
+      </init-param>
+
+      <expiration-cache>0</expiration-cache>
+
+      <supports>
+         <mime-type>text/html</mime-type>
+      </supports>
+
+      <supported-locale>en_US</supported-locale>
+
+      <portlet-info>
+         <title>V2EnvironmentTests_SIG_PortletSession</title>
+      </portlet-info>
+   </portlet>
+
+   <portlet>
       <portlet-name>V2EnvironmentTests_PortletSessionUtil</portlet-name>
       <portlet-class>javax.portlet.tck.EnvironmentTests.portlets.V2EnvironmentTests_PortletSessionUtil</portlet-class>
 
@@ -217,6 +349,28 @@
 
       <portlet-info>
          <title>V2EnvironmentTests_PortletSessionUtil</title>
+      </portlet-info>
+   </portlet>
+
+   <portlet>
+      <portlet-name>V2EnvironmentTests_SIG_PortletSessionUtil</portlet-name>
+      <portlet-class>javax.portlet.tck.EnvironmentTests.portlets.V2EnvironmentTests_SIG_PortletSessionUtil</portlet-class>
+
+      <init-param>
+         <name>TestParameter</name>
+         <value>TestValue</value>
+      </init-param>
+
+      <expiration-cache>0</expiration-cache>
+
+      <supports>
+         <mime-type>text/html</mime-type>
+      </supports>
+
+      <supported-locale>en_US</supported-locale>
+
+      <portlet-info>
+         <title>V2EnvironmentTests_SIG_PortletSessionUtil</title>
       </portlet-info>
    </portlet>
 

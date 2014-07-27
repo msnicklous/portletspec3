@@ -26,13 +26,9 @@ import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.portlet.ActionRequest;
-import javax.portlet.ActionResponse;
-import javax.portlet.Portlet;
-import javax.portlet.PortletConfig;
-import javax.portlet.PortletException;
-import javax.portlet.RenderRequest;
-import javax.portlet.RenderResponse;
+import javax.portlet.*;
+import javax.portlet.filter.*;
+import javax.portlet.tck.beans.ClassChecker;
 import javax.portlet.tck.beans.TestCaseDetails;
 import javax.portlet.tck.beans.JSR286ApiTestCaseDetails;
 import static javax.portlet.tck.beans.JSR286ApiTestCaseDetails.*;
@@ -49,11 +45,11 @@ public class V2ExceptionTests_PortletModeException implements Portlet {
          V2ExceptionTests_PortletModeException.class.getName();
    private final Logger LOGGER = Logger.getLogger(LOG_CLASS);
    
-   private PortletConfig config = null;
+   private PortletConfig portletConfig = null;
 
    @Override
    public void init(PortletConfig config) throws PortletException {
-      this.config = config;
+      this.portletConfig = config;
    }
 
    @Override
@@ -61,63 +57,34 @@ public class V2ExceptionTests_PortletModeException implements Portlet {
    }
 
    @Override
-   public void processAction(ActionRequest request, ActionResponse response)
+   public void processAction(ActionRequest actionRequest, ActionResponse actionResponse)
          throws PortletException, IOException {
    }
 
    @Override
-   public void render(RenderRequest request, RenderResponse response)
+   public void render(RenderRequest renderRequest, RenderResponse renderResponse)
          throws PortletException, IOException {
       
       if (LOGGER.isLoggable(Level.FINE)) {
          LOGGER.logp(Level.FINE, LOG_CLASS, "render", "Entry");
       }
 
-      PrintWriter writer = response.getWriter();
+      PrintWriter writer = renderResponse.getWriter();
       JSR286ApiTestCaseDetails tcd = new JSR286ApiTestCaseDetails();
+      ClassChecker cc = new ClassChecker(PortletModeException.class);
 
       // Create result objects for the tests
 
-      /* TestCase: PortletModeException_extendsPortletException */
-      /* Details: "PortletModeException extends PortletException" */
-      /* TODO: implement test */
-      TestResult tr0 = tcd.getTestResultFailed(PORTLETMODEEXCEPTION_EXTENDSPORTLETEXCEPTION);
-      
-      /* TestCase: PortletModeException_constructor1 */
-      /* Details: "Provides constructor PortletModeException(java.lang.String, PortletMode)" */
-      /* TODO: implement test */
-      TestResult tr1 = tcd.getTestResultFailed(PORTLETMODEEXCEPTION_CONSTRUCTOR1);
-      
-      /* TestCase: PortletModeException_constructor2 */
-      /* Details: "Provides constructor PortletModeException(java.lang.String, java.lang.Throwable, PortletMode)" */
-      /* TODO: implement test */
-      TestResult tr2 = tcd.getTestResultFailed(PORTLETMODEEXCEPTION_CONSTRUCTOR2);
-      
-      /* TestCase: PortletModeException_constructor3 */
-      /* Details: "Provides constructor PortletModeException(java.lang.Throwable, PortletMode)" */
-      /* TODO: implement test */
-      TestResult tr3 = tcd.getTestResultFailed(PORTLETMODEEXCEPTION_CONSTRUCTOR3);
-      
-      /* TestCase: PortletModeException_hasGetMode1 */
-      /* Details: "Has a getMode() method" */
-      /* TODO: implement test */
-      TestResult tr4 = tcd.getTestResultFailed(PORTLETMODEEXCEPTION_HASGETMODE1);
-      
       /* TestCase: PortletModeException_hasGetMode2 */
       /* Details: "Returns the PortletMode object causing this exception" */
+      TestResult tr0 = tcd.getTestResultFailed(PORTLETMODEEXCEPTION_HASGETMODE2);
       /* TODO: implement test */
-      TestResult tr5 = tcd.getTestResultFailed(PORTLETMODEEXCEPTION_HASGETMODE2);
-      
+
 
 
       // Write the results to the output stream
 
       tr0.writeTo(writer);
-      tr1.writeTo(writer);
-      tr2.writeTo(writer);
-      tr3.writeTo(writer);
-      tr4.writeTo(writer);
-      tr5.writeTo(writer);
 
 
    }

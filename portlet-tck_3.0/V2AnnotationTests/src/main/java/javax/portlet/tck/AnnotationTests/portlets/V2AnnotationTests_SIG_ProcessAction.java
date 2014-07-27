@@ -16,7 +16,7 @@
  *  under the License.
  */
 
-package javax.portlet.tck.EnvironmentTests.portlets;
+package javax.portlet.tck.AnnotationTests.portlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -26,13 +26,9 @@ import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.portlet.ActionRequest;
-import javax.portlet.ActionResponse;
-import javax.portlet.Portlet;
-import javax.portlet.PortletConfig;
-import javax.portlet.PortletException;
-import javax.portlet.RenderRequest;
-import javax.portlet.RenderResponse;
+import javax.portlet.*;
+import javax.portlet.filter.*;
+import javax.portlet.tck.beans.ClassChecker;
 import javax.portlet.tck.beans.TestCaseDetails;
 import javax.portlet.tck.beans.JSR286ApiTestCaseDetails;
 import static javax.portlet.tck.beans.JSR286ApiTestCaseDetails.*;
@@ -44,16 +40,16 @@ import javax.portlet.tck.beans.TestResult;
  * file. The build process will integrate the test case names defined in the 
  * additionalTCs.xml file into the complete list of test case names for execution by the driver.
  */
-public class V2EnvironmentTests_PortletMode implements Portlet {
+public class V2AnnotationTests_SIG_ProcessAction implements Portlet {
    private static final String LOG_CLASS = 
-         V2EnvironmentTests_PortletMode.class.getName();
+         V2AnnotationTests_SIG_ProcessAction.class.getName();
    private final Logger LOGGER = Logger.getLogger(LOG_CLASS);
    
-   private PortletConfig config = null;
+   private PortletConfig portletConfig = null;
 
    @Override
    public void init(PortletConfig config) throws PortletException {
-      this.config = config;
+      this.portletConfig = config;
    }
 
    @Override
@@ -61,39 +57,58 @@ public class V2EnvironmentTests_PortletMode implements Portlet {
    }
 
    @Override
-   public void processAction(ActionRequest request, ActionResponse response)
+   public void processAction(ActionRequest actionRequest, ActionResponse actionResponse)
          throws PortletException, IOException {
    }
 
    @Override
-   public void render(RenderRequest request, RenderResponse response)
+   public void render(RenderRequest renderRequest, RenderResponse renderResponse)
          throws PortletException, IOException {
       
       if (LOGGER.isLoggable(Level.FINE)) {
          LOGGER.logp(Level.FINE, LOG_CLASS, "render", "Entry");
       }
 
-      PrintWriter writer = response.getWriter();
+      PrintWriter writer = renderResponse.getWriter();
       JSR286ApiTestCaseDetails tcd = new JSR286ApiTestCaseDetails();
+      ClassChecker cc = new ClassChecker(ProcessAction.class);
 
       // Create result objects for the tests
 
-      /* TestCase: PortletMode_fieldAPPLICATION_SCOPE */
-      /* Details: "Has String field APPLICATION_SCOPE with value of 0x01 " */
-      /* TODO: implement test */
-      TestResult tr0 = tcd.getTestResultFailed(PORTLETMODE_FIELDAPPLICATION_SCOPE);
-      
-      /* TestCase: PortletMode_fieldPORTLET_SCOPE */
-      /* Details: "Has String field PORTLET_SCOPE with value of 0x02 " */
-      /* TODO: implement test */
-      TestResult tr1 = tcd.getTestResultFailed(PORTLETMODE_FIELDPORTLET_SCOPE);
-      
+      /* TestCase: ProcessAction_SIG_isAnnotation */
+      /* Details: "Is an Annotation " */
+      TestResult tr0 = tcd.getTestResultFailed(PROCESSACTION_SIG_ISANNOTATION);
+      {
+         tr0.setTcSuccess(cc.isAnnotation());
+      }
+
+      /* TestCase: ProcessAction_SIG_hasName */
+      /* Details: "Has a name()  method " */
+      TestResult tr1 = tcd.getTestResultFailed(PROCESSACTION_SIG_HASNAME);
+      {
+         String name = "name";
+         Class<?>[] exceptions = null;
+         Class<?>[] parms = null;
+         tr1.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
+
+      /* TestCase: ProcessAction_SIG_hasNameReturns */
+      /* Details: "Method name() returns String " */
+      TestResult tr2 = tcd.getTestResultFailed(PROCESSACTION_SIG_HASNAMERETURNS);
+      {
+         String name = "name";
+         Class<?> retType = String.class;
+         Class<?>[] parms = null;
+         tr2.setTcSuccess(cc.methodHasReturnType(name, retType, parms));
+      }
+
 
 
       // Write the results to the output stream
 
       tr0.writeTo(writer);
       tr1.writeTo(writer);
+      tr2.writeTo(writer);
 
 
    }

@@ -26,13 +26,9 @@ import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.portlet.ActionRequest;
-import javax.portlet.ActionResponse;
-import javax.portlet.Portlet;
-import javax.portlet.PortletConfig;
-import javax.portlet.PortletException;
-import javax.portlet.RenderRequest;
-import javax.portlet.RenderResponse;
+import javax.portlet.*;
+import javax.portlet.filter.*;
+import javax.portlet.tck.beans.ClassChecker;
 import javax.portlet.tck.beans.TestCaseDetails;
 import javax.portlet.tck.beans.JSR286ApiTestCaseDetails;
 import static javax.portlet.tck.beans.JSR286ApiTestCaseDetails.*;
@@ -49,11 +45,11 @@ public class V2WrapperTests_EventRequestWrapper implements Portlet {
          V2WrapperTests_EventRequestWrapper.class.getName();
    private final Logger LOGGER = Logger.getLogger(LOG_CLASS);
    
-   private PortletConfig config = null;
+   private PortletConfig portletConfig = null;
 
    @Override
    public void init(PortletConfig config) throws PortletException {
-      this.config = config;
+      this.portletConfig = config;
    }
 
    @Override
@@ -61,83 +57,49 @@ public class V2WrapperTests_EventRequestWrapper implements Portlet {
    }
 
    @Override
-   public void processAction(ActionRequest request, ActionResponse response)
+   public void processAction(ActionRequest actionRequest, ActionResponse actionResponse)
          throws PortletException, IOException {
    }
 
    @Override
-   public void render(RenderRequest request, RenderResponse response)
+   public void render(RenderRequest renderRequest, RenderResponse renderResponse)
          throws PortletException, IOException {
       
       if (LOGGER.isLoggable(Level.FINE)) {
          LOGGER.logp(Level.FINE, LOG_CLASS, "render", "Entry");
       }
 
-      PrintWriter writer = response.getWriter();
+      PrintWriter writer = renderResponse.getWriter();
       JSR286ApiTestCaseDetails tcd = new JSR286ApiTestCaseDetails();
+      ClassChecker cc = new ClassChecker(EventRequestWrapper.class);
 
       // Create result objects for the tests
 
-      /* TestCase: EventRequestWrapper_extendsPortletRequestWrapper */
-      /* Details: "Extends PortletRequestWrapper" */
-      /* TODO: implement test */
-      TestResult tr0 = tcd.getTestResultFailed(EVENTREQUESTWRAPPER_EXTENDSPORTLETREQUESTWRAPPER);
-      
-      /* TestCase: EventRequestWrapper_implementsEventRequest */
-      /* Details: "Implements EventRequest" */
-      /* TODO: implement test */
-      TestResult tr1 = tcd.getTestResultFailed(EVENTREQUESTWRAPPER_IMPLEMENTSEVENTREQUEST);
-      
-      /* TestCase: EventRequestWrapper_constructor */
-      /* Details: "Constructs EventRequestWrapper with specified wrapped EventRequest object" */
-      /* TODO: implement test */
-      TestResult tr2 = tcd.getTestResultFailed(EVENTREQUESTWRAPPER_CONSTRUCTOR);
-      
-      /* TestCase: EventRequestWrapper_hasGetRequest */
-      /* Details: "Has a getRequest() method" */
-      /* TODO: implement test */
-      TestResult tr3 = tcd.getTestResultFailed(EVENTREQUESTWRAPPER_HASGETREQUEST);
-      
       /* TestCase: EventRequestWrapper_getRequest */
       /* Details: "Returns wrapped EventRequest object" */
+      TestResult tr0 = tcd.getTestResultFailed(EVENTREQUESTWRAPPER_GETREQUEST);
       /* TODO: implement test */
-      TestResult tr4 = tcd.getTestResultFailed(EVENTREQUESTWRAPPER_GETREQUEST);
-      
-      /* TestCase: EventRequestWrapper_hasSetRequest */
-      /* Details: "Has a setRequest(EventRequest) method" */
-      /* TODO: implement test */
-      TestResult tr5 = tcd.getTestResultFailed(EVENTREQUESTWRAPPER_HASSETREQUEST);
-      
+
       /* TestCase: EventRequestWrapper_setRequest */
       /* Details: "Allows wrapped EventRequest object to be set" */
+      TestResult tr1 = tcd.getTestResultFailed(EVENTREQUESTWRAPPER_SETREQUEST);
       /* TODO: implement test */
-      TestResult tr6 = tcd.getTestResultFailed(EVENTREQUESTWRAPPER_SETREQUEST);
-      
-      /* TestCase: EventRequestWrapper_hasGetEvent */
-      /* Details: "Has a getEvent() method" */
-      /* TODO: implement test */
-      TestResult tr7 = tcd.getTestResultFailed(EVENTREQUESTWRAPPER_HASGETEVENT);
-      
+
       /* TestCase: EventRequestWrapper_getEvent1 */
       /* Details: "Calls wrapped method" */
+      TestResult tr2 = tcd.getTestResultFailed(EVENTREQUESTWRAPPER_GETEVENT1);
       /* TODO: implement test */
-      TestResult tr8 = tcd.getTestResultFailed(EVENTREQUESTWRAPPER_GETEVENT1);
-      
+
       /* TestCase: EventRequestWrapper_getEvent2 */
       /* Details: "Returns Event object" */
+      TestResult tr3 = tcd.getTestResultFailed(EVENTREQUESTWRAPPER_GETEVENT2);
       /* TODO: implement test */
-      TestResult tr9 = tcd.getTestResultFailed(EVENTREQUESTWRAPPER_GETEVENT2);
-      
-      /* TestCase: EventRequestWrapper_hasGetMethod */
-      /* Details: "Has a getMethod() method" */
-      /* TODO: implement test */
-      TestResult tr10 = tcd.getTestResultFailed(EVENTREQUESTWRAPPER_HASGETMETHOD);
-      
+
       /* TestCase: EventRequestWrapper_getMethod */
       /* Details: "Calls wrapped method" */
+      TestResult tr4 = tcd.getTestResultFailed(EVENTREQUESTWRAPPER_GETMETHOD);
       /* TODO: implement test */
-      TestResult tr11 = tcd.getTestResultFailed(EVENTREQUESTWRAPPER_GETMETHOD);
-      
+
 
 
       // Write the results to the output stream
@@ -147,13 +109,6 @@ public class V2WrapperTests_EventRequestWrapper implements Portlet {
       tr2.writeTo(writer);
       tr3.writeTo(writer);
       tr4.writeTo(writer);
-      tr5.writeTo(writer);
-      tr6.writeTo(writer);
-      tr7.writeTo(writer);
-      tr8.writeTo(writer);
-      tr9.writeTo(writer);
-      tr10.writeTo(writer);
-      tr11.writeTo(writer);
 
 
    }

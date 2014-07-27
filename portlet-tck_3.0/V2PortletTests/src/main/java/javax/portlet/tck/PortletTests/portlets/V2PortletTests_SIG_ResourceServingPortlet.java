@@ -16,7 +16,7 @@
  *  under the License.
  */
 
-package javax.portlet.tck.ExceptionTests.portlets;
+package javax.portlet.tck.PortletTests.portlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -26,13 +26,9 @@ import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.portlet.ActionRequest;
-import javax.portlet.ActionResponse;
-import javax.portlet.Portlet;
-import javax.portlet.PortletConfig;
-import javax.portlet.PortletException;
-import javax.portlet.RenderRequest;
-import javax.portlet.RenderResponse;
+import javax.portlet.*;
+import javax.portlet.filter.*;
+import javax.portlet.tck.beans.ClassChecker;
 import javax.portlet.tck.beans.TestCaseDetails;
 import javax.portlet.tck.beans.JSR286ApiTestCaseDetails;
 import static javax.portlet.tck.beans.JSR286ApiTestCaseDetails.*;
@@ -44,16 +40,16 @@ import javax.portlet.tck.beans.TestResult;
  * file. The build process will integrate the test case names defined in the 
  * additionalTCs.xml file into the complete list of test case names for execution by the driver.
  */
-public class V2ExceptionTests_PortletException implements Portlet {
+public class V2PortletTests_SIG_ResourceServingPortlet implements Portlet {
    private static final String LOG_CLASS = 
-         V2ExceptionTests_PortletException.class.getName();
+         V2PortletTests_SIG_ResourceServingPortlet.class.getName();
    private final Logger LOGGER = Logger.getLogger(LOG_CLASS);
    
-   private PortletConfig config = null;
+   private PortletConfig portletConfig = null;
 
    @Override
    public void init(PortletConfig config) throws PortletException {
-      this.config = config;
+      this.portletConfig = config;
    }
 
    @Override
@@ -61,57 +57,50 @@ public class V2ExceptionTests_PortletException implements Portlet {
    }
 
    @Override
-   public void processAction(ActionRequest request, ActionResponse response)
+   public void processAction(ActionRequest actionRequest, ActionResponse actionResponse)
          throws PortletException, IOException {
    }
 
    @Override
-   public void render(RenderRequest request, RenderResponse response)
+   public void render(RenderRequest renderRequest, RenderResponse renderResponse)
          throws PortletException, IOException {
       
       if (LOGGER.isLoggable(Level.FINE)) {
          LOGGER.logp(Level.FINE, LOG_CLASS, "render", "Entry");
       }
 
-      PrintWriter writer = response.getWriter();
+      PrintWriter writer = renderResponse.getWriter();
       JSR286ApiTestCaseDetails tcd = new JSR286ApiTestCaseDetails();
+      ClassChecker cc = new ClassChecker(ResourceServingPortlet.class);
 
       // Create result objects for the tests
 
-      /* TestCase: PortletException_extendsException */
-      /* Details: "PortletException extends java.lang.Exception" */
-      /* TODO: implement test */
-      TestResult tr0 = tcd.getTestResultFailed(PORTLETEXCEPTION_EXTENDSEXCEPTION);
-      
-      /* TestCase: PortletException_constructor1 */
-      /* Details: "Provides constructor PortletException()" */
-      /* TODO: implement test */
-      TestResult tr1 = tcd.getTestResultFailed(PORTLETEXCEPTION_CONSTRUCTOR1);
-      
-      /* TestCase: PortletException_constructor2 */
-      /* Details: "Provides constructor PortletException(java.lang.String)" */
-      /* TODO: implement test */
-      TestResult tr2 = tcd.getTestResultFailed(PORTLETEXCEPTION_CONSTRUCTOR2);
-      
-      /* TestCase: PortletException_constructor3 */
-      /* Details: "Provides constructor PortletException(java.lang.String, java.lang.Throwable)" */
-      /* TODO: implement test */
-      TestResult tr3 = tcd.getTestResultFailed(PORTLETEXCEPTION_CONSTRUCTOR3);
-      
-      /* TestCase: PortletException_constructor4 */
-      /* Details: "Provides constructor PortletException(java.lang.Throwable)" */
-      /* TODO: implement test */
-      TestResult tr4 = tcd.getTestResultFailed(PORTLETEXCEPTION_CONSTRUCTOR4);
-      
+      /* TestCase: ResourceServingPortlet_SIG_hasServeResource */
+      /* Details: "Has a serveResource(ResourceRequest, ResourceResponse) throws PortletException, java.io.IOException method " */
+      TestResult tr0 = tcd.getTestResultFailed(RESOURCESERVINGPORTLET_SIG_HASSERVERESOURCE);
+      {
+         String name = "serveResource";
+         Class<?>[] exceptions = {PortletException.class, java.io.IOException.class};
+         Class<?>[] parms = {ResourceRequest.class, ResourceResponse.class};
+         tr0.setTcSuccess(cc.hasMethod(name, parms, exceptions));
+      }
+
+      /* TestCase: ResourceServingPortlet_SIG_hasServeResourceReturns */
+      /* Details: "Method serveResource(ResourceRequest, ResourceResponse) returns void " */
+      TestResult tr1 = tcd.getTestResultFailed(RESOURCESERVINGPORTLET_SIG_HASSERVERESOURCERETURNS);
+      {
+         String name = "serveResource";
+         Class<?> retType = void.class;
+         Class<?>[] parms = {ResourceRequest.class, ResourceResponse.class};
+         tr1.setTcSuccess(cc.methodHasReturnType(name, retType, parms));
+      }
+
 
 
       // Write the results to the output stream
 
       tr0.writeTo(writer);
       tr1.writeTo(writer);
-      tr2.writeTo(writer);
-      tr3.writeTo(writer);
-      tr4.writeTo(writer);
 
 
    }

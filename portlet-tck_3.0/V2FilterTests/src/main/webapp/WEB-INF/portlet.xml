@@ -45,6 +45,28 @@
    </portlet>
 
    <portlet>
+      <portlet-name>V2FilterTests_SIG_FilterChain</portlet-name>
+      <portlet-class>javax.portlet.tck.FilterTests.portlets.V2FilterTests_SIG_FilterChain</portlet-class>
+
+      <init-param>
+         <name>TestParameter</name>
+         <value>TestValue</value>
+      </init-param>
+
+      <expiration-cache>0</expiration-cache>
+
+      <supports>
+         <mime-type>text/html</mime-type>
+      </supports>
+
+      <supported-locale>en_US</supported-locale>
+
+      <portlet-info>
+         <title>V2FilterTests_SIG_FilterChain</title>
+      </portlet-info>
+   </portlet>
+
+   <portlet>
       <portlet-name>V2FilterTests_FilterConfig</portlet-name>
       <portlet-class>javax.portlet.tck.FilterTests.portlets.V2FilterTests_FilterConfig</portlet-class>
 
@@ -63,6 +85,28 @@
 
       <portlet-info>
          <title>V2FilterTests_FilterConfig</title>
+      </portlet-info>
+   </portlet>
+
+   <portlet>
+      <portlet-name>V2FilterTests_SIG_FilterConfig</portlet-name>
+      <portlet-class>javax.portlet.tck.FilterTests.portlets.V2FilterTests_SIG_FilterConfig</portlet-class>
+
+      <init-param>
+         <name>TestParameter</name>
+         <value>TestValue</value>
+      </init-param>
+
+      <expiration-cache>0</expiration-cache>
+
+      <supports>
+         <mime-type>text/html</mime-type>
+      </supports>
+
+      <supported-locale>en_US</supported-locale>
+
+      <portlet-info>
+         <title>V2FilterTests_SIG_FilterConfig</title>
       </portlet-info>
    </portlet>
 
@@ -89,6 +133,28 @@
    </portlet>
 
    <portlet>
+      <portlet-name>V2FilterTests_SIG_PortletFilter</portlet-name>
+      <portlet-class>javax.portlet.tck.FilterTests.portlets.V2FilterTests_SIG_PortletFilter</portlet-class>
+
+      <init-param>
+         <name>TestParameter</name>
+         <value>TestValue</value>
+      </init-param>
+
+      <expiration-cache>0</expiration-cache>
+
+      <supports>
+         <mime-type>text/html</mime-type>
+      </supports>
+
+      <supported-locale>en_US</supported-locale>
+
+      <portlet-info>
+         <title>V2FilterTests_SIG_PortletFilter</title>
+      </portlet-info>
+   </portlet>
+
+   <portlet>
       <portlet-name>V2FilterTests_ActionFilter</portlet-name>
       <portlet-class>javax.portlet.tck.FilterTests.portlets.V2FilterTests_ActionFilter</portlet-class>
 
@@ -107,6 +173,28 @@
 
       <portlet-info>
          <title>V2FilterTests_ActionFilter</title>
+      </portlet-info>
+   </portlet>
+
+   <portlet>
+      <portlet-name>V2FilterTests_SIG_ActionFilter</portlet-name>
+      <portlet-class>javax.portlet.tck.FilterTests.portlets.V2FilterTests_SIG_ActionFilter</portlet-class>
+
+      <init-param>
+         <name>TestParameter</name>
+         <value>TestValue</value>
+      </init-param>
+
+      <expiration-cache>0</expiration-cache>
+
+      <supports>
+         <mime-type>text/html</mime-type>
+      </supports>
+
+      <supported-locale>en_US</supported-locale>
+
+      <portlet-info>
+         <title>V2FilterTests_SIG_ActionFilter</title>
       </portlet-info>
    </portlet>
 
@@ -133,6 +221,28 @@
    </portlet>
 
    <portlet>
+      <portlet-name>V2FilterTests_SIG_EventFilter</portlet-name>
+      <portlet-class>javax.portlet.tck.FilterTests.portlets.V2FilterTests_SIG_EventFilter</portlet-class>
+
+      <init-param>
+         <name>TestParameter</name>
+         <value>TestValue</value>
+      </init-param>
+
+      <expiration-cache>0</expiration-cache>
+
+      <supports>
+         <mime-type>text/html</mime-type>
+      </supports>
+
+      <supported-locale>en_US</supported-locale>
+
+      <portlet-info>
+         <title>V2FilterTests_SIG_EventFilter</title>
+      </portlet-info>
+   </portlet>
+
+   <portlet>
       <portlet-name>V2FilterTests_RenderFilter</portlet-name>
       <portlet-class>javax.portlet.tck.FilterTests.portlets.V2FilterTests_RenderFilter</portlet-class>
 
@@ -155,6 +265,28 @@
    </portlet>
 
    <portlet>
+      <portlet-name>V2FilterTests_SIG_RenderFilter</portlet-name>
+      <portlet-class>javax.portlet.tck.FilterTests.portlets.V2FilterTests_SIG_RenderFilter</portlet-class>
+
+      <init-param>
+         <name>TestParameter</name>
+         <value>TestValue</value>
+      </init-param>
+
+      <expiration-cache>0</expiration-cache>
+
+      <supports>
+         <mime-type>text/html</mime-type>
+      </supports>
+
+      <supported-locale>en_US</supported-locale>
+
+      <portlet-info>
+         <title>V2FilterTests_SIG_RenderFilter</title>
+      </portlet-info>
+   </portlet>
+
+   <portlet>
       <portlet-name>V2FilterTests_ResourceFilter</portlet-name>
       <portlet-class>javax.portlet.tck.FilterTests.portlets.V2FilterTests_ResourceFilter</portlet-class>
 
@@ -173,6 +305,28 @@
 
       <portlet-info>
          <title>V2FilterTests_ResourceFilter</title>
+      </portlet-info>
+   </portlet>
+
+   <portlet>
+      <portlet-name>V2FilterTests_SIG_ResourceFilter</portlet-name>
+      <portlet-class>javax.portlet.tck.FilterTests.portlets.V2FilterTests_SIG_ResourceFilter</portlet-class>
+
+      <init-param>
+         <name>TestParameter</name>
+         <value>TestValue</value>
+      </init-param>
+
+      <expiration-cache>0</expiration-cache>
+
+      <supports>
+         <mime-type>text/html</mime-type>
+      </supports>
+
+      <supported-locale>en_US</supported-locale>
+
+      <portlet-info>
+         <title>V2FilterTests_SIG_ResourceFilter</title>
       </portlet-info>
    </portlet>
 

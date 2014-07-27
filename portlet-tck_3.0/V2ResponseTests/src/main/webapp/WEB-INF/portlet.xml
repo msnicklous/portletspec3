@@ -45,6 +45,28 @@
    </portlet>
 
    <portlet>
+      <portlet-name>V2ResponseTests_SIG_PortletResponse</portlet-name>
+      <portlet-class>javax.portlet.tck.ResponseTests.portlets.V2ResponseTests_SIG_PortletResponse</portlet-class>
+
+      <init-param>
+         <name>TestParameter</name>
+         <value>TestValue</value>
+      </init-param>
+
+      <expiration-cache>0</expiration-cache>
+
+      <supports>
+         <mime-type>text/html</mime-type>
+      </supports>
+
+      <supported-locale>en_US</supported-locale>
+
+      <portlet-info>
+         <title>V2ResponseTests_SIG_PortletResponse</title>
+      </portlet-info>
+   </portlet>
+
+   <portlet>
       <portlet-name>V2ResponseTests_StateAwareResponse</portlet-name>
       <portlet-class>javax.portlet.tck.ResponseTests.portlets.V2ResponseTests_StateAwareResponse</portlet-class>
 
@@ -63,6 +85,28 @@
 
       <portlet-info>
          <title>V2ResponseTests_StateAwareResponse</title>
+      </portlet-info>
+   </portlet>
+
+   <portlet>
+      <portlet-name>V2ResponseTests_SIG_StateAwareResponse</portlet-name>
+      <portlet-class>javax.portlet.tck.ResponseTests.portlets.V2ResponseTests_SIG_StateAwareResponse</portlet-class>
+
+      <init-param>
+         <name>TestParameter</name>
+         <value>TestValue</value>
+      </init-param>
+
+      <expiration-cache>0</expiration-cache>
+
+      <supports>
+         <mime-type>text/html</mime-type>
+      </supports>
+
+      <supported-locale>en_US</supported-locale>
+
+      <portlet-info>
+         <title>V2ResponseTests_SIG_StateAwareResponse</title>
       </portlet-info>
    </portlet>
 
@@ -89,6 +133,28 @@
    </portlet>
 
    <portlet>
+      <portlet-name>V2ResponseTests_SIG_ActionResponse</portlet-name>
+      <portlet-class>javax.portlet.tck.ResponseTests.portlets.V2ResponseTests_SIG_ActionResponse</portlet-class>
+
+      <init-param>
+         <name>TestParameter</name>
+         <value>TestValue</value>
+      </init-param>
+
+      <expiration-cache>0</expiration-cache>
+
+      <supports>
+         <mime-type>text/html</mime-type>
+      </supports>
+
+      <supported-locale>en_US</supported-locale>
+
+      <portlet-info>
+         <title>V2ResponseTests_SIG_ActionResponse</title>
+      </portlet-info>
+   </portlet>
+
+   <portlet>
       <portlet-name>V2ResponseTests_EventResponse</portlet-name>
       <portlet-class>javax.portlet.tck.ResponseTests.portlets.V2ResponseTests_EventResponse</portlet-class>
 
@@ -107,6 +173,28 @@
 
       <portlet-info>
          <title>V2ResponseTests_EventResponse</title>
+      </portlet-info>
+   </portlet>
+
+   <portlet>
+      <portlet-name>V2ResponseTests_SIG_EventResponse</portlet-name>
+      <portlet-class>javax.portlet.tck.ResponseTests.portlets.V2ResponseTests_SIG_EventResponse</portlet-class>
+
+      <init-param>
+         <name>TestParameter</name>
+         <value>TestValue</value>
+      </init-param>
+
+      <expiration-cache>0</expiration-cache>
+
+      <supports>
+         <mime-type>text/html</mime-type>
+      </supports>
+
+      <supported-locale>en_US</supported-locale>
+
+      <portlet-info>
+         <title>V2ResponseTests_SIG_EventResponse</title>
       </portlet-info>
    </portlet>
 
@@ -133,6 +221,28 @@
    </portlet>
 
    <portlet>
+      <portlet-name>V2ResponseTests_SIG_MimeResponse</portlet-name>
+      <portlet-class>javax.portlet.tck.ResponseTests.portlets.V2ResponseTests_SIG_MimeResponse</portlet-class>
+
+      <init-param>
+         <name>TestParameter</name>
+         <value>TestValue</value>
+      </init-param>
+
+      <expiration-cache>0</expiration-cache>
+
+      <supports>
+         <mime-type>text/html</mime-type>
+      </supports>
+
+      <supported-locale>en_US</supported-locale>
+
+      <portlet-info>
+         <title>V2ResponseTests_SIG_MimeResponse</title>
+      </portlet-info>
+   </portlet>
+
+   <portlet>
       <portlet-name>V2ResponseTests_RenderResponse</portlet-name>
       <portlet-class>javax.portlet.tck.ResponseTests.portlets.V2ResponseTests_RenderResponse</portlet-class>
 
@@ -155,6 +265,28 @@
    </portlet>
 
    <portlet>
+      <portlet-name>V2ResponseTests_SIG_RenderResponse</portlet-name>
+      <portlet-class>javax.portlet.tck.ResponseTests.portlets.V2ResponseTests_SIG_RenderResponse</portlet-class>
+
+      <init-param>
+         <name>TestParameter</name>
+         <value>TestValue</value>
+      </init-param>
+
+      <expiration-cache>0</expiration-cache>
+
+      <supports>
+         <mime-type>text/html</mime-type>
+      </supports>
+
+      <supported-locale>en_US</supported-locale>
+
+      <portlet-info>
+         <title>V2ResponseTests_SIG_RenderResponse</title>
+      </portlet-info>
+   </portlet>
+
+   <portlet>
       <portlet-name>V2ResponseTests_ResourceResponse</portlet-name>
       <portlet-class>javax.portlet.tck.ResponseTests.portlets.V2ResponseTests_ResourceResponse</portlet-class>
 
@@ -173,6 +305,28 @@
 
       <portlet-info>
          <title>V2ResponseTests_ResourceResponse</title>
+      </portlet-info>
+   </portlet>
+
+   <portlet>
+      <portlet-name>V2ResponseTests_SIG_ResourceResponse</portlet-name>
+      <portlet-class>javax.portlet.tck.ResponseTests.portlets.V2ResponseTests_SIG_ResourceResponse</portlet-class>
+
+      <init-param>
+         <name>TestParameter</name>
+         <value>TestValue</value>
+      </init-param>
+
+      <expiration-cache>0</expiration-cache>
+
+      <supports>
+         <mime-type>text/html</mime-type>
+      </supports>
+
+      <supported-locale>en_US</supported-locale>
+
+      <portlet-info>
+         <title>V2ResponseTests_SIG_ResourceResponse</title>
       </portlet-info>
    </portlet>
 

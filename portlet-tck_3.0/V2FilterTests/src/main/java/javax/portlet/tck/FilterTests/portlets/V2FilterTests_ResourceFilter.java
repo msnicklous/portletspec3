@@ -26,13 +26,9 @@ import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.portlet.ActionRequest;
-import javax.portlet.ActionResponse;
-import javax.portlet.Portlet;
-import javax.portlet.PortletConfig;
-import javax.portlet.PortletException;
-import javax.portlet.RenderRequest;
-import javax.portlet.RenderResponse;
+import javax.portlet.*;
+import javax.portlet.filter.*;
+import javax.portlet.tck.beans.ClassChecker;
 import javax.portlet.tck.beans.TestCaseDetails;
 import javax.portlet.tck.beans.JSR286ApiTestCaseDetails;
 import static javax.portlet.tck.beans.JSR286ApiTestCaseDetails.*;
@@ -49,11 +45,11 @@ public class V2FilterTests_ResourceFilter implements Portlet {
          V2FilterTests_ResourceFilter.class.getName();
    private final Logger LOGGER = Logger.getLogger(LOG_CLASS);
    
-   private PortletConfig config = null;
+   private PortletConfig portletConfig = null;
 
    @Override
    public void init(PortletConfig config) throws PortletException {
-      this.config = config;
+      this.portletConfig = config;
    }
 
    @Override
@@ -61,68 +57,69 @@ public class V2FilterTests_ResourceFilter implements Portlet {
    }
 
    @Override
-   public void processAction(ActionRequest request, ActionResponse response)
+   public void processAction(ActionRequest actionRequest, ActionResponse actionResponse)
          throws PortletException, IOException {
    }
 
    @Override
-   public void render(RenderRequest request, RenderResponse response)
+   public void render(RenderRequest renderRequest, RenderResponse renderResponse)
          throws PortletException, IOException {
       
       if (LOGGER.isLoggable(Level.FINE)) {
          LOGGER.logp(Level.FINE, LOG_CLASS, "render", "Entry");
       }
 
-      PrintWriter writer = response.getWriter();
+      PrintWriter writer = renderResponse.getWriter();
       JSR286ApiTestCaseDetails tcd = new JSR286ApiTestCaseDetails();
+      ClassChecker cc = new ClassChecker(ResourceFilter.class);
 
       // Create result objects for the tests
 
       /* TestCase: ResourceFilter_canBeConfigured1 */
       /* Details: "An ResourceFilter can be configured in the portlet descriptor" */
-      /* TODO: implement test */
       TestResult tr0 = tcd.getTestResultFailed(RESOURCEFILTER_CANBECONFIGURED1);
-      
+      /* TODO: implement test */
+
       /* TestCase: ResourceFilter_canBeConfigured2 */
       /* Details: "Multiple ResourceFilter classes can be configured in the portlet descriptor" */
-      /* TODO: implement test */
       TestResult tr1 = tcd.getTestResultFailed(RESOURCEFILTER_CANBECONFIGURED2);
-      
+      /* TODO: implement test */
+
       /* TestCase: ResourceFilter_doFilterIsCalled */
       /* Details: "The doFilter(ResourceRequest, ResourceResponse, FilterChain) method is called before the processResource method for the portlet" */
-      /* TODO: implement test */
       TestResult tr2 = tcd.getTestResultFailed(RESOURCEFILTER_DOFILTERISCALLED);
-      
+      /* TODO: implement test */
+
       /* TestCase: ResourceFilter_doFilterProcessResource1 */
       /* Details: "After the method has sucessfully completed and invokes the next filter, the processResourceMethod is called" */
-      /* TODO: implement test */
       TestResult tr3 = tcd.getTestResultFailed(RESOURCEFILTER_DOFILTERPROCESSRESOURCE1);
-      
+      /* TODO: implement test */
+
       /* TestCase: ResourceFilter_doFilterProcessResource2 */
       /* Details: "After the method has sucessfully completed and invokes the next filter, the next filter in the chain is called if multiple filters are defined" */
-      /* TODO: implement test */
       TestResult tr4 = tcd.getTestResultFailed(RESOURCEFILTER_DOFILTERPROCESSRESOURCE2);
-      
+      /* TODO: implement test */
+
       /* TestCase: ResourceFilter_doFilterBlock */
       /* Details: "If the method does not invoke the next filter, processResource is not called" */
-      /* TODO: implement test */
       TestResult tr5 = tcd.getTestResultFailed(RESOURCEFILTER_DOFILTERBLOCK);
-      
+      /* TODO: implement test */
+
       /* TestCase: ResourceFilter_doFilterException1 */
       /* Details: "If the method throws an UnavailableException, processResource is not called" */
-      /* TODO: implement test */
       TestResult tr6 = tcd.getTestResultFailed(RESOURCEFILTER_DOFILTEREXCEPTION1);
-      
+      /* TODO: implement test */
+
       /* TestCase: ResourceFilter_doFilterException2 */
       /* Details: "If the method throws an UnavailableException, no further filter is called" */
-      /* TODO: implement test */
       TestResult tr7 = tcd.getTestResultFailed(RESOURCEFILTER_DOFILTEREXCEPTION2);
-      
+      /* TODO: implement test */
+
       /* TestCase: ResourceFilter_doFilterExamine */
       /* Details: "After the next filter has been successfully invoked, the ResourceResponse may be examined" */
-      /* TODO: implement test */
       TestResult tr8 = tcd.getTestResultFailed(RESOURCEFILTER_DOFILTEREXAMINE);
-      
+      /* TODO: implement test */
+
 
 
       // Write the results to the output stream

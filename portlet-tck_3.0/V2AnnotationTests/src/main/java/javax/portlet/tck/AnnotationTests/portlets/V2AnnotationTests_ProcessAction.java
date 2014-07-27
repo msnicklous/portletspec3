@@ -26,13 +26,9 @@ import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.portlet.ActionRequest;
-import javax.portlet.ActionResponse;
-import javax.portlet.Portlet;
-import javax.portlet.PortletConfig;
-import javax.portlet.PortletException;
-import javax.portlet.RenderRequest;
-import javax.portlet.RenderResponse;
+import javax.portlet.*;
+import javax.portlet.filter.*;
+import javax.portlet.tck.beans.ClassChecker;
 import javax.portlet.tck.beans.TestCaseDetails;
 import javax.portlet.tck.beans.JSR286ApiTestCaseDetails;
 import static javax.portlet.tck.beans.JSR286ApiTestCaseDetails.*;
@@ -49,11 +45,11 @@ public class V2AnnotationTests_ProcessAction implements Portlet {
          V2AnnotationTests_ProcessAction.class.getName();
    private final Logger LOGGER = Logger.getLogger(LOG_CLASS);
    
-   private PortletConfig config = null;
+   private PortletConfig portletConfig = null;
 
    @Override
    public void init(PortletConfig config) throws PortletException {
-      this.config = config;
+      this.portletConfig = config;
    }
 
    @Override
@@ -61,45 +57,34 @@ public class V2AnnotationTests_ProcessAction implements Portlet {
    }
 
    @Override
-   public void processAction(ActionRequest request, ActionResponse response)
+   public void processAction(ActionRequest actionRequest, ActionResponse actionResponse)
          throws PortletException, IOException {
    }
 
    @Override
-   public void render(RenderRequest request, RenderResponse response)
+   public void render(RenderRequest renderRequest, RenderResponse renderResponse)
          throws PortletException, IOException {
       
       if (LOGGER.isLoggable(Level.FINE)) {
          LOGGER.logp(Level.FINE, LOG_CLASS, "render", "Entry");
       }
 
-      PrintWriter writer = response.getWriter();
+      PrintWriter writer = renderResponse.getWriter();
       JSR286ApiTestCaseDetails tcd = new JSR286ApiTestCaseDetails();
+      ClassChecker cc = new ClassChecker(ProcessAction.class);
 
       // Create result objects for the tests
 
-      /* TestCase: ProcessAction_ExtendsAnnotation */
-      /* Details: "ProcessAction extends java.lang.annotation.Annotation" */
-      /* TODO: implement test */
-      TestResult tr0 = tcd.getTestResultFailed(PROCESSACTION_EXTENDSANNOTATION);
-      
-      /* TestCase: ProcessAction_hasName */
-      /* Details: "Has a name(java.lang.String) method" */
-      /* TODO: implement test */
-      TestResult tr1 = tcd.getTestResultFailed(PROCESSACTION_HASNAME);
-      
       /* TestCase: ProcessAction_name */
-      /* Details: "On an action request, the method is executed if the parameter "javax.portlet.action" matches the name field" */
+      /* Details: "On an action request, the method is executed if the parameter \"javax.portlet.action\" matches the name field" */
+      TestResult tr0 = tcd.getTestResultFailed(PROCESSACTION_NAME);
       /* TODO: implement test */
-      TestResult tr2 = tcd.getTestResultFailed(PROCESSACTION_NAME);
-      
+
 
 
       // Write the results to the output stream
 
       tr0.writeTo(writer);
-      tr1.writeTo(writer);
-      tr2.writeTo(writer);
 
 
    }

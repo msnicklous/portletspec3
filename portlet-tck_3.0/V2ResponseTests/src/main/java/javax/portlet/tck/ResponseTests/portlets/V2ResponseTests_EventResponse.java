@@ -26,13 +26,9 @@ import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.portlet.ActionRequest;
-import javax.portlet.ActionResponse;
-import javax.portlet.Portlet;
-import javax.portlet.PortletConfig;
-import javax.portlet.PortletException;
-import javax.portlet.RenderRequest;
-import javax.portlet.RenderResponse;
+import javax.portlet.*;
+import javax.portlet.filter.*;
+import javax.portlet.tck.beans.ClassChecker;
 import javax.portlet.tck.beans.TestCaseDetails;
 import javax.portlet.tck.beans.JSR286ApiTestCaseDetails;
 import static javax.portlet.tck.beans.JSR286ApiTestCaseDetails.*;
@@ -49,11 +45,11 @@ public class V2ResponseTests_EventResponse implements Portlet {
          V2ResponseTests_EventResponse.class.getName();
    private final Logger LOGGER = Logger.getLogger(LOG_CLASS);
    
-   private PortletConfig config = null;
+   private PortletConfig portletConfig = null;
 
    @Override
    public void init(PortletConfig config) throws PortletException {
-      this.config = config;
+      this.portletConfig = config;
    }
 
    @Override
@@ -61,53 +57,44 @@ public class V2ResponseTests_EventResponse implements Portlet {
    }
 
    @Override
-   public void processAction(ActionRequest request, ActionResponse response)
+   public void processAction(ActionRequest actionRequest, ActionResponse actionResponse)
          throws PortletException, IOException {
    }
 
    @Override
-   public void render(RenderRequest request, RenderResponse response)
+   public void render(RenderRequest renderRequest, RenderResponse renderResponse)
          throws PortletException, IOException {
       
       if (LOGGER.isLoggable(Level.FINE)) {
          LOGGER.logp(Level.FINE, LOG_CLASS, "render", "Entry");
       }
 
-      PrintWriter writer = response.getWriter();
+      PrintWriter writer = renderResponse.getWriter();
       JSR286ApiTestCaseDetails tcd = new JSR286ApiTestCaseDetails();
+      ClassChecker cc = new ClassChecker(EventResponseWrapper.class);
 
       // Create result objects for the tests
 
-      /* TestCase: EventResponse_extendsStateAwareResponse1 */
-      /* Details: "EventResponse extends StateAwareResponse" */
-      /* TODO: implement test */
-      TestResult tr0 = tcd.getTestResultFailed(EVENTRESPONSE_EXTENDSSTATEAWARERESPONSE1);
-      
-      /* TestCase: EventResponse_extendsStateAwareResponse2 */
+      /* TestCase: EventResponse_implementsStateAwareResponse3 */
       /* Details: "All tests described for the PortletResponse execute correctly with the EventResponse" */
+      TestResult tr0 = tcd.getTestResultFailed(EVENTRESPONSE_IMPLEMENTSSTATEAWARERESPONSE3);
       /* TODO: implement test */
-      TestResult tr1 = tcd.getTestResultFailed(EVENTRESPONSE_EXTENDSSTATEAWARERESPONSE2);
-      
-      /* TestCase: EventResponse_extendsStateAwareResponse3 */
+
+      /* TestCase: EventResponse_implementsStateAwareResponse4 */
       /* Details: "All tests described for the StateAwareResponse execute correctly with the EventResponse" */
+      TestResult tr1 = tcd.getTestResultFailed(EVENTRESPONSE_IMPLEMENTSSTATEAWARERESPONSE4);
       /* TODO: implement test */
-      TestResult tr2 = tcd.getTestResultFailed(EVENTRESPONSE_EXTENDSSTATEAWARERESPONSE3);
-      
-      /* TestCase: EventResponse_hasSetRenderParameters */
-      /* Details: "Has a setRenderParameters(EventRequest) method" */
-      /* TODO: implement test */
-      TestResult tr3 = tcd.getTestResultFailed(EVENTRESPONSE_HASSETRENDERPARAMETERS);
-      
+
       /* TestCase: EventResponse_setRenderParameters1 */
       /* Details: "Copies all render parameters set on the EventRequest to the EventResponse" */
+      TestResult tr2 = tcd.getTestResultFailed(EVENTRESPONSE_SETRENDERPARAMETERS1);
       /* TODO: implement test */
-      TestResult tr4 = tcd.getTestResultFailed(EVENTRESPONSE_SETRENDERPARAMETERS1);
-      
+
       /* TestCase: EventResponse_setRenderParameters2 */
       /* Details: "Throws IllegalArgumentException if the input EventRequest parameter is null" */
+      TestResult tr3 = tcd.getTestResultFailed(EVENTRESPONSE_SETRENDERPARAMETERS2);
       /* TODO: implement test */
-      TestResult tr5 = tcd.getTestResultFailed(EVENTRESPONSE_SETRENDERPARAMETERS2);
-      
+
 
 
       // Write the results to the output stream
@@ -116,8 +103,6 @@ public class V2ResponseTests_EventResponse implements Portlet {
       tr1.writeTo(writer);
       tr2.writeTo(writer);
       tr3.writeTo(writer);
-      tr4.writeTo(writer);
-      tr5.writeTo(writer);
 
 
    }

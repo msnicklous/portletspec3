@@ -26,13 +26,9 @@ import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.portlet.ActionRequest;
-import javax.portlet.ActionResponse;
-import javax.portlet.Portlet;
-import javax.portlet.PortletConfig;
-import javax.portlet.PortletException;
-import javax.portlet.RenderRequest;
-import javax.portlet.RenderResponse;
+import javax.portlet.*;
+import javax.portlet.filter.*;
+import javax.portlet.tck.beans.ClassChecker;
 import javax.portlet.tck.beans.TestCaseDetails;
 import javax.portlet.tck.beans.JSR286ApiTestCaseDetails;
 import static javax.portlet.tck.beans.JSR286ApiTestCaseDetails.*;
@@ -49,11 +45,11 @@ public class V2URLTests_PortletURLGenerationListener implements Portlet {
          V2URLTests_PortletURLGenerationListener.class.getName();
    private final Logger LOGGER = Logger.getLogger(LOG_CLASS);
    
-   private PortletConfig config = null;
+   private PortletConfig portletConfig = null;
 
    @Override
    public void init(PortletConfig config) throws PortletException {
-      this.config = config;
+      this.portletConfig = config;
    }
 
    @Override
@@ -61,93 +57,94 @@ public class V2URLTests_PortletURLGenerationListener implements Portlet {
    }
 
    @Override
-   public void processAction(ActionRequest request, ActionResponse response)
+   public void processAction(ActionRequest actionRequest, ActionResponse actionResponse)
          throws PortletException, IOException {
    }
 
    @Override
-   public void render(RenderRequest request, RenderResponse response)
+   public void render(RenderRequest renderRequest, RenderResponse renderResponse)
          throws PortletException, IOException {
       
       if (LOGGER.isLoggable(Level.FINE)) {
          LOGGER.logp(Level.FINE, LOG_CLASS, "render", "Entry");
       }
 
-      PrintWriter writer = response.getWriter();
+      PrintWriter writer = renderResponse.getWriter();
       JSR286ApiTestCaseDetails tcd = new JSR286ApiTestCaseDetails();
+      ClassChecker cc = new ClassChecker(PortletURLGenerationListener.class);
 
       // Create result objects for the tests
 
       /* TestCase: PortletURLGenerationListener_configuration */
       /* Details: "A PortletURLGenerationListener can be configured in the portlet deployment descriptor" */
-      /* TODO: implement test */
       TestResult tr0 = tcd.getTestResultFailed(PORTLETURLGENERATIONLISTENER_CONFIGURATION);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletURLGenerationListener_filterActionURL1 */
       /* Details: "The filterActionURL(PortletURL) method is called before the toString or write methods are executed on an action URL" */
-      /* TODO: implement test */
       TestResult tr1 = tcd.getTestResultFailed(PORTLETURLGENERATIONLISTENER_FILTERACTIONURL1);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletURLGenerationListener_filterActionURL2 */
       /* Details: "The filterActionURL method is passed the PortletURL object representing the action URL" */
-      /* TODO: implement test */
       TestResult tr2 = tcd.getTestResultFailed(PORTLETURLGENERATIONLISTENER_FILTERACTIONURL2);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletURLGenerationListener_filterActionURL3 */
       /* Details: "The input action URL object can be modified by setting a parameter and the modified URL object is processed by the PortletURL toString or write method" */
-      /* TODO: implement test */
       TestResult tr3 = tcd.getTestResultFailed(PORTLETURLGENERATIONLISTENER_FILTERACTIONURL3);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletURLGenerationListener_filterActionURL4 */
       /* Details: "The input action URL object can be modified by setting a property and the modified URL object is processed by the PortletURL toString or write method" */
-      /* TODO: implement test */
       TestResult tr4 = tcd.getTestResultFailed(PORTLETURLGENERATIONLISTENER_FILTERACTIONURL4);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletURLGenerationListener_filterRenderURL5 */
       /* Details: "The filterRenderURL(PortletURL) method is called before the toString or write methods are executed on an action URL" */
-      /* TODO: implement test */
       TestResult tr5 = tcd.getTestResultFailed(PORTLETURLGENERATIONLISTENER_FILTERRENDERURL5);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletURLGenerationListener_filterRenderURL6 */
       /* Details: "The filterRenderURL method is passed the PortletURL object representing the action URL" */
-      /* TODO: implement test */
       TestResult tr6 = tcd.getTestResultFailed(PORTLETURLGENERATIONLISTENER_FILTERRENDERURL6);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletURLGenerationListener_filterRenderURL7 */
       /* Details: "The input action URL object can be modified by setting a parameter and the modified URL object is processed by the PortletURL toString or write method" */
-      /* TODO: implement test */
       TestResult tr7 = tcd.getTestResultFailed(PORTLETURLGENERATIONLISTENER_FILTERRENDERURL7);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletURLGenerationListener_filterRenderURL8 */
       /* Details: "The input action URL object can be modified by setting a property and the modified URL object is processed by the PortletURL toString or write method" */
-      /* TODO: implement test */
       TestResult tr8 = tcd.getTestResultFailed(PORTLETURLGENERATIONLISTENER_FILTERRENDERURL8);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletURLGenerationListener_filterResourceURL1 */
       /* Details: "The filterResourceURL(PortletURL) method is called before the toString or write methods are executed on an action URL" */
-      /* TODO: implement test */
       TestResult tr9 = tcd.getTestResultFailed(PORTLETURLGENERATIONLISTENER_FILTERRESOURCEURL1);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletURLGenerationListener_filterResourceURL2 */
       /* Details: "The filterResourceURL method is passed the PortletURL object representing the action URL" */
-      /* TODO: implement test */
       TestResult tr10 = tcd.getTestResultFailed(PORTLETURLGENERATIONLISTENER_FILTERRESOURCEURL2);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletURLGenerationListener_filterResourceURL3 */
       /* Details: "The input action URL object can be modified by setting a parameter and the modified URL object is processed by the PortletURL toString or write method" */
-      /* TODO: implement test */
       TestResult tr11 = tcd.getTestResultFailed(PORTLETURLGENERATIONLISTENER_FILTERRESOURCEURL3);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletURLGenerationListener_filterResourceURL4 */
       /* Details: "The input action URL object can be modified by setting a property and the modified URL object is processed by the PortletURL toString or write method" */
-      /* TODO: implement test */
       TestResult tr12 = tcd.getTestResultFailed(PORTLETURLGENERATIONLISTENER_FILTERRESOURCEURL4);
-      
+      /* TODO: implement test */
+
       /* TestCase: PortletURLGenerationListener_filterResourceURL5 */
       /* Details: "The input action URL object can be modified by setting the resource ID and the modified URL object is processed by the PortletURL toString or write method" */
-      /* TODO: implement test */
       TestResult tr13 = tcd.getTestResultFailed(PORTLETURLGENERATIONLISTENER_FILTERRESOURCEURL5);
-      
+      /* TODO: implement test */
+
 
 
       // Write the results to the output stream

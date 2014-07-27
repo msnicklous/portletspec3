@@ -26,13 +26,9 @@ import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.portlet.ActionRequest;
-import javax.portlet.ActionResponse;
-import javax.portlet.Portlet;
-import javax.portlet.PortletConfig;
-import javax.portlet.PortletException;
-import javax.portlet.RenderRequest;
-import javax.portlet.RenderResponse;
+import javax.portlet.*;
+import javax.portlet.filter.*;
+import javax.portlet.tck.beans.ClassChecker;
 import javax.portlet.tck.beans.TestCaseDetails;
 import javax.portlet.tck.beans.JSR286ApiTestCaseDetails;
 import static javax.portlet.tck.beans.JSR286ApiTestCaseDetails.*;
@@ -49,11 +45,11 @@ public class V2WrapperTests_ActionRequestWrapper implements Portlet {
          V2WrapperTests_ActionRequestWrapper.class.getName();
    private final Logger LOGGER = Logger.getLogger(LOG_CLASS);
    
-   private PortletConfig config = null;
+   private PortletConfig portletConfig = null;
 
    @Override
    public void init(PortletConfig config) throws PortletException {
-      this.config = config;
+      this.portletConfig = config;
    }
 
    @Override
@@ -61,128 +57,69 @@ public class V2WrapperTests_ActionRequestWrapper implements Portlet {
    }
 
    @Override
-   public void processAction(ActionRequest request, ActionResponse response)
+   public void processAction(ActionRequest actionRequest, ActionResponse actionResponse)
          throws PortletException, IOException {
    }
 
    @Override
-   public void render(RenderRequest request, RenderResponse response)
+   public void render(RenderRequest renderRequest, RenderResponse renderResponse)
          throws PortletException, IOException {
       
       if (LOGGER.isLoggable(Level.FINE)) {
          LOGGER.logp(Level.FINE, LOG_CLASS, "render", "Entry");
       }
 
-      PrintWriter writer = response.getWriter();
+      PrintWriter writer = renderResponse.getWriter();
       JSR286ApiTestCaseDetails tcd = new JSR286ApiTestCaseDetails();
+      ClassChecker cc = new ClassChecker(ActionRequestWrapper.class);
 
       // Create result objects for the tests
 
-      /* TestCase: ActionRequestWrapper_extendsPortletRequestWrapper */
-      /* Details: "Extends PortletRequestWrapper" */
-      /* TODO: implement test */
-      TestResult tr0 = tcd.getTestResultFailed(ACTIONREQUESTWRAPPER_EXTENDSPORTLETREQUESTWRAPPER);
-      
-      /* TestCase: ActionRequestWrapper_implementsActionRequest */
-      /* Details: "Implements ActionRequest" */
-      /* TODO: implement test */
-      TestResult tr1 = tcd.getTestResultFailed(ACTIONREQUESTWRAPPER_IMPLEMENTSACTIONREQUEST);
-      
-      /* TestCase: ActionRequestWrapper_constructor */
-      /* Details: "Constructs ActionRequestWrapper(ActionRequest) with specified wrapped ActionRequest object" */
-      /* TODO: implement test */
-      TestResult tr2 = tcd.getTestResultFailed(ACTIONREQUESTWRAPPER_CONSTRUCTOR);
-      
-      /* TestCase: ActionRequestWrapper_hasGetCharacterEncoding */
-      /* Details: "Has a getCharacterEncoding() method" */
-      /* TODO: implement test */
-      TestResult tr3 = tcd.getTestResultFailed(ACTIONREQUESTWRAPPER_HASGETCHARACTERENCODING);
-      
       /* TestCase: ActionRequestWrapper_getCharacterEncoding */
       /* Details: "Calls wrapped method" */
+      TestResult tr0 = tcd.getTestResultFailed(ACTIONREQUESTWRAPPER_GETCHARACTERENCODING);
       /* TODO: implement test */
-      TestResult tr4 = tcd.getTestResultFailed(ACTIONREQUESTWRAPPER_GETCHARACTERENCODING);
-      
-      /* TestCase: ActionRequestWrapper_hasGetContentLength */
-      /* Details: "Has a getContentLength() method" */
-      /* TODO: implement test */
-      TestResult tr5 = tcd.getTestResultFailed(ACTIONREQUESTWRAPPER_HASGETCONTENTLENGTH);
-      
+
       /* TestCase: ActionRequestWrapper_getContentLength */
       /* Details: "Calls wrapped method" */
+      TestResult tr1 = tcd.getTestResultFailed(ACTIONREQUESTWRAPPER_GETCONTENTLENGTH);
       /* TODO: implement test */
-      TestResult tr6 = tcd.getTestResultFailed(ACTIONREQUESTWRAPPER_GETCONTENTLENGTH);
-      
-      /* TestCase: ActionRequestWrapper_hasGetContentType */
-      /* Details: "Has a getContentType() method" */
-      /* TODO: implement test */
-      TestResult tr7 = tcd.getTestResultFailed(ACTIONREQUESTWRAPPER_HASGETCONTENTTYPE);
-      
+
       /* TestCase: ActionRequestWrapper_getContentType */
       /* Details: "Calls wrapped method" */
+      TestResult tr2 = tcd.getTestResultFailed(ACTIONREQUESTWRAPPER_GETCONTENTTYPE);
       /* TODO: implement test */
-      TestResult tr8 = tcd.getTestResultFailed(ACTIONREQUESTWRAPPER_GETCONTENTTYPE);
-      
-      /* TestCase: ActionRequestWrapper_hasGetPortletInputStream */
-      /* Details: "Has a getPortletInputStream() method" */
-      /* TODO: implement test */
-      TestResult tr9 = tcd.getTestResultFailed(ACTIONREQUESTWRAPPER_HASGETPORTLETINPUTSTREAM);
-      
+
       /* TestCase: ActionRequestWrapper_getPortletInputStream */
       /* Details: "Calls wrapped method" */
+      TestResult tr3 = tcd.getTestResultFailed(ACTIONREQUESTWRAPPER_GETPORTLETINPUTSTREAM);
       /* TODO: implement test */
-      TestResult tr10 = tcd.getTestResultFailed(ACTIONREQUESTWRAPPER_GETPORTLETINPUTSTREAM);
-      
-      /* TestCase: ActionRequestWrapper_hasGetReader */
-      /* Details: "Has a getReader() method" */
-      /* TODO: implement test */
-      TestResult tr11 = tcd.getTestResultFailed(ACTIONREQUESTWRAPPER_HASGETREADER);
-      
+
       /* TestCase: ActionRequestWrapper_getReader */
       /* Details: "Calls wrapped method" */
+      TestResult tr4 = tcd.getTestResultFailed(ACTIONREQUESTWRAPPER_GETREADER);
       /* TODO: implement test */
-      TestResult tr12 = tcd.getTestResultFailed(ACTIONREQUESTWRAPPER_GETREADER);
-      
-      /* TestCase: ActionRequestWrapper_hasSetCharacterEncoding */
-      /* Details: "Has a setCharacterEncoding(java.lang.String) method" */
-      /* TODO: implement test */
-      TestResult tr13 = tcd.getTestResultFailed(ACTIONREQUESTWRAPPER_HASSETCHARACTERENCODING);
-      
+
       /* TestCase: ActionRequestWrapper_setCharacterEncoding */
       /* Details: "Calls wrapped method" */
+      TestResult tr5 = tcd.getTestResultFailed(ACTIONREQUESTWRAPPER_SETCHARACTERENCODING);
       /* TODO: implement test */
-      TestResult tr14 = tcd.getTestResultFailed(ACTIONREQUESTWRAPPER_SETCHARACTERENCODING);
-      
-      /* TestCase: ActionRequestWrapper_hasGetRequest */
-      /* Details: "Has a getRequest() method" */
-      /* TODO: implement test */
-      TestResult tr15 = tcd.getTestResultFailed(ACTIONREQUESTWRAPPER_HASGETREQUEST);
-      
+
       /* TestCase: ActionRequestWrapper_getRequest */
       /* Details: "Returns wrapped ActionRequest object" */
+      TestResult tr6 = tcd.getTestResultFailed(ACTIONREQUESTWRAPPER_GETREQUEST);
       /* TODO: implement test */
-      TestResult tr16 = tcd.getTestResultFailed(ACTIONREQUESTWRAPPER_GETREQUEST);
-      
-      /* TestCase: ActionRequestWrapper_hasSetRequest */
-      /* Details: "Has a setRequest(ActionRequest) method" */
-      /* TODO: implement test */
-      TestResult tr17 = tcd.getTestResultFailed(ACTIONREQUESTWRAPPER_HASSETREQUEST);
-      
+
       /* TestCase: ActionRequestWrapper_setRequest */
       /* Details: "Allows wrapped ActionRequest object to be set" */
+      TestResult tr7 = tcd.getTestResultFailed(ACTIONREQUESTWRAPPER_SETREQUEST);
       /* TODO: implement test */
-      TestResult tr18 = tcd.getTestResultFailed(ACTIONREQUESTWRAPPER_SETREQUEST);
-      
-      /* TestCase: ActionRequestWrapper_hasGetMethod */
-      /* Details: "Has a getMethod() method" */
-      /* TODO: implement test */
-      TestResult tr19 = tcd.getTestResultFailed(ACTIONREQUESTWRAPPER_HASGETMETHOD);
-      
+
       /* TestCase: ActionRequestWrapper_getMethod */
       /* Details: "Calls wrapped method" */
+      TestResult tr8 = tcd.getTestResultFailed(ACTIONREQUESTWRAPPER_GETMETHOD);
       /* TODO: implement test */
-      TestResult tr20 = tcd.getTestResultFailed(ACTIONREQUESTWRAPPER_GETMETHOD);
-      
+
 
 
       // Write the results to the output stream
@@ -196,18 +133,6 @@ public class V2WrapperTests_ActionRequestWrapper implements Portlet {
       tr6.writeTo(writer);
       tr7.writeTo(writer);
       tr8.writeTo(writer);
-      tr9.writeTo(writer);
-      tr10.writeTo(writer);
-      tr11.writeTo(writer);
-      tr12.writeTo(writer);
-      tr13.writeTo(writer);
-      tr14.writeTo(writer);
-      tr15.writeTo(writer);
-      tr16.writeTo(writer);
-      tr17.writeTo(writer);
-      tr18.writeTo(writer);
-      tr19.writeTo(writer);
-      tr20.writeTo(writer);
 
 
    }

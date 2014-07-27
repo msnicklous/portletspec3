@@ -26,13 +26,9 @@ import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.portlet.ActionRequest;
-import javax.portlet.ActionResponse;
-import javax.portlet.Portlet;
-import javax.portlet.PortletConfig;
-import javax.portlet.PortletException;
-import javax.portlet.RenderRequest;
-import javax.portlet.RenderResponse;
+import javax.portlet.*;
+import javax.portlet.filter.*;
+import javax.portlet.tck.beans.ClassChecker;
 import javax.portlet.tck.beans.TestCaseDetails;
 import javax.portlet.tck.beans.JSR286ApiTestCaseDetails;
 import static javax.portlet.tck.beans.JSR286ApiTestCaseDetails.*;
@@ -49,11 +45,11 @@ public class V2RequestTests_RenderRequest implements Portlet {
          V2RequestTests_RenderRequest.class.getName();
    private final Logger LOGGER = Logger.getLogger(LOG_CLASS);
    
-   private PortletConfig config = null;
+   private PortletConfig portletConfig = null;
 
    @Override
    public void init(PortletConfig config) throws PortletException {
-      this.config = config;
+      this.portletConfig = config;
    }
 
    @Override
@@ -61,53 +57,41 @@ public class V2RequestTests_RenderRequest implements Portlet {
    }
 
    @Override
-   public void processAction(ActionRequest request, ActionResponse response)
+   public void processAction(ActionRequest actionRequest, ActionResponse actionResponse)
          throws PortletException, IOException {
    }
 
    @Override
-   public void render(RenderRequest request, RenderResponse response)
+   public void render(RenderRequest renderRequest, RenderResponse renderResponse)
          throws PortletException, IOException {
       
       if (LOGGER.isLoggable(Level.FINE)) {
          LOGGER.logp(Level.FINE, LOG_CLASS, "render", "Entry");
       }
 
-      PrintWriter writer = response.getWriter();
+      PrintWriter writer = renderResponse.getWriter();
       JSR286ApiTestCaseDetails tcd = new JSR286ApiTestCaseDetails();
+      ClassChecker cc = new ClassChecker(renderRequest.getClass());
 
       // Create result objects for the tests
 
-      /* TestCase: RenderRequest_extendsPortletRequest1 */
-      /* Details: "RenderRequest extends PortletRequest" */
-      /* TODO: implement test */
-      TestResult tr0 = tcd.getTestResultFailed(RENDERREQUEST_EXTENDSPORTLETREQUEST1);
-      
-      /* TestCase: RenderRequest_extendsPortletRequest2 */
+      /* TestCase: RenderRequest_implementsPortletRequest2 */
       /* Details: "All tests described for the PortletRequest execute correctly with the RenderRequest" */
+      TestResult tr0 = tcd.getTestResultFailed(RENDERREQUEST_IMPLEMENTSPORTLETREQUEST2);
       /* TODO: implement test */
-      TestResult tr1 = tcd.getTestResultFailed(RENDERREQUEST_EXTENDSPORTLETREQUEST2);
-      
+
       /* TestCase: RenderRequest_fieldETAG */
-      /* Details: "Has String field ETAG with value of "portlet.ETag" " */
-      /* TODO: implement test */
-      TestResult tr2 = tcd.getTestResultFailed(RENDERREQUEST_FIELDETAG);
-      
-      /* TestCase: RenderRequest_hasgetETag */
-      /* Details: "Has a getETag() method" */
-      /* TODO: implement test */
-      TestResult tr3 = tcd.getTestResultFailed(RENDERREQUEST_HASGETETAG);
-      
-      /* TestCase: RenderRequest_getETag1 */
-      /* Details: "Returns a String containing the validation tag if the portlet container has a cached response for this request" */
-      /* TODO: implement test */
-      TestResult tr4 = tcd.getTestResultFailed(RENDERREQUEST_GETETAG1);
-      
+      /* Details: "Has String field ETAG with value of \"portlet.ETag\" " */
+      TestResult tr1 = tcd.getTestResultFailed(RENDERREQUEST_FIELDETAG);
+      {
+         tr1.setTcSuccess(cc.hasField("ETAG", "portlet.ETag"));
+      }
+
       /* TestCase: RenderRequest_getETag2 */
       /* Details: "Returns null if there is no cached response" */
+      TestResult tr2 = tcd.getTestResultFailed(RENDERREQUEST_GETETAG2);
       /* TODO: implement test */
-      TestResult tr5 = tcd.getTestResultFailed(RENDERREQUEST_GETETAG2);
-      
+
 
 
       // Write the results to the output stream
@@ -115,9 +99,6 @@ public class V2RequestTests_RenderRequest implements Portlet {
       tr0.writeTo(writer);
       tr1.writeTo(writer);
       tr2.writeTo(writer);
-      tr3.writeTo(writer);
-      tr4.writeTo(writer);
-      tr5.writeTo(writer);
 
 
    }

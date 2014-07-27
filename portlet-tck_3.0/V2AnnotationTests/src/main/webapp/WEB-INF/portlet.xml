@@ -45,6 +45,28 @@
    </portlet>
 
    <portlet>
+      <portlet-name>V2AnnotationTests_SIG_ProcessAction</portlet-name>
+      <portlet-class>javax.portlet.tck.AnnotationTests.portlets.V2AnnotationTests_SIG_ProcessAction</portlet-class>
+
+      <init-param>
+         <name>TestParameter</name>
+         <value>TestValue</value>
+      </init-param>
+
+      <expiration-cache>0</expiration-cache>
+
+      <supports>
+         <mime-type>text/html</mime-type>
+      </supports>
+
+      <supported-locale>en_US</supported-locale>
+
+      <portlet-info>
+         <title>V2AnnotationTests_SIG_ProcessAction</title>
+      </portlet-info>
+   </portlet>
+
+   <portlet>
       <portlet-name>V2AnnotationTests_ProcessEvent</portlet-name>
       <portlet-class>javax.portlet.tck.AnnotationTests.portlets.V2AnnotationTests_ProcessEvent</portlet-class>
 
@@ -67,6 +89,28 @@
    </portlet>
 
    <portlet>
+      <portlet-name>V2AnnotationTests_SIG_ProcessEvent</portlet-name>
+      <portlet-class>javax.portlet.tck.AnnotationTests.portlets.V2AnnotationTests_SIG_ProcessEvent</portlet-class>
+
+      <init-param>
+         <name>TestParameter</name>
+         <value>TestValue</value>
+      </init-param>
+
+      <expiration-cache>0</expiration-cache>
+
+      <supports>
+         <mime-type>text/html</mime-type>
+      </supports>
+
+      <supported-locale>en_US</supported-locale>
+
+      <portlet-info>
+         <title>V2AnnotationTests_SIG_ProcessEvent</title>
+      </portlet-info>
+   </portlet>
+
+   <portlet>
       <portlet-name>V2AnnotationTests_RenderMode</portlet-name>
       <portlet-class>javax.portlet.tck.AnnotationTests.portlets.V2AnnotationTests_RenderMode</portlet-class>
 
@@ -85,6 +129,28 @@
 
       <portlet-info>
          <title>V2AnnotationTests_RenderMode</title>
+      </portlet-info>
+   </portlet>
+
+   <portlet>
+      <portlet-name>V2AnnotationTests_SIG_RenderMode</portlet-name>
+      <portlet-class>javax.portlet.tck.AnnotationTests.portlets.V2AnnotationTests_SIG_RenderMode</portlet-class>
+
+      <init-param>
+         <name>TestParameter</name>
+         <value>TestValue</value>
+      </init-param>
+
+      <expiration-cache>0</expiration-cache>
+
+      <supports>
+         <mime-type>text/html</mime-type>
+      </supports>
+
+      <supported-locale>en_US</supported-locale>
+
+      <portlet-info>
+         <title>V2AnnotationTests_SIG_RenderMode</title>
       </portlet-info>
    </portlet>
 
