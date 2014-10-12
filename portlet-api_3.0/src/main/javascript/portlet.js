@@ -306,7 +306,6 @@ var portlet = portlet || {};
 
    // variable declarations
    var pi = portlet.impl,    
-       isInitialized = false,           // marker to allow lazy initialization
        portletRegex = "^portlet\..*",
    
    /**
@@ -327,23 +326,6 @@ var portlet = portlet || {};
    wnd = window,
    delay = function(aCallback, aTimeout) {
       wnd.setTimeout(aCallback, aTimeout);
-   },
-
-
-   /**
-    * Sets  up the portlet hub for use. 
-    * To implement the mockup, data and functions are retrieved from 
-    * the global namespace. It was done in this manner to improve testability.
-    * A "real" portlet hub implementation would likely keep everything within the 
-    * closure.
-    * @private
-    */
-   initialize = function () {
-      if (isInitialized) {
-         return;
-      }
-
-      isInitialized = true;
    },
 
 
@@ -391,6 +373,56 @@ var portlet = portlet || {};
       };
    },
 
+   // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   // ~~~~~~~~~~~~~~~~~~~~~~ Page State Accessors ~~~~~~~~~~~~~~~~~~~~
+   // The page state is an object containing one member of the following
+   // structure for each portlet:
+   //
+   // 'PortletA' : {
+   //    'state' : {
+   //       'parameters' : {
+   //          'parm1' : ['val1'], 
+   //          'parm2' : ['val2', 'val3']
+   //       }, 
+   //       'portletMode' : 'VIEW', 
+   //       'windowState' : 'NORMAL',
+   //    },
+   //    'pubParms' : [],
+   //    'allowedPM' : ['VIEW', 'EDIT', 'HELP'],
+   //    'allowedWS' : ['NORMAL', 'MINIMIZED', 'MAXIMIZED'],
+   // }
+   //
+   pageState = {},
+   
+   /**
+    * Callback function provided to the impl when a portlet is registered.
+    * The impl must pass the portlet ID along with the corresponding page
+    * state data structure as defined above.
+    *
+    * @param      {string}    pid         The portlet ID
+    * @param      {object}    pasta       The page state data for the portlet
+    * @private
+    */
+   setPortletData = function (pid, pasta) {
+      pageState[pid] = pasta;
+      pageState[pid].waitingForImpl = false;
+   },
+   
+   /**
+    * Callback function provided to the impl when a portlet is registered.
+    * The impl must pass the portlet ID along with the corresponding page
+    * state data structure as defined above.
+    *
+    * @param      {string}    pid         The portlet ID
+    * @param      {object}    flag        Flag indicating that we're waiting on on
+                                          an update for this portlet
+    * @private
+    */
+   setWaitingForImpl = function (pid, flag) {
+      pageState[pid].waitingForImpl = flag;
+   },
+   
+   // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
    // ~~~~~~~~~~~~~~~~~~~~~~ Event Handling ~~~~~~~~~~~~~~~~~~~~~~~~~~
    // for event handling
    handleCtr = 0,                         // used to generate handles returned by addEventListener
@@ -946,34 +978,20 @@ var portlet = portlet || {};
     *                   initialization. 
     */
    portlet.register = function (portletId) {
-      var isRegistered = false;
-      
-      // Since this is the first function to be called, support lazy initialization
-      initialize();
-      
-      function registrationComplete () {
-         isRegistered = true;
-      }
-      
-      // give the implementation a chance to register
-      portlet.impl.register(portletId, registrationComplete);
-      function waitForReg() {
-         var ctr = 50;
-         if (isRegistered !== true && (--ctr >= 0)) {
-            delay(waitForReg, 20);
-         }
-         if (isRegistered !== true) {
-            throwNotInitializedException("Error initializing implementation");
-         }
-      }
-      waitForReg();
 
       // check for exactly 1 argument of type 'string'
       checkArguments(arguments, 1, 1, ['string']);
-
+      
+      // Give the implementation a chance to register. The impl is passed a 
+      // callback that it uses to update the page state for the portlet.
+      portlet.impl.register(portletId, setPortletData);
+      
+      
       if (pi.isValidId(portletId) !== true) {
          throwIllegalArgumentException("Invalid portlet ID: " + portletId);
       }
+
+      setWaitingForImpl(true);
 
       /**
        * Returned by the {@link portlet.register} method to 
@@ -993,7 +1011,9 @@ var portlet = portlet || {};
           * @property   {string[]}  portletModes   The defined portlet mode values
           * @memberOf         PortletInit
           */
-         portletModes : pi.getAllowedPM(portletId), 
+         // FIX Later!!
+         // portletModes : pi.getAllowedPM(portletId), 
+         portletModes : ['VIEW', 'EDIT', 'HELP'],
 
 
          /**
@@ -1006,7 +1026,9 @@ var portlet = portlet || {};
           * @property   {string[]}  windowStates   The defined window state values
           * @memberOf         PortletInit
           */
-         windowStates : pi.getAllowedWS(portletId), 
+         // FIX Later!!
+         // windowStates : pi.getAllowedWS(portletId), 
+         windowStates : ['NORMAL', 'MINIMIZED', 'MAXIMIZED'],
 
          /**
           * Adds a listener function for specified event type.
