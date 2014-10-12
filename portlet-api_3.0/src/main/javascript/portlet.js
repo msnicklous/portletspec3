@@ -157,7 +157,7 @@
  * Portlet Specification 3.0 (JSR 362) expands on that by providing capability 
  * allowing a portlet to change its state through JavaScript functions.
  * <p>
- * To do so, Portlet Specification 3.0 introduced a JavaScript component called the 
+ * Portlet Specification 3.0 introduces a JavaScript component called the 
  * Portlet Hub that manages the state of all portlets on a portal page.
  * <p>
  * Some terminology:
@@ -296,8 +296,8 @@
 var portlet = portlet || {};
 
 
-(function() {
-   'use strict'
+(function () {
+   'use strict';
 
    // If module has already been loaded, don't load again 
    if (typeof portlet.register === 'function') {
@@ -307,6 +307,7 @@ var portlet = portlet || {};
    // variable declarations
    var pi = portlet.impl,    
        isInitialized = false,           // marker to allow lazy initialization
+       portletRegex = "^portlet\..*",
    
    /**
     * Portlet Hub Mockup internal structure defining the data held 
@@ -375,19 +376,6 @@ var portlet = portlet || {};
    },
 
    /**
-    * Thrown when a portlet hub encounters an internal error.
-    * @typedef    ImplementationException 
-    * @property   {string}    name     The exception name, equal to "ImplementationException"
-    * @property   {string}    message  An optional message that provides more detail about the exception
-    */
-   throwImplementationException = function (msg) {
-      throw {
-         name : "ImplementationException",
-         message : msg
-      };
-   },
-
-   /**
     * Thrown when a portlet attempts to use the API without comleting the intialization
     * process.
     * In general, this means that the onStateChange listener has not been added.
@@ -413,6 +401,17 @@ var portlet = portlet || {};
 
    // Portlet Client Event listeners. Associative array indexed by handle
    pcListeners = {},                      // portlet client event listeners
+   
+   // the portlet hub can only execute a single blocking operation
+   // at a time. At the beginning of the operation, this flag is set to
+   // true to prevent other blocking operations from beginning.
+   // It is reset after the last onStateChange event resulting from the
+   // state change has been fired.
+   // (or also if a communication error occurs.)
+   busy = false,
+   
+   // queue for the portlet ID's that need updating
+   updateQueue = [],
 
    
    /**
@@ -462,9 +461,8 @@ var portlet = portlet || {};
             throwAccessDeniedException("Invalid handle for portlet ID=" + pid);
          } 
          return true;
-      } else {
-         return false;
       }
+      return false;
    },
 
    
@@ -519,8 +517,8 @@ var portlet = portlet || {};
             
             // purge any pending notifications -
             ii = updateQueue.length;
-            while ((ii = ii - 1) >= 0) {
-               if (updateQueue[ii] == pid) {
+            while (ii-- >= 0) {
+               if (updateQueue[ii] === pid) {
                   updateQueue.splice(ii, 1);
                }
             }
@@ -534,17 +532,6 @@ var portlet = portlet || {};
    
    // ~~~~~~~~~~~~~~~~~~~~~~ State handling ~~~~~~~~~~~~~~~~~~~~~~~~~~
    // 
-   
-   // the portlet hub can only execute a single blocking operation
-   // at a time. At the beginning of the operation, this flag is set to
-   // true to prevent other blocking operations from beginning.
-   // It is reset after the last onStateChange event resulting from the
-   // state change has been fired.
-   // (or also if a communication error occurs.)
-   busy = false,
-   
-   // queue for the portlet ID's that need updating
-   updateQueue = [],
    
    /**
     * Calls the portlet onStateChange method in an asynchronous manner
@@ -567,7 +554,7 @@ var portlet = portlet || {};
       
       updateQueue.push(pid);
 
-      if (updateQueue.length == 1) {
+      if (updateQueue.length === 1) {
          delay (function () {
             var p, state, data, callback;
            
@@ -619,7 +606,7 @@ var portlet = portlet || {};
       
       ceQueue.push(evt);
 
-      if (ceQueue.length == 1) {
+      if (ceQueue.length === 1) {
          delay (function () {
             var event, aType, aCallback, aPayload;
            
@@ -674,14 +661,37 @@ var portlet = portlet || {};
           prpNames = pi.getPRPNames(pid),
           name;
       
-      for (; ii < prpNames.length; ii++) {
+      while(ii < prpNames.length) {
          name = prpNames[ii];
          if (isParmInStateEqual(pid, state, name) === false) {
             prps[name] = state.parameters[name];
          }
+         ii++;
       }
       
       return prps;
+   },
+   
+   /**
+    * Accepts an object containing changed portlet states. Updates
+    * the state for each portlet present. 
+    * 
+    * @param   {PortletStates} states  Object containing portlet states to update
+    * @private 
+    */
+   updatePageState = function (states) {
+      var tpid, state;
+
+      for (tpid in states) {
+         if (states.hasOwnProperty(tpid)) {
+            
+            // update state for the portlet
+            state = states[tpid];
+            pi.setState(tpid, state);
+            updateStateForPortlet(tpid);
+         }
+      }
+
    },
    
    /**
@@ -702,13 +712,13 @@ var portlet = portlet || {};
     * @private
     */
    updateState = function (pid, state) {
-      var prps, prp, prpNames, oldVal, newVal, tpid, ii, pids;
+      var prps;
 
       // do necessary checks
       
       if (busy === true) {
          throwAccessDeniedException("Operation in progress");
-      } else if (typeof oscListeners[pid] === 'undefined') {
+      } else if (oscListeners[pid] === undefined) {
          throwNotInitializedException("No onStateChange listener registered for portlet: " + pid);
       }
 
@@ -718,30 +728,6 @@ var portlet = portlet || {};
       // initiating portlet, update that PRP in the other portlets.
       prps = getUpdatedPRPs(pid, state);
       pi.updateParameters(pid, state, prps, updatePageState);
-
-   },
-   
-   /**
-    * Accepts an object containing changed portlet states. Updates
-    * the state for each portlet present. 
-    * 
-    * @param   {PortletStates} states  Object containing portlet states to update
-    * @private 
-    */
-   updatePageState = function (states) {
-      var tpid, state;
-
-      for (tpid in states) {
-         if (!states.hasOwnProperty(tpid)) {
-            continue;
-         }
-         
-         // update state for the portlet
-         state = states[tpid];
-         pi.setState(tpid, state);
-         updateStateForPortlet(tpid);
-
-      }
 
    },
 
@@ -770,20 +756,23 @@ var portlet = portlet || {};
     *             Thrown if the parameters are incorrect
     */
    validateParms = function (parms) {
+      var parm;
       
       // check for null or undefined argument
       if ((parms === null) || (parms === undefined)) {
          throwIllegalArgumentException("The parameters object is " + (typeof parms));
       } 
 
-      for (var parm in parms) {
-         if (Object.prototype.toString.call(parms[parm]) !== '[object Array]') {
-            throwIllegalArgumentException("Invalid parameters. The value of " + 
+      for (parm in parms) {
+         if (parms.hasOwnProperty(parm)) {
+            if (Object.prototype.toString.call(parms[parm]) !== '[object Array]') {
+               throwIllegalArgumentException("Invalid parameters. The value of " + 
                   parm + " is " + Object.prototype.toString.call(parm) + 
                   " rather than '[object Array]'");
-         } else if (parms[parm].length == 0) {
-            throwIllegalArgumentException("Invalid parameters. The value of " + 
+            } else if (parms[parm].length === 0) {
+               throwIllegalArgumentException("Invalid parameters. The value of " + 
                   parm + " is " + "an array with length 0.");
+            } 
          } 
       }
    },
@@ -843,13 +832,12 @@ var portlet = portlet || {};
     * @private 
     */
    setupAction = function (pid, parms, element) {
-      var states, ustr, tpid, state;
  
       // do necessary checks
 
       if (busy === true) {
          throwAccessDeniedException("Operation in progress");
-      } else if (typeof oscListeners[pid] === 'undefined') {
+      } else if (oscListeners[pid] === undefined) {
          throwNotInitializedException("No onStateChange listener registered for portlet: " + pid);
       }
 
@@ -857,6 +845,54 @@ var portlet = portlet || {};
       
       pi.executeAction(pid, parms, element, updatePageState);
 
+   },
+
+
+   /**
+    * Used by the portlet hub methods to check the number and types of 
+    * the arguments.
+    * 
+    * @private
+    * @param   {string[]}  parms    The argument list to be checked
+    * @param   {number}    minParms The minimum number of arguments
+    * @param   {number}    maxParms The maximum number of arguments.
+    *                               If this value is undefined, the function can take any 
+    *                               number of arguments greater than numArgs
+    * @param   {string[]}  types    An array containing the expected parameter types
+    *                               in the order of occurrance in the argument array
+    * @throws  {IllegalArgumentException} 
+    *                               Thrown if the parameters are in some manner incorrect
+    */
+   checkArguments = function (parms, minParms, maxParms, types) {
+
+      // Check for the minimum number of arguments
+      if (parms.length < minParms) {
+         throwIllegalArgumentException("Too few arguments provided. Number of arguments: " 
+               + parms.length);
+
+         // check for maximum number of arguments
+      } else if ((typeof maxParms === 'number') && (parms.length > maxParms)) {
+         throwIllegalArgumentException("Too many arguments provided: " + 
+               [].join.call(parms, ', '));
+
+         // check if the argument types are as expected if provided with types
+      } else if (types !== 'undefined'){
+         
+         var ii = Math.min(parms.length, types.length) - 1;
+         while(ii >= 0) {
+            if (typeof parms[ii] !== types[ii]) {
+               throwIllegalArgumentException("Parameter " + ii + " is of type " + (typeof parms[ii]) 
+                     + " rather than the expected type " + types[ii]);
+            }
+            
+            // If checking for types, also make sure the arguments are neither
+            // null nor undefined.
+            if ((parms[ii] === null) || (parms[ii] === undefined)) {
+               throwIllegalArgumentException("Argument is " + (typeof parms[ii]));
+            } 
+            ii--;
+         }
+      }
    },
    
    /**
@@ -890,53 +926,6 @@ var portlet = portlet || {};
       states = portlet.impl.decodeUpdateString(ustr);
       updatePageState(states);
 
-   },
-
-
-   /**
-    * Used by the portlet hub methods to check the number and types of 
-    * the arguments.
-    * 
-    * @private
-    * @param   {string[]}  parms    The argument list to be checked
-    * @param   {number}    minParms The minimum number of arguments
-    * @param   {number}    maxParms The maximum number of arguments.
-    *                               If this value is undefined, the function can take any 
-    *                               number of arguments greater than numArgs
-    * @param   {string[]}  types    An array containing the expected parameter types
-    *                               in the order of occurrance in the argument array
-    * @throws  {IllegalArgumentException} 
-    *                               Thrown if the parameters are in some manner incorrect
-    */
-   checkArguments = function (parms, minParms, maxParms, types) {
-
-      // Check for the minimum number of arguments
-      if (parms.length < minParms) {
-         throwIllegalArgumentException("Too few arguments provided. Number of arguments: " 
-               + parms.length);
-
-         // check for maximum number of arguments
-      } else if ((typeof maxParms === 'number') && (parms.length > maxParms)) {
-         throwIllegalArgumentException("Too many arguments provided: " + 
-               [].join.call(parms, ', '));
-
-         // check if the argument types are as expected if provided with types
-      } else if (typeof types !== 'undefined'){
-         
-         var ii = Math.min(parms.length, types.length) - 1;
-         for (; ii >= 0; ii = ii - 1) {
-            if (typeof parms[ii] !== types[ii]) {
-               throwIllegalArgumentException("Parameter " + ii + " is of type " + (typeof parms[ii]) 
-                     + " rather than the expected type " + types[ii]);
-            }
-            
-            // If checking for types, also make sure the arguments are neither
-            // null nor undefined.
-            if ((parms[ii] === null) || (parms[ii] === undefined)) {
-               throwIllegalArgumentException("Argument is " + (typeof parms[ii]));
-            } 
-         }
-      }
    };
 
    /**
@@ -957,7 +946,7 @@ var portlet = portlet || {};
     *                   initialization. 
     */
    portlet.register = function (portletId) {
-      var pi = portlet.impl, isRegistered = false;
+      var isRegistered = false;
       
       // Since this is the first function to be called, support lazy initialization
       initialize();
@@ -970,7 +959,7 @@ var portlet = portlet || {};
       portlet.impl.register(portletId, registrationComplete);
       function waitForReg() {
          var ctr = 50;
-         if (isRegistered !== true && ((ctr = ctr - 1) >= 0)) {
+         if (isRegistered !== true && (--ctr >= 0)) {
             delay(waitForReg, 20);
          }
          if (isRegistered !== true) {
@@ -1095,7 +1084,7 @@ var portlet = portlet || {};
             
             var handle, listeners; 
             
-            if (type.match("^portlet\..*")) {
+            if (type.match(portletRegex)) {
                
                // Handle adding system event listener.
                // if it is neither a portlet.onStateChange nor a portlet.onError event, throw
@@ -1284,7 +1273,7 @@ var portlet = portlet || {};
           * @memberOf   PortletInit
           */
          createResourceUrl : function (resParams, cache) {
-            var ii, arg, parms=null, cache=null;
+            var ii, arg, parms=null, cacheability=null;
 
             // check arguments. make sure there is a maximum of two
             // args and determine the types. Check values as possible.
@@ -1294,18 +1283,18 @@ var portlet = portlet || {};
             }
             
             ii = arguments.length;
-            while ((ii = ii -1) >=0) {
+            while (--ii >=0) {
                arg = arguments[ii];
                if (typeof arg === 'string') {
                   switch (arg) {
                   case "PAGE":
                   case "PORTLET":
                   case "FULL":
-                     if (cache === null) {
-                        cache = arg;
+                     if (cacheability=== null) {
+                        cacheability = arg;
                      } else {
                         throwIllegalArgumentException(
-                              "too many string arguments: " + arg + ", " + cache);
+                              "too many string arguments: " + arg + ", " + cacheability);
                      }
                      break;
                   default:
@@ -1327,7 +1316,7 @@ var portlet = portlet || {};
             }
 
             // everything ok, so get URL
-            return pi.getUrl("RESOURCE", portletId, parms, cache);
+            return pi.getUrl("RESOURCE", portletId, parms, cacheability);
          },
          
          /**
@@ -1410,7 +1399,7 @@ var portlet = portlet || {};
             }
             
             ii = arguments.length;
-            while ((ii = ii -1) >=0) {
+            while (--ii >=0) {
                arg = arguments[ii];
                type = Object.prototype.toString.call(arg);
                if (type === '[object HTMLFormElement]') {
@@ -1518,7 +1507,7 @@ var portlet = portlet || {};
             // make sure operation is allowed
             if (busy === true) {
                throwAccessDeniedException("Operation in progress");
-            } else if (typeof oscListeners[portletId] === 'undefined') {
+            } else if (oscListeners[portletId] === undefined) {
                throwNotInitializedException(
                      "No onStateChange listener registered for portlet: " + portletId);
             }
@@ -1616,30 +1605,28 @@ var portlet = portlet || {};
           * @memberOf   PortletInit
           */
          dispatchClientEvent : function (type, payload) {
-            var cnt=0, li, cb;
+            var cnt=0, li;
 
             // check for 2  arguments, the first of which must be a string
             checkArguments(arguments, 2, 2, ['string']);
 
             // disallow use of reserved name for system event types
-            if (type.match("^portlet\..*")) {
+            if (type.match(portletRegex)) {
                throwIllegalArgumentException("The event type is invalid: " + type);
             }
             
             for (li in pcListeners) {
-               if (!pcListeners.hasOwnProperty(li)) {
-                  continue;
+               if (pcListeners.hasOwnProperty(li)) {
+                  
+                  if (type.match(pcListeners[li].type) !== null) {
+                     dispatchCE(type, pcListeners[li].callback, payload);
+                     cnt++;
+                  }
                }
-               
-               if (type.match(pcListeners[li].type) !== null) {
-                  dispatchCE(type, pcListeners[li].callback, payload);
-                  cnt++;
-               }
-               
             }
             
             return cnt;
-         },
+         }
 
       };
 
