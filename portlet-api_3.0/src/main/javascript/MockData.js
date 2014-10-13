@@ -53,154 +53,171 @@
  */
 var portlet = portlet || {};
 
-(function () {
-
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~ Test Data ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~   
    
-   /**
-    * Mock data for portlets
-    * @namespace
-    * @private        
-    */
-   portlet.test = portlet.test || {};
-   portlet.test.data  = {
-
-         // get initial data for the portlets
-         initialPageState : {
-            'PortletA' : {
-               'state' : {
-                  'parameters' : {
-                     'parm1' : ['val1'], 
-                     'parm2' : ['val2', 'val3']
-                  }, 
-                  'portletMode' : 'VIEW', 
-                  'windowState' : 'NORMAL',
-               },
-               'pubParms' : [],
-               'allowedPM' : ['VIEW', 'EDIT', 'HELP'],
-               'allowedWS' : ['NORMAL', 'MINIMIZED', 'MAXIMIZED'],
-               'renderData' : {
-                  'renderData' : null,
-                  'mimeType' : "text/plain",
-               },
-            },
-            'PortletB' : {
-               'state' : {
-                  'parameters' : {
-                     'parm1' : ['val1'], 
-                     'pubparm1' : ['pubval1'], 
-                     'parm2' : ['val2', 'val3']
-                  }, 
-                  'portletMode' : 'VIEW', 
-                  'windowState' : 'NORMAL',
-               },
-               'pubParms' : ['pubparm1'],
-               'allowedPM' : ['VIEW', 'EDIT', 'HELP'],
-               'allowedWS' : ['NORMAL', 'MINIMIZED', 'MAXIMIZED'],
-               'renderData' : {
-                  'renderData' : null,
-                  'mimeType' : "text/plain",
-               },
-            },
-            'PortletC' : {
-               'state' : {
-                  'parameters' : {
-                     'parm1' : ['val1'], 
-                     'pubparm1' : ['pubval1'], 
-                     'pubparm2' : ['pubval2'], 
-                     'parm2' : ['val2', 'val3']
-                  }, 
-                  'portletMode' : 'VIEW', 
-                  'windowState' : 'NORMAL',
-               },
-               'pubParms' : ['pubparm1', 'pubparm2'],
-               'allowedPM' : ['VIEW', 'EDIT', 'HELP'],
-               'allowedWS' : ['NORMAL', 'MINIMIZED', 'MAXIMIZED'],
-               'renderData' : {
-                  'renderData' : null,
-                  'mimeType' : "text/plain",
-               },
-            },
-            'PortletD' : {
-               'state' : {
-                  'parameters' : {
-                     'pubparm1' : ['private_val1'], 
-                     'pubparm2' : ['pubval2'], 
-                     'parm2' : ['val2', 'val3']
-                  }, 
-                  'portletMode' : 'VIEW', 
-                  'windowState' : 'NORMAL',
-               },
-               'pubParms' : ['pubparm2'],
-               'allowedPM' : ['VIEW', 'EDIT', 'HELP'],
-               'allowedWS' : ['NORMAL', 'MINIMIZED', 'MAXIMIZED'],
-               'renderData' : {
-                  'renderData' : "Some render data.",
-                  'mimeType' : "text/plain",
-               },
-            },
-            'PortletE' : {
-               'state' : {
-                  'parameters' : {
-                     'parm1' : ['val1'], 
-                     'pubparm1' : ['pubval1'], 
-                     'pubparm2' : ['pubval2'], 
-                     'parm2' : ['val2', 'val3']
-                  }, 
-                  'portletMode' : 'VIEW', 
-                  'windowState' : 'NORMAL',
-               },
-               'pubParms' : ['pubparm1', 'pubparm2'],
-               'allowedPM' : ['VIEW', 'EDIT', 'HELP'],
-               'allowedWS' : ['NORMAL', 'MINIMIZED', 'MAXIMIZED'],
-               'renderData' : {
-                  'renderData' : "Some render data.",
-                  'mimeType' : "text/plain",
-               },
-            },
-            'PortletF' : {
-               'state' : {
-                  'parameters' : {
-                  }, 
-                  'portletMode' : 'VIEW', 
-                  'windowState' : 'NORMAL',
-               },
-               'pubParms' : [],
-               'allowedPM' : ['VIEW', 'EDIT', 'HELP'],
-               'allowedWS' : ['NORMAL', 'MINIMIZED', 'MAXIMIZED'],
-               'renderData' : {
-                  'renderData' : "Some render data.",
-                  'mimeType' : "text/plain",
-               },
-            },
+/**
+ * Mock data for portlets
+ * @namespace
+ * @private        
+ */
+portlet.test = portlet.test || {};
+portlet.test.data  = {
+   
+   // get initial data for the portlets
+   initialPageState : {
+      'PortletA' : {
+         'state' : {
+            'parameters' : {
+               'parm1' : ['val1'], 
+               'parm2' : ['val2', 'val3']
+            }, 
+            'portletMode' : 'VIEW', 
+            'windowState' : 'NORMAL'
          },
-         
-         // For each portlet, there is a mock update string that         
-         // causes a state update for one or more parameters.        
-         // The string is decoded and turned into an object by the   
-         // decodeUpdateString function. These strings are used
-         // by both the action() and the setPageState() code.
-         updateStrings : {
-               // just updates PortletA
-               "PortletA" : "&~~~&PortletA&mode=VIEW&ws=NORMAL&parm1=Fred&parm2=Barney" +
-                            "&~~~",
-               
-               // updates portlets B & C
-               "PortletB" : "&~~~&PortletB&mode=VIEW&ws=NORMAL&parm1=val1&pubparm1=pubval1&parm2=val2&parm2=val3" +
-                            "&~~~&PortletC&mode=VIEW&ws=NORMAL&parm1=val1&pubparm1=pubval1&pubparm2=pubval2&parm2=val2&parm2=val3" +
-                            "&~~~",
-
-               // Updates A, B, C, & D
-               "PortletC" : "&~~~&PortletA&mode=VIEW&ws=NORMAL&parm1=Fred&parm2=Barney" +
-                            "&~~~&PortletB&mode=VIEW&ws=NORMAL&parm1=val1&pubparm1=pubval1&parm2=val2&parm2=val3" +
-                            "&~~~&PortletC&mode=VIEW&ws=NORMAL&parm1=val1&pubparm1=pubval1&pubparm2=pubval2&parm2=val2&parm2=val3" +
-                            "&~~~&PortletD&mode=VIEW&ws=NORMAL&pubparm1=private_val1&pubparm2=pubval2&parm2=val2&parm2=val3" +
-                            "&~~~",
-
-               "PortletD" : "",
-               "PortletE" : "",
-               "PortletF" : "",
+         'pubParms' : [],
+         'allowedPM' : ['VIEW', 'EDIT', 'HELP'],
+         'allowedWS' : ['NORMAL', 'MINIMIZED', 'MAXIMIZED'],
+         'renderData' : {
+            'renderData' : null,
+            'mimeType' : "text/plain"
          }
-   };
+      },
+      'PortletB' : {
+         'state' : {
+            'parameters' : {
+               'parm1' : ['val1'], 
+               'pubparm1' : ['pubval1'], 
+               'parm2' : ['val2', 'val3']
+            }, 
+            'portletMode' : 'VIEW', 
+            'windowState' : 'NORMAL'
+         },
+         'pubParms' : ['pubparm1'],
+         'allowedPM' : ['VIEW', 'EDIT', 'HELP'],
+         'allowedWS' : ['NORMAL', 'MINIMIZED', 'MAXIMIZED'],
+         'renderData' : null
+      },
+      'PortletC' : {
+         'state' : {
+            'parameters' : {
+               'parm1' : ['val1'], 
+               'pubparm1' : ['pubval1'], 
+               'pubparm2' : ['pubval2'], 
+               'parm2' : ['val2', 'val3']
+            }, 
+            'portletMode' : 'VIEW', 
+            'windowState' : 'NORMAL'
+         },
+         'pubParms' : ['pubparm1', 'pubparm2'],
+         'allowedPM' : ['VIEW', 'EDIT', 'HELP'],
+         'allowedWS' : ['NORMAL', 'MINIMIZED', 'MAXIMIZED']
+      },
+      'PortletD' : {
+         'state' : {
+            'parameters' : {
+               'pubparm1' : ['private_val1'], 
+               'pubparm2' : ['pubval2'], 
+               'parm2' : ['val2', 'val3']
+            }, 
+            'portletMode' : 'VIEW', 
+            'windowState' : 'NORMAL'
+         },
+         'pubParms' : ['pubparm2'],
+         'allowedPM' : ['VIEW', 'EDIT', 'HELP'],
+         'allowedWS' : ['NORMAL', 'MINIMIZED', 'MAXIMIZED'],
+         'renderData' : {
+            'renderData' : "Some render data.",
+            'mimeType' : "text/plain"
+         }
+      },
+      'PortletE' : {
+         'state' : {
+            'parameters' : {
+               'parm1' : ['val1'], 
+               'pubparm1' : ['pubval1'], 
+               'pubparm2' : ['pubval2'], 
+               'parm2' : ['val2', 'val3']
+            }, 
+            'portletMode' : 'VIEW', 
+            'windowState' : 'NORMAL'
+         },
+         'pubParms' : ['pubparm1', 'pubparm2'],
+         'allowedPM' : ['VIEW', 'EDIT', 'HELP'],
+         'allowedWS' : ['NORMAL', 'MINIMIZED', 'MAXIMIZED'],
+         'renderData' : {
+            'renderData' : "Some render data.",
+            'mimeType' : "text/plain"
+         }
+      },
+      'PortletF' : {
+         'state' : {
+            'parameters' : {
+            }, 
+            'portletMode' : 'VIEW', 
+            'windowState' : 'NORMAL'
+         },
+         'pubParms' : [],
+         'allowedPM' : ['VIEW', 'EDIT', 'HELP'],
+         'allowedWS' : ['NORMAL', 'MINIMIZED', 'MAXIMIZED'],
+         'renderData' : {
+            'renderData' : "Some render data.",
+            'mimeType' : "text/plain"
+         }
+      }
+   },
+   
+   // For each portlet, there is a mock update string that         
+   // causes a state update for one or more parameters.        
+   // The string is decoded and turned into an object by the   
+   // decodeUpdateString function. These strings are used
+   // by both the action() and the setPageState() code.
+   updateStrings : {
+      // just updates PortletA
+      "PortletA" : "&~~~&PortletA&mode=VIEW&ws=NORMAL&parm1=Fred&parm2=Barney" +
+      "&~~~",
+      
+      // updates portlets B & C
+      "PortletB" : "&~~~&PortletB&mode=VIEW&ws=NORMAL&parm1=val1&pubparm1=pubval1&parm2=val2&parm2=val3" +
+      "&~~~&PortletC&mode=VIEW&ws=NORMAL&parm1=val1&pubparm1=pubval1&pubparm2=pubval2&parm2=val2&parm2=val3" +
+      "&~~~",
+      
+      // Updates A, B, C, & D
+      "PortletC" : "&~~~&PortletA&mode=VIEW&ws=NORMAL&parm1=Fred&parm2=Barney" +
+      "&~~~&PortletB&mode=VIEW&ws=NORMAL&parm1=val1&pubparm1=pubval1&parm2=val2&parm2=val3" +
+      "&~~~&PortletC&mode=VIEW&ws=NORMAL&parm1=val1&pubparm1=pubval1&pubparm2=pubval2&parm2=val2&parm2=val3" +
+      "&~~~&PortletD&mode=VIEW&ws=NORMAL&pubparm1=private_val1&pubparm2=pubval2&parm2=val2&parm2=val3" +
+      "&~~~",
+      
+      "PortletD" : "",
+      "PortletE" : "",
+      "PortletF" : ""
+   }
+};
+
+// get initial data for the portlets. Clone it so that the test
+// code has a separate copy than the mockup hub.
+portlet.test.getInitData = function () {
+   'use strict';
+   return JSON.parse(JSON.stringify(portlet.test.data.initialPageState));
+};
+
+/**
+ * get the available portlet IDs in an array 
+ */
+portlet.test.getIds = function () {
+   'use strict';
+   var id, ids = [], pageState = portlet.test.data.initialPageState;
+   for (id in pageState) {
+      if (pageState.hasOwnProperty(id)) {
+         ids.push(id);
+      }
+   }
+   return ids;
+};
+
+// ~~~~~~~~~~~~~~~~~~~~~~ End Test Data ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~   
+
+(function () {
 
    var isInitialized = false,
    setPortletData,       // callback from hub
@@ -664,8 +681,8 @@ var portlet = portlet || {};
    // portlet.test = {
 
          // test needs the data & IDs & decoder too
-         portlet.test.getInitData = portlet.impl.getInitData;
-         portlet.test.getIds = portlet.impl.getIds;
+         // portlet.test.getInitData = portlet.impl.getInitData;
+         // portlet.test.getIds = portlet.impl.getIds;
          portlet.test.decodeUpdateString = portlet.impl.decodeUpdateString;
 
    // };
