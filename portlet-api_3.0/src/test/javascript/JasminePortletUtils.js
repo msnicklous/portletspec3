@@ -132,5 +132,72 @@ var portlet = portlet || {};
       },
    };
 
-})();
+   portlet.jasmine.PromiseHandler = function (f) {
+      this.func = f
+      this.result = null;
+      this.errMsg = "";
+      this.error = false;
+      this.complete = false;
+   } 
+   
+   portlet.jasmine.PromiseHandler.prototype = {
+   
+      // For handling promise completion
+      run     : function () {
+         var that = this;
+         var testFunc = function() {
+            that.prom = (that.func)();
+            that.prom.then( 
+               function (res) {
+                  that.result = res; 
+                  that.complete = true;
+               }, 
+               function (err) {
+                  that.errMsg = err;
+                  that.error = true;
+               } 
+            );
+         }
+         expect(testFunc).not.toThrow();
+      },
+      
+      // For making a closure around the run function
+      getRun      : function () {
+         var  that = this;
+         return function() {
+            return that.run();
+         };
+      },
+   
+      // latch function to wait for callback completion
+      // (Jasmine test function called at 10ms intervals until timeout)
+      isComplete      : function () {
+         return (this.complete || this.error);
+      },
+      
+      // For making a closure around the isComplete function
+      getIsComplete      : function () {
+         var  that = this;
+         return function() {
+            return that.isComplete();
+         };
+      },
+   
+      // Check for good completion
+      checker      : function () {
+         expect(this.errMsg).toEqual("");
+         expect(this.complete).toBeTruthy();
+         expect(this.error).not.toBeTruthy();
+         expect(typeof this.result).toEqual('object');
+      },
+      
+      // For making a closure around the checker function
+      getChecker      : function () {
+         var  that = this;
+         return function() {
+            return that.checker();
+         };
+      }
+   };
 
+})();

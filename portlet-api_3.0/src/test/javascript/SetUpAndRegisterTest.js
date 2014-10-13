@@ -23,7 +23,7 @@
 
 describe('The portlet hub provides JavaScript support for portlets.',function(){
    'use strict'
-      
+         
    // get the portlet IDs provided by the system under test. The function must
    // return a string array of portlet IDs that are known to the portlet hub being 
    // tested. There must be at least 3 IDs available.
@@ -31,7 +31,9 @@ describe('The portlet hub provides JavaScript support for portlets.',function(){
        pageState = portlet.test.getInitData(),
        portletA = portletIds[0],
        portletB = portletIds[3],
-       portletC = portletIds[1];
+       portletC = portletIds[1],
+       portletE = portletIds[4],
+       portletF = portletIds[5];
     
    
 
@@ -88,28 +90,14 @@ describe('The portlet hub provides JavaScript support for portlets.',function(){
          expect(testFunc).toThrowCustomException("IllegalArgumentException");
       });
 
-      it('throws an IllegalArgumentException if the portlet ID is not defined for the portlet hub',function(){
-         var testFunc = function () {
-            portlet.register("InvalidPortletId");
-         }
-         expect(testFunc).toThrowCustomException("IllegalArgumentException");
-      });
-
-      it('does not throw an exception if the portlet ID is valid',function(){
-         var testFunc = function () {
-            portlet.register(portletA);
-         }
-         expect(testFunc).not.toThrow();
-      });
-
-      it('returns an object when provided with a valid portlet ID',function(){
+      it('The promise fails if the portlet ID is not defined for the portlet hub',function(){
          var result, errString="", errFlag=false, complete=false;
          var checkSuccess = function () {
             return (complete || errFlag);
          }
          runs(function () {
             var testFunc = function() {
-               var p = portlet.register(portletB);
+               var p = portlet.register("InvalidPortletId");
                p.then( 
                   function (pi) {
                      result = pi; 
@@ -123,37 +111,91 @@ describe('The portlet hub provides JavaScript support for portlets.',function(){
             }
             expect(testFunc).not.toThrow();
          });
-         waitsFor(checkSuccess, "The PortletInit object should be returned", 100);
+         waitsFor(checkSuccess, "The PortletInit object should be returned", 1000);
          runs(function() {
-            expect(errString).toEqual("");
-            expect(complete).toBeTruthy();
-            expect(errFlag).not.toBeTruthy();
-            expect(typeof result).toEqual('object');
+            expect(errString).not.toEqual("");
+            expect(complete).not.toBeTruthy();
+            expect(errFlag).toBeTruthy();
          }); 
       });
 
+      it('does not throw an exception if the portlet ID is valid',function(){
+         var testFunc = function () {
+            portlet.register(portletA);
+         }
+         expect(testFunc).not.toThrow();
+      });
+
+      it('returns an object when provided with a valid portlet ID',function(){
+         var testFunc = function () {
+            return portlet.register(portletB);
+         }
+         var ph = new portlet.jasmine.PromiseHandler(testFunc);
+         runs(ph.getRun());
+         waitsFor(ph.getIsComplete(), "The PortletInit object should be returned", 1000);
+         runs(ph.getChecker()); 
+      });
+
+      it('Supports an asynchronous response from the impl',function(){
+         var testFunc = function () {
+            return portlet.register(portletE);
+         }
+         var ph = new portlet.jasmine.PromiseHandler(testFunc);
+         runs(ph.getRun());
+         waitsFor(ph.getIsComplete(), "The PortletInit object should be returned", 1000);
+         runs(ph.getChecker()); 
+      });
+
       it('returns a PortletInit object containing a "portletModes" property',function(){
-         var result;
-         result = portlet.register(portletB);
-         expect(result.portletModes).toBeDefined();
+         var testFunc = function () {
+            return portlet.register(portletB);
+         }
+         var ph = new portlet.jasmine.PromiseHandler(testFunc);
+         runs(ph.getRun());
+         waitsFor(ph.getIsComplete(), "The PortletInit object should be returned", 1000);
+         runs(ph.getChecker()); 
+         runs(function() {
+            expect(ph.result).toBeDefined();
+         }); 
       });
 
       it('returns PortletInit.portletModes equal to the test data',function(){
-         var result;
-         result = portlet.register(portletB);
-         expect(result.portletModes).toEqual(pageState[portletB].allowedPM);
+         var testFunc = function () {
+            return portlet.register(portletB);
+         }
+         var ph = new portlet.jasmine.PromiseHandler(testFunc);
+         runs(ph.getRun());
+         waitsFor(ph.getIsComplete(), "The PortletInit object should be returned", 1000);
+         runs(ph.getChecker()); 
+         runs(function() {
+            expect(ph.result.portletModes).toEqual(pageState[portletB].allowedPM);
+         }); 
       });
 
       it('returns a PortletInit object containing a "windowStates" property',function(){
-         var result;
-         result = portlet.register(portletB);
-         expect(result.windowStates).toBeDefined();
+         var testFunc = function () {
+            return portlet.register(portletB);
+         }
+         var ph = new portlet.jasmine.PromiseHandler(testFunc);
+         runs(ph.getRun());
+         waitsFor(ph.getIsComplete(), "The PortletInit object should be returned", 1000);
+         runs(ph.getChecker()); 
+         runs(function() {
+            expect(ph.result.windowStates).toBeDefined();
+         }); 
       });
 
       it('returns PortletInit.windowStates equal to the test data',function(){
-         var result;
-         result = portlet.register(portletB);
-         expect(result.windowStates).toEqual(pageState[portletB].allowedWS);
+         var testFunc = function () {
+            return portlet.register(portletB);
+         }
+         var ph = new portlet.jasmine.PromiseHandler(testFunc);
+         runs(ph.getRun());
+         waitsFor(ph.getIsComplete(), "The PortletInit object should be returned", 1000);
+         runs(ph.getChecker()); 
+         runs(function() {
+            expect(ph.result.windowStates).toEqual(pageState[portletB].allowedWS);
+         }); 
       });
 
    });

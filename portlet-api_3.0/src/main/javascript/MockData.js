@@ -239,14 +239,20 @@ portlet.test.getIds = function () {
     * with the state of the mocked portlets.
     * @private
     */
-   initialize = function () {
+   initialize = function (pid) {
       var p = new Promise(
          function(resolve, reject) {
             if (!isInitialized) {
                pageState = portlet.impl.getInitData();
                isInitialized = true;
             }
-            resolve();
+            switch(pid) {
+            case 'PortletE':
+               window.setTimeout(function () {resolve();}, 500);
+               break;
+            default:
+               resolve();
+            }
          }
       );
       return p;
@@ -270,7 +276,7 @@ portlet.test.getIds = function () {
        * @private
        */
       register : function (pid, callback) {
-         return initialize();
+         return initialize(pid);
       },
 
       // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

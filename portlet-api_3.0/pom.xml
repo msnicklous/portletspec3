@@ -249,8 +249,8 @@
 					<specIncludes>
 						<include>**/CustomMatchers.js</include>
 						<include>**/SetUpAndRegisterTest.js</include>
-<!--
  						<include>**/AddEventListenerTest.js</include>
+<!--
 						<include>**/SetPortletStateTest.js</include>
 						<include>**/CreateResourceUrlTest.js</include>
 						<include>**/ActionTest.js</include>
