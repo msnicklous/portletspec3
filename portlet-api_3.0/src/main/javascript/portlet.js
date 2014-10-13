@@ -936,8 +936,12 @@ var portlet = portlet || {};
       // data about the portlet is available.
       var p = portlet.impl.register(portletId);
       
-      p.then(function () {
+      return p.then(function () {
 
+         if (pi.isValidId(portletId) !== true) {
+            throw("Invalid portlet ID: " + portletId);
+         }
+            
          /**
           * Returned by the {@link portlet.register} method to
           * provide functions for use by the portlet client.
@@ -956,9 +960,7 @@ var portlet = portlet || {};
              * @property   {string[]}  portletModes   The defined portlet mode values
              * @memberOf         PortletInit
              */
-            // FIX Later!!
-            // portletModes : pi.getAllowedPM(portletId),
-            portletModes : ['VIEW', 'EDIT', 'HELP'],
+            portletModes : pi.getAllowedPM(portletId),
          
          
             /**
@@ -971,9 +973,7 @@ var portlet = portlet || {};
              * @property   {string[]}  windowStates   The defined window state values
              * @memberOf         PortletInit
              */
-            // FIX Later!!
-            // windowStates : pi.getAllowedWS(portletId),
-            windowStates : ['NORMAL', 'MINIMIZED', 'MAXIMIZED'],
+            windowStates : pi.getAllowedWS(portletId),
          
             /**
              * Adds a listener function for specified event type.
@@ -1598,9 +1598,9 @@ var portlet = portlet || {};
          };
          
          return portletInit;
-      });
-      
-      return p;
+         
+         // end of "then" function - handle error bubbling up from the impl
+      }, function (msg) {throw msg;});
    };
 
 })();

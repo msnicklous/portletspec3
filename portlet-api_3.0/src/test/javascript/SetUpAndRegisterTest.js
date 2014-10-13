@@ -104,42 +104,32 @@ describe('The portlet hub provides JavaScript support for portlets.',function(){
 
       it('returns an object when provided with a valid portlet ID',function(){
          var result, errString="", errFlag=false, complete=false;
-//          errString = "main func: I was here!";
-//          var checkSuccess = function () {
-//             errString = "checkSuccess: I was here!";
-//             return (complete && !errFlag);
-//          }
-//          runs(function () {
-//             var testFunc = function() {
-//                errString = "I was here!";
-//                complete = true;
-//             }
-//             expect(testFunc).not.toThrow();
-//             var p = portlet.register(portletB);
-//             p.then( 
-//                function (pi) {
-//                   result = pi;
-//                   complete = true;
-//                }, 
-//                function (err) {
-//                   errString = err;
-//                   errFlag = true;
-//                } 
-//             );
-//          });
-//          waitsFor(checkSuccess, "The PortletInit object should be returned", 100);
-         runs(function() {
-            var testFunc = function () {
-               errString = "I was here!";
-               complete = true;
+         var checkSuccess = function () {
+            return (complete || errFlag);
+         }
+         runs(function () {
+            var testFunc = function() {
+               var p = portlet.register(portletB);
+               p.then( 
+                  function (pi) {
+                     result = pi; 
+                     complete = true;
+                  }, 
+                  function (err) {
+                     errString = err;
+                     errFlag = true;
+                  } 
+               );
             }
-            expect(testFunc).toThrowCustomException("AccessDeniedException");
+            expect(testFunc).not.toThrow();
+         });
+         waitsFor(checkSuccess, "The PortletInit object should be returned", 100);
+         runs(function() {
+            expect(errString).toEqual("");
+            expect(complete).toBeTruthy();
+            expect(errFlag).not.toBeTruthy();
+            expect(typeof result).toEqual('object');
          }); 
-         waits(10);  // give it a chance to call its onStateChange
-         expect(errString).toEqual("");
-         expect(complete).toBeTruthy();
-         expect(errFlag).not.toBeTruthy();
-         expect(typeof result).toEqual('object');
       });
 
       it('returns a PortletInit object containing a "portletModes" property',function(){
