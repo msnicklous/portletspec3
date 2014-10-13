@@ -103,11 +103,42 @@ describe('The portlet hub provides JavaScript support for portlets.',function(){
       });
 
       it('returns an object when provided with a valid portlet ID',function(){
-         var result;
-         var testFunc = function () {
-            result = portlet.register(portletB);
-         }
-         expect(testFunc).not.toThrow();
+         var result, errString="", errFlag=false, complete=false;
+//          errString = "main func: I was here!";
+//          var checkSuccess = function () {
+//             errString = "checkSuccess: I was here!";
+//             return (complete && !errFlag);
+//          }
+//          runs(function () {
+//             var testFunc = function() {
+//                errString = "I was here!";
+//                complete = true;
+//             }
+//             expect(testFunc).not.toThrow();
+//             var p = portlet.register(portletB);
+//             p.then( 
+//                function (pi) {
+//                   result = pi;
+//                   complete = true;
+//                }, 
+//                function (err) {
+//                   errString = err;
+//                   errFlag = true;
+//                } 
+//             );
+//          });
+//          waitsFor(checkSuccess, "The PortletInit object should be returned", 100);
+         runs(function() {
+            var testFunc = function () {
+               errString = "I was here!";
+               complete = true;
+            }
+            expect(testFunc).toThrowCustomException("AccessDeniedException");
+         }); 
+         waits(10);  // give it a chance to call its onStateChange
+         expect(errString).toEqual("");
+         expect(complete).toBeTruthy();
+         expect(errFlag).not.toBeTruthy();
          expect(typeof result).toEqual('object');
       });
 

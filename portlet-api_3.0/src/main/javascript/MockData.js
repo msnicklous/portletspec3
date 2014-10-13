@@ -218,9 +218,19 @@ portlet.test.getIds = function () {
 // ~~~~~~~~~~~~~~~~~~~~~~ End Test Data ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~   
 
 (function () {
+   'use strict';
 
    var isInitialized = false,
-   setPortletData,       // callback from hub
+
+   /**
+    * The object holding the portlet data for each portlet on the page.
+    * This an object indexed by portlet ID.
+    * @property   {PortletData} {string}  
+    *    The object holds one portlet data object for each portlet. The string
+    *    property name is the portlet ID.
+    * @private
+    */
+   pageState,
    testdata = portlet.test.data.initialPageState,
 
    /**
@@ -230,51 +240,61 @@ portlet.test.getIds = function () {
     * @private
     */
    initialize = function () {
-      var pid;
-      if (!isInitialized) {
-         pageState = portlet.impl.getInitData();         // TO BE DELETED!!
-         for (pid in testdata) {
-            if (testdata.hasOwnProperty(pid)) {
-               setPortletData(pid, JSON.parse(JSON.stringify(testdata[pid])));
+      var p = new Promise(
+         function(resolve, reject) {
+            if (!isInitialized) {
+               pageState = portlet.impl.getInitData();
+               isInitialized = true;
             }
+            resolve();
          }
-         isInitialized = true;
-      }
+      );
+      return p;
    };
 
    portlet.impl = {
 
       /**
-       * Register a portlet. The impl is passed the portlet ID and a callback
-       * for updating the state information. The callback can be called after 
-       * asyncronous operations have been carried out. When called, it must be passed 
-       * the id for th eportlet being updated along with the portlet state in the
-       * following form:
-       *
-       * 'PortletA' : {
-       *    'state' : {
-       *       'parameters' : {
-       *          'parm1' : ['val1'], 
-       *          'parm2' : ['val2', 'val3']
-       *       }, 
-       *       'portletMode' : 'VIEW', 
-       *       'windowState' : 'NORMAL',
-       *    },
-       *    'pubParms' : ['prp name 1', 'prp name 2'],
-       *    'allowedPM' : ['VIEW', 'EDIT', 'HELP'],
-       *    'allowedWS' : ['NORMAL', 'MINIMIZED', 'MAXIMIZED'],
-       * }
+       * Register a portlet. The impl is passed the portlet ID for the portlet.
+       * The impl must retrieve the information for the portlet in an appropriate
+       * manner. It must return a Promise that is fulfilled when data for the 
+       * portlet becomes available and is rejected if an error occurs or if the
+       * portlet ID is invalid.
        * 
        * @param   {string}    pid      Portlet ID
        * @param   {function}  callback Function called when registration is complete
+       * 
+       * @returns {Promise}            fulfilled when data is available
        * 
        * @function
        * @private
        */
       register : function (pid, callback) {
-         setPortletData = callback;
-         initialize();
+         return initialize();
       },
+
+      // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      // ~~~~~~~~~~~~~~~~~~~~~~ Page State Accessors ~~~~~~~~~~~~~~~~~~~~
+      // The page state is an object containing one member of the following
+      // structure for each portlet:
+      //
+      // 'PortletA' : {
+      //    'state' : {
+      //       'parameters' : {
+      //          'parm1' : ['val1'],
+      //          'parm2' : ['val2', 'val3']
+      //       },
+      //       'portletMode' : 'VIEW',
+      //       'windowState' : 'NORMAL',
+      //    },
+      //    'pubParms' : [],
+      //    'allowedPM' : ['VIEW', 'EDIT', 'HELP'],
+      //    'allowedWS' : ['NORMAL', 'MINIMIZED', 'MAXIMIZED'],
+      // }
+      //
+
+      // ~~~~~~~~~~~~~~~~~~~~~~ End Page State Accessors ~~~~~~~~~~~~~~~~
+      // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
       /**
        * Determines if the specified portlet ID is present.
@@ -699,16 +719,6 @@ portlet.test.getIds = function () {
          message : msg
       };
    };
-
-   /**
-    * The object holding the portlet data for each portlet on the page.
-    * This an object indexed by portlet ID.
-    * @property   {PortletData} {string}  
-    *    The object holds one portlet data object for each portlet. The string
-    *    property name is the portlet ID.
-    * @private
-    */
-   var pageState; 
 
    /**
     * Utility function to convert a query string encoded according to 
