@@ -558,7 +558,7 @@ var portlet = portlet || {};
                data = pi.getRenderData(p);
                callback = oscListeners[p].callback;
 
-               if ((data !== undefined) && (data != null) && 
+               if ((data !== undefined) && (data !== null) && 
                    (data.renderData !== undefined) && (data.renderData !== null)) {
                   callback ("portlet.onStateChange", state, data);
                } else {
