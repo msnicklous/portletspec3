@@ -52,14 +52,82 @@ describe('The portlet hub allows the portlet client to create a resource URL.',f
 
        // Tests in thismodule need following portlets. register them.
        // These variables provide linkage between the "describe" sections
-       hubA = portlet.register(portletA),
-       hubB = portlet.register(portletB),
-       hubC = portlet.register(portletC),
-       hubD = portlet.register(portletD);
+       hubA,
+       hubB,
+       hubC,
+       hubD;
    
        
-   describe('The portlet hub createResourceUrl function: ',function(){
+   describe('The portlet hub is initialized for the tests: ',function(){
+   
+       it('initializes a portlet hub instance for portlet A',function(){
+          var testFunc = function () {
+             return portlet.register(portletA);
+          }
+          var ph = new portlet.jasmine.PromiseHandler(testFunc);
+          runs(ph.getRun());
+          waitsFor(ph.getIsComplete(), "The PortletInit object should be returned", 1000);
+          runs(ph.getChecker()); 
+          runs(function() {
+             expect(ph.result).toBeDefined();
+          }); 
+          runs(function() {
+             hubA = ph.result;
+          }); 
+       });
+       
+       it('initializes a portlet hub instance for portlet B',function(){
+          var testFunc = function () {
+             return portlet.register(portletB);
+          }
+          var ph = new portlet.jasmine.PromiseHandler(testFunc);
+          runs(ph.getRun());
+          waitsFor(ph.getIsComplete(), "The PortletInit object should be returned", 1000);
+          runs(ph.getChecker()); 
+          runs(function() {
+             expect(ph.result).toBeDefined();
+          }); 
+          runs(function() {
+             hubB = ph.result;
+          }); 
+       });
+   
+       it('initializes a portlet hub instance for portlet C',function(){
+          var testFunc = function () {
+             return portlet.register(portletC);
+          }
+          var ph = new portlet.jasmine.PromiseHandler(testFunc);
+          runs(ph.getRun());
+          waitsFor(ph.getIsComplete(), "The PortletInit object should be returned", 1000);
+          runs(ph.getChecker()); 
+          runs(function() {
+             expect(ph.result).toBeDefined();
+          }); 
+          runs(function() {
+             hubC = ph.result;
+          }); 
+       });
+       
+       it('initializes a portlet hub instance for portlet D',function(){
+          var testFunc = function () {
+             return portlet.register(portletD);
+          }
+          var ph = new portlet.jasmine.PromiseHandler(testFunc);
+          runs(ph.getRun());
+          waitsFor(ph.getIsComplete(), "The PortletInit object should be returned", 1000);
+          runs(ph.getChecker()); 
+          runs(function() {
+             expect(ph.result).toBeDefined();
+          }); 
+          runs(function() {
+             hubD = ph.result;
+          }); 
+       });
+     
+   });
 
+   describe('The portlet hub createResourceUrl function: ',function () {
+       
       // The tests in this section use just a single portlet - portletA
       var cbA = new portlet.jasmine.JasminePortletUtils(portletA, pageState);
 

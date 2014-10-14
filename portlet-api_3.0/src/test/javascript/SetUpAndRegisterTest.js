@@ -138,12 +138,26 @@ describe('The portlet hub provides JavaScript support for portlets.',function(){
 
       it('Supports an asynchronous response from the impl',function(){
          var testFunc = function () {
-            return portlet.register(portletE);
+            return portlet.register('SimulateLongWait');
          }
          var ph = new portlet.jasmine.PromiseHandler(testFunc);
          runs(ph.getRun());
          waitsFor(ph.getIsComplete(), "The PortletInit object should be returned", 1000);
          runs(ph.getChecker()); 
+      });
+
+      it('Rejects the promise if an error occurs',function(){
+         var testFunc = function () {
+            return portlet.register('SimulateError');
+         }
+         var ph = new portlet.jasmine.PromiseHandler(testFunc);
+         runs(ph.getRun());
+         waitsFor(ph.getIsComplete(), "The PortletInit object should be returned", 1000);
+         runs(function() {
+            expect(ph.errMsg).not.toEqual("");
+            expect(ph.complete).not.toBeTruthy();
+            expect(ph.error).toBeTruthy();
+         }); 
       });
 
       it('returns a PortletInit object containing a "portletModes" property',function(){

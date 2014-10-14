@@ -163,6 +163,30 @@ portlet.test.data  = {
             'renderData' : "Some render data.",
             'mimeType' : "text/plain"
          }
+      },
+      'SimulateLongWait' : {
+         'state' : {
+            'parameters' : {
+               'parm1' : ['val1'], 
+            }, 
+            'portletMode' : 'VIEW', 
+            'windowState' : 'NORMAL'
+         },
+         'pubParms' : ['pubparm1', 'pubparm2'],
+         'allowedPM' : ['VIEW', 'EDIT', 'HELP'],
+         'allowedWS' : ['NORMAL', 'MINIMIZED', 'MAXIMIZED']
+      },
+      'SimulateError' : {
+         'state' : {
+            'parameters' : {
+               'parm1' : ['val1'], 
+            }, 
+            'portletMode' : 'VIEW', 
+            'windowState' : 'NORMAL'
+         },
+         'pubParms' : ['pubparm1', 'pubparm2'],
+         'allowedPM' : ['VIEW', 'EDIT', 'HELP'],
+         'allowedWS' : ['NORMAL', 'MINIMIZED', 'MAXIMIZED']
       }
    },
    
@@ -247,11 +271,14 @@ portlet.test.getIds = function () {
                isInitialized = true;
             }
             switch(pid) {
-            case 'PortletE':
+            case 'SimulateLongWait':
                window.setTimeout(function () {resolve();}, 500);
                break;
+            case 'SimulateError':
+               window.setTimeout(function () {reject();}, 100);
+               break;
             default:
-               resolve();
+               window.setTimeout(function () {resolve();}, 10);
             }
          }
       );
