@@ -255,56 +255,9 @@ portlet.test.getIds = function () {
     * @private
     */
    pageState,
-   testdata = portlet.test.data.initialPageState,
-
-   /**
-    * Sets up the portlet hub implementation for use. 
-    * For the mockup, the initialization routine loads the portlet hub 
-    * with the state of the mocked portlets.
-    * @private
-    */
-   initialize = function (pid) {
-      var p = new Promise(
-         function(resolve, reject) {
-            if (!isInitialized) {
-               pageState = portlet.impl.getInitData();
-               isInitialized = true;
-            }
-            switch(pid) {
-            case 'SimulateLongWait':
-               window.setTimeout(function () {resolve();}, 500);
-               break;
-            case 'SimulateError':
-               window.setTimeout(function () {reject();}, 100);
-               break;
-            default:
-               window.setTimeout(function () {resolve();}, 10);
-            }
-         }
-      );
-      return p;
-   };
+   testdata = portlet.test.data.initialPageState;
 
    portlet.impl = {
-
-      /**
-       * Register a portlet. The impl is passed the portlet ID for the portlet.
-       * The impl must retrieve the information for the portlet in an appropriate
-       * manner. It must return a Promise that is fulfilled when data for the 
-       * portlet becomes available and is rejected if an error occurs or if the
-       * portlet ID is invalid.
-       * 
-       * @param   {string}    pid      Portlet ID
-       * @param   {function}  callback Function called when registration is complete
-       * 
-       * @returns {Promise}            fulfilled when data is available
-       * 
-       * @function
-       * @private
-       */
-      register : function (pid, callback) {
-         return initialize(pid);
-      },
 
       // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       // ~~~~~~~~~~~~~~~~~~~~~~ Page State Accessors ~~~~~~~~~~~~~~~~~~~~
@@ -723,6 +676,42 @@ portlet.test.getIds = function () {
          return states;
       },
 
+      /**
+       * Register a portlet. The impl is passed the portlet ID for the portlet.
+       * The impl must retrieve the information for the portlet in an appropriate
+       * manner. It must return a Promise that is fulfilled when data for the 
+       * portlet becomes available and is rejected if an error occurs or if the
+       * portlet ID is invalid.
+       * 
+       * @param   {string}    pid      Portlet ID
+       * @param   {function}  callback Function called when registration is complete
+       * 
+       * @returns {Promise}            fulfilled when data is available
+       * 
+       * @function
+       * @private
+       */
+      register : function (pid, callback) {
+         var p = new Promise(
+            function(resolve, reject) {
+               if (!isInitialized) {
+                  pageState = portlet.impl.getInitData();
+                  isInitialized = true;
+               }
+               switch(pid) {
+               case 'SimulateLongWait':
+                  window.setTimeout(function () {resolve();}, 500);
+                  break;
+               case 'SimulateError':
+                  window.setTimeout(function () {reject();}, 100);
+                  break;
+               default:
+                  window.setTimeout(function () {resolve();}, 10);
+               }
+            }
+         );
+         return p;
+      }
 
    };
 
