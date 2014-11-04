@@ -577,7 +577,7 @@ portlet.test.getIds = function () {
          //  &~~~&PortletF&mode=VIEW&ws=NORMAL&~~~
          
          url += pid + "/" + type + "/"; 
-         url += (((cache===undefined)||(cache===null))?"PAGE":cache) + "/?";
+         url += (((cache===undefined)||(cache===null))?"cacheLevelPage":cache) + "/?";
              
          // put the additional parameters on the URL
          if (parms !== null) {
@@ -592,17 +592,17 @@ portlet.test.getIds = function () {
          qparms.push("RENDERPARMS")
          qparms.push("~~~")
 
-         // Don't put any render parameters on it cache=FULL
+         // Don't put any render parameters on it cache=cacheLevelFull
          if ((type !== "RESOURCE") || 
-             ((type === "RESOURCE") && (cache !== "FULL"))) {
+             ((type === "RESOURCE") && (cache !== "cacheLevelFull"))) {
             
             pids = portlet.impl.getIds();
             jj = pids.length;
             while ((jj = jj - 1) >= 0) {
                tpid = pids[jj];
                
-               // If cache=PORTLET, only put on the parms for that portlet
-               if ((type === "RESOURCE") && (cache === "PORTLET") && (pid !== tpid)) {
+               // If cache=cacheLevelPortlet, only put on the parms for that portlet
+               if ((type === "RESOURCE") && (cache === "cacheLevelPortlet") && (pid !== tpid)) {
                   continue;
                }
                

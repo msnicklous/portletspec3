@@ -482,7 +482,7 @@ describe('The portlet hub allows the portlet client to initiate a partial action
       });
 
       it('allows a resource URL to be created containing the portlet state',function(){
-         var parms  = {ap1 : ["actionVal"], ap2 : ["actionVal2"]}, cache="PAGE", url, str;
+         var parms  = {ap1 : ["actionVal"], ap2 : ["actionVal2"]}, cache="cacheLevelPage", url, str;
          url = hubA.createResourceUrl(parms, cache);
          str = portlet.test.resource.getState(url, portletA);
          expect(str).toEqual(cbA.getState());

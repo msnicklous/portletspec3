@@ -159,14 +159,14 @@ describe('The portlet hub allows the portlet client to create a resource URL.',f
 
       it('throws an IllegalArgumentException if resource parameters  is null',function(){
          var testFunc = function () {
-            hubA.createResourceUrl(null, "FULL");
+            hubA.createResourceUrl(null, "cacheLevelFull");
          }
          expect(testFunc).toThrowCustomException("IllegalArgumentException");
       });
 
       it('throws an IllegalArgumentException if resource parameters is undefined',function(){
          var testFunc = function () {
-            hubA.createResourceUrl(undefined, "FULL");
+            hubA.createResourceUrl(undefined, "cacheLevelFull");
          }
          expect(testFunc).toThrowCustomException("IllegalArgumentException");
       });
@@ -174,7 +174,7 @@ describe('The portlet hub allows the portlet client to create a resource URL.',f
       it('throws an IllegalArgumentException if resource parameters is invalid',function(){
          var parms  = {rp1 : "resVal"};
          var testFunc = function () {
-            hubA.createResourceUrl(parms, "PORTLET");
+            hubA.createResourceUrl(parms, "cacheLevelPortlet");
          }
          expect(testFunc).toThrowCustomException("IllegalArgumentException");
       });
@@ -190,7 +190,7 @@ describe('The portlet hub allows the portlet client to create a resource URL.',f
       it('throws an IllegalArgumentException if there are 2 cacheability arguments',function(){
          var parms  = {rp1 : ["resVal"]};
          var testFunc = function () {
-            hubA.createResourceUrl("PAGE", "FULL");
+            hubA.createResourceUrl("cacheLevelPage", "cacheLevelFull");
          }
          expect(testFunc).toThrowCustomException("IllegalArgumentException");
       });
@@ -206,26 +206,26 @@ describe('The portlet hub allows the portlet client to create a resource URL.',f
       it('does not throw if both arguments are valid',function(){
          var parms  = {rp1 : ["resVal"]};
          var testFunc = function () {
-            hubA.createResourceUrl(parms, "PAGE");
+            hubA.createResourceUrl(parms, "cacheLevelPage");
          }
          expect(testFunc).not.toThrow();
       });
 
       it('returns a string if both arguments are valid',function(){
          var parms  = {rp1 : ["resVal"]}, retval;
-         retval = hubA.createResourceUrl(parms, "FULL");
+         retval = hubA.createResourceUrl(parms, "cacheLevelFull");
          expect(typeof retval).toEqual('string');
       });
 
       it('returns a string if cacheability is specified first',function(){
          var parms  = {rp1 : ["resVal"]}, retval;
-         retval = hubA.createResourceUrl("PAGE", parms);
+         retval = hubA.createResourceUrl("cacheLevelPage", parms);
          expect(typeof retval).toEqual('string');
       });
 
       it('returns a string if only cacheability present',function(){
          var parms  = {rp1 : ["resVal"]}, retval;
-         retval = hubA.createResourceUrl("PORTLET");
+         retval = hubA.createResourceUrl("cacheLevelPortlet");
          expect(typeof retval).toEqual('string');
       });
 
@@ -243,68 +243,68 @@ describe('The portlet hub allows the portlet client to create a resource URL.',f
 
       it('returns a URL indicating the initiating portlet A',function(){
          var parms  = {rp1 : ["resVal"], rp2 : ["resVal2"]}, url, id;
-         url = hubA.createResourceUrl(parms, "PAGE");
+         url = hubA.createResourceUrl(parms, "cacheLevelPage");
          id = portlet.test.resource.getInitiatingPortletId(url);
          expect(id).toEqual(portletA);
       });
 
       it('returns a URL indicating a different initiating portlet B',function(){
          var parms  = {rp1 : ["resVal"], rp2 : ["resVal2"]}, url, id;
-         url = hubB.createResourceUrl(parms, "PAGE");
+         url = hubB.createResourceUrl(parms, "cacheLevelPage");
          id = portlet.test.resource.getInitiatingPortletId(url);
          expect(id).toEqual(portletB);
       });
 
       it('returns a resource URL',function(){
-         var parms  = {rp1 : ["resVal"], rp2 : ["resVal2"]}, cache="PAGE", url;
+         var parms  = {rp1 : ["resVal"], rp2 : ["resVal2"]}, cache="cacheLevelPage", url;
          url = hubB.createResourceUrl(parms, cache);
          expect(portlet.test.resource.isResourceUrl(url)).toBeTruthy();
       });
 
-      it('returns a URL indicating with cacheability set to "PAGE"',function(){
-         var parms  = {rp1 : ["resVal"], rp2 : ["resVal2"]}, cache="PAGE", url, str;
+      it('returns a URL indicating with cacheability set to "cacheLevelPage"',function(){
+         var parms  = {rp1 : ["resVal"], rp2 : ["resVal2"]}, cache="cacheLevelPage", url, str;
          url = hubB.createResourceUrl(parms, cache);
          str = portlet.test.resource.getCacheability(url);
          expect(str).toEqual(cache);
       });
 
-      it('returns a URL indicating with cacheability set to "FULL"',function(){
-         var parms  = {rp1 : ["resVal"], rp2 : ["resVal2"]}, cache="FULL", url, str;
+      it('returns a URL indicating with cacheability set to "cacheLevelFull"',function(){
+         var parms  = {rp1 : ["resVal"], rp2 : ["resVal2"]}, cache="cacheLevelFull", url, str;
          url = hubB.createResourceUrl(parms, cache);
          str = portlet.test.resource.getCacheability(url);
          expect(str).toEqual(cache);
       });
 
       it('returns a URL with the resource parameters set as expected',function(){
-         var parms  = {rp1 : ["resVal"], rp2 : ["resVal2"]}, cache="PAGE", url, str;
+         var parms  = {rp1 : ["resVal"], rp2 : ["resVal2"]}, cache="cacheLevelPage", url, str;
          url = hubB.createResourceUrl(parms, cache);
          str = portlet.test.resource.getResourceParms(url);
          expect(str).toEqual(parms);
       });
 
       it('returns a URL with multivalued resource parameters set as expected',function(){
-         var parms  = {rp1 : ["resVal", "resVal1"], rp2 : ["resVal2"]}, cache="PAGE", url, str;
+         var parms  = {rp1 : ["resVal", "resVal1"], rp2 : ["resVal2"]}, cache="cacheLevelPage", url, str;
          url = hubB.createResourceUrl(parms, cache);
          str = portlet.test.resource.getResourceParms(url);
          expect(str).toEqual(parms);
       });
 
       it('returns a URL with multivalued resource parameters ciontaining null set as expected',function(){
-         var parms  = {rp1 : ["resVal", null, "resVal1"], rp2 : ["resVal2"]}, cache="PAGE", url, str;
+         var parms  = {rp1 : ["resVal", null, "resVal1"], rp2 : ["resVal2"]}, cache="cacheLevelPage", url, str;
          url = hubB.createResourceUrl(parms, cache);
          str = portlet.test.resource.getResourceParms(url);
          expect(str).toEqual(parms);
       });
 
       it('returns a URL with null resource parameter set as expected',function(){
-         var parms  = {rp1 : ["resVal"], rp2 : [null]}, cache="PAGE", url, str;
+         var parms  = {rp1 : ["resVal"], rp2 : [null]}, cache="cacheLevelPage", url, str;
          url = hubB.createResourceUrl(parms, cache);
          str = portlet.test.resource.getResourceParms(url);
          expect(str).toEqual(parms);
       });
 
       it('returns a URL without resource parameters when none are added',function(){
-         var parms  = {}, cache="PAGE", url, str;
+         var parms  = {}, cache="cacheLevelPage", url, str;
          url = hubB.createResourceUrl(cache);
          str = portlet.test.resource.getResourceParms(url);
          expect(str).toEqual(parms);
@@ -357,36 +357,36 @@ describe('The portlet hub allows the portlet client to create a resource URL.',f
          }
       });
       
-      it('returns a URL with the portlet state set when cacheability = PAGE',function(){
-         var parms  = {rp1 : ["resVal"], rp2 : ["resVal2"]}, cache="PAGE", url, str;
+      it('returns a URL with the portlet state set when cacheability = cacheLevelPage',function(){
+         var parms  = {rp1 : ["resVal"], rp2 : ["resVal2"]}, cache="cacheLevelPage", url, str;
          url = hubB.createResourceUrl(parms, cache);
          str = portlet.test.resource.getState(url, portletB);
          expect(str).toEqual(cbB.getState());
       });
       
-      it('returns a URL with the portlet state set when cacheability = PORTLET',function(){
-         var parms  = {rp1 : ["resVal"], rp2 : ["resVal2"]}, cache="PORTLET", url, str;
+      it('returns a URL with the portlet state set when cacheability = cacheLevelPortlet',function(){
+         var parms  = {rp1 : ["resVal"], rp2 : ["resVal2"]}, cache="cacheLevelPortlet", url, str;
          url = hubB.createResourceUrl(parms, cache);
          str = portlet.test.resource.getState(url, portletB);
          expect(str).toEqual(cbB.getState());
       });
       
-      it('returns a URL with no portlet state set when cacheability = FULL',function(){
-         var parms  = {rp1 : ["resVal"], rp2 : ["resVal2"]}, cache="FULL", url, str, state;
+      it('returns a URL with no portlet state set when cacheability = cacheLevelFull',function(){
+         var parms  = {rp1 : ["resVal"], rp2 : ["resVal2"]}, cache="cacheLevelFull", url, str, state;
          url = hubB.createResourceUrl(parms, cache);
          str = portlet.test.resource.getState(url, portletB);
          expect(str).toEqual({});
       });
       
-      it('returns a URL containing state of different portlet when cacheability = PAGE',function(){
-         var parms  = {rp1 : ["resVal"], rp2 : ["resVal2"]}, cache="PAGE", url, str;
+      it('returns a URL containing state of different portlet when cacheability = cacheLevelPage',function(){
+         var parms  = {rp1 : ["resVal"], rp2 : ["resVal2"]}, cache="cacheLevelPage", url, str;
          url = hubB.createResourceUrl(parms, cache);
          str = portlet.test.resource.getState(url, portletC);
          expect(str).toEqual(cbC.getState());
       });
       
-      it('returns a URL not containing state of different portlet when cacheability = PORTLET',function(){
-         var parms  = {rp1 : ["resVal"], rp2 : ["resVal2"]}, cache="PORTLET", url, str, state;
+      it('returns a URL not containing state of different portlet when cacheability = cacheLevelPortlet',function(){
+         var parms  = {rp1 : ["resVal"], rp2 : ["resVal2"]}, cache="cacheLevelPortlet", url, str, state;
          url = hubB.createResourceUrl(parms, cache);
          str = portlet.test.resource.getState(url, portletC);
          expect(str).toEqual({});
