@@ -374,7 +374,107 @@ var portlet = portlet || {};
       };
    },
 
-   // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   /**
+    * Maps from the the ID of the registered portlet to the implementation callback
+    */
+   _registeredPortlets = {},
+
+   _onStateChangedListeners = {},
+
+   /**
+    * Shortcut for Object.keys
+    *
+    * @const
+    * @type {function(Object):Array}
+    */
+   _getKeys = Object.keys,
+
+   /**
+    * Shortcut for the Array.isArray
+    *
+    * @const
+    * @type {function(*):boolean}
+    */
+   _isArray = Array.isArray,
+
+   /**
+    * Checks if the object is an object
+    *
+    * @param {*} obj object
+    * @return {boolean}
+    */
+   _isObject = function(obj) {
+      return typeof obj === "object";
+   },
+
+   /**
+    * Constructs a deep copy of the object
+    *
+    * @param {Object|Array} data
+    * @return {Object|Array}
+    */
+   _clone = function(data) {
+      // some helpers down the road
+      var result, i, key, keys;
+      // the array case
+      if (_isArray(data)) {
+         // construct a new array
+         result = [];
+         // fill the array
+         for (i = data.length - 1; i >= 0; --i) {
+            result[i] = _clone(data[i]);
+         }
+      } else if (_isObject(data)) {
+         // construct a new object
+         result = {};
+         keys = _getKeys(data);
+         for (i = keys.length - 1; i >= 0; --i) {
+            key = keys[i];
+            result[key] = _clone(data[key]);
+         }
+      } else {
+         // just use the object as is
+         result = data;
+      }
+      // ok
+      return result;
+   },
+
+   /**
+    * Compares the values of two parameters and returns true if they are equal
+    *
+    * @param {string[]} parm1 First parameter
+    * @param {string[]} parm2 2nd parameter
+    * @returns {boolean} true if the new parm value is equal to the current value
+    * @private
+    */
+   _isParmEqual = function(parm1, parm2) {
+      var ii;
+
+      // The values are either string arrays or undefined.
+
+      if ((parm1 === undefined) && (parm2 === undefined)) {
+         return true;
+      }
+      
+      if ((parm1 === undefined) || (parm2 === undefined)) {
+         return false;
+      }
+      
+      if (parm1.length !== parm2.length) {
+         return false;
+      }
+      
+      
+      for (ii = parm1.length - 1; ii >= 0; ii--) {
+         if (parm1[ii] !== parm2[ii]) {
+            return false;
+         }
+      }
+
+      return true;
+   },
+
    // ~~~~~~~~~~~~~~~~~~~~~~ Event Handling ~~~~~~~~~~~~~~~~~~~~~~~~~~
    // for event handling
    handleCtr = 0,                         // used to generate handles returned by addEventListener
@@ -530,7 +630,7 @@ var portlet = portlet || {};
     * @param      {string}    pid      The portlet ID
     * @private
     */
-   updateStateForPortlet = function (pid) {
+   _updateStateForPortlet = function (pid) {
 
 		console.log("_updateStateForPortlet", pid);
 
@@ -627,7 +727,7 @@ var portlet = portlet || {};
    isParmInStateEqual = function (pid, state, name) {
 		var newVal = state.parameters[name], oldVal = pi.getParmVal(pid, name);
 
-      return pi.isParmEqual(newVal, oldVal);
+      return _isParmEqual(newVal, oldVal);
    },
 
    /**
@@ -671,7 +771,7 @@ var portlet = portlet || {};
             // update state for the portlet
             state = states[tpid];
             pi.setState(tpid, state);
-            updateStateForPortlet(tpid);
+            _updateStateForPortlet(tpid);
          }
       }
 
@@ -761,6 +861,27 @@ var portlet = portlet || {};
    },
 
    /**
+    * Tests whether the given portlet mode is allowed
+    *
+    * TODO this method should not be part of the implementation, getAllowedPM is already sufficient
+    */
+   _isAllowedPM = function(pid, pm) {
+      var pi = _registeredPortlets[pid];
+      return (pi.getAllowedPM().indexOf(pm) >= 0);
+   },
+
+   /**
+    * Tests whether the given window state is allowed
+    *
+    * TODO this method should not be part of the implementation, getAllowedWS is already sufficient
+    */
+   _isAllowedWS = function(pid, ws) {
+      var pi = _registeredPortlets[pid];
+      return (pi.getAllowedWS().indexOf(ws) >= 0);
+      ;
+   },
+
+   /**
     * Verifies that the input parameters are in valid format,
     * that the portlet mode and window state values are allowed
     * for the portlet.
@@ -777,21 +898,19 @@ var portlet = portlet || {};
      // see if the portlet mode is a string and is a value allowed for the
      // portlet
      if ((state.portletMode === undefined) || (typeof state.portletMode !== 'string')) {
-        throwIllegalArgumentException("Invalid parameters. portletMode is " +
-              (typeof state.portletMode));
+        throwIllegalArgumentException("Invalid parameters. portletMode is " + (typeof state.portletMode));
      } else if (!pi.isAllowedPM(pid, state.portletMode)) {
-        throwIllegalArgumentException("Invalid portletMode=" + state.portletMode
-           + " is not in " + pi.getAllowedPM(pid));
+        throwIllegalArgumentException("Invalid portletMode=" + state.portletMode + " is not in "
+           + pi.getAllowedPM(pid));
      }
 
      // see if the windowState is a string and is a value allowed for the
      // portlet
      if ((state.windowState === undefined) || (typeof state.windowState !== 'string')) {
-        throwIllegalArgumentException("Invalid parameters. windowState is " +
-              (typeof state.windowState));
+        throwIllegalArgumentException("Invalid parameters. windowState is " + (typeof state.windowState));
      } else if (!pi.isAllowedWS(pid, state.windowState)) {
-        throwIllegalArgumentException("Invalid windowState=" + state.windowState
-           + " is not in " + pi.getAllowedWS(pid));
+        throwIllegalArgumentException("Invalid windowState=" + state.windowState + " is not in "
+           + pi.getAllowedWS(pid));
      }
 
    },
@@ -928,23 +1047,31 @@ var portlet = portlet || {};
       // check for exactly 1 argument of type 'string'
       checkArguments(arguments, 1, 1, ['string']);
 
-      // Give the implementation a chance to register.
-      // The impl register function returns a promise that is fulfilled when 
-      // data about the portlet is available.
-      var p = portlet.impl.register(portletId);
-      
-      return p.then(function () {
+      /**
+       * Dispatched to the implementation. The promise will
+       * be fulfilled as soon as the implementation has assembled
+       * the required information. From that point on it is valid
+       * to call into other functions on the implementation. These other
+       * functions as passed in as an argument
+       */
+      return portlet.impl
+            .register(portletId)
+            .then(
+                  function(portletImpl) {
 
-         if (pi.isValidId(portletId) !== true) {
-            throw("Invalid portlet ID: " + portletId);
-         }
-            
-         /**
-          * Returned by the {@link portlet.register} method to
-          * provide functions for use by the portlet client.
-          * @namespace PortletInit
-          */
-         var portletInit = {
+                     console.log("register implementation is ready ...", portletImpl);
+
+                     /**
+                      * Keep track of the callback functions for our portlets
+                      */
+                     _registeredPortlets[portletId] = portletImpl;
+
+                     /**
+                      * Returned by the {@link portlet.register} method to
+                      * provide functions for use by the portlet client.
+                      * @namespace PortletInit
+                      */
+                     return {
          
          
             /**
@@ -1067,7 +1194,7 @@ var portlet = portlet || {};
          
                   // If just added an onStateChange listener, update the state
                   if (type === "portlet.onStateChange") {
-                     updateStateForPortlet(portletId);
+                     _updateStateForPortlet(portletId);
                   }
          
                } else {
@@ -1170,6 +1297,8 @@ var portlet = portlet || {};
          
             },
          
+                        cloneState : _clone,
+
             /**
              * Returns a resource URL with parameters set appropriately
              * for the page state according to the  resource parameters
@@ -1592,11 +1721,7 @@ var portlet = portlet || {};
             }
          
          };
-         
-         return portletInit;
-         
-         // end of "then" function - handle error bubbling up from the impl
-      }, function (msg) {throw msg;});
+      });
    };
 
 })();
