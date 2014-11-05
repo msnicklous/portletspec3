@@ -643,7 +643,7 @@ var portlet = portlet || {};
 
       if (updateQueue.length === 1) {
          delay (function () {
-            var p, state, data, callback;
+            var p, state, data, callback, pi;
 
             // The busy flag is usually set by the caller.
             // but ... need more thought here. When the onStateChange
@@ -658,8 +658,11 @@ var portlet = portlet || {};
                // get the next portlet ID and call its
                // onStateChange function
                p = updateQueue.shift();
-               state = pi.cloneState(pi.getState(p));
-               data = pi.getRenderData(p);
+
+               pi = _registeredPortlets[p];
+
+               state = _clone(pi.getState());
+               data = pi.getRenderData();
                callback = oscListeners[p].callback;
 
                if ((data !== undefined) && (data !== null) && 
@@ -899,7 +902,7 @@ var portlet = portlet || {};
      // portlet
      if ((state.portletMode === undefined) || (typeof state.portletMode !== 'string')) {
         throwIllegalArgumentException("Invalid parameters. portletMode is " + (typeof state.portletMode));
-     } else if (!pi.isAllowedPM(pid, state.portletMode)) {
+     } else if (!_isAllowedPM(pid, state.portletMode)) {
         throwIllegalArgumentException("Invalid portletMode=" + state.portletMode + " is not in "
            + pi.getAllowedPM(pid));
      }
@@ -908,7 +911,7 @@ var portlet = portlet || {};
      // portlet
      if ((state.windowState === undefined) || (typeof state.windowState !== 'string')) {
         throwIllegalArgumentException("Invalid parameters. windowState is " + (typeof state.windowState));
-     } else if (!pi.isAllowedWS(pid, state.windowState)) {
+     } else if (!_isAllowedWS(pid, state.windowState)) {
         throwIllegalArgumentException("Invalid windowState=" + state.windowState + " is not in "
            + pi.getAllowedWS(pid));
      }
@@ -1084,7 +1087,7 @@ var portlet = portlet || {};
              * @property   {string[]}  portletModes   The defined portlet mode values
              * @memberOf         PortletInit
              */
-            portletModes : pi.getAllowedPM(portletId),
+            portletModes : portletImpl.getAllowedPM(),
          
          
             /**
@@ -1097,7 +1100,7 @@ var portlet = portlet || {};
              * @property   {string[]}  windowStates   The defined window state values
              * @memberOf         PortletInit
              */
-            windowStates : pi.getAllowedWS(portletId),
+            windowStates : portletImpl.getAllowedWS(),
          
             /**
              * Adds a listener function for specified event type.
@@ -1283,7 +1286,7 @@ var portlet = portlet || {};
              */
             setPortletState : function (state) {
 
-            console.log("setPortletState", state);
+               console.log("setPortletState", state);
 
                // check for exactly 1 argument of type 'object'
                // make sure an onStateChange listener is registered by providing portlet ID
@@ -1412,7 +1415,7 @@ var portlet = portlet || {};
             }
          
                // everything ok, so get URL
-               return pi.getUrl("RESOURCE", portletId, parms, cacheability);
+               return portletImpl.getUrl("RESOURCE", parms, cacheability);
             },
          
             /**

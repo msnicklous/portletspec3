@@ -674,46 +674,93 @@ portlet.test.getIds = function () {
          }
          
          return states;
-      },
-
-      /**
-       * Register a portlet. The impl is passed the portlet ID for the portlet.
-       * The impl must retrieve the information for the portlet in an appropriate
-       * manner. It must return a Promise that is fulfilled when data for the 
-       * portlet becomes available and is rejected if an error occurs or if the
-       * portlet ID is invalid.
-       * 
-       * @param   {string}    pid      Portlet ID
-       * @param   {function}  callback Function called when registration is complete
-       * 
-       * @returns {Promise}            fulfilled when data is available
-       * 
-       * @function
-       * @private
-       */
-      register : function (pid, callback) {
-         var p = new Promise(
-            function(resolve, reject) {
-               if (!isInitialized) {
-                  pageState = portlet.impl.getInitData();
-                  isInitialized = true;
-               }
-               switch(pid) {
-               case 'SimulateLongWait':
-                  window.setTimeout(function () {resolve();}, 500);
-                  break;
-               case 'SimulateError':
-                  window.setTimeout(function () {reject();}, 100);
-                  break;
-               default:
-                  window.setTimeout(function () {resolve();}, 10);
-               }
-            }
-         );
-         return p;
       }
 
    };
+
+   /**
+    * Register a portlet. The impl is passed the portlet ID for the portlet.
+    * The impl must retrieve the information for the portlet in an appropriate
+    * manner. It must return a Promise that is fulfilled when data for the 
+    * portlet becomes available and is rejected if an error occurs or if the
+    * portlet ID is invalid.
+    * 
+    * @param   {string}    pid      Portlet ID
+    * 
+    * @returns {Promise}            fulfilled when data is available
+    * 
+    * @function
+    * @private
+    */
+   portlet.impl.register = function (pid) {
+
+      // take care of moc data initialization      
+      if (!isInitialized) {
+         pageState = portlet.impl.getInitData();
+         isInitialized = true;
+      }
+
+      // stubs for accessing data for this portlet
+      var stubs = {
+   
+			/**
+			 * Get allowed window states for portlet
+			 */
+			getAllowedWS : function () {return portlet.impl.getAllowedWS(pid);},
+   
+			/**
+			 * Get allowed portlet modes for portlet
+			 */
+			getAllowedPM : function () {return portlet.impl.getAllowedPM(pid);},
+   
+			/**
+			 * Get render data for portlet, if any
+			 */
+			getRenderData : function () {return portlet.impl.getRenderData(pid);},
+   
+			/**
+			 * Get current portlet state
+			 */
+			getState : function () {return portlet.impl.getState(pid);},
+   
+			/**
+			 * Set new portlet state. Returns promise fullfilled with an array of
+			 * IDs of portlets whose state have been modified.
+			 */
+			setState : function (state) {return portlet.impl.setState(pid, state);},
+   
+			/**
+			 * Perform the Ajax action request
+			 */
+			executeAction : function (parms, element, callback, onError) {return portlet.impl.executeAction(pid, parms, element, callback, onError);},
+   
+			/**
+			 * Get a URL of the specified type - resource or partial action
+			 */
+			getUrl : function (type, parms, cache) {return portlet.impl.getUrl(type, pid, parms, cache);},
+   
+			/**
+			 * Decode the update string returned by the partial action request
+			 */
+			decodeUpdateString : function (ustr) {return portlet.impl.decodeUpdateString(ustr, pid);},
+   
+      };            
+      
+      return new Promise(
+         function(resolve, reject) {
+            switch(pid) {
+            case 'SimulateLongWait':
+               window.setTimeout(function () {resolve(stubs);}, 500);
+               break;
+            case 'SimulateError':
+               window.setTimeout(function () {reject();}, 100);
+               break;
+            default:
+               window.setTimeout(function () {resolve(stubs);}, 10);
+            }
+         }
+      );
+   }
 
    /**
     * Some test functions that are implementation dependent
