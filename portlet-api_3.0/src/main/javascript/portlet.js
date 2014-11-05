@@ -695,15 +695,6 @@ var portlet = portlet || {};
          _updateStateForPortlet(upids[ii]);
       }
 
-//       for (tpid in states) {
-//          if (states.hasOwnProperty(tpid)) {
-// 
-//             // update state for the portlet
-// //            state = states[tpid];
-// //            pi.setState(tpid, state);
-//             _updateStateForPortlet(tpid);
-//          }
-
    },
 
    /**
@@ -1173,9 +1164,9 @@ var portlet = portlet || {};
                // one after the other. If not successful, the handle was invalid
                // (or an exception will be thrown by removePCListener), so throw.
          
-                           if ((removePCListener(pcListeners, portletId, handle) === false)
-                                 && (removeSystemListener(oscListeners, portletId, handle) === false)
-                                 && (removeSystemListener(oeListeners, portletId, handle) === false)) {
+               if ((removePCListener(pcListeners, portletId, handle) === false)
+                     && (removeSystemListener(oscListeners, portletId, handle) === false)
+                     && (removeSystemListener(oeListeners, portletId, handle) === false)) {
          
                   throwIllegalArgumentException("The event listener handle doesn't match any listeners.");
                }
@@ -1235,7 +1226,15 @@ var portlet = portlet || {};
          
             },
          
-                        cloneState : _clone,
+         
+            /**
+             * Utility function to perform a deep copy of the state object.
+             *
+             * @param   {PortletState}    state    The state to be cloned
+             *
+             * @memberOf   PortletInit
+             */
+            cloneState : _clone,
 
             /**
              * Returns a resource URL with parameters set appropriately

@@ -691,7 +691,6 @@ portlet.test.getIds = function () {
    portlet.impl = {
 
       // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      // ~~~~~~~~~~~~~~~~~~~~~~ Page State Accessors ~~~~~~~~~~~~~~~~~~~~
       // The page state is an object containing one member of the following
       // structure for each portlet:
       //
@@ -708,9 +707,6 @@ portlet.test.getIds = function () {
       //    'allowedPM' : ['VIEW', 'EDIT', 'HELP'],
       //    'allowedWS' : ['NORMAL', 'MINIMIZED', 'MAXIMIZED'],
       // }
-      //
-
-      // ~~~~~~~~~~~~~~~~~~~~~~ End Page State Accessors ~~~~~~~~~~~~~~~~
       // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
       // get initial data for the portlets. Clone it so that the test
@@ -719,105 +715,6 @@ portlet.test.getIds = function () {
          return JSON.parse(JSON.stringify(portlet.test.data.initialPageState));
       }
    };
-
-      
-//       /**
-//        * Updates the specified public render parameters.
-//        * The input object contains the public render parameters to be
-//        * updated as properties and the new values as the property values.
-//        * 
-//        * @param      {string}       pid      The portlet ID
-//        * @param      {PortletState} state    The new portlet state
-//        * @param      {object}    prps        The public render parameters
-//        *                                     and values
-//        * @param   {function}  callback Function to be called with
-//        *                               list of portlet states when action is finished
-//        * @param   {function}  onError  Function to be called if error occurs
-//        * 
-//        * @private
-//        */
-//       updateParameters : function (pid, state, prps, callback, onError) {
-//          var prp, prpNames, oldVal, newVal, tpid, ii, pids, aState, states = {};
-//          
-//          // For each updated PRP for the
-//          // initiating portlet, update that PRP in the other portlets.
-//          for (prp in prps) {
-//             if (!prps.hasOwnProperty(prp)) {
-//                continue;
-//             }
-// 
-//             newVal = prps[prp];
-// 
-//             // process each portlet ID
-//             pids = getIds();
-//             ii = pids.length;
-//             while ((ii = ii - 1) >= 0) {
-//                tpid = pids[ii];
-//                // don't update for initiating portlet. that's done after the loop
-//                if (tpid === pid) {
-//                   continue;
-//                }
-// 
-//                oldVal = getParmVal(tpid, prp);
-//                prpNames = getPRPNames(tpid);
-//                
-//                // check for public parameter and if the value has changed
-//                if ((prpNames.indexOf(prp) >= 0) && 
-//                    (_isParmEqual(oldVal, newVal) === false)) {
-//                
-//                   aState = cloneState(getState(tpid));
-//                   if (newVal === undefined) {
-//                      delete aState.parameters[prp];
-//                   } else {
-//                      aState.parameters[prp] = newVal.slice(0);
-//                   }
-//                   states[tpid] = aState;
-//                   
-//                }
-//      
-//             }
-//          }
-//          
-//          // update state for the initiating portlet
-//          aState = cloneState(state);
-//          states[pid] = aState;
-//          callback(states);
-// 
-//       },
-
-
-//      
-//      /**
-//       * Compares the values of two parameters and returns true if they are equal
-//       * 
-//       * @param      {string[]}     parm1    First parameter
-//       * @param      {string[]}     parm2    2nd parameter
-//       * @returns    {boolean}               true if the new parm value is equal
-//       *                                     to the current value
-//       * @private
-//       */
-//      isParmEqual : function (parm1, parm2) {
-//         var ii;
-//         
-//         // The values are either string arrays or undefined.
-//         
-//         if ((parm1 === undefined) && (parm2 === undefined)) {
-//            return true;
-//         } else if ((parm1 === undefined) || (parm2 === undefined)) {
-//            return false;
-//         } else if (parm1.length != parm2.length){
-//            return false;
-//         } else {
-//            ii = parm1.length;
-//            while ((ii = ii - 1) >= 0) {
-//               if (parm1[ii] !== parm2[ii]) {
-//                  return false;
-//               }
-//            }
-//         }
-//         
-//         return true;
-//      },
 
    /**
     * Register a portlet. The impl is passed the portlet ID for the portlet.
@@ -906,13 +803,7 @@ portlet.test.getIds = function () {
                }
                
             } else {
-               // reject("Invalid portlet ID: " + pid);
                reject(new Error("Invalid portlet ID: " + pid));
-               // throw {
-               //    name : "IllegalArgumentException",
-               //    message : "Invalid portlet ID: " + pid
-               // };
-
             }
          }
       );
