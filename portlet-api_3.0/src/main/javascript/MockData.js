@@ -255,7 +255,51 @@ portlet.test.getIds = function () {
     * @private
     */
    pageState,
-   testdata = portlet.test.data.initialPageState;
+   testdata = portlet.test.data.initialPageState,
+   
+   
+   /**
+    * Determines if the specified portlet ID is present.
+    * @param   {string}    pid      The portlet ID
+    * @returns {boolean}            true if the portlet ID can be found
+    * @function
+    * @private
+    */
+   isValidId = function (pid) {
+      var id;
+      for (id in pageState) {
+         if (!pageState.hasOwnProperty(id)) {
+            continue;
+         }
+         if (pid === id) {
+            return true;
+         }
+      }
+      return false;
+   },
+
+   /**
+    * Get allowed window states for portlet
+    */
+   getAllowedWS = function (pid) {
+      return pageState[pid].allowedWS.slice(0);
+   },
+   
+   /**
+    * Get allowed portlet modes for portlet
+    */
+   getAllowedPM = function (pid) {
+      return pageState[pid].allowedPM.slice(0);
+   },
+   
+   
+   /**
+    * gets render data for the portlet
+    */
+   getRenderData = function (pid) {
+      return pageState[pid].renderData;
+   };
+
 
    portlet.impl = {
 
@@ -281,61 +325,6 @@ portlet.test.getIds = function () {
 
       // ~~~~~~~~~~~~~~~~~~~~~~ End Page State Accessors ~~~~~~~~~~~~~~~~
       // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-      /**
-       * Determines if the specified portlet ID is present.
-       * @param   {string}    pid      The portlet ID
-       * @returns {boolean}            true if the portlet ID can be found
-       * @function
-       * @private
-       */
-      isValidId : function (pid) {
-         var id;
-         for (id in pageState) {
-            if (!pageState.hasOwnProperty(id)) {
-               continue;
-            }
-            if (pid === id) {
-               return true;
-            }
-         }
-         return false;
-      },
-
-      /**
-       * Get allowed window states for portlet
-       */
-      getAllowedWS : function (pid) {
-         return pageState[pid].allowedWS.slice(0);
-      },
-
-      /**
-       * Tests whether the given window state is allowed
-       */
-      isAllowedWS : function (pid, ws) {
-         return (pageState[pid].allowedWS.indexOf(ws) >= 0);
-      },
-
-      /**
-       * Get allowed portlet modes for portlet
-       */
-      getAllowedPM : function (pid) {
-         return pageState[pid].allowedPM.slice(0);
-      },
-
-      /**
-       * Tests whether the given portlet mode is allowed
-       */
-      isAllowedPM : function (pid, pm) {
-         return (pageState[pid].allowedPM.indexOf(pm) >= 0);
-      },
-      
-      /**
-       * gets render data for the portlet
-       */
-      getRenderData : function (pid) {
-         return pageState[pid].renderData;
-      },
       
       /**
        * gets defeined PRPs for the portlet
@@ -706,17 +695,17 @@ portlet.test.getIds = function () {
 			/**
 			 * Get allowed window states for portlet
 			 */
-			getAllowedWS : function () {return portlet.impl.getAllowedWS(pid);},
+			getAllowedWS : function () {return getAllowedWS(pid);},
    
 			/**
 			 * Get allowed portlet modes for portlet
 			 */
-			getAllowedPM : function () {return portlet.impl.getAllowedPM(pid);},
+			getAllowedPM : function () {return getAllowedPM(pid);},
    
 			/**
 			 * Get render data for portlet, if any
 			 */
-			getRenderData : function () {return portlet.impl.getRenderData(pid);},
+			getRenderData : function () {return getRenderData(pid);},
    
 			/**
 			 * Get current portlet state
@@ -748,15 +737,29 @@ portlet.test.getIds = function () {
       
       return new Promise(
          function(resolve, reject) {
-            switch(pid) {
-            case 'SimulateLongWait':
-               window.setTimeout(function () {resolve(stubs);}, 500);
-               break;
-            case 'SimulateError':
-               window.setTimeout(function () {reject();}, 100);
-               break;
-            default:
-               window.setTimeout(function () {resolve(stubs);}, 10);
+            
+            // verify the input pid 
+            if (isValidId(pid)) {
+               
+               switch(pid) {
+               case 'SimulateLongWait':
+                  window.setTimeout(function () {resolve(stubs);}, 500);
+                  break;
+               case 'SimulateError':
+                  window.setTimeout(function () {reject(new Error("Bad error happened!"));}, 100);
+                  break;
+               default:
+                  window.setTimeout(function () {resolve(stubs);}, 10);
+               }
+               
+            } else {
+               // reject("Invalid portlet ID: " + pid);
+               reject(new Error("Invalid portlet ID: " + pid));
+               // throw {
+               //    name : "IllegalArgumentException",
+               //    message : "Invalid portlet ID: " + pid
+               // };
+
             }
          }
       );

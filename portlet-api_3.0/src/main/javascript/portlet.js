@@ -865,8 +865,6 @@ var portlet = portlet || {};
 
    /**
     * Tests whether the given portlet mode is allowed
-    *
-    * TODO this method should not be part of the implementation, getAllowedPM is already sufficient
     */
    _isAllowedPM = function(pid, pm) {
       var pi = _registeredPortlets[pid];
@@ -875,13 +873,10 @@ var portlet = portlet || {};
 
    /**
     * Tests whether the given window state is allowed
-    *
-    * TODO this method should not be part of the implementation, getAllowedWS is already sufficient
     */
    _isAllowedWS = function(pid, ws) {
       var pi = _registeredPortlets[pid];
       return (pi.getAllowedWS().indexOf(ws) >= 0);
-      ;
    },
 
    /**
@@ -896,6 +891,8 @@ var portlet = portlet || {};
     *             Thrown if any component of the state is incorrect
     */
    validateState = function (pid, state) {
+      var pi = _registeredPortlets[pid];
+
       validateParms(state.parameters);
 
      // see if the portlet mode is a string and is a value allowed for the
@@ -904,7 +901,7 @@ var portlet = portlet || {};
         throwIllegalArgumentException("Invalid parameters. portletMode is " + (typeof state.portletMode));
      } else if (!_isAllowedPM(pid, state.portletMode)) {
         throwIllegalArgumentException("Invalid portletMode=" + state.portletMode + " is not in "
-           + pi.getAllowedPM(pid));
+           + pi.getAllowedPM());
      }
 
      // see if the windowState is a string and is a value allowed for the
@@ -913,7 +910,7 @@ var portlet = portlet || {};
         throwIllegalArgumentException("Invalid parameters. windowState is " + (typeof state.windowState));
      } else if (!_isAllowedWS(pid, state.windowState)) {
         throwIllegalArgumentException("Invalid windowState=" + state.windowState + " is not in "
-           + pi.getAllowedWS(pid));
+           + pi.getAllowedWS());
      }
 
    },
