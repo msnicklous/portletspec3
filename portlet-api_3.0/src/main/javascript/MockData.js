@@ -279,6 +279,146 @@ portlet.test.getIds = function () {
    },
 
    /**
+    * get the available portlet IDs in an array 
+    */
+   getIds = function () {
+      var id, ids = [];
+      for (id in pageState) {
+         if (pageState.hasOwnProperty(id)) {
+            ids.push(id);
+         }
+      }
+      return ids;
+   },
+      
+   /**
+    * gets parameter value
+    */
+   getParmVal = function (pid, name) {
+      return pageState[pid].state.parameters[name];
+   },
+   
+   /**
+    * gets parameter value
+    */
+   setParmVal = function (pid, name, val) {
+      if (val === undefined) {
+         delete pageState[pid].state.parameters[name];
+      } else {
+         pageState[pid].state.parameters[name] = val.slice(0);
+      }
+   },
+
+   /**
+    * Compares the values of two parameters and returns true if they are equal
+    *
+    * @param {string[]} parm1 First parameter
+    * @param {string[]} parm2 2nd parameter
+    * @returns {boolean} true if the new parm value is equal to the current value
+    * @private
+    */
+   _isParmEqual = function(parm1, parm2) {
+      var ii;
+
+      // The values are either string arrays or undefined.
+
+      if ((parm1 === undefined) && (parm2 === undefined)) {
+         return true;
+      }
+      
+      if ((parm1 === undefined) || (parm2 === undefined)) {
+         return false;
+      }
+      
+      if (parm1.length !== parm2.length) {
+         return false;
+      }
+      
+      
+      for (ii = parm1.length - 1; ii >= 0; ii--) {
+         if (parm1[ii] !== parm2[ii]) {
+            return false;
+         }
+      }
+
+      return true;
+   },
+
+   /**
+    * Compares the values of the named parameter in the new portlet state
+    * with the values of that parameter in the current state.
+    *
+    * @param      {string}       pid      The portlet ID
+    * @param      {PortletState} state    The new portlet state
+    * @param      {string}       name     The parameter name to check
+    * @returns    {boolean}               true if the new parm value is different
+    *                                     from the current value
+    * @private
+    */
+   isParmInStateEqual = function (pid, state, name) {
+      var newVal = state.parameters[name], oldVal = getParmVal(pid, name);
+
+      return _isParmEqual(newVal, oldVal);
+   },
+      
+   /**
+    * gets defeined PRPs for the portlet
+    */
+   getPRPNames = function (pid) {
+      return pageState[pid].pubParms;
+   },
+
+   /**
+    * Gets the updated public parameters for the given portlet
+    * ID and new portlet state.
+    * Returns an object whose properties are the names of the
+    * updated public parameters. The values are the new public
+    * parameter values.
+    *
+    * @param      {string}       pid      The portlet ID
+    * @param      {PortletState} state    The new portlet state
+    * @returns    {object}                object containing the updated PRPs
+    * @private
+    */
+   getUpdatedPRPs = function (pid, state) {
+      var prps = {}, ii = 0, prpNames = getPRPNames(pid), name;
+
+      for (ii = 0; ii < prpNames.length; ii++) {
+         name = prpNames[ii];
+         if (isParmInStateEqual(pid, state, name) === false) {
+            prps[name] = state.parameters[name];
+         }
+      }
+
+      return prps;
+   },
+
+      
+   /**
+    * Returns a deep-copy clone of the input portlet state object.
+    * Used to provide the portlet client with a copy of the current 
+    * state data rather than a reference to the live state itself.
+    * 
+    * @param      {PortletState} state    The portlet state object to check
+    * @returns    {PortletState}          Clone of the input portlet state
+    * @private
+    */
+   cloneState = function (aState) {
+      var newParams = {},
+      newState = {
+            portletMode : aState.portletMode,
+            windowState : aState.windowState,
+            parameters : newParams
+      }, key, oldParams = aState.parameters;
+   
+      for (key in oldParams) {
+         newParams[key] = oldParams[key].slice(0); 
+      }
+   
+      return newState;
+   },
+
+   /**
     * Get allowed window states for portlet
     */
    getAllowedWS = function (pid) {
@@ -298,7 +438,254 @@ portlet.test.getIds = function () {
     */
    getRenderData = function (pid) {
       return pageState[pid].renderData;
+   },
+         
+   /**
+    * gets state for the portlet
+    */
+   getState = function (pid) {
+      return pageState[pid].state;
+   },
+   
+   /**
+    * sets state for the portlet. returns
+    * array of IDs for portlets that were affected by the change, 
+    * taking into account the public render parameters.
+    */
+   setState = function (pid, state) {
+      var pids, prps = getUpdatedPRPs(pid, state), prp, ii, tpid, upids = [], newVal, oldVal, prpNames;
+         
+      // For each updated PRP for the
+      // initiating portlet, update that PRP in the other portlets.
+      for (prp in prps) {
+         if (prps.hasOwnProperty(prp)) {
+      
+            newVal = prps[prp];
+            
+            // process each portlet ID
+            pids = getIds();
+            for (ii = 0; ii < pids.length; ii++) {
+               tpid = pids[ii];
+               
+               // don't update for initiating portlet. that's done after the loop
+               if (tpid !== pid) {
+            
+                  oldVal = getParmVal(tpid, prp);
+                  prpNames = getPRPNames(tpid);
+                  
+                  // check for public parameter and if the value has changed
+                  if ((prpNames.indexOf(prp) >= 0) && 
+                      (_isParmEqual(oldVal, newVal) === false)) {
+                  
+                     if (newVal === undefined) {
+                        delete pageState[tpid].state.parameters[prp];
+                     } else {
+                        pageState[tpid].state.parameters[prp] = newVal.slice(0);
+                     }
+                     upids.push(tpid);
+                     
+                  }
+               }
+            }
+         }
+      }
+      
+      // update state for the initiating portlet
+      pageState[pid].state = state;
+      upids.push(pid);
+      
+      // Use Promise to allow for potential server communication - 
+      return new Promise(function (resolve, reject) {
+         resolve(upids);
+      });
+   },
+
+      
+   /**
+    * updates page state from string and returns array of portlet IDs
+    * to be updated.
+    * 
+    * @param   {string}    ustr     The 
+    * @param   {string}    pid      The portlet ID
+    * @private 
+    */
+   updatePageStateFromString = function (ustr, pid) {
+      var states, tpid, state, upids = [];
+
+      states = decodeUpdateString(ustr, pid);
+
+      // Update states and collect IDs of affected portlets. 
+      for (tpid in states) {
+         if (states.hasOwnProperty(tpid)) {
+            state = states[tpid];
+            pageState[tpid].state = state;
+            upids.push(tpid);
+         }
+      }
+
+      return upids;
+   },
+
+      
+   /**
+    * performs the actual action.
+    * 
+    * @param   {string}    type     The URL type
+    * @param   {string}    pid      The portlet ID
+    * @param   {PortletParameters}    parms      
+    *                Additional parameters. May be <code>null</code>
+    * @param   {HTMLFormElement}    Form to be submitted
+    *                               May be <code>null</code> 
+    * @param   {function}  callback Function to be called with
+    *                               list of portlet states when action is finished
+    * @param   {function}  onError  Function to be called if error occurs
+    * 
+    * @throws  {AccessDeniedException}
+    *                   Thrown if a blocking operation is
+    *                   already in progress. 
+    * @throws  {NotInitializedException} 
+    *                   Thrown if a portlet ID is provided, but no onStateChange
+    *                   listener has been registered.
+    * @private 
+    */
+   executeAction = function (pid, parms, element, callback, onError) {
+      var states, ustr, tpid, state, upids = [];
+   
+      // pretend to create a url, etc. ... for the mockup
+      // we don't need the parms or element
+   
+      // get the mockup data update string and make it into an object.
+      // update each affected portlet client. Makes use of a 
+      // test function for decoding. 
+      
+      ustr = portlet.test.data.updateStrings[pid];
+      upids = updatePageStateFromString(ustr, pid);
+      
+      // Use Promise to allow for potential server communication - 
+      return new Promise(function (resolve, reject) {
+         resolve(upids);
+      });
+
+   },
+   
+   
+   /**
+    * Returns a URL of the specified type.
+    * 
+    * @param   {string}    type     The URL type
+    * @param   {string}    pid      The portlet ID
+    * @param   {PortletParameters}    parms      
+    *                Additional parameters. May be <code>null</code>
+    * @param   {string}    cache    Cacheability. Must be present if 
+    *                type = "RESOURCE". May be <code>null</code> 
+    * @private 
+    */
+   getUrl = function (type, pid, parms, cache) {
+   
+      var url = "http://www.dummyportal.com/some/context/";
+          var qparms = [], rparms, qp, state, tpid, val, pids, ii, jj;
+          
+      // for a mockup, should be good enough ...
+      // optimized for easy parsing by the test code. 
+      // see "portlet.test" below.
+      
+      // This is how it should look:
+      //  http://www.dummyportal.com/some/context/PortletA/ACTION/PAGE/?&rp1=resVal&RENDERPARMS
+      //  &~~~&PortletA&mode=VIEW&ws=NORMAL&parm1=Fred&parm2=Wilma&parm2=Pebbles&parm3=Barney&parm3=Betty&parm3=Bam%20Bam
+      //  &~~~&PortletB&mode=VIEW&ws=NORMAL&parm1=val1&pubparm1=pubval1&parm2=val2&parm2=val3
+      //  &~~~&PortletC&mode=VIEW&ws=NORMAL&parm1=val1&pubparm1=pubval1&pubparm2=pubval2&parm2=val2&parm2=val3
+      //  &~~~&PortletD&mode=VIEW&ws=NORMAL&pubparm1=private_val1&pubparm2=pubval2&parm2=val2&parm2=val3
+      //  &~~~&PortletE&mode=VIEW&ws=NORMAL&parm1=val1&parm2=val2&parm2=val3&pubparm1=pubval1&pubparm2=pubval2
+      //  &~~~&PortletF&mode=VIEW&ws=NORMAL&~~~
+      
+      url += pid + "/" + type + "/"; 
+      url += (((cache===undefined)||(cache===null))?"cacheLevelPage":cache) + "/?";
+          
+      // put the additional parameters on the URL
+      if (parms !== null) {
+         for (qp in parms) {
+            for (var ii=0; ii<parms[qp].length; ii++) {
+               val = (parms[qp][ii] === null) ? "" : "=" + encodeURIComponent(parms[qp][ii]);
+               qparms.push(encodeURIComponent(qp) + val);
+            }
+         }
+      }
+   
+      qparms.push("RENDERPARMS")
+      qparms.push("~~~")
+   
+      // Don't put any render parameters on it cache=cacheLevelFull
+      if ((type !== "RESOURCE") || 
+          ((type === "RESOURCE") && (cache !== "cacheLevelFull"))) {
+         
+         pids = getIds();
+         jj = pids.length;
+         while ((jj = jj - 1) >= 0) {
+            tpid = pids[jj];
+            
+            // If cache=cacheLevelPortlet, only put on the parms for that portlet
+            if ((type === "RESOURCE") && (cache === "cacheLevelPortlet") && (pid !== tpid)) {
+               continue;
+            }
+            
+            // put the portlet state parameters on the URL
+            state = getState(tpid);
+            
+            qparms.push(encodeURIComponent(tpid));
+            qparms.push("mode=" + state.portletMode);
+            qparms.push("ws=" + state.windowState);
+         
+            rparms = state.parameters;
+            for (qp in rparms) {
+               for (ii=0; ii<rparms[qp].length; ii++) {
+                  val = (rparms[qp][ii] === null) ? "" : "=" + encodeURIComponent(rparms[qp][ii]);
+                  qparms.push(encodeURIComponent(qp) + val);
+               }
+            }
+            qparms.push("~~~");
+            
+         }
+      }
+      
+      // put on the query parms
+      while (qparms.length > 0) {
+         url += "&" + qparms.shift();
+      }
+   
+      return url;
+   },
+   
+   
+   // decodes the update strings
+   decodeUpdateString = function (ustr) {
+      var states = {}, state, pid, ii, ind,
+          pids = ustr.match(/~~&.*?&/g); // reluctant match
+      
+      // If there is no match, bad input data
+      if (pids === null) {
+         throwIllegalArgumentException("Invalid update string.");
+      }
+      
+      // For each portlet being updated, get the new data
+      ii = pids.length;
+      while ((ii = ii -1) >= 0) {
+         if (pids[ii].length < 5) {
+            // the portlet ID must be at least 1 character long
+            throwIllegalArgumentException("Invalid portlet ID in update string.");
+         }
+         
+         // trim extra stuff off of the portlet id
+         ind = pids[ii].length - 1;
+         pid = pids[ii].substring(3, ind);
+      
+         state = portlet.test.action.getState(ustr, pid);
+         states[pid] = state;
+         
+      }
+      
+      return states;
    };
+
 
 
    portlet.impl = {
@@ -325,347 +712,112 @@ portlet.test.getIds = function () {
 
       // ~~~~~~~~~~~~~~~~~~~~~~ End Page State Accessors ~~~~~~~~~~~~~~~~
       // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      
-      /**
-       * gets defeined PRPs for the portlet
-       */
-      getPRPNames : function (pid) {
-         return pageState[pid].pubParms;
-      },
-      
-      /**
-       * gets parameter value
-       */
-      getParmVal : function (pid, name) {
-         return pageState[pid].state.parameters[name];
-      },
-      
-      /**
-       * gets parameter value
-       */
-      setParmVal : function (pid, name, val) {
-         if (val === undefined) {
-            delete pageState[pid].state.parameters[name];
-         } else {
-            pageState[pid].state.parameters[name] = val.slice(0);
-         }
-      },
-      
-      /**
-       * gets state for the portlet
-       */
-      getState : function (pid) {
-         return pageState[pid].state;
-      },
-      
-      /**
-       * sets state for the portlet
-       */
-      setState : function (pid, state) {
-         pageState[pid].state = state;
-      },
 
       // get initial data for the portlets. Clone it so that the test
       // code has a separate copy than the mockup hub.
       getInitData : function () {
          return JSON.parse(JSON.stringify(portlet.test.data.initialPageState));
-      },
-
-      /**
-       * get the available portlet IDs in an array 
-       */
-      getIds : function () {
-         var id, ids = [];
-         for (id in pageState) {
-            if (!pageState.hasOwnProperty(id)) {
-               continue;
-            }
-            ids.push(id);
-         }
-         return ids;
-      },
-
-      
-      /**
-       * performs the actual action.
-       * 
-       * @param   {string}    type     The URL type
-       * @param   {string}    pid      The portlet ID
-       * @param   {PortletParameters}    parms      
-       *                Additional parameters. May be <code>null</code>
-       * @param   {HTMLFormElement}    Form to be submitted
-       *                               May be <code>null</code> 
-       * @param   {function}  callback Function to be called with
-       *                               list of portlet states when action is finished
-       * @param   {function}  onError  Function to be called if error occurs
-       * 
-       * @throws  {AccessDeniedException}
-       *                   Thrown if a blocking operation is
-       *                   already in progress. 
-       * @throws  {NotInitializedException} 
-       *                   Thrown if a portlet ID is provided, but no onStateChange
-       *                   listener has been registered.
-       * @private 
-       */
-      executeAction : function (pid, parms, element, callback, onError) {
-         var states, ustr, tpid, state;
-
-         // pretend to create a url, etc. ... for the mockup
-         // we don't need the parms or element
-
-         // get the mockup data update string and make it into an object.
-         // update each affected portlet client. Makes use of a 
-         // test function for decoding. 
-         
-         ustr = portlet.test.data.updateStrings[pid];
-         states = portlet.impl.decodeUpdateString(ustr, pid);
-         callback(states);
-
-      },
-
-      
-      /**
-       * Updates the specified public render parameters.
-       * The input object contains the public render parameters to be
-       * updated as properties and the new values as the property values.
-       * 
-       * @param      {string}       pid      The portlet ID
-       * @param      {PortletState} state    The new portlet state
-       * @param      {object}    prps        The public render parameters
-       *                                     and values
-       * @param   {function}  callback Function to be called with
-       *                               list of portlet states when action is finished
-       * @param   {function}  onError  Function to be called if error occurs
-       * 
-       * @private
-       */
-      updateParameters : function (pid, state, prps, callback, onError) {
-         var prp, prpNames, oldVal, newVal, tpid, ii, pids, aState, states = {};
-         
-         // For each updated PRP for the
-         // initiating portlet, update that PRP in the other portlets.
-         for (prp in prps) {
-            if (!prps.hasOwnProperty(prp)) {
-               continue;
-            }
-
-            newVal = prps[prp];
-
-            // process each portlet ID
-            pids = portlet.impl.getIds();
-            ii = pids.length;
-            while ((ii = ii - 1) >= 0) {
-               tpid = pids[ii];
-               // don't update for initiating portlet. that's done after the loop
-               if (tpid === pid) {
-                  continue;
-               }
-
-               oldVal = portlet.impl.getParmVal(tpid, prp);
-               prpNames = portlet.impl.getPRPNames(tpid);
-               
-               // check for public parameter and if the value has changed
-               if ((prpNames.indexOf(prp) >= 0) && 
-                   (portlet.impl.isParmEqual(oldVal, newVal) === false)) {
-               
-                  aState = portlet.impl.cloneState(portlet.impl.getState(tpid));
-                  if (newVal === undefined) {
-                     delete aState.parameters[prp];
-                  } else {
-                     aState.parameters[prp] = newVal.slice(0);
-                  }
-                  states[tpid] = aState;
-                  
-               }
-     
-            }
-         }
-         
-         // update state for the initiating portlet
-         aState = portlet.impl.cloneState(state);
-         states[pid] = aState;
-         callback(states);
-
-      },
-
-      
-      /**
-       * Returns a URL of the specified type.
-       * 
-       * @param   {string}    type     The URL type
-       * @param   {string}    pid      The portlet ID
-       * @param   {PortletParameters}    parms      
-       *                Additional parameters. May be <code>null</code>
-       * @param   {string}    cache    Cacheability. Must be present if 
-       *                type = "RESOURCE". May be <code>null</code> 
-       * @private 
-       */
-      getUrl : function (type, pid, parms, cache) {
-
-         var url = "http://www.dummyportal.com/some/context/";
-             var qparms = [], rparms, qp, state, tpid, val, pids, ii, jj;
-             
-         // for a mockup, should be good enough ...
-         // optimized for easy parsing by the test code. 
-         // see "portlet.test" below.
-         
-         // This is how it should look:
-         //  http://www.dummyportal.com/some/context/PortletA/ACTION/PAGE/?&rp1=resVal&RENDERPARMS
-         //  &~~~&PortletA&mode=VIEW&ws=NORMAL&parm1=Fred&parm2=Wilma&parm2=Pebbles&parm3=Barney&parm3=Betty&parm3=Bam%20Bam
-         //  &~~~&PortletB&mode=VIEW&ws=NORMAL&parm1=val1&pubparm1=pubval1&parm2=val2&parm2=val3
-         //  &~~~&PortletC&mode=VIEW&ws=NORMAL&parm1=val1&pubparm1=pubval1&pubparm2=pubval2&parm2=val2&parm2=val3
-         //  &~~~&PortletD&mode=VIEW&ws=NORMAL&pubparm1=private_val1&pubparm2=pubval2&parm2=val2&parm2=val3
-         //  &~~~&PortletE&mode=VIEW&ws=NORMAL&parm1=val1&parm2=val2&parm2=val3&pubparm1=pubval1&pubparm2=pubval2
-         //  &~~~&PortletF&mode=VIEW&ws=NORMAL&~~~
-         
-         url += pid + "/" + type + "/"; 
-         url += (((cache===undefined)||(cache===null))?"cacheLevelPage":cache) + "/?";
-             
-         // put the additional parameters on the URL
-         if (parms !== null) {
-            for (qp in parms) {
-               for (var ii=0; ii<parms[qp].length; ii++) {
-                  val = (parms[qp][ii] === null) ? "" : "=" + encodeURIComponent(parms[qp][ii]);
-                  qparms.push(encodeURIComponent(qp) + val);
-               }
-            }
-         }
-
-         qparms.push("RENDERPARMS")
-         qparms.push("~~~")
-
-         // Don't put any render parameters on it cache=cacheLevelFull
-         if ((type !== "RESOURCE") || 
-             ((type === "RESOURCE") && (cache !== "cacheLevelFull"))) {
-            
-            pids = portlet.impl.getIds();
-            jj = pids.length;
-            while ((jj = jj - 1) >= 0) {
-               tpid = pids[jj];
-               
-               // If cache=cacheLevelPortlet, only put on the parms for that portlet
-               if ((type === "RESOURCE") && (cache === "cacheLevelPortlet") && (pid !== tpid)) {
-                  continue;
-               }
-               
-               // put the portlet state parameters on the URL
-               state = portlet.impl.getState(tpid);
-               
-               qparms.push(encodeURIComponent(tpid));
-               qparms.push("mode=" + state.portletMode);
-               qparms.push("ws=" + state.windowState);
-            
-               rparms = state.parameters;
-               for (qp in rparms) {
-                  for (ii=0; ii<rparms[qp].length; ii++) {
-                     val = (rparms[qp][ii] === null) ? "" : "=" + encodeURIComponent(rparms[qp][ii]);
-                     qparms.push(encodeURIComponent(qp) + val);
-                  }
-               }
-               qparms.push("~~~");
-               
-            }
-         }
-         
-         // put on the query parms
-         while (qparms.length > 0) {
-            url += "&" + qparms.shift();
-         }
-
-         return url;
-      },
-
-
-      
-      /**
-       * Returns a deep-copy clone of the input portlet state object.
-       * Used to provide the portlet client with a copy of the current 
-       * state data rather than a reference to the live state itself.
-       * 
-       * @param      {PortletState} state    The portlet state object to check
-       * @returns    {PortletState}          Clone of the input portlet state
-       * @private
-       */
-      cloneState : function (aState) {
-         var newParams = {},
-         newState = {
-               portletMode : aState.portletMode,
-               windowState : aState.windowState,
-               parameters : newParams
-         }, key, oldParams = aState.parameters;
-
-         for (key in oldParams) {
-            newParams[key] = oldParams[key].slice(0); 
-         }
-
-         return newState;
-      },
-
-      
-      /**
-       * Compares the values of two parameters and returns true if they are equal
-       * 
-       * @param      {string[]}     parm1    First parameter
-       * @param      {string[]}     parm2    2nd parameter
-       * @returns    {boolean}               true if the new parm value is equal
-       *                                     to the current value
-       * @private
-       */
-      isParmEqual : function (parm1, parm2) {
-         var ii;
-         
-         // The values are either string arrays or undefined.
-         
-         if ((parm1 === undefined) && (parm2 === undefined)) {
-            return true;
-         } else if ((parm1 === undefined) || (parm2 === undefined)) {
-            return false;
-         } else if (parm1.length != parm2.length){
-            return false;
-         } else {
-            ii = parm1.length;
-            while ((ii = ii - 1) >= 0) {
-               if (parm1[ii] !== parm2[ii]) {
-                  return false;
-               }
-            }
-         }
-         
-         return true;
-      },
-
-      
-      // decodes the update strings
-      decodeUpdateString : function (ustr) {
-         var states = {}, state, pid, ii, ind,
-             pids = ustr.match(/~~&.*?&/g); // reluctant match
-         
-         // If there is no match, bad input data
-         if (pids === null) {
-            throwIllegalArgumentException("Invalid update string.");
-         }
-         
-         // For each portlet being updated, get the new data
-         ii = pids.length;
-         while ((ii = ii -1) >= 0) {
-            if (pids[ii].length < 5) {
-               // the portlet ID must be at least 1 character long
-               throwIllegalArgumentException("Invalid portlet ID in update string.");
-            }
-            
-            // trim extra stuff off of the portlet id
-            ind = pids[ii].length - 1;
-            pid = pids[ii].substring(3, ind);
-         
-            state = portlet.test.action.getState(ustr, pid);
-            states[pid] = state;
-            
-         }
-         
-         return states;
       }
-
    };
+
+      
+//       /**
+//        * Updates the specified public render parameters.
+//        * The input object contains the public render parameters to be
+//        * updated as properties and the new values as the property values.
+//        * 
+//        * @param      {string}       pid      The portlet ID
+//        * @param      {PortletState} state    The new portlet state
+//        * @param      {object}    prps        The public render parameters
+//        *                                     and values
+//        * @param   {function}  callback Function to be called with
+//        *                               list of portlet states when action is finished
+//        * @param   {function}  onError  Function to be called if error occurs
+//        * 
+//        * @private
+//        */
+//       updateParameters : function (pid, state, prps, callback, onError) {
+//          var prp, prpNames, oldVal, newVal, tpid, ii, pids, aState, states = {};
+//          
+//          // For each updated PRP for the
+//          // initiating portlet, update that PRP in the other portlets.
+//          for (prp in prps) {
+//             if (!prps.hasOwnProperty(prp)) {
+//                continue;
+//             }
+// 
+//             newVal = prps[prp];
+// 
+//             // process each portlet ID
+//             pids = getIds();
+//             ii = pids.length;
+//             while ((ii = ii - 1) >= 0) {
+//                tpid = pids[ii];
+//                // don't update for initiating portlet. that's done after the loop
+//                if (tpid === pid) {
+//                   continue;
+//                }
+// 
+//                oldVal = getParmVal(tpid, prp);
+//                prpNames = getPRPNames(tpid);
+//                
+//                // check for public parameter and if the value has changed
+//                if ((prpNames.indexOf(prp) >= 0) && 
+//                    (_isParmEqual(oldVal, newVal) === false)) {
+//                
+//                   aState = cloneState(getState(tpid));
+//                   if (newVal === undefined) {
+//                      delete aState.parameters[prp];
+//                   } else {
+//                      aState.parameters[prp] = newVal.slice(0);
+//                   }
+//                   states[tpid] = aState;
+//                   
+//                }
+//      
+//             }
+//          }
+//          
+//          // update state for the initiating portlet
+//          aState = cloneState(state);
+//          states[pid] = aState;
+//          callback(states);
+// 
+//       },
+
+
+//      
+//      /**
+//       * Compares the values of two parameters and returns true if they are equal
+//       * 
+//       * @param      {string[]}     parm1    First parameter
+//       * @param      {string[]}     parm2    2nd parameter
+//       * @returns    {boolean}               true if the new parm value is equal
+//       *                                     to the current value
+//       * @private
+//       */
+//      isParmEqual : function (parm1, parm2) {
+//         var ii;
+//         
+//         // The values are either string arrays or undefined.
+//         
+//         if ((parm1 === undefined) && (parm2 === undefined)) {
+//            return true;
+//         } else if ((parm1 === undefined) || (parm2 === undefined)) {
+//            return false;
+//         } else if (parm1.length != parm2.length){
+//            return false;
+//         } else {
+//            ii = parm1.length;
+//            while ((ii = ii - 1) >= 0) {
+//               if (parm1[ii] !== parm2[ii]) {
+//                  return false;
+//               }
+//            }
+//         }
+//         
+//         return true;
+//      },
 
    /**
     * Register a portlet. The impl is passed the portlet ID for the portlet.
@@ -710,28 +862,29 @@ portlet.test.getIds = function () {
 			/**
 			 * Get current portlet state
 			 */
-			getState : function () {return portlet.impl.getState(pid);},
+			getState : function () {return getState(pid);},
    
 			/**
 			 * Set new portlet state. Returns promise fullfilled with an array of
 			 * IDs of portlets whose state have been modified.
 			 */
-			setState : function (state) {return portlet.impl.setState(pid, state);},
+			setState : function (state) {return setState(pid, state);},
    
 			/**
 			 * Perform the Ajax action request
 			 */
-			executeAction : function (parms, element, callback, onError) {return portlet.impl.executeAction(pid, parms, element, callback, onError);},
+			executeAction : function (parms, element, callback, onError) {return executeAction(pid, parms, element, callback, onError);},
    
 			/**
 			 * Get a URL of the specified type - resource or partial action
 			 */
-			getUrl : function (type, parms, cache) {return portlet.impl.getUrl(type, pid, parms, cache);},
+			getUrl : function (type, parms, cache) {return getUrl(type, pid, parms, cache);},
    
 			/**
-			 * Decode the update string returned by the partial action request
+			 * Decode the update string returned by the partial action request.
+			 * Returns array of IDs of portlets to be updated.
 			 */
-			decodeUpdateString : function (ustr) {return portlet.impl.decodeUpdateString(ustr, pid);},
+			decodeUpdateString : function (ustr) {return updatePageStateFromString(ustr, pid);},
    
       };            
       
@@ -775,7 +928,7 @@ portlet.test.getIds = function () {
          // test needs the data & IDs & decoder too
          // portlet.test.getInitData = portlet.impl.getInitData;
          // portlet.test.getIds = portlet.impl.getIds;
-         portlet.test.decodeUpdateString = portlet.impl.decodeUpdateString;
+         portlet.test.decodeUpdateString = decodeUpdateString;
 
    // };
 

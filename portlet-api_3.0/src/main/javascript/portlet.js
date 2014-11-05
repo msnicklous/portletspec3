@@ -440,41 +440,6 @@ var portlet = portlet || {};
       return result;
    },
 
-   /**
-    * Compares the values of two parameters and returns true if they are equal
-    *
-    * @param {string[]} parm1 First parameter
-    * @param {string[]} parm2 2nd parameter
-    * @returns {boolean} true if the new parm value is equal to the current value
-    * @private
-    */
-   _isParmEqual = function(parm1, parm2) {
-      var ii;
-
-      // The values are either string arrays or undefined.
-
-      if ((parm1 === undefined) && (parm2 === undefined)) {
-         return true;
-      }
-      
-      if ((parm1 === undefined) || (parm2 === undefined)) {
-         return false;
-      }
-      
-      if (parm1.length !== parm2.length) {
-         return false;
-      }
-      
-      
-      for (ii = parm1.length - 1; ii >= 0; ii--) {
-         if (parm1[ii] !== parm2[ii]) {
-            return false;
-         }
-      }
-
-      return true;
-   },
-
    // ~~~~~~~~~~~~~~~~~~~~~~ Event Handling ~~~~~~~~~~~~~~~~~~~~~~~~~~
    // for event handling
    handleCtr = 0,                         // used to generate handles returned by addEventListener
@@ -717,66 +682,27 @@ var portlet = portlet || {};
    },
 
    /**
-    * Compares the values of the named parameter in the new portlet state
-    * with the values of that parameter in the current state.
-    *
-    * @param      {string}       pid      The portlet ID
-    * @param      {PortletState} state    The new portlet state
-    * @param      {string}       name     The parameter name to check
-    * @returns    {boolean}               true if the new parm value is different
-    *                                     from the current value
-    * @private
-    */
-   isParmInStateEqual = function (pid, state, name) {
-      var newVal = state.parameters[name], oldVal = pi.getParmVal(pid, name);
-
-      return _isParmEqual(newVal, oldVal);
-   },
-
-   /**
-    * Gets the updated public parameters for the given portlet
-    * ID and new portlet state.
-    * Returns an object whose properties are the names of the
-    * updated public parameters. The values are the new public
-    * parameter values.
-    *
-    * @param      {string}       pid      The portlet ID
-    * @param      {PortletState} state    The new portlet state
-    * @returns    {object}                object containing the updated PRPs
-    * @private
-    */
-   getUpdatedPRPs = function (pid, state) {
-      var prps = {}, ii = 0, prpNames = pi.getPRPNames(pid), name;
-
-      for (ii = 0; ii < prpNames.length; ii++) {
-         name = prpNames[ii];
-         if (isParmInStateEqual(pid, state, name) === false) {
-            prps[name] = state.parameters[name];
-         }
-      }
-
-      return prps;
-   },
-
-   /**
     * Accepts an object containing changed portlet states. Updates
     * the state for each portlet present.
     *
-    * @param   {PortletStates} states  Object containing portlet states to update
+    * @param    {string}   upids  array of portlet IDs to be updated 
     * @private
     */
-   updatePageState = function (states) {
-      var tpid, state;
-
-      for (tpid in states) {
-         if (states.hasOwnProperty(tpid)) {
-
-            // update state for the portlet
-            state = states[tpid];
-            pi.setState(tpid, state);
-            _updateStateForPortlet(tpid);
-         }
+   updatePageState = function (upids) {
+      var ii;
+      
+      for (ii = 0; ii < upids.length; ii++) {
+         _updateStateForPortlet(upids[ii]);
       }
+
+//       for (tpid in states) {
+//          if (states.hasOwnProperty(tpid)) {
+// 
+//             // update state for the portlet
+// //            state = states[tpid];
+// //            pi.setState(tpid, state);
+//             _updateStateForPortlet(tpid);
+//          }
 
    },
 
@@ -798,7 +724,7 @@ var portlet = portlet || {};
     * @private
     */
    updateState = function (pid, state) {
-      var prps;
+      var pi;
 
       // do necessary checks
 
@@ -809,12 +735,17 @@ var portlet = portlet || {};
       }
 
       busy = true;
-
-      // handle the public render parameters. For each updated PRP for the
-      // initiating portlet, update that PRP in the other portlets.
-      prps = getUpdatedPRPs(pid, state);
-      pi.updateParameters(pid, state, prps, updatePageState);
-
+      
+      // Set state in the implementation. The setState function returns an array of portlet
+      // IDs for portlets that need to be updated. Update the page state using this info.
+      
+      // todo: Add error handling!
+      
+      pi = _registeredPortlets[pid];
+      pi.setState(state).then(function (upids) {
+         updatePageState(upids);
+      });
+       
    },
 
 
@@ -895,23 +826,23 @@ var portlet = portlet || {};
 
       validateParms(state.parameters);
 
-     // see if the portlet mode is a string and is a value allowed for the
-     // portlet
-     if ((state.portletMode === undefined) || (typeof state.portletMode !== 'string')) {
-        throwIllegalArgumentException("Invalid parameters. portletMode is " + (typeof state.portletMode));
-     } else if (!_isAllowedPM(pid, state.portletMode)) {
-        throwIllegalArgumentException("Invalid portletMode=" + state.portletMode + " is not in "
-           + pi.getAllowedPM());
-     }
-
-     // see if the windowState is a string and is a value allowed for the
-     // portlet
-     if ((state.windowState === undefined) || (typeof state.windowState !== 'string')) {
-        throwIllegalArgumentException("Invalid parameters. windowState is " + (typeof state.windowState));
-     } else if (!_isAllowedWS(pid, state.windowState)) {
-        throwIllegalArgumentException("Invalid windowState=" + state.windowState + " is not in "
-           + pi.getAllowedWS());
-     }
+      // see if the portlet mode is a string and is a value allowed for the
+      // portlet
+      if ((state.portletMode === undefined) || (typeof state.portletMode !== 'string')) {
+         throwIllegalArgumentException("Invalid parameters. portletMode is " + (typeof state.portletMode));
+      } else if (!_isAllowedPM(pid, state.portletMode)) {
+         throwIllegalArgumentException("Invalid portletMode=" + state.portletMode + " is not in "
+            + pi.getAllowedPM());
+      }
+      
+      // see if the windowState is a string and is a value allowed for the
+      // portlet
+      if ((state.windowState === undefined) || (typeof state.windowState !== 'string')) {
+         throwIllegalArgumentException("Invalid parameters. windowState is " + (typeof state.windowState));
+      } else if (!_isAllowedWS(pid, state.windowState)) {
+         throwIllegalArgumentException("Invalid windowState=" + state.windowState + " is not in "
+            + pi.getAllowedWS());
+      }
 
    },
 
@@ -934,7 +865,8 @@ var portlet = portlet || {};
     * @private
     */
    setupAction = function (pid, parms, element) {
-
+      var pi;
+      
       // do necessary checks
 
       if (busy === true) {
@@ -945,7 +877,11 @@ var portlet = portlet || {};
 
       busy = true;
 
-      pi.executeAction(pid, parms, element, updatePageState);
+      // execute the action. The promise is fulfilled with an array of IDs of portlets to be updated.
+      pi = _registeredPortlets[pid];
+      pi.executeAction(parms, element).then(function (upids) {
+         updatePageState(upids);
+      });
 
    },
 
@@ -961,24 +897,26 @@ var portlet = portlet || {};
     * The callback should only be called once to conclude a partial
     * action sequence. 
     * 
+    * @param   {string}    pid      The portlet ID for operation
     * @param   {string}    ustr     The new page state in string form
     * @throws  {IllegalArgumentException} 
     *                      Thrown if the parameter is not a string
     * @name       setPageState
     * @callback   setPageState
     */
-   setPageState = function (ustr) {
-      var states;
+   setPageState = function (pid, ustr) {
+      var upids, pi;
 
-      // check for exactly 1 argument of type 'string'
-      checkArguments(arguments, 1, 1, [ 'string' ]);
+      // check for exactly 2 arguments of type 'string'
+      checkArguments(arguments, 2, 2, [ 'string', 'string' ]);
 
       // convert page state into an object.
       // update each affected portlet client. Makes use of a 
       // mockup-specific function for decoding. 
 
-      states = portlet.impl.decodeUpdateString(ustr);
-      updatePageState(states);
+      pi = _registeredPortlets[pid];
+      upids = pi.decodeUpdateString(ustr);
+      updatePageState(upids);
 
    },
 
@@ -1580,7 +1518,7 @@ var portlet = portlet || {};
              * @memberOf   PortletInit
              */
             startPartialAction : function (actParams) {
-               var  parms = null, paObj = {};
+               var  parms = null, paObj = {}, pi;
          
                // check arguments. make sure there is a maximum of two
                // args and determine the types. Check values as possible.
@@ -1607,8 +1545,9 @@ var portlet = portlet || {};
                busy = true;
          
                // Create the PartialActionInit object and return it
-               paObj.url = pi.getUrl("PARTIALACTION", portletId, parms);
-               paObj.setPageState = setPageState;
+               pi = _registeredPortlets[portletId];
+               paObj.url = pi.getUrl("PARTIALACTION", parms);
+               paObj.setPageState = function (ustr) {setPageState(portletId, ustr);};
          
                return paObj;
             },
