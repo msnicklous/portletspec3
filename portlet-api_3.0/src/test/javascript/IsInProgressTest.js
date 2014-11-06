@@ -208,8 +208,12 @@ describe('The portlet hub allows the portlet client test for a blocking operatio
          var parms  = {ap1 : ["actionVal"]}, str, states, state;
          var ustr = portlet.test.data.updateStrings[portletB];
          runs(function() {
-            pai = hubB.startPartialAction(parms);
+            pai = null;
+            hubB.startPartialAction(parms).then(function (p) {
+               pai = p;
+            });
          }); 
+         waitsFor(function () {return pai !== null;}, "The promise to settle", 100)
          runs(function() {
             var retval;
             retval = hubB.isInProgress();
@@ -225,8 +229,12 @@ describe('The portlet hub allows the portlet client test for a blocking operatio
          var parms  = {ap1 : ["actionVal"]}, str, states, state;
          var ustr = portlet.test.data.updateStrings[portletB];
          runs(function() {
-            pai = hubB.startPartialAction(parms);
+            pai = null;
+            hubB.startPartialAction(parms).then(function (p) {
+               pai = p;
+            });
          }); 
+         waitsFor(function () {return pai !== null;}, "The promise to settle", 100)
          runs(function() {
             var retval;
             retval = hubD.isInProgress();
@@ -242,8 +250,12 @@ describe('The portlet hub allows the portlet client test for a blocking operatio
          var parms  = {ap1 : ["actionVal"]}, str, states, state;
          var ustr = portlet.test.data.updateStrings[portletB];
          runs(function() {
-            pai = hubB.startPartialAction(parms);
+            pai = null;
+            hubB.startPartialAction(parms).then(function (p) {
+               pai = p;
+            });
          }); 
+         waitsFor(function () {return pai !== null;}, "The promise to settle", 100)
          runs(function() {
             pai.setPageState(ustr);
          }); 
@@ -259,8 +271,12 @@ describe('The portlet hub allows the portlet client test for a blocking operatio
          var parms  = {ap1 : ["actionVal"]}, str, states, state;
          var ustr = portlet.test.data.updateStrings[portletB];
          runs(function() {
-            pai = hubB.startPartialAction(parms);
+            pai = null;
+            hubB.startPartialAction(parms).then(function (p) {
+               pai = p;
+            });
          }); 
+         waitsFor(function () {return pai !== null;}, "The promise to settle", 100)
          runs(function() {
             pai.setPageState(ustr);
          }); 
@@ -281,8 +297,12 @@ describe('The portlet hub allows the portlet client test for a blocking operatio
          var parms  = {ap1 : ["actionVal"]}, str, states, state;
          var ustr = portlet.test.data.updateStrings[portletB];
          runs(function() {
-            pai = hubB.startPartialAction(parms);
+            pai = null;
+            hubB.startPartialAction(parms).then(function (p) {
+               pai = p;
+            });
          }); 
+         waitsFor(function () {return pai !== null;}, "The promise to settle", 100)
          runs(function() {
             pai.setPageState(ustr);
          }); 
@@ -303,8 +323,12 @@ describe('The portlet hub allows the portlet client test for a blocking operatio
          var parms  = {ap1 : ["actionVal"]}, str, states, state;
          var ustr = portlet.test.data.updateStrings[portletB];
          runs(function() {
-            pai = hubB.startPartialAction(parms);
+            pai = null;
+            hubB.startPartialAction(parms).then(function (p) {
+               pai = p;
+            });
          }); 
+         waitsFor(function () {return pai !== null;}, "The promise to settle", 100)
          runs(function() {
             pai.setPageState(ustr);
          }); 

@@ -284,9 +284,18 @@ describe('The portlet hub allows the portlet client to execute a portlet action'
       
       it('allows a resource URL to be created containing the portlet state',function(){
          var parms  = {rp1 : ["resVal"], rp2 : ["resVal2"]}, cache="cacheLevelPage", url, str;
-         url = hubA.createResourceUrl(parms, cache);
-         str = portlet.test.resource.getState(url, portletA);
-         expect(str).toEqual(cbA.getState());
+         var testFunc = function () {
+            return hubA.createResourceUrl(parms, cache);
+         }
+         var ph = new portlet.jasmine.PromiseHandler(testFunc, false);
+         runs(ph.getRun());
+         waitsFor(ph.getIsComplete(), "The promise from createResourceUrl is settled.", 1000);
+         runs(ph.getChecker()); 
+         runs(function() {
+            url = ph.result;
+            str = portlet.test.resource.getState(url, portletA);
+            expect(str).toEqual(cbA.getState());
+         }); 
       });
           
    });

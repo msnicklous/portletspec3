@@ -651,8 +651,11 @@ portlet.test.getIds = function () {
       while (qparms.length > 0) {
          url += "&" + qparms.shift();
       }
-   
-      return url;
+      
+      // Use Promise to allow for potential server communication - 
+      return new Promise(function (resolve, reject) {
+         resolve(url);
+      });
    },
    
    

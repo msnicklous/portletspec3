@@ -306,8 +306,7 @@ var portlet = portlet || {};
    }
 
    // variable declarations
-   var pi = portlet.impl,
-       portletRegex = "^portlet\..*",
+   var portletRegex = "^portlet[.].*",
 
    /**
     * Portlet Hub Mockup internal structure defining the data held
@@ -378,8 +377,6 @@ var portlet = portlet || {};
     * Maps from the the ID of the registered portlet to the implementation callback
     */
    _registeredPortlets = {},
-
-   _onStateChangedListeners = {},
 
    /**
     * Shortcut for Object.keys
@@ -729,18 +726,67 @@ var portlet = portlet || {};
       
       // Set state in the implementation. The setState function returns an array of portlet
       // IDs for portlets that need to be updated. Update the page state using this info.
-      
-      // todo: Add error handling!
+      // If an error occurred, post the error to the onError handler, if one is present.
       
       pi = _registeredPortlets[pid];
       pi.setState(state).then(function (upids) {
          updatePageState(upids);
+      }, function (err) {
+         if (oeListeners[pid]) {
+            delay( function () {
+               oeListeners[pid].callback(err);
+            }, 0);
+         }
       });
        
    },
 
 
    // ~~~~~~~~~~~~~~~~~~~~~~ Other functions ~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   /**
+    * Used by the portlet hub methods to check the number and types of
+    * the arguments.
+    *
+    * @private
+    * @param   {string[]}  parms    The argument list to be checked
+    * @param   {number}    minParms The minimum number of arguments
+    * @param   {number}    maxParms The maximum number of arguments.
+    *                               If this value is undefined, the function can take any
+    *                               number of arguments greater than numArgs
+    * @param   {string[]}  types    An array containing the expected parameter types
+    *                               in the order of occurrance in the argument array
+    * @throws  {IllegalArgumentException}
+    *                               Thrown if the parameters are in some manner incorrect
+    */
+   checkArguments = function (parms, minParms, maxParms, types) {
+
+      // Check for the minimum number of arguments
+      if (parms.length < minParms) {
+         throwIllegalArgumentException("Too few arguments provided. Number of arguments: " + parms.length);
+
+         // check for maximum number of arguments
+      } else if ((typeof maxParms === 'number') && (parms.length > maxParms)) {
+         throwIllegalArgumentException("Too many arguments provided: " + [].join.call(parms, ', '));
+
+         // check if the argument types are as expected if provided with types
+      } else if (types) {
+
+         var ii;
+         for (ii = Math.min(parms.length, types.length) - 1; ii >= 0; ii = ii - 1) {
+            if (typeof parms[ii] !== types[ii]) {
+               throwIllegalArgumentException("Parameter " + ii + " is of type " + (typeof parms[ii])
+                     + " rather than the expected type " + types[ii]);
+            }
+
+            // If checking for types, also make sure the arguments are neither
+            // null nor undefined.
+            if ((parms[ii] === null) || (parms[ii] === undefined)) {
+               throwIllegalArgumentException("Argument is " + (typeof parms[ii]));
+            }
+         }
+      }
+   },
 
    /**
     * Verifies that the input parameters are in valid format.
@@ -869,9 +915,17 @@ var portlet = portlet || {};
       busy = true;
 
       // execute the action. The promise is fulfilled with an array of IDs of portlets to be updated.
+      // If an error occurred, post the error to the onError handler, if one is present.
+
       pi = _registeredPortlets[pid];
       pi.executeAction(parms, element).then(function (upids) {
          updatePageState(upids);
+      }, function (err) {
+         if (oeListeners[pid]) {
+            delay( function () {
+               oeListeners[pid].callback(err);
+            }, 0);
+         }
       });
 
    },
@@ -909,50 +963,6 @@ var portlet = portlet || {};
       upids = pi.decodeUpdateString(ustr);
       updatePageState(upids);
 
-   },
-
-   /**
-    * Used by the portlet hub methods to check the number and types of
-    * the arguments.
-    *
-    * @private
-    * @param   {string[]}  parms    The argument list to be checked
-    * @param   {number}    minParms The minimum number of arguments
-    * @param   {number}    maxParms The maximum number of arguments.
-    *                               If this value is undefined, the function can take any
-    *                               number of arguments greater than numArgs
-    * @param   {string[]}  types    An array containing the expected parameter types
-    *                               in the order of occurrance in the argument array
-    * @throws  {IllegalArgumentException}
-    *                               Thrown if the parameters are in some manner incorrect
-    */
-   checkArguments = function (parms, minParms, maxParms, types) {
-
-      // Check for the minimum number of arguments
-      if (parms.length < minParms) {
-         throwIllegalArgumentException("Too few arguments provided. Number of arguments: " + parms.length);
-
-         // check for maximum number of arguments
-      } else if ((typeof maxParms === 'number') && (parms.length > maxParms)) {
-         throwIllegalArgumentException("Too many arguments provided: " + [].join.call(parms, ', '));
-
-         // check if the argument types are as expected if provided with types
-      } else if (types) {
-
-         var ii;
-         for (ii = Math.min(parms.length, types.length) - 1; ii >= 0; ii = ii - 1) {
-            if (typeof parms[ii] !== types[ii]) {
-               throwIllegalArgumentException("Parameter " + ii + " is of type " + (typeof parms[ii])
-                     + " rather than the expected type " + types[ii]);
-            }
-
-            // If checking for types, also make sure the arguments are neither
-            // null nor undefined.
-            if ((parms[ii] === null) || (parms[ii] === undefined)) {
-               throwIllegalArgumentException("Argument is " + (typeof parms[ii]));
-            }
-         }
-      }
    };
 
    /**
@@ -963,11 +973,11 @@ var portlet = portlet || {};
     * portal server for the portlet.
     *
     * @param   {string}    portletId   The unique portlet identifier
-    * @returns {Promise}   A Promise object. On successful resolution, a 
+    * @returns {Promise}   A Promise object. Returns an 
     *                      {@link PortletInit} object containing functions
-    *                      for use by the portlet client will be returned.
-    *                      On failure, a descriptive error message will be 
-    *                      returned.
+    *                      for use by the portlet client on successful resolution.
+    *                      Returns an Error object containing a descriptive   
+    *                      message on failure.
     */
    portlet.register = function (portletId) {
 
@@ -1237,7 +1247,7 @@ var portlet = portlet || {};
             cloneState : _clone,
 
             /**
-             * Returns a resource URL with parameters set appropriately
+             * Returns a promise for a resource URL with parameters set appropriately
              * for the page state according to the  resource parameters
              * and cacehability option provided.
              * <p>
@@ -1296,17 +1306,18 @@ var portlet = portlet || {};
              *                                           added to the URL
              * @param   {string}             cache       Cacheability option
              *
-             * @returns {string}             The resource URL
+             * @returns {Promise}   A Promise object. Returns a string representing the 
+             *                      resource URL on successful resolution.
+             *                      Returns an Error object containing a descriptive
+             *                      message on failure.
              *
              * @throws  {IllegalArgumentException}
              *                   Thrown if the input parameters are invalid
              *
              * @memberOf   PortletInit
-          * 
-          * TODO returns a promise that will be fulfilled with the URL
              */
             createResourceUrl : function (resParams, cache) {
-               var ii, arg, parms=null, cacheability=null;
+               var ii, arg, parms=null, cacheability=null, pi;
          
                // check arguments. make sure there is a maximum of two
                // args and determine the types. Check values as possible.
@@ -1343,13 +1354,15 @@ var portlet = portlet || {};
                             + " is of type" + (typeof arg));
                   }
                }
-            // fallback to page level cacheability
-            if (!cacheability) {
-               cacheability = "cacheLevelPage";
-            }
+               
+               // fallback to page level cacheability
+               if (!cacheability) {
+                  cacheability = "cacheLevelPage";
+               }
          
-               // everything ok, so get URL
-               return portletImpl.getUrl("RESOURCE", parms, cacheability);
+               // everything ok, so get URL from the impl
+               pi = _registeredPortlets[portletId];
+               return pi.getUrl("RESOURCE", parms, cacheability);
             },
          
             /**
@@ -1502,8 +1515,11 @@ var portlet = portlet || {};
              *                                           added to the URL
              *                                           (optional)
              *
-             * @returns {PortletActionInit}  Contains the partial action URL
-             *                               and the setPageState callback function
+             * @returns {Promise}   A Promise object. Returns a {PortletActionInit}
+             *                      object containing a partial action URL and
+             *                      the setPageState callback function on successful
+             *                      resolution. Returns an Error object containing
+             *                      a descriptive message on failure.
              *
              * @throws  {IllegalArgumentException}
              *                   Thrown if the input parameters are invalid
@@ -1543,12 +1559,18 @@ var portlet = portlet || {};
          
                busy = true;
          
-               // Create the PartialActionInit object and return it
+               // Create the PartialActionInit object fulfill promise by passing it.
+               // let errors propagate to caller.
+               
                pi = _registeredPortlets[portletId];
-               paObj.url = pi.getUrl("PARTIALACTION", parms);
-               paObj.setPageState = function (ustr) {setPageState(portletId, ustr);};
+               return pi.getUrl("PARTIALACTION", parms).then(function (url) {
+                  paObj.url = url;
+                  paObj.setPageState = function (ustr) {setPageState(portletId, ustr);};
+                  return paObj;
+               }, function (err) {
+                  return err;
+               });
          
-               return paObj;
             },
          
             /**

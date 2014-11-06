@@ -132,12 +132,13 @@ var portlet = portlet || {};
       },
    };
 
-   portlet.jasmine.PromiseHandler = function (f) {
+   portlet.jasmine.PromiseHandler = function (f, checkResType) {
       this.func = f
       this.result = null;
       this.errMsg = "";
       this.error = false;
       this.complete = false;
+      this.checkResType = (checkResType === false) ? false : true;
    } 
    
    portlet.jasmine.PromiseHandler.prototype = {
@@ -188,7 +189,9 @@ var portlet = portlet || {};
          expect(this.errMsg).toEqual("");
          expect(this.complete).toBeTruthy();
          expect(this.error).not.toBeTruthy();
-         expect(typeof this.result).toEqual('object');
+         if (this.checkResType) {
+            expect(typeof this.result).toEqual('object');
+         }
       },
       
       // For making a closure around the checker function
