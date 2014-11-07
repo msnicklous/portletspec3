@@ -164,7 +164,24 @@ portlet.test.data  = {
             'mimeType' : "text/plain"
          }
       },
+      
+      // When the following IDs are used, the mock hub simulates various error
+      // conditions. Used for Jasmine tests that check error handling of API 
+      // portion of portlet hub.
+      
       'SimulateLongWait' : {
+         'state' : {
+            'parameters' : {
+               'parm1' : ['val1'], 
+            }, 
+            'portletMode' : 'VIEW', 
+            'windowState' : 'NORMAL'
+         },
+         'pubParms' : ['pubparm1', 'pubparm2'],
+         'allowedPM' : ['VIEW', 'EDIT', 'HELP'],
+         'allowedWS' : ['NORMAL', 'MINIMIZED', 'MAXIMIZED']
+      },
+      'SimulateCommError' : {
          'state' : {
             'parameters' : {
                'parm1' : ['val1'], 
@@ -214,7 +231,11 @@ portlet.test.data  = {
       
       "PortletD" : "",
       "PortletE" : "",
-      "PortletF" : ""
+      "PortletF" : "",
+
+      // For special portlet ID that causes error sto be simulated
+      "SimulateCommError" : "&~~~&SimulateCommError&mode=VIEW&ws=NORMAL&parm1=Fred&parm2=Barney" +
+      "&~~~"
    }
 };
 
@@ -493,10 +514,21 @@ portlet.test.getIds = function () {
       // update state for the initiating portlet
       pageState[pid].state = state;
       upids.push(pid);
+
       
       // Use Promise to allow for potential server communication - 
       return new Promise(function (resolve, reject) {
-         resolve(upids);
+         var simval = '';
+         if (pid === 'SimulateCommError' && state.parameters.SimulateError !== undefined) {
+            simval = state.parameters.SimulateError[0];
+         }
+
+         // reject promise of an error is to be simulated
+         if (simval === 'reject') {
+            reject(new Error("Simulated error occurred when setting state!"));
+         } else {
+            resolve(upids);
+         }
       });
    },
 
@@ -536,19 +568,9 @@ portlet.test.getIds = function () {
     *                Additional parameters. May be <code>null</code>
     * @param   {HTMLFormElement}    Form to be submitted
     *                               May be <code>null</code> 
-    * @param   {function}  callback Function to be called with
-    *                               list of portlet states when action is finished
-    * @param   {function}  onError  Function to be called if error occurs
-    * 
-    * @throws  {AccessDeniedException}
-    *                   Thrown if a blocking operation is
-    *                   already in progress. 
-    * @throws  {NotInitializedException} 
-    *                   Thrown if a portlet ID is provided, but no onStateChange
-    *                   listener has been registered.
     * @private 
     */
-   executeAction = function (pid, parms, element, callback, onError) {
+   executeAction = function (pid, parms, element) {
       var states, ustr, tpid, state, upids = [];
    
       // pretend to create a url, etc. ... for the mockup
@@ -563,7 +585,20 @@ portlet.test.getIds = function () {
       
       // Use Promise to allow for potential server communication - 
       return new Promise(function (resolve, reject) {
-         resolve(upids);
+         var simval = '';
+         if (pid === 'SimulateCommError' && (parms)) {
+            simval = parms.SimulateError;
+            if (simval) {
+               simval = simval[0];
+            }
+         }
+            
+         // reject promise of an error is to be simulated
+         if (simval === 'reject') {
+            reject(new Error("Simulated error occurred during action!"));
+         } else {
+            resolve(upids);
+         }
       });
 
    },
@@ -654,7 +689,20 @@ portlet.test.getIds = function () {
       
       // Use Promise to allow for potential server communication - 
       return new Promise(function (resolve, reject) {
-         resolve(url);
+         var simval = '';
+         if (pid === 'SimulateCommError' && (parms)) {
+            simval = parms.SimulateError;
+            if (simval) {
+               simval = simval[0];
+            }
+         }
+            
+         // reject promise of an error is to be simulated
+         if (simval === 'reject') {
+            reject(new Error("Simulated error occurred when getting a URL!"));
+         } else {
+            resolve(url);
+         }
       });
    },
    

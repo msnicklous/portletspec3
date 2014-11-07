@@ -260,6 +260,7 @@
 						<include>**/PartialActionTest.js</include>
 						<include>**/IsInProgressTest.js</include>
 						<include>**/DispatchClientEventTest.js</include>
+						<include>**/SimulatedErrorTests.js</include>
 				   </specIncludes>
 				</configuration>
 			</plugin>

@@ -734,7 +734,7 @@ var portlet = portlet || {};
       }, function (err) {
          if (oeListeners[pid]) {
             delay( function () {
-               oeListeners[pid].callback(err);
+               oeListeners[pid].callback('portlet.onError', err);
             }, 0);
          }
       });
@@ -923,7 +923,7 @@ var portlet = portlet || {};
       }, function (err) {
          if (oeListeners[pid]) {
             delay( function () {
-               oeListeners[pid].callback(err);
+               oeListeners[pid].callback('portlet.onError', err);
             }, 0);
          }
       });
@@ -1567,8 +1567,6 @@ var portlet = portlet || {};
                   paObj.url = url;
                   paObj.setPageState = function (ustr) {setPageState(portletId, ustr);};
                   return paObj;
-               }, function (err) {
-                  return err;
                });
          
             },
