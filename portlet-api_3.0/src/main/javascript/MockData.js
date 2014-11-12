@@ -958,7 +958,7 @@ portlet.test.getIds = function () {
             var flag = false, str = url.match(/context.*\?/);
             if (str !== null) {
                str = str[0].split("/")[2];
-               if (str === "PARTIALACTION") {
+               if (str === "PARTIAL_ACTION") {
                   flag = true;
                }
             }
