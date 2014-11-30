@@ -254,13 +254,14 @@
 						<include>**/CustomMatchers.js</include>
 						<include>**/SetUpAndRegisterTest.js</include>
  						<include>**/AddEventListenerTest.js</include>
-                  <include>**/CreateResourceUrlTest.js</include>
+                        <include>**/CreateResourceUrlTest.js</include>
 						<include>**/SetPortletStateTest.js</include>
 						<include>**/ActionTest.js</include>
 						<include>**/PartialActionTest.js</include>
 						<include>**/IsInProgressTest.js</include>
 						<include>**/DispatchClientEventTest.js</include>
 						<include>**/SimulatedErrorTests.js</include>
+						<include>**/StateTests.js</include>
 				   </specIncludes>
 				</configuration>
 			</plugin>

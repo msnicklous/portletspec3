@@ -557,6 +557,32 @@ portlet.test.getIds = function () {
 
       return upids;
    },
+   
+   
+   /**
+    * Update page state passed in after partial action. The list of 
+    * ID's of updated portlets is passed back through a promise in order
+    * to decouple the layers.
+    * 
+    * @param   {string}    ustr     The 
+    * @param   {string}    pid      The portlet ID
+    * @private 
+    */
+   updatePageState = function (ustr, pid) {
+            
+      // Use Promise to allow for potential server communication - 
+      return new Promise(function (resolve, reject) {
+         var upids;
+               
+         try {
+            upids = updatePageStateFromString(ustr, pid);
+            resolve(upids);
+         } catch (e) {
+            reject(new Error("Partial Action Action decode status: " + e.message));
+         }
+      });
+
+   },
 
       
    /**
@@ -832,7 +858,7 @@ portlet.test.getIds = function () {
 			 * Decode the update string returned by the partial action request.
 			 * Returns array of IDs of portlets to be updated.
 			 */
-			decodeUpdateString : function (ustr) {return updatePageStateFromString(ustr, pid);},
+			decodeUpdateString : function (ustr) {return updatePageState(ustr, pid);},
    
       };            
       

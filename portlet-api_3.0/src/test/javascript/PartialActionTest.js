@@ -139,10 +139,13 @@ describe('The portlet hub allows the portlet client to initiate a partial action
          cbA.complete = false;
          runs(function() {
             cbA.oscHandle = hubA.addEventListener("portlet.onStateChange", cbA.getListener());
+            cbA.oeHandle = hubA.addEventListener("portlet.onError", cbA.getListener("error"));
          }); 
          waitsFor(cbA.getIsComplete(), "The onStateChange callback should be called", 100);
          runs(function() {
             cbA.complete = false;    // in prep for the actual test
+            cbA.retType = null;
+            cbA.retErrorData = null;
          }); 
       });
 
@@ -151,6 +154,8 @@ describe('The portlet hub allows the portlet client to initiate a partial action
          if (cbA.oscHandle !== null) {
             hubA.removeEventListener(cbA.oscHandle);
             cbA.oscHandle = null;
+            hubA.removeEventListener(cbA.oeHandle);
+            cbA.oeHandle = null;
          }
       });
 
@@ -236,11 +241,15 @@ describe('The portlet hub allows the portlet client to initiate a partial action
          expect(testFunc).toThrowCustomException("IllegalArgumentException");
       });
 
-      it('return object setPageState function throws an exception if called with invalid parameter',function(){
-         var testFunc = function () {
+      it('onError event is fired if the setPageState function is called with invalid update string',function(){
+         runs(function() {
             pai.setPageState("Invalid page state.");
-         };
-         expect(testFunc).toThrowCustomException("IllegalArgumentException");
+         }); 
+         waitsFor(cbA.getIsComplete(), "The onError callback should be called", 100);
+         runs(function() {
+            expect(cbA.retType).toEqual('portlet.onError');
+            expect(cbA.retErrorData).not.toEqual(null);
+         }); 
       });
 
       it('return object setPageState function does not throw if parameter is correct',function(){

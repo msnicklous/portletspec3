@@ -405,6 +405,17 @@ var portlet = portlet || {};
    },
 
    /**
+    * Checks if the object is convertible to string
+    * (meaning it's either string, number, or boolean)
+    *
+    * @param {*} obj object
+    * @return {boolean}
+    */
+   _isStringy = function(obj) {
+      return (typeof obj === "string") || (typeof obj === "number") || (typeof obj === "boolean");
+   },
+
+   /**
     * Constructs a deep copy of the object
     *
     * @param {Object|Array} data
@@ -688,8 +699,12 @@ var portlet = portlet || {};
    updatePageState = function (upids) {
       var ii;
       
+      if (upids.length === 0) {
+         busy = false;
+      } else {
       for (ii = 0; ii < upids.length; ii++) {
          _updateStateForPortlet(upids[ii]);
+      }
       }
 
    },
@@ -732,6 +747,7 @@ var portlet = portlet || {};
       pi.setState(state).then(function (upids) {
          updatePageState(upids);
       }, function (err) {
+         busy = false;
          if (oeListeners[pid]) {
             delay( function () {
                oeListeners[pid].callback('portlet.onError', err);
@@ -921,6 +937,7 @@ var portlet = portlet || {};
       pi.executeAction(parms, element).then(function (upids) {
          updatePageState(upids);
       }, function (err) {
+         busy = false;
          if (oeListeners[pid]) {
             delay( function () {
                oeListeners[pid].callback('portlet.onError', err);
@@ -950,20 +967,83 @@ var portlet = portlet || {};
     * @callback   setPageState
     */
    setPageState = function (pid, ustr) {
-      var upids, pi;
+      var pi;
 
-      // check for exactly 2 arguments of type 'string'
-      checkArguments(arguments, 2, 2, [ 'string', 'string' ]);
+      // Perform some checks on the update string. allow null string.
+      if ((ustr === undefined) || ((ustr !== null) && (typeof ustr !== 'string'))) {
+         throwIllegalArgumentException("Invalid update string: " + ustr);
+      }
 
       // convert page state into an object.
       // update each affected portlet client. Makes use of a 
       // mockup-specific function for decoding. 
 
       pi = _registeredPortlets[pid];
-      upids = pi.decodeUpdateString(ustr);
+      pi.decodeUpdateString(ustr).then(function (upids) {
       updatePageState(upids);
+      }, function (err) {
+         busy = false;
+         if (oeListeners[pid]) {
+            delay( function () {
+               oeListeners[pid].callback('portlet.onError', err);
+            }, 0);
+         }
+      });
 
    };
+   
+   function Parameters(p) {
+      var n;
+      if (p) {
+         for (n in p) {
+            if (p.hasOwnProperty(n) && _isArray(p[n])) {
+               this[n] = p[n].slice(0);
+            }
+         }
+      }
+   }
+   Parameters.prototype.clone = function () {
+      var res = new Parameters(), n;
+      for (n in this) {
+         if (this.hasOwnProperty(n) && _isArray(this[n])) {
+            res[n] = this[n].slice(0);
+         }
+      }
+      return res;
+   }
+   Parameters.prototype.setValue = function (name, value) {
+      var val = value, ii;
+      if ((value === undefined) || ((value !== null) 
+          && !(_isArray(value) || _isStringy(value)))) {
+         throw new Error("Bad value type: " + typeof value);
+      }
+      if (_isArray(value)) {
+         for (ii = 0; ii < value.length; ii++) {
+            if (value[ii] === undefined || ((value[ii] !== null) && !_isStringy(value[ii]))) {
+               throw new Error("Bad type in value array: " + typeof value[ii]);
+            }
+         }
+      }
+      if (!_isArray(value)) {
+         val = [value];
+      }
+      this[name] = val;
+   }
+   Parameters.prototype.remove = function (name) {
+      if (this[name] !== undefined) {
+         delete this[name];
+      }
+   }
+   Parameters.prototype.getValue = function (name) {
+      var res = this[name];
+      if (res) {
+         res = res[0];
+      }
+      return res;
+   }
+   Parameters.prototype.getValues = function (name) {
+      return this[name];
+   }
 
    /**
     * Registers a portlet client with the portlet hub.
@@ -1437,6 +1517,7 @@ var portlet = portlet || {};
             action : function (actParams, element) {
                var ii, arg, type, parms = null, el = null;
          
+               console.log("Executing action for portlet: " + portletId);
                // check arguments. make sure there is a maximum of two
                // args and determine the types. Check values as possible.
                if (arguments.length > 2) {
@@ -1676,10 +1757,14 @@ var portlet = portlet || {};
                }
          
                return cnt;
+            },
+            
+            newParameters : function (p) {
+               return new Parameters (p);
             }
          
          };
       });
    };
 
-})();
+}());
