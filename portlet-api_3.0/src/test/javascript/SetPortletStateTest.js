@@ -397,7 +397,7 @@ describe('The portlet hub allows the portlet client to set its state.',function(
          }); 
          waitsFor(cbA.getIsComplete(), "The onStateChange callback should be called", 100);
          runs(function() {
-            expect(cbA.retPortletState.parameters).toEqual(newParms);
+            expect(cbA.retPortletState.parameters).toEqual(hubA.newParameters(newParms));
          }); 
       });
 
@@ -408,7 +408,7 @@ describe('The portlet hub allows the portlet client to set its state.',function(
          }); 
          waitsFor(cbA.getIsComplete(), "The onStateChange callback should be called", 100);
          runs(function() {
-            expect(cbA.retPortletState).toEqual(state);
+            expect(cbA.retPortletState).toEqual(hubA.newState(state));
          }); 
       });
 

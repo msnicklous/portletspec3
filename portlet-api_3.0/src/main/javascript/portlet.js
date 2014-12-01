@@ -47,17 +47,56 @@
  * To represent the parameter having a <code>null</code> value, the
  * property value must equal [null].
  * <p>
- * @typedef    PortletParameter
- * @property   {string[]}  {string}   The parameters object may have
- *                                    multiple properties.
+ * PortletParameters objects obtained from the Portlet Hub define some helper
+ * functions for accessing the parameter values.
+ * <p>
+ * @typedef    PortletParameters
+ * @property   {string[]}  {string}    The parameters object may have
+ *                                     multiple properties.
+ * @property   {function}   clone()          Returns a new copy of this object
+ * @property   {function}   setValue(n,v)    Sets a parameter with name n and value v.
+ *                                           The value v may be a string or an array.
+ * @property   {function}   setValues(n,v)   Sets a parameter with name n and value v.
+ *                                           The value v may be a string or an array.
+ * @property   {function}   getValue(n)      Gets the string parameter value for the name n.
+ *                                           If n designates a multi-valued parameter, this function returns the first value in the values array.
+ * @property   {function}   getValues(n)     Gets the string array parameter value for the name n.
+ * @property   {function}   remove(n)        Removes the parameter with name n.
  */
 
 /**
  * Represents the portlet state.
+ * <p>
+ * PortletState objects obtained from the Portlet Hub define some helper
+ * functions for accessing the parameter values.
+ * <p>
  * @typedef    PortletState
- * @property   {PortletParameter}   parameters     The portlet parameters
+ * @property   {PortletParameters}   parameters     The portlet parameters
+ * @property   {PortletParameters}   p              an alias for the 'parameters' property
  * @property   {string}             portletMode    The portlet mode
  * @property   {string}             windowState    The window state
+ * @property   {function}   clone()                Returns a new copy of this object
+ * @property   {function}   setPortletMode(pm)     Sets the portlet mode to the specified value. 
+ *               The strings defined by the {@link PortletConstants} object should be used to specify the portlet mode.
+ * @property   {function}   getPortletMode()       Returns the current portlet mode 
+ * @property   {function}   setWindowState(ws)     Sets the window state to the specified value
+ * @property   {function}   getWindowState()       Returns the current window state
+ *               The strings defined by the {@link PortletConstants} object should be used to specify the window state.
+ */
+
+/**
+ * Provides defined values for some commonly-used portlet constants
+ * <p>
+ * @typedef    PortletConstants
+ * @property   {string}       VIEW        Specifies portlet mode 'VIEW'    
+ * @property   {string}       EDIT        Specifies portlet mode 'EDIT'    
+ * @property   {string}       HELP        Specifies portlet mode 'HELP'    
+ * @property   {string}       NORMAL      Specifies window state 'NORMAL'
+ * @property   {string}       MINIMIZED   Specifies window state 'MINIMIZED'
+ * @property   {string}       MAXIMIZED   Specifies window state 'MAXIMIZED'
+ * @property   {string}       FULL        Specifies resource URL cacheability 'FULL'
+ * @property   {string}       PORTLET     Specifies resource URL cacheability 'PORTLET'
+ * @property   {string}       PAGE        Specifies resource URL cacheability 'PAGE'
  */
 
 /**
@@ -305,8 +344,94 @@ var portlet = portlet || {};
       return;
    }
 
+
+   // ~~~~~~~~~~~~~~~~ Helper classes for parameters & state ~~~~~~~~~~~~~~~~~~~
+   
+   function Parameters(p) {
+      var n;
+      if (p) {
+         for (n in p) {
+            if (p.hasOwnProperty(n) && Array.isArray(p[n])) {
+               this[n] = p[n].slice(0);
+            }
+         }
+      }
+   }
+   Parameters.prototype.clone = function () {
+      return new Parameters(this);
+   };
+   Parameters.prototype.setValue = function (name, value) {
+      var val = value;
+      if (!Array.isArray(value)) {
+         val = [value];
+      }
+      this[name] = val;
+   };
+   Parameters.prototype.setValues = Parameters.prototype.setValue;
+   Parameters.prototype.remove = function (name) {
+      if (this[name] !== undefined) {
+         delete this[name];
+      }
+   };
+   Parameters.prototype.getValue = function (name) {
+      var res = this[name];
+      if (res) {
+         res = res[0];
+      }
+      return res;
+   };
+   Parameters.prototype.getValues = function (name) {
+      return this[name];
+   };
+   
+   function State (s) {
+      if (s) {
+         this.portletMode = s.portletMode;
+         this.windowState = s.windowState;
+         this.parameters = new Parameters(s.parameters);
+      } else {
+         this.portletMode = 'VIEW';
+         this.windowState = 'NORMAL';
+         this.parameters = new Parameters();
+      }
+      this.p = this.parameters;
+   }
+   State.prototype.clone = function () {
+      return new State(this);
+   };
+   State.prototype.setPortletMode = function (pm) {
+      this.portletMode = pm;
+   };
+   State.prototype.getPortletMode = function () {
+      return this.portletMode;
+   };
+   State.prototype.setWindowState = function (ws) {
+      this.windowState = ws;
+   };
+   State.prototype.getWindowState = function () {
+      return this.windowState;
+   };
+   
+   var portletConstants = {
+      
+      // Portlet mode
+      "VIEW"      : "VIEW",
+      "EDIT"      : "EDIT",
+      "HELP"      : "HELP",
+      
+      // window state
+      "NORMAL"    : "NORMAL",
+      "MINIMIZED" : "MINIMIZED",
+      "MAXIMIZED" : "MAXIMIZED",
+      
+      // Resource URL cacheability
+      "FULL"      : "cacheLevelFull",
+      "PAGE"      : "cacheLevelPage",
+      "PORTLET"   : "cacheLevelPortlet"
+   },
+
    // variable declarations
-   var portletRegex = "^portlet[.].*",
+   portletRegex = "^portlet[.].*",
 
    /**
     * Portlet Hub Mockup internal structure defining the data held
@@ -402,17 +527,6 @@ var portlet = portlet || {};
     */
    _isObject = function(obj) {
       return typeof obj === "object";
-   },
-
-   /**
-    * Checks if the object is convertible to string
-    * (meaning it's either string, number, or boolean)
-    *
-    * @param {*} obj object
-    * @return {boolean}
-    */
-   _isStringy = function(obj) {
-      return (typeof obj === "string") || (typeof obj === "number") || (typeof obj === "boolean");
    },
 
    /**
@@ -634,7 +748,7 @@ var portlet = portlet || {};
 
                pi = _registeredPortlets[p];
 
-               state = _clone(pi.getState());
+               state = new State(pi.getState());
                data = pi.getRenderData();
                callback = oscListeners[p].callback;
 
@@ -820,7 +934,7 @@ var portlet = portlet || {};
     * To represent a <code>null</code> value, the property value must equal
     * [null].
     *
-    * @param      {PortletParameter} parms    The parameters to check
+    * @param      {PortletParameters} parms    The parameters to check
     * @private
     * @throws  {IllegalArgumentException}
     *             Thrown if the parameters are incorrect
@@ -991,59 +1105,8 @@ var portlet = portlet || {};
       });
 
    };
-   
-   function Parameters(p) {
-      var n;
-      if (p) {
-         for (n in p) {
-            if (p.hasOwnProperty(n) && _isArray(p[n])) {
-               this[n] = p[n].slice(0);
-            }
-         }
-      }
-   }
-   Parameters.prototype.clone = function () {
-      var res = new Parameters(), n;
-      for (n in this) {
-         if (this.hasOwnProperty(n) && _isArray(this[n])) {
-            res[n] = this[n].slice(0);
-         }
-      }
-      return res;
-   }
-   Parameters.prototype.setValue = function (name, value) {
-      var val = value, ii;
-      if ((value === undefined) || ((value !== null) 
-          && !(_isArray(value) || _isStringy(value)))) {
-         throw new Error("Bad value type: " + typeof value);
-      }
-      if (_isArray(value)) {
-         for (ii = 0; ii < value.length; ii++) {
-            if (value[ii] === undefined || ((value[ii] !== null) && !_isStringy(value[ii]))) {
-               throw new Error("Bad type in value array: " + typeof value[ii]);
-            }
-         }
-      }
-      if (!_isArray(value)) {
-         val = [value];
-      }
-      this[name] = val;
-   }
-   Parameters.prototype.remove = function (name) {
-      if (this[name] !== undefined) {
-         delete this[name];
-      }
-   }
-   Parameters.prototype.getValue = function (name) {
-      var res = this[name];
-      if (res) {
-         res = res[0];
-      }
-      return res;
-   }
-   Parameters.prototype.getValues = function (name) {
-      return this[name];
-   }
+
+   // ~~~~~~~~~~~~~~~~ Register function ~~~~~~~~~~~~~~~~~~~
 
    /**
     * Registers a portlet client with the portlet hub.
@@ -1315,16 +1378,7 @@ var portlet = portlet || {};
                updateState(portletId, state);
          
             },
-         
-         
-            /**
-             * Utility function to perform a deep copy of the state object.
-             *
-             * @param   {PortletState}    state    The state to be cloned
-             *
-             * @memberOf   PortletInit
-             */
-            cloneState : _clone,
+
 
             /**
              * Returns a promise for a resource URL with parameters set appropriately
@@ -1341,7 +1395,7 @@ var portlet = portlet || {};
              * <p>
              * The resource parameters must be an object containing properties
              * representing parameter names whose values must be an array of string
-             * values, as described under {@link PortletParameter}.
+             * values, as described under {@link PortletParameters}.
              * All of the resource parameters will be attached to the URL.
              * Use of resource parameters is optional.
              * <p>
@@ -1384,7 +1438,8 @@ var portlet = portlet || {};
              *
              * @param   {PortletParameters}  resParams   Resource parameters to be
              *                                           added to the URL
-             * @param   {string}             cache       Cacheability option
+             * @param   {string}             cache       Cacheability option. The strings defined
+             *                under {@link PortletConstants} should be used to specifiy cacheability.
              *
              * @returns {Promise}   A Promise object. Returns a string representing the 
              *                      resource URL on successful resolution.
@@ -1469,7 +1524,7 @@ var portlet = portlet || {};
              * <p>
              * The action parameters must be an object containing properties
              * representing parameter names whose values must be an array of string
-             * values, as described under {@link PortletParameter}.
+             * values, as described under {@link PortletParameters}.
              * All of the action parameters will be attached to the URL.
              * Use of action parameters is optional.
              * <p>
@@ -1581,7 +1636,7 @@ var portlet = portlet || {};
              * <p>
              * The action parameters must be an object containing properties
              * representing parameter names whose values must be an array of string
-             * values, as described under {@link PortletParameter}.
+             * values, as described under {@link PortletParameters}.
              * All of the action parameters will be attached to the URL.
              * Use of action parameters is optional.
              * <p>
@@ -1759,9 +1814,47 @@ var portlet = portlet || {};
                return cnt;
             },
             
+            /**
+             * Creates and returns a new PortletParameters object.
+             * <p>
+             * If no argument is provided, an empty PortletParameters object will be
+             * returned. If an existing PortletParameters object is provided as argument,
+             * a clone of the input object will be returned.
+             *
+             * @param   {PortletParameters}   p     An optional PortletParameters object to be copied
+             *
+             * @returns {PortletParameters}         The new parameters object
+             *
+             * @memberOf   PortletInit
+             */
             newParameters : function (p) {
                return new Parameters (p);
-            }
+            },
+            
+            /**
+             * Creates and returns a new PortletState object.
+             * <p>
+             * If no argument is provided, an empty PortletState object will be
+             * returned. If an existing PortletState object is provided as argument,
+             * a clone of the input object will be returned.
+             *
+             * @param   {PortletState}   s     An optional PortletState object to be copied
+             *
+             * @returns {PortletState}         The new PortletState object
+             *
+             * @memberOf   PortletInit
+             */
+            newState : function (s) {
+               return new State(s);
+            },
+            
+            /**
+             * The {@link PortletConstants} object that provides useful field definitions for 
+             * portlet mode, window state, and resource URL cacheability settings.
+             *
+             * @memberOf   PortletInit
+             */
+            constants : portletConstants
          
          };
       });

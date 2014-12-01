@@ -270,7 +270,7 @@ describe('The portlet hub allows the portlet client to initiate a partial action
          waitsFor(cbA.getIsComplete(), "The onStateChange callback should be called", 100);
          runs(function() {
             var states = portlet.test.decodeUpdateString(ustr, portletA),
-            stateA = states[portletA];
+            stateA = hubA.newState(states[portletA]);
             expect(cbA.retPortletState).toEqual(stateA);
          }); 
       });
@@ -377,7 +377,7 @@ describe('The portlet hub allows the portlet client to initiate a partial action
          runs(function() {
             str = portlet.test.data.updateStrings[portletA];
             states = portlet.test.decodeUpdateString(str, portletA);
-            stateA = states[portletA];
+            stateA = hubA.newState(states[portletA]);
             expect(cbA.retPortletState).toEqual(stateA);
          }); 
       });
@@ -632,9 +632,9 @@ describe('The portlet hub allows the portlet client to initiate a partial action
          waitsFor(cbC.getIsComplete(), "The onStateChange callback should be called", 100);
          runs(function() {
             states = portlet.test.decodeUpdateString(ustr, portletB);
-            state = states[portletB];
+            state = hubA.newState(states[portletB]);
             expect(cbB.retPortletState).toEqual(state);
-            state = states[portletC];
+            state = hubC.newState(states[portletC]);
             expect(cbC.retPortletState).toEqual(state);
             expect(cbA.isComplete()).toBeFalsy();
             expect(cbD.isComplete()).toBeFalsy();
@@ -662,16 +662,16 @@ describe('The portlet hub allows the portlet client to initiate a partial action
 
             states = portlet.test.decodeUpdateString(ustr, portletC);
 
-            state = states[portletA];
+            state = hubA.newState(states[portletA]);
             expect(cbA.retPortletState).toEqual(state);
 
-            state = states[portletB];
+            state = hubB.newState(states[portletB]);
             expect(cbB.retPortletState).toEqual(state);
 
-            state = states[portletC];
+            state = hubC.newState(states[portletC]);
             expect(cbC.retPortletState).toEqual(state);
 
-            state = states[portletD];
+            state = hubD.newState(states[portletD]);
             expect(cbD.retPortletState).toEqual(state);
 
          }); 

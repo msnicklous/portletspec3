@@ -111,6 +111,7 @@ describe('The Portlet Hub provides accessor functions for the portlet state and 
             expect(typeof p).toEqual('object');
             expect(typeof p.clone).toEqual('function');
             expect(typeof p.setValue).toEqual('function');
+            expect(typeof p.setValues).toEqual('function');
             expect(typeof p.getValue).toEqual('function');
             expect(typeof p.getValues).toEqual('function');
             expect(typeof p.remove).toEqual('function');
@@ -260,6 +261,15 @@ describe('The Portlet Hub provides accessor functions for the portlet state and 
          }); 
       });
 
+      it('allows reading a multi-value parameter that was set through setValues', function () {
+         var parm1 = ['fred', 'barney'], parm2;
+         runs(function() {
+            parms.setValues('parm1', parm1)
+            parm2 = parms.getValues('parm1');
+            expect(parm2).toEqual(parm1);
+         }); 
+      });
+
       it('allows reading a multi-value parameter that was set to null', function () {
          var parm1 = ['fred', null], parm2;
          runs(function() {
@@ -332,11 +342,381 @@ describe('The Portlet Hub provides accessor functions for the portlet state and 
             expect(typeof p2).toEqual('object');
             expect(typeof p2.clone).toEqual('function');
             expect(typeof p2.setValue).toEqual('function');
+            expect(typeof p2.setValues).toEqual('function');
             expect(typeof p2.getValue).toEqual('function');
             expect(typeof p2.getValues).toEqual('function');
             expect(typeof p2.remove).toEqual('function');
             expect(p2.parm1).toEqual(parm1);
             expect(p2.parm2).toEqual(parm2);
+         }); 
+      });
+   });
+
+   
+   describe('The portlet hub newState function: ', function () {
+
+      // The tests in this section use just a single portlet - portletA
+      var cbA = new portlet.jasmine.JasminePortletUtils('SimulateCommError', pageState);
+
+      // add an osc handler for the test
+      beforeEach(function () {
+         cbA.complete = false;
+         runs(function() {
+            cbA.oscHandle = hubA.addEventListener("portlet.onStateChange", cbA.getListener());
+         }); 
+         waitsFor(cbA.getIsComplete(), "The onStateChange callback should be called", 100);
+         runs(function() {
+            cbA.complete = false;    // in prep for the actual test
+         }); 
+      });
+
+      // remove the osc handler added during the test
+      afterEach(function () {
+         if (cbA.oscHandle !== null) {
+            hubA.removeEventListener(cbA.oscHandle);
+            cbA.oscHandle = null;
+         }
+      });
+
+      it('is present in the register return object and is a function', function () {
+         expect(typeof hubA.newState).toEqual('function');
+      });
+
+      it('returns a State object containing the required functions and fields', function () {
+         var s;
+         runs(function() {
+            s = hubA.newState();
+            expect(typeof s).toEqual('object');
+            expect(typeof s.clone).toEqual('function');
+            expect(typeof s.setPortletMode).toEqual('function');
+            expect(typeof s.getPortletMode).toEqual('function');
+            expect(typeof s.setWindowState).toEqual('function');
+            expect(typeof s.getWindowState).toEqual('function');
+            expect(typeof s.parameters).toEqual('object');
+            expect(typeof s.p).toEqual('object');
+            expect(s.p).toEqual(s.parameters);
+            expect(typeof s.portletMode).toEqual('string');
+            expect(typeof s.windowState).toEqual('string');
+         }); 
+      });
+
+      it('returns a State object containing no parameters', function () {
+         var s, key, cnt = 0;
+         runs(function() {
+            s = hubA.newState();
+            for (key in s.parameters) {
+               expect(s.parameters.hasOwnProperty(key)).toEqual(false);
+               if (s.parameters.hasOwnProperty(key)){
+                  cnt++;
+               }
+            }
+            expect(cnt).toEqual(0);
+         }); 
+      });
+
+      it('returns a State object containing cloned values if passed a State object', function () {
+         var state = {parameters: {parm1: ['fred'], parm2: ['barney']}, portletMode:'EDIT', windowState: 'MINIMIZED'}, 
+                     s, key, cnt = 0;
+         runs(function() {
+            s = hubA.newState(state);
+            for (key in s.parameters) {
+               if (s.parameters.hasOwnProperty(key)){
+                  cnt++;
+               }
+            }
+            expect(cnt).toEqual(2);
+            expect(s.parameters.parm1).toEqual(['fred']);
+            expect(s.parameters.parm2).toEqual(['barney']);
+            expect(s.portletMode).toEqual('EDIT');
+            expect(s.windowState).toEqual('MINIMIZED');
+         }); 
+      });
+
+   });
+
+   
+   describe('The returned State object: ', function () {
+
+      // The tests in this section use just a single portlet - portletA
+      var cbA = new portlet.jasmine.JasminePortletUtils('SimulateCommError', pageState),
+      state = null;
+
+      // add an osc handler for the test
+      beforeEach(function () {
+         cbA.complete = false;
+         runs(function() {
+            cbA.oscHandle = hubA.addEventListener("portlet.onStateChange", cbA.getListener());
+            state = null;
+         }); 
+         waitsFor(cbA.getIsComplete(), "The onStateChange callback should be called", 100);
+         runs(function() {
+            cbA.complete = false;    // in prep for the actual test
+            state = hubA.newState();
+         }); 
+      });
+
+      // remove the osc handler added during the test
+      afterEach(function () {
+         if (cbA.oscHandle !== null) {
+            hubA.removeEventListener(cbA.oscHandle);
+            cbA.oscHandle = null;
+         }
+      });
+
+      it('allows parameters to be set', function () {
+         var parm1 = ['fred'], parm2 = ['barney'], key, cnt = 0;
+         runs(function() {
+            state.parameters.setValue('parm1', parm1)
+            state.parameters.setValue('parm2', parm2)
+            for (key in state.parameters) {
+               if (state.parameters.hasOwnProperty(key)){
+                  cnt++;
+               }
+            }
+            expect(cnt).toEqual(2);
+            expect(state.parameters.parm1).toEqual(parm1);
+            expect(state.parameters.parm2).toEqual(parm2);
+         }); 
+      });
+
+      it('has a shortcut p to access the parameters', function () {
+         var parm1 = ['fred'], parm2 = ['barney'], key, cnt = 0;
+         runs(function() {
+            state.p.setValue('parm1', parm1)
+            state.p.setValue('parm2', parm2)
+            for (key in state.p) {
+               if (state.p.hasOwnProperty(key)){
+                  cnt++;
+               }
+            }
+            expect(cnt).toEqual(2);
+            expect(state.p.parm1).toEqual(parm1);
+            expect(state.p.parm2).toEqual(parm2);
+         }); 
+      });
+
+      it('setting a parameter of the same name replaces the old  parameter value', function () {
+         var parm1 = ['fred'], parm2 = ['barney'], key, cnt = 0;
+         runs(function() {
+            state.parameters.setValue('parm1', parm1)
+            state.parameters.setValue('parm1', parm2)
+            for (key in state.parameters) {
+               if (state.parameters.hasOwnProperty(key)){
+                  cnt++;
+               }
+            }
+            expect(cnt).toEqual(1);
+            expect(state.parameters.parm1).toEqual(parm2);
+         }); 
+      });
+
+      it('allows reading a single-value parameter that was set', function () {
+         var parm1 = ['fred'], parm2;
+         runs(function() {
+            state.parameters.setValue('parm1', parm1)
+            parm2 = state.parameters.getValue('parm1');
+            expect(parm2).toEqual(parm1[0]);
+         }); 
+      });
+
+      it('allows reading a single-value parameter that was set to null', function () {
+         var parm1 = [null], parm2;
+         runs(function() {
+            state.parameters.setValue('parm1', parm1)
+            parm2 = state.parameters.getValue('parm1');
+            expect(parm2).toBeNull();
+         }); 
+      });
+
+      it('allows removing a single-value parameter that was set', function () {
+         var parm1 = ['fred'], parm2;
+         runs(function() {
+            state.parameters.setValue('parm1', parm1)
+            state.parameters.remove('parm1');
+            parm2 = state.parameters.getValue('parm1');
+            expect(parm2).toBeUndefined();
+            expect(state.parameters.parm1).toBeUndefined();
+         }); 
+      });
+
+      it('allows reading a multi-value parameter that was set', function () {
+         var parm1 = ['fred', 'barney'], parm2;
+         runs(function() {
+            state.parameters.setValue('parm1', parm1)
+            parm2 = state.parameters.getValues('parm1');
+            expect(parm2).toEqual(parm1);
+         }); 
+      });
+
+      it('allows reading a multi-value parameter that was set through the shortcut p', function () {
+         var parm1 = ['fred', 'barney'], parm2;
+         runs(function() {
+            state.p.setValue('parm1', parm1)
+            parm2 = state.p.getValues('parm1');
+            expect(parm2).toEqual(parm1);
+         }); 
+      });
+
+      it('allows reading a multi-value parameter that was set to null', function () {
+         var parm1 = ['fred', null], parm2;
+         runs(function() {
+            state.parameters.setValue('parm1', parm1)
+            parm2 = state.parameters.getValues('parm1');
+            expect(parm2).toEqual(parm1);
+            expect(parm2[0]).toEqual('fred');
+            expect(parm2[1]).toEqual(null);
+         }); 
+      });
+
+      it('allows removing a multi-value parameter that was set', function () {
+         var parm1 = ['fred', 'barney'], parm2;
+         runs(function() {
+            state.parameters.setValue('parm1', parm1)
+            state.parameters.remove('parm1');
+            parm2 = state.parameters.getValue('parm1');
+            expect(parm2).toBeUndefined();
+            expect(state.parameters.parm1).toBeUndefined();
+         }); 
+      });
+
+      it('returns undefined when getValue reads a parameter that was not set', function () {
+         var parm1;
+         runs(function() {
+            parm1 = state.parameters.getValue('parm1');
+            expect(parm1).toBeUndefined();
+         }); 
+      });
+
+      it('returns undefined when getValues reads a parameter that was not set', function () {
+         var parm1;
+         runs(function() {
+            parm1 = state.parameters.getValues('parm1');
+            expect(parm1).toBeUndefined();
+         }); 
+      });
+
+      it('can be cloned if empty', function () {
+         var p2, key, cnt = 0;
+         runs(function() {
+            p2 = state.parameters.clone();
+            for (key in p2) {
+               if (state.parameters.hasOwnProperty(key)){
+                  cnt++;
+               }
+            }
+            expect(cnt).toEqual(0);
+            expect(typeof p2).toEqual('object');
+            expect(typeof p2.clone).toEqual('function');
+            expect(typeof p2.setValue).toEqual('function');
+            expect(typeof p2.getValue).toEqual('function');
+            expect(typeof p2.getValues).toEqual('function');
+            expect(typeof p2.remove).toEqual('function');
+        }); 
+      });
+
+      it('can be cloned if parameters are set', function () {
+         var parm1 = ['fred'], parm2 = ['barney'], key, cnt = 0, p2;
+         runs(function() {
+            state.parameters.setValue('parm1', parm1)
+            state.parameters.setValue('parm2', parm2)
+            p2 = state.parameters.clone();
+            for (key in p2) {
+               if (state.parameters.hasOwnProperty(key)){
+                  cnt++;
+               }
+            }
+            expect(cnt).toEqual(2);
+            expect(typeof p2).toEqual('object');
+            expect(typeof p2.clone).toEqual('function');
+            expect(typeof p2.setValue).toEqual('function');
+            expect(typeof p2.getValue).toEqual('function');
+            expect(typeof p2.getValues).toEqual('function');
+            expect(typeof p2.remove).toEqual('function');
+            expect(p2.parm1).toEqual(parm1);
+            expect(p2.parm2).toEqual(parm2);
+         }); 
+      });
+
+      it('allows setting and getting the portlet mode', function () {
+         var pm = 'EDIT', pm2;
+         runs(function() {
+            state.setPortletMode(pm)
+            pm2 = state.getPortletMode();
+            expect(state.portletMode).toEqual(pm);
+            expect(pm2).toEqual(pm);
+         }); 
+      });
+
+      it('allows setting and getting the window state', function () {
+         var ws = 'MAXIMIZED', ws2;
+         runs(function() {
+            state.setWindowState(ws)
+            ws2 = state.getWindowState();
+            expect(state.windowState).toEqual(ws);
+            expect(ws2).toEqual(ws);
+         }); 
+      });
+   });
+
+   
+   describe('The Constants object: ', function () {
+
+      // The tests in this section use just a single portlet - portletA
+      var cbA = new portlet.jasmine.JasminePortletUtils('SimulateCommError', pageState),
+      cons = null;
+
+      // add an osc handler for the test
+      beforeEach(function () {
+         cbA.complete = false;
+         runs(function() {
+            cbA.oscHandle = hubA.addEventListener("portlet.onStateChange", cbA.getListener());
+            cons = null;
+         }); 
+         waitsFor(cbA.getIsComplete(), "The onStateChange callback should be called", 100);
+         runs(function() {
+            cbA.complete = false;    // in prep for the actual test
+            cons = hubA.constants;
+         }); 
+      });
+
+      // remove the osc handler added during the test
+      afterEach(function () {
+         if (cbA.oscHandle !== null) {
+            hubA.removeEventListener(cbA.oscHandle);
+            cbA.oscHandle = null;
+         }
+      });
+
+      it('contains constants for the portlet mode', function () {
+         runs(function() {
+            expect(typeof cons.VIEW).toEqual('string');
+            expect(typeof cons.EDIT).toEqual('string');
+            expect(typeof cons.HELP).toEqual('string');
+            expect(cons.VIEW).toEqual('VIEW');
+            expect(cons.EDIT).toEqual('EDIT');
+            expect(cons.HELP).toEqual('HELP');
+         }); 
+      });
+
+      it('contains constants for the window state', function () {
+         runs(function() {
+            expect(typeof cons.NORMAL).toEqual('string');
+            expect(typeof cons.MINIMIZED).toEqual('string');
+            expect(typeof cons.MAXIMIZED).toEqual('string');
+            expect(cons.NORMAL).toEqual('NORMAL');
+            expect(cons.MINIMIZED).toEqual('MINIMIZED');
+            expect(cons.MAXIMIZED).toEqual('MAXIMIZED');
+         }); 
+      });
+
+      it('contains constants for the resource URL cacheability setting', function () {
+         runs(function() {
+            expect(typeof cons.FULL).toEqual('string');
+            expect(typeof cons.PORTLET).toEqual('string');
+            expect(typeof cons.PAGE).toEqual('string');
+            expect(cons.FULL).toEqual('cacheLevelFull');
+            expect(cons.PORTLET).toEqual('cacheLevelPortlet');
+            expect(cons.PAGE).toEqual('cacheLevelPage');
          }); 
       });
    });

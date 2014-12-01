@@ -58,7 +58,9 @@ var portlet = portlet || {};
          }, key, oldParams = aState.parameters;
       
          for (key in oldParams) {
-            newParams[key] = oldParams[key].slice(0); 
+            if (oldParams.hasOwnProperty(key)) {
+               newParams[key] = oldParams[key].slice(0);
+            }
          }
       
          return newState;

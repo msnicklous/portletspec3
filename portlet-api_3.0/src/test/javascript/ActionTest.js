@@ -277,7 +277,7 @@ describe('The portlet hub allows the portlet client to execute a portlet action'
          runs(function() {
             str = portlet.test.data.updateStrings[portletA];
             states = portlet.test.decodeUpdateString(str, portletA);
-            stateA = states[portletA];
+            stateA = hubA.newState(states[portletA]);
             expect(cbA.retPortletState).toEqual(stateA);
          }); 
       });
@@ -383,9 +383,9 @@ describe('The portlet hub allows the portlet client to execute a portlet action'
          runs(function() {
             str = portlet.test.data.updateStrings[portletB];
             states = portlet.test.decodeUpdateString(str, portletB);
-            state = states[portletB];
+            state = hubB.newState(states[portletB]);
             expect(cbB.retPortletState).toEqual(state);
-            state = states[portletC];
+            state = hubC.newState(states[portletC]);
             expect(cbC.retPortletState).toEqual(state);
             expect(cbA.isComplete()).toBeFalsy();
             expect(cbD.isComplete()).toBeFalsy();
@@ -407,16 +407,16 @@ describe('The portlet hub allows the portlet client to execute a portlet action'
             str = portlet.test.data.updateStrings[portletC];
             states = portlet.test.decodeUpdateString(str, portletC);
             
-            state = states[portletA];
+            state = hubA.newState(states[portletA]);
             expect(cbA.retPortletState).toEqual(state);
             
-            state = states[portletB];
+            state = hubB.newState(states[portletB]);
             expect(cbB.retPortletState).toEqual(state);
             
-            state = states[portletC];
+            state = hubC.newState(states[portletC]);
             expect(cbC.retPortletState).toEqual(state);
             
-            state = states[portletD];
+            state = hubD.newState(states[portletD]);
             expect(cbD.retPortletState).toEqual(state);
          
          }); 
