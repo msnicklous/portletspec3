@@ -232,11 +232,20 @@ describe('The Portlet Hub provides accessor functions for the portlet state and 
          }); 
       });
 
+      it('allows reading a single-value parameter when a default value is provided', function () {
+         var parm1 = ['fred'], parm2;
+         runs(function() {
+            parms.setValue('parm1', parm1)
+            parm2 = parms.getValue('parm1', 'defaultVal');
+            expect(parm2).toEqual(parm1[0]);
+         }); 
+      });
+
       it('allows reading a single-value parameter that was set to null', function () {
          var parm1 = [null], parm2;
          runs(function() {
             parms.setValue('parm1', parm1)
-            parm2 = parms.getValue('parm1');
+            parm2 = parms.getValue('parm1', 'defaultVal');
             expect(parm2).toBeNull();
          }); 
       });
@@ -252,11 +261,27 @@ describe('The Portlet Hub provides accessor functions for the portlet state and 
          }); 
       });
 
+      it('returns undefined when reading an undefined single-value parameter without a default', function () {
+         var parm2;
+         runs(function() {
+            parm2 = parms.getValue('parm1');
+            expect(parm2).toBeUndefined();
+         }); 
+      });
+
+      it('returns the default value when reading an undefined single-value parameter with a default', function () {
+         var parm2;
+         runs(function() {
+            parm2 = parms.getValue('parm1', 'defaultValue');
+            expect(parm2).toEqual('defaultValue');
+         }); 
+      });
+
       it('allows reading a multi-value parameter that was set', function () {
          var parm1 = ['fred', 'barney'], parm2;
          runs(function() {
-            parms.setValue('parm1', parm1)
-            parm2 = parms.getValues('parm1');
+            parms.parm1 = parm1;
+            parm2 = parms.getValues('parm1', ['defaultVal1', 'defaultVal2']);
             expect(parm2).toEqual(parm1);
          }); 
       });
@@ -266,6 +291,15 @@ describe('The Portlet Hub provides accessor functions for the portlet state and 
          runs(function() {
             parms.setValues('parm1', parm1)
             parm2 = parms.getValues('parm1');
+            expect(parm2).toEqual(parm1);
+         }); 
+      });
+
+      it('allows reading a multi-value parameter when a default value array is provided', function () {
+         var parm1 = ['fred', 'barney'], parm2;
+         runs(function() {
+            parms.setValues('parm1', parm1)
+            parm2 = parms.getValues('parm1', ['defVal1', 'defVal2']);
             expect(parm2).toEqual(parm1);
          }); 
       });
@@ -292,19 +326,19 @@ describe('The Portlet Hub provides accessor functions for the portlet state and 
          }); 
       });
 
-      it('returns undefined when getValue reads a parameter that was not set', function () {
-         var parm1;
+      it('returns undefined when reading an undefined multi-value parameter without a default', function () {
+         var parm2;
          runs(function() {
-            parm1 = parms.getValue('parm1');
-            expect(parm1).toBeUndefined();
+            parm2 = parms.getValues('parm1');
+            expect(parm2).toBeUndefined();
          }); 
       });
 
-      it('returns undefined when getValues reads a parameter that was not set', function () {
-         var parm1;
+      it('returns the default value when reading an undefined multi-value parameter with a default', function () {
+         var parm2;
          runs(function() {
-            parm1 = parms.getValues('parm1');
-            expect(parm1).toBeUndefined();
+            parm2 = parms.getValues('parm1', ['defaultVal1', 'defaultVal2']);
+            expect(parm2).toEqual(['defaultVal1', 'defaultVal2']);
          }); 
       });
 

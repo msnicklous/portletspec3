@@ -58,9 +58,11 @@
  *                                           The value v may be a string or an array.
  * @property   {function}   setValues(n,v)   Sets a parameter with name n and value v.
  *                                           The value v may be a string or an array.
- * @property   {function}   getValue(n)      Gets the string parameter value for the name n.
+ * @property   {function}   getValue(n,d)    Gets the string parameter value for the name n.
  *                                           If n designates a multi-valued parameter, this function returns the first value in the values array.
- * @property   {function}   getValues(n)     Gets the string array parameter value for the name n.
+ *                                           If parameter n is undefined, the function returns the optional default value d.
+ * @property   {function}   getValues(n,d)   Gets the string array parameter value for the name n.
+ *                                           If parameter n is undefined, the function returns the optional default value array d.
  * @property   {function}   remove(n)        Removes the parameter with name n.
  */
 
@@ -373,15 +375,22 @@ var portlet = portlet || {};
          delete this[name];
       }
    };
-   Parameters.prototype.getValue = function (name) {
+   Parameters.prototype.getValue = function (name, def) {
       var res = this[name];
       if (res) {
          res = res[0];
       }
+      if (res === undefined) {
+         res = def;
+      }
       return res;
    };
-   Parameters.prototype.getValues = function (name) {
-      return this[name];
+   Parameters.prototype.getValues = function (name, def) {
+      var res = this[name]; 
+      if (res === undefined) {
+         res = def;
+      }
+      return res;
    };
    
    function State (s) {
