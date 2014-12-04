@@ -132,6 +132,27 @@ public interface ResourceRequest extends ClientDataRequest {
     */
 
    public ResourceParameters getResourceParameters();
+   
+   /**
+    * <div class="changed_added_3_0">
+    * Returns a <code>String</code> representing the current page state.
+    * <p>
+    * The content of the returned value is unspecified. It is to be passed to the
+    * Portlet Hub in order to conclude a Partial Action processing sequence. 
+    * <code>null</code> is a valid return value.
+    * <p>
+    * This call is only valid during Partial Action processing. If called at other times,
+    * the returned value is unspecified.
+    * <p>
+    * The Partial Action processing sequence provides support for infrastructure components
+    * such as a JSF Portlet Bridge to obtain page state information for use by the
+    * JavaScript Portlet Hub component.
+    * </div>
+    * 
+    * @return String to be passed to the Portlet Hub to conclude a Partial Action
+    *         processing sequence.
+    */
+   public String getPageState();
 
 
    /**
