@@ -21,3 +21,9 @@ target
 .classpath
 .project
 
+# misc stuff - various types of backup, lock, and other files
+**/#*#
+bin
+.~lock*
+~$*
+

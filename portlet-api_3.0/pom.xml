@@ -61,6 +61,10 @@
   <name>Java Portlet Specification V3.0</name>
   <description>The Java Portlet API version 3.0 developed by the Java Community Process JSR-362 Expert Group.</description>
 
+  <prerequisites>
+    <maven>3.1.0</maven>
+  </prerequisites>
+
   <dependencies>
     <dependency>
       <groupId>javax.servlet</groupId>
@@ -201,7 +205,7 @@
 			<plugin>
 				<groupId>com.github.klieber</groupId>
 				<artifactId>phantomjs-maven-plugin</artifactId>
-				<version>0.3</version>
+				<version>0.4</version>
 				<executions>
 					<execution>
 						<goals>
@@ -239,6 +243,7 @@
 					</webDriverCapabilities>
 					<!-- preload some utilities for working with portlets -->
 					<preloadSources>
+						<include>promise-6.0.0.min.js</include>
 						<include>JasminePortletUtils.js</include>
 					</preloadSources>
 					<sourceIncludes>
@@ -248,14 +253,16 @@
 					<specIncludes>
 						<include>**/CustomMatchers.js</include>
 						<include>**/SetUpAndRegisterTest.js</include>
-						<include>**/AddEventListenerTest.js</include>
+ 						<include>**/AddEventListenerTest.js</include>
+                        <include>**/CreateResourceUrlTest.js</include>
 						<include>**/SetPortletStateTest.js</include>
-						<include>**/CreateResourceUrlTest.js</include>
 						<include>**/ActionTest.js</include>
 						<include>**/PartialActionTest.js</include>
 						<include>**/IsInProgressTest.js</include>
 						<include>**/DispatchClientEventTest.js</include>
-					</specIncludes>
+						<include>**/SimulatedErrorTests.js</include>
+						<include>**/StateTests.js</include>
+				   </specIncludes>
 				</configuration>
 			</plugin>
 

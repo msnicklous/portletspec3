@@ -52,14 +52,82 @@ describe('The portlet hub allows the portlet client to create a resource URL.',f
 
        // Tests in thismodule need following portlets. register them.
        // These variables provide linkage between the "describe" sections
-       hubA = portlet.register(portletA),
-       hubB = portlet.register(portletB),
-       hubC = portlet.register(portletC),
-       hubD = portlet.register(portletD);
+       hubA,
+       hubB,
+       hubC,
+       hubD;
    
        
-   describe('The portlet hub createResourceUrl function: ',function(){
+   describe('The portlet hub is initialized for the tests: ',function(){
+   
+       it('initializes a portlet hub instance for portlet A',function(){
+          var testFunc = function () {
+             return portlet.register(portletA);
+          }
+          var ph = new portlet.jasmine.PromiseHandler(testFunc);
+          runs(ph.getRun());
+          waitsFor(ph.getIsComplete(), "The PortletInit object should be returned", 1000);
+          runs(ph.getChecker()); 
+          runs(function() {
+             expect(ph.result).toBeDefined();
+          }); 
+          runs(function() {
+             hubA = ph.result;
+          }); 
+       });
+       
+       it('initializes a portlet hub instance for portlet B',function(){
+          var testFunc = function () {
+             return portlet.register(portletB);
+          }
+          var ph = new portlet.jasmine.PromiseHandler(testFunc);
+          runs(ph.getRun());
+          waitsFor(ph.getIsComplete(), "The PortletInit object should be returned", 1000);
+          runs(ph.getChecker()); 
+          runs(function() {
+             expect(ph.result).toBeDefined();
+          }); 
+          runs(function() {
+             hubB = ph.result;
+          }); 
+       });
+   
+       it('initializes a portlet hub instance for portlet C',function(){
+          var testFunc = function () {
+             return portlet.register(portletC);
+          }
+          var ph = new portlet.jasmine.PromiseHandler(testFunc);
+          runs(ph.getRun());
+          waitsFor(ph.getIsComplete(), "The PortletInit object should be returned", 1000);
+          runs(ph.getChecker()); 
+          runs(function() {
+             expect(ph.result).toBeDefined();
+          }); 
+          runs(function() {
+             hubC = ph.result;
+          }); 
+       });
+       
+       it('initializes a portlet hub instance for portlet D',function(){
+          var testFunc = function () {
+             return portlet.register(portletD);
+          }
+          var ph = new portlet.jasmine.PromiseHandler(testFunc);
+          runs(ph.getRun());
+          waitsFor(ph.getIsComplete(), "The PortletInit object should be returned", 1000);
+          runs(ph.getChecker()); 
+          runs(function() {
+             expect(ph.result).toBeDefined();
+          }); 
+          runs(function() {
+             hubD = ph.result;
+          }); 
+       });
+     
+   });
 
+   describe('The portlet hub createResourceUrl function: ',function () {
+       
       // The tests in this section use just a single portlet - portletA
       var cbA = new portlet.jasmine.JasminePortletUtils(portletA, pageState);
 
@@ -91,14 +159,14 @@ describe('The portlet hub allows the portlet client to create a resource URL.',f
 
       it('throws an IllegalArgumentException if resource parameters  is null',function(){
          var testFunc = function () {
-            hubA.createResourceUrl(null, "FULL");
+            hubA.createResourceUrl(null, "cacheLevelFull");
          }
          expect(testFunc).toThrowCustomException("IllegalArgumentException");
       });
 
       it('throws an IllegalArgumentException if resource parameters is undefined',function(){
          var testFunc = function () {
-            hubA.createResourceUrl(undefined, "FULL");
+            hubA.createResourceUrl(undefined, "cacheLevelFull");
          }
          expect(testFunc).toThrowCustomException("IllegalArgumentException");
       });
@@ -106,7 +174,7 @@ describe('The portlet hub allows the portlet client to create a resource URL.',f
       it('throws an IllegalArgumentException if resource parameters is invalid',function(){
          var parms  = {rp1 : "resVal"};
          var testFunc = function () {
-            hubA.createResourceUrl(parms, "PORTLET");
+            hubA.createResourceUrl(parms, "cacheLevelPortlet");
          }
          expect(testFunc).toThrowCustomException("IllegalArgumentException");
       });
@@ -122,7 +190,7 @@ describe('The portlet hub allows the portlet client to create a resource URL.',f
       it('throws an IllegalArgumentException if there are 2 cacheability arguments',function(){
          var parms  = {rp1 : ["resVal"]};
          var testFunc = function () {
-            hubA.createResourceUrl("PAGE", "FULL");
+            hubA.createResourceUrl("cacheLevelPage", "cacheLevelFull");
          }
          expect(testFunc).toThrowCustomException("IllegalArgumentException");
       });
@@ -138,114 +206,258 @@ describe('The portlet hub allows the portlet client to create a resource URL.',f
       it('does not throw if both arguments are valid',function(){
          var parms  = {rp1 : ["resVal"]};
          var testFunc = function () {
-            hubA.createResourceUrl(parms, "PAGE");
+            hubA.createResourceUrl(parms, "cacheLevelPage");
          }
          expect(testFunc).not.toThrow();
       });
 
       it('returns a string if both arguments are valid',function(){
          var parms  = {rp1 : ["resVal"]}, retval;
-         retval = hubA.createResourceUrl(parms, "FULL");
-         expect(typeof retval).toEqual('string');
+         var testFunc = function () {
+            return hubA.createResourceUrl(parms, "cacheLevelFull");
+         }
+         var ph = new portlet.jasmine.PromiseHandler(testFunc, false);
+         runs(ph.getRun());
+         waitsFor(ph.getIsComplete(), "The promise from createResourceUrl is settled.", 1000);
+         runs(ph.getChecker()); 
+         runs(function() {
+            expect(typeof ph.result).toEqual('string');
+         }); 
       });
 
       it('returns a string if cacheability is specified first',function(){
          var parms  = {rp1 : ["resVal"]}, retval;
-         retval = hubA.createResourceUrl("PAGE", parms);
-         expect(typeof retval).toEqual('string');
+         var testFunc = function () {
+            return hubA.createResourceUrl("cacheLevelPage", parms);
+         }
+         var ph = new portlet.jasmine.PromiseHandler(testFunc, false);
+         runs(ph.getRun());
+         waitsFor(ph.getIsComplete(), "The promise from createResourceUrl is settled.", 1000);
+         runs(ph.getChecker()); 
+         runs(function() {
+            expect(typeof ph.result).toEqual('string');
+         }); 
       });
 
       it('returns a string if only cacheability present',function(){
          var parms  = {rp1 : ["resVal"]}, retval;
-         retval = hubA.createResourceUrl("PORTLET");
-         expect(typeof retval).toEqual('string');
+         var testFunc = function () {
+            return hubA.createResourceUrl("cacheLevelPortlet");
+         }
+         var ph = new portlet.jasmine.PromiseHandler(testFunc, false);
+         runs(ph.getRun());
+         waitsFor(ph.getIsComplete(), "The promise from createResourceUrl is settled.", 1000);
+         runs(ph.getChecker()); 
+         runs(function() {
+            expect(typeof ph.result).toEqual('string');
+         }); 
       });
 
       it('returns a string if only resource parameters present',function(){
          var parms  = {rp1 : ["resVal"], rp2 : ["resVal2"]}, retval;
-         retval = hubA.createResourceUrl(parms);
-         expect(typeof retval).toEqual('string');
+         var testFunc = function () {
+            return hubA.createResourceUrl(parms);
+         }
+         var ph = new portlet.jasmine.PromiseHandler(testFunc, false);
+         runs(ph.getRun());
+         waitsFor(ph.getIsComplete(), "The promise from createResourceUrl is settled.", 1000);
+         runs(ph.getChecker()); 
+         runs(function() {
+            expect(typeof ph.result).toEqual('string');
+         }); 
       });
 
       it('returns a string if no parameters present',function(){
          var parms  = {rp1 : ["resVal"], rp2 : ["resVal2"]}, retval;
-         retval = hubA.createResourceUrl();
-         expect(typeof retval).toEqual('string');
+         var testFunc = function () {
+            return hubA.createResourceUrl();
+         }
+         var ph = new portlet.jasmine.PromiseHandler(testFunc, false);
+         runs(ph.getRun());
+         waitsFor(ph.getIsComplete(), "The promise from createResourceUrl is settled.", 1000);
+         runs(ph.getChecker()); 
+         runs(function() {
+            expect(typeof ph.result).toEqual('string');
+         }); 
       });
 
       it('returns a URL indicating the initiating portlet A',function(){
          var parms  = {rp1 : ["resVal"], rp2 : ["resVal2"]}, url, id;
-         url = hubA.createResourceUrl(parms, "PAGE");
-         id = portlet.test.resource.getInitiatingPortletId(url);
-         expect(id).toEqual(portletA);
+         var testFunc = function () {
+            return hubA.createResourceUrl(parms, "cacheLevelPage");
+         }
+         var ph = new portlet.jasmine.PromiseHandler(testFunc, false);
+         runs(ph.getRun());
+         waitsFor(ph.getIsComplete(), "The promise from createResourceUrl is settled.", 1000);
+         runs(ph.getChecker()); 
+         runs(function() {
+            id = portlet.test.resource.getInitiatingPortletId(ph.result);
+            expect(id).toEqual(portletA);
+         }); 
       });
 
       it('returns a URL indicating a different initiating portlet B',function(){
          var parms  = {rp1 : ["resVal"], rp2 : ["resVal2"]}, url, id;
-         url = hubB.createResourceUrl(parms, "PAGE");
-         id = portlet.test.resource.getInitiatingPortletId(url);
-         expect(id).toEqual(portletB);
+         var testFunc = function () {
+            return hubB.createResourceUrl(parms, "cacheLevelPage");
+         }
+         var ph = new portlet.jasmine.PromiseHandler(testFunc, false);
+         runs(ph.getRun());
+         waitsFor(ph.getIsComplete(), "The promise from createResourceUrl is settled.", 1000);
+         runs(ph.getChecker()); 
+         runs(function() {
+            id = portlet.test.resource.getInitiatingPortletId(ph.result);
+            expect(id).toEqual(portletB);
+         }); 
       });
 
       it('returns a resource URL',function(){
-         var parms  = {rp1 : ["resVal"], rp2 : ["resVal2"]}, cache="PAGE", url;
-         url = hubB.createResourceUrl(parms, cache);
-         expect(portlet.test.resource.isResourceUrl(url)).toBeTruthy();
+         var parms  = {rp1 : ["resVal"], rp2 : ["resVal2"]}, cache="cacheLevelPage", url;
+         var testFunc = function () {
+            return hubB.createResourceUrl(parms, cache);
+         }
+         var ph = new portlet.jasmine.PromiseHandler(testFunc, false);
+         runs(ph.getRun());
+         waitsFor(ph.getIsComplete(), "The promise from createResourceUrl is settled.", 1000);
+         runs(ph.getChecker()); 
+         runs(function() {
+            url = ph.result;
+            expect(portlet.test.resource.isResourceUrl(url)).toBeTruthy();
+         }); 
       });
 
-      it('returns a URL indicating with cacheability set to "PAGE"',function(){
-         var parms  = {rp1 : ["resVal"], rp2 : ["resVal2"]}, cache="PAGE", url, str;
-         url = hubB.createResourceUrl(parms, cache);
-         str = portlet.test.resource.getCacheability(url);
-         expect(str).toEqual(cache);
+      it('returns a URL with cacheability set to "cacheLevelPage"',function(){
+         var parms  = {rp1 : ["resVal"], rp2 : ["resVal2"]}, cache="cacheLevelPage", url, str;
+         var testFunc = function () {
+            return hubB.createResourceUrl(parms, cache);
+         }
+         var ph = new portlet.jasmine.PromiseHandler(testFunc, false);
+         runs(ph.getRun());
+         waitsFor(ph.getIsComplete(), "The promise from createResourceUrl is settled.", 1000);
+         runs(ph.getChecker()); 
+         runs(function() {
+            url = ph.result;
+            str = portlet.test.resource.getCacheability(url);
+            expect(str).toEqual(cache);
+         }); 
       });
 
-      it('returns a URL indicating with cacheability set to "FULL"',function(){
-         var parms  = {rp1 : ["resVal"], rp2 : ["resVal2"]}, cache="FULL", url, str;
-         url = hubB.createResourceUrl(parms, cache);
-         str = portlet.test.resource.getCacheability(url);
-         expect(str).toEqual(cache);
+      it('returns a URL with cacheability set to "cacheLevelPortlet"',function(){
+         var parms  = {rp1 : ["resVal"], rp2 : ["resVal2"]}, cache="cacheLevelPortlet", url, str;
+         var testFunc = function () {
+            return hubB.createResourceUrl(parms, cache);
+         }
+         var ph = new portlet.jasmine.PromiseHandler(testFunc, false);
+         runs(ph.getRun());
+         waitsFor(ph.getIsComplete(), "The promise from createResourceUrl is settled.", 1000);
+         runs(ph.getChecker()); 
+         runs(function() {
+            url = ph.result;
+            str = portlet.test.resource.getCacheability(url);
+            expect(str).toEqual(cache);
+         }); 
+      });
+
+      it('returns a URL with cacheability set to "cacheLevelFull"',function(){
+         var parms  = {rp1 : ["resVal"], rp2 : ["resVal2"]}, cache="cacheLevelFull", url, str;
+         var testFunc = function () {
+            return hubB.createResourceUrl(parms, cache);
+         }
+         var ph = new portlet.jasmine.PromiseHandler(testFunc, false);
+         runs(ph.getRun());
+         waitsFor(ph.getIsComplete(), "The promise from createResourceUrl is settled.", 1000);
+         runs(ph.getChecker()); 
+         runs(function() {
+            url = ph.result;
+            str = portlet.test.resource.getCacheability(url);
+            expect(str).toEqual(cache);
+         }); 
       });
 
       it('returns a URL with the resource parameters set as expected',function(){
-         var parms  = {rp1 : ["resVal"], rp2 : ["resVal2"]}, cache="PAGE", url, str;
-         url = hubB.createResourceUrl(parms, cache);
-         str = portlet.test.resource.getResourceParms(url);
-         expect(str).toEqual(parms);
+         var parms  = {rp1 : ["resVal"], rp2 : ["resVal2"]}, cache="cacheLevelPage", url, str;
+         var testFunc = function () {
+            return hubB.createResourceUrl(parms, cache);
+         }
+         var ph = new portlet.jasmine.PromiseHandler(testFunc, false);
+         runs(ph.getRun());
+         waitsFor(ph.getIsComplete(), "The promise from createResourceUrl is settled.", 1000);
+         runs(ph.getChecker()); 
+         runs(function() {
+            url = ph.result;
+            str = portlet.test.resource.getResourceParms(url);
+            expect(str).toEqual(parms);
+         }); 
       });
 
       it('returns a URL with multivalued resource parameters set as expected',function(){
-         var parms  = {rp1 : ["resVal", "resVal1"], rp2 : ["resVal2"]}, cache="PAGE", url, str;
-         url = hubB.createResourceUrl(parms, cache);
-         str = portlet.test.resource.getResourceParms(url);
-         expect(str).toEqual(parms);
+         var parms  = {rp1 : ["resVal", "resVal1"], rp2 : ["resVal2"]}, cache="cacheLevelPage", url, str;
+         var testFunc = function () {
+            return hubB.createResourceUrl(parms, cache);
+         }
+         var ph = new portlet.jasmine.PromiseHandler(testFunc, false);
+         runs(ph.getRun());
+         waitsFor(ph.getIsComplete(), "The promise from createResourceUrl is settled.", 1000);
+         runs(ph.getChecker()); 
+         runs(function() {
+            url = ph.result;
+            str = portlet.test.resource.getResourceParms(url);
+            expect(str).toEqual(parms);
+         }); 
       });
 
-      it('returns a URL with multivalued resource parameters ciontaining null set as expected',function(){
-         var parms  = {rp1 : ["resVal", null, "resVal1"], rp2 : ["resVal2"]}, cache="PAGE", url, str;
-         url = hubB.createResourceUrl(parms, cache);
-         str = portlet.test.resource.getResourceParms(url);
-         expect(str).toEqual(parms);
+      it('returns a URL with multivalued resource parameters containing null set as expected',function(){
+         var parms  = {rp1 : ["resVal", null, "resVal1"], rp2 : ["resVal2"]}, cache="cacheLevelPage", url, str;
+         var testFunc = function () {
+            return hubB.createResourceUrl(parms, cache);
+         }
+         var ph = new portlet.jasmine.PromiseHandler(testFunc, false);
+         runs(ph.getRun());
+         waitsFor(ph.getIsComplete(), "The promise from createResourceUrl is settled.", 1000);
+         runs(ph.getChecker()); 
+         runs(function() {
+            url = ph.result;
+            str = portlet.test.resource.getResourceParms(url);
+            expect(str).toEqual(parms);
+         }); 
       });
 
       it('returns a URL with null resource parameter set as expected',function(){
-         var parms  = {rp1 : ["resVal"], rp2 : [null]}, cache="PAGE", url, str;
-         url = hubB.createResourceUrl(parms, cache);
-         str = portlet.test.resource.getResourceParms(url);
-         expect(str).toEqual(parms);
+         var parms  = {rp1 : ["resVal"], rp2 : [null]}, cache="cacheLevelPage", url, str;
+         var testFunc = function () {
+            return hubB.createResourceUrl(parms, cache);
+         }
+         var ph = new portlet.jasmine.PromiseHandler(testFunc, false);
+         runs(ph.getRun());
+         waitsFor(ph.getIsComplete(), "The promise from createResourceUrl is settled.", 1000);
+         runs(ph.getChecker()); 
+         runs(function() {
+            url = ph.result;
+            str = portlet.test.resource.getResourceParms(url);
+            expect(str).toEqual(parms);
+         }); 
       });
 
       it('returns a URL without resource parameters when none are added',function(){
-         var parms  = {}, cache="PAGE", url, str;
-         url = hubB.createResourceUrl(cache);
-         str = portlet.test.resource.getResourceParms(url);
-         expect(str).toEqual(parms);
+         var parms  = {}, cache="cacheLevelPage", url, str;
+         var testFunc = function () {
+            return hubB.createResourceUrl(cache);
+         }
+         var ph = new portlet.jasmine.PromiseHandler(testFunc, false);
+         runs(ph.getRun());
+         waitsFor(ph.getIsComplete(), "The promise from createResourceUrl is settled.", 1000);
+         runs(ph.getChecker()); 
+         runs(function() {
+            url = ph.result;
+            str = portlet.test.resource.getResourceParms(url);
+            expect(str).toEqual(parms);
+         }); 
       });
      
    });
    
    
-   describe('The portlet hub createResourecUrl function takes state into acount: ',function(){
+   describe('The portlet hub createResourceUrl function takes state into account: ',function(){
 
       // Make sure it works for more than one portlet 
       
@@ -289,39 +501,84 @@ describe('The portlet hub allows the portlet client to create a resource URL.',f
          }
       });
       
-      it('returns a URL with the portlet state set when cacheability = PAGE',function(){
-         var parms  = {rp1 : ["resVal"], rp2 : ["resVal2"]}, cache="PAGE", url, str;
-         url = hubB.createResourceUrl(parms, cache);
-         str = portlet.test.resource.getState(url, portletB);
-         expect(str).toEqual(cbB.getState());
+      it('returns a URL with the portlet state set when cacheability = cacheLevelPage',function(){
+         var parms  = {rp1 : ["resVal"], rp2 : ["resVal2"]}, cache="cacheLevelPage", url, str;
+         var testFunc = function () {
+            return hubB.createResourceUrl(parms, cache);
+         }
+         var ph = new portlet.jasmine.PromiseHandler(testFunc, false);
+         runs(ph.getRun());
+         waitsFor(ph.getIsComplete(), "The promise from createResourceUrl is settled.", 1000);
+         runs(ph.getChecker()); 
+         runs(function() {
+            url = ph.result;
+            str = portlet.test.resource.getState(url, portletB);
+            expect(str).toEqual(cbB.getState());
+         }); 
       });
       
-      it('returns a URL with the portlet state set when cacheability = PORTLET',function(){
-         var parms  = {rp1 : ["resVal"], rp2 : ["resVal2"]}, cache="PORTLET", url, str;
-         url = hubB.createResourceUrl(parms, cache);
-         str = portlet.test.resource.getState(url, portletB);
-         expect(str).toEqual(cbB.getState());
+      it('returns a URL with the portlet state set when cacheability = cacheLevelPortlet',function(){
+         var parms  = {rp1 : ["resVal"], rp2 : ["resVal2"]}, cache="cacheLevelPortlet", url, str;
+         var testFunc = function () {
+            return hubB.createResourceUrl(parms, cache);
+         }
+         var ph = new portlet.jasmine.PromiseHandler(testFunc, false);
+         runs(ph.getRun());
+         waitsFor(ph.getIsComplete(), "The promise from createResourceUrl is settled.", 1000);
+         runs(ph.getChecker()); 
+         runs(function() {
+            url = ph.result;
+            str = portlet.test.resource.getState(url, portletB);
+            expect(str).toEqual(cbB.getState());
+         }); 
       });
       
-      it('returns a URL with no portlet state set when cacheability = FULL',function(){
-         var parms  = {rp1 : ["resVal"], rp2 : ["resVal2"]}, cache="FULL", url, str, state;
-         url = hubB.createResourceUrl(parms, cache);
-         str = portlet.test.resource.getState(url, portletB);
-         expect(str).toEqual({});
+      it('returns a URL with no portlet state set when cacheability = cacheLevelFull',function(){
+         var parms  = {rp1 : ["resVal"], rp2 : ["resVal2"]}, cache="cacheLevelFull", url, str, state;
+         var testFunc = function () {
+            return hubB.createResourceUrl(parms, cache);
+         }
+         var ph = new portlet.jasmine.PromiseHandler(testFunc, false);
+         runs(ph.getRun());
+         waitsFor(ph.getIsComplete(), "The promise from createResourceUrl is settled.", 1000);
+         runs(ph.getChecker()); 
+         runs(function() {
+            url = ph.result;
+            str = portlet.test.resource.getState(url, portletB);
+            expect(str).toEqual({});
+         }); 
       });
       
-      it('returns a URL containing state of different portlet when cacheability = PAGE',function(){
-         var parms  = {rp1 : ["resVal"], rp2 : ["resVal2"]}, cache="PAGE", url, str;
-         url = hubB.createResourceUrl(parms, cache);
-         str = portlet.test.resource.getState(url, portletC);
-         expect(str).toEqual(cbC.getState());
+      it('returns a URL containing state of different portlet when cacheability = cacheLevelPage',function(){
+         var parms  = {rp1 : ["resVal"], rp2 : ["resVal2"]}, cache="cacheLevelPage", url, str;
+         var testFunc = function () {
+            return hubB.createResourceUrl(parms, cache);
+         }
+         var ph = new portlet.jasmine.PromiseHandler(testFunc, false);
+         runs(ph.getRun());
+         waitsFor(ph.getIsComplete(), "The promise from createResourceUrl is settled.", 1000);
+         runs(ph.getChecker()); 
+         runs(function() {
+            url = ph.result;
+            str = portlet.test.resource.getState(url, portletC);
+            expect(str).toEqual(cbC.getState());
+         }); 
       });
       
-      it('returns a URL not containing state of different portlet when cacheability = PORTLET',function(){
-         var parms  = {rp1 : ["resVal"], rp2 : ["resVal2"]}, cache="PORTLET", url, str, state;
-         url = hubB.createResourceUrl(parms, cache);
-         str = portlet.test.resource.getState(url, portletC);
-         expect(str).toEqual({});
+      it('returns a URL not containing state of different portlet when cacheability = cacheLevelPortlet',function(){
+         var parms  = {rp1 : ["resVal"], rp2 : ["resVal2"]}, cache="cacheLevelPortlet", url, str, state;
+         var testFunc = function () {
+            return hubB.createResourceUrl(parms, cache);
+         }
+         var ph = new portlet.jasmine.PromiseHandler(testFunc, false);
+         runs(ph.getRun());
+         waitsFor(ph.getIsComplete(), "The promise from createResourceUrl is settled.", 1000);
+         runs(ph.getChecker()); 
+         runs(function() {
+            url = ph.result;
+            str = portlet.test.resource.getState(url, portletC);
+            expect(str).toEqual({});
+         }); 
       });
       
    });

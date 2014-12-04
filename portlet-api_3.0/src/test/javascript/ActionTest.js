@@ -52,11 +52,79 @@ describe('The portlet hub allows the portlet client to execute a portlet action'
 
        // Tests in thismodule need following portlets. register them.
        // These variables provide linkage between the "describe" sections
-       hubA = portlet.register(portletA),
-       hubB = portlet.register(portletB),
-       hubC = portlet.register(portletC),
-       hubD = portlet.register(portletD);
+       hubA,
+       hubB,
+       hubC,
+       hubD;
    
+       
+   describe('The portlet hub is initialized for the tests: ',function(){
+   
+       it('initializes a portlet hub instance for portlet A',function(){
+          var testFunc = function () {
+             return portlet.register(portletA);
+          }
+          var ph = new portlet.jasmine.PromiseHandler(testFunc);
+          runs(ph.getRun());
+          waitsFor(ph.getIsComplete(), "The PortletInit object should be returned", 1000);
+          runs(ph.getChecker()); 
+          runs(function() {
+             expect(ph.result).toBeDefined();
+          }); 
+          runs(function() {
+             hubA = ph.result;
+          }); 
+       });
+       
+       it('initializes a portlet hub instance for portlet B',function(){
+          var testFunc = function () {
+             return portlet.register(portletB);
+          }
+          var ph = new portlet.jasmine.PromiseHandler(testFunc);
+          runs(ph.getRun());
+          waitsFor(ph.getIsComplete(), "The PortletInit object should be returned", 1000);
+          runs(ph.getChecker()); 
+          runs(function() {
+             expect(ph.result).toBeDefined();
+          }); 
+          runs(function() {
+             hubB = ph.result;
+          }); 
+       });
+   
+       it('initializes a portlet hub instance for portlet C',function(){
+          var testFunc = function () {
+             return portlet.register(portletC);
+          }
+          var ph = new portlet.jasmine.PromiseHandler(testFunc);
+          runs(ph.getRun());
+          waitsFor(ph.getIsComplete(), "The PortletInit object should be returned", 1000);
+          runs(ph.getChecker()); 
+          runs(function() {
+             expect(ph.result).toBeDefined();
+          }); 
+          runs(function() {
+             hubC = ph.result;
+          }); 
+       });
+       
+       it('initializes a portlet hub instance for portlet D',function(){
+          var testFunc = function () {
+             return portlet.register(portletD);
+          }
+          var ph = new portlet.jasmine.PromiseHandler(testFunc);
+          runs(ph.getRun());
+          waitsFor(ph.getIsComplete(), "The PortletInit object should be returned", 1000);
+          runs(ph.getChecker()); 
+          runs(function() {
+             expect(ph.result).toBeDefined();
+          }); 
+          runs(function() {
+             hubD = ph.result;
+          }); 
+       });
+     
+   });
        
    describe('The portlet hub action function: ',function(){
 
@@ -209,16 +277,25 @@ describe('The portlet hub allows the portlet client to execute a portlet action'
          runs(function() {
             str = portlet.test.data.updateStrings[portletA];
             states = portlet.test.decodeUpdateString(str, portletA);
-            stateA = states[portletA];
+            stateA = hubA.newState(states[portletA]);
             expect(cbA.retPortletState).toEqual(stateA);
          }); 
       });
       
       it('allows a resource URL to be created containing the portlet state',function(){
-         var parms  = {rp1 : ["resVal"], rp2 : ["resVal2"]}, cache="PAGE", url, str;
-         url = hubA.createResourceUrl(parms, cache);
-         str = portlet.test.resource.getState(url, portletA);
-         expect(str).toEqual(cbA.getState());
+         var parms  = {rp1 : ["resVal"], rp2 : ["resVal2"]}, cache="cacheLevelPage", url, str;
+         var testFunc = function () {
+            return hubA.createResourceUrl(parms, cache);
+         }
+         var ph = new portlet.jasmine.PromiseHandler(testFunc, false);
+         runs(ph.getRun());
+         waitsFor(ph.getIsComplete(), "The promise from createResourceUrl is settled.", 1000);
+         runs(ph.getChecker()); 
+         runs(function() {
+            url = ph.result;
+            str = portlet.test.resource.getState(url, portletA);
+            expect(str).toEqual(cbA.getState());
+         }); 
       });
           
    });
@@ -306,9 +383,9 @@ describe('The portlet hub allows the portlet client to execute a portlet action'
          runs(function() {
             str = portlet.test.data.updateStrings[portletB];
             states = portlet.test.decodeUpdateString(str, portletB);
-            state = states[portletB];
+            state = hubB.newState(states[portletB]);
             expect(cbB.retPortletState).toEqual(state);
-            state = states[portletC];
+            state = hubC.newState(states[portletC]);
             expect(cbC.retPortletState).toEqual(state);
             expect(cbA.isComplete()).toBeFalsy();
             expect(cbD.isComplete()).toBeFalsy();
@@ -330,16 +407,16 @@ describe('The portlet hub allows the portlet client to execute a portlet action'
             str = portlet.test.data.updateStrings[portletC];
             states = portlet.test.decodeUpdateString(str, portletC);
             
-            state = states[portletA];
+            state = hubA.newState(states[portletA]);
             expect(cbA.retPortletState).toEqual(state);
             
-            state = states[portletB];
+            state = hubB.newState(states[portletB]);
             expect(cbB.retPortletState).toEqual(state);
             
-            state = states[portletC];
+            state = hubC.newState(states[portletC]);
             expect(cbC.retPortletState).toEqual(state);
             
-            state = states[portletD];
+            state = hubD.newState(states[portletD]);
             expect(cbD.retPortletState).toEqual(state);
          
          }); 

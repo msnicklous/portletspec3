@@ -45,8 +45,8 @@ describe('The portlet hub provides the ability to add and remove event listeners
    // All tests need a registered portlet client. For the mockup, assume portlet ID portletA
    // is present. Get the hub functions for the portlet.
    // These variables provide linkage between the "describe" sections
-   var hubA = portlet.register(portletA),
-       hubB = portlet.register(portletB),
+   var hubA,
+       hubB,
        userEventName = "someEvent",
        userEventHandle,
        oscHandle,             // handle for onStateChangeListener
@@ -85,6 +85,38 @@ describe('The portlet hub provides the ability to add and remove event listeners
           return complete;
        };
    
+       it('initializes a portlet hub instance for portlet A',function(){
+          var testFunc = function () {
+             return portlet.register(portletA);
+          }
+          var ph = new portlet.jasmine.PromiseHandler(testFunc);
+          runs(ph.getRun());
+          waitsFor(ph.getIsComplete(), "The PortletInit object should be returned", 1000);
+          runs(ph.getChecker()); 
+          runs(function() {
+             expect(ph.result).toBeDefined();
+          }); 
+          runs(function() {
+             hubA = ph.result;
+          }); 
+       });
+       
+       it('initializes a portlet hub instance for portlet B',function(){
+          var testFunc = function () {
+             return portlet.register(portletB);
+          }
+          var ph = new portlet.jasmine.PromiseHandler(testFunc);
+          runs(ph.getRun());
+          waitsFor(ph.getIsComplete(), "The PortletInit object should be returned", 1000);
+          runs(ph.getChecker()); 
+          runs(function() {
+             expect(ph.result).toBeDefined();
+          }); 
+          runs(function() {
+             hubB = ph.result;
+          }); 
+       });
+
    
    describe('The portlet hub addEventListener function: ',function(){
 
@@ -320,12 +352,14 @@ describe('The portlet hub provides the ability to add and remove event listeners
          expect(typeof retRenderData).toEqual('undefined');
       });
 
-      it('is passed a PortletState parameter that has 3 properties',function(){
-         var cnt = 0;
-         for (var prop in retPortletState) {
-            cnt = cnt + 1;
+      it('is passed a PortletState parameter that has 4 properties',function(){
+         var cnt = 0, prop;
+         for (prop in retPortletState) {
+            if (retPortletState.hasOwnProperty(prop)) {
+               cnt = cnt + 1;
+            }
          }
-         expect(cnt).toEqual(3);
+         expect(cnt).toEqual(4);
       });
 
       it('is passed a PortletState object with a "parameters" property',function(){
@@ -344,15 +378,19 @@ describe('The portlet hub provides the ability to add and remove event listeners
          expect(typeof retPortletState.parameters).toEqual('object');
       });
       
-      var parmCnt = 0;
-      for (var prop in pageState[portletA].state.parameters) {
-         parmCnt = parmCnt + 1;
+      var parmCnt = 0, parms = pageState[portletA].state.parameters;
+      for (var prop in parms) {
+         if (parms.hasOwnProperty(prop)) {
+            parmCnt = parmCnt + 1;
+         }
       }
 
       it('its PortletState has ' + parmCnt + " parameters",function(){
-         var retParmCnt = 0;
-         for (var prop in retPortletState.parameters) {
-            retParmCnt = retParmCnt + 1;
+         var retParmCnt = 0, parms = retPortletState.parameters;
+         for (var prop in parms) {
+            if (parms.hasOwnProperty(prop)) {
+               retParmCnt = retParmCnt + 1;
+            }
          }
          expect(retParmCnt).toEqual(parmCnt);
       });
@@ -382,7 +420,8 @@ describe('The portlet hub provides the ability to add and remove event listeners
       });
 
       it('its PortletState parameter equals the test state object"',function(){
-         expect(retPortletState).toEqual(pageState[portletA].state);
+         var ts = hubA.newState(pageState[portletA].state);
+         expect(retPortletState).toEqual(ts);
       });
    
    });
@@ -425,12 +464,14 @@ describe('The portlet hub provides the ability to add and remove event listeners
          expect(typeof retPortletState).toEqual('object');
       });
 
-      it('is passed a PortletState parameter that has 3 properties',function(){
+      it('is passed a PortletState parameter that has 4 properties',function(){
          var cnt = 0;
          for (var prop in retPortletState) {
-            cnt = cnt + 1;
+            if (retPortletState.hasOwnProperty(prop)) {
+               cnt = cnt + 1;
+            }
          }
-         expect(cnt).toEqual(3);
+         expect(cnt).toEqual(4);
       });
 
       it('is passed a PortletState object with a "parameters" property',function(){
@@ -450,7 +491,8 @@ describe('The portlet hub provides the ability to add and remove event listeners
       });
 
       it('its PortletState parameter equals the test state object"',function(){
-         expect(retPortletState).toEqual(pageState[portletB].state);
+         var ts = hubA.newState(pageState[portletB].state);
+         expect(retPortletState).toEqual(ts);
       });
 
       // portlet B is set up to have render data
@@ -461,7 +503,9 @@ describe('The portlet hub provides the ability to add and remove event listeners
       it('is passed a RenderData parameter that has 2 properties',function(){
          var cnt = 0;
          for (var prop in retRenderData) {
-            cnt = cnt + 1;
+            if (retRenderData.hasOwnProperty(prop)) {
+               cnt = cnt + 1;
+            }
          }
          expect(cnt).toEqual(2);
       });

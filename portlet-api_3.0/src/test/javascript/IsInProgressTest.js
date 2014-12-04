@@ -52,11 +52,79 @@ describe('The portlet hub allows the portlet client test for a blocking operatio
 
    // Tests in thismodule need following portlets. register them.
    // These variables provide linkage between the "describe" sections
-   hubA = portlet.register(portletA),
-   hubB = portlet.register(portletB),
-   hubC = portlet.register(portletC),
-   hubD = portlet.register(portletD);
+   hubA,
+   hubB,
+   hubC,
+   hubD;
 
+       
+   describe('The portlet hub is initialized for the tests: ',function(){
+   
+       it('initializes a portlet hub instance for portlet A',function(){
+          var testFunc = function () {
+             return portlet.register(portletA);
+          }
+          var ph = new portlet.jasmine.PromiseHandler(testFunc);
+          runs(ph.getRun());
+          waitsFor(ph.getIsComplete(), "The PortletInit object should be returned", 1000);
+          runs(ph.getChecker()); 
+          runs(function() {
+             expect(ph.result).toBeDefined();
+          }); 
+          runs(function() {
+             hubA = ph.result;
+          }); 
+       });
+       
+       it('initializes a portlet hub instance for portlet B',function(){
+          var testFunc = function () {
+             return portlet.register(portletB);
+          }
+          var ph = new portlet.jasmine.PromiseHandler(testFunc);
+          runs(ph.getRun());
+          waitsFor(ph.getIsComplete(), "The PortletInit object should be returned", 1000);
+          runs(ph.getChecker()); 
+          runs(function() {
+             expect(ph.result).toBeDefined();
+          }); 
+          runs(function() {
+             hubB = ph.result;
+          }); 
+       });
+   
+       it('initializes a portlet hub instance for portlet C',function(){
+          var testFunc = function () {
+             return portlet.register(portletC);
+          }
+          var ph = new portlet.jasmine.PromiseHandler(testFunc);
+          runs(ph.getRun());
+          waitsFor(ph.getIsComplete(), "The PortletInit object should be returned", 1000);
+          runs(ph.getChecker()); 
+          runs(function() {
+             expect(ph.result).toBeDefined();
+          }); 
+          runs(function() {
+             hubC = ph.result;
+          }); 
+       });
+       
+       it('initializes a portlet hub instance for portlet D',function(){
+          var testFunc = function () {
+             return portlet.register(portletD);
+          }
+          var ph = new portlet.jasmine.PromiseHandler(testFunc);
+          runs(ph.getRun());
+          waitsFor(ph.getIsComplete(), "The PortletInit object should be returned", 1000);
+          runs(ph.getChecker()); 
+          runs(function() {
+             expect(ph.result).toBeDefined();
+          }); 
+          runs(function() {
+             hubD = ph.result;
+          }); 
+       });
+     
+   });
 
    describe('The portlet hub isInProgress function: ',function(){
 
@@ -140,8 +208,12 @@ describe('The portlet hub allows the portlet client test for a blocking operatio
          var parms  = {ap1 : ["actionVal"]}, str, states, state;
          var ustr = portlet.test.data.updateStrings[portletB];
          runs(function() {
-            pai = hubB.startPartialAction(parms);
+            pai = null;
+            hubB.startPartialAction(parms).then(function (p) {
+               pai = p;
+            });
          }); 
+         waitsFor(function () {return pai !== null;}, "The promise to settle", 100)
          runs(function() {
             var retval;
             retval = hubB.isInProgress();
@@ -157,8 +229,12 @@ describe('The portlet hub allows the portlet client test for a blocking operatio
          var parms  = {ap1 : ["actionVal"]}, str, states, state;
          var ustr = portlet.test.data.updateStrings[portletB];
          runs(function() {
-            pai = hubB.startPartialAction(parms);
+            pai = null;
+            hubB.startPartialAction(parms).then(function (p) {
+               pai = p;
+            });
          }); 
+         waitsFor(function () {return pai !== null;}, "The promise to settle", 100)
          runs(function() {
             var retval;
             retval = hubD.isInProgress();
@@ -174,8 +250,12 @@ describe('The portlet hub allows the portlet client test for a blocking operatio
          var parms  = {ap1 : ["actionVal"]}, str, states, state;
          var ustr = portlet.test.data.updateStrings[portletB];
          runs(function() {
-            pai = hubB.startPartialAction(parms);
+            pai = null;
+            hubB.startPartialAction(parms).then(function (p) {
+               pai = p;
+            });
          }); 
+         waitsFor(function () {return pai !== null;}, "The promise to settle", 100)
          runs(function() {
             pai.setPageState(ustr);
          }); 
@@ -191,8 +271,12 @@ describe('The portlet hub allows the portlet client test for a blocking operatio
          var parms  = {ap1 : ["actionVal"]}, str, states, state;
          var ustr = portlet.test.data.updateStrings[portletB];
          runs(function() {
-            pai = hubB.startPartialAction(parms);
+            pai = null;
+            hubB.startPartialAction(parms).then(function (p) {
+               pai = p;
+            });
          }); 
+         waitsFor(function () {return pai !== null;}, "The promise to settle", 100)
          runs(function() {
             pai.setPageState(ustr);
          }); 
@@ -213,8 +297,12 @@ describe('The portlet hub allows the portlet client test for a blocking operatio
          var parms  = {ap1 : ["actionVal"]}, str, states, state;
          var ustr = portlet.test.data.updateStrings[portletB];
          runs(function() {
-            pai = hubB.startPartialAction(parms);
+            pai = null;
+            hubB.startPartialAction(parms).then(function (p) {
+               pai = p;
+            });
          }); 
+         waitsFor(function () {return pai !== null;}, "The promise to settle", 100)
          runs(function() {
             pai.setPageState(ustr);
          }); 
@@ -235,8 +323,12 @@ describe('The portlet hub allows the portlet client test for a blocking operatio
          var parms  = {ap1 : ["actionVal"]}, str, states, state;
          var ustr = portlet.test.data.updateStrings[portletB];
          runs(function() {
-            pai = hubB.startPartialAction(parms);
+            pai = null;
+            hubB.startPartialAction(parms).then(function (p) {
+               pai = p;
+            });
          }); 
+         waitsFor(function () {return pai !== null;}, "The promise to settle", 100)
          runs(function() {
             pai.setPageState(ustr);
          }); 

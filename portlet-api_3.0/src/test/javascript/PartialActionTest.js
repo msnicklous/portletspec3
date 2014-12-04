@@ -52,10 +52,78 @@ describe('The portlet hub allows the portlet client to initiate a partial action
 
    // Tests in thismodule need following portlets. register them.
    // These variables provide linkage between the "describe" sections
-   hubA = portlet.register(portletA),
-   hubB = portlet.register(portletB),
-   hubC = portlet.register(portletC),
-   hubD = portlet.register(portletD);
+   hubA,
+   hubB,
+   hubC,
+   hubD;
+       
+   describe('The portlet hub is initialized for the tests: ',function(){
+   
+       it('initializes a portlet hub instance for portlet A',function(){
+          var testFunc = function () {
+             return portlet.register(portletA);
+          }
+          var ph = new portlet.jasmine.PromiseHandler(testFunc);
+          runs(ph.getRun());
+          waitsFor(ph.getIsComplete(), "The PortletInit object should be returned", 1000);
+          runs(ph.getChecker()); 
+          runs(function() {
+             expect(ph.result).toBeDefined();
+          }); 
+          runs(function() {
+             hubA = ph.result;
+          }); 
+       });
+       
+       it('initializes a portlet hub instance for portlet B',function(){
+          var testFunc = function () {
+             return portlet.register(portletB);
+          }
+          var ph = new portlet.jasmine.PromiseHandler(testFunc);
+          runs(ph.getRun());
+          waitsFor(ph.getIsComplete(), "The PortletInit object should be returned", 1000);
+          runs(ph.getChecker()); 
+          runs(function() {
+             expect(ph.result).toBeDefined();
+          }); 
+          runs(function() {
+             hubB = ph.result;
+          }); 
+       });
+   
+       it('initializes a portlet hub instance for portlet C',function(){
+          var testFunc = function () {
+             return portlet.register(portletC);
+          }
+          var ph = new portlet.jasmine.PromiseHandler(testFunc);
+          runs(ph.getRun());
+          waitsFor(ph.getIsComplete(), "The PortletInit object should be returned", 1000);
+          runs(ph.getChecker()); 
+          runs(function() {
+             expect(ph.result).toBeDefined();
+          }); 
+          runs(function() {
+             hubC = ph.result;
+          }); 
+       });
+       
+       it('initializes a portlet hub instance for portlet D',function(){
+          var testFunc = function () {
+             return portlet.register(portletD);
+          }
+          var ph = new portlet.jasmine.PromiseHandler(testFunc);
+          runs(ph.getRun());
+          waitsFor(ph.getIsComplete(), "The PortletInit object should be returned", 1000);
+          runs(ph.getChecker()); 
+          runs(function() {
+             expect(ph.result).toBeDefined();
+          }); 
+          runs(function() {
+             hubD = ph.result;
+          }); 
+       });
+     
+   });
 
 
    describe('The portlet hub startPartialAction function: ',function(){
@@ -71,10 +139,13 @@ describe('The portlet hub allows the portlet client to initiate a partial action
          cbA.complete = false;
          runs(function() {
             cbA.oscHandle = hubA.addEventListener("portlet.onStateChange", cbA.getListener());
+            cbA.oeHandle = hubA.addEventListener("portlet.onError", cbA.getListener("error"));
          }); 
          waitsFor(cbA.getIsComplete(), "The onStateChange callback should be called", 100);
          runs(function() {
             cbA.complete = false;    // in prep for the actual test
+            cbA.retType = null;
+            cbA.retErrorData = null;
          }); 
       });
 
@@ -83,6 +154,8 @@ describe('The portlet hub allows the portlet client to initiate a partial action
          if (cbA.oscHandle !== null) {
             hubA.removeEventListener(cbA.oscHandle);
             cbA.oscHandle = null;
+            hubA.removeEventListener(cbA.oeHandle);
+            cbA.oeHandle = null;
          }
       });
 
@@ -136,7 +209,18 @@ describe('The portlet hub allows the portlet client to initiate a partial action
       });
 
       it('returns an object',function(){
-         expect(typeof pai).toEqual('object');
+         var parms  = {ap1 : ["actionVal"]};
+         var testFunc = function () {
+            return hubA.startPartialAction(parms);
+         }
+         var ph = new portlet.jasmine.PromiseHandler(testFunc, false);
+         runs(ph.getRun());
+         waitsFor(ph.getIsComplete(), "The promise from startPartialAction is settled.", 1000);
+         runs(ph.getChecker()); 
+         runs(function() {
+            pai = ph.result;
+            expect(typeof pai).toEqual('object');
+         }); 
       });
 
       it('return object contains setPageState function',function(){
@@ -157,11 +241,15 @@ describe('The portlet hub allows the portlet client to initiate a partial action
          expect(testFunc).toThrowCustomException("IllegalArgumentException");
       });
 
-      it('return object setPageState function throws an exception if called with invalid parameter',function(){
-         var testFunc = function () {
+      it('onError event is fired if the setPageState function is called with invalid update string',function(){
+         runs(function() {
             pai.setPageState("Invalid page state.");
-         };
-         expect(testFunc).toThrowCustomException("IllegalArgumentException");
+         }); 
+         waitsFor(cbA.getIsComplete(), "The onError callback should be called", 100);
+         runs(function() {
+            expect(cbA.retType).toEqual('portlet.onError');
+            expect(cbA.retErrorData).not.toEqual(null);
+         }); 
       });
 
       it('return object setPageState function does not throw if parameter is correct',function(){
@@ -182,32 +270,36 @@ describe('The portlet hub allows the portlet client to initiate a partial action
          waitsFor(cbA.getIsComplete(), "The onStateChange callback should be called", 100);
          runs(function() {
             var states = portlet.test.decodeUpdateString(ustr, portletA),
-            stateA = states[portletA];
+            stateA = hubA.newState(states[portletA]);
             expect(cbA.retPortletState).toEqual(stateA);
          }); 
       });
 
       it('throws an AccessDeniedException if called twice',function(){
-         var parms  = {ap1 : ["actionVal"]};
+         var parms  = {ap1 : ["actionVal"]}, pai1 = null, pai2 = null;
          var ustr = portlet.test.data.updateStrings[portletA];
          runs(function() {
             var testFunc = function () {
-               pai = hubA.startPartialAction(parms);
+               hubA.startPartialAction(parms).then(function (p) {
+                  pai1 = p;
+               });
             };
             expect(testFunc).not.toThrow();
-         }); 
+         });
+         waitsFor(function () {return pai1 !== null;}, "The promise to settle", 100)
          runs(function() {
             var testFunc = function () {
-               pai = hubA.startPartialAction(parms);
+               hubA.startPartialAction(parms).then(function (p) {
+                  pai2 = p;
+               });
             };
             expect(testFunc).toThrowCustomException("AccessDeniedException");
          }); 
          runs(function() {
-            pai.setPageState(ustr);
+            pai1.setPageState(ustr);
          }); 
          waits(10);  // give it a chance to call its onStateChange
       });
-
    });
 
 
@@ -272,8 +364,12 @@ describe('The portlet hub allows the portlet client to initiate a partial action
          var parms  = {ap1 : ["actionVal"]}, str, states, stateA;
          var ustr = portlet.test.data.updateStrings[portletA];
          runs(function() {
-            pai = hubA.startPartialAction(parms);
+            pai = null;
+            hubA.startPartialAction(parms).then(function (p) {
+               pai = p;
+            });
          }); 
+         waitsFor(function () {return pai !== null;}, "The promise to settle", 100)
          runs(function() {
             pai.setPageState(ustr);
          }); 
@@ -281,7 +377,7 @@ describe('The portlet hub allows the portlet client to initiate a partial action
          runs(function() {
             str = portlet.test.data.updateStrings[portletA];
             states = portlet.test.decodeUpdateString(str, portletA);
-            stateA = states[portletA];
+            stateA = hubA.newState(states[portletA]);
             expect(cbA.retPortletState).toEqual(stateA);
          }); 
       });
@@ -290,8 +386,12 @@ describe('The portlet hub allows the portlet client to initiate a partial action
          var parms  = {ap1 : ["actionVal"], ap2 : ["actionVal2"]}, id;
          var ustr = portlet.test.data.updateStrings[portletA];
          runs(function() {
-            pai = hubA.startPartialAction(parms);
+            pai = null;
+            hubA.startPartialAction(parms).then(function (p) {
+               pai = p;
+            });
          }); 
+         waitsFor(function () {return pai !== null;}, "The promise to settle", 100)
          runs(function() {
             pai.setPageState(ustr);
          }); 
@@ -306,8 +406,12 @@ describe('The portlet hub allows the portlet client to initiate a partial action
          var parms  = {ap1 : ["actionVal"], ap2 : ["actionVal2"]}, id;
          var ustr = portlet.test.data.updateStrings[portletB];
          runs(function() {
-            pai = hubB.startPartialAction(parms);
+            pai = null;
+            hubB.startPartialAction(parms).then(function (p) {
+               pai = p;
+            });
          }); 
+         waitsFor(function () {return pai !== null;}, "The promise to settle", 100)
          runs(function() {
             pai.setPageState(ustr);
          }); 
@@ -322,8 +426,12 @@ describe('The portlet hub allows the portlet client to initiate a partial action
          var parms  = {ap1 : ["actionVal"], ap2 : ["actionVal2"]}, url;
          var ustr = portlet.test.data.updateStrings[portletA];
          runs(function() {
-            pai = hubA.startPartialAction(parms);
+            pai = null;
+            hubA.startPartialAction(parms).then(function (p) {
+               pai = p;
+            });
          }); 
+         waitsFor(function () {return pai !== null;}, "The promise to settle", 100)
          runs(function() {
             pai.setPageState(ustr);
          }); 
@@ -337,8 +445,12 @@ describe('The portlet hub allows the portlet client to initiate a partial action
          var parms  = {ap1 : ["actionVal"], ap2 : ["actionVal2"]}, str;
          var ustr = portlet.test.data.updateStrings[portletA];
          runs(function() {
-            pai = hubA.startPartialAction(parms);
+            pai = null;
+            hubA.startPartialAction(parms).then(function (p) {
+               pai = p;
+            });
          }); 
+         waitsFor(function () {return pai !== null;}, "The promise to settle", 100)
          runs(function() {
             pai.setPageState(ustr);
          }); 
@@ -353,8 +465,12 @@ describe('The portlet hub allows the portlet client to initiate a partial action
          var parms  = {ap1 : ["actionVal", "actionVal1"], ap2 : ["actionVal2"]}, str;
          var ustr = portlet.test.data.updateStrings[portletA];
          runs(function() {
-            pai = hubA.startPartialAction(parms);
+            pai = null;
+            hubA.startPartialAction(parms).then(function (p) {
+               pai = p;
+            });
          }); 
+         waitsFor(function () {return pai !== null;}, "The promise to settle", 100)
          runs(function() {
             pai.setPageState(ustr);
          }); 
@@ -369,8 +485,12 @@ describe('The portlet hub allows the portlet client to initiate a partial action
          var parms  = {ap1 : ["actionVal", null, "actionVal1"], ap2 : ["actionVal2"]}, str;
          var ustr = portlet.test.data.updateStrings[portletA];
          runs(function() {
-            pai = hubA.startPartialAction(parms);
+            pai = null;
+            hubA.startPartialAction(parms).then(function (p) {
+               pai = p;
+            });
          }); 
+         waitsFor(function () {return pai !== null;}, "The promise to settle", 100)
          runs(function() {
             pai.setPageState(ustr);
          }); 
@@ -385,8 +505,12 @@ describe('The portlet hub allows the portlet client to initiate a partial action
          var parms  = {ap1 : ["actionVal"], ap2 : [null]}, str;
          var ustr = portlet.test.data.updateStrings[portletA];
          runs(function() {
-            pai = hubA.startPartialAction(parms);
+            pai = null;
+            hubA.startPartialAction(parms).then(function (p) {
+               pai = p;
+            });
          }); 
+         waitsFor(function () {return pai !== null;}, "The promise to settle", 100)
          runs(function() {
             pai.setPageState(ustr);
          }); 
@@ -401,8 +525,12 @@ describe('The portlet hub allows the portlet client to initiate a partial action
          var parms  = {}, str;
          var ustr = portlet.test.data.updateStrings[portletA];
          runs(function() {
-            pai = hubA.startPartialAction(parms);
+            pai = null;
+            hubA.startPartialAction(parms).then(function (p) {
+               pai = p;
+            });
          }); 
+         waitsFor(function () {return pai !== null;}, "The promise to settle", 100)
          runs(function() {
             pai.setPageState(ustr);
          }); 
@@ -414,10 +542,18 @@ describe('The portlet hub allows the portlet client to initiate a partial action
       });
 
       it('allows a resource URL to be created containing the portlet state',function(){
-         var parms  = {ap1 : ["actionVal"], ap2 : ["actionVal2"]}, cache="PAGE", url, str;
-         url = hubA.createResourceUrl(parms, cache);
-         str = portlet.test.resource.getState(url, portletA);
-         expect(str).toEqual(cbA.getState());
+         var parms  = {ap1 : ["actionVal"], ap2 : ["actionVal2"]}, 
+             cache="cacheLevelPage", url = null, str;
+         runs(function() {
+            hubA.createResourceUrl(parms, cache).then(function (u) {
+               url = u;
+            });
+         }); 
+         waitsFor(function () {return (url !== null);}, "The promise to settle", 100)
+         runs(function() {
+            str = portlet.test.resource.getState(url, portletA);
+            expect(str).toEqual(cbA.getState());
+         }); 
       });
 
    });
@@ -483,8 +619,12 @@ describe('The portlet hub allows the portlet client to initiate a partial action
          var parms  = {ap1 : ["actionVal"]}, str, states, state;
          var ustr = portlet.test.data.updateStrings[portletB];
          runs(function() {
-            pai = hubB.startPartialAction(parms);
+            pai = null;
+            hubB.startPartialAction(parms).then(function (p) {
+               pai = p;
+            });
          }); 
+         waitsFor(function () {return pai !== null;}, "The promise to settle", 100)
          runs(function() {
             pai.setPageState(ustr);
          }); 
@@ -492,9 +632,9 @@ describe('The portlet hub allows the portlet client to initiate a partial action
          waitsFor(cbC.getIsComplete(), "The onStateChange callback should be called", 100);
          runs(function() {
             states = portlet.test.decodeUpdateString(ustr, portletB);
-            state = states[portletB];
+            state = hubA.newState(states[portletB]);
             expect(cbB.retPortletState).toEqual(state);
-            state = states[portletC];
+            state = hubC.newState(states[portletC]);
             expect(cbC.retPortletState).toEqual(state);
             expect(cbA.isComplete()).toBeFalsy();
             expect(cbD.isComplete()).toBeFalsy();
@@ -505,8 +645,12 @@ describe('The portlet hub allows the portlet client to initiate a partial action
          var parms  = {ap1 : ["actionVal"]}, str, states, state;
          var ustr = portlet.test.data.updateStrings[portletC];
          runs(function() {
-            pai = hubC.startPartialAction(parms);
+            pai = null;
+            hubC.startPartialAction(parms).then(function (p) {
+               pai = p;
+            });
          }); 
+         waitsFor(function () {return pai !== null;}, "The promise to settle", 100)
          runs(function() {
             pai.setPageState(ustr);
          }); 
@@ -518,16 +662,16 @@ describe('The portlet hub allows the portlet client to initiate a partial action
 
             states = portlet.test.decodeUpdateString(ustr, portletC);
 
-            state = states[portletA];
+            state = hubA.newState(states[portletA]);
             expect(cbA.retPortletState).toEqual(state);
 
-            state = states[portletB];
+            state = hubB.newState(states[portletB]);
             expect(cbB.retPortletState).toEqual(state);
 
-            state = states[portletC];
+            state = hubC.newState(states[portletC]);
             expect(cbC.retPortletState).toEqual(state);
 
-            state = states[portletD];
+            state = hubD.newState(states[portletD]);
             expect(cbD.retPortletState).toEqual(state);
 
          }); 
@@ -537,14 +681,17 @@ describe('The portlet hub allows the portlet client to initiate a partial action
          var parms  = {ap1 : ["actionVal"]};
          var ustr = portlet.test.data.updateStrings[portletA];
          runs(function() {
-            var testFunc = function () {
-               pai = hubA.startPartialAction(parms);
-            };
-            expect(testFunc).not.toThrow();
+            pai = null;
+            hubA.startPartialAction(parms).then(function (p) {
+               pai = p;
+            });
          }); 
+         waitsFor(function () {return pai !== null;}, "The promise to settle", 100)
          runs(function() {
             var testFunc = function () {
-               pai = hubB.startPartialAction(parms);
+               hubB.startPartialAction(parms).then(function (p) {
+                  pai = p;
+               });
             };
             expect(testFunc).toThrowCustomException("AccessDeniedException");
          }); 
@@ -559,11 +706,12 @@ describe('The portlet hub allows the portlet client to initiate a partial action
          var ustr = portlet.test.data.updateStrings[portletA];
          var el = document.createElement("form");
          runs(function() {
-            var testFunc = function () {
-               pai = hubA.startPartialAction(parms);
-            };
-            expect(testFunc).not.toThrow();
+            pai = null;
+            hubA.startPartialAction(parms).then(function (p) {
+               pai = p;
+            });
          }); 
+         waitsFor(function () {return pai !== null;}, "The promise to settle", 100)
          runs(function() {
             var testFunc = function () {
                hubB.action(parms, el);
@@ -580,11 +728,12 @@ describe('The portlet hub allows the portlet client to initiate a partial action
          var parms  = {ap1 : ["actionVal"]};
          var ustr = portlet.test.data.updateStrings[portletA];
          runs(function() {
-            var testFunc = function () {
-               pai = hubA.startPartialAction(parms);
-            };
-            expect(testFunc).not.toThrow();
+            pai = null;
+            hubA.startPartialAction(parms).then(function (p) {
+               pai = p;
+            });
          }); 
+         waitsFor(function () {return pai !== null;}, "The promise to settle", 100)
          runs(function() {
             var state = cbC.getState();
             state.parameters["someparm1"] = ["NewVal"];
