@@ -16,6 +16,20 @@
     <!-- change class below to "indexContainer" to activate color changebars in the change history -->
     <div class="indexContainer-not">
     <ul>
+    <li>20141204: Updates for the
+    <a href="../jsdoc/index.html" target="_top">Portlet Hub Ajax support</a>.
+    Updated the following data structures:
+    <a href="../jsdoc/global.html#PortletConstants">PortletConstants</a>, 
+    <a href="../jsdoc/global.html#PortletParameters">PortletParameters</a>, and
+    <a href="../jsdoc/global.html#PortletState">PortletState</a>. 
+    <br>Added the following Portlet Hub methods and members: 
+    <a href="../jsdoc/PortletInit.html#constants">constants</a>, 
+    <a href="../jsdoc/PortletInit.html#newParameters">newParameters</a>, 
+    <a href="../jsdoc/PortletInit.html#newState">newState</a>. 
+    <br>
+    Added {@link javax.portlet.ResourceRequest#getPageState ResourceRequest#getPageState()} method
+    in support of the Portlet Hub partial action processing sequence.
+    </li>
     <li>20140603: Resolved PORTLETSPEC3-43: Renamed some methods to reduce redundancy. See:
     {@link javax.portlet.PortletParameters#getNames getNames()},
     {@link javax.portlet.PortletParameters#getValue getValue},

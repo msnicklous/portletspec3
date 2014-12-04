@@ -186,5 +186,12 @@ public class ResourceRequestWrapper extends PortletRequestWrapper implements Res
       return request.getResourceParameters();
    }
 
+   /* (non-Javadoc)
+    * @see javax.portlet.ResourceRequest#getPageState()
+    */
+   public String getPageState() {
+      return request.getPageState();
+   }
+
 
 }
