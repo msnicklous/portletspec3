@@ -203,7 +203,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="portlet.js.html">portlet.js</a>, <a href="portlet.js.html#line364">line 364</a>
+        <a href="portlet.js.html">portlet.js</a>, <a href="portlet.js.html#line481">line 481</a>
     </li></ul></dd>
     
     
@@ -331,7 +331,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="portlet.js.html">portlet.js</a>, <a href="portlet.js.html#line17">line 17</a>
+        <a href="portlet.js.html">portlet.js</a>, <a href="portlet.js.html#line20">line 20</a>
     </li></ul></dd>
     
     
@@ -459,7 +459,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="MockData.js.html">MockData.js</a>, <a href="MockData.js.html#line641">line 641</a>
+        <a href="MockData.js.html">MockData.js</a>, <a href="MockData.js.html#line903">line 903</a>
     </li></ul></dd>
     
     
@@ -587,135 +587,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="portlet.js.html">portlet.js</a>, <a href="portlet.js.html#line351">line 351</a>
-    </li></ul></dd>
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-</dd>
-
-            
-                
-<dt>
-    <h4 class="name" id="ImplementationException">ImplementationException</h4>
-    
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        Thrown when a portlet hub encounters an internal error.
-    </div>
-    
-    
-    
-
-    
-<dl class="details">
-    
-        
-        <h5 class="subsection-title">Properties:</h5>
-        
-        <dl>
-
-<table class="props">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>name</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-            
-            
-            
-            
-            
-            <td class="description last">The exception name, equal to "ImplementationException"</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>message</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-            
-            
-            
-            
-            
-            <td class="description last">An optional message that provides more detail about the exception</td>
-        </tr>
-	
-	
-	</tbody>
-</table></dl>
-        
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="portlet.js.html">portlet.js</a>, <a href="portlet.js.html#line377">line 377</a>
+        <a href="portlet.js.html">portlet.js</a>, <a href="portlet.js.html#line468">line 468</a>
     </li></ul></dd>
     
     
@@ -843,7 +715,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="portlet.js.html">portlet.js</a>, <a href="portlet.js.html#line390">line 390</a>
+        <a href="portlet.js.html">portlet.js</a>, <a href="portlet.js.html#line494">line 494</a>
     </li></ul></dd>
     
     
@@ -869,7 +741,7 @@
     
     
     <div class="description">
-        The onError callback function that a portlet clientparticipating in the portlet hub Ajax support may implement.Typically the callback will be used to provide the portlet client with information about asynchronous errors that occurred during processing.<p>The portlet client registers an onError callback by adding a listener for the portlet.onErrorevent type through the addEventListener function.
+        The onError callback function that a portlet clientparticipating in the portlet hub Ajax support may implement.Typically the callback will be used to provide the portlet client withinformation about asynchronous errors that occurred during processing.<p>The portlet client registers an onError callback by adding a listener for the portlet.onErrorevent type through the addEventListener function.
     </div>
     
 
@@ -973,7 +845,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="portlet.js.html">portlet.js</a>, <a href="portlet.js.html#line19">line 19</a>
+        <a href="portlet.js.html">portlet.js</a>, <a href="portlet.js.html#line22">line 22</a>
     </li></ul></dd>
     
     
@@ -1009,7 +881,7 @@
     
     
     <div class="description">
-        The onStateChange callback function that each portlet clientparticipating in the portlet hub Ajax support must implement.<p>The portlet client registers an onStateChange callback by adding a listener for the portlet.onStateChangeevent type through the addEventListener function.<p>When the portlet hub calls the onStateChange callback, it will passa copy of the current portlet state as a parameter.The portlet client can make changes to the PortletState objectwithout affecting the actual portlet state, which is maintained by the portlet hub.The portlet client uses the setPortletState method to make changes to the local copy of the PortletState object active.<p>Optionally, the portlet hub will make a RenderData object availableto the portlet client. When the RenderData object is available, it contains the same dataas would be available through a portlet resource request using thecurrent portlet state with no additional resource parameters and with the resource URL cacheability option set to "PAGE". <p>The portlet client may not call portlet hub functions that cancause state to be updated (action, {@link updatePortletState},startPartialAction)   during onStateChange execution.
+        The onStateChange callback function that each portlet clientparticipating in the portlet hub Ajax support must implement.<p>The portlet client registers an onStateChange callback by adding alistener for the portlet.onStateChangeevent type through the addEventListener function.<p>When the portlet hub calls the onStateChange callback, it will passa copy of the current portlet state as a parameter.The portlet client can make changes to the PortletState objectwithout affecting the actual portlet state, which is maintained by theportlet hub.The portlet client uses the setPortletState method tomake changes to the local copy of the PortletState object active.<p>Optionally, the portlet hub will make a RenderData object availableto the portlet client.When the RenderData object is available, it contains the same dataas would be available through a portlet resource request using thecurrent portlet state with no additional resource parameters and withthe resource URL cacheability option set to "PAGE".<p>The portlet client may not call portlet hub functions that cancause state to be updated (action, {@link updatePortletState},startPartialAction)during onStateChange execution.
     </div>
     
 
@@ -1105,7 +977,7 @@
             
             
             
-            <td class="description last">The render data.                                           Optionally provided by the portlet hub.</td>
+            <td class="description last">The render data.                                          Optionally provided by the portlet hub.</td>
         </tr>
 	
 	
@@ -1136,7 +1008,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="portlet.js.html">portlet.js</a>, <a href="portlet.js.html#line13">line 13</a>
+        <a href="portlet.js.html">portlet.js</a>, <a href="portlet.js.html#line16">line 16</a>
     </li></ul></dd>
     
     
@@ -1171,7 +1043,7 @@
 <dd>
     
     <div class="description">
-        This data is returned to the portlet client by the startPartialActionfunction.<p>The portlet client can use the partial action URL to initiate processing.During processing, the portal will perform action and event processing.It will generate a string representing the new page state and pass it to theportlet's serveResource method. <p>The portlet is responsible for transmitting the page state string to the client and for calling the <a href="global.html#setPageState">setPageState</a> callback function. <p>The portlet hub will be blocked until the portlet calls the setPageStatefunction and the portlet hub has successfully performed the state change.
+        This data is returned to the portlet client by the startPartialActionfunction.<p>The portlet client can use the partial action URL to initiate processing.During processing, the portal will perform action and event processing.It will generate a string representing the new page state and pass it to theportlet's serveResource method.<p>The portlet is responsible for transmitting the page state string to theclient and for calling the <a href="global.html#setPageState">setPageState</a> callback function.<p>The portlet hub will be blocked until the portlet calls the setPageStatefunction and the portlet hub has successfully performed the state change.
     </div>
     
     
@@ -1274,7 +1146,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="portlet.js.html">portlet.js</a>, <a href="portlet.js.html#line15">line 15</a>
+        <a href="portlet.js.html">portlet.js</a>, <a href="portlet.js.html#line18">line 18</a>
     </li></ul></dd>
     
     
@@ -1292,14 +1164,303 @@
             
                 
 <dt>
-    <h4 class="name" id="PortletParameter">PortletParameter</h4>
+    <h4 class="name" id="PortletConstants">PortletConstants</h4>
     
     
 </dt>
 <dd>
     
     <div class="description">
-        Represents a portlet parameter. <p>Each object property represents a parameter name.The object may also contain no property names, which represents the case of the portlet having no parameters.<p>If properties are present,  each property must refer to a array of string values.The array length must be at least 1, because each parameter must have a value. However, a value of 'null' may appear in any array entry. <p>To represent the parameter having a <code>null</code> value, the property value must equal [null].<p>
+        Provides defined values for some commonly-used portlet constants<p>
+    </div>
+    
+    
+    
+
+    
+<dl class="details">
+    
+        
+        <h5 class="subsection-title">Properties:</h5>
+        
+        <dl>
+
+<table class="props">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>VIEW</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">Specifies portlet mode 'VIEW'</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>EDIT</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">Specifies portlet mode 'EDIT'</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>HELP</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">Specifies portlet mode 'HELP'</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>NORMAL</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">Specifies window state 'NORMAL'</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>MINIMIZED</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">Specifies window state 'MINIMIZED'</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>MAXIMIZED</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">Specifies window state 'MAXIMIZED'</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>FULL</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">Specifies resource URL cacheability 'FULL'</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>PORTLET</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">Specifies resource URL cacheability 'PORTLET'</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>PAGE</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">Specifies resource URL cacheability 'PAGE'</td>
+        </tr>
+	
+	
+	</tbody>
+</table></dl>
+        
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="portlet.js.html">portlet.js</a>, <a href="portlet.js.html#line12">line 12</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+            
+                
+<dt>
+    <h4 class="name" id="PortletParameters">PortletParameters</h4>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        Represents a portlet parameter.<p>Each object property represents a parameter name.The object may also contain no property names,which represents the case of the portlet having no parameters.<p>If properties are present,each property must refer to a array of string values.The array length must be at least 1, because each parameter must havea value.However, a value of 'null' may appear in any array entry.<p>To represent the parameter having a <code>null</code> value, theproperty value must equal [null].<p>PortletParameters objects obtained from the Portlet Hub define some helperfunctions for accessing the parameter values.<p>
     </div>
     
     
@@ -1351,7 +1512,145 @@
             
             
             
-            <td class="description last">The parameters object may have                                    multiple properties.</td>
+            <td class="description last">The parameters object may have                                    multiple properties.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>clone()</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">Returns a new copy of this object</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>setValue(n,v)</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">Sets a parameter with name n and value v.                                          The value v may be a string or an array.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>setValues(n,v)</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">Sets a parameter with name n and value v.                                          The value v may be a string or an array.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>getValue(n,d)</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">Gets the string parameter value for the name n.                                          If n designates a multi-valued parameter, this function returns the first value in the values array.                                          If parameter n is undefined, the function returns the optional default value d.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>getValues(n,d)</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">Gets the string array parameter value for the name n.                                          If parameter n is undefined, the function returns the optional default value array d.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>remove(n)</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">Removes the parameter with name n.</td>
         </tr>
 	
 	
@@ -1379,7 +1678,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="portlet.js.html">portlet.js</a>, <a href="portlet.js.html#line7">line 7</a>
+        <a href="portlet.js.html">portlet.js</a>, <a href="portlet.js.html#line8">line 8</a>
     </li></ul></dd>
     
     
@@ -1404,7 +1703,7 @@
 <dd>
     
     <div class="description">
-        Represents the portlet state.
+        Represents the portlet state.<p>PortletState objects obtained from the Portlet Hub define some helperfunctions for accessing the parameter values.<p>
     </div>
     
     
@@ -1446,7 +1745,7 @@
             <td class="type">
             
                 
-<span class="param-type"><a href="global.html#PortletParameter">PortletParameter</a></span>
+<span class="param-type"><a href="global.html#PortletParameters">PortletParameters</a></span>
 
 
             
@@ -1457,6 +1756,29 @@
             
             
             <td class="description last">The portlet parameters</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>p</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#PortletParameters">PortletParameters</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">an alias for the 'parameters' property</td>
         </tr>
 	
 	
@@ -1506,6 +1828,121 @@
         </tr>
 	
 	
+	
+        <tr>
+            
+                <td class="name"><code>clone()</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">Returns a new copy of this object</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>setPortletMode(pm)</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">Sets the portlet mode to the specified value.               The strings defined by the <a href="global.html#PortletConstants">PortletConstants</a> object should be used to specify the portlet mode.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>getPortletMode()</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">Returns the current portlet mode</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>setWindowState(ws)</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">Sets the window state to the specified value</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>getWindowState()</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">Returns the current window state              The strings defined by the <a href="global.html#PortletConstants">PortletConstants</a> object should be used to specify the window state.</td>
+        </tr>
+	
+	
 	</tbody>
 </table></dl>
         
@@ -1530,7 +1967,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="portlet.js.html">portlet.js</a>, <a href="portlet.js.html#line9">line 9</a>
+        <a href="portlet.js.html">portlet.js</a>, <a href="portlet.js.html#line10">line 10</a>
     </li></ul></dd>
     
     
@@ -1555,7 +1992,7 @@
 <dd>
     
     <div class="description">
-        Optional render data that may be provided by the portlet hub when a portlet state change occurs.
+        Optional render data that may be provided by the portlet hub whena portlet state change occurs.
     </div>
     
     
@@ -1658,7 +2095,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="portlet.js.html">portlet.js</a>, <a href="portlet.js.html#line11">line 11</a>
+        <a href="portlet.js.html">portlet.js</a>, <a href="portlet.js.html#line14">line 14</a>
     </li></ul></dd>
     
     
@@ -1676,7 +2113,7 @@
             
                 
 <dt>
-    <h4 class="name" id="setPageState"><span class="type-signature"></span>setPageState<span class="signature">(ustr)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="setPageState"><span class="type-signature"></span>setPageState<span class="signature">(pid, ustr)</span><span class="type-signature"></span></h4>
     
     
 </dt>
@@ -1714,6 +2151,29 @@
 	</thead>
 	
 	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>pid</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">The portlet ID for operation</td>
+        </tr>
+	
 	
 	
         <tr>
@@ -1765,7 +2225,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="portlet.js.html">portlet.js</a>, <a href="portlet.js.html#line862">line 862</a>
+        <a href="portlet.js.html">portlet.js</a>, <a href="portlet.js.html#line1073">line 1073</a>
     </li></ul></dd>
     
     
@@ -1837,7 +2297,7 @@
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.3-dev</a> on Wed Jun 04 2014 10:42:41 GMT+0200 (CEST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.3-dev</a> on Thu Dec 04 2014 10:16:04 GMT+0100 (CET)
 </footer>
 
 <script> prettyPrint(); </script>
