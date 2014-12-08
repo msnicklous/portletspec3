@@ -833,6 +833,31 @@ var portlet = portlet || {};
    },
 
    /**
+    * Accepts an object containing changed portlet IDs. This 
+    * function is meant to be used by the Portlet Hub impl in order 
+    * to initiate an unsolicited state update for the input list of 
+    * portlet IDs.
+    *
+    * @returns {Promise}   fulfilled with the actual upddate function when
+    *                      the hub is not busy.
+    *
+    * @private
+    */
+   updateWhenIdle = function (upids) {
+      return new Promise (function (resolve) {
+         function update () {
+            if (busy) {
+               delay(update, 20);
+            } else {
+               busy = true;
+               resolve(updatePageState);
+            }
+         }
+         update();
+      });
+   },
+
+   /**
     * Updates the portlet state, taking the public render
     * parameters into account.
     * The portlet client requesting the change, represented
@@ -1146,7 +1171,7 @@ var portlet = portlet || {};
        * functions as passed in as an argument
        */
       return portlet.impl
-            .register(portletId)
+            .register(portletId, updateWhenIdle)
             .then(
                   function(portletImpl) {
 
