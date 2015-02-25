@@ -132,7 +132,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="portlet.js.html">portlet.js</a>, <a href="portlet.js.html#line1933">line 1933</a>
+        <a href="portlet.js.html">portlet.js</a>, <a href="portlet.js.html#line1940">line 1940</a>
     </li></ul></dd>
     
     
@@ -366,7 +366,7 @@
         <dl>
             
 <dt>
-    <h4 class="name" id="action"><span class="type-signature">&lt;static> </span>action<span class="signature">(actParams, element)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="action"><span class="type-signature">&lt;static> </span>action<span class="signature">(actParams, element)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
     
     
 </dt>
@@ -374,7 +374,7 @@
     
     
     <div class="description">
-        Initiates a portlet action using the specified action parameters and elementarguments.<p>When the action has successfully completed, a copy of the portlet statewill be provided to the portlet clientthrough the <a href="global.html#onStateChange">onStateChange</a> listener function.A portlet client can modify this state object and pass it to thesetPortletState function to update the portlet state.<p>However, it is also possible for the portal to completely refresh thepage as a response to the action.This may occur in order to support portlets on the page that do not participatein the Portlet 3.0 Ajax support or due to configuration settings, for example.<p>If the page is completely refreshed, it will be rendered according torender parameters set on the server.<p>Action parameters are optional parameters attached to a actionURL in addition to any portlet state values that may be present.Action parameters do not influence the portlet state.<p>The action parameters must be an object containing propertiesrepresenting parameter names whose values must be an array of stringvalues, as described under <a href="global.html#PortletParameters">PortletParameters</a>.All of the action parameters will be attached to the URL.Use of action parameters is optional.<p>If the <code>element</code> argument is present, it must refer toan HTML form to be submitted.The portlet hub will use this form to execute the action.<p>If the form element is specified, the encoding type must be 'application/x-www-form-urlencoded' or 'multipart/form-data'.The encoding type 'text/plain' is not supported.<p>If the encoding type is 'multipart/form-data', the submission methodmust be 'POST'.Form 'INPUT' elements of type 'FILE' are supported. <p>If the encoding type is 'application/x-www-form-urlencoded', the submission methodcan be either 'GET' or 'POST'.However, form 'INPUT' elements of type 'FILE' are not supported. <p>Specification of <code>element</code> is optional.If the <code>element</code> is not specified, the portlet hub willsubmit the action to the server by executing a 'POST' with an actionURL containing any action parameters provided.<p>A portlet action is a blocking operation.To allow for orderly state transitions, the portlet hub does not allowthis function to be used while a blocking operation is in progress.A blocking operation is considered to be in progressfrom the initial call until the final onStateChange event for thatoperation has been fired. See <a href="portlet.html">portlet</a> for further information.<p>The parameters may be specified in either order, individually,or not at all. Examples of valid calls:<code><br>action();<br>action(actParams, element);<br>action(actParams);<br>action(element);</code>
+        Initiates a portlet action using the specified action parameters and elementarguments.<p>When the action has successfully completed, a copy of the portlet statewill be provided to the portlet clientthrough the <a href="global.html#onStateChange">onStateChange</a> listener function.A portlet client can modify this state object and pass it to thesetPortletState function to update the portlet state.<p>However, it is also possible for the portal to completely refresh thepage as a response to the action.This may occur in order to support portlets on the page that do not participatein the Portlet 3.0 Ajax support or due to configuration settings, for example.<p>If the page is completely refreshed, it will be rendered according torender parameters set on the server.<p>Action parameters are optional parameters attached to a actionURL in addition to any portlet state values that may be present.Action parameters do not influence the portlet state.<p>The action parameters must be an object containing propertiesrepresenting parameter names whose values must be an array of stringvalues, as described under <a href="global.html#PortletParameters">PortletParameters</a>.All of the action parameters will be attached to the URL.Use of action parameters is optional.<p>If the <code>element</code> argument is present, it must refer toan HTML form to be submitted.The portlet hub will use this form to execute the action.<p>If the form element is specified, the encoding type must be 'application/x-www-form-urlencoded' or 'multipart/form-data'.The encoding type 'text/plain' is not supported.<p>If the encoding type is 'multipart/form-data', the submission methodmust be 'POST'.Form 'INPUT' elements of type 'FILE' are supported. <p>If the encoding type is 'application/x-www-form-urlencoded', the submission methodcan be either 'GET' or 'POST'.However, form 'INPUT' elements of type 'FILE' are not supported. <p>Specification of <code>element</code> is optional.If the <code>element</code> is not specified, the portlet hub willsubmit the action to the server by executing a 'POST' with an actionURL containing any action parameters provided.<p>The parameters may be specified in either order, individually,or not at all. Examples of valid calls:<code><br>action();<br>action(actParams, element);<br>action(actParams);<br>action(element);</code><p>A portlet action is a blocking operation.To allow for orderly state transitions, the portlet hub does not allowthis function to be used while a blocking operation is in progress.A blocking operation is considered to be in progressfrom the initial call until the final onStateChange event for thatoperation has been fired. See <a href="portlet.html">portlet</a> for further information.<p>
     </div>
     
 
@@ -478,7 +478,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="portlet.js.html">portlet.js</a>, <a href="portlet.js.html#line1619">line 1619</a>
+        <a href="portlet.js.html">portlet.js</a>, <a href="portlet.js.html#line1624">line 1624</a>
     </li></ul></dd>
     
     
@@ -576,6 +576,28 @@
         </ul>
     
     
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    A Promise object that is resolved with no argument						when the action request has completed.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">Promise</span>
+
+
+	</dd>
+</dl>
+
+        
     
     
 </dd>
@@ -1073,7 +1095,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="portlet.js.html">portlet.js</a>, <a href="portlet.js.html#line1869">line 1869</a>
+        <a href="portlet.js.html">portlet.js</a>, <a href="portlet.js.html#line1876">line 1876</a>
     </li></ul></dd>
     
     
@@ -1164,7 +1186,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="portlet.js.html">portlet.js</a>, <a href="portlet.js.html#line1816">line 1816</a>
+        <a href="portlet.js.html">portlet.js</a>, <a href="portlet.js.html#line1823">line 1823</a>
     </li></ul></dd>
     
     
@@ -1303,7 +1325,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="portlet.js.html">portlet.js</a>, <a href="portlet.js.html#line1906">line 1906</a>
+        <a href="portlet.js.html">portlet.js</a>, <a href="portlet.js.html#line1913">line 1913</a>
     </li></ul></dd>
     
     
@@ -1442,7 +1464,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="portlet.js.html">portlet.js</a>, <a href="portlet.js.html#line1923">line 1923</a>
+        <a href="portlet.js.html">portlet.js</a>, <a href="portlet.js.html#line1930">line 1930</a>
     </li></ul></dd>
     
     
@@ -1944,7 +1966,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="portlet.js.html">portlet.js</a>, <a href="portlet.js.html#line1747">line 1747</a>
+        <a href="portlet.js.html">portlet.js</a>, <a href="portlet.js.html#line1754">line 1754</a>
     </li></ul></dd>
     
     
@@ -2090,7 +2112,7 @@
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.3-dev</a> on Mon Feb 02 2015 13:17:13 GMT+0100 (CET)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.3-dev</a> on Wed Feb 25 2015 16:55:23 GMT+0100 (CET)
 </footer>
 
 <script> prettyPrint(); </script>
