@@ -105,7 +105,7 @@ import java.util.Set;
  * @see     MutablePortletParameters
  * @since   3.0 
  */
-public interface PortletParameters extends Cloneable
+public interface PortletParameters
 {
 
   /**
@@ -213,6 +213,19 @@ public interface PortletParameters extends Cloneable
    */
 
   public boolean isEmpty ();
+
+  
+  /**
+   * <div class="changed_added_3_0">
+   * Returns the number of parameters in this object.
+   * </div> 
+   *
+   * @return  the number of parameters in this object
+   * 
+   * @since    3.0
+   */
+
+  public int size();
 
   
   /**

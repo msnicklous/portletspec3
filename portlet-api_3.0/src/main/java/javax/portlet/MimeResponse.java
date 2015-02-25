@@ -449,7 +449,7 @@ public interface MimeResponse extends PortletResponse {
      *
      * @return a portlet render URL
      */
-    public RenderURL createRenderURL();
+    public <T extends PortletURL & RenderURL> T createRenderURL();
 	
 
     /**
@@ -518,7 +518,7 @@ public interface MimeResponse extends PortletResponse {
      * <div class="changed_added_3_0">
      * <p>
      * Public render parameters do not need to be explicitly added to the returned 
-     * render URL, unless the public render parameter value is to be changed. 
+     * action URL, unless the public render parameter value is to be changed. 
      * Any public render parameters associated with 
      * the portlet will automatically be available during action request 
      * processing resulting from activation of the URL. 
@@ -533,7 +533,7 @@ public interface MimeResponse extends PortletResponse {
      * 
      * @return a portlet action URL
      */
-    public ActionURL createActionURL();
+    public <T extends PortletURL & ActionURL> T createActionURL();
 
 
     /**

@@ -77,17 +77,16 @@ public interface StateAwareResponse extends PortletResponse, MutablePortletState
     * parameter values as map values. The keys in the parameter map must be of type
     * String and may not be null or the empty string (""). The values in the parameter
     * map must be of type String array (<code>String[]</code>). 
-    * Neither the values array nor any of
-    * its elements may be null; however, the empty string ("") is allowed.
+    * The values array may not be null;
+    * however, the values array elements may be null.
     * </span>
     * 
     * @exception java.lang.IllegalArgumentException
     * <span class="changed_modified_3_0">
     *                if parameters is <code>null</code>, if any of the
     *                keys in the Map are <code>null</code>, if any of
-    *                the keys is not a String, if any of the values is not a
-    *                String array, or if any of the String array elements
-    *                are null. 
+    *                the keys is not a String, or if any of the values is not a
+    *                String array. 
     * </span>
     * @exception java.lang.IllegalStateException
     *                if the method is invoked after <code>sendRedirect</code>
@@ -161,8 +160,7 @@ public interface StateAwareResponse extends PortletResponse, MutablePortletState
     * </span>
     * <p>
     * <span class="changed_added_3_0"> 
-    * If the values parameter is not null, no element of the values array may be null. 
-    * However, an empty string value ("") is allowed.
+    * If the values parameter is not null, elements of the array may be null. 
     * </span>
     * 
     * @param key

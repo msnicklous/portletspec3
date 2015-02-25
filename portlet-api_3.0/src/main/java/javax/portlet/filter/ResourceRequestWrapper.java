@@ -165,7 +165,7 @@ public class ResourceRequestWrapper extends PortletRequestWrapper implements Res
     */
    @Deprecated
    public Map<String, String[]> getPrivateRenderParameterMap() {
-      return request.getPrivateParameterMap();
+		return request.getPrivateRenderParameterMap();
    }
 
    /**

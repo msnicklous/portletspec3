@@ -56,6 +56,8 @@ public interface RenderParameters extends PortletParameters
     * <div class="changed_added_3_0">
     * Returns a boolean value indicating whether the given
     * parameter name represents a public render parameter.
+    * Note that if <code>true</code> is returned, it does not mean that a public 
+    * render parameter value is set.
     * </div> 
     *
     * @param   name
