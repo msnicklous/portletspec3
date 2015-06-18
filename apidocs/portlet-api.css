@@ -544,6 +544,28 @@ h1.hidden {
 
 /* List of added files */
 
+.indexContainer a[href*="ActionMethod.html"],
+.indexContainer a[href*="ContentTypeSupport.html"],
+.indexContainer a[href*="Dependency.html"],
+.indexContainer a[href*="EventMethod.html"],
+.indexContainer a[href*="HeaderMethod.html"],
+.indexContainer a[href*="InitParameter.html"],
+.indexContainer a[href*="package-info.html"],
+.indexContainer a[href*="PortletConfiguration.html"],
+.indexContainer a[href*="PortletEvent.html"],
+.indexContainer a[href*="PortletQName.html"],
+.indexContainer a[href*="PortletRequestFilter.html"],
+.indexContainer a[href*="PortletResources.html"],
+.indexContainer a[href*="PortletSerializable.html"],
+.indexContainer a[href*="PortletSessionScoped.html"],
+.indexContainer a[href*="PortletStateScoped.html"],
+.indexContainer a[href*="PortletURLGenerationListener.html"],
+.indexContainer a[href*="Preference.html"],
+.indexContainer a[href*="PreferencesValidator.html"],
+.indexContainer a[href*="PublicRenderParameter.html"],
+.indexContainer a[href*="RenderMethod.html"],
+.indexContainer a[href*="ServeResourceMethod.html"],
+
 .indexContainer a[href*="ActionURL.html"],
 .indexContainer a[href*="RenderURL.html"],
 .indexContainer a[href*="MimeResponse.ParameterCopyOption.html"],

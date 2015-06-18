@@ -1,2 +1,3 @@
 javax.portlet
+javax.portlet.annotations
 javax.portlet.filter
