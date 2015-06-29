@@ -545,12 +545,16 @@ h1.hidden {
 /* List of added files */
 
 .indexContainer a[href*="ActionMethod.html"],
+.indexContainer a[href*="ActionParam.html"],
+.indexContainer a[href*="BeanPortlet.html"],
 .indexContainer a[href*="ContentTypeSupport.html"],
+.indexContainer a[href*="ContextPath.html"],
 .indexContainer a[href*="Dependency.html"],
 .indexContainer a[href*="EventMethod.html"],
 .indexContainer a[href*="HeaderMethod.html"],
 .indexContainer a[href*="InitParameter.html"],
 .indexContainer a[href*="package-info.html"],
+.indexContainer a[href*="Namespace.html"],
 .indexContainer a[href*="PortletConfiguration.html"],
 .indexContainer a[href*="PortletEvent.html"],
 .indexContainer a[href*="PortletQName.html"],
@@ -560,11 +564,17 @@ h1.hidden {
 .indexContainer a[href*="PortletSessionScoped.html"],
 .indexContainer a[href*="PortletStateScoped.html"],
 .indexContainer a[href*="PortletURLGenerationListener.html"],
+.indexContainer a[href*="PortletURLGenerationListener.URLType.html"],
 .indexContainer a[href*="Preference.html"],
 .indexContainer a[href*="PreferencesValidator.html"],
 .indexContainer a[href*="PublicRenderParameter.html"],
 .indexContainer a[href*="RenderMethod.html"],
+.indexContainer a[href*="RenderParam.html"],
+.indexContainer a[href*="ResourceParam.html"],
 .indexContainer a[href*="ServeResourceMethod.html"],
+.indexContainer a[href*="URLFactory.html"],
+.indexContainer a[href*="URLFactory.Copy.html"],
+.indexContainer a[href*="WindowId.html"],
 
 .indexContainer a[href*="ActionURL.html"],
 .indexContainer a[href*="RenderURL.html"],
@@ -586,4 +596,28 @@ h1.hidden {
    padding-left:0.2em; border-left:solid;
    border-left-width:thin; border-right:none;
    border-top:none; border-bottom:none; border-color:green 
+}
+
+
+.codebox {
+   font-family: 'Courier New', Courier, monospace; 
+   margin: 0px 4px 8px 4px; 
+   padding: 3px; 
+   border:thin solid blue; 
+   min-height: 10px; 
+   background-color: #CFF;
+   display: inline-block;
+}
+
+table.ovtable {
+    border-collapse: collapse;
+}
+
+table.ovtable th, td {
+    border: 1px solid black;
+    padding: 2px 3px 2px 3px;
+}
+
+ul.nospace {
+   margin: 5px 0px;
 }
