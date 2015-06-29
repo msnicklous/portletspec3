@@ -9,7 +9,7 @@ import static java.lang.annotation.RetentionPolicy.*;
 
 
 /**
- * <div class='container-change'>
+ * <div class='changed_added_3_0'>
  * This annotation is used within composite portlet configuration annotations to
  * represent dependencies the portlet may have on external resources.
  * The resources can represent client-side prerequisites such as JavaScript libraries

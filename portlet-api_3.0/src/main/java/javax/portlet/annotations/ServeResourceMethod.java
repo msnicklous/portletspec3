@@ -9,6 +9,7 @@ import static java.lang.annotation.RetentionPolicy.*;
 
 
 /**
+ * <div class='changed_added_3_0'>
  * Designates a method corresponding to the portlet API serveResource method.
  * <p>
  * The annotated method must have one of the following signatures:
@@ -36,6 +37,7 @@ import static java.lang.annotation.RetentionPolicy.*;
  * {@link java.io.IOException}. 
  * Checked exceptions of any other type will be caught, wrapped with a PortletException, 
  * and rethrown.
+ * </div>
  * 
  * @see     javax.portlet.ResourceServingPortlet#serveResource(javax.portlet.ResourceRequest, javax.portlet.ResourceResponse) ResourceServingPortlet#serveResource
  *

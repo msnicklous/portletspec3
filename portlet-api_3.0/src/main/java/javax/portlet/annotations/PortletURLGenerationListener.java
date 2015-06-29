@@ -9,6 +9,7 @@ import static java.lang.annotation.RetentionPolicy.*;
 
 
 /**
+ * <div class='changed_added_3_0'>
  * Designates a portlet URL generation listener method.
  * The listener method will be invoked before a URL of the corresponding type is
  * generated.
@@ -24,6 +25,7 @@ import static java.lang.annotation.RetentionPolicy.*;
  *    <code>public void &lt;methodName&gt;(ResourceURL resourceURL)</code>
  * <p>   
  * where the method name can be freely selected.
+ * </div>
  *    
  * @see javax.portlet.PortletURLGenerationListener
  *
@@ -33,10 +35,12 @@ import static java.lang.annotation.RetentionPolicy.*;
 public @interface PortletURLGenerationListener {
    
    /**
+    * <div class='changed_added_3_0'>
     * Needed for V2.0 portlets to discern between a Render URL and an Action URL
     * since both are represented by the interface PortletURL.
     * 
     * Not needed for v3.0 portlets.
+    * </div>
     */
    public enum URLType {RENDER, ACTION, RESOURCE}
    

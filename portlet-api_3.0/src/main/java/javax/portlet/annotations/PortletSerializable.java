@@ -20,6 +20,7 @@
 package javax.portlet.annotations;
 
 /**
+ * <div class='changed_added_3_0'>
  * This interface must be implemented by {@link PortletStateScoped} beans
  * in order to allow the bean portlet container to intialize the bean at the
  * beginning of a request and passivate the bean at the end of the request.
@@ -34,6 +35,7 @@ package javax.portlet.annotations;
  * or <code>EventMethod</code> execution are stored in the portlet state.
  * Changes made during <code>RenderMethod</code>, <code>ServeResourceMethod</code>,
  * or <code>HeaderMethod</code> execution will not be available during subsequent requests.
+ * </div>
  * 
  * @see PortletStateScoped
  */

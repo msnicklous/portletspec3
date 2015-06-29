@@ -9,6 +9,7 @@ import static java.lang.annotation.RetentionPolicy.*;
 
 
 /**
+ * <div class='changed_added_3_0'>
  * Designates a method corresponding to the doHeaders method of GenericPortlet.
  * The annotated method must have the following signature:
  * <p>
@@ -24,6 +25,7 @@ import static java.lang.annotation.RetentionPolicy.*;
  * <p>
  * The header method can be used to set properties such as cookies, header values, and 
  * XML elements for the header section of the aggregated portal document. 
+ * </div>
  *    
  * @see javax.portlet.PortletResponse the add and set properties methods of PortletResponse
  * @see javax.portlet.MimeResponse#MARKUP_HEAD_ELEMENT MimeResponse#MARKUP_HEAD_ELEMENT

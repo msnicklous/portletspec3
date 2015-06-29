@@ -9,7 +9,7 @@ import static java.lang.annotation.RetentionPolicy.*;
 
 
 /**
- * <div class='container-change'>
+ * <div class='changed_added_3_0'>
  * Declares resources needed by one or more portlets in a portlet application. 
  * The resources may be provided by the portlet for inclusion into the header section
  * through the <code>GenericPortlet#doHeaders</code> method 

@@ -9,6 +9,7 @@ import static java.lang.annotation.RetentionPolicy.*;
 
 
 /**
+ * <div class='changed_added_3_0'>
  * Designates a method corresponding to the portlet API render method.
  * The annotated method must have one of the following signatures:
  * <p>
@@ -37,6 +38,7 @@ import static java.lang.annotation.RetentionPolicy.*;
  * {@link java.io.IOException}. 
  * Checked exceptions of any other type will be caught, wrapped with a PortletException, 
  * and rethrown.
+ * </div>
  * 
  * @see     javax.portlet.Portlet#render(javax.portlet.RenderRequest, javax.portlet.RenderResponse) Portlet#render
  *

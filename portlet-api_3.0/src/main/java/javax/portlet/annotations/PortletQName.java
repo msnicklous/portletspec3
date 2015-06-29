@@ -9,6 +9,7 @@ import static java.lang.annotation.RetentionPolicy.*;
 
 
 /**
+ * <div class='changed_added_3_0'>
  * This annotation is used within composite portlet configuration annotations to
  * represent a QName for use in portlet event and public render parameter definitions.
  * It cannot be used as a stand-alone portlet annotation.
@@ -23,6 +24,7 @@ import static java.lang.annotation.RetentionPolicy.*;
  * local-part is a non-empty String.
  * </li>
  * </ul>
+ * </div>
  * 
  * @see     javax.xml.namespace.QName javax.xml.namespace.QName
  * @see     <a href="http://www.w3.org/TR/2001/REC-xmlschema-2-20010502/#QName">W3C Qname definition</a>

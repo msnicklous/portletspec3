@@ -12,6 +12,7 @@ import static java.lang.annotation.RetentionPolicy.*;
 
 
 /**
+ * <div class='changed_added_3_0'>
  * Provides a CDI custom scope that is scoped to the portlet state. 
  * The purpose of this scope is to allow portlet render parameters to be handled like
  * beans.
@@ -43,6 +44,7 @@ import static java.lang.annotation.RetentionPolicy.*;
  * or <code>EventMethod</code> execution are stored in the portlet state.
  * Changes made during <code>RenderMethod</code>, <code>ServeResourceMethod</code>,
  * or <code>HeaderMethod</code> execution will not be available during subsequent requests.
+ * </div>
  *
  * @see PortletSerializable
  */

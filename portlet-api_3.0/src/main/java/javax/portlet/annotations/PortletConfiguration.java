@@ -9,6 +9,7 @@ import static java.lang.annotation.RetentionPolicy.*;
 
 
 /**
+ * <div class='changed_added_3_0'>
  * Annotation for the portlet configuration. 
  * Many of these configuration parameters also appear in
  * the portlet deployment descriptor.
@@ -16,6 +17,7 @@ import static java.lang.annotation.RetentionPolicy.*;
  * The portlet deployment descriptor can continue to be used. 
  * Values of configuration parameters appearing in the deployment descriptor have 
  * precedence over the corresponding values defined in the annotation.   
+ * </div>
  */
 @Retention(RUNTIME) @Target({TYPE})
 public @interface PortletConfiguration {

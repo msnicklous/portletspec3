@@ -9,7 +9,7 @@ import static java.lang.annotation.RetentionPolicy.*;
 
 
 /**
- * <div class='not-supported'>
+ * <div class='changed_added_3_0'>
  * Designates a portlet request filter class.
  * The request filter performs filtering tasks on either the request to a portlet, 
  * on the response from a portlet, or on both.

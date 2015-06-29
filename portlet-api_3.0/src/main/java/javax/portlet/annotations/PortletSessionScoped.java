@@ -13,11 +13,13 @@ import static java.lang.annotation.RetentionPolicy.*;
 
 
 /**
+ * <div class='changed_added_3_0'>
  * Provides a CDI custom scope that is scoped to the portlet session rather than to the
  * servlet session.
  * <p>
  * Note that a portlet session scoped bean must implement 
  * <code>java.io.Serializable</code>, since it will be stored in the portlet session.
+ * </div>
  *
  */
 

@@ -9,6 +9,7 @@ import static java.lang.annotation.RetentionPolicy.*;
 
 
 /**
+ * <div class='changed_added_3_0'>
  * Designates a method corresponding to the portlet API processEvent method.
  * The annotated method must have the following signature:
  * <p>
@@ -21,6 +22,7 @@ import static java.lang.annotation.RetentionPolicy.*;
  * {@link java.io.IOException}. 
  * Checked exceptions of any other type will be caught, wrapped with a PortletException, 
  * and rethrown.
+ * </div>
  *    
  * @see javax.portlet.EventPortlet#processEvent(javax.portlet.EventRequest, javax.portlet.EventResponse) processEvent
  *

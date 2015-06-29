@@ -9,10 +9,12 @@ import static java.lang.annotation.RetentionPolicy.*;
 
 
 /**
+ * <div class='changed_added_3_0'>
  * This annotation is used within composite portlet configuration annotations to
  * represent the portlet modes and window states supported for a given content type.
  * <p>
  * It cannot be used as a stand-alone portlet annotation.
+ * </div>
  */
 @Retention(RUNTIME) @Target({ANNOTATION_TYPE})
 public @interface ContentTypeSupport {
