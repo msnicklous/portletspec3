@@ -28,20 +28,49 @@ package javax.portlet.annotations;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
-import javax.inject.Qualifier;
-
 import static java.lang.annotation.ElementType.*;
 import static java.lang.annotation.RetentionPolicy.*;
 
 
 /**
  * <div class='changed_added_3_0'>
- * Provides a qualifier sometimes needed for disambiguation. 
- * <p>
- * This qualifier is needed when injecting a PortletConfig object.
+ * This annotation is used within composite portlet configuration annotations to
+ * represent a custom portlet mode.
+ * It cannot be used as a stand-alone portlet annotation.
  * </div>
  */
-
-@Qualifier @Retention(RUNTIME) @Target({TYPE, METHOD, FIELD, PARAMETER})
-public @interface BeanPortlet {
+@Retention(RUNTIME) @Target({ANNOTATION_TYPE})
+public @interface CustomPortletMode {
+   
+   /**
+    * <div class='container-change'>
+    * The custom portlet mode description.
+    * </div>
+    * 
+    * @return  The custom portlet mode description
+    */
+   String      description() default "";
+   
+   /**
+    * <div class='container-change'>
+    * The custom portlet mode name.
+    * <p>
+    * The name by which the portlet mode is identified.
+    * </div>
+    * 
+    * @return  The custom portlet mode name
+    */
+   String      name();
+   
+   /**
+    * <div class='container-change'>
+    * The portal managed flag.
+    * <p>
+    * If set to <code>true</code>, the custom portlet mode will be managed by the portal.
+    * If set to <code>false</code>, the custom portlet mode will be managed by the portlet.
+    * </div>
+    * 
+    * @return  The portal managed flag setting 
+    */
+   boolean     portalManaged() default true;
 }

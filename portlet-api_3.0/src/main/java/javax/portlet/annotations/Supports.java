@@ -28,20 +28,52 @@ package javax.portlet.annotations;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
-import javax.inject.Qualifier;
-
 import static java.lang.annotation.ElementType.*;
 import static java.lang.annotation.RetentionPolicy.*;
 
 
 /**
  * <div class='changed_added_3_0'>
- * Provides a qualifier sometimes needed for disambiguation. 
- * <p>
- * This qualifier is needed when injecting a PortletConfig object.
+ * This annotation is used within composite portlet configuration annotations to
+ * specify the supported portlet modes and window states for a given locale.
+ * It cannot be used as a stand-alone portlet annotation.
  * </div>
  */
-
-@Qualifier @Retention(RUNTIME) @Target({TYPE, METHOD, FIELD, PARAMETER})
-public @interface BeanPortlet {
+@Retention(RUNTIME) @Target({ANNOTATION_TYPE})
+public @interface Supports {
+   
+   /**
+    * <div class='container-change'>
+    * The locale for the supported portlet modes and window
+    * states listed in this annotation.
+    * <p>
+    * The locale is specified as a language tag as defined in 
+    * IETF BCP 47, "Tags for Identifying Languages".
+    * </div>
+    * 
+    * @see     java.util.Locale
+    * @see     java.util.Locale#forLanguageTag forLanguageTag
+    * @see     <a href="https://tools.ietf.org/html/bcp47">IETF BCP 47</a>
+    * 
+    * @return  The locale
+    */
+   String   locale() default "en";
+   
+   /**
+    * <div class='container-change'>
+    * The names of the supported portlet modes.
+    * </div>
+    * 
+    * @return  The supported portlet modes
+    */
+   String[]      portletModes() default "";
+   
+   /**
+    * <div class='container-change'>
+    * The names of the supported window states.
+    * </div>
+    * 
+    * @return  The supported window states
+    */
+   String[]      windowStates() default "";
 }
