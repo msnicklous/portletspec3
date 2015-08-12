@@ -145,7 +145,8 @@ public interface ResourceResponse extends MimeResponse {
      *             is not <code>PAGE</code> and thus does not allow
      *             for creating render URLs.
      */
-	public RenderURL createRenderURL();
+	@SuppressWarnings("unchecked")
+   public RenderURL createRenderURL();
    
    
   /**
@@ -155,7 +156,7 @@ public interface ResourceResponse extends MimeResponse {
     *             is not <code>PAGE</code> and thus does not allow
     *             for creating render URLs.
     */
-  public RenderURL createRenderURL(ParameterCopyOption option);
+  public RenderURL createRenderURL(Copy option);
 
 	/**
      * @throws java.lang.IllegalStateException
@@ -164,7 +165,8 @@ public interface ResourceResponse extends MimeResponse {
      *             is not <code>PAGE</code> and thus does not allow
      *             for creating action URLs.
      */
-	public ActionURL createActionURL();
+	@SuppressWarnings("unchecked")
+   public ActionURL createActionURL();
 
    /**
      * @throws java.lang.IllegalStateException
@@ -173,7 +175,7 @@ public interface ResourceResponse extends MimeResponse {
      *             is not <code>PAGE</code> and thus does not allow
      *             for creating action URLs.
      */
-   public ActionURL createActionURL(ParameterCopyOption option);
+   public ActionURL createActionURL(Copy option);
 
 	/**
      * @throws java.lang.IllegalStateException

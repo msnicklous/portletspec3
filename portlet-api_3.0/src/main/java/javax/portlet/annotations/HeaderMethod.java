@@ -28,6 +28,8 @@ package javax.portlet.annotations;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
+import javax.portlet.PortletRequest;
+
 import static java.lang.annotation.ElementType.*;
 import static java.lang.annotation.RetentionPolicy.*;
 
@@ -74,6 +76,54 @@ public @interface HeaderMethod {
     * @return     The portlet names
     */
    String[]   portletNames();
+   
+   /**
+    * The portlet mode rendered by the annotated method.
+    * <p>
+    * If an portlet mode is specified, the bean enabler will dispatch Render requests with 
+    * matching portlet mode values to this method. 
+    * <p>
+    * If this field is empty, the method will be executed for all
+    * Render requests not dispatched by portlet mode to other RenderMethods.
+    * 
+    * @return     The portlet mode
+    */
+   String   portletMode() default "view";
+   
+   /**
+    * Specifies name of the device attribute to examine in order to perform method dispatching.
+    * <p>
+    * The device attribute is obtained through the CC/PP Profile object.
+    * <p>
+    * 
+    * 
+    * @see PortletRequest#CCPP_PROFILE
+    * @see RenderMethod#deviceMatch()
+    * 
+    * @return
+    */
+   String   deviceAttribute() default "";
+   
+   /**
+    * Regular expression used in conjunction with the deviceAttribute element.
+    * <p>
+    * If the device attribute value is not empty, the attribute is retrieved from the 
+    * javax.ccpp.Profile object. The returned value is matched against the 
+    * regular expression specified in this attribute.
+    * <p>
+    * The portlet container
+    * attempts to locate the appropriate annotated method for the given portlet mode
+    * and device attribute data, with the device attribute match having precedence. 
+    * A render method with matching device attribute data but an empty portlet mode
+    * element will take precedence over a render method with empty or not matching
+    * device attribute data but a matching portlet mode.  
+    * 
+    * @see RenderMethod#deviceAttribute()
+    * @see RenderMethod#portletMode()
+    * 
+    * @return
+    */
+   String   deviceMatch() default "";
    
    /**
     * The ordinal number for this annotated method.

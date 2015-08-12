@@ -206,4 +206,14 @@ public class ActionResponseWrapper extends PortletResponseWrapper implements Act
       return response.getRenderParameters();
    }
 
+   /**
+    * <div class="changed_added_3_0">
+    *  The default behavior of this method is to call 
+    * <code>setRedirect()</code> on the wrapped response object.
+    * </div>
+    */
+   public void setRedirect(boolean redirectFlag) throws IOException {
+      response.setRedirect(redirectFlag);
+   }
+
 }

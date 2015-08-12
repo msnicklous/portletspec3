@@ -513,6 +513,7 @@ h1.hidden {
 .indexContainer a[href*="PortletPreferences.html"],
 .indexContainer a[href*="GenericPortlet.html"],
 .indexContainer a[href*="ActionRequest.html"],
+.indexContainer a[href*="ActionResponse.html"],
 .indexContainer a[href*="PortletRequest.html"],
 .indexContainer a[href*="PortletURL.html"],
 .indexContainer a[href*="PortletMode.html"],
@@ -581,7 +582,7 @@ h1.hidden {
 
 .indexContainer a[href*="ActionURL.html"],
 .indexContainer a[href*="RenderURL.html"],
-.indexContainer a[href*="MimeResponse.ParameterCopyOption.html"],
+.indexContainer a[href*="MimeResponse.Copy.html"],
 .indexContainer a[href*="Mutable.html"],
 .indexContainer a[href*="MutablePortletParameters.html"],
 .indexContainer a[href*="PortletParameters.html"],
