@@ -31,6 +31,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
 import javax.enterprise.context.NormalScope;
+import javax.portlet.PortletSession;
 
 import static java.lang.annotation.ElementType.*;
 import static java.lang.annotation.RetentionPolicy.*;
@@ -53,4 +54,24 @@ import static java.lang.annotation.RetentionPolicy.*;
 @Inherited
 @Documented
 public @interface PortletSessionScoped {
+   
+   /**
+    * The portlet scope into which the annotated bean is to be placed. Can be set to 
+    * the following values:
+    * <ul>
+    * <li>
+    * PortletSession.PORTLET_SCOPE - scopes the bean to the portlet session
+    * </li>
+    * <li>
+    * PortletSession.APPLICATION_SCOPED - Scopes the bean to the portlet application session.
+    * The effect of this scope is the same as using the CDI @SessionScoped annotation.
+    * </li>
+    * </ul>
+    * 
+    * @return The portlet scope
+    * 
+    * @see  PortletSession#PORTLET_SCOPE
+    * @see  PortletSession#APPLICATION_SCOPE
+    */
+   int value() default PortletSession.PORTLET_SCOPE;
 }

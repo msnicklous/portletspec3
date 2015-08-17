@@ -19,7 +19,9 @@
 
 package javax.portlet.annotations;
 
-import javax.portlet.PortletURL;
+import javax.portlet.ActionURL;
+import javax.portlet.MimeResponse.Copy;
+import javax.portlet.RenderURL;
 import javax.portlet.ResourceURL;
 
 /**
@@ -39,40 +41,6 @@ import javax.portlet.ResourceURL;
  * @see javax.portlet.MimeResponse MimeResponse
  */
 public interface URLFactory {
-   
-   /**
-    * <div class="changed_added_3_0">
-    * Specifies processing when a URL is created.
-    * </div>
-    * 
-    * @see #createActionURL(Copy)
-    * @see #createRenderURL(Copy)
-    * 
-    * @since 3.0
-    */
-   public enum Copy {
-
-      /**
-       * <div class="changed_added_3_0">
-       * Specifies that no parameters are to be copied when a URL is created.
-       * </div>
-       *  
-       * @since 3.0
-       */
-      NONE,
-
-      /**
-       * <div class="changed_added_3_0">
-       * Specifies that the public and private render parameters set for 
-       * the current request are
-       * be copied to the URL when it is created.
-       * </div>
-       *  
-       * @since 3.0
-       */
-      ALL,
-   }
-
 
    /**
     * Creates an action URL targeting the portlet.
@@ -102,13 +70,14 @@ public interface URLFactory {
     * removed when the URL is activated.
     * 
     * @see javax.portlet.MimeResponse#createActionURL() createActionURL
+    * @see javax.portlet.MimeResponse.Copy
     * 
     * @param   copyParameters    Specifies if parameters are to be copied to the URL
     * 
     * @return a portlet action URL, or <code>null</code> if the current request
-     * is neither a <code>RenderRequest</code> nor a <code>ResourceRequest</code>
+    * is neither a <code>RenderRequest</code> nor a <code>ResourceRequest</code>
     */
-   public PortletURL createActionURL(Copy copyParameters);
+   public ActionURL createActionURL(Copy copyParameters);
 
    
    /**
@@ -138,13 +107,14 @@ public interface URLFactory {
     * render parameter will be set to the new value or removed when the URL is activated.
     * 
     * @see javax.portlet.MimeResponse#createRenderURL() createRenderURL
+    * @see javax.portlet.MimeResponse.Copy
     * 
     * @param   copyParameters    Specifies if parameters are to be copied to the URL
     * 
     * @return a portlet render URL, or <code>null</code> if the current request
      * is neither a <code>RenderRequest</code> nor a <code>ResourceRequest</code>
     */
-   public PortletURL createRenderURL(Copy copyParameters);
+   public RenderURL createRenderURL(Copy copyParameters);
    
    
    /**
@@ -223,22 +193,5 @@ public interface URLFactory {
      */
 
    public String encodeURL(String path);
-   
-   /**
-    * Helper method to set the value of a {@literal @}PortletStateScoped bean
-    * on an action or render URL. 
-    * Calling this method copies the bean state to the URL so that the values are
-    * available to the portlet when the URL is activated.
-    *  
-    * @param url     The URL
-    * @param bean    The {@literal @}PortletStateScoped bean
-    * 
-    * @exception java.lang.IllegalArgumentException
-    *                If the bean or url are null, or if the bean is not an 
-    *                {@literal @}PortletStateScoped bean.
-    *                
-    * 
-    */
-   public void setBeanParameter(PortletURL url, PortletSerializable bean);
 
 }

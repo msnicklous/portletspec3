@@ -110,9 +110,9 @@ public @interface ServeResourceMethod {
     * 
     * 
     * @see PortletRequest#CCPP_PROFILE
-    * @see RenderMethod#deviceMatch()
+    * @see deviceMatch()
     * 
-    * @return
+    * @return     The device attribute name
     */
    String   deviceAttribute() default "";
    
@@ -130,10 +130,10 @@ public @interface ServeResourceMethod {
     * element will take precedence over a render method with empty or not matching
     * device attribute data but a matching resource ID.  
     * 
-    * @see RenderMethod#deviceAttribute()
-    * @see RenderMethod#resourceID()
+    * @see deviceAttribute()
+    * @see resourceID()
     * 
-    * @return
+    * @return     The device attribute match string
     */
    String   deviceMatch() default "";
    

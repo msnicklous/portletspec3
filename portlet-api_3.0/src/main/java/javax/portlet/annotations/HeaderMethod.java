@@ -100,7 +100,7 @@ public @interface HeaderMethod {
     * @see PortletRequest#CCPP_PROFILE
     * @see RenderMethod#deviceMatch()
     * 
-    * @return
+    * @return The device attrribute name
     */
    String   deviceAttribute() default "";
    
@@ -121,7 +121,7 @@ public @interface HeaderMethod {
     * @see RenderMethod#deviceAttribute()
     * @see RenderMethod#portletMode()
     * 
-    * @return
+    * @return     The device attribute match string 
     */
    String   deviceMatch() default "";
    

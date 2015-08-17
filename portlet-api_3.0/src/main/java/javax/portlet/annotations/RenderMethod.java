@@ -112,7 +112,7 @@ public @interface RenderMethod {
     * @see PortletRequest#CCPP_PROFILE
     * @see RenderMethod#deviceMatch()
     * 
-    * @return
+    * @return     The device attribute name
     */
    String   deviceAttribute() default "";
    
@@ -133,7 +133,7 @@ public @interface RenderMethod {
     * @see RenderMethod#deviceAttribute()
     * @see RenderMethod#portletMode()
     * 
-    * @return
+    * @return     The device attribute match string
     */
    String   deviceMatch() default "";
    

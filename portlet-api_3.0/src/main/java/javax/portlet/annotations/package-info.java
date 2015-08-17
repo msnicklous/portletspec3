@@ -292,15 +292,15 @@
  * When creating render or action URLs, {@literal @}PortletStateScoped beans can be
  * automatically stored on the URL with the state valid for the current request by
  * using the appropriate option with the <code>URLFactory</code>
- * {@link  javax.portlet.annotations.URLFactory#createActionURL(URLFactory.Copy) createActionURL} and
- * {@link  javax.portlet.annotations.URLFactory#createRenderURL(URLFactory.Copy) createRenderURL}
+ * {@link  javax.portlet.annotations.URLFactory#createActionURL createActionURL} and
+ * {@link  javax.portlet.annotations.URLFactory#createRenderURL createRenderURL}
  * methods.
  * </p>
  * <p>
  * However, you might want to set a modified {@literal @}PortletStateScoped bean value
  * on your URL.
- * You can do this using the <code>URLFactory</code>
- * {@link  javax.portlet.annotations.URLFactory#setBeanParameter(PortletURL url, PortletSerializable bean) setBeanParameter}
+ * You can do this using the <code>PortletURL</code> interface
+ * {@link  javax.portlet.PortletURL#setBeanParameter setBeanParameter}
  * method.
  * You can create a new bean, set the fields as desired, and use the 
  * <code>setBeanParameter</code> method to set the new bean on the URL.
