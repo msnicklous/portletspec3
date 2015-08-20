@@ -203,7 +203,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="portlet.js.html">portlet.js</a>, <a href="portlet.js.html#line481">line 481</a>
+        <a href="portlet.js.html">portlet.js</a>, <a href="portlet.js.html#line476">line 476</a>
     </li></ul></dd>
     
     
@@ -587,7 +587,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="portlet.js.html">portlet.js</a>, <a href="portlet.js.html#line468">line 468</a>
+        <a href="portlet.js.html">portlet.js</a>, <a href="portlet.js.html#line463">line 463</a>
     </li></ul></dd>
     
     
@@ -715,7 +715,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="portlet.js.html">portlet.js</a>, <a href="portlet.js.html#line494">line 494</a>
+        <a href="portlet.js.html">portlet.js</a>, <a href="portlet.js.html#line489">line 489</a>
     </li></ul></dd>
     
     
@@ -1460,7 +1460,7 @@
 <dd>
     
     <div class="description">
-        Represents a portlet parameter.<p>Each object property represents a parameter name.The object may also contain no property names,which represents the case of the portlet having no parameters.<p>If properties are present,each property must refer to a array of string values.The array length must be at least 1, because each parameter must havea value.However, a value of 'null' may appear in any array entry.<p>To represent the parameter having a <code>null</code> value, theproperty value must equal [null].<p>PortletParameters objects obtained from the Portlet Hub define some helperfunctions for accessing the parameter values.<p>
+        Represents a portlet parameter.<p>Each object property represents a parameter name.The object may also contain no property names,which represents the case of the portlet having no parameters.<p>If properties are present,each property must refer to a array of string values.The array length must be at least 1, because each parameter must havea value.However, a value of 'null' may appear in any array entry.<p>To represent the parameter having a <code>null</code> value, theproperty value must equal [null].<p>
     </div>
     
     
@@ -1513,144 +1513,6 @@
             
             
             <td class="description last">The parameters object may have                                    multiple properties.</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>clone()</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-            
-            
-            
-            
-            
-            <td class="description last">Returns a new copy of this object</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>setValue(n,v)</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-            
-            
-            
-            
-            
-            <td class="description last">Sets a parameter with name n and value v.                                          The value v may be a string or an array.</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>setValues(n,v)</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-            
-            
-            
-            
-            
-            <td class="description last">Sets a parameter with name n and value v.                                          The value v may be a string or an array.</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>getValue(n,d)</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-            
-            
-            
-            
-            
-            <td class="description last">Gets the string parameter value for the name n.                                          If n designates a multi-valued parameter, this function returns the first value in the values array.                                          If parameter n is undefined, the function returns the optional default value d.</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>getValues(n,d)</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-            
-            
-            
-            
-            
-            <td class="description last">Gets the string array parameter value for the name n.                                          If parameter n is undefined, the function returns the optional default value array d.</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>remove(n)</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-            
-            
-            
-            
-            
-            <td class="description last">Removes the parameter with name n.</td>
         </tr>
 	
 	
@@ -1756,29 +1618,6 @@
             
             
             <td class="description last">The portlet parameters</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>p</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type"><a href="global.html#PortletParameters">PortletParameters</a></span>
-
-
-            
-            </td>
-            
-            
-            
-            
-            
-            <td class="description last">an alias for the 'parameters' property</td>
         </tr>
 	
 	
@@ -1940,6 +1779,121 @@
             
             
             <td class="description last">Returns the current window state              The strings defined by the <a href="global.html#PortletConstants">PortletConstants</a> object should be used to specify the window state.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>setValue(n,v)</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">Sets a parameter with name n and value v.                                          The value v may be a string or an array.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>setValues(n,v)</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">Sets a parameter with name n and value v.                                          The value v may be a string or an array.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>getValue(n,d)</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">Gets the string parameter value for the name n.                                          If n designates a multi-valued parameter, this function returns the first value in the values array.                                          If parameter n is undefined, the function returns the optional default value d.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>getValues(n,d)</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">Gets the string array parameter value for the name n.                                          If parameter n is undefined, the function returns the optional default value array d.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>remove(n)</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">Removes the parameter with name n.</td>
         </tr>
 	
 	
@@ -2225,7 +2179,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="portlet.js.html">portlet.js</a>, <a href="portlet.js.html#line1098">line 1098</a>
+        <a href="portlet.js.html">portlet.js</a>, <a href="portlet.js.html#line1093">line 1093</a>
     </li></ul></dd>
     
     
@@ -2297,7 +2251,7 @@
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.3-dev</a> on Mon Aug 17 2015 14:12:01 GMT+0200 (CEST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.3-dev</a> on Thu Aug 20 2015 08:57:42 GMT+0200 (CEST)
 </footer>
 
 <script> prettyPrint(); </script>
