@@ -61,6 +61,13 @@ public @interface PortletConfiguration {
    InitParameter[] initParams() default {};
    
    /**
+    * The portlet container runtime options.
+    * 
+    * @return     An array of portlet runtime options
+    */
+   RuntimeOption[] runtimeOptions() default {};
+   
+   /**
     * <div class='container-change'>
     * The locales supported by the portlet.
     * An array of String values, each of which represents a single locale.
@@ -78,30 +85,13 @@ public @interface PortletConfiguration {
    String[]   supportedLocales() default {"en"};
    
    /**
-    * <div class='container-change'>
-    * The locale for the locale-specific configuration parameters such as
-    * title and short title within this annotation.
-    * <p>
-    * The locale is specified as a language tag as defined in 
-    * IETF BCP 47, "Tags for Identifying Languages".
-    * </div>
-    * 
-    * @see     java.util.Locale
-    * @see     java.util.Locale#forLanguageTag forLanguageTag
-    * @see     <a href="https://tools.ietf.org/html/bcp47">IETF BCP 47</a>
-    * 
-    * @return  The locale
-    */
-   String   locale() default "en";
-   
-   /**
     * <div class='not-supported'>
     * Locale specific static title for this portlet.
     * </div>
     * 
     * @return The portlet title
     */
-   String   title() default "";
+   LocaleString[]   title() default {};
    
    /**
     * <div class='container-change'>
@@ -110,38 +100,39 @@ public @interface PortletConfiguration {
     * 
     * @return The short title
     */
-   String   shortTitle() default "";
+   LocaleString[]   shortTitle() default {};
    
    /**
     * <div class='container-change'>
-    * The display-name type contains a short name that is intended to be displayed by tools. 
+    * The display-name type contains a locale-specific short name that is intended to be displayed by tools. 
     * It is used by display-name elements. 
     * The display name need not be unique.
     * </div>
     * 
     * @return  The display name
     */
-   String   displayName() default "";
+   LocaleString[]   displayName() default {};
    
    /**
     * <div class='container-change'>
     * The portlet description.
-    * It provides text describing the portlet for use by the portal application or by tools.
+    * It provides locale-specific text describing the portlet for use by the portal application or by tools.
     * </div>
     * 
     * @return  The portlet description
     */
-   String   description() default "";
+   LocaleString[]   description() default {};
    
    /**
     * <div class='container-change'>
     * Locale specific keywords associated with this portlet. 
-    * The keywords are separated by commas.
+    * The keywords are separated by commas within the value of the 
+    * <code>LocaleString</code> array element.
     * </div>
     *
     * @return  The keywords
     */
-   String   keywords() default "";
+   LocaleString[]   keywords() default {};
    
    /**
     * <div class='container-change'>
@@ -212,6 +203,15 @@ public @interface PortletConfiguration {
     * @return     The custom portlet modes
     */
    CustomPortletMode[] customPortletModes() default {};
+   
+   /**
+    * <div class='container-change'>
+    * The custom window states defined for this portlet.
+    * </div>
+    * 
+    * @return     The custom window states
+    */
+   CustomWindowState[] customWindowStates() default {};
    
    /**
     * <div class='container-change'>

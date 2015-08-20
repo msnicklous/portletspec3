@@ -96,6 +96,25 @@ public @interface PortletURLGenerationListener {
    int         ordinal() default 0;
    
    /**
+    * <div class='not-supported'>
+    * The display-name type contains a language-specific short name that is intended to be displayed by tools. 
+    * </div>
+    * 
+    * @return  The display name
+    */
+   LocaleString[]   displayName() default {};
+   
+   /**
+    * <div class='not-supported'>
+    * The portlet filter description
+    * providing locale-specific text describing the portlet filter for use by the portal application or by tools.
+    * </div>
+    * 
+    * @return  The portlet description
+    */
+   LocaleString[]   description() default {};
+   
+   /**
     * The URL Type. 
     * This field is needed for v2.0 portlets to discern between render URLs and 
     * action URLs, since both are represented by the interface PortletURL.

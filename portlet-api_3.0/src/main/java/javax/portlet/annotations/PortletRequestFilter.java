@@ -94,44 +94,24 @@ public @interface PortletRequestFilter {
     */
    InitParameter[] initParams() default {};
    
-   
    /**
     * <div class='not-supported'>
-    * The locale for the locale-specific configuration parameters display name
-    * and description within this annotation.
-    * <p>
-    * The locale is specified as a language tag as defined in 
-    * IETF BCP 47, "Tags for Identifying Languages".
-    * </div>
-    * 
-    * @see     java.util.Locale
-    * @see     java.util.Locale#forLanguageTag forLanguageTag
-    * @see     <a href="https://tools.ietf.org/html/bcp47">IETF BCP 47</a>
-    * 
-    * @return  The locale
-    */
-   String   locale() default "en";
-   
-   /**
-    * <div class='not-supported'>
-    * The display-name type contains a short name that is intended to be displayed by tools. 
-    * It is used by display-name elements. 
-    * The display name need not be unique.
+    * The display-name type contains a language-specific short name that is intended to be displayed by tools. 
     * </div>
     * 
     * @return  The display name
     */
-   String   displayName() default "";
+   LocaleString[]   displayName() default {};
    
    /**
     * <div class='not-supported'>
-    * The portlet filter description.
-    * It provides text describing the portlet filter for use by the portal application or by tools.
+    * The portlet filter description
+    * providing locale-specific text describing the portlet filter for use by the portal application or by tools.
     * </div>
     * 
     * @return  The portlet description
     */
-   String   description() default "";
+   LocaleString[]   description() default {};
    
    /**
     * <div class='not-supported'>
