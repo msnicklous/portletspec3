@@ -262,4 +262,15 @@ public @interface PortletConfiguration {
     * @return     The expiration time
     */
    int   cacheExpirationTime() default 0;
+   
+   /**
+    * <div class='container-change'>
+    * The dependencies the portlet may have on external resources.
+    * The resources can represent client-side prerequisites such as JavaScript libraries
+    * or stylesheet resources that are shared among portlets.
+    * </div>
+    * 
+    * @return     The dependencies
+    */
+   Dependency[]      dependencies() default {};
 }

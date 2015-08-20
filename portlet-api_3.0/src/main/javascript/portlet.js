@@ -47,23 +47,9 @@
  * To represent the parameter having a <code>null</code> value, the
  * property value must equal [null].
  * <p>
- * PortletParameters objects obtained from the Portlet Hub define some helper
- * functions for accessing the parameter values.
- * <p>
  * @typedef    PortletParameters
  * @property   {string[]}  {string}    The parameters object may have
  *                                     multiple properties.
- * @property   {function}   clone()          Returns a new copy of this object
- * @property   {function}   setValue(n,v)    Sets a parameter with name n and value v.
- *                                           The value v may be a string or an array.
- * @property   {function}   setValues(n,v)   Sets a parameter with name n and value v.
- *                                           The value v may be a string or an array.
- * @property   {function}   getValue(n,d)    Gets the string parameter value for the name n.
- *                                           If n designates a multi-valued parameter, this function returns the first value in the values array.
- *                                           If parameter n is undefined, the function returns the optional default value d.
- * @property   {function}   getValues(n,d)   Gets the string array parameter value for the name n.
- *                                           If parameter n is undefined, the function returns the optional default value array d.
- * @property   {function}   remove(n)        Removes the parameter with name n.
  */
 
 /**
@@ -74,7 +60,6 @@
  * <p>
  * @typedef    PortletState
  * @property   {PortletParameters}   parameters     The portlet parameters
- * @property   {PortletParameters}   p              an alias for the 'parameters' property
  * @property   {string}             portletMode    The portlet mode
  * @property   {string}             windowState    The window state
  * @property   {function}   clone()                Returns a new copy of this object
@@ -84,6 +69,16 @@
  * @property   {function}   setWindowState(ws)     Sets the window state to the specified value
  * @property   {function}   getWindowState()       Returns the current window state
  *               The strings defined by the {@link PortletConstants} object should be used to specify the window state.
+ * @property   {function}   setValue(n,v)    Sets a parameter with name n and value v.
+ *                                           The value v may be a string or an array.
+ * @property   {function}   setValues(n,v)   Sets a parameter with name n and value v.
+ *                                           The value v may be a string or an array.
+ * @property   {function}   getValue(n,d)    Gets the string parameter value for the name n.
+ *                                           If n designates a multi-valued parameter, this function returns the first value in the values array.
+ *                                           If parameter n is undefined, the function returns the optional default value d.
+ * @property   {function}   getValues(n,d)   Gets the string array parameter value for the name n.
+ *                                           If parameter n is undefined, the function returns the optional default value array d.
+ * @property   {function}   remove(n)        Removes the parameter with name n.
  */
 
 /**
