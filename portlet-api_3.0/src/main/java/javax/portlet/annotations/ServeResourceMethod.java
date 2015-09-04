@@ -21,7 +21,6 @@
  * Community Process. In order to remain compliant with the specification
  * DO NOT add / change / or delete method signatures!
  */
-
 package javax.portlet.annotations;
 
 
@@ -110,7 +109,7 @@ public @interface ServeResourceMethod {
     * 
     * 
     * @see PortletRequest#CCPP_PROFILE
-    * @see deviceMatch()
+    * @see #deviceMatch()
     * 
     * @return     The device attribute name
     */
@@ -130,8 +129,8 @@ public @interface ServeResourceMethod {
     * element will take precedence over a render method with empty or not matching
     * device attribute data but a matching resource ID.  
     * 
-    * @see deviceAttribute()
-    * @see resourceID()
+    * @see #deviceAttribute()
+    * @see #resourceID()
     * 
     * @return     The device attribute match string
     */
