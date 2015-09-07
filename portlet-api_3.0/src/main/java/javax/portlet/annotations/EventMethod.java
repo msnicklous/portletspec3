@@ -98,7 +98,7 @@ public @interface EventMethod {
     * TODO: remove the default clause after rework above.
     * </div>
     * 
-    * @see     PortletEvent
+    * @see     EventDefinition
     * @see     PortletQName
     * 
     * @return  The processing event QNames
@@ -110,7 +110,7 @@ public @interface EventMethod {
     * The QName definitions of the events published by this method.
     * </div>
     * 
-    * @see     PortletEvent
+    * @see     EventDefinition
     * @see     PortletQName
     * 
     * @return  The processing event QNames

@@ -34,43 +34,18 @@ import static java.lang.annotation.RetentionPolicy.*;
 
 /**
  * <div class='changed_added_3_0'>
- * This annotation is used within composite portlet configuration annotations to
- * represent a custom portlet mode.
- * It cannot be used as a stand-alone portlet annotation.
+ * Annotation for configuration of multiple portlets.
+ * @see PortletConfiguration 
  * </div>
  */
-@Retention(RUNTIME) @Target({ANNOTATION_TYPE})
-public @interface CustomPortletMode {
+@Retention(RUNTIME) @Target({TYPE})
+public @interface PortletConfigurations {
    
    /**
-    * <div class='container-change'>
-    * Provides locale-specific text describing the custom portlet mode for use by the portal application or by tools.
-    * </div>
+    * The portlet configurations. Each array entry contains the configuration
+    * for a single portlet.
     * 
-    * @return  The custom portlet mode description
+    * @return     An array of portlet configurations
     */
-   LocaleString[]      description() default {};
-   
-   /**
-    * <div class='container-change'>
-    * The custom portlet mode name.
-    * <p>
-    * The name by which the portlet mode is identified.
-    * </div>
-    * 
-    * @return  The custom portlet mode name
-    */
-   String      name();
-   
-   /**
-    * <div class='container-change'>
-    * The portal managed flag.
-    * <p>
-    * If set to <code>true</code>, the custom portlet mode will be managed by the portal.
-    * If set to <code>false</code>, the custom portlet mode will be managed by the portlet.
-    * </div>
-    * 
-    * @return  The portal managed flag setting 
-    */
-   boolean     portalManaged() default true;
+   PortletConfiguration[] configurations();
 }

@@ -44,12 +44,12 @@ public @interface CustomWindowState {
    
    /**
     * <div class='container-change'>
-    * The custom window state description.
+    * Provides locale-specific text describing the custom window state for use by the portal application or by tools.
     * </div>
     * 
     * @return  The custom window state description
     */
-   String      description() default "";
+   LocaleString[]      description() default {};
    
    /**
     * <div class='container-change'>

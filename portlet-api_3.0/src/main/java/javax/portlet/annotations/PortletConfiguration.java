@@ -150,7 +150,7 @@ public @interface PortletConfiguration {
     * 
     * @return     The array of public render parameters.
     */
-   PublicRenderParameter[]  publicRenderParameter() default {};
+   PublicRenderParameterDefinition[]  publicRenderParameter() default {};
    
    /**
     * <div class='container-change'>
@@ -169,7 +169,7 @@ public @interface PortletConfiguration {
     * 
     * @return     The event definitions
     */
-   PortletEvent[] events() default {};
+   EventDefinition[] events() default {};
 
    /**
     * <div class='container-change'>

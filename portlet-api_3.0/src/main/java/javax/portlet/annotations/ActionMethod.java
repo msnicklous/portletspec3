@@ -80,7 +80,7 @@ public @interface ActionMethod {
     * The QName definitions of the events published by this method.
     * </div>
     * 
-    * @see     PortletEvent
+    * @see     EventDefinition
     * @see     PortletQName
     * 
     * @return  The processing event QNames

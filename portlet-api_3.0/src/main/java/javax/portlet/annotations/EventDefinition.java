@@ -40,7 +40,7 @@ import static java.lang.annotation.RetentionPolicy.*;
  * </div>
  */
 @Retention(RUNTIME) @Target({ANNOTATION_TYPE})
-public @interface PortletEvent {
+public @interface EventDefinition {
    
    /**
     * The event Qname.
@@ -74,4 +74,13 @@ public @interface PortletEvent {
     * @return     A class representing the payload type
     */
    Class<?>    payloadType();
+   
+   /**
+    * <div class='container-change'>
+    * Provides locale-specific text describing the event for use by the portal application or by tools.
+    * </div>
+    * 
+    * @return  The custom portlet mode description
+    */
+   LocaleString[]      description() default {};
 }

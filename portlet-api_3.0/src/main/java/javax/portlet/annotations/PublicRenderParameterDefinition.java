@@ -39,7 +39,7 @@ import static java.lang.annotation.RetentionPolicy.*;
  * </div>
  */
 @Retention(RUNTIME) @Target({ANNOTATION_TYPE})
-public @interface PublicRenderParameter {
+public @interface PublicRenderParameterDefinition {
    
    /**
     * <div class='container-change'>
@@ -70,4 +70,13 @@ public @interface PublicRenderParameter {
     * @return  The qname
     */
    PortletQName   qname();
+   
+   /**
+    * <div class='container-change'>
+    * Provides locale-specific text describing the public render parameter for use by the portal application or by tools.
+    * </div>
+    * 
+    * @return  The custom portlet mode description
+    */
+   LocaleString[]      description() default {};
 }

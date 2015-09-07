@@ -82,12 +82,12 @@ public @interface PortletStateScoped {
    /**
     * The name of the render parameter under which the bean state is to be stored.
     * <p>
-    * If the name is not specified through the annotation, the bean portlet container
+    * If the name is not specified through the annotation, the portlet container
     * will assign a render parameter name.
     * <p>
-    * Note for version 2.0 portlets: If the annotated class represents a public render parameter, 
-    * this element must be set to a name that matches a public render parameter identifier 
-    * defined in the deployment descriptor. 
+    * If the annotated class represents a public render parameter, 
+    * this element has no effect. The parameter name is taken to be the public
+    * render parameter identifier as defined in the portlet configuration.
     *  
     * @return  The parameter name
     */
