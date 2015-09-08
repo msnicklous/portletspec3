@@ -79,4 +79,15 @@ public @interface PublicRenderParameterDefinition {
     * @return  The custom portlet mode description
     */
    LocaleString[]      description() default {};
+   
+   /**
+    * <div class='container-change'>
+    * The display-name type contains a locale-specific short name that is intended to be displayed by tools. 
+    * It is used by display-name elements. 
+    * The display name need not be unique.
+    * </div>
+    * 
+    * @return  The display name
+    */
+   LocaleString[]   displayName() default {};
 }

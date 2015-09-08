@@ -68,7 +68,7 @@ public @interface PortletQName {
     * </li>
     * <li>
     * The value defined in the {@literal <}defaultNamespace{@literal >} element in the
-    * {@literal @}PortletConfiguration annotation.
+    * {@literal @}PortletApplication annotation.
     * </li>
     * <li>
     * The value javax.xml.XMLConstants.NULL_NS_URI
@@ -76,6 +76,8 @@ public @interface PortletQName {
     * </ul>
     * 
     * @return  The QName namespace URI.
+    * 
+    * @see PortletApplication#defaultNamespaceURI()
     */
    String      namespaceURI();
    

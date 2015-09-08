@@ -67,7 +67,7 @@ public @interface PortletApplication {
     * 
     * @return     The array of public render parameters.
     */
-   PublicRenderParameterDefinition[]  publicRenderParameter() default {};
+   PublicRenderParameterDefinition[]  publicParams() default {};
    
    /**
     * <div class='container-change'>

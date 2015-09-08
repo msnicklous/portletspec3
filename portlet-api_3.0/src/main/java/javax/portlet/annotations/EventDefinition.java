@@ -64,8 +64,9 @@ public @interface EventDefinition {
    /**
     * The event payload type associated with the specified QName.
     * Each QName may have only a single event payload type associated with it.
+    * The payload type must be serializable and must have a valid JAXB binding.
     * <p>
-    * The payload type must be serializable and must have a valid JAXB binding. 
+    * The default value <code>void.class</code> indicates that the event has no payload. 
     * 
     * @see     javax.portlet.Event
     * @see     javax.portlet.StateAwareResponse#setEvent(javax.xml.namespace.QName, java.io.Serializable)
@@ -73,7 +74,7 @@ public @interface EventDefinition {
     * 
     * @return     A class representing the payload type
     */
-   Class<?>    payloadType();
+   Class<?>    payloadType() default void.class;
    
    /**
     * <div class='container-change'>
@@ -83,4 +84,24 @@ public @interface EventDefinition {
     * @return  The custom portlet mode description
     */
    LocaleString[]      description() default {};
+   
+   /**
+    * <div class='container-change'>
+    * The display-name type contains a locale-specific short name that is intended to be displayed by tools. 
+    * It is used by display-name elements. 
+    * The display name need not be unique.
+    * </div>
+    * 
+    * @return  The display name
+    */
+   LocaleString[]   displayName() default {};
+
+   /**
+    * <div class='container-change'>
+    * The qualified name aliases for this event.
+    * </div>
+    * 
+    * @return the qualified name aliases
+    */
+   PortletQName[]    alias() default {};
 }
