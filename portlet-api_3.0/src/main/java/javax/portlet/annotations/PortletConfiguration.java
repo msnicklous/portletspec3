@@ -141,35 +141,16 @@ public @interface PortletConfiguration {
     * 
     * @return     The portlet preferences
     */
-   Preference[]  portletPreferences() default {};
+   Preference[]  prefs() default {};
    
    /**
     * <div class='container-change'>
-    * The public render parameters used by the portlet.
+    * The public render parameter identifiers used by the portlet.
     * </div>
     * 
     * @return     The array of public render parameters.
     */
-   PublicRenderParameterDefinition[]  publicRenderParameter() default {};
-   
-   /**
-    * <div class='container-change'>
-    * The events defined for the portlet.
-    * This includes the processing events as well as the publishing events.
-    * <p>
-    * The publishing event QNames are specified in the
-    * <code>ActionMethod</code> and <code>EventMethod</code> annotations.
-    * The processing event QNames are specified in the
-    * <code>ActionMethod</code> and <code>EventMethod</code> annotations.
-    * </div>
-    * 
-    * @see        PortletQName
-    * @see        ActionMethod
-    * @see        EventMethod
-    * 
-    * @return     The event definitions
-    */
-   EventDefinition[] events() default {};
+   String[]  publicParams() default {};
 
    /**
     * <div class='container-change'>
@@ -197,42 +178,12 @@ public @interface PortletConfiguration {
    
    /**
     * <div class='container-change'>
-    * The custom portlet modes defined for this portlet.
-    * </div>
-    * 
-    * @return     The custom portlet modes
-    */
-   CustomPortletMode[] customPortletModes() default {};
-   
-   /**
-    * <div class='container-change'>
-    * The custom window states defined for this portlet.
-    * </div>
-    * 
-    * @return     The custom window states
-    */
-   CustomWindowState[] customWindowStates() default {};
-   
-   /**
-    * <div class='container-change'>
     * The supported portlet modes and window states.
     * </div>
     * 
     * @return     The supported portlet modes and window states
     */
    Supports[] supports() default {};
-   
-   /**
-    * <div class='container-change'>
-    * The default QName namespace URI.
-    * <p>
-    * The default namespace URI is used when no namespace URI is specified 
-    * when declaring a QName for a public render parameter or portlet event. 
-    * </div>
-    * 
-    * @return  The default namespace URI.
-    */
-   String      defaultNamespaceURI() default "";
    
    /**
     * <div class='not-supported'>

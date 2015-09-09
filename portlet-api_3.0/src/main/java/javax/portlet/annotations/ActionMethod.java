@@ -85,5 +85,5 @@ public @interface ActionMethod {
     * 
     * @return  The processing event QNames
     */
-   PortletQName[]   publishingEventQNames() default {};
+   PortletQName[]   publishingEvents() default {};
 }

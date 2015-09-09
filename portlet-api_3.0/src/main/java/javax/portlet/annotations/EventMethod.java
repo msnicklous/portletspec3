@@ -103,7 +103,7 @@ public @interface EventMethod {
     * 
     * @return  The processing event QNames
     */
-   PortletQName[]   processingEventQNames() default {};
+   PortletQName[]   processingEvents() default {};
    
    /**
     * <div class='container-change'>
@@ -115,5 +115,5 @@ public @interface EventMethod {
     * 
     * @return  The processing event QNames
     */
-   PortletQName[]   publishingEventQNames() default {};
+   PortletQName[]   publishingEvents() default {};
 }

@@ -43,20 +43,16 @@ public @interface Supports {
    
    /**
     * <div class='container-change'>
-    * The locale for the supported portlet modes and window
-    * states listed in this annotation.
+    * The MIME type for the supported portlet modes and window
+    * states listed in this annotation, for example <code>"text{@literal /}html"</code>.
     * <p>
-    * The locale is specified as a language tag as defined in 
-    * IETF BCP 47, "Tags for Identifying Languages".
+    * The MIME type may also contain the wildcard character '*', 
+    * for example <code>"text{@literal /}*"</code> or <code>"*{@literal /}*"</code>.
     * </div>
     * 
-    * @see     java.util.Locale
-    * @see     java.util.Locale#forLanguageTag forLanguageTag
-    * @see     <a href="https://tools.ietf.org/html/bcp47">IETF BCP 47</a>
-    * 
-    * @return  The locale
+    * @return  The mime type
     */
-   String   locale() default "en";
+   String   mimeType() default "text/html";
    
    /**
     * <div class='container-change'>

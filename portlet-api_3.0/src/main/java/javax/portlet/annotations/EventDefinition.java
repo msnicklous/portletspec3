@@ -81,7 +81,7 @@ public @interface EventDefinition {
     * Provides locale-specific text describing the event for use by the portal application or by tools.
     * </div>
     * 
-    * @return  The custom portlet mode description
+    * @return  The event description
     */
    LocaleString[]      description() default {};
    
