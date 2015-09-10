@@ -131,4 +131,13 @@ public @interface PortletApplication {
     * @return  The default namespace URI.
     */
    String      defaultNamespaceURI() default "";
+   
+   /**
+    * <div class='container-change'>
+    * The user aattribute declarations. 
+    * </div>
+    * 
+    * @return  The user attribute declarations
+    */
+   UserAttribute[] userAttributes() default {};
 }

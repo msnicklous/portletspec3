@@ -85,26 +85,12 @@ public @interface PortletStateScoped {
     * If the name is not specified through the annotation, the portlet container
     * will assign a render parameter name.
     * <p>
-    * If the annotated class represents a public render parameter, 
-    * this element has no effect. The parameter name is taken to be the public
-    * render parameter identifier as defined in the portlet configuration.
+    * If this element is a public render parameter identifier as declared in the 
+    * portlet application configuration,
+    * the render parameter represented by the annotated class will be treated as 
+    * a public render parameter.
     *  
     * @return  The parameter name
     */
    String   paramName() default "";
-   
-   /**
-    * <div class='container-change'>
-    * The public render parameter Qname.
-    * <p>
-    * If a QName value is specified, the render parameter represented by the 
-    * annotated class will be treated as a public render parameter.
-    * </div>
-    * 
-    * @see     javax.xml.namespace.QName
-    * @see     <a href="http://www.w3.org/TR/2001/REC-xmlschema-2-20010502/#QName">Qname definition</a>
-    * 
-    * @return  The qname
-    */
-   PortletQName   qname() default @PortletQName(localPart="", namespaceURI="");
 }

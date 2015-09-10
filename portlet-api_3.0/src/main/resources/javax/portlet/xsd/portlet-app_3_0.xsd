@@ -7,7 +7,8 @@
         attributeFormDefault="unqualified" 
         version="3.0" 
         xml:lang="en">
-	<annotation>
+    <include schemaLocation=""></include>
+    <annotation>
 		<documentation>
 		This is the XML Schema for the Portlet 3.0 deployment descriptor.
 		</documentation>
@@ -257,6 +258,28 @@
 			<extension base="portlet:string"/>
 		</simpleContent>
 	</complexType>
+   <complexType name="resourceNameType">
+      <annotation>
+         <documentation>
+         The resource name element. 
+         Used in the dependency element.
+         </documentation>
+      </annotation>
+      <simpleContent>
+         <extension base="portlet:string"/>
+      </simpleContent>
+   </complexType>
+   <complexType name="resourceVersionType">
+      <annotation>
+         <documentation>
+         The resource version element. 
+         Used in the dependency element.
+         </documentation>
+      </annotation>
+      <simpleContent>
+         <extension base="portlet:string"/>
+      </simpleContent>
+   </complexType>
 	<complexType name="portletType">
 		<annotation>
 			<documentation>
@@ -282,6 +305,7 @@
 			<element name="supported-publishing-event" type="portlet:event-definition-referenceType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="supported-public-render-parameter" type="portlet:string" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="container-runtime-option" type="portlet:container-runtime-optionType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="dependency" type="portlet:dependencyType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 		<attribute name="id" type="portlet:string" use="optional"/>
 	</complexType>
@@ -357,19 +381,6 @@
 			<element name="filter-class" type="portlet:fully-qualified-classType"/>
 			<element name="lifecycle" type="portlet:string" maxOccurs="unbounded"/>
 			<element name="init-param" type="portlet:init-paramType" minOccurs="0" maxOccurs="unbounded"/>
-		</sequence>
-	</complexType>
-	<complexType name="portlet-collectionType">
-		<annotation>
-			<documentation>
-			The portlet-collectionType is used to identify a subset
-			of portlets within a portlet application to which a 
-			security constraint applies.
-			Used in: security-constraint
-			</documentation>
-		</annotation>
-		<sequence>
-			<element name="portlet-name" type="portlet:portlet-nameType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 	<complexType name="event-definitionType">
@@ -557,21 +568,6 @@
 			<extension base="portlet:string"/>
 		</simpleContent>
 	</complexType>
-	<complexType name="security-constraintType">
-		<annotation>
-			<documentation>
-			The security-constraintType is used to associate
-			intended security constraints with one or more portlets.
-			Used in: portlet-app
-			</documentation>
-		</annotation>
-		<sequence>
-			<element name="display-name" type="portlet:display-nameType" minOccurs="0" maxOccurs="unbounded"/>
-			<element name="portlet-collection" type="portlet:portlet-collectionType"/>
-			<element name="user-data-constraint" type="portlet:user-data-constraintType"/>
-		</sequence>
-		<attribute name="id" type="portlet:string" use="optional"/>
-	</complexType>
 	<complexType name="security-role-refType">
 		<annotation>
 			<documentation>
@@ -642,6 +638,17 @@
 		</sequence>
 		<attribute name="id" type="portlet:string" use="optional"/>
 	</complexType>
+   <complexType name="dependencyType">
+      <annotation>
+         <documentation>
+         Dependency specifies a resource on which the portlet depends.
+         </documentation>
+      </annotation>
+      <sequence>
+         <element name="name" type="portlet:resourceNameType"/>
+         <element name="min-version" type="portlet:resourceVersionType"/>
+      </sequence>
+   </complexType>
 	<complexType name="supported-localeType">
 		<annotation>
 			<documentation>
@@ -704,21 +711,6 @@
 		<sequence>
 			<element name="description" type="portlet:descriptionType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="name" type="portlet:nameType"/>
-		</sequence>
-		<attribute name="id" type="portlet:string" use="optional"/>
-	</complexType>
-	<complexType name="user-data-constraintType">
-		<annotation>
-			<documentation>
-			The user-data-constraintType is used to indicate how
-			data communicated between the client and portlet should be
-			protected.
-			Used in: security-constraint
-			</documentation>
-		</annotation>
-		<sequence>
-			<element name="description" type="portlet:descriptionType" minOccurs="0" maxOccurs="unbounded"/>
-			<element name="transport-guarantee" type="portlet:transport-guaranteeType"/>
 		</sequence>
 		<attribute name="id" type="portlet:string" use="optional"/>
 	</complexType>

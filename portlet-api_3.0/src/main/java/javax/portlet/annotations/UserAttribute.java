@@ -21,7 +21,6 @@
  * Community Process. In order to remain compliant with the specification
  * DO NOT add / change / or delete method signatures!
  */
-
 package javax.portlet.annotations;
 
 
@@ -35,31 +34,28 @@ import static java.lang.annotation.RetentionPolicy.*;
 /**
  * <div class='changed_added_3_0'>
  * This annotation is used within composite portlet configuration annotations to
- * represent dependencies the portlet may have on external resources.
- * The resources can represent client-side prerequisites such as JavaScript libraries
- * or stylesheet resources that are shared among portlets.
- * <p> 
- * This annotation cannot be used as a stand-alone portlet annotation.
+ * represent a single user attribute.
+ * It cannot be used as a stand-alone portlet annotation.
  * </div>
  */
 @Retention(RUNTIME) @Target({ANNOTATION_TYPE})
-public @interface Dependency {
+public @interface UserAttribute {
    
    /**
     * <div class='container-change'>
-    * The resource name.
+    * The user attribute name.
     * </div>
     * 
-    * @return     The resource name
+    * @return  The public render parameter identifier
     */
-   String   name();
+   String      name();
    
    /**
     * <div class='container-change'>
-    * The minimum acceptable module version.
+    * Provides locale-specific text describing the user attribute for use by the portal application or by tools.
     * </div>
     * 
-    * @return     The minimum acceptable module version
+    * @return  The user attribute description
     */
-   String   minVersion();
+   LocaleString[]      description() default {};
 }
