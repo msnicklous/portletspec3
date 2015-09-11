@@ -224,4 +224,13 @@ public @interface PortletConfiguration {
     * @return     The dependencies
     */
    Dependency[]      dependencies() default {};
+   
+   /**
+    * <div class='container-change'>
+    * The security role references. 
+    * </div>
+    * 
+    * @return  The security role references
+    */
+   SecurityRoleRef[]   roleRefs() default {};
 }
