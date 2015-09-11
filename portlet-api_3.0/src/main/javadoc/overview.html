@@ -21,6 +21,28 @@
     <div class="indexContainer-not">
     <ul>
     <li>
+    20150911: Modified and added annotation classes in order to allow complete
+    portlet application configuration and portlet configuration through annotations.
+    Added classes:
+    {@link javax.portlet.annotations.UserAttribute},
+    {@link javax.portlet.annotations.EventDefinition},
+    {@link javax.portlet.annotations.PortletApplication},
+    {@link javax.portlet.annotations.PortletConfigurations},
+    {@link javax.portlet.annotations.PublicRenderParameterDefinition}, and
+    {@link javax.portlet.annotations.SecurityRoleRef}.
+    Modified classes:
+    {@link javax.portlet.annotations.ActionMethod},
+    {@link javax.portlet.annotations.CustomPortletMode},
+    {@link javax.portlet.annotations.CustomWindowState},
+    {@link javax.portlet.annotations.Dependency},
+    {@link javax.portlet.annotations.EventMethod},
+    {@link javax.portlet.annotations.PortletConfiguration},
+    {@link javax.portlet.annotations.PortletQName},
+    {@link javax.portlet.annotations.PortletStateScoped},
+    {@link javax.portlet.annotations.Preference}, and
+    {@link javax.portlet.annotations.Supports}.
+    </li>
+    <li>
     20150907: Modified classes for configuration through annotations. 
     Added class {@link javax.portlet.annotations.PortletConfigurations} to allow 
     for configuration of multiple portlets within a single annotation.
