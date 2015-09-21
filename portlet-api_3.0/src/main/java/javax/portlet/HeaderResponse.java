@@ -25,19 +25,27 @@
 package javax.portlet;
 
 /**
- * <span class="changed_modified_3_0">The</span>
- * <CODE>RenderResponse</CODE> defines an object to assist a portlet in
+ * <div class="changed_added_3_0">
+ * The
+ * <CODE>HeaderResponse</CODE> defines an object to assist a portlet in
  * sending a response to the portal. It extends the
- * <CODE>MimeResponse</CODE> interface to provide specific render
- * response functionality to portlets.<br> The portlet container creates
- * a <CODE>RenderResponse</CODE> object and passes it as argument to the
- * portlet's <CODE>render</CODE> method.
+ * <CODE>MimeResponse</CODE> interface to provide specific header
+ * response functionality to portlets.
+ * <p>
+ * The portlet container creates
+ * a <CODE>HeaderResponse</CODE> object and passes it as argument to the
+ * portlet's <CODE>renderHeaders</CODE> method in order to allow the portlet
+ * to add response headers and generate markup for the overall portal 
+ * response document <code>HEAD</code> section.
+ * </div>
  * 
- * @see RenderRequest
+ * @see RenderResponse
+ * @see HeaderRequest
+ * @see HeaderPortlet
  * @see PortletResponse
  * @see MimeResponse
  */
-public interface RenderResponse extends MimeResponse {
+public interface HeaderResponse extends MimeResponse {
 
     /**
      * This method sets the title of the portlet.
@@ -47,35 +55,10 @@ public interface RenderResponse extends MimeResponse {
      * @param title
      *            portlet title as text String or resource URI
      */
-   @Deprecated
     public void setTitle(String title);
-   
-    
-	/**
-     * <span class="changed_modified_3_0">This</span> method allows the portlet to tell the portal the next possible
-     * portlet modes that the make sense from the portlet point of view.
-     * <p>
-     * If set, the portal should honor these enumeration of portlet modes and
-     * only provide the end user with choices to the provided portlet modes or a
-     * subset of these modes based on access control considerations.
-     * <p>
-     * If the portlet does not set any next possible portlet modes the default
-     * is that all portlet modes that the portlet has defined supporting in the
-     * portlet deployment descriptor are meaningful new portlet modes.
-     * 
-     * @param portletModes
-     *            <code>Enumeration</code> of <span class="changed_modified_3_0">objects 
-     *            of type <code>PortletMode</code> 
-     *            or any subtype of <code>PortletMode</code></span> with the
-     *            next possible portlet modes that the make sense from the
-     *            portlet point of view, must not be <code>null</code> or an
-     *            empty enumeration.
-     * @since 2.0
-     */
-	public void setNextPossiblePortletModes(java.util.Collection<? extends PortletMode> portletModes);
 
     /**
-     * Sets the MIME type for the render response. The portlet should set the
+     * Sets the MIME type for the header response. The portlet should set the
      * content type before calling {@link #getWriter} or
      * {@link #getPortletOutputStream}.
      * <p>

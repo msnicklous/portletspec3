@@ -106,6 +106,7 @@ public @interface ServeResourceMethod {
     * <p>
     * The device attribute is obtained through the CC/PP Profile object.
     * <p>
+    * This element provides metadata for use during conditional dispatching.
     * 
     * 
     * @see PortletRequest#CCPP_PROFILE
@@ -116,18 +117,41 @@ public @interface ServeResourceMethod {
    String   deviceAttribute() default "";
    
    /**
+    * <div class='container-change'>
+    * The locales supported by the portlet.
+    * An array of String values, each of which represents a single locale.
+    * <p>
+    * The locale is specified as a language tag as defined in 
+    * IETF BCP 47, "Tags for Identifying Languages".
+    * <p>
+    * This element provides metadata for use during conditional dispatching.
+    * </div>
+    * 
+    * @see     java.util.Locale
+    * @see     java.util.Locale#forLanguageTag forLanguageTag
+    * @see     <a href="https://tools.ietf.org/html/bcp47">IETF BCP 47</a>
+    * 
+    * @return  An array of language tag strings
+    */
+   String[]   locales() default {"en"};
+   
+   /**
+    * The portlet mode rendered by the annotated method.
+    * <p>
+    * This element provides metadata for use during conditional dispatching.
+    * 
+    * @return     The portlet mode
+    */
+   String   portletMode() default "view";
+   
+   /**
     * Regular expression used in conjunction with the deviceAttribute element.
     * <p>
     * If the device attribute value is not empty, the attribute is retrieved from the 
     * javax.ccpp.Profile object. The returned value is matched against the 
     * regular expression specified in this attribute.
     * <p>
-    * The portlet container
-    * attempts to locate the appropriate annotated method for the given resource ID
-    * and device attribute data, with the device attribute match having precedence. 
-    * A render method with matching device attribute data but an empty resource ID
-    * element will take precedence over a render method with empty or not matching
-    * device attribute data but a matching resource ID.  
+    * This element provides metadata for use during conditional dispatching.
     * 
     * @see #deviceAttribute()
     * @see #resourceID()
