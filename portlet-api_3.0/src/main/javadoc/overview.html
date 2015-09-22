@@ -21,16 +21,24 @@
     <div class="indexContainer-not">
     <ul>
     <li>
+    20150922: 
+    Added interfaces and annotations for conditional dispatching.
+    Added classes:
+    {@link javax.portlet.MethodToken},
+    {@link javax.portlet.ConditionalDispatcher}, and
+    {@link javax.portlet.annotations.ConditionalDispatchMethod}.
+    </li>
+    <li>
     20150921: Modified annotation classes to conform to latest spec draft.
     Added dedicated HeaderRequest and HeaderResponse interfaces to allow portlets
     to add response headers and generate markup for the overall portal 
     response document <code>HEAD</code> section.
-    Deprecated {@link javax.portlet.annotations.RenderResponse#setTitle RenderResponse#setTitle}
+    Deprecated {@link javax.portlet.RenderResponse#setTitle RenderResponse#setTitle}
     since it is more appropriate on the HeaderResponse object.
     Added classes:
-    {@link javax.portlet.annotations.HeaderRequest},
-    {@link javax.portlet.annotations.HeaderResponse}, and
-    {@link javax.portlet.annotations.HeaderPortlet}.
+    {@link javax.portlet.HeaderRequest},
+    {@link javax.portlet.HeaderResponse}, and
+    {@link javax.portlet.HeaderPortlet}.
     Modified classes:
     {@link javax.portlet.annotations.RenderMethod},
     {@link javax.portlet.annotations.HeaderMethod}, and
