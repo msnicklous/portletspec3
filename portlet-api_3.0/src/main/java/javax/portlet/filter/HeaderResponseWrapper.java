@@ -16,41 +16,29 @@
  *  under the License.
  */
 
-/*
- * This source code implements specifications defined by the Java
- * Community Process. In order to remain compliant with the specification
- * DO NOT add / change / or delete method signatures!
- */
 
 package javax.portlet.filter;
 
-import javax.portlet.EventRequest;
-import javax.portlet.EventResponse;
+import javax.portlet.HeaderResponse;
 
 /**
- * <span class="changed_modified_3_0">The</span> 
- * <code>EventResponseWrapper</code> provides a convenient 
- * implementation of the <code>EventResponse</code> interface 
- * that can be subclassed by developers wishing to adapt the response.
+ * <div class="changed_added_3_0">
+ * The <code>HeaderResponseWrapper</code> provides a convenient 
+ * implementation of the <code>HeaderResponse</code> interface 
+ * that can be subclassed by developers wishing to adapt the Response.
  * This class implements the Wrapper or Decorator pattern. 
- * Methods default to calling through to the wrapped response object.
- *
- * @since 2.0
- * @see EventResponse
+ * Methods default to calling through to the wrapped Response object.
+ * </div>
  */
+public class HeaderResponseWrapper extends MimeResponseWrapper implements
+HeaderResponse {
 
-public class EventResponseWrapper extends StateAwareResponseWrapper implements EventResponse {
-
-   EventResponse response;
+   HeaderResponse response;
 
    /**
-    * Creates an <code>EventResponse</code> adaptor 
-    * wrapping the given response object.
-    * 
-    * @param response  the event response to wrap
-    * @throws java.lang.IllegalArgumentException if the response is <code>null</code>
+    * @param response
     */
-   public EventResponseWrapper(EventResponse response) {
+   public HeaderResponseWrapper(HeaderResponse response) {
       super(response);
       this.response = response;
    }
@@ -60,7 +48,7 @@ public class EventResponseWrapper extends StateAwareResponseWrapper implements E
     * 
     * @return the wrapped response
     */
-   public EventResponse getResponse() {
+   public HeaderResponse getResponse() {
       return response;
    }
 
@@ -70,7 +58,7 @@ public class EventResponseWrapper extends StateAwareResponseWrapper implements E
     * @param response the response to set
     * @throws java.lang.IllegalArgumentException   if the response is null.
     */
-   public void setResponse(EventResponse response) {
+   public void setResponse(HeaderResponse response) {
       if ( response == null) {
          throw new java.lang.IllegalArgumentException("Response is null");
       }
@@ -78,12 +66,11 @@ public class EventResponseWrapper extends StateAwareResponseWrapper implements E
       this.response = response;
    }
 
-   /**
-    *  The default behavior of this method is to call 
-    * <code>setRenderParameters()</code> on the wrapped response object.
+   /* (non-Javadoc)
+    * @see javax.portlet.HeaderResponse#setTitle(java.lang.String)
     */
-   @Deprecated
-   public void setRenderParameters(EventRequest request) {
-      response.setRenderParameters(request);         
+   public void setTitle(String title) {
+      response.setTitle(title);
    }
+
 }

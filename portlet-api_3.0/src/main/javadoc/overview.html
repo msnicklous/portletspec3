@@ -21,6 +21,32 @@
     <div class="indexContainer-not">
     <ul>
     <li>
+    20150923: 
+    Added method annotations 
+    {@link javax.portlet.annotations.InitMethod}, and
+    {@link javax.portlet.annotations.DestroyMethod}.
+    Added filter and wrappers for header phase. Added new wrappers
+    for requests and responses not yet wrapped and modified
+    existing wrappers to use them. New classes:
+    {@link javax.portlet.filter.ClientDataRequestWrapper},
+    {@link javax.portlet.filter.HeaderFilter},
+    {@link javax.portlet.filter.HeaderRequestWrapper},
+    {@link javax.portlet.filter.HeaderResponseWrapper},
+    {@link javax.portlet.filter.MimeResponseWrapper}, and
+    {@link javax.portlet.filter.StateAwareResponseWrapper}.
+    Modified classes:
+    {@link javax.portlet.filter.ActionRequestWrapper},
+    {@link javax.portlet.filter.ActionResponseWrapper},
+    {@link javax.portlet.filter.RenderRequestWrapper},
+    {@link javax.portlet.filter.RenderResponseWrapper},
+    {@link javax.portlet.filter.EventRequestWrapper},
+    {@link javax.portlet.filter.EventResponseWrapper},
+    {@link javax.portlet.filter.PortletRequestWrapper},
+    {@link javax.portlet.filter.PortletResponseWrapper},
+    {@link javax.portlet.filter.ResourceRequestWrapper}, and
+    {@link javax.portlet.filter.ResourceResponseWrapper}.
+    </li>
+    <li>
     20150922: 
     Added interfaces and annotations for conditional dispatching.
     Added classes:
@@ -85,7 +111,7 @@
     Changed classes:
     {@link javax.portlet.MimeResponse.Copy}.
     Added method:
-    {@link javax.portlet.ActionResponse#setRedirect ActionResponse.setRedirect()}.
+    {@link javax.portlet.ActionResponse#getRedirectURL ActionResponse.getRedirectURL()}.
     Updated annotations:
     {@link javax.portlet.annotations.HeaderMethod},
     {@link javax.portlet.annotations.RenderMethod}, and
@@ -145,7 +171,7 @@
     <a href="../jsdoc/PortletInit.html#newParameters">newParameters</a>, 
     <a href="../jsdoc/PortletInit.html#newState">newState</a>. 
     <br>
-    Added {@link javax.portlet.ResourceRequest#getPageState ResourceRequest#getPageState()} method
+    Added {@link javax.portlet.ResourceRequest#PAGE_STATE ResourceRequest#PAGE_STATE} constant
     in support of the Portlet Hub partial action processing sequence.
     </li>
     <li>20140603: Resolved PORTLETSPEC3-43: Renamed some methods to reduce redundancy. See:

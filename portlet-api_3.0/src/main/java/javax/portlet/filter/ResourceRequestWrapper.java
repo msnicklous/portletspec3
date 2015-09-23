@@ -24,13 +24,8 @@
 
 package javax.portlet.filter;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
 import java.util.Map;
 
-import javax.portlet.PortletParameters;
 import javax.portlet.ResourceParameters;
 import javax.portlet.ResourceRequest;
 
@@ -45,7 +40,7 @@ import javax.portlet.ResourceRequest;
  * @since 2.0
  * @see ResourceRequest
  */
-public class ResourceRequestWrapper extends PortletRequestWrapper implements ResourceRequest {
+public class ResourceRequestWrapper extends ClientDataRequestWrapper implements ResourceRequest {
 
    ResourceRequest request;
 
@@ -60,34 +55,6 @@ public class ResourceRequestWrapper extends PortletRequestWrapper implements Res
       super(request);
       this.request = request;
    }
-
-   /**
-    * The default behavior of this method is to call 
-    * <code>getPortletInputStream()</code> on the wrapped request object.
-    */
-   public InputStream getPortletInputStream() throws IOException {
-      return request.getPortletInputStream();
-   }
-
-   /**
-    * The default behavior of this method is to call 
-    * <code>getReader()</code> on the wrapped request object.
-    */
-   public BufferedReader getReader() throws UnsupportedEncodingException,
-   IOException {
-      return request.getReader();
-   }
-
-   /**
-    * The default behavior of this method is to call 
-    * <code>setCharacterEncoding(String enc)</code> 
-    * on the wrapped request object.
-    */
-   public void setCharacterEncoding(String enc)
-         throws UnsupportedEncodingException {
-      request.setCharacterEncoding(enc);
-   }
-
 
    /**
     * Return the wrapped request object.
@@ -105,34 +72,11 @@ public class ResourceRequestWrapper extends PortletRequestWrapper implements Res
     * @throws java.lang.IllegalArgumentException   if the request is null.
     */
    public void setRequest(ResourceRequest request) {
-      if ( request == null)
+      if ( request == null) {
          throw new java.lang.IllegalArgumentException("Request is null");
-
+      }
+      super.setRequest(request);
       this.request = request;
-   }
-
-   /**
-    * The default behavior of this method is to call 
-    * <code>getCharacterEncoding()</code> on the wrapped request object.
-    */
-   public String getCharacterEncoding() {      
-      return request.getCharacterEncoding();
-   }
-
-   /**
-    * The default behavior of this method is to call 
-    * <code>getContentLength()</code> on the wrapped request object.
-    */
-   public int getContentLength() {
-      return request.getContentLength();
-   }
-
-   /**
-    * The default behavior of this method is to call 
-    * <code>getContentType()</code> on the wrapped request object.
-    */
-   public String getContentType() {
-      return request.getContentType();
    }
 
    /**
@@ -141,14 +85,6 @@ public class ResourceRequestWrapper extends PortletRequestWrapper implements Res
     */
    public String getETag() {
       return request.getETag();
-   }
-
-   /**
-    *  The default behavior of this method is to call 
-    * <code>getMethod()</code> on the wrapped request object.
-    */
-   public String getMethod() {
-      return request.getMethod();
    }
 
    /**
@@ -165,7 +101,7 @@ public class ResourceRequestWrapper extends PortletRequestWrapper implements Res
     */
    @Deprecated
    public Map<String, String[]> getPrivateRenderParameterMap() {
-		return request.getPrivateRenderParameterMap();
+      return request.getPrivateRenderParameterMap();
    }
 
    /**

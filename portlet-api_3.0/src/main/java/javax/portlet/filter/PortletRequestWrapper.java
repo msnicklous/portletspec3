@@ -31,7 +31,6 @@ import java.util.Map;
 
 import javax.portlet.PortalContext;
 import javax.portlet.PortletMode;
-import javax.portlet.PortletParameters;
 import javax.portlet.PortletPreferences;
 import javax.portlet.PortletRequest;
 import javax.portlet.PortletSession;
