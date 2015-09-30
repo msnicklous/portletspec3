@@ -107,7 +107,7 @@ public interface HeaderFilter extends PortletFilter {
      * @throws PortletException  if a portlet exception occurred in the filter processing
      */
     public void doFilter(HeaderRequest request, HeaderResponse response,
-                         FilterChain chain)
+                         HeaderFilterChain chain)
      throws IOException, PortletException;
         
 }
