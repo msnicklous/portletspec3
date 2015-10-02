@@ -21,11 +21,7 @@ package javax.portlet;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Map;
-
-import javax.portlet.annotations.HeaderMethod;
-import javax.portlet.annotations.RenderMethod;
-import javax.portlet.annotations.ServeResourceMethod;
+import java.util.Set;
 
 /**
  * <div class="changed_added_3_0">
@@ -41,16 +37,19 @@ public interface ConditionalDispatcher {
     * Called by the portlet container when an {@literal @}RenderMethod annotated 
     * method is to be dispatched.
     * <p>
-    * The method should analyze the annotations based on the current request and
+    * The method should analyze the given <code>Set</code> of candidate methods using
+    * the annotations available from each <code>MethodToken</code> 
+    * based on the current request and
     * create a list of method tokens representing the methods to be invoked. 
-    * The list may be empty. A given method token may appear more than once in the list.  
+    * The output list may be empty or <code>null</code>. 
+    * A given method token may appear in the output list more than once.  
     * <p>
     * If the method returns a non-<code>null</code> List object, the portlet container will
     * invoke the methods in the order they appear in the list, and then 
     * perform no further dispatching operation for the current request.
     * <p>
     * If the method returns <code>null</code>, the portlet container will dispatch the 
-    * method using its implementation-specific or default algorithm.
+    * method using its implementation-specific algorithm.
     * <p>
     * If the method throws an exception, it will be treated as an unhandled exception
     * during render request processing. The portlet container will perform no 
@@ -59,8 +58,8 @@ public interface ConditionalDispatcher {
     *  
     * @param request    The render render request
     * @param response   The render render response
-    * @param methods    A Map containing the {@literal @}RenderMethod as keys and 
-    *                   corresponding method tokens as values.
+    * @param methods    A <code>Set</code> containing the 
+    *                   method tokens representing the candidate methods for this dispatch action.
     * @return           A list of method tokens if the dispatch has been handled. The list may be empty.
     *                   <code>null</code> if the portlet container is to continue with 
     *                   dispatching.
@@ -71,7 +70,7 @@ public interface ConditionalDispatcher {
     * @see  javax.portlet.annotations.RenderMethod
     */
    public List<MethodToken> dispatch(RenderRequest request, RenderResponse response, 
-                                     Map<RenderMethod, MethodToken> methods) 
+                                     Set<MethodToken> methods) 
                                      throws IOException, PortletException;
 
    /**
@@ -79,16 +78,19 @@ public interface ConditionalDispatcher {
     * Called by the portlet container when an {@literal @}HeaderMethod annotated 
     * method is to be dispatched.
     * <p>
-    * The method should analyze the annotations based on the current request and
+    * The method should analyze the given <code>Set</code> of candidate methods using
+    * the annotations available from each <code>MethodToken</code> 
+    * based on the current request and
     * create a list of method tokens representing the methods to be invoked. 
-    * The list may be empty. A given method token may appear more than once in the list.  
+    * The output list may be empty or <code>null</code>. 
+    * A given method token may appear in the output list more than once.  
     * <p>
     * If the method returns a non-<code>null</code> List object, the portlet container will
     * invoke the methods in the order they appear in the list, and then 
     * perform no further dispatching operation for the current request.
     * <p>
     * If the method returns <code>null</code>, the portlet container will dispatch the 
-    * method using its implementation-specific or default algorithm.
+    * method using its implementation-specific algorithm.
     * <p>
     * If the method throws an exception, it will be treated as an unhandled exception
     * during header request processing. The portlet container will perform no 
@@ -97,8 +99,8 @@ public interface ConditionalDispatcher {
     *  
     * @param request    The header request
     * @param response   The header  response
-    * @param methods    A Map containing the {@literal @}HeaderMethod as keys and 
-    *                   corresponding method tokens as values.
+    * @param methods    A <code>Set</code> containing the 
+    *                   method tokens representing the candidate methods for this dispatch action.
     * @return           A list of method tokens if the dispatch has been handled. The list may be empty.
     *                   <code>null</code> if the portlet container is to continue with 
     *                   dispatching.
@@ -109,7 +111,7 @@ public interface ConditionalDispatcher {
     * @see  javax.portlet.annotations.HeaderMethod
     */
    public List<MethodToken> dispatch(HeaderRequest request,  HeaderResponse response, 
-                                     Map<HeaderMethod, MethodToken> methods)
+                                     Set<MethodToken> methods)
                                      throws IOException, PortletException;
 
    /**
@@ -117,16 +119,19 @@ public interface ConditionalDispatcher {
     * Called by the portlet container when an {@literal @}ServeResourceMethod annotated 
     * method is to be dispatched.
     * <p>
-    * The method should analyze the annotations based on the current request and
+    * The method should analyze the given <code>Set</code> of candidate methods using
+    * the annotations available from each <code>MethodToken</code> 
+    * based on the current request and
     * create a list of method tokens representing the methods to be invoked. 
-    * The list may be empty. A given method token may appear more than once in the list.
+    * The output list may be empty or <code>null</code>. 
+    * A given method token may appear in the output list more than once.  
     * <p>
     * If the method returns a non-<code>null</code> List object, the portlet container will
     * invoke the methods in the order they appear in the list, and then 
     * perform no further dispatching operation for the current request.
     * <p>
     * If the method returns <code>null</code>, the portlet container will dispatch the 
-    * method using its implementation-specific or default algorithm.
+    * method using its implementation-specific algorithm.
     * <p>
     * If the method throws an exception, it will be treated as an unhandled exception
     * during resource request processing. The portlet container will perform no 
@@ -135,8 +140,8 @@ public interface ConditionalDispatcher {
     *  
     * @param request    The resource request
     * @param response   The resource response
-    * @param methods    A Map containing the {@literal @}ServeResourceMethod as keys and 
-    *                   corresponding method tokens as values.
+    * @param methods    A <code>Set</code> containing the 
+    *                   method tokens representing the candidate methods for this dispatch action.
     * @return           A list of method tokens if the dispatch has been handled. The list may be empty.
     *                   <code>null</code> if the portlet container is to continue with 
     *                   dispatching.
@@ -147,6 +152,6 @@ public interface ConditionalDispatcher {
     * @see  javax.portlet.annotations.ServeResourceMethod
     */
    public List<MethodToken> dispatch(ResourceRequest request,  ResourceResponse response,
-                                     Map<ServeResourceMethod, MethodToken> methods) 
+                                     Set<MethodToken> methods) 
                                      throws IOException, PortletException;
 }

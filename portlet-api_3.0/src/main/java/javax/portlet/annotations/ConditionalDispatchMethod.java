@@ -42,13 +42,13 @@ import static java.lang.annotation.RetentionPolicy.*;
  * The annotated method must have one of the following signatures:
  * <p>
  *    <code>public boolean &lt;methodName&gt;(RenderRequest request, RenderResponse response, 
- *                Map<RenderMethod, MethodToken> methods)</code>
+ *                Set<MethodToken> methods)</code>
  * <p>   
  *    <code>public boolean &lt;methodName&gt;(HeaderRequest request, HeaderResponse response, 
- *                Map<HeaderMethod, MethodToken> methods)</code>
+ *                Set<MethodToken> methods)</code>
  * <p>   
  *    <code>public boolean &lt;methodName&gt;(ResourceRequest request, ResourceResponse response, 
- *                Map<ResourceMethod, MethodToken> methods)</code>
+ *                Set<MethodToken> methods)</code>
  * <p>   
  * where the method name can be freely selected.
  * <p>
@@ -56,16 +56,19 @@ import static java.lang.annotation.RetentionPolicy.*;
  * If a conditional dispatcher is declared in the portlet deployment descriptor, that
  * declaration overrides any <code>@ConditionalDispatchMethod</code> annotation.
  * <p>
- * The method should analyze the annotations based on the current request and
+ * The method should analyze the given <code>Set</code> of candidate methods using
+ * the annotations available from each <code>MethodToken</code> 
+ * based on the current request and
  * create a list of method tokens representing the methods to be invoked. 
- * The list may be empty. A given method token may appear more than once in the list.  
+ * The output list may be empty or <code>null</code>. 
+ * A given method token may appear in the output list more than once.  
  * <p>
  * If the method returns a non-<code>null</code> List object, the portlet container will
  * invoke the methods in the order they appear in the list, and then 
  * perform no further dispatching operation for the current request.
  * <p>
  * If the method returns <code>null</code>, the portlet container will dispatch the 
- * method using its implementation-specific or default algorithm.
+ * method using its implementation-specific algorithm.
  * <p>
  * If the method throws an exception, it will be treated as an unhandled exception
  * during request processing. The portlet container will perform no 
@@ -90,6 +93,7 @@ import static java.lang.annotation.RetentionPolicy.*;
 public @interface ConditionalDispatchMethod {
    
    /**
+    * <div class="changed_added_3_0">
     * The portlet names for which the conditional dispatcher applies.
     * <p>
     * The annotated method can apply to multiple portlets within the portlet
@@ -99,6 +103,8 @@ public @interface ConditionalDispatchMethod {
     * A wildcard character '*' can be specified in the first portletName array element 
     * to indicate that the listener is to apply to all portlets in the portlet application.
     * If specified, the wildcard character must appear alone in the first array element.
+    * This is the default if no portlet names are explicitly provided.
+    * </div>
     * 
     * @return     The portlet names
     */
