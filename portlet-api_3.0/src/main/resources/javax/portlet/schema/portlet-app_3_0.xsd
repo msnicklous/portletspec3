@@ -137,7 +137,6 @@
 			<element name="custom-portlet-mode" type="portlet:custom-portlet-modeType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="custom-window-state" type="portlet:custom-window-stateType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="user-attribute" type="portlet:user-attributeType" minOccurs="0" maxOccurs="unbounded"/>
-			<element name="security-constraint" type="portlet:security-constraintType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="resource-bundle" type="portlet:resource-bundleType" minOccurs="0"/>
 			<element name="filter" type="portlet:filterType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="filter-mapping" type="portlet:filter-mappingType" minOccurs="0" maxOccurs="unbounded"/>
@@ -145,6 +144,7 @@
 			<element name="event-definition" type="portlet:event-definitionType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="public-render-parameter" type="portlet:public-render-parameterType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="listener" type="portlet:listenerType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="conditional-dispatcher" type="portlet:conditionalDispatcherType" minOccurs="0" maxOccurs="1"/>
 			<element name="container-runtime-option" type="portlet:container-runtime-optionType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 		<attribute name="version" type="portlet:string" use="required"/>
@@ -306,6 +306,7 @@
 			<element name="supported-public-render-parameter" type="portlet:string" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="container-runtime-option" type="portlet:container-runtime-optionType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="dependency" type="portlet:dependencyType" minOccurs="0" maxOccurs="unbounded"/>
+         <element name="conditional-dispatcher" type="portlet:conditionalDispatcherType" minOccurs="0" maxOccurs="1"/>
 		</sequence>
 		<attribute name="id" type="portlet:string" use="optional"/>
 	</complexType>
@@ -419,6 +420,20 @@
 		</choice>
 		<attribute name="id" type="portlet:string" use="optional"/>
 	</complexType>
+   <complexType name="conditionalDispatcherType">
+      <annotation>
+         <documentation>
+         The conditionalDispatcherType is used to declare conditional dispatchers for this portlet or portlet application.
+         Used in: portlet, portlet-app
+         </documentation>
+      </annotation>
+      <sequence>
+         <element name="description" type="portlet:descriptionType" minOccurs="0" maxOccurs="unbounded"/>
+         <element name="display-name" type="portlet:display-nameType" minOccurs="0" maxOccurs="unbounded"/>
+         <element name="dispatcher-class" type="portlet:fully-qualified-classType"/>
+      </sequence>
+      <attribute name="id" type="portlet:string" use="optional"/>
+   </complexType>
 	<complexType name="listenerType">
 		<annotation>
 			<documentation>
