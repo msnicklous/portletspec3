@@ -562,6 +562,7 @@ h1.hidden {
 .indexContainer a[href*="DestroyMethod.html"],
 .indexContainer a[href*="EventMethod.html"],
 .indexContainer a[href*="HeaderFilter.html"],
+.indexContainer a[href*="HeaderFilterChain.html"],
 .indexContainer a[href*="HeaderRequest.html"],
 .indexContainer a[href*="HeaderRequestWrapper.html"],
 .indexContainer a[href*="HeaderResponse.html"],
