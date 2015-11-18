@@ -81,14 +81,12 @@ public interface PortletURL extends BaseURL, MutablePortletState
     * Calling this method copies the bean state to the URL so that the values are
     * available to the portlet when the URL is activated.
     *  
-    * @param url     The URL
     * @param bean    The {@literal @}PortletStateScoped bean
     * 
     * @exception java.lang.IllegalArgumentException
-    *                If the bean or url are null, or if the bean is not an 
-    *                {@literal @}PortletStateScoped bean.
+    *                if the bean is not an {@literal @}PortletStateScoped bean.
     *                
     * @see  javax.portlet.annotations.PortletStateScoped
     */
-   public void setBeanParameter(PortletURL url, PortletSerializable bean);
+   public void setBeanParameter(PortletSerializable bean);
 }
