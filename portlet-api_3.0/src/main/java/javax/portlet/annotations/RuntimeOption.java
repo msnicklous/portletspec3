@@ -50,9 +50,9 @@ public @interface RuntimeOption {
    String   name();
    
    /**
-    * The container runtime options value
+    * The container runtime options values.
     * 
-    * @return     The parameter value
+    * @return     The parameter values
     */
-   String   value();
+   String[]   values();
 }

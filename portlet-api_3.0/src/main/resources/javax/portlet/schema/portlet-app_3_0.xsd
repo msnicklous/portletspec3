@@ -7,7 +7,6 @@
         attributeFormDefault="unqualified" 
         version="3.0" 
         xml:lang="en">
-    <include schemaLocation=""></include>
     <annotation>
 		<documentation>
 		This is the XML Schema for the Portlet 3.0 deployment descriptor.
@@ -231,7 +230,9 @@
 			</documentation>
 		</annotation>
 		<simpleContent>
-			<extension base="portlet:string"/>
+			<extension base="portlet:string">
+            <attribute ref="xml:lang"/>
+         </extension>
 		</simpleContent>
 	</complexType>
 	<complexType name="mime-typeType">
@@ -442,6 +443,7 @@
 			</documentation>
 		</annotation>
 		<sequence>
+         <element name="listener-name" type="portlet:string" minOccurs="0" maxOccurs="1"/>
 			<element name="description" type="portlet:descriptionType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="display-name" type="portlet:display-nameType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="listener-class" type="portlet:fully-qualified-classType"/>
@@ -450,9 +452,9 @@
 	</complexType>
 	<complexType name="portlet-infoType">
 		<sequence>
-			<element name="title" type="portlet:titleType" minOccurs="0"/>
-			<element name="short-title" type="portlet:short-titleType" minOccurs="0"/>
-			<element name="keywords" type="portlet:keywordsType" minOccurs="0"/>
+			<element name="title" type="portlet:titleType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="short-title" type="portlet:short-titleType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="keywords" type="portlet:keywordsType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 		<attribute name="id" type="portlet:string" use="optional"/>
 	</complexType>
@@ -634,7 +636,9 @@
 			</documentation>
 		</annotation>
 		<simpleContent>
-			<extension base="portlet:string"/>
+			<extension base="portlet:string">
+            <attribute ref="xml:lang"/>
+         </extension>
 		</simpleContent>
 	</complexType>
 	<complexType name="supportsType">
@@ -683,7 +687,9 @@
 			</documentation>
 		</annotation>
 		<simpleContent>
-			<extension base="portlet:string"/>
+			<extension base="portlet:string">
+            <attribute ref="xml:lang"/>
+         </extension>
 		</simpleContent>
 	</complexType>
 	<complexType name="user-attributeType">
@@ -799,7 +805,7 @@
 			type may be used.
 			</documentation>
 		</annotation>
-		<restriction base="string">
+		<restriction base="xs:token">
 			<whiteSpace value="collapse"/>
 		</restriction>
 	</simpleType>

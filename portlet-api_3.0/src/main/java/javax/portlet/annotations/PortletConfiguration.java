@@ -154,16 +154,6 @@ public @interface PortletConfiguration {
 
    /**
     * <div class='container-change'>
-    * Defines the content types supported by the portlet along with
-    * the associated portlet modes and window states.
-    * </div>
-    * 
-    * @return     An array of content type support items
-    */
-   ContentTypeSupport[] contentTypes() default {@ContentTypeSupport};
-   
-   /**
-    * <div class='container-change'>
     * The resource bundle name for this portlet.
     * Name of the resource bundle containing the language specific 
     * portlet information in different languages.
@@ -178,12 +168,12 @@ public @interface PortletConfiguration {
    
    /**
     * <div class='container-change'>
-    * The supported portlet modes and window states.
+    * The supported portlet modes and window states for a given <code>MIME</code> type.
     * </div>
     * 
     * @return     The supported portlet modes and window states
     */
-   Supports[] supports() default {};
+   Supports[] supports() default {@Supports(mimeType="text/html")};
    
    /**
     * <div class='not-supported'>
