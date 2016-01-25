@@ -21,6 +21,23 @@
     <div class="indexContainer-not">
     <ul>
     <li>
+    20160125:
+    Added clarification to 
+    {@link javax.portlet.PortletResponse PortletResponse} addProperty and setProperty 
+    method descriptions.
+    Removed {@link javax.portlet.BaseURL BaseURL} getAuthenticated and setAuthenticated methods.
+    Added wrappers according to 
+    <a href="https://java.net/jira/browse/PORTLETSPEC3-62">PORTLETSPEC3-62</a>,
+    (see {@link javax.portlet.filter filter package}).
+    Update following annotations for consistency with spec & RI:
+    {@link javax.portlet.annotations.DestroyMethod DestroyMethod},
+    {@link javax.portlet.annotations.EventMethod EventMethod},
+    {@link javax.portlet.annotations.HeaderMethod HeaderMethod},
+    {@link javax.portlet.annotations.InitMethod InitMethod},
+    {@link javax.portlet.annotations.PortletSessionScoped PortletSessionScoped}.
+    Added {@link javax.portlet.annotations.PortletRequestScoped PortletRequestScoped} annotation.
+    </li>
+    <li>
     20151208: 
     Several changes to portlet annotations to improve consistency with respect to the portlet
     deployment descriptor. Updated classes:
@@ -274,8 +291,6 @@
     accordingly.
     </li>
     <li>20130828: PORTLETSPEC3-13: Added several methods to BaseURL:
-    {@link javax.portlet.BaseURL#setAuthenticated setAuthenticated},
-    {@link javax.portlet.BaseURL#getAuthenticated getAuthenticated},
     {@link javax.portlet.RenderURL#setFragmentIdentifier setFragmentIdentifier} and 
     {@link javax.portlet.RenderURL#getFragmentIdentifier getFragmentIdentifier}.
     See 

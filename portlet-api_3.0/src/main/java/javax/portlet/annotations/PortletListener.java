@@ -33,51 +33,61 @@ import static java.lang.annotation.RetentionPolicy.*;
 
 /**
  * <div class='changed_added_3_0'>
- * Designates a preferences validator method.
- * The PreferencesValidator allows validation of the set of portlet preferences 
- * before they are stored in the persistent store.
- * The validator method is invoked during execution of the 
- * store method of the PortletPreferences. 
+ * Designates a portlet URL generation listener class.
+ * The listener method will be invoked before a URL of the corresponding type is
+ * generated.
  * <p>
- * The annotated method must have the following signature:
- * <p>
- *    <code>public void &lt;methodName&gt;(PortletPreferences preferences) throws ValidatorException</code>
- * <p>   
- * where the method name can be freely selected.
- * <p>
+ * The annotated method must implement the <code>PortletListener</code> interface.
  * </div>
  *    
- * @see javax.portlet.PreferencesValidator#validate(javax.portlet.PortletPreferences) PreferencesValidator#validate
+ * @see javax.portlet.PortletURLGenerationListener
  *
  */
 
-@Retention(RUNTIME) @Target({METHOD})
-public @interface PreferencesValidator {
+@Retention(RUNTIME) @Target({TYPE})
+public @interface PortletListener {
    
    /**
-    * The portlet names for which the validator applies.
+    * The listener name. 
     * <p>
-    * The annotated validator method can apply to multiple portlets within the portlet
-    * application. The names of the portlets to which the validator applies must be 
-    * specified in this field.
+    * The listener name is not required. If a listener name is provided, the listener configuration
+    * may be addressed through the listener name in the portlet deployment descriptor to modify 
+    * or remove the listener.
     * <p>
-    * A wildcard character '*' can be specified in the first portletName array element 
-    * to indicate that the validator is to apply to all portlets in the portlet application.
-    * If specified, the wildcard character must appear alone in the first array element.
+    *  
     * 
-    * @return     The portlet names
+    * @return  The listener name
     */
-   String[]   portletNames();
+   String   listenerName() default "";
    
    /**
     * The ordinal number for this annotated method.
     * <p>
     * The ordinal number determines the order of execution if multiple methods
-    * are annotated.
+    * are annotated for a given URL type.
     * Annotated methods with a lower ordinal number are executed before methods with
     * a higher ordinal number.
     * 
     * @return     The ordinal number
     */
-   int        ordinal() default 0;
+   int         ordinal() default 0;
+   
+   /**
+    * <div class='not-supported'>
+    * The display-name type contains a language-specific short name that is intended to be displayed by tools. 
+    * </div>
+    * 
+    * @return  The display name
+    */
+   LocaleString[]   displayName() default {};
+   
+   /**
+    * <div class='not-supported'>
+    * The portlet listener description
+    * providing locale-specific text describing the portlet listener for use by the portal application or by tools.
+    * </div>
+    * 
+    * @return  The portlet description
+    */
+   LocaleString[]   description() default {};
 }

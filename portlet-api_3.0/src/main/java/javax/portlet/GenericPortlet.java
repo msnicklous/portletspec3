@@ -252,6 +252,7 @@ public abstract class GenericPortlet implements Portlet, PortletConfig, EventPor
 	 *                if the streaming causes an I/O problem
 	 * 
 	 */
+	@SuppressWarnings("deprecation")
 	public void render(RenderRequest request, RenderResponse response) throws PortletException, java.io.IOException {
 		Object renderPartAttrValue = request.getAttribute(RenderRequest.RENDER_PART);
 		if (renderPartAttrValue != null) {

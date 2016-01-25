@@ -21,7 +21,6 @@
  * Community Process. In order to remain compliant with the specification
  * DO NOT add / change / or delete method signatures!
  */
-
 package javax.portlet.annotations;
 
 
@@ -34,43 +33,34 @@ import static java.lang.annotation.RetentionPolicy.*;
 
 /**
  * <div class='changed_added_3_0'>
- * Designates a method corresponding to the portlet API destroy method.
- * The annotated method must have the following signature:
+ * Designates a preferences validator class.
+ * The PortletPreferencesValidator allows validation of the set of portlet preferences 
+ * before they are stored in the persistent store.
+ * The validator method is invoked during execution of the 
+ * store method of the PortletPreferences. 
  * <p>
- *    <code>public void &lt;methodName&gt;()</code>
- * <p>   
- * where the method name can be freely selected.
- * <p>
- * the <code>destroy</code> method is called by the portlet container to 
- * indicate to a portlet that the
- * portlet is being taken out of service.  
- * <p>
- * Before the portlet container calls the destroy method, it should 
- * allow any threads that are currently processing requests within 
- * the portlet object to complete execution. To avoid
- * waiting forever, the portlet container can optionally wait for 
- * a predefined time before destroying the portlet object.
- * <p>
- * This method enables the portlet to do the following:
- * <ul>
- * <li>clean up any resources that it holds (for example, memory,
- * file handles, threads) 
- * <li>make sure that any persistent state is
- * synchronized with the portlet current state in memory.
- * </ul>
+ * The annotated class must implement the <code>PortletPreferencesValidator</code> interface.
  * </div>
  *    
- * @see javax.portlet.Portlet#destroy()
+ * @see javax.portlet.PreferencesValidator
  *
  */
 
-@Retention(RUNTIME) @Target({METHOD})
-public @interface DestroyMethod {
+@Retention(RUNTIME) @Target({TYPE})
+public @interface PortletPreferencesValidator {
    
    /**
-    * The portlet name for the annotated method.
+    * The portlet names for which the validator applies.
+    * <p>
+    * The annotated validator method can apply to multiple portlets within the portlet
+    * application. The names of the portlets to which the validator applies must be 
+    * specified in this field.
+    * <p>
+    * A wildcard character '*' can be specified in the first portletName array element 
+    * to indicate that the validator is to apply to all portlets in the portlet application.
+    * If specified, the wildcard character must appear alone in the first array element.
     * 
-    * @return  The portlet name
+    * @return     The portlet names
     */
-   String   value();
+   String[]   portletNames() default "*";
 }

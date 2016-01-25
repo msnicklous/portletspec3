@@ -24,53 +24,30 @@
 package javax.portlet.annotations;
 
 
+import static java.lang.annotation.ElementType.TYPE;
+import static java.lang.annotation.ElementType.METHOD;
+import static java.lang.annotation.ElementType.FIELD;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
+
 import java.lang.annotation.Documented;
 import java.lang.annotation.Inherited;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
 import javax.enterprise.context.NormalScope;
-import javax.portlet.PortletSession;
-
-import static java.lang.annotation.ElementType.*;
-import static java.lang.annotation.RetentionPolicy.*;
 
 
 /**
  * <div class='changed_added_3_0'>
- * Provides a CDI custom scope that is scoped to the portlet session rather than to the
- * servlet session.
- * <p>
- * Note that a portlet session scoped bean must implement 
- * <code>java.io.Serializable</code>, since it will be stored in the portlet session.
+ * Provides a CDI custom scope for the portlet request.
  * </div>
  *
  */
 
 @Retention(RUNTIME) 
-@Target({TYPE})
-@NormalScope(passivating=true)
+@Target({TYPE, METHOD, FIELD})
+@NormalScope
 @Inherited
 @Documented
-public @interface PortletSessionScoped {
-   
-   /**
-    * The portlet scope into which the annotated bean is to be placed. Can be set to 
-    * the following values:
-    * <ul>
-    * <li>
-    * PortletSession.PORTLET_SCOPE - scopes the bean to the portlet session
-    * </li>
-    * <li>
-    * PortletSession.APPLICATION_SCOPE - Scopes the bean to the portlet application session.
-    * The effect of this scope is the same as using the CDI @SessionScoped annotation.
-    * </li>
-    * </ul>
-    * 
-    * @return The portlet scope
-    * 
-    * @see  PortletSession#PORTLET_SCOPE
-    * @see  PortletSession#APPLICATION_SCOPE
-    */
-   int value() default PortletSession.PORTLET_SCOPE;
+public @interface PortletRequestScoped {
 }
