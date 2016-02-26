@@ -873,7 +873,7 @@
             
                 
 <dt>
-    <h4 class="name" id="onStateChange"><span class="type-signature"></span>onStateChange<span class="signature">(type, portletState, renderData)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="onStateChange"><span class="type-signature"></span>onStateChange<span class="signature">(type, RenderState, renderData)</span><span class="type-signature"></span></h4>
     
     
 </dt>
@@ -881,7 +881,7 @@
     
     
     <div class="description">
-        The onStateChange callback function that each portlet clientparticipating in the portlet hub Ajax support must implement.<p>The portlet client registers an onStateChange callback by adding alistener for the portlet.onStateChangeevent type through the addEventListener function.<p>When the portlet hub calls the onStateChange callback, it will passa copy of the current portlet state as a parameter.The portlet client can make changes to the PortletState objectwithout affecting the actual portlet state, which is maintained by theportlet hub.The portlet client uses the setPortletState method tomake changes to the local copy of the PortletState object active.<p>Optionally, the portlet hub will make a RenderData object availableto the portlet client.When the RenderData object is available, it contains the same dataas would be available through a portlet resource request using thecurrent portlet state with no additional resource parameters and withthe resource URL cacheability option set to "PAGE".<p>The portlet client may not call portlet hub functions that cancause state to be updated (action, {@link updatePortletState},startPartialAction)during onStateChange execution.
+        The onStateChange callback function that each portlet clientparticipating in the portlet hub Ajax support must implement.<p>The portlet client registers an onStateChange callback by adding alistener for the portlet.onStateChangeevent type through the addEventListener function.<p>When the portlet hub calls the onStateChange callback, it will passa copy of the current render state as a parameter.The portlet client can make changes to the RenderState objectwithout affecting the actual render state, which is maintained by theportlet hub.The portlet client uses the setRenderState method tomake changes to the local copy of the RenderState object active.<p>Optionally, the portlet hub will make a RenderData object availableto the portlet client.When the RenderData object is available, it contains the same dataas would be available through a portlet resource request using thecurrent render state with no additional resource parameters and withthe resource URL cacheability option set to "PAGE".<p>The portlet client may not call portlet hub functions that cancause state to be updated (action, {@link updateRenderState},startPartialAction)during onStateChange execution.
     </div>
     
 
@@ -938,13 +938,13 @@
 	
         <tr>
             
-                <td class="name"><code>portletState</code></td>
+                <td class="name"><code>RenderState</code></td>
             
             
             <td class="type">
             
                 
-<span class="param-type"><a href="global.html#PortletState">PortletState</a></span>
+<span class="param-type"><a href="global.html#RenderState">RenderState</a></span>
 
 
             
@@ -954,7 +954,7 @@
             
             
             
-            <td class="description last">The portlet state</td>
+            <td class="description last">The render state</td>
         </tr>
 	
 	
@@ -1558,14 +1558,142 @@
             
                 
 <dt>
-    <h4 class="name" id="PortletState">PortletState</h4>
+    <h4 class="name" id="RenderData">RenderData</h4>
     
     
 </dt>
 <dd>
     
     <div class="description">
-        Represents the portlet state.<p>PortletState objects obtained from the Portlet Hub define some helperfunctions for accessing the parameter values.<p>
+        Optional render data that may be provided by the portlet hub whena render state change occurs.
+    </div>
+    
+    
+    
+
+    
+<dl class="details">
+    
+        
+        <h5 class="subsection-title">Properties:</h5>
+        
+        <dl>
+
+<table class="props">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>renderData</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">The render data</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>mimeType</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">The mime type</td>
+        </tr>
+	
+	
+	</tbody>
+</table></dl>
+        
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="portlet.js.html">portlet.js</a>, <a href="portlet.js.html#line14">line 14</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+            
+                
+<dt>
+    <h4 class="name" id="RenderState">RenderState</h4>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        Represents the render state.<p>RenderState objects obtained from the Portlet Hub define some helperfunctions for accessing the parameter values.<p>
     </div>
     
     
@@ -1939,134 +2067,6 @@
             
                 
 <dt>
-    <h4 class="name" id="RenderData">RenderData</h4>
-    
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        Optional render data that may be provided by the portlet hub whena portlet state change occurs.
-    </div>
-    
-    
-    
-
-    
-<dl class="details">
-    
-        
-        <h5 class="subsection-title">Properties:</h5>
-        
-        <dl>
-
-<table class="props">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>renderData</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-            
-            
-            
-            
-            
-            <td class="description last">The render data</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>mimeType</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-            
-            
-            
-            
-            
-            <td class="description last">The mime type</td>
-        </tr>
-	
-	
-	</tbody>
-</table></dl>
-        
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="portlet.js.html">portlet.js</a>, <a href="portlet.js.html#line14">line 14</a>
-    </li></ul></dd>
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-</dd>
-
-            
-                
-<dt>
     <h4 class="name" id="setPageState"><span class="type-signature"></span>setPageState<span class="signature">(pid, ustr)</span><span class="type-signature"></span></h4>
     
     
@@ -2251,7 +2251,7 @@
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.3-dev</a> on Thu Jan 28 2016 12:06:14 GMT+0100 (CET)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.3-dev</a> on Fri Feb 26 2016 15:10:22 GMT+0100 (CET)
 </footer>
 
 <script> prettyPrint(); </script>
