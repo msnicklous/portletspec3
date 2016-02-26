@@ -27,17 +27,17 @@ package javax.portlet;
 /**
  * <div class="changed_modified_3_0">The
  * <CODE>StateAwareResponse</CODE> represents a response that can modify
- * portlet state information or send events.
+ * render state information or send events.
  * <p>
- * If the portlet state is modified through this interface, the changes take
+ * If the render state is modified through this interface, the changes take
  * effect for subsequent portlet render phase processing. 
  * </div>
  * 
  * @since 2.0
- * @see PortletState
+ * @see RenderState
  * @see PortletResponse
  */
-public interface StateAwareResponse extends PortletResponse, MutablePortletState {
+public interface StateAwareResponse extends PortletResponse, MutableRenderState {
 
    /**
     * <span class="changed_modified_3_0">Sets</span> 

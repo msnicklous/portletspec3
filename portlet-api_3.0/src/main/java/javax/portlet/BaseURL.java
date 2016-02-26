@@ -29,13 +29,13 @@ package javax.portlet;
  * <CODE>BaseURL</CODE> defines the basic capabilities of a portlet URL
  * pointing back to the portlet.
  * <p>
- * If the portlet state is modified through this interface, the changes take
+ * If the render state is modified through this interface, the changes take
  * effect when the URL containing the modifications is triggered.
  * </div>
- * @see   MutablePortletState
+ * @see   MutableRenderState
  * @since 2.0
  */
-public interface BaseURL extends PortletState {
+public interface BaseURL extends RenderState {
 
    /**
     * <span class="changed_modified_3_0">Sets</span> 

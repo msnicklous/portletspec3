@@ -128,7 +128,7 @@ public interface ActionResponse extends StateAwareResponse
     * Returns a render URL containing render parameters according to the
     * MimeResponse.Copy argument. The portlet may modify the returned render URL. The
     * URL is intended to be used in the sendRedirect(String location) method to allow
-    * the portlet to force a redirect to the same page with modified portlet state.    * Creates a render URL targeting the current portlet. 
+    * the portlet to force a redirect to the same page with modified render state.    * Creates a render URL targeting the current portlet. 
     * <p>
     * The getRedirectURL method cannot be invoked after any of the 
     * following methods of the ActionResponse interface has been called:

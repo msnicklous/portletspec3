@@ -499,7 +499,7 @@ public interface MimeResponse extends PortletResponse {
      * <div class="changed_modified_3_0">
      * Creates an action URL targeting the portlet.
      * Action URLs are used to create forms or links that, when triggered,
-     * update the portlet state in a non-idempotent manner.
+     * update the render state in a non-idempotent manner.
      * <p> 
      * If a request is triggered by the URL, it results in
      * an action request.
@@ -540,7 +540,7 @@ public interface MimeResponse extends PortletResponse {
      * <div class="changed_added_3_0">
      * Creates an action URL targeting the portlet. 
      * Action URLs are used to create forms or links that, when triggered,
-     * update the portlet state in a non-idempotent manner.
+     * update the render state in a non-idempotent manner.
      * <p> 
      * If a request is triggered by the URL, it results in
      * an action request.

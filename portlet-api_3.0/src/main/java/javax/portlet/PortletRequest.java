@@ -35,16 +35,16 @@ import java.util.Locale;
  * The portlet container creates these objects and 
  * passes them as arguments to the corresponding request processing methods.
  * <p>
- * The <code>PortletRequest</code> also provides access to the portlet state.
+ * The <code>PortletRequest</code> also provides access to the render state.
  * </div>
  * 
- * @see PortletState
+ * @see RenderState
  * @see ActionRequest
  * @see EventRequest
  * @see RenderRequest
  * @see ResourceRequest
  */
-public interface PortletRequest extends PortletState
+public interface PortletRequest extends RenderState
 {
 
    
