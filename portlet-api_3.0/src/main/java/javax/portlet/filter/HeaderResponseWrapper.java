@@ -57,13 +57,19 @@ public class HeaderResponseWrapper extends MimeResponseWrapper implements Header
       super.setResponse(response);
    }
 
-   /*
-    * (non-Javadoc)
-    * 
-    * @see javax.portlet.HeaderResponse#setTitle(java.lang.String)
-    */
+   @Override
    public void setTitle(String title) {
       ((HeaderResponse)response).setTitle(title);
+   }
+
+   @Override
+   public void addDependency(String name, String scope, String version) {
+      ((HeaderResponse)response).addDependency(name, scope, version);
+   }
+
+   @Override
+   public void addDependency(String name, String scope, String version, String markup) {
+      ((HeaderResponse)response).addDependency(name, scope, version, markup);
    }
 
 }

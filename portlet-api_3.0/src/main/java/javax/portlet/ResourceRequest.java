@@ -295,7 +295,7 @@ public interface ResourceRequest extends ClientDataRequest {
     * @see     javax.portlet.filter.ResourceFilter
     */
 
-   public PortletAsyncContext startAsync() throws IllegalStateException;
+   public PortletAsyncContext startPortletAsync() throws IllegalStateException;
 
 
    /**
@@ -362,7 +362,7 @@ public interface ResourceRequest extends ClientDataRequest {
     * @see     javax.portlet.filter.ResourceFilter
     */
 
-   public PortletAsyncContext startAsync(ResourceRequest request, ResourceResponse response) throws IllegalStateException;
+   public PortletAsyncContext startPortletAsync(ResourceRequest request, ResourceResponse response) throws IllegalStateException;
 
 
    /**
@@ -380,8 +380,8 @@ public interface ResourceRequest extends ClientDataRequest {
     * 
     * @return   <code>true</code> if asynchronous mode has been started
     * @since    3.0
-    * @see      #startAsync()
-    * @see      #startAsync(ResourceRequest, ResourceResponse)
+    * @see      #startPortletAsync()
+    * @see      #startPortletAsync(ResourceRequest, ResourceResponse)
     */
 
    public boolean isAsyncStarted();
@@ -416,7 +416,7 @@ public interface ResourceRequest extends ClientDataRequest {
     * @see      javax.servlet.AsyncContext 
     */
    
-   public PortletAsyncContext getAsyncContext();
+   public PortletAsyncContext getPortletAsyncContext();
 
 
    /**
