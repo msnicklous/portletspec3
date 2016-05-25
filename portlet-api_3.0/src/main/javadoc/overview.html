@@ -21,6 +21,23 @@
     <div class="indexContainer-not">
     <ul>
     <li>
+    20160524:
+    Deleted the <code>URLFactory</code> interface, as a <code>MimeResponse</code> object
+    can be injected instead with no loss of functionality.
+    Added the 
+    {@link javax.portlet.annotations.PortletName} qualifier annotation for 
+    injection of the portlet name.
+    Deleted the <code>@BeanPortlet</code> qualifier annotation as it is no longer needed 
+    for disambiguation.
+    Deleted the <code>@InitMethod</code> and <code>@DestroyMethod</code> annotations, as the
+    CDI annotations <code>@PostConstruct</code> and <code>@PreDestroy</code> annotations
+    should be used for bean initialization and tear down instead.
+    Renamed <code>@PortletRequestFilter</code> to
+    {@link javax.portlet.annotations.PortletLifecycleFilter PortletLifecycleFilter},
+    Changed method name from ActionResponse#getRedirectURL to
+    {@link javax.portlet.ActionResponse#createRedirectURL ActionResponse.createRedirectURL()}.
+    </li>
+    <li>
     20160519:
     Changed method signature for addDependency method that provides a resource to
     {@link javax.portlet.HeaderResponse#addDependency(String, String, String, String)}.

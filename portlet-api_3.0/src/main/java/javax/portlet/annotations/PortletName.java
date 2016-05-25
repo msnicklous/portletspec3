@@ -36,12 +36,23 @@ import static java.lang.annotation.RetentionPolicy.*;
 
 /**
  * <div class='changed_added_3_0'>
- * Provides a qualifier sometimes needed for disambiguation. 
+ * Qualifier that specifies the portlet name for injection.
  * <p>
- * This qualifier is needed when injecting a PortletConfig object.
+ * The injection target type must be <code>String</code>.
+ * <p>
+ * This annotation may only be used in <code>{@literal @}RequestScoped</code> or
+ * <code>{@literal @}RenderStateScoped</code> beans.
+ * <p>
+ * Example:
+ * <div class='codebox'>      
+ * {@literal @}Inject {@literal @}PortletName<br/>   
+ * private String portletName;
+ * </div>                    
  * </div>
+ * 
+ * @see javax.portlet.PortletResponse#getNamespace() getNamespace
  */
 
-@Qualifier @Retention(RUNTIME) @Target({TYPE, METHOD, FIELD, PARAMETER})
-public @interface BeanPortlet {
+@Qualifier @Retention(RUNTIME) @Target({METHOD, FIELD, PARAMETER})
+public @interface PortletName {
 }
