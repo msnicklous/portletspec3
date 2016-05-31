@@ -32,7 +32,7 @@ import javax.portlet.PortletSecurityException;
  * implementation of the <code>BaseURL</code> interface 
  * that can be subclassed by developers.
  * This class implements the Wrapper or Decorator pattern. 
- * Methods default to calling through to the wrapped request object.
+ * Methods default to calling through to the wrapped object.
  * </div>
  * 
  * @author Scott Nicklous
@@ -165,4 +165,11 @@ public class BaseURLWrapper extends RenderStateWrapper implements BaseURL {
       ((BaseURL)wrapped).setProperty(key, value);
    }
 
+   /* (non-Javadoc)
+    * @see javax.portlet.BaseURL#toString()
+    */
+   @Override
+   public String toString() {
+      return wrapped.toString();
+   }
 }
