@@ -33,7 +33,7 @@ import static java.lang.annotation.RetentionPolicy.*;
 
 
 /**
- * <div class='changed_added_3_0'>
+ * <div class='changed_added_3_0'> 
  * Designates a method corresponding to the portlet API init method.
  * The annotated method must have the following signature:
  * <p>
