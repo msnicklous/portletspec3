@@ -21,6 +21,38 @@
     <div class="indexContainer-not">
     <ul>
     <li>
+    20160907:
+    Updated the package description for the annotations to refresh stale
+    descriptions, see:
+    {@link javax.portlet.annotations package-info}.
+    Changed portlet hub JavaScript documentation
+    to move the parameter manipulation methods from the 
+    <a href="../jsdoc/global.html#PortletParameters" target="_top">PortletParameters</a>
+    object to the  
+    <a href="../jsdoc/global.html#RenderState" target="_top">RenderState</a>
+    object.
+    Added optional resource ID string parameter to the portlet hub
+    <a href="../jsdoc/PortletInit.html#createResourceUrl" target="_top">createResourceUrl</a>
+    function.
+    </li>
+    <li>
+    20160824:
+    Deleted the annotations
+    <code>{@literal @}RenderParam</code>,
+    <code>{@literal @}ActionParam</code>, and
+    <code>{@literal @}ResourceParam</code> since they can't be made to be request scoped beans, 
+    so that their use could be error-prone. Also, since the corresponding parameter
+    objects are injectable, these annotations provide little additional value.
+    </li>
+    <li>
+    20160804:
+    Modified descriptions for 
+    {@link javax.portlet.PortletRequest#getResponseContentType() PortletRequest#getResponseContentType()} and
+    {@link javax.portlet.PortletRequest#getResponseContentTypes() PortletRequest#getResponseContentTypes()}
+    to remove redundant clause on the content types being declared in the portlet configuration,
+    since the portlet won't be invoked for a content type that hasn't been configured.
+    </li>
+    <li>
     20160530:
     Added 
     {@link javax.portlet.filter.PortletAsyncContextWrapper PortletAsyncContextWrapper}.
