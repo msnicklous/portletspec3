@@ -65,31 +65,6 @@ public interface ResourceRequest extends ClientDataRequest {
    public static final String ETAG = "portlet.ETag";
    
    /**
-    * <div class="changed_added_3_0">
-    * This constant represents the attribute name used to retrieve the
-    * resource request attribute <code>String</code> representing the current 
-    * page state.
-    * <p>
-    * The PAGE_STATE request attribute is only set during Partial Action processing. 
-    * At all other times, the attribute will be <code>null</code>.
-    * <p>
-    * The Partial Action processing sequence provides support for infrastructure components
-    * such as a JSF Portlet Bridge to obtain page state information for use by the
-    * JavaScript Portlet Hub component.
-    * <p>
-    * The content of the page state request attribute is implementation-specific. 
-    * The portlet performing partial action processing must transport the attribute value to 
-    * the client and pass it to the Portlet Hub unchanged in order to conclude a 
-    * Partial Action processing sequence.
-    * <p>
-    * The portlet may make no assumptions about the length or content of the
-    * request attribute value. 
-    * The attribute value may be of any length or <code>null</code>.
-    * </div>
-    */
-   public static final String PAGE_STATE = "javax.portlet.pageState";
-
-   /**
     * Returns the validation tag if the portlet container
     * has a cached response for this validation tag, or
     * <code>null</code> if no cached response exists.
@@ -287,6 +262,16 @@ public interface ResourceRequest extends ClientDataRequest {
     * </div>
     * 
     * @return  the (re)initialized AsyncContext 
+    * 
+    * @throws  IllegalStateException 
+    *          if this request is within the scope of a filter or servlet that does not 
+    *          support asynchronous operations (that is, isAsyncSupported() returns 
+    *          false), or if this method is called again without any asynchronous 
+    *          dispatch (resulting from one of the PortletAsyncContext#dispatch methods), 
+    *          is called outside the scope of any such dispatch, or is called again 
+    *          within the scope of the same dispatch, or if the response has 
+    *          already been closed
+    * 
     * @since   3.0
     * @see     javax.servlet.ServletRequest#startAsync()
     * @see     javax.servlet.AsyncContext
@@ -354,6 +339,16 @@ public interface ResourceRequest extends ClientDataRequest {
     * </div>
     * 
     * @return  the (re)initialized AsyncContext 
+    * 
+    * @throws  IllegalStateException 
+    *          if this request is within the scope of a filter or servlet that does not 
+    *          support asynchronous operations (that is, isAsyncSupported() returns 
+    *          false), or if this method is called again without any asynchronous 
+    *          dispatch (resulting from one of the PortletAsyncContext#dispatch methods), 
+    *          is called outside the scope of any such dispatch, or is called again 
+    *          within the scope of the same dispatch, or if the response has 
+    *          already been closed
+    * 
     * @since   3.0
     * @see     javax.servlet.ServletRequest#startAsync()
     * @see     javax.servlet.AsyncContext 
@@ -411,6 +406,12 @@ public interface ResourceRequest extends ClientDataRequest {
     * </div>
     * 
     * @return   the <code>AsyncContext</code> (re)initialized by the most recent <code>startAsync</code> method invocation 
+    * 
+    * @throws  IllegalStateException 
+    *          if this request is within the scope of a filter or servlet that does not 
+    *          support asynchronous operations (that is, isAsyncSupported() returns 
+    *          false), or if asynchronous processing has not yet been started.
+    *          
     * @since    3.0
     * @see      javax.servlet.ServletRequest#startAsync()
     * @see      javax.servlet.AsyncContext 

@@ -85,15 +85,15 @@
  * Provides defined values for some commonly-used portlet constants
  * <p>
  * @typedef    PortletConstants
- * @property   {string}       VIEW        Specifies portlet mode 'VIEW'    
- * @property   {string}       EDIT        Specifies portlet mode 'EDIT'    
- * @property   {string}       HELP        Specifies portlet mode 'HELP'    
- * @property   {string}       NORMAL      Specifies window state 'NORMAL'
- * @property   {string}       MINIMIZED   Specifies window state 'MINIMIZED'
- * @property   {string}       MAXIMIZED   Specifies window state 'MAXIMIZED'
- * @property   {string}       FULL        Specifies resource URL cacheability 'FULL'
- * @property   {string}       PORTLET     Specifies resource URL cacheability 'PORTLET'
- * @property   {string}       PAGE        Specifies resource URL cacheability 'PAGE'
+ * @property   {string}       VIEW        Specifies portlet mode 'view'    
+ * @property   {string}       EDIT        Specifies portlet mode 'edit'    
+ * @property   {string}       HELP        Specifies portlet mode 'help'    
+ * @property   {string}       NORMAL      Specifies window state 'normal'
+ * @property   {string}       MINIMIZED   Specifies window state 'minimized'
+ * @property   {string}       MAXIMIZED   Specifies window state 'maximized'
+ * @property   {string}       FULL        Specifies resource URL cacheability "cacheLevelFull"
+ * @property   {string}       PORTLET     Specifies resource URL cacheability "cacheLevelPage"
+ * @property   {string}       PAGE        Specifies resource URL cacheability "cacheLevelPortlet"
  */
 
 /**
@@ -182,7 +182,6 @@
  * @param      {string}       type           The event type "portlet.onError".
  * @param      {ErrorData}    errorData      Provides information about the error.
  */
-
 
 /**
  * The "portlet" namespace is reserved for use by portal JavaScript support
@@ -319,7 +318,7 @@ var portlet = portlet || {};
 
    // ~~~~~~~~~~~~~~~~ Helper classes for parameters & state
    // ~~~~~~~~~~~~~~~~~~~
-   
+
    function Parameters(p) {
       var n;
       if (p) {
@@ -339,7 +338,8 @@ var portlet = portlet || {};
          this.windowState = s.windowState;
          if (s.parameters) {
             for (n in s.parameters) {
-               if (s.parameters.hasOwnProperty(n) && Array.isArray(s.parameters[n])) {
+               if (s.parameters.hasOwnProperty(n)
+                     && Array.isArray(s.parameters[n])) {
                   this.parameters[n] = s.parameters[n].slice(0);
                }
             }
@@ -353,18 +353,31 @@ var portlet = portlet || {};
       return new State(this);
    };
    State.prototype.setPortletMode = function(pm) {
+      if (typeof pm !== 'string') {
+         throw new TypeError('Portlet mode must be a string');
+      }
       this.portletMode = pm;
    };
    State.prototype.getPortletMode = function() {
       return this.portletMode;
    };
    State.prototype.setWindowState = function(ws) {
+      if (typeof ws !== 'string') {
+         throw new TypeError('Window state must be a string');
+      }
       this.windowState = ws;
    };
    State.prototype.getWindowState = function() {
       return this.windowState;
    };
    State.prototype.setValue = function(name, value) {
+      if (typeof name !== 'string') {
+         throw new TypeError('Parameter name must be a string');
+      }
+      if (typeof value !== 'string' && value !== null && !Array.isArray(value)) {
+         throw new TypeError(
+               'Parameter value must be a string, an array, or null');
+      }
       var val = value;
       if (!Array.isArray(value)) {
          val = [ value ];
@@ -373,11 +386,17 @@ var portlet = portlet || {};
    };
    State.prototype.setValues = State.prototype.setValue;
    State.prototype.remove = function(name) {
+      if (typeof name !== 'string') {
+         throw new TypeError('Parameter name must be a string');
+      }
       if (this.parameters[name] !== undefined) {
          delete this.parameters[name];
       }
    };
    State.prototype.getValue = function(name, def) {
+      if (typeof name !== 'string') {
+         throw new TypeError('Parameter name must be a string');
+      }
       var res = this.parameters[name];
       if (res) {
          res = res[0];
@@ -388,29 +407,32 @@ var portlet = portlet || {};
       return res;
    };
    State.prototype.getValues = function(name, def) {
+      if (typeof name !== 'string') {
+         throw new TypeError('Parameter name must be a string');
+      }
       var res = this.parameters[name];
       if (res === undefined) {
          res = def;
       }
       return res;
    };
-   
+
    var portletConstants = {
-      
+
       // Portlet mode
-      "VIEW"      : "VIEW",
-      "EDIT"      : "EDIT",
-      "HELP"      : "HELP",
-      
+      "VIEW" : "view",
+      "EDIT" : "edit",
+      "HELP" : "help",
+
       // window state
-      "NORMAL"    : "NORMAL",
-      "MINIMIZED" : "MINIMIZED",
-      "MAXIMIZED" : "MAXIMIZED",
-      
+      "NORMAL" : "normal",
+      "MINIMIZED" : "minimized",
+      "MAXIMIZED" : "maximized",
+
       // Resource URL cacheability
-      "FULL"      : "cacheLevelFull",
-      "PAGE"      : "cacheLevelPage",
-      "PORTLET"   : "cacheLevelPortlet"
+      "FULL" : "cacheLevelFull",
+      "PAGE" : "cacheLevelPage",
+      "PORTLET" : "cacheLevelPortlet"
    },
 
    // variable declarations
@@ -419,46 +441,27 @@ var portlet = portlet || {};
    /**
     * Portlet Hub Mockup internal structure defining the data held for each
     * portlet
-    *
-    * @typedef    PortletData
-    * @property   {RenderState} state       The current RenderState object
-    * @property   {string[]}     pubParms    String array declaring the public
-    *                                        parameters for the portlet
-    * @property   {RenderData}   renderData  Render data for the portlet
+    * 
+    * @typedef PortletData
+    * @property {RenderState} state The current RenderState object
+    * @property {string[]} pubParms String array declaring the public parameters
+    *           for the portlet
+    * @property {RenderData} renderData Render data for the portlet
     * @private
     */
-
 
    // Helper functions
    wnd = window, delay = function(aCallback, aTimeout) {
       wnd.setTimeout(aCallback, aTimeout);
    },
 
-
    // ~~~~~~~~~~~~~~~~~~~~~~ Exceptions ~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-   /**
-    * Exception thrown when a portlet hub method is provided with an invalid
-    * argument.
-    * 
-    * @typedef    IllegalArgumentException
-    * @property {string} name The exception name, equal to
-    *           "IllegalArgumentException"
-    * @property {string} message An optional message that provides more detail
-    *           about the exception
-    */
-   throwIllegalArgumentException = function(msg) {
-      throw {
-         name : "IllegalArgumentException",
-         message : msg
-      };
-   },
 
    /**
     * Exception thrown when a portlet client is not allowed to access a data
     * element
     * 
-    * @typedef    AccessDeniedException
+    * @typedef AccessDeniedException
     * @property {string} name The exception name, equal to
     *           "AccessDeniedException"
     * @property {string} message An optional message that provides more detail
@@ -475,8 +478,8 @@ var portlet = portlet || {};
     * Thrown when a portlet attempts to use the API without comleting the
     * intialization process. In general, this means that the onStateChange
     * listener has not been added.
-    *
-    * @typedef    NotInitializedException
+    * 
+    * @typedef NotInitializedException
     * @property {string} name The exception name, equal to
     *           "NotInitializedException"
     * @property {string} message An optional message that provides more detail
@@ -497,7 +500,7 @@ var portlet = portlet || {};
 
    /**
     * Shortcut for Object.keys
-    *
+    * 
     * @const
     * @type {function(Object):Array}
     */
@@ -505,7 +508,7 @@ var portlet = portlet || {};
 
    /**
     * Shortcut for the Array.isArray
-    *
+    * 
     * @const
     * @type {function(*):boolean}
     */
@@ -513,9 +516,9 @@ var portlet = portlet || {};
 
    /**
     * Checks if the object is an object
-    *
+    * 
     * @param {*}
-    *            obj object
+    *           obj object
     * @return {boolean}
     */
    _isObject = function(obj) {
@@ -524,9 +527,9 @@ var portlet = portlet || {};
 
    /**
     * Constructs a deep copy of the object
-    *
+    * 
     * @param {Object|Array}
-    *            data
+    *           data
     * @return {Object|Array}
     */
    _clone = function(data) {
@@ -558,26 +561,25 @@ var portlet = portlet || {};
 
    // ~~~~~~~~~~~~~~~~~~~~~~ Event Handling ~~~~~~~~~~~~~~~~~~~~~~~~~~
    // for event handling
-   handleCtr = 0,                         // used to generate handles returned by addEventListener
+   handleCtr = 0, // used to generate handles returned by addEventListener
 
    /**
-    * The internal data structure for managing listeners and the 
-    * update queue.
+    * The internal data structure for managing listeners and the update queue.
     * 
-    * @typedef  QueueData
-    * @property {String}      handle   The listener handle
-    * @property {string}      id       The portlet ID
-    * @property {string}      type     The event type
-    * @property {function}    callback The callback function for the event
-    * @private 
+    * @typedef QueueData
+    * @property {String} handle The listener handle
+    * @property {string} id The portlet ID
+    * @property {string} type The event type
+    * @property {function} callback The callback function for the event
+    * @private
     */
 
    // System listeners (onStateChange and onError). Associative arrays indexed
    // by portletID
-   oscListeners = {}, oeListeners = {}, 
+   oscListeners = {}, oeListeners = {},
 
    // Portlet Client Event listeners. Associative array indexed by handle
-   pcListeners = {},                      // portlet client event listeners
+   pcListeners = {}, // portlet client event listeners
 
    // the portlet hub can only execute a single blocking operation
    // at a time. At the beginning of the operation, this flag is set to
@@ -591,50 +593,48 @@ var portlet = portlet || {};
    // is a QueueData structure. Associative array indexed by handle.
    updateQueue = [],
 
-
    /**
     * Add an event listener of the given type to the specified portlet client
     * listener storage object.
     * <p>
     * The portlet client event listeners are stored in associative arrays
     * (objects) indexed by the event listener handle.
-    *
+    * 
     * @param {object}
-    *            list The object where the listener will be stored
+    *           list The object where the listener will be stored
     * @param {string}
-    *            pid The portletID
+    *           pid The portletID
     * @param {string}
-    *            etype The event type
+    *           etype The event type
     * @param {function}
-    *            func The the listener function to be called
+    *           func The the listener function to be called
     * @private
     */
    addPCListener = function(list, pid, etype, func) {
       var hand = "handle-" + (++handleCtr);
       list[hand] = {
-                     handle   : hand,
-                     id       : pid,
-                     type     : etype,
-                     callback : func
-                   };
+         handle : hand,
+         id : pid,
+         type : etype,
+         callback : func
+      };
       return hand;
    },
-
 
    /**
     * Removes an event listener identified by the portletId and handle from the
     * portlet client listener storage object
     * 
     * @param {object}
-    *            list The object where the listener will be stored
+    *           list The object where the listener will be stored
     * @param {string}
-    *            pid The portletID
+    *           pid The portletID
     * @param {object}
-    *            handle The event listener handle
-    * @returns    {boolean}            <code>true</code> if the listener was removed
-    * @throws     {AccessDeniedException}
-    *             Thrown if the event listener associated with this handle was
-    *             registered by a different portlet
+    *           handle The event listener handle
+    * @returns {boolean} <code>true</code> if the listener was removed
+    * @throws {AccessDeniedException}
+    *            Thrown if the event listener associated with this handle was
+    *            registered by a different portlet
     * @private
     */
    removePCListener = function(list, pid, handle) {
@@ -644,14 +644,12 @@ var portlet = portlet || {};
          if (list[handle].id === pid) {
             delete list[handle];
          } else {
-            throwAccessDeniedException("Invalid handle for portlet ID="
-                  + pid);
+            throwAccessDeniedException("Invalid handle for portlet ID=" + pid);
          }
          return true;
       }
       return false;
    },
-
 
    /**
     * Add an event listener of the given type to the specified system event
@@ -659,15 +657,15 @@ var portlet = portlet || {};
     * <p>
     * The system event listeners are stored in associative arrays (objects)
     * indexed by portlet ID.
-    *
+    * 
     * @param {object}
-    *            list The object where the listener will be stored
+    *           list The object where the listener will be stored
     * @param {string}
-    *            pid The portletID
+    *           pid The portletID
     * @param {string}
-    *            etype The event type
+    *           etype The event type
     * @param {function}
-    *            func The the listener function to be called
+    *           func The the listener function to be called
     * @private
     */
    addSystemListener = function(list, pid, etype, func) {
@@ -675,29 +673,28 @@ var portlet = portlet || {};
       // add the listener
       var hand = "handle-" + (++handleCtr);
 
-      console.log("addSystemListener, handle="+hand+", pid="+pid);
+      console.log("addSystemListener, handle=" + hand + ", pid=" + pid);
 
       list[hand] = {
-                     handle   : hand,
-                     id       : pid,
-                     type     : etype,
-                     callback : func
-                   };
+         handle : hand,
+         id : pid,
+         type : etype,
+         callback : func
+      };
       return hand;
    },
-
 
    /**
     * Removes an event listener identified by the portletId and handle from the
     * system listener storage object
     * 
     * @param {object}
-    *            list The object where the listener will be stored
+    *           list The object where the listener will be stored
     * @param {string}
-    *            pid The portletID
+    *           pid The portletID
     * @param {object}
-    *            handle The event listener handle
-    * @returns    {boolean}            <code>true</code> if the listener was removed
+    *           handle The event listener handle
+    * @returns {boolean} <code>true</code> if the listener was removed
     * @private
     */
    removeSystemListener = function(list, pid, handle) {
@@ -722,15 +719,14 @@ var portlet = portlet || {};
       return false;
    },
 
-
    /**
-    * Sends an onError event to all registered error event handlers for a
-    * given portlet.
+    * Sends an onError event to all registered error event handlers for a given
+    * portlet.
     * 
     * @param {string}
-    *            pid The portletID
+    *           pid The portletID
     * @param {string}
-    *            err The error message
+    *           err The error message
     * @private
     */
    reportError = function(pid, err) {
@@ -745,13 +741,12 @@ var portlet = portlet || {};
          }
       }, 0);
    },
-   
 
    /**
     * Returns true if an onStateChange listener is registered for the portlet
     * 
     * @param {string}
-    *            pid The portletID
+    *           pid The portletID
     * @returns {boolean} <code>true</code> if a listener is registered
     * @private
     */
@@ -779,7 +774,7 @@ var portlet = portlet || {};
     * the portal server to obtain data.
     * 
     * @param {string}
-    *            pid The portlet ID
+    *           pid The portlet ID
     * @private
     */
    _updateStateForPortlet = function(pid) {
@@ -790,20 +785,21 @@ var portlet = portlet || {};
       // enqueue update elements for all listeners registered for pid,
       // adding each listener a single time only.
       for (handle in oscListeners) {
-    	 dup = false;
+         dup = false;
          if (oscListeners.hasOwnProperty(handle)) {
             qdata = oscListeners[handle];
             if (qdata.id === pid) {
-               for (ii=0; ii < updateQueue.length; ii++) {
-            	   if (updateQueue[ii].handle == handle) {
-            		   dup = true;
-            		   break;
-            	   }
+               for (ii = 0; ii < updateQueue.length; ii++) {
+                  if (updateQueue[ii].handle == handle) {
+                     dup = true;
+                     break;
+                  }
                }
                if (dup === false) {
-            	  updateQueue.push(qdata);
-           	      console.log("Queued update: handle=" + qdata.handle + ", pid=" + qdata.id+
-               		   ", Queue length=" + updateQueue.length)
+                  updateQueue.push(qdata);
+                  console.log("Queued update: handle=" + qdata.handle
+                        + ", pid=" + qdata.id + ", Queue length="
+                        + updateQueue.length)
                }
             }
          }
@@ -827,8 +823,8 @@ var portlet = portlet || {};
                // onStateChange function
                qdata = updateQueue.shift();
 
-               console.log("Dispatch update: handle=" + qdata.handle + ", pid=" + qdata.id +
-            		   ", Queue length=" + updateQueue.length);
+               console.log("Dispatch update: handle=" + qdata.handle + ", pid="
+                     + qdata.id + ", Queue length=" + updateQueue.length);
 
                pi = _registeredPortlets[qdata.id];
 
@@ -837,8 +833,8 @@ var portlet = portlet || {};
                callback = qdata.callback;
 
                if ((data !== undefined) && (data !== null)
-                     && (data.renderData !== undefined)
-                     && (data.renderData !== null)) {
+                     && (data.content !== undefined)
+                     && (data.content !== null)) {
                   callback("portlet.onStateChange", state, data);
                } else {
                   callback("portlet.onStateChange", state);
@@ -854,13 +850,13 @@ var portlet = portlet || {};
 
    /**
     * dispatches the client events.
-    *
+    * 
     * @param {string}
-    *            type The portlet ID
+    *           type The portlet ID
     * @param {function}
-    *            callback Callback function
+    *           callback Callback function
     * @param {any}
-    *            payload Event payload
+    *           payload Event payload
     * @private
     */
    dispatchCE = function(type, callback, payload) {
@@ -894,20 +890,20 @@ var portlet = portlet || {};
    /**
     * Accepts an object containing changed render states. Updates the state for
     * each portlet present.
-    *
+    * 
     * @param {string}
-    *            upids array of portlet IDs to be updated
+    *           upids array of portlet IDs to be updated
     * @private
     */
    updatePageState = function(upids) {
       var ii;
-      
+
       if (upids.length === 0) {
          busy = false;
       } else {
-      for (ii = 0; ii < upids.length; ii++) {
-         _updateStateForPortlet(upids[ii]);
-      }
+         for (ii = 0; ii < upids.length; ii++) {
+            _updateStateForPortlet(upids[ii]);
+         }
       }
 
    },
@@ -916,10 +912,10 @@ var portlet = portlet || {};
     * Accepts an object containing changed portlet IDs. This function is meant
     * to be used by the Portlet Hub impl in order to initiate an unsolicited
     * state update for the input list of portlet IDs.
-    *
-    * @returns {Promise} fulfilled with the actual upddate function when the
-    *          hub is not busy.
-    *
+    * 
+    * @returns {Promise} fulfilled with the actual upddate function when the hub
+    *          is not busy.
+    * 
     * @private
     */
    updateWhenIdle = function(upids) {
@@ -939,18 +935,18 @@ var portlet = portlet || {};
    /**
     * Updates the render state, taking the public render parameters into
     * account. The portlet client requesting the change, represented by the
-    * supplied portelt ID, is updated, along with each portlet that has a
-    * public render parameter update.
+    * supplied portelt ID, is updated, along with each portlet that has a public
+    * render parameter update.
     * 
     * @param {string}
-    *            pid The portlet ID
+    *           pid The portlet ID
     * @param {RenderState}
-    *            state The new render state
-    * @throws  {AccessDeniedException}
-    *             Thrown if a blocking operation is already in progress.
-    * @throws  {NotInitializedException}
-    *                   Thrown if a portlet ID is provided, but no onStateChange
-    *                   listener has been registered.
+    *           state The new render state
+    * @throws {AccessDeniedException}
+    *            Thrown if a blocking operation is already in progress.
+    * @throws {NotInitializedException}
+    *            Thrown if a portlet ID is provided, but no onStateChange
+    *            listener has been registered.
     * @private
     */
    updateState = function(pid, state) {
@@ -966,14 +962,14 @@ var portlet = portlet || {};
       }
 
       busy = true;
-      
+
       // Set state in the implementation. The setState function returns an
       // array of portlet
       // IDs for portlets that need to be updated. Update the page state using
       // this info.
       // If an error occurred, post the error to the onError handler, if one
       // is present.
-      
+
       pi = _registeredPortlets[pid];
       pi.setState(state).then(function(upids) {
          updatePageState(upids);
@@ -981,41 +977,41 @@ var portlet = portlet || {};
          busy = false;
          reportError(pid, err);
       });
-       
-   },
 
+   },
 
    // ~~~~~~~~~~~~~~~~~~~~~~ Other functions ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    /**
     * Used by the portlet hub methods to check the number and types of the
     * arguments.
-    *
+    * 
     * @private
     * @param {string[]}
-    *            parms The argument list to be checked
+    *           parms The argument list to be checked
     * @param {number}
-    *            minParms The minimum number of arguments
+    *           minParms The minimum number of arguments
     * @param {number}
-    *            maxParms The maximum number of arguments. If this value is
-    *            undefined, the function can take any number of arguments
-    *            greater than numArgs
+    *           maxParms The maximum number of arguments. If this value is
+    *           undefined, the function can take any number of arguments greater
+    *           than numArgs
     * @param {string[]}
-    *            types An array containing the expected parameter types in the
-    *            order of occurrance in the argument array
-    * @throws  {IllegalArgumentException}
-    *                               Thrown if the parameters are in some manner incorrect
+    *           types An array containing the expected parameter types in the
+    *           order of occurrance in the argument array
+    * @throws {TypeError}
+    *            Thrown if the parameters are in some manner incorrect
     */
    checkArguments = function(parms, minParms, maxParms, types) {
 
       // Check for the minimum number of arguments
       if (parms.length < minParms) {
-         throwIllegalArgumentException("Too few arguments provided. Number of arguments: "
-               + parms.length);
+         throw new TypeError(
+               "Too few arguments provided. Number of arguments: "
+                     + parms.length);
 
          // check for maximum number of arguments
       } else if ((typeof maxParms === 'number') && (parms.length > maxParms)) {
-         throwIllegalArgumentException("Too many arguments provided: "
+         throw new TypeError("Too many arguments provided: "
                + [].join.call(parms, ', '));
 
          // check if the argument types are as expected if provided with
@@ -1025,17 +1021,16 @@ var portlet = portlet || {};
          var ii;
          for (ii = Math.min(parms.length, types.length) - 1; ii >= 0; ii = ii - 1) {
             if (typeof parms[ii] !== types[ii]) {
-               throwIllegalArgumentException("Parameter " + ii
-                     + " is of type " + (typeof parms[ii])
-                     + " rather than the expected type " + types[ii]);
+               throw new TypeError("Parameter " + ii + " is of type "
+                     + (typeof parms[ii]) + " rather than the expected type "
+                     + types[ii]);
             }
 
             // If checking for types, also make sure the arguments are
             // neither
             // null nor undefined.
             if ((parms[ii] === null) || (parms[ii] === undefined)) {
-               throwIllegalArgumentException("Argument is "
-                     + (typeof parms[ii]));
+               throw new TypeError("Argument is " + (typeof parms[ii]));
             }
          }
       }
@@ -1054,33 +1049,30 @@ var portlet = portlet || {};
     * <p>
     * To represent a <code>null</code> value, the property value must equal
     * [null].
-    *
+    * 
     * @param {PortletParameters}
-    *            parms The parameters to check
+    *           parms The parameters to check
     * @private
-    * @throws  {IllegalArgumentException}
-    *             Thrown if the parameters are incorrect
+    * @throws {TypeError}
+    *            Thrown if the parameters are incorrect
     */
    validateParms = function(parms) {
       var parm;
 
       // check for null or undefined argument
       if ((parms === null) || (parms === undefined)) {
-         throwIllegalArgumentException("The parameters object is "
-               + (typeof parms));
+         throw new TypeError("The parameters object is " + (typeof parms));
       }
 
       for (parm in parms) {
          if (parms.hasOwnProperty(parm)) {
             if (Object.prototype.toString.call(parms[parm]) !== '[object Array]') {
-               throwIllegalArgumentException("Invalid parameters. The value of "
-                     + parm
-                     + " is "
-                     + Object.prototype.toString.call(parm)
+               throw new TypeError("Invalid parameters. The value of " + parm
+                     + " is " + Object.prototype.toString.call(parm)
                      + " rather than '[object Array]'");
             } else if (parms[parm].length === 0) {
-               throwIllegalArgumentException("Invalid parameters. The value of "
-                     + parm + " is " + "an array with length 0.");
+               throw new TypeError("Invalid parameters. The value of " + parm
+                     + " is " + "an array with length 0.");
             }
          }
       }
@@ -1105,14 +1097,14 @@ var portlet = portlet || {};
    /**
     * Verifies that the input parameters are in valid format, that the portlet
     * mode and window state values are allowed for the portlet.
-    *
+    * 
     * @param {string}
-    *            pid The portlet ID
+    *           pid The portlet ID
     * @param {RenderState}
-    *            state The render state object to check
+    *           state The render state object to check
     * @private
-    * @throws  {IllegalArgumentException}
-    *             Thrown if any component of the state is incorrect
+    * @throws {TypeError}
+    *            Thrown if any component of the state is incorrect
     */
    validateState = function(pid, state) {
       var pi = _registeredPortlets[pid];
@@ -1123,48 +1115,53 @@ var portlet = portlet || {};
       // portlet
       if ((state.portletMode === undefined)
             || (typeof state.portletMode !== 'string')) {
-         throwIllegalArgumentException("Invalid parameters. portletMode is "
+         throw new TypeError("Invalid parameters. portletMode is "
                + (typeof state.portletMode));
-      } else if (!_isAllowedPM(pid, state.portletMode)) {
-         throwIllegalArgumentException("Invalid portletMode="
-               + state.portletMode + " is not in " + pi.getAllowedPM());
+      } else {
+         state.portletMode = state.portletMode.toLowerCase();
+         if (!_isAllowedPM(pid, state.portletMode)) {
+            throw new TypeError("Invalid portletMode=" + state.portletMode
+                  + " is not in " + pi.getAllowedPM());
+         }
       }
-      
+
       // see if the windowState is a string and is a value allowed for the
       // portlet
       if ((state.windowState === undefined)
             || (typeof state.windowState !== 'string')) {
-         throwIllegalArgumentException("Invalid parameters. windowState is "
+         throw new TypeError("Invalid parameters. windowState is "
                + (typeof state.windowState));
-      } else if (!_isAllowedWS(pid, state.windowState)) {
-         throwIllegalArgumentException("Invalid windowState="
-               + state.windowState + " is not in " + pi.getAllowedWS());
+      } else {
+         state.windowState = state.windowState.toLowerCase();
+         if (!_isAllowedWS(pid, state.windowState)) {
+            throw new TypeError("Invalid windowState=" + state.windowState
+                  + " is not in " + pi.getAllowedWS());
+         }
       }
 
    },
 
-
    /**
     * sets up for the action.
-    *
+    * 
     * @param {string}
-    *            type The URL type
+    *           type The URL type
     * @param {string}
-    *            pid The portlet ID
+    *           pid The portlet ID
     * @param {PortletParameters}
-    *            parms Additional parameters. May be <code>null</code>
+    *           parms Additional parameters. May be <code>null</code>
     * @param {HTMLFormElement}
-    *            Form to be submitted May be <code>null</code>
-    * @throws  {AccessDeniedException}
-    *             Thrown if a blocking operation is already in progress.
-    * @throws  {NotInitializedException}
-    *                   Thrown if a portlet ID is provided, but no onStateChange
-    *                   listener has been registered.
+    *           Form to be submitted May be <code>null</code>
+    * @throws {AccessDeniedException}
+    *            Thrown if a blocking operation is already in progress.
+    * @throws {NotInitializedException}
+    *            Thrown if a portlet ID is provided, but no onStateChange
+    *            listener has been registered.
     * @private
     */
    setupAction = function(pid, parms, element) {
       var pi;
-      
+
       // do necessary checks
 
       if (busy === true) {
@@ -1195,21 +1192,21 @@ var portlet = portlet || {};
     * Callback function that must be called after a partial action has been
     * started.
     * <p>
-    * The page state is generated by the portal and transmitted to the client
-    * by the portlet. The portlet client that initiated the partial action must
+    * The page state is generated by the portal and transmitted to the client by
+    * the portlet. The portlet client that initiated the partial action must
     * pass the page state string to this function.
     * <p>
     * The callback should only be called once to conclude a partial action
     * sequence.
     * 
     * @param {string}
-    *            pid The portlet ID for operation
+    *           pid The portlet ID for operation
     * @param {string}
-    *            ustr The new page state in string form
-    * @throws  {IllegalArgumentException} 
-    *                      Thrown if the parameter is not a string
-    * @name       setPageState
-    * @callback   setPageState
+    *           ustr The new page state in string form
+    * @throws {TypeError}
+    *            Thrown if the parameter is not a string
+    * @name setPageState
+    * @callback setPageState
     */
    setPageState = function(pid, ustr) {
       var pi;
@@ -1217,16 +1214,16 @@ var portlet = portlet || {};
       // Perform some checks on the update string. allow null string.
       if ((ustr === undefined)
             || ((ustr !== null) && (typeof ustr !== 'string'))) {
-         throwIllegalArgumentException("Invalid update string: " + ustr);
+         throw new TypeError("Invalid update string: " + ustr);
       }
 
       // convert page state into an object.
-      // update each affected portlet client. Makes use of a 
-      // mockup-specific function for decoding. 
+      // update each affected portlet client. Makes use of a
+      // mockup-specific function for decoding.
 
       pi = _registeredPortlets[pid];
       pi.decodeUpdateString(ustr).then(function(upids) {
-      updatePageState(upids);
+         updatePageState(upids);
       }, function(err) {
          busy = false;
          reportError(pid, err);
@@ -1240,15 +1237,15 @@ var portlet = portlet || {};
     * Registers a portlet client with the portlet hub.
     * <p>
     * The portlet client calling this method must provide a valid portlet ID.
-    * The portlet ID is identical to the unique namespace provided by the
-    * portal server for the portlet.
-    *
+    * The portlet ID is identical to the unique namespace provided by the portal
+    * server for the portlet.
+    * 
     * @param {string}
-    *            portletId The unique portlet identifier
-    * @returns {Promise} A Promise object. Returns an {@link PortletInit}
-    *          object containing functions for use by the portlet client on
-    *          successful resolution. Returns an Error object containing a
-    *          descriptive message on failure.
+    *           portletId The unique portlet identifier
+    * @returns {Promise} A Promise object. Returns an {@link PortletInit} object
+    *          containing functions for use by the portlet client on successful
+    *          resolution. Returns an Error object containing a descriptive
+    *          message on failure.
     */
    portlet.register = function(portletId) {
 
@@ -1258,9 +1255,9 @@ var portlet = portlet || {};
       checkArguments(arguments, 1, 1, [ 'string' ]);
 
       /**
-       * Dispatched to the implementation. The promise will be fulfilled as
-       * soon as the implementation has assembled the required information.
-       * From that point on it is valid to call into other functions on the
+       * Dispatched to the implementation. The promise will be fulfilled as soon
+       * as the implementation has assembled the required information. From that
+       * point on it is valid to call into other functions on the
        * implementation. These other functions as passed in as an argument
        */
       return portlet.impl
@@ -1272,220 +1269,208 @@ var portlet = portlet || {};
                            portletImpl);
 
                      /**
-                      * Keep track of the callback functions for our
-                      * portlets
+                      * Keep track of the callback functions for our portlets
                       */
                      _registeredPortlets[portletId] = portletImpl;
 
                      /**
-                      * Returned by the {@link portlet.register} method
-                      * to provide functions for use by the portlet
-                      * client.
+                      * Returned by the {@link portlet.register} method to
+                      * provide functions for use by the portlet client.
                       * 
                       * @namespace PortletInit
                       */
                      return {
-         
-            /**
-                         * A string array containing the portlet modes
-                         * that are defined for the portlet.
-             * <p>
-                         * Note that even if a portlet mode is defined,
-                         * it may not be allowed, depending on access
-                         * rights or other conditions.
-             *
-                         * @property {string[]} portletModes The defined
-                         *           portlet mode values
-             * @memberOf         PortletInit
-             */
-            portletModes : portletImpl.getAllowedPM(),
-         
-            /**
-                         * A string array containing the window states
-                         * that are defined for the portlet.
-             * <p>
-                         * Note that even if a window state is defined,
-                         * it may not be allowed, depending on access
-                         * rights or other conditions.
-             *
-                         * @property {string[]} windowStates The defined
-                         *           window state values
-             * @memberOf         PortletInit
-             */
-            windowStates : portletImpl.getAllowedWS(),
-         
-            /**
-                         * Adds a listener function for specified event
-                         * type.
-             * <p>
+
+                        /**
+                         * A string array containing the portlet modes that are
+                         * defined for the portlet.
+                         * <p>
+                         * Note that even if a portlet mode is defined, it may
+                         * not be allowed, depending on access rights or other
+                         * conditions.
+                         * 
+                         * @property {string[]} portletModes The defined portlet
+                         *           mode values
+                         * @memberOf PortletInit
+                         */
+                        portletModes : portletImpl.getAllowedPM(),
+
+                        /**
+                         * A string array containing the window states that are
+                         * defined for the portlet.
+                         * <p>
+                         * Note that even if a window state is defined, it may
+                         * not be allowed, depending on access rights or other
+                         * conditions.
+                         * 
+                         * @property {string[]} windowStates The defined window
+                         *           state values
+                         * @memberOf PortletInit
+                         */
+                        windowStates : portletImpl.getAllowedWS(),
+
+                        /**
+                         * Adds a listener function for specified event type.
+                         * <p>
                          * The portlet hub defines two classes of events -
                          * System Events and Portlet Client events:
-             * <dl>
-             * <dt>System Events</dt>
-                         * <dd> Events that are generated by the portlet
-                         * hub. They are used to pass portlet-specific
-                         * information to the registered portlet client.
-                         * The parameters passed to the system event
-                         * callback functions are defined by the portlet
-                         * hub.
+                         * <dl>
+                         * <dt>System Events</dt>
+                         * <dd> Events that are generated by the portlet hub.
+                         * They are used to pass portlet-specific information to
+                         * the registered portlet client. The parameters passed
+                         * to the system event callback functions are defined by
+                         * the portlet hub.
                          * <p>
-                         * Event types prefixed with "portlet." are
-                         * reserved for system events. System event
-                         * types may not be specified with a regular
-                         * expression or wildcard. However, the same
-                         * event listener may be added for both types of
-                         * system events.
-             * <p>
-                         * Only one listener for each type of system
-                         * event may be added.
-             * <p>
-             * The following system event types are defined:
-             * <dl>
-             * <dt>portlet.onStateChange</dt>
-                         * <dd> Fired when the render state changes. In
-                         * order to participate in the portlet Ajax
-                         * support, a portlet client must register an
-                         * {@link onStateChange} event listener for this
-                         * event type.
+                         * Event types prefixed with "portlet." are reserved for
+                         * system events. System event types may not be
+                         * specified with a regular expression or wildcard.
+                         * However, the same event listener may be added for
+                         * both types of system events.
                          * <p>
-                         * After the portlet client adds an event
-                         * listener for the onStateChange event, the
-                         * portlet hub will call the onStateChange
-                         * callback function to provide the portlet
-                         * client with its initial state information.
-                         * However, this will not occur before the call
-                         * to addEventListener returns. </dd>
-             * <dt>portlet.onError</dt>
-                         * <dd> Fired when an error occurs that cannot
-                         * be communicated through an exception. In
-                         * general, this will be some type of
-                         * asynchronous communication error. In order to
-                         * receive notification about errors, a portlet
-                         * must register an {@link onError} event
+                         * Only one listener for each type of system event may
+                         * be added.
+                         * <p>
+                         * The following system event types are defined:
+                         * <dl>
+                         * <dt>portlet.onStateChange</dt>
+                         * <dd> Fired when the render state changes. In order to
+                         * participate in the portlet Ajax support, a portlet
+                         * client must register an {@link onStateChange} event
+                         * listener for this event type.
+                         * <p>
+                         * After the portlet client adds an event listener for
+                         * the onStateChange event, the portlet hub will call
+                         * the onStateChange callback function to provide the
+                         * portlet client with its initial state information.
+                         * However, this will not occur before the call to
+                         * addEventListener returns. </dd>
+                         * <dt>portlet.onError</dt>
+                         * <dd> Fired when an error occurs that cannot be
+                         * communicated through an exception. In general, this
+                         * will be some type of asynchronous communication
+                         * error. In order to receive notification about errors,
+                         * a portlet must register an {@link onError} event
                          * listener for this event type. </dd>
-             * </dl>
-             * </dd>
-             * <dt>Portlet Client Events</dt>
-                         * <dd> Events initiated by the portlet client
-                         * through the dispatch method.
-             * <p>
-                         * When adding a listener for a portlet client
-                         * event, the event type may be specified by a
-                         * regular expression string. The listener will
-                         * be called for every event type that the
-                         * regular expression string matches.
+                         * </dl>
+                         * </dd>
+                         * <dt>Portlet Client Events</dt>
+                         * <dd> Events initiated by the portlet client through
+                         * the dispatch method.
+                         * <p>
+                         * When adding a listener for a portlet client event,
+                         * the event type may be specified by a regular
+                         * expression string. The listener will be called for
+                         * every event type that the regular expression string
+                         * matches.
                          * <p>
                          * Example: <br>
-                         * myHub.addEventListener("^myCompany\..*",
-                         * myListener); // registers myListener for all
-                         * event types beginning with "myCompany." </dd>
-             * </dl>
-             * <p>
-                         * An event listener can be added for multiple
-                         * event types. This function returns a handle
-                         * to identify the unique listener for the event
-                         * type and for the portlet client associated
-                         * with the function.
+                         * myHub.addEventListener("^myCompany\..*", myListener); //
+                         * registers myListener for all event types beginning
+                         * with "myCompany." </dd>
+                         * </dl>
+                         * <p>
+                         * An event listener can be added for multiple event
+                         * types. This function returns a handle to identify the
+                         * unique listener for the event type and for the
+                         * portlet client associated with the function.
                          * 
                          * @param {string}
-                         *            type The type of listener
+                         *           type The type of listener
                          * @param {function}
-                         *            func Function called when event
-                         *            occurs
-             *
-                         * @returns {object} A handle that can be used
-                         *          to remove the event listener
-             *
-             * @throws  {IllegalArgumentException}
-                         *             Thrown if the input parameters
-                         *             are invalid
-             *
-             * @memberOf            PortletInit
-             */
+                         *           func Function called when event occurs
+                         * 
+                         * @returns {object} A handle that can be used to remove
+                         *          the event listener
+                         * 
+                         * @throws {TypeError}
+                         *            Thrown if the input parameters are invalid
+                         * 
+                         * @memberOf PortletInit
+                         */
                         addEventListener : function(type, func) {
-         
+
                            // check for exactly 2 arguments of type
                            // 'string' and 'function'
                            checkArguments(arguments, 2, 2, [ 'string',
                                  'function' ]);
-         
-               var handle, listeners;
-         
-               if (type.match(portletRegex)) {
-         
-                  // Handle adding system event listener.
+
+                           var handle, listeners;
+
+                           if (type.match(portletRegex)) {
+
+                              // Handle adding system event listener.
                               // if it is neither a
                               // portlet.onStateChange nor a
                               // portlet.onError event, throw
                               if ((type !== "portlet.onStateChange")
                                     && (type !== "portlet.onError")) {
-                                 throwIllegalArgumentException("The system event type is invalid: "
-                                       + type);
-                  }
-         
-                  if (type === "portlet.onStateChange") {
+                                 throw new TypeError(
+                                       "The system event type is invalid: "
+                                             + type);
+                              }
+
+                              if (type === "portlet.onStateChange") {
                                  listeners = oscListeners; // add
-                                                      // the
-                                                      // onStateChange
-                                                      // listener
-                  } else {
+                                 // the
+                                 // onStateChange
+                                 // listener
+                              } else {
                                  listeners = oeListeners; // add
-                                                      // the
-                                                      // onError
-                                                      // listener
-                  }
-         
+                                 // the
+                                 // onError
+                                 // listener
+                              }
+
                               // will throw an exception if the
                               // listener has already been added
-                              handle = addSystemListener(listeners,
-                                    portletId, type, func);
-         
+                              handle = addSystemListener(listeners, portletId,
+                                    type, func);
+
                               // If just added an onStateChange
                               // listener, update the state
-                  if (type === "portlet.onStateChange") {
-                     _updateStateForPortlet(portletId);
-                  }
-         
-               } else {
-         
-                  // Portlet client event listener
-                              handle = addPCListener(pcListeners,
-                                    portletId, type, func);
-               }
-         
-               return handle;
-            },
-         
-            /**
+                              if (type === "portlet.onStateChange") {
+                                 _updateStateForPortlet(portletId);
+                              }
+
+                           } else {
+
+                              // Portlet client event listener
+                              handle = addPCListener(pcListeners, portletId,
+                                    type, func);
+                           }
+
+                           return handle;
+                        },
+
+                        /**
                          * Removes a previously added listener function
-                         * designated by the handle. The handle must be
-                         * the same object previously returned by the
-                         * addEventListener function.
+                         * designated by the handle. The handle must be the same
+                         * object previously returned by the addEventListener
+                         * function.
                          * 
                          * @param {object}
-                         *            handle The handle of the listener
-                         *            to be removed
-             *
-             * @throws  {IllegalArgumentException}
-                         *             Thrown if the input parameters
-                         *             are invalid
-             * @throws  {AccessDeniedException}
-                         *             Thrown if the event listener
-                         *             associated with this handle was
-                         *             registered by a different portlet
-             *
-             * @memberOf            PortletInit
-             */
+                         *           handle The handle of the listener to be
+                         *           removed
+                         * 
+                         * @throws {TypeError}
+                         *            Thrown if the input parameters are invalid
+                         * @throws {AccessDeniedException}
+                         *            Thrown if the event listener associated
+                         *            with this handle was registered by a
+                         *            different portlet
+                         * 
+                         * @memberOf PortletInit
+                         */
                         removeEventListener : function(handle) {
-         
+
                            // check for exactly 1 argument. Don't check
                            // the argument type.
-               checkArguments(arguments, 1, 1, []);
-         
-               // check for null or undefined argument
-                           if ((handle === null)
-                                 || (handle === undefined)) {
-                              throwIllegalArgumentException("The argument provided is "
+                           checkArguments(arguments, 1, 1, []);
+
+                           // check for null or undefined argument
+                           if ((handle === null) || (handle === undefined)) {
+                              throw new TypeError("The argument provided is "
                                     + (typeof handle));
                            }
 
@@ -1496,192 +1481,169 @@ var portlet = portlet || {};
                            // (or an exception will be thrown by
                            // removePCListener), so throw.
 
-                           if ((removePCListener(pcListeners,
-                                 portletId, handle) === false)
-                                 && (removeSystemListener(
-                                       oscListeners, portletId,
-                                       handle) === false)
-                                 && (removeSystemListener(
-                                       oeListeners, portletId,
-                                       handle) === false)) {
-         
-                  throwIllegalArgumentException("The event listener handle doesn't match any listeners.");
-               }
-            },
-         
-            /**
-                         * Sets the render state, which consists of the
-                         * public and private render parameters, the
-                         * portlet mode, and the window state.
+                           if ((removePCListener(pcListeners, portletId, handle) === false)
+                                 && (removeSystemListener(oscListeners,
+                                       portletId, handle) === false)
+                                 && (removeSystemListener(oeListeners,
+                                       portletId, handle) === false)) {
+
+                              throw new TypeError(
+                                    "The event listener handle doesn't match any listeners.");
+                           }
+                        },
+
+                        /**
+                         * Sets the render state, which consists of the public
+                         * and private render parameters, the portlet mode, and
+                         * the window state.
                          * <p>
-                         * When the render state has been successfully
-                         * set, a copy of the render state will be
-                         * provided to the portlet client through the
-                         * {@link onStateChange} listener function. A
-                         * portlet client can modify this state object
-                         * and pass it to the setRenderState function to
-                         * update the render state.
+                         * When the render state has been successfully set, a
+                         * copy of the render state will be provided to the
+                         * portlet client through the {@link onStateChange}
+                         * listener function. A portlet client can modify this
+                         * state object and pass it to the setRenderState
+                         * function to update the render state.
                          * <p>
-                         * However, it is also possible for the portal
-                         * to completely refresh the page as a response
-                         * to setting the render state. This may occur
-                         * in order to support portlets on the page that
-                         * do not participate in the Portlet 3.0 Ajax
-                         * support or due to configuration settings, for
-                         * example.
+                         * However, it is also possible for the portal to
+                         * completely refresh the page as a response to setting
+                         * the render state. This may occur in order to support
+                         * portlets on the page that do not participate in the
+                         * Portlet 3.0 Ajax support or due to configuration
+                         * settings, for example.
                          * <p>
-                         * If the page is completely refreshed, it will
-                         * be rendered according to render parameters
-                         * set on the server.
+                         * If the page is completely refreshed, it will be
+                         * rendered according to render parameters set on the
+                         * server.
                          * <p>
-                         * Setting the render state is a blocking
-                         * operation. To allow for orderly state
-                         * transitions, the portlet hub does not allow
-                         * this function to be used while a blocking
-                         * operation is in progress. A blocking
-                         * operation is considered to be in progress
-                         * from the initial call until the final
-                         * onStateChange event for that operation has
-                         * been fired. See {@link portlet} for further
-                         * information.
-             *
+                         * Setting the render state is a blocking operation. To
+                         * allow for orderly state transitions, the portlet hub
+                         * does not allow this function to be used while a
+                         * blocking operation is in progress. A blocking
+                         * operation is considered to be in progress from the
+                         * initial call until the final onStateChange event for
+                         * that operation has been fired. See {@link portlet}
+                         * for further information.
+                         * 
                          * @param {RenderState}
-                         *            state The new state to be set
-             *
-             * @throws  {IllegalArgumentException}
-                         *             Thrown if the input parameters
-                         *             are invalid
-             * @throws  {AccessDeniedException}
-             *                   Thrown if a blocking operation is
-             *                   already in progress.
-             * @throws  {NotInitializedException}
-                         *             Thrown if a portlet ID is
-                         *             provided, but no onStateChange
-             *                   listener has been registered.
-             *
-             * @memberOf   PortletInit
-             */
+                         *           state The new state to be set
+                         * 
+                         * @throws {TypeError}
+                         *            Thrown if the input parameters are invalid
+                         * @throws {AccessDeniedException}
+                         *            Thrown if a blocking operation is already
+                         *            in progress.
+                         * @throws {NotInitializedException}
+                         *            Thrown if a portlet ID is provided, but no
+                         *            onStateChange listener has been
+                         *            registered.
+                         * 
+                         * @memberOf PortletInit
+                         */
                         setRenderState : function(state) {
 
-               console.log("setRenderState", state);
+                           console.log("setRenderState", state);
 
                            // check for exactly 1 argument of type
                            // 'object'
                            // make sure an onStateChange listener is
                            // registered by providing portlet ID
-                           checkArguments(arguments, 1, 1,
-                                 [ 'object' ]);
-         
+                           checkArguments(arguments, 1, 1, [ 'object' ]);
+
                            // validate render state & throw exception
                            // if incorrect
-               validateState(portletId, state);
-         
+                           validateState(portletId, state);
+
                            // Ok so far, so do the update. Throws if
                            // busy or no callback registered
-               updateState(portletId, state);
-         
-            },
+                           updateState(portletId, state);
 
+                        },
 
-            /**
-                         * Returns a promise for a resource URL with
-                         * parameters set appropriately for the page
-                         * state according to the resource parameters,
-                         * cacheability option, and resource ID
-                         * provided.
+                        /**
+                         * Returns a promise for a resource URL with parameters
+                         * set appropriately for the page state according to the
+                         * resource parameters, cacheability option, and
+                         * resource ID provided.
                          * <p>
-                         * The portlet client may use the resource URL
-                         * with any appropriate javascript framework to
-                         * retrieve content from the portlet through the
-                         * server-side serveResource method.
+                         * The portlet client may use the resource URL with any
+                         * appropriate javascript framework to retrieve content
+                         * from the portlet through the server-side
+                         * serveResource method.
                          * <p>
-                         * Resource parameters are optional parameters
-                         * attached to a resource URL in addition to any
-                         * render state values that may be present.
-                         * Resource parameters do not influence the
-                         * render state.
+                         * Resource parameters are optional parameters attached
+                         * to a resource URL in addition to any render state
+                         * values that may be present. Resource parameters do
+                         * not influence the render state.
                          * <p>
-                         * The resource parameters must be an object
-                         * containing properties representing parameter
-                         * names whose values must be an array of string
-                         * values, as described under
-                         * {@link PortletParameters}. All of the
-                         * resource parameters will be attached to the
-                         * URL. Use of resource parameters is optional.
+                         * The resource parameters must be an object containing
+                         * properties representing parameter names whose values
+                         * must be an array of string values, as described under
+                         * {@link PortletParameters}. All of the resource
+                         * parameters will be attached to the URL. Use of
+                         * resource parameters is optional.
                          * <p>
-                         * The cacheability option designates the degree
-                         * to which the content to be served can be
-                         * cached and influences the type of content
-                         * that can be served. There are three possible
-                         * values:
-             * <dl>
-             * <dd>"FULL"</dd>
-                         * <dt> Most cacheable, because the URL contains
-                         * no portlet-specific or page-specific
-                         * information. </dt>
-             * <dd>"PORTLET"</dd>
-                         * <dt> More cacheable, because the URL contains
-                         * only portlet-specific but no page-specific
-                         * information. </dt>
-             * <dd>"PAGE"</dd>
+                         * The cacheability option designates the degree to
+                         * which the content to be served can be cached and
+                         * influences the type of content that can be served.
+                         * There are three possible values:
+                         * <dl>
+                         * <dd>"full"</dd>
+                         * <dt> Most cacheable, because the URL contains no
+                         * portlet-specific or page-specific information. </dt>
+                         * <dd>"portlet"</dd>
+                         * <dt> More cacheable, because the URL contains only
+                         * portlet-specific but no page-specific information.
+                         * </dt>
+                         * <dd>"page"</dd>
                          * <dt> Least cacheable because the URL contains
-                         * portlet-specific and page-specific
-                         * information.
+                         * portlet-specific and page-specific information.
                          * <p>
-                         * However, cacheability must be set to "PAGE"
-                         * if the content to be served contains portal
-                         * URLs. </dt>
-             * </dl>
-             * <p>
-                         * Specification of cacheability is optional. If
-                         * the cacheability is not specified,
-                         * cacheability for the URL will be set to
-                         * "PAGE".
+                         * However, cacheability must be set to "page" if the
+                         * content to be served contains portal URLs. </dt>
+                         * </dl>
                          * <p>
-                         * The resource ID is an additional identifying
-                         * string that the resource serving method on
-                         * the server can use to determine the
-                         * information to be provided. The resource ID
-                         * argument is optional.
+                         * Specification of cacheability is optional. If the
+                         * cacheability is not specified, cacheability for the
+                         * URL will be set to "PAGE".
                          * <p>
-                         * The parameters must be provided in the
-                         * defined order. However, if a preceding
-                         * argument is not needed, it may be specified
-                         * as <code>null</code>. Examples of valid
-                         * calls: <code>
-             * <br>createResourceUrl();
-             * <br>createResourceUrl(resParams, cache);
+                         * The resource ID is an additional identifying string
+                         * that the resource serving method on the server can
+                         * use to determine the information to be provided. The
+                         * resource ID argument is optional.
+                         * <p>
+                         * The parameters must be provided in the defined order.
+                         * However, if a preceding argument is not needed, it
+                         * may be specified as <code>null</code>. Examples of
+                         * valid calls: <code>
+                         * <br>createResourceUrl();
+                         * <br>createResourceUrl(resParams, cache);
                          * <br>createResourceUrl(resParams, cache, resid);
-             * <br>createResourceUrl(resParams);
+                         * <br>createResourceUrl(resParams);
                          * <br>createResourceUrl(<code>null</code>, cache);
                          * <br>createResourceUrl(<code>null</code>, <code>null</code>, resid);
-             * </code>
-             *
-                         * @param {PortletParameters}
-                         *            resParams Resource parameters to
-                         *            be added to the URL
-                         * @param {string}
-                         *            cache Cacheability option. The
-                         *            strings defined under
-                         *            {@link PortletConstants} should be
-                         *            used to specifiy cacheability.
-                         * @param {string}
-                         *            resid Resource ID.
+                         * </code>
                          * 
-                         * @returns {Promise} A Promise object. Returns
-                         *          a string representing the resource
-                         *          URL on successful resolution.
-                         *          Returns an Error object containing a
-                         *          descriptive message on failure.
-             *
-             * @throws  {IllegalArgumentException}
-                         *             Thrown if the input parameters
-                         *             are invalid
-             *
-             * @memberOf   PortletInit
-             */
-                        createResourceUrl : function(resParams, cache,
-                              resid) {
+                         * @param {PortletParameters}
+                         *           resParams Resource parameters to be added
+                         *           to the URL
+                         * @param {string}
+                         *           cache Cacheability option. The strings
+                         *           defined under {@link PortletConstants}
+                         *           should be used to specifiy cacheability.
+                         * @param {string}
+                         *           resid Resource ID.
+                         * 
+                         * @returns {Promise} A Promise object. Returns a string
+                         *          representing the resource URL on successful
+                         *          resolution. Returns an Error object
+                         *          containing a descriptive message on failure.
+                         * 
+                         * @throws {TypeError}
+                         *            Thrown if the input parameters are invalid
+                         * 
+                         * @memberOf PortletInit
+                         */
+                        createResourceUrl : function(resParams, cache, resid) {
                            var ii, arg, cacheability = null, pi, rid = null;
 
                            // check arguments. make sure there is a
@@ -1689,223 +1651,215 @@ var portlet = portlet || {};
                            // args and determine the types. Check
                            // values as possible.
                            if (arguments.length > 3) {
-                              throwIllegalArgumentException("Too many arguments. 3 arguments are allowed.");
+                              throw new TypeError(
+                                    "Too many arguments. 3 arguments are allowed.");
                            }
 
                            if (resParams) {
                               if (typeof resParams === 'object') {
                                  validateParms(resParams); // throws
-                                                      // if
-                                                      // parms
-                                                      // are
-                                                      // invalid
+                                 // if
+                                 // parms
+                                 // are
+                                 // invalid
                               } else {
-                                 throwIllegalArgumentException("Invalid argument type. Resource parameters must be a parameters object.");
+                                 throw new TypeError(
+                                       "Invalid argument type. Resource parameters must be a parameters object.");
                               }
-               }
-         
+                           }
+
                            if (cache) {
                               if (typeof cache === 'string') {
                                  switch (cache) {
-                     case "cacheLevelPage":
-                     case "cacheLevelPortlet":
-                     case "cacheLevelFull":
+                                 case "cacheLevelPage":
+                                 case "cacheLevelPortlet":
+                                 case "cacheLevelFull":
                                     cacheability = cache;
-                        break;
-                     default:
-                                    throwIllegalArgumentException("Invalid cacheability argument: "
-                                          + cache);
-                      }
-                   } else {
-                                 throwIllegalArgumentException("Invalid argument type. Cacheability argument must be a string.");
-                  }
-               }
-               
-               // fallback to page level cacheability
-               if (!cacheability) {
-                  cacheability = "cacheLevelPage";
-               }
-         
+                                    break;
+                                 default:
+                                    throw new TypeError(
+                                          "Invalid cacheability argument: "
+                                                + cache);
+                                 }
+                              } else {
+                                 throw new TypeError(
+                                       "Invalid argument type. Cacheability argument must be a string.");
+                              }
+                           }
+
+                           // fallback to page level cacheability
+                           if (!cacheability) {
+                              cacheability = "cacheLevelPage";
+                           }
+
                            if (resid) {
                               if (typeof resid === 'string') {
                                  rid = resid;
                               } else {
-                                 throwIllegalArgumentException("Invalid argument type. Resource ID argument must be a string.");
+                                 throw new TypeError(
+                                       "Invalid argument type. Resource ID argument must be a string.");
                               }
                            }
 
-               // everything ok, so get URL from the impl
-               pi = _registeredPortlets[portletId];
+                           // everything ok, so get URL from the impl
+                           pi = _registeredPortlets[portletId];
                            return pi.getUrl("RESOURCE", resParams,
                                  cacheability, rid);
-            },
-         
-            /**
-                         * Initiates a portlet action using the
-                         * specified action parameters and element
-             * arguments.
-             * <p>
-                         * When the action has successfully completed, a
-                         * copy of the render state will be provided to
-                         * the portlet client through the
-                         * {@link onStateChange} listener function. A
-                         * portlet client can modify this state object
-                         * and pass it to the setRenderState function to
+                        },
+
+                        /**
+                         * Initiates a portlet action using the specified action
+                         * parameters and element arguments.
+                         * <p>
+                         * When the action has successfully completed, a copy of
+                         * the render state will be provided to the portlet
+                         * client through the {@link onStateChange} listener
+                         * function. A portlet client can modify this state
+                         * object and pass it to the setRenderState function to
                          * update the render state.
                          * <p>
-                         * However, it is also possible for the portal
-                         * to completely refresh the page as a response
-                         * to the action. This may occur in order to
-                         * support portlets on the page that do not
-                         * participate in the Portlet 3.0 Ajax support
-                         * or due to configuration settings, for
-                         * example.
+                         * However, it is also possible for the portal to
+                         * completely refresh the page as a response to the
+                         * action. This may occur in order to support portlets
+                         * on the page that do not participate in the Portlet
+                         * 3.0 Ajax support or due to configuration settings,
+                         * for example.
                          * <p>
-                         * If the page is completely refreshed, it will
-                         * be rendered according to render parameters
-                         * set on the server.
+                         * If the page is completely refreshed, it will be
+                         * rendered according to render parameters set on the
+                         * server.
                          * <p>
-                         * Action parameters are optional parameters
-                         * attached to a action URL in addition to any
-                         * render state values that may be present.
-                         * Action parameters do not influence the render
-                         * state.
+                         * Action parameters are optional parameters attached to
+                         * a action URL in addition to any render state values
+                         * that may be present. Action parameters do not
+                         * influence the render state.
                          * <p>
-                         * The action parameters must be an object
-                         * containing properties representing parameter
-                         * names whose values must be an array of string
-                         * values, as described under
+                         * The action parameters must be an object containing
+                         * properties representing parameter names whose values
+                         * must be an array of string values, as described under
                          * {@link PortletParameters}. All of the action
-                         * parameters will be attached to the URL. Use
-                         * of action parameters is optional.
+                         * parameters will be attached to the URL. Use of action
+                         * parameters is optional.
                          * <p>
-                         * If the <code>element</code> argument is
-                         * present, it must refer to an HTML form to be
-                         * submitted. The portlet hub will use this form
-                         * to execute the action.
+                         * If the <code>element</code> argument is present, it
+                         * must refer to an HTML form to be submitted. The
+                         * portlet hub will use this form to execute the action.
                          * <p>
-                         * If the form element is specified, the
-                         * encoding type must be
-                         * 'application/x-www-form-urlencoded' or
-                         * 'multipart/form-data'. The encoding type
-                         * 'text/plain' is not supported.
+                         * If the form element is specified, the encoding type
+                         * must be 'application/x-www-form-urlencoded' or
+                         * 'multipart/form-data'. The encoding type 'text/plain'
+                         * is not supported.
                          * <p>
-                         * If the encoding type is
-                         * 'multipart/form-data', the submission method
-                         * must be 'POST'. Form 'INPUT' elements of type
-                         * 'FILE' are supported.
+                         * If the encoding type is 'multipart/form-data', the
+                         * submission method must be 'POST'. Form 'INPUT'
+                         * elements of type 'FILE' are supported.
                          * <p>
                          * If the encoding type is
-                         * 'application/x-www-form-urlencoded', the
-                         * submission method can be either 'GET' or
-                         * 'POST'. However, form 'INPUT' elements of
-                         * type 'FILE' are not supported.
+                         * 'application/x-www-form-urlencoded', the submission
+                         * method can be either 'GET' or 'POST'. However, form
+                         * 'INPUT' elements of type 'FILE' are not supported.
                          * <p>
-                         * Specification of <code>element</code> is
-                         * optional. If the <code>element</code> is
-                         * not specified, the portlet hub will submit
-                         * the action to the server by executing a
-                         * 'POST' with an action URL containing any
+                         * Specification of <code>element</code> is optional.
+                         * If the <code>element</code> is not specified, the
+                         * portlet hub will submit the action to the server by
+                         * executing a 'POST' with an action URL containing any
                          * action parameters provided.
                          * <p>
-                         * The parameters may be specified in either
-                         * order, individually, or not at all. Examples
-                         * of valid calls: <code>
-             * <br>action();
-             * <br>action(actParams, element);
-             * <br>action(actParams);
-             * <br>action(element);
-             * </code>
-             * <p>
-                         * A portlet action is a blocking operation. To
-                         * allow for orderly state transitions, the
-                         * portlet hub does not allow this function to
-                         * be used while a blocking operation is in
-                         * progress. A blocking operation is considered
-                         * to be in progress from the initial call until
-                         * the final onStateChange event for that
-                         * operation has been fired. See {@link portlet}
-                         * for further information.
-             * <p>
-             * 
-             *
-                         * @param {PortletParameters}
-                         *            actParams Action parameters to be
-                         *            added to the URL (optional)
-                         * @param {HTMLFormElement}
-                         *            element DOM element of form to be
-                         *            submitted (optional)
+                         * The parameters may be specified in either order,
+                         * individually, or not at all. Examples of valid calls:
+                         * <code>
+                         * <br>action();
+                         * <br>action(actParams, element);
+                         * <br>action(actParams);
+                         * <br>action(element);
+                         * </code>
+                         * <p>
+                         * A portlet action is a blocking operation. To allow
+                         * for orderly state transitions, the portlet hub does
+                         * not allow this function to be used while a blocking
+                         * operation is in progress. A blocking operation is
+                         * considered to be in progress from the initial call
+                         * until the final onStateChange event for that
+                         * operation has been fired. See {@link portlet} for
+                         * further information.
+                         * <p>
                          * 
-                         * @returns {Promise} A Promise object that is
-                         *          resolved with no argument when the
-                         *          action request has completed.
-             *
-             * @throws  {IllegalArgumentException}
-                         *             Thrown if the input parameters
-                         *             are invalid
-             * @throws  {AccessDeniedException}
-             *                   Thrown if a blocking operation is
-             *                   already in progress.
-             * @throws  {NotInitializedException}
-                         *             Thrown if a portlet ID is
-                         *             provided, but no onStateChange
-             *                   listener has been registered.
-             *
-             * @memberOf   PortletInit
-             */
+                         * 
+                         * @param {PortletParameters}
+                         *           actParams Action parameters to be added to
+                         *           the URL (optional)
+                         * @param {HTMLFormElement}
+                         *           element DOM element of form to be submitted
+                         *           (optional)
+                         * 
+                         * @returns {Promise} A Promise object that is resolved
+                         *          with no argument when the action request has
+                         *          completed.
+                         * 
+                         * @throws {TypeError}
+                         *            Thrown if the input parameters are invalid
+                         * @throws {AccessDeniedException}
+                         *            Thrown if a blocking operation is already
+                         *            in progress.
+                         * @throws {NotInitializedException}
+                         *            Thrown if a portlet ID is provided, but no
+                         *            onStateChange listener has been
+                         *            registered.
+                         * 
+                         * @memberOf PortletInit
+                         */
                         action : function(actParams, element) {
-               var ii, arg, type, parms = null, el = null, meth;
-         
-                           console
-                                 .log("Executing action for portlet: "
-                                       + portletId);
+                           var ii, arg, type, parms = null, el = null, meth;
+
+                           console.log("Executing action for portlet: "
+                                 + portletId);
                            // check arguments. make sure there is a
                            // maximum of two
                            // args and determine the types. Check
                            // values as possible.
-               if (arguments.length > 2) {
-                  throwIllegalArgumentException("Too many arguments. 2 arguments are allowed.");
-               }
-         
-               ii = arguments.length;
+                           if (arguments.length > 2) {
+                              throw new TypeError(
+                                    "Too many arguments. 2 arguments are allowed.");
+                           }
+
+                           ii = arguments.length;
                            while (--ii >= 0) {
-                  arg = arguments[ii];
-                              type = Object.prototype.toString
-                                    .call(arg);
-                  if (type === '[object HTMLFormElement]') {
-                     if (el === null) {
-                        el = arg;
-                     } else {
-                        throwIllegalArgumentException("too many [object HTMLFormElement] arguments: "
-                               + arg + ", " + el);
-                     }
-                  } else if (type === '[object Object]') {
+                              arg = arguments[ii];
+                              type = Object.prototype.toString.call(arg);
+                              if (type === '[object HTMLFormElement]') {
+                                 if (el === null) {
+                                    el = arg;
+                                 } else {
+                                    throw new TypeError(
+                                          "too many [object HTMLFormElement] arguments: "
+                                                + arg + ", " + el);
+                                 }
+                              } else if (type === '[object Object]') {
                                  validateParms(arg); // throws if
-                                                // parms are
-                                                // invalid
-                     if (parms !== null) {
-                        throwIllegalArgumentException("too many parameters arguments.");
-                     }
-                     parms = arg;
+                                 // parms are
+                                 // invalid
+                                 if (parms !== null) {
+                                    throw new TypeError(
+                                          "too many parameters arguments.");
+                                 }
+                                 parms = arg;
                               } else if (arg !== undefined) {
-                                 throwIllegalArgumentException("Invalid argument type. Argument "
-                                       + (ii + 1)
-                                       + " is of type "
-                                       + type);
-                  }
-               }
-               
+                                 throw new TypeError(
+                                       "Invalid argument type. Argument "
+                                             + (ii + 1) + " is of type " + type);
+                              }
+                           }
+
                            // if we're dealing with a form, verify
                            // method and enctype
-               console.log("form element", el);
-               
-               if (el) {
-                              meth = el.method ? el.method
-                                    .toUpperCase() : undefined;
-            	   
-                              if (meth && (meth !== 'POST')
-                                    && (meth !== 'GET')) {
-                                 throwIllegalArgumentException("Invalid form method "
+                           console.log("form element", el);
+
+                           if (el) {
+                              meth = el.method ? el.method.toUpperCase()
+                                    : undefined;
+
+                              if (meth && (meth !== 'POST') && (meth !== 'GET')) {
+                                 throw new TypeError("Invalid form method "
                                        + el.method
                                        + ". Allowed methods are GET & POST ");
                               }
@@ -1916,328 +1870,323 @@ var portlet = portlet || {};
                               if (el.enctype
                                     && el.enctype !== 'application\/x-www-form-urlencoded'
                                     && el.enctype !== 'multipart\/form-data') {
-                                 throwIllegalArgumentException("Invalid form enctype "
-                                       + el.enctype
-                                       + ". Allowed: 'application\/x-www-form-urlencoded' & 'multipart\/form-data'  ");
+                                 throw new TypeError(
+                                       "Invalid form enctype "
+                                             + el.enctype
+                                             + ". Allowed: 'application\/x-www-form-urlencoded' & 'multipart\/form-data'  ");
                               }
 
                               if (el.enctype
                                     && (el.enctype === 'multipart\/form-data')
                                     && (meth !== 'POST')) {
-                     throwIllegalArgumentException("Invalid method with multipart/form-data. Must be POST.");
-                  }
-                  
+                                 throw new TypeError(
+                                       "Invalid method with multipart/form-data. Must be POST.");
+                              }
+
                               // if the data is supposed to be
                               // urlencoded, we don't suport FILE
                               // element
                               if (!el.enctype
                                     || (el.enctype === 'application\/x-www-form-urlencoded')) {
-                     for (ii = 0; ii < el.elements.length; ii++) {
-                                    if (el.elements[ii].nodeName
-                                          .toUpperCase() === 'INPUT'
-                                          && el.elements[ii].type
-                                                .toUpperCase() === 'FILE') {
-                           throwIllegalArgumentException("Must use enctype = 'multipart/form-data' with input type FILE.");
-                        }
-                     }
-                  }
-              }
-         
-               // everything ok, so do the action
-         
-               return setupAction(portletId, parms, el);
-            },
-         
-            /**
-                         * Starts partial action processing and returns
-                         * a {@link PartialActionInit} object to the
-                         * caller. The <code>PartialActionInit</code>
-                         * object contains a partial action URL and an
-                         * {@setPageState}. The partial action URL can
-                         * be used to initiate an action request. The
-                         * {@setPageState} callback function allows the
-                         * portlet client to complete the partial action
-                         * operation by updating the state of all
-                         * portlet clients on the page that are affected
-                         * by action and event processing on the server
+                                 for (ii = 0; ii < el.elements.length; ii++) {
+                                    if (el.elements[ii].nodeName.toUpperCase() === 'INPUT'
+                                          && el.elements[ii].type.toUpperCase() === 'FILE') {
+                                       throw new TypeError(
+                                             "Must use enctype = 'multipart/form-data' with input type FILE.");
+                                    }
+                                 }
+                              }
+                           }
+
+                           // everything ok, so do the action
+
+                           return setupAction(portletId, parms, el);
+                        },
+
+                        /**
+                         * Starts partial action processing and returns a
+                         * {@link PartialActionInit} object to the caller. The
+                         * <code>PartialActionInit</code> object contains a
+                         * partial action URL and a {@setPageState} callback
+                         * function. The partial action URL can be used to
+                         * initiate an action request. The {@setPageState}
+                         * callback function allows the portlet client to
+                         * complete the partial action operation by updating the
+                         * state of all portlet clients on the page that are
+                         * affected by action and event processing on the server
                          * resulting from the partial action.
                          * <p>
-                         * After the <code>setPageState</code>
-                         * function has been called, a copy of the
-                         * render state will be provided to each
-                         * affected portlet client through the
+                         * After the <code>setPageState</code> function has
+                         * been called, a copy of the render state will be
+                         * provided to each affected portlet client through the
                          * {@link onStateChange} listener function.
                          * <p>
-                         * However, it is also possible for the portal
-                         * to completely refresh the page as a response
-                         * to the action. This may occur in order to
-                         * support portlets on the page that do not
-                         * participate in the Portlet 3.0 Ajax support
-                         * or due to configuration settings, for
-                         * example.
+                         * In addition, the {@link onStateChange} listener
+                         * function for the initiating portlet will be provided
+                         * with a {@link RenderData} object, which contains the
+                         * same data as would be available through a portlet
+                         * resource request using the current render state with
+                         * no additional resource parameters and with the
+                         * resource URL cacheability option set to "PAGE".
                          * <p>
-                         * If the page is completely refreshed, it will
-                         * be rendered according to render parameters
-                         * set on the server.
+                         * Note that HTTP header information for the partial
+                         * action response is set by the action processing
+                         * method on the server. Any header information set by
+                         * the resource method called to obtain the
+                         * {@link RenderData} will be lost. If the portlet
+                         * client needs access to the header data set by the
+                         * resource method, it should create a resource URL and
+                         * fetch the resource data on its own when the
+                         * {@link onStateChange} listener function is called
+                         * after the partial action has been performed.
                          * <p>
-                         * Action parameters are optional parameters
-                         * attached to a action URL in addition to any
-                         * render state values that may be present.
-                         * Action parameters do not influence the render
-                         * state.
+                         * However, it is also possible for the portal to
+                         * completely refresh the page as a response to the
+                         * action. This may occur in order to support portlets
+                         * on the page that do not participate in the Portlet
+                         * 3.0 Ajax support or due to configuration settings,
+                         * for example.
                          * <p>
-                         * The action parameters must be an object
-                         * containing properties representing parameter
-                         * names whose values must be an array of string
-                         * values, as described under
+                         * If the page is completely refreshed, it will be
+                         * rendered according to render parameters set on the
+                         * server.
+                         * <p>
+                         * Action parameters are optional parameters attached to
+                         * a action URL in addition to any render state values
+                         * that may be present. Action parameters do not
+                         * influence the render state.
+                         * <p>
+                         * The action parameters must be an object containing
+                         * properties representing parameter names whose values
+                         * must be an array of string values, as described under
                          * {@link PortletParameters}. All of the action
-                         * parameters will be attached to the URL. Use
-                         * of action parameters is optional.
+                         * parameters will be attached to the URL. Use of action
+                         * parameters is optional.
                          * <p>
-                         * A partial action is a blocking operation. To
-                         * allow for orderly state transitions, the
-                         * portlet hub does not allow this function to
-                         * be used while a blocking operation is in
-                         * progress. A blocking operation is considered
-                         * to be in progress from the initial call until
-                         * the final onStateChange event for that
-                         * operation has been fired. See {@link portlet}
-                         * for further information.
+                         * A partial action is a blocking operation. To allow
+                         * for orderly state transitions, the portlet hub does
+                         * not allow this function to be used while a blocking
+                         * operation is in progress. A blocking operation is
+                         * considered to be in progress from the initial call
+                         * until the final onStateChange event for that
+                         * operation has been fired. See {@link portlet} for
+                         * further information.
                          * 
                          * @param {PortletParameters}
-                         *            actParams Action parameters to be
-                         *            added to the URL (optional)
+                         *           actParams Action parameters to be added to
+                         *           the URL (optional)
                          * 
-                         * @returns {Promise} A Promise object. Returns
-                         *          a {PortletActionInit} object
-                         *          containing a partial action URL and
-                         *          the setPageState callback function
-                         *          on successful resolution. Returns an
-                         *          Error object containing a
+                         * @returns {Promise} A Promise object. Returns a
+                         *          {PortletActionInit} object containing a
+                         *          partial action URL and the setPageState
+                         *          callback function on successful resolution.
+                         *          Returns an Error object containing a
                          *          descriptive message on failure.
-             *
-             * @throws  {IllegalArgumentException}
-                         *             Thrown if the input parameters
-                         *             are invalid
-             * @throws  {AccessDeniedException}
-             *                   Thrown if a blocking operation is
-             *                   already in progress.
-             * @throws  {NotInitializedException}
-                         *             Thrown if a portlet ID is
-                         *             provided, but no onStateChange
-             *                   listener has been registered.
-             *
-             * @memberOf   PortletInit
-             */
+                         * 
+                         * @throws {TypeError}
+                         *            Thrown if the input parameters are invalid
+                         * @throws {AccessDeniedException}
+                         *            Thrown if a blocking operation is already
+                         *            in progress.
+                         * @throws {NotInitializedException}
+                         *            Thrown if a portlet ID is provided, but no
+                         *            onStateChange listener has been
+                         *            registered.
+                         * 
+                         * @memberOf PortletInit
+                         */
                         startPartialAction : function(actParams) {
-               var  parms = null, paObj = {}, pi;
-         
+                           var parms = null, paObj = {}, pi;
+
                            // check arguments. make sure there is a
                            // maximum of two
                            // args and determine the types. Check
                            // values as possible.
-               if (arguments.length > 1) {
-                  throwIllegalArgumentException("Too many arguments. 1 arguments are allowed.");
-               } else if (actParams !== undefined) {
-                  if (typeof actParams === 'object') {
+                           if (arguments.length > 1) {
+                              throw new TypeError(
+                                    "Too many arguments. 1 arguments are allowed.");
+                           } else if (actParams !== undefined) {
+                              if (typeof actParams === 'object') {
                                  validateParms(actParams); // throws
-                                                      // if
-                                                      // parms
-                                                      // are
-                                                      // invalid
-                     parms = actParams;
-                  } else {
-                     throwIllegalArgumentException("Invalid argument type. Argument is of type " 
-                           + (typeof actParams));
-                  }
-               }
-         
-               // make sure operation is allowed
-               if (busy === true) {
-                  throwAccessDeniedException("Operation in progress");
+                                 // if
+                                 // parms
+                                 // are
+                                 // invalid
+                                 parms = actParams;
+                              } else {
+                                 throw new TypeError(
+                                       "Invalid argument type. Argument is of type "
+                                             + (typeof actParams));
+                              }
+                           }
+
+                           // make sure operation is allowed
+                           if (busy === true) {
+                              throwAccessDeniedException("Operation in progress");
                            } else if (!hasListener(portletId)) {
-                  throwNotInitializedException("No onStateChange listener registered for portlet: "
-                        + portletId);
-               }
-         
-               busy = true;
-         
+                              throwNotInitializedException("No onStateChange listener registered for portlet: "
+                                    + portletId);
+                           }
+
+                           busy = true;
+
                            // Create the PartialActionInit object
                            // fulfill promise by passing it.
-               // let errors propagate to caller.
-               
-               pi = _registeredPortlets[portletId];
-                           return pi
-                                 .getUrl("PARTIAL_ACTION", parms)
-                                 .then(
-                                       function(url) {
-                  paObj.url = url;
-                                          paObj.setPageState = function(
-                                                ustr) {
-                                             setPageState(
-                                                   portletId,
-                                                   ustr);
-                                          };
-                  return paObj;
-               });
-         
-            },
-         
-            /**
-                         * Tests whether a blocking operation is in
-                         * progress.
-             * <p>
-                         * The portlet client can use this function to
-                         * test whether a state change is in progress
-                         * before initiating a blocking operation.
+                           // let errors propagate to caller.
+
+                           pi = _registeredPortlets[portletId];
+                           return pi.getUrl("PARTIAL_ACTION", parms).then(
+                                 function(url) {
+                                    paObj.url = url;
+                                    paObj.setPageState = function(ustr) {
+                                       setPageState(portletId, ustr);
+                                    };
+                                    return paObj;
+                                 });
+
+                        },
+
+                        /**
+                         * Tests whether a blocking operation is in progress.
                          * <p>
-                         * Note that if the portlet client uses this
-                         * function to implement a waiting function, the
-                         * render state may be changed during the time
-                         * that the portlet client waits. Also note that
-                         * the portal may choose to refresh the page as
-                         * a response to a blocking operation, in which
-                         * case the waiting function would not complete.
+                         * The portlet client can use this function to test
+                         * whether a state change is in progress before
+                         * initiating a blocking operation.
+                         * <p>
+                         * Note that if the portlet client uses this function to
+                         * implement a waiting function, the render state may be
+                         * changed during the time that the portlet client
+                         * waits. Also note that the portal may choose to
+                         * refresh the page as a response to a blocking
+                         * operation, in which case the waiting function would
+                         * not complete.
                          * <p>
                          * The portlet hub provides for orderly state
-                         * transitions by allowing only a single
-                         * blocking operation ({@link action},
-                         * {@link setRenderState},
-                         * {@link startPartialAction}) to be active at
-                         * any one time.
+                         * transitions by allowing only a single blocking
+                         * operation ({@link action}, {@link setRenderState},
+                         * {@link startPartialAction}) to be active at any one
+                         * time.
                          * <p>
-                         * The state transition is considered to be
-                         * active from the initial portlet client call
-                         * to one of the blocking operations until the
-                         * portlet hub has performed the requested state
-                         * change and has informed all of the affected
-                         * portlet clients by firing the corresponding
-                         * onStateChange events.
-             * <p>
-             * See {@link portlet} for further information.
-             *
-                         * @returns {boolean} <code>true</code> if a
-                         *          blocking operation is in progress
-             *
-             * @memberOf   PortletInit
-             */
+                         * The state transition is considered to be active from
+                         * the initial portlet client call to one of the
+                         * blocking operations until the portlet hub has
+                         * performed the requested state change and has informed
+                         * all of the affected portlet clients by firing the
+                         * corresponding onStateChange events.
+                         * <p>
+                         * See {@link portlet} for further information.
+                         * 
+                         * @returns {boolean} <code>true</code> if a blocking
+                         *          operation is in progress
+                         * 
+                         * @memberOf PortletInit
+                         */
                         isInProgress : function() {
-               return busy;
-            },
-         
-            /**
-             * Dispatches a client event.
-             * <p>
-                         * Client events of the specified type are
-                         * queued for delivery to registered event
-                         * listeners of that type.
+                           return busy;
+                        },
+
+                        /**
+                         * Dispatches a client event.
                          * <p>
-                         * The event type is matched against the type
-                         * strings associated with registered event
-                         * listeners. An event will be dispatched for
-                         * each matching listener. The number of
-                         * matching listeners will be returned.
+                         * Client events of the specified type are queued for
+                         * delivery to registered event listeners of that type.
                          * <p>
-                         * The event payload is defined by the
-                         * dispatcher of the event. It must be present,
-                         * but may be of any type or value.
+                         * The event type is matched against the type strings
+                         * associated with registered event listeners. An event
+                         * will be dispatched for each matching listener. The
+                         * number of matching listeners will be returned.
                          * <p>
-                         * The portlet Client may not dispatch event
-                         * types beginning with the reserved string
-                         * "portlet.".
+                         * The event payload is defined by the dispatcher of the
+                         * event. It must be present, but may be of any type or
+                         * value.
+                         * <p>
+                         * The portlet Client may not dispatch event types
+                         * beginning with the reserved string "portlet.".
                          * <p>
                          * The client is responsible for preventing race
-                         * conditions. For example, a race condition can
-                         * occur if portlet A dispatches an event to
-                         * portlet B, causing an event to portlet A,
-                         * which dispatches again to portlet B, etc.
+                         * conditions. For example, a race condition can occur
+                         * if portlet A dispatches an event to portlet B,
+                         * causing an event to portlet A, which dispatches again
+                         * to portlet B, etc.
                          * <p>
-                         * Event delivery cannot be guaranteed, and may
-                         * vary according to the situation.
+                         * Event delivery cannot be guaranteed, and may vary
+                         * according to the situation.
                          * <p>
-                         * Take for example a scenario where a portlet
-                         * issues an event to several other portlets,
-                         * perhaps including itself. Due to the event,
-                         * each portlet updates parameters through use
-                         * of the {@link setRenderState} function.
+                         * Take for example a scenario where a portlet issues an
+                         * event to several other portlets, perhaps including
+                         * itself. Due to the event, each portlet updates
+                         * parameters through use of the {@link setRenderState}
+                         * function.
                          * <p>
-                         * The <code>setRenderState</code> function
-                         * can cause a page refresh depending on the
-                         * situation. If all portlets on the page
-                         * participate in the JSR 362 Ajax support, the
-                         * portlet hub might not cause a page refresh.
-                         * However, if there are legacy portlets to be
-                         * supported, the portal or portlet hub might
-                         * choose to refresh the page.
+                         * The <code>setRenderState</code> function can cause
+                         * a page refresh depending on the situation. If all
+                         * portlets on the page participate in the JSR 362 Ajax
+                         * support, the portlet hub might not cause a page
+                         * refresh. However, if there are legacy portlets to be
+                         * supported, the portal or portlet hub might choose to
+                         * refresh the page.
                          * <p>
-                         * In the latter case, this means that the first
-                         * portlet receiving the event will be able to
-                         * successfully update its parameters, but the
-                         * remaining portlets will not. This can have
-                         * unintentional consequences.
+                         * In the latter case, this means that the first portlet
+                         * receiving the event will be able to successfully
+                         * update its parameters, but the remaining portlets
+                         * will not. This can have unintentional consequences.
                          * 
                          * @param {string}
-                         *            type The type of listener
+                         *           type The type of listener
                          * @param {any}
-                         *            payload The payload to be
-                         *            delivered
-             *
-                         * @returns {number} The number of events queued
-                         *          for delivery
-             *
-             * @memberOf   PortletInit
-             */
+                         *           payload The payload to be delivered
+                         * 
+                         * @returns {number} The number of events queued for
+                         *          delivery
+                         * 
+                         * @memberOf PortletInit
+                         */
                         dispatchClientEvent : function(type, payload) {
-               var cnt = 0, li;
-         
+                           var cnt = 0, li;
+
                            // check for 2 arguments, the first of which
                            // must be a string
-                           checkArguments(arguments, 2, 2,
-                                 [ 'string' ]);
-         
+                           checkArguments(arguments, 2, 2, [ 'string' ]);
+
                            // disallow use of reserved name for system
                            // event types
-               if (type.match(portletRegex)) {
-                              throwIllegalArgumentException("The event type is invalid: "
+                           if (type.match(portletRegex)) {
+                              throw new TypeError("The event type is invalid: "
                                     + type);
-               }
-         
-               for (li in pcListeners) {
-                  if (pcListeners.hasOwnProperty(li)) {
-         
-                                 if (type
-                                       .match(pcListeners[li].type) !== null) {
-                                    dispatchCE(
-                                          type,
-                                          pcListeners[li].callback,
+                           }
+
+                           for (li in pcListeners) {
+                              if (pcListeners.hasOwnProperty(li)) {
+
+                                 if (type.match(pcListeners[li].type) !== null) {
+                                    dispatchCE(type, pcListeners[li].callback,
                                           payload);
-                        cnt++;
-                     }
-                  }
-               }
-         
-               return cnt;
-            },
-            
-            /**
-                         * Creates and returns a new PortletParameters
-                         * object.
-             * <p>
+                                    cnt++;
+                                 }
+                              }
+                           }
+
+                           return cnt;
+                        },
+
+                        /**
+                         * Creates and returns a new PortletParameters object.
+                         * <p>
                          * If no argument is provided, an empty
-                         * PortletParameters object will be returned. If
-                         * an existing PortletParameters object is
-                         * provided as argument, a clone of the input
-                         * object will be returned.
+                         * PortletParameters object will be returned. If an
+                         * existing PortletParameters object is provided as
+                         * argument, a clone of the input object will be
+                         * returned.
                          * 
                          * @param {PortletParameters}
-                         *            p An optional PortletParameters
-                         *            object to be copied
-             *
-                         * @returns {PortletParameters} The new
-                         *          parameters object
-             *
-             * @memberOf   PortletInit
-             */
+                         *           p An optional PortletParameters object to
+                         *           be copied
+                         * 
+                         * @returns {PortletParameters} The new parameters
+                         *          object
+                         * 
+                         * @memberOf PortletInit
+                         */
                         newParameters : function(p) {
                            var n, newparams = {};
                            if (p) {
@@ -2248,42 +2197,39 @@ var portlet = portlet || {};
                               }
                            }
                            return newparams;
-            },
-            
-            /**
-             * Creates and returns a new RenderState object.
-             * <p>
-                         * If no argument is provided, an empty
-                         * RenderState object will be returned. If an
-                         * existing RenderState object is provided as
-                         * argument, a clone of the input object will be
-                         * returned.
+                        },
+
+                        /**
+                         * Creates and returns a new RenderState object.
+                         * <p>
+                         * If no argument is provided, an empty RenderState
+                         * object will be returned. If an existing RenderState
+                         * object is provided as argument, a clone of the input
+                         * object will be returned.
                          * 
                          * @param {RenderState}
-                         *            s An optional RenderState object
-                         *            to be copied
-             *
-                         * @returns {RenderState} The new RenderState
-                         *          object
-             *
-             * @memberOf   PortletInit
-             */
+                         *           s An optional RenderState object to be
+                         *           copied
+                         * 
+                         * @returns {RenderState} The new RenderState object
+                         * 
+                         * @memberOf PortletInit
+                         */
                         newState : function(s) {
-               return new State(s);
-            },
-            
-            /**
-                         * The {@link PortletConstants} object that
-                         * provides useful field definitions for portlet
-                         * mode, window state, and resource URL
-                         * cacheability settings.
-             *
-             * @memberOf   PortletInit
-             */
-            constants : portletConstants
-         
-         };
-      });
+                           return new State(s);
+                        },
+
+                        /**
+                         * The {@link PortletConstants} object that provides
+                         * useful field definitions for portlet mode, window
+                         * state, and resource URL cacheability settings.
+                         * 
+                         * @memberOf PortletInit
+                         */
+                        constants : portletConstants
+
+                     };
+                  });
    };
 
 }());
